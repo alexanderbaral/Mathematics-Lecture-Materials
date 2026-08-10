@@ -1,0 +1,15 @@
+\begin{tikzpicture}[scale=0.85,line cap=round,line join=round]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (4,0);
+  \coordinate (C) at (4,3);
+
+  \draw[very thick] (A) -- (B) -- (C) -- cycle;
+  \draw[thick] (4,0.38) arc[start angle=90,end angle=180,radius=0.38];
+  \fill (3.81,0.19) circle (1.4pt);
+  \draw[THMBlue,very thick] (1.05,0) arc[start angle=0,end angle=36.9,radius=1.05];
+
+  \node[THMBlue] at (0.53,0.18) {$\alpha$};
+  \node[below] at (2,0) {$b$};
+  \node[right] at (4,1.5) {$a$};
+  \node at (1.78,1.72) {$c$};
+\end{tikzpicture}

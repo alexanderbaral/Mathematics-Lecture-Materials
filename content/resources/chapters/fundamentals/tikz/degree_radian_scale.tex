@@ -1,0 +1,41 @@
+\begin{tikzpicture}[
+    x=2.25cm,
+    y=1.0cm,
+    line cap=round,
+    every node/.style={font=\small}
+  ]
+  \draw[->,thick] (-0.35,0.55) -- (4.55,0.55)
+    node[right] {$\alpha_{\mathrm G}$};
+  \draw[->,thick,THMBlue] (-0.35,-0.75) -- (4.55,-0.75)
+    node[right] {$\alpha_{\mathrm B}$};
+
+  \foreach \x/\degree/\radian in {
+      0/{0^\circ}/{0},
+      1/{90^\circ}/{\frac{\pi}{2}},
+      2/{180^\circ}/{\pi},
+      3/{270^\circ}/{\frac{3\pi}{2}},
+      4/{360^\circ}/{2\pi}
+    } {
+      \draw[black!45,densely dashed] (\x,1.12) -- (\x,-1.18);
+      \draw[thick] (\x,0.45) -- (\x,0.65);
+      \draw[THMBlue,thick] (\x,-0.85) -- (\x,-0.65);
+      \node[below] at (\x,0.42) {$\degree$};
+      \node[below,THMBlue] at (\x,-0.88) {$\radian$};
+    }
+
+  \node[anchor=east,font=\bfseries] at (-0.45,0.55)
+    {\Lang{Gradmaß}{Degree measure}:};
+  \node[anchor=east,font=\bfseries,THMBlue] at (-0.45,-0.75)
+    {\Lang{Bogenmaß}{Radian measure}:};
+
+  \node[above,text=black!60,align=center] at (0,1.12)
+    {\Lang{keine\\Drehung}{no\\rotation}};
+  \node[above,text=black!60,align=center] at (1,1.12)
+    {\Lang{Viertel-\\drehung}{quarter\\turn}};
+  \node[above,text=black!60,align=center] at (2,1.12)
+    {\Lang{halbe\\Drehung}{half\\turn}};
+  \node[above,text=black!60,align=center] at (3,1.12)
+    {\Lang{Dreiviertel-\\drehung}{three-quarter\\turn}};
+  \node[above,text=black!60,align=center] at (4,1.12)
+    {\Lang{ganze\\Drehung}{full\\turn}};
+\end{tikzpicture}

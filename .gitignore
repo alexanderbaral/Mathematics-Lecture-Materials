@@ -24,5 +24,4 @@
 .DS_Store
 Thumbs.db
 .vscode/
-notes/handwritten/*
-!notes/handwritten/.gitkeep
+legacy/

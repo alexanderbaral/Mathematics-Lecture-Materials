@@ -1,0 +1,22 @@
+\begin{tikzpicture}[scale=0.95,line cap=round,line join=round]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (6,0);
+  \coordinate (C) at (1.8,3.4);
+
+  \draw[very thick] (A) -- (B) -- (C) -- cycle;
+
+  \node[below left] at (A) {$A$};
+  \node[below right] at (B) {$B$};
+  \node[above] at (C) {$C$};
+
+  \node at (4.18,1.92) {$a$};
+  \node at (0.68,1.82) {$b$};
+  \node at (3,-0.28) {$c$};
+
+  \draw[thick] (0.85,0) arc[start angle=0,end angle=62,radius=0.85];
+  \node at (0.41,0.25) {$\alpha$};
+  \draw[thick] (4.75,0) arc[start angle=180,end angle=141,radius=1.25];
+  \node at (5.15,0.23) {$\beta$};
+  \draw[thick] (1.46,2.76) arc[start angle=-118,end angle=-39,radius=0.72];
+  \node at (1.88,3.03) {$\gamma$};
+\end{tikzpicture}

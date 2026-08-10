@@ -1,0 +1,74 @@
+\section{Mengen}
+\label{sec:fundamentals_sets}
+
+\begin{DefinitionBox}{Menge}{fundamentals_set}
+  Eine \emph{Menge} \EnglishTerm{set} ist eine Zusammenfassung bestimmter,
+  aber unterschiedlicher, \enquote{Elemente} zu einem Ganzen.
+\end{DefinitionBox}
+
+\begin{RemarkBox}
+  Ein Element kann alles sein, was wir uns vorstellen können, zum Beispiel
+  eine Zahl, ein Objekt oder auch eine Menge. Jedes Element kann höchstens
+  einmal in einer Menge enthalten sein.
+\end{RemarkBox}
+
+Für Mengen werden zwei Schreibweisen verwendet:
+\begin{enumerate}[label=(\roman*),itemsep=0.8em]
+  \item \emph{Aufzählende Form:} Eine Menge, die die Elemente $a$, $b$ und
+    $c$ enthält, schreibt man als
+    \begin{ClozeArea}[\linewidth]{1.5cm}
+      \[
+        M=\{a,b,c\}.
+      \]
+    \end{ClozeArea}
+    Die Reihenfolge spielt dabei keine Rolle.
+
+  \item \emph{Beschreibende Form:} Eine Menge, die alle Elemente mit einer
+    bestimmten Eigenschaft enthält, schreibt man als
+    \begin{ClozeArea}[\linewidth]{1.5cm}
+      \[
+        M=\{x\mid x\text{ hat eine bestimmte Eigenschaft}\}.
+      \]
+    \end{ClozeArea}
+\end{enumerate}
+
+\begin{ExampleBox}{Aufzählende vs. Beschreibende Form}{fundamentals_set_notation_example}
+  Die Menge $M$ der ganzen Zahlen zwischen $1$ und $5$ kann dauf 2 Arbeiten geschrieben werden:
+      \[
+        \Cloze{8cm}{\{n \in \mathbb{N} \mid 1 \leq n \leq 5 \} = M = \{1,2,3,4,5\}}.
+      \]
+\end{ExampleBox}
+
+
+\begin{DefinitionBox}{Leere Menge}{fundamentals_emptyset}
+  Unter der \emph{leere Menge} \EnglishTerm{empty set} versteht man eine Menge, die kein Element enthält. Sie wird mit dem Symbol $\emptyset$ bezeichnet.
+\end{DefinitionBox}
+
+
+
+
+\begin{DefinitionBox}{Element einer Menge}{fundamentals_set_element}
+  Ist $a$ ein \emph{Element} \EnglishTerm{element} aus der Menge $M$, so
+  schreibt man
+  \begin{align*}
+    &a\in M
+    \qquad \text{\enquote{ist Element von}}, \\
+    %
+    \text{sonst} \quad
+    &a\notin M
+    \qquad\text{\enquote{ist kein Element von}}.
+  \end{align*}
+\end{DefinitionBox}
+
+
+
+\begin{ExampleBox}{Elemente von Mengen}{fundamentals_elements_of_sets}
+  \begin{enumerate}[label=(\alph*),itemsep=0.6em]
+    \item $1\ \Cloze{1.5cm}{\in}\ \{1,2,3\}$
+    \item $\text{Peter}\ \Cloze{1.5cm}{\notin}\
+      \{\text{Franz},\text{Anne}\}$
+  \end{enumerate}
+\end{ExampleBox}
+
+\input{content/chapters_de/fundamentals/sets/subset.tex}
+\input{content/chapters_de/fundamentals/sets/set_operations.tex}

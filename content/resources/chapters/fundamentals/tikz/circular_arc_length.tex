@@ -1,0 +1,19 @@
+\begin{tikzpicture}[scale=1.25,line cap=round,line join=round]
+  \def\radius{2.0}
+  \def\angle{52}
+
+  \fill[THMBlue!8] (0,0) -- (\radius,0)
+    arc[start angle=0,end angle=\angle,radius=\radius] -- cycle;
+  \draw[black!45,thick] (0,0) circle (\radius);
+  \draw[very thick] (0,0) -- (\radius,0);
+  \draw[very thick] (0,0) -- ({\radius*cos(\angle)},{\radius*sin(\angle)});
+  \draw[THMBlue,very thick]
+    (\radius,0) arc[start angle=0,end angle=\angle,radius=\radius];
+  \draw[THMBlue,thick]
+    (0.85,0) arc[start angle=0,end angle=\angle,radius=0.85];
+
+  \node[THMBlue] at ({0.48*cos(\angle/2)},{0.48*sin(\angle/2)}) {$\alpha$};
+  \node[above left] at ({1.22*cos(\angle)},{1.22*sin(\angle)}) {$R$};
+  \node[THMBlue,right] at ({\radius*cos(\angle/2)+0.08},{\radius*sin(\angle/2)}) {$b$};
+  \fill (0,0) circle (1.4pt);
+\end{tikzpicture}

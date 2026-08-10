@@ -12,28 +12,30 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
 ## 2. Content structure and mandatory filename consultation
 The author decides content filenames and folder names interactively.
 
-Before creating or renaming any chapter, section, subsection, or other content file/folder under `chapters/`:
+Before creating or renaming any chapter, section, subsection, or other content file/folder under `content/chapters_de/` or `content/chapters_en/`:
 1. propose a concise English `snake_case` name;
 2. if several names are reasonable, propose 2–4 alternatives briefly;
 3. wait for explicit approval;
 4. only then create the path.
 
-Do not pre-create future chapters, sections, subsections, or placeholder content files. `chapters/de/` and `chapters/en/` may start empty and grow incrementally, subsection by subsection.
+Do not pre-create future chapters, sections, subsections, or placeholder content files. `content/chapters_de/` and `content/chapters_en/` may start empty and grow incrementally, subsection by subsection.
 
 Technical content paths are English, lowercase, `snake_case`, semantic, and never numbered for ordering. Order is controlled by `\input`, not filenames. German and English trees use exactly the same technical paths and filenames.
 
 Preferred hierarchy:
 ```text
-chapters/de/<chapter>/chapter.tex
-chapters/de/<chapter>/<section>/section.tex
-chapters/de/<chapter>/<section>/<content_unit>.tex
+content/chapters_de/<chapter>/_chapter.tex
+content/chapters_de/<chapter>/<section>/_section.tex
+content/chapters_de/<chapter>/<section>/<content_unit>.tex
 ```
-with an identical tree under `chapters/en/`.
+with an identical tree under `content/chapters_en/`.
 
-A content file represents one coherent mathematical unit and will often compile to roughly 1–2 pages; conceptual coherence is more important than page count. Do not create separate files for every equation or paragraph. `chapter.tex` and `section.tex` may contain short introductions.
+A content file represents one coherent mathematical unit and will often compile to roughly 1–2 pages; conceptual coherence is more important than page count. Do not create separate files for every equation or paragraph. `_chapter.tex` and `_section.tex` may contain short introductions. Always prefix these two structural filenames with `_` so they sort first in their folders.
+
+Each `\section` starts on a new PDF page. The first section may follow the chapter heading on the chapter's opening page; place `\clearpage` between subsequent section inputs in `_chapter.tex`.
 
 ## 3. German master and English synchronization
-`chapters/de/` is the single source of truth. Normal authoring primarily changes German content. Do not automatically update English unless explicitly requested.
+`content/chapters_de/` is the single source of truth. Normal authoring primarily changes German content. Do not automatically update English unless explicitly requested.
 
 When asked to synchronize English:
 - compare German master and existing English;
@@ -47,6 +49,13 @@ When asked to synchronize English:
 
 ### Translation glossary
 Use author-established terminology consistently.
+
+Add a translation parenthetical only to the term that is explicitly being
+defined in a formal definition. Do not add translation notes to terms outside
+definitions unless the author explicitly requests an exception. Render the
+entire parenthetical in italic gray using the central commands: German uses
+`Dreieck \EnglishTerm{triangle}` and English uses
+`triangle \GermanTerm{Dreieck}`.
 
 | German | English | Notes |
 |---|---|---|
@@ -83,33 +92,38 @@ There is exactly one real document body:
 main.tex
 ```
 
-There are four minimal build entry points:
+There are four minimal build entry points under `tools/`:
 ```text
-build-de.tex
-build-de-cloze.tex
-build-en.tex
-build-en-cloze.tex
+tools/build-de.tex
+tools/build-de-cloze.tex
+tools/build-en.tex
+tools/build-en-cloze.tex
 ```
 They only select language/cloze mode and load `main.tex`; never duplicate the document body.
 
 Direct compilation of `main.tex` uses the safe default: German, complete (`cloze=false`).
 
-Also maintain `build-all.ps1`. It builds all four variants with `latexmk`, clearly reports success/failure per variant, and returns a non-zero exit status if any build fails. Use the locally installed TeX Live distribution. Generated outputs should live under `build/` where practical.
+Also maintain `tools/build-all.ps1`. It builds all four variants with `latexmk`, clearly reports success/failure per variant, and returns a non-zero exit status if any build fails. Use the locally installed TeX Live distribution. Generated outputs should live under `build/` where practical.
 
-After shared-infrastructure changes, run `build-all.ps1` and require all four variants to compile.
+After shared-infrastructure changes, run `tools/build-all.ps1` and require all four variants to compile.
 
 ## 6. Language, shared resources, labels
-Provide one central helper for short shared language-dependent text, e.g. `\Lang{deutscher Text}{English text}`. Use it for TikZ labels, title-page interface text, box titles, header/footer text, and shared tables. Long prose stays in separate DE/EN content trees.
+Provide one central helper for shared language-dependent text, e.g. `\Lang{deutscher Text}{English text}`. Use it for TikZ labels, title-page interface text, box titles, header/footer text, shared tables, and the bilingual front-matter files `content/usage_notes.tex` and `content/recommended_reading.tex`. Long chapter prose stays in separate DE/EN content trees.
 
 Shared TikZ figures, images, layout, commands, bibliography, and branding normally exist only once. Do not duplicate TikZ solely for translated labels.
 
 Use language-independent English technical labels, e.g.:
 ```latex
-\label{sec:vector_addition}
-\label{eq:derivative_definition}
-\label{fig:vector_components}
-\label{def:linear_independence}
+\label{chap:fundamentals}
+\label{sec:fundamentals_vector_addition}
+\label{eq:fundamentals_derivative_definition}
+\label{fig:fundamentals_vector_components}
+\label{def:fundamentals_linear_independence}
 ```
+Every label below a chapter uses the approved technical chapter name as its
+namespace immediately after the type prefix. Apply the same namespace to labels
+generated through semantic-box arguments, references, equations, figures, and
+tables.
 
 ## 7. Cloze system
 Semantics:
@@ -119,6 +133,22 @@ Semantics:
 Provide a simple short-gap interface such as `\Cloze{<width>}{<content>}`: complete mode shows content; cloze mode shows a writing line.
 
 Also provide a robust long-calculation interface: complete mode shows the solution; cloze mode shows an approximately 5 mm grid. Prefer default width `\linewidth`, allow optional explicit width, make height easy to specify, and support multi-line/`align`-style mathematics robustly. The internal implementation may be a command or environment, whichever is safer. Do not use local ad-hoc solution switches in chapter files.
+
+Use the gray `\Cloze` box for every short, single-line inline answer. Use the
+5 mm grid (`ClozeArea`) whenever a larger response area or multiple handwritten
+lines are needed, especially for longer calculations and derivations.
+The width argument of `\Cloze` controls only the gray field in cloze mode. In
+the complete version, render the solution at its natural width without
+reserving the width of the cloze field.
+
+Definition and example boxes must never break across PDF pages. Keep
+`DefinitionBox` and `ExampleBox` unbreakable so that a box which no longer fits
+is moved as a whole to the next page.
+
+When an example directly illustrates the preceding definition, keep the
+definition and example together on the same PDF page. Use a smaller vertical
+gap within this pair while retaining the normal box spacing before the next
+content block.
 
 ## 8. Layout, typography, branding
 Use modern KOMA-Script, preferably `scrreprt`, A4, 12 pt unless a strong technical reason requires otherwise.
@@ -137,7 +167,7 @@ Use Fira Sans as primary text typeface. Choose a high-quality readable mathemati
 
 Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
 
-Branding assets live in `assets/branding/`. The author will provide the official TH Mannheim/faculty logo and Mannheimer Punkt. Prefer PDF vector assets; PNG is acceptable; support EPS only if actually needed. If assets are missing, compilation must still succeed with unobtrusive placeholders and README guidance.
+Shared visual resources live under `content/resources/`. Global files used across chapters, such as branding assets, live in `content/resources/shared/`; its `images/` and `tikz/` subfolders hold other shared visual resources. Chapter-specific resources mirror the approved chapter name and use `content/resources/chapters/<chapter>/images/` for raster or vector illustrations and `content/resources/chapters/<chapter>/tikz/` for TikZ sources. Do not create resource folders for future chapters. The author will provide the official TH Mannheim/faculty logo and Mannheimer Punkt. Prefer PDF vector assets; PNG is acceptable; support EPS only if actually needed. If assets are missing, compilation must still succeed with unobtrusive placeholders and README guidance.
 
 Title page includes logo, language-dependent script title, `Vorlesungsskript`/`Lecture Notes`, author, language-dependent institution/faculty, and semester. Keep the first design restrained and modular.
 
@@ -156,10 +186,13 @@ Provide robust central shortcuts where useful, e.g. `\R`, `\N`, `\Q`, `\Z`, `\C`
 
 Provide calm semantic styling at least for Definition, Merke/Key Point, Beispiel/Example; Satz/Theorem and Hinweis/Remark are also reasonable. Proofs remain visually restrained initially.
 
+Number `KeyPointBox` and `TheoremBox` independently within each chapter, so
+their numbering starts with 1.1, 1.2, and so on in the first chapter.
+
 Prefer chapter/section/subsection numbering. Do not introduce `1.1.1.1`-style visible numbering without a concrete need.
 
 ## 10. Handwritten notes
-`notes/handwritten/` is a temporary inbox only.
+`legacy/notes/handwritten/` is a temporary inbox only.
 
 Workflow:
 1. read/interpret the note;
@@ -176,7 +209,7 @@ Validate proportionally to the change.
 
 For shared infrastructure changes (`common/*.tex`, language/cloze logic, page style, title page, boxes, shared TikZ infrastructure), run:
 ```powershell
-.\build-all.ps1
+.\tools\build-all.ps1
 ```
 and require all four builds to succeed.
 
@@ -189,9 +222,9 @@ Codex may inspect `git status`, `git diff`, and `git log`. Do not commit, push, 
 Keep generated LaTeX artifacts, logs, auxiliary files, and generated PDFs under `build/` out of source control unless explicitly requested. Source, configuration, documentation, and required branding assets belong in the repository.
 
 ## 12. Legacy, README, and scope discipline
-Files under `legacy/` are historical references only. Do not include them in normal builds or copy their package setup wholesale. They may inform fonts, colors, and prior author conventions.
+Except for the temporary inbox under `legacy/notes/handwritten/`, files under `legacy/` are historical references only. Do not include them in normal builds or copy their package setup wholesale. They may inform fonts, colors, and prior author conventions.
 
-Keep `README.md` concise and human-facing. Explain project structure, four build variants plus `build-all.ps1`, German-master/English-sync workflow, `common/config.tex`, branding, cloze usage, handwritten-note workflow, and mandatory filename consultation.
+Keep `README.md` concise and human-facing. Explain project structure, four build variants plus `tools/build-all.ps1`, German-master/English-sync workflow, `common/config.tex`, branding, cloze usage, handwritten-note workflow, and mandatory filename consultation.
 
 When initializing/extending the repository:
 - create only needed infrastructure;

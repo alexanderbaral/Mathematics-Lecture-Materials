@@ -1,0 +1,90 @@
+\section{Winkel -- Gradmaß und Bogenmaß}
+\label{sec:fundamentals_angle_measures}
+
+Winkel beschreiben Drehungen in der Ebene. Je nachdem, ob eine vollständige
+Drehung mit $360^\circ$ oder mit $2\pi$ angegeben wird, verwenden wir das
+Gradmaß oder das Bogenmaß.
+
+\begin{DefinitionBox}{Winkel}{fundamentals_angle}
+  Ein \emph{Winkel} \EnglishTerm{angle} beschreibt die Größe einer Drehung
+  eines Strahls um seinen Anfangspunkt. Der Winkel zwischen der Ausgangs- und
+  der Endlage wird üblicherweise mit einem griechischen Buchstaben wie
+  $\alpha$ bezeichnet.
+
+  \begin{center}
+    \input{content/resources/chapters/fundamentals/tikz/angle.tex}
+  \end{center}
+\end{DefinitionBox}
+
+\begin{DefinitionBox}{Gradmaß und Bogenmaß}{fundamentals_degree_and_radian_measure}
+  Beim \emph{Gradmaß} \EnglishTerm{degree measure} wird eine vollständige
+  Drehung in $360$ gleich große Teile unterteilt. Ein voller Winkel besitzt
+  daher $360^\circ$, ein rechter Winkel $90^\circ$.
+
+  Beim \emph{Bogenmaß} \EnglishTerm{radian measure} entspricht eine
+  vollständige Drehung dem Wert $2\pi$. Ein rechter Winkel besitzt damit den
+  Wert $\frac{\pi}{2}$.
+\end{DefinitionBox}
+
+Die folgende Gegenüberstellung zeigt wichtige Winkel in beiden Winkelmaßen:
+
+\begin{center}
+  \input{content/resources/chapters/fundamentals/tikz/degree_radian_scale.tex}
+\end{center}
+
+\begin{KeyPointBox}{Umrechnung zwischen Gradmaß und Bogenmaß}{fundamentals_degree_radian_conversion}
+  Da $360^\circ$ genau $2\pi$ im Bogenmaß entsprechen, gilt
+  \begin{ClozeArea}[0.82\linewidth]{3cm}
+    \begin{align*}
+      \frac{\alpha_{\mathrm G}}{360^\circ}
+        &=\frac{\alpha_{\mathrm B}}{2\pi},\\
+      \alpha_{\mathrm B}
+        &=\alpha_{\mathrm G}\cdot\frac{\pi}{180^\circ},
+      &
+      \alpha_{\mathrm G}
+        &=\alpha_{\mathrm B}\cdot\frac{180^\circ}{\pi}.
+    \end{align*}
+  \end{ClozeArea}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Umrechnung von Winkeln}{fundamentals_angle_conversion_example}
+  \begin{enumerate}[label=\alph*)]
+    \item $60^\circ$ entsprechen im Bogenmaß
+      \[
+        60^\circ\cdot\frac{\pi}{180^\circ}
+          =\Cloze{2.5cm}{\frac{\pi}{3}}.
+      \]
+    \item $\frac{3\pi}{4}$ entsprechen im Gradmaß
+      \[
+        \frac{3\pi}{4}\cdot\frac{180^\circ}{\pi}
+          =\Cloze{2.5cm}{135^\circ}.
+      \]
+  \end{enumerate}
+\end{ExampleBox}
+
+Das Bogenmaß besitzt eine direkte geometrische Bedeutung. Ein Winkel
+$\alpha_{\mathrm B}$ schneidet aus einem Kreis mit Radius $R$ einen Kreisbogen
+der Länge $b$ aus.
+
+\begin{center}
+  \input{content/resources/chapters/fundamentals/tikz/circular_arc_length.tex}
+\end{center}
+
+\begin{KeyPointBox}{Bogenlänge eines Kreisausschnitts}{fundamentals_circular_arc_length}
+  Für einen Winkel $\alpha_{\mathrm B}$ im Bogenmaß und einen Kreis mit Radius
+  $R$ gilt
+  \begin{ClozeArea}[0.65\linewidth]{2cm}
+    \[
+      b=\alpha_{\mathrm B}\,R.
+    \]
+  \end{ClozeArea}
+  Für den Einheitskreis mit $R=1$ ist die Bogenlänge daher gleich dem
+  Winkelwert: $b=\alpha_{\mathrm B}$. Für eine vollständige Drehung ergibt sich
+  als Spezialfall der Kreisumfang $U=2\pi R$.
+\end{KeyPointBox}
+
+\begin{RemarkBox}
+  Winkel im Bogenmaß sind einheitenlos; die Schreibweise ``rad'' dient nur der
+  Kennzeichnung. Beim Gradmaß gehört dagegen das Gradzeichen $^\circ$ zum
+  Winkelwert. In Mathematik und Physik wird daher meist das Bogenmaß verwendet.
+\end{RemarkBox}

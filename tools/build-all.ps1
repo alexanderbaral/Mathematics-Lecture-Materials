@@ -1,13 +1,15 @@
 $ErrorActionPreference = 'Stop'
 
+$projectRoot = Split-Path -Parent $PSScriptRoot
+
 $variants = @(
-    @{ File = 'build-de.tex';       Label = 'German complete' },
-    @{ File = 'build-de-cloze.tex'; Label = 'German cloze' },
-    @{ File = 'build-en.tex';       Label = 'English complete' },
-    @{ File = 'build-en-cloze.tex'; Label = 'English cloze' }
+    @{ File = 'tools/build-de.tex';       Label = 'German complete' },
+    @{ File = 'tools/build-de-cloze.tex'; Label = 'German cloze' },
+    @{ File = 'tools/build-en.tex';       Label = 'English complete' },
+    @{ File = 'tools/build-en-cloze.tex'; Label = 'English cloze' }
 )
 
-$buildDirectory = Join-Path $PSScriptRoot 'build'
+$buildDirectory = Join-Path $projectRoot 'build'
 New-Item -ItemType Directory -Force -Path $buildDirectory | Out-Null
 $texmfCacheDirectory = Join-Path $buildDirectory 'texmf-cache'
 New-Item -ItemType Directory -Force -Path $texmfCacheDirectory | Out-Null
@@ -16,7 +18,7 @@ $env:TEXMFCACHE = $texmfCacheDirectory
 $outDirectoryArgument = "-outdir=$buildDirectory"
 
 $results = @()
-Push-Location $PSScriptRoot
+Push-Location $projectRoot
 try {
     foreach ($variant in $variants) {
         Write-Host "Building $($variant.Label)..."

@@ -1,0 +1,33 @@
+\subsubsection{Kosinussatz}
+\label{subsubsec:fundamentals_oblique_triangles_cosine_rule}
+
+Der Kosinussatz verallgemeinert den Satz des Pythagoras auf beliebige
+Dreiecke. Neben drei Seitenlängen tritt dabei der eingeschlossene Winkel auf.
+
+\begin{TheoremBox}{Kosinussatz}{fundamentals_cosine_rule}
+  In einem beliebigen Dreieck gilt
+  \begin{ClozeArea}[0.78\linewidth]{2.5cm}
+    \[
+      c^2=a^2+b^2-2ab\cos(\gamma).
+    \]
+  \end{ClozeArea}
+  Dabei liegt der Winkel $\gamma$ der Seite $c$ gegenüber.
+\end{TheoremBox}
+
+Da keine Seite ausgezeichnet ist, kann dieselbe Beziehung für jede Seite
+formuliert werden:
+\begin{ClozeArea}[0.9\linewidth]{4cm}
+  \begin{align*}
+    a^2&=b^2+c^2-2bc\cos(\alpha),\\
+    b^2&=a^2+c^2-2ac\cos(\beta),\\
+    c^2&=a^2+b^2-2ab\cos(\gamma).
+  \end{align*}
+\end{ClozeArea}
+
+\begin{RemarkBox}
+  Für $\gamma=90^\circ$ ist $\cos(\gamma)=0$. Damit geht der Kosinussatz in
+  den Satz des Pythagoras über:
+  \[
+    c^2=a^2+b^2-2ab\underbrace{\cos(90^\circ)}_{=0}=a^2+b^2.
+  \]
+\end{RemarkBox}

@@ -1,0 +1,97 @@
+\section{Algebraische Gesetze}
+\label{sec:fundamentals_algebraic_laws}
+
+Für die bekannten Zahlenmengen gelten drei grundlegende Gesetze der Algebra, die Ihnen vertraut sein sollten. \\
+
+\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Kommutativgesetz}{fundamentals_commutative_law}
+  Das \emph{Kommutativgesetz} \EnglishTerm{commutative law} besagt, dass die
+  Reihenfolge der Operanden $a$ und $b$ bei der Addition und der Multiplikation
+  keine Rolle spielt:
+  \begin{align*}
+    a+b &= b+a, \\
+    a\cdot b &= b\cdot a.
+  \end{align*}
+  Daher wird das Kommutativgesetz auch Vertauschungsgesetz genannt.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Kommutativgesetz}{fundamentals_commutative_law_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.6em]
+    \item $3+2=\Cloze{3.5cm}{5=2+3}$
+    \item $3\cdot 2=\Cloze{3.5cm}{6=2\cdot 3}$
+  \end{enumerate}
+\end{ExampleBox}
+\end{minipage}
+
+\vspace{1cm}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Assoziativgesetz}{fundamentals_associative_law}
+  Das \emph{Assoziativgesetz} \EnglishTerm{associative law} besagt, dass die
+  Gruppierung der Operanden $a$, $b$ und $c$ durch Klammern keinen Einfluss auf
+  das Ergebnis hat:
+  \begin{align*}
+    (a+b)+c &= a+(b+c), \\
+    (a\cdot b)\cdot c &= a\cdot(b\cdot c).
+  \end{align*}
+  Werden viele Operanden addiert oder multipliziert, darf frei gewählt werden,
+  welches Operandenpaar zuerst verrechnet wird.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Assoziativgesetz}{fundamentals_associative_law_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.8em]
+    \item \emph{Addition:}
+      \[
+        (2+3)+4=\Cloze{3.8cm}{5+4=9}
+        \qquad\text{und}\qquad
+        2+(3+4)=\Cloze{3.8cm}{2+7=9}.
+      \]
+    \item \emph{Multiplikation:}
+      \[
+        (2\cdot 3)\cdot 4=\Cloze{3.8cm}{6\cdot 4=24}
+        \qquad\text{und}\qquad
+        2\cdot(3\cdot 4)=\Cloze{3.8cm}{2\cdot 12=24}.
+      \]
+  \end{enumerate}
+  Beide möglichen Gruppierungen führen jeweils zum selben Ergebnis!
+\end{ExampleBox}
+\end{minipage}
+
+\vspace{1cm}
+
+\noindent\begin{minipage}{\linewidth}
+Während das Kommutativ- und das Assoziativgesetz jeweils für die Addition und
+die Multiplikation gelten, verbindet das Distributivgesetz beide Rechenoperationen.
+%
+\begin{DefinitionBox}{Distributivgesetz}{fundamentals_distributive_law}
+  Das \emph{Distributivgesetz} \EnglishTerm{distributive law} verbindet die
+  Multiplikation mit der Addition:
+  \[
+    a\cdot(b+c)=a\cdot b+a\cdot c.
+  \]
+  Es erlaubt das Ausmultiplizieren von Klammern und umgekehrt das Ausklammern
+  gemeinsamer Faktoren aus Summen. Beim Auflösen der Klammer wird jeder
+  Summand in der Klammer mit dem Faktor vor der Klammer multipliziert.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Distributivgesetz}{fundamentals_distributive_law_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.8em]
+    \item \emph{Ausmultiplizieren:}
+      \[
+        a\cdot\left(5+b+c^2\right)
+        =\Cloze{7cm}{5a+ab+ac^2}.
+      \]
+    \item \emph{Ausklammern:}
+      \[
+        a\cdot b\cdot c^2+a\cdot b
+        =\Cloze{9cm}{a\cdot b\cdot c^2+a\cdot b\cdot 1
+          =a\cdot b\left(c^2+1\right)}.
+      \]
+      Wird beim Ausklammern aus einem Summanden das vollständige Produkt herausgezogen, bleibt in der Klammer eine $1$ zurück.
+  \end{enumerate}
+\end{ExampleBox}
+\end{minipage}
+
+\vspace{1cm}
+Wenn wir später mit anderen Objekten wie komplexen Zahlen, Vektoren oder Matrizen rechen,
+werden manche dieser 3 Gesetzte nicht mehr gültig sein.

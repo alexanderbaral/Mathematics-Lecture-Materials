@@ -5,10 +5,18 @@
   { \bool_if:NTF \g_script_cloze_bool {#1} {#2} }
 \ExplSyntaxOff
 
+\NewDocumentCommand{\EnglishTerm}{m}{%
+  {\color{black!55}\itshape(engl.: #1)}%
+}
+\NewDocumentCommand{\GermanTerm}{m}{%
+  {\color{black!55}\itshape(German: #1)}%
+}
+
 \NewDocumentCommand{\Cloze}{m m}{%
   \IfClozeTF
-    {\makebox[#1]{\hrulefill}}
-    {\makebox[#1][c]{#2}}%
+    {{\setlength{\fboxsep}{0pt}%
+      \colorbox{black!12}{\makebox[#1][c]{\strut}}}}
+    {#2}%
 }
 
 \NewDocumentCommand{\FrontMatterChapter}{m}{%
