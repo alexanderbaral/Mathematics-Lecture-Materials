@@ -1,0 +1,71 @@
+\subsection{Implikation und Äquivalenz}
+\label{subsec:fundamentals_implication_and_equivalence}
+
+Mit Implikationen und Äquivalenzen stellen wir logische Zusammenhänge zwischen
+Aussagen her und können präzise beschreiben, wie die Gültigkeit einer Aussage
+von einer anderen abhängt.
+
+\begin{DefinitionBox}{Implikation}{fundamentals_implication}
+  Die \emph{Implikation} \EnglishTerm{implication} zeigt an, welche Aussage aus einer anderen folgt:
+  \[
+    A\Rightarrow B
+  \]
+  bedeutet: „Wenn $A$ gilt, dann gilt auch $B$.“
+\end{DefinitionBox}
+
+
+\begin{RemarkBox}
+  Eine Implikation gilt nicht notwendigerweise in beide Richtungen: Aus
+  $A\Rightarrow B$ folgt im Allgemeinen nicht $B\Rightarrow A$.
+\end{RemarkBox}
+
+\begin{ExampleBox}{Implikation}{fundamentals_implication_example}
+  Für eine ganze Zahl $x$ gilt die folgende Implikation:
+  \[
+    x=4
+    \quad\Rightarrow\quad
+    x \text{ ist gerade}.
+  \]
+  Dreht man den Implikationspfeil lediglich um, erhält man dagegen eine falsche
+  Aussage:
+    \begin{center}
+      \begin{ClozeArea}[0.6\linewidth]{1.5cm}
+      \[
+           x \text{ ist gerade} \quad \nRightarrow \quad x=4.
+      \]
+      \end{ClozeArea}
+    \end{center}
+  Das Gegenbeispiel $x=2$ widerlegt die Aussage.
+\end{ExampleBox}
+
+\begin{DefinitionBox}{Äquivalenz}{fundamentals_equivalence}
+  Die \emph{Äquivalenz} \EnglishTerm{equivalence}
+  \[
+    A\Leftrightarrow B
+  \]
+  bedeutet, dass sowohl $A\Rightarrow B$ als auch $B\Rightarrow A$ gilt. Das bedeutet, dass die Aussagen $A$ und $B$ äquivalent, also logisch gleichwertig sind. Sie sind entweder beide wahr oder beide falsch.
+\end{DefinitionBox}
+
+\begin{samepage}
+Eine Wahrheitstabelle prüft alle möglichen Fälle; durch das Ausfüllen sehen wir,
+unter welchen Wahrheitswerten eine Implikation oder eine Äquivalenz gilt.
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.55}
+  \setlength{\tabcolsep}{12pt}
+  \begin{tabular}{cccc}
+    \toprule
+    $A$ & $B$ & $A\Rightarrow B$ & $A\Leftrightarrow B$\\
+    \midrule
+    T & T & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{T}\\
+    T & F & \Cloze{1.8cm}{F} & \Cloze{1.8cm}{F}\\
+    F & T & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{F}\\
+    F & F & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{T}\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\end{samepage}
+
+Bei einer Implikation ist $A$ eine hinreichende Bedingung für $B$ und $B$ eine
+notwendige Bedingung für $A$. Für eine Äquivalenz müssen diese Beziehungen in
+beiden Richtungen gelten.

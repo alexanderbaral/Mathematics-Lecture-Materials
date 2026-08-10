@@ -53,9 +53,18 @@
     {\includegraphics[width=#1,height=#1,keepaspectratio]{\BrandDotPath}}
     {\tikz\fill[THMBlue!55] (0,0) circle[radius=#2];}%
 }
-\newcommand{\BrandDot}{\BrandDotGraphic{5mm}{2mm}}
-\newcommand{\BrandChapterDot}{\BrandDotGraphic{12mm}{5mm}}
-\newcommand{\BrandChapterDotHeader}{\smash{\raisebox{-3mm}{\BrandChapterDot}}}
+\newcommand{\BrandPageDot}{\BrandDotGraphic{18mm}{7.5mm}}
+\newif\ifBrandPageDotVisible
+\BrandPageDotVisiblefalse
+\AddToHook{shipout/foreground}{%
+  \ifBrandPageDotVisible
+    \begin{tikzpicture}[remember picture,overlay]
+      \node[anchor=north east,inner sep=0pt]
+        at ([xshift=-7.5mm,yshift=-4.5mm]current page.north east)
+        {\BrandPageDot};
+    \end{tikzpicture}%
+  \fi
+}
 \newcommand{\BrandTitleVisual}{%
   \IfFileExists{\BrandTitleVisualPath}
     {\includegraphics[width=2.9cm,keepaspectratio]{\BrandTitleVisualPath}}
@@ -63,8 +72,9 @@
 }
 
 \clearpairofpagestyles
-\ihead*{}
-\ohead[\BrandChapterDotHeader]{\BrandDot}
+\automark{section}
+\ihead[]{\footnotesize\normalfont\color{black!45}\headmark}
+\ohead*{}
 \ifoot*{\footnotesize\color{black!70}\Lang{Mathematik}{Mathematics}\enspace\textperiodcentered\enspace\Lang{Semester}{Semester} \Semester}
 \newcommand{\ScriptPageMark}{\footnotesize\color{black!70}\Lang{Seite}{Page} \pagemark}
 \newcommand{\UseUnnumberedFrontMatter}{%
@@ -80,6 +90,10 @@
 }
 \ofoot*{\ScriptPageMark}
 \pagestyle{scrheadings}
+
+% Section opening pages already show the full heading in the text body. Keep
+% their running head empty; subsequent pages carry the automatic section mark.
+\AddToHook{cmd/section/before}{\thispagestyle{plain.scrheadings}}
 
 \newcommand{\MakeScriptTitle}{%
   \begin{titlepage}
@@ -112,6 +126,7 @@
       {\large \Lang{Semester}{Semester} \Semester\par}
     \end{minipage}
   \end{titlepage}
+  \global\BrandPageDotVisibletrue
 }
 
 \tcbset{
@@ -125,16 +140,31 @@
     borderline west={1.2pt}{0pt}{THMBlue},
     sharp corners,
     left=2.5mm,right=2mm,top=1.5mm,bottom=1.5mm,
+    before skip=1.0\baselineskip,
+    after skip=1.0\baselineskip,
     fonttitle=\bfseries,
     coltitle=black
   }
 }
+
+%---------
+%--Boxes--
+%---------
+
+% Definition
 \newtcbtheorem[number within=chapter]{DefinitionBox}{\Lang{Definition}{Definition}}
-  {scriptbox}{def}
-\newtcbtheorem{KeyPointBox}{\Lang{Merke}{Key Point}}
+  {scriptbox,breakable=false}{def}
+
+% Merke
+\newtcbtheorem[number within=chapter]{KeyPointBox}{\Lang{Merke}{Key Point}}
   {scriptbox,borderline west={2pt}{0pt}{THMBlue}}{key}
+
+% Beispiel
 \newtcbtheorem[number within=chapter]{ExampleBox}{\Lang{Beispiel}{Example}}
-  {scriptbox,borderline west={1.2pt}{0pt}{black!40}}{ex}
+  {scriptbox,breakable=false,borderline west={1.2pt}{0pt}{black!40}}{ex}
+
+% Theorem
 \newtcbtheorem[number within=chapter]{TheoremBox}{\Lang{Satz}{Theorem}}
   {scriptbox,borderline west={1.8pt}{0pt}{THMBlue!70!black}}{thm}
+
 \newtcolorbox{RemarkBox}[1][]{scriptbox,borderline west={1.2pt}{0pt}{black!40},title=\Lang{Hinweis}{Remark},#1}

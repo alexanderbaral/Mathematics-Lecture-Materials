@@ -1,0 +1,91 @@
+\subsection{Mengenoperationen}
+\label{subsec:fundamentals_set_operations}
+
+Zwischen Mengen existieren Operationen, mit denen aus gegebenen Mengen neue
+Mengen gebildet werden können. Zu den wichtigsten gehören Schnitt, Vereinigung
+und Differenz.
+
+\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Schnittmenge}{fundamentals_set_intersection}
+  \begin{minipage}[c]{0.70\linewidth}
+    Die \emph{Schnittmenge} \EnglishTerm{intersection} zweier Mengen $A$ und
+    $B$ enthält alle Elemente, die sowohl in der Menge $A$ als auch in der
+    Menge $B$ enthalten sind.
+    \begin{ClozeArea}[\linewidth]{1.5cm}
+      \[
+        A\cap B=\{x\mid x\in A\land x\in B\}.
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/set_intersection.tex}
+  \end{minipage}
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Schnittmenge}{fundamentals_set_intersection_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.6em]
+    \item $\{1,2\}\cap\{2,3\}=\Cloze{3cm}{\{2\}}$
+    \item $\{1,2,3\}\cap\{1,2,3\}=\Cloze{3cm}{\{1,2,3\}}$
+    \item $M\cap\emptyset=\Cloze{2.5cm}{\emptyset}\quad(\forall M)$
+  \end{enumerate}
+\end{ExampleBox}
+\end{minipage}
+
+\vspace{1cm}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Vereinigungsmenge}{fundamentals_set_union}
+  \begin{minipage}[c]{0.70\linewidth}
+    Die \emph{Vereinigungsmenge} \EnglishTerm{union} zweier Mengen $A$ und
+    $B$ enthält alle Elemente, die in der Menge $A$, in der Menge $B$ oder in
+    beiden Mengen enthalten sind.
+    \begin{ClozeArea}[\linewidth]{1.5cm}
+      \[
+        A\cup B=\{x\mid x\in A\lor x\in B\}.
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/set_union.tex}
+  \end{minipage}
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Vereinigungsmenge}{fundamentals_set_union_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.6em]
+    \item $\{1,2\}\cup\{2,3\}=\Cloze{3cm}{\{1,2,3\}}$
+    \item $\{1,2,3\}\cup\{1,2,3\}=\Cloze{3cm}{\{1,2,3\}}$
+    \item $M\cup\emptyset=\Cloze{2.5cm}{M}\quad(\forall M)$
+  \end{enumerate}
+\end{ExampleBox}
+\end{minipage}
+
+\vspace{1cm}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Differenzmenge}{fundamentals_set_difference}
+  \begin{minipage}[c]{0.70\linewidth}
+    Die \emph{Differenzmenge} \EnglishTerm{set difference} $A\setminus B$
+    enthält alle Elemente, die in der Menge $A$, aber nicht in der Menge $B$
+    enthalten sind.
+    \begin{ClozeArea}[\linewidth]{1.5cm}
+      \[
+        A\setminus B=\{x\mid x\in A\land x\notin B\}.
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/set_difference.tex}
+  \end{minipage}
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Differenzmenge}{fundamentals_set_difference_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.6em]
+    \item $\{1,2\}\setminus\{2,3\}=\Cloze{3cm}{\{1\}}$
+    \item $\{1,2,3\}\setminus\{1,2,3\}=\Cloze{2.5cm}{\emptyset}$
+    \item $M \setminus \emptyset = \Cloze{2.5cm}{M}$
+  \end{enumerate}
+\end{ExampleBox}
+\end{minipage}
