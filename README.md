@@ -19,7 +19,7 @@ This creates all four variants under `build/`: German complete, German cloze, En
 - `common/layout.tex`: page layout, title page, page style, and semantic boxes
 - `common/commands.tex`: language helper, cloze interfaces, and mathematics commands
 - `content/chapters_de/` and `content/chapters_en/`: mirrored German and English content trees
-- `content/usage_notes.tex` and `content/recommended_reading.tex`: shared bilingual front matter
+- `content/front_matter/`: shared bilingual usage notes, Greek alphabet, and recommended reading
 - `content/resources/shared/`: visual files used across multiple chapters
 - `content/resources/chapters/`: chapter-specific `images/` and `tikz/` folders
 - `tools/`: build script and the four minimal build entry points

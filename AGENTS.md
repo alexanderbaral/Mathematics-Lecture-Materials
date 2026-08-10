@@ -8,6 +8,11 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
 - Keep the project simple, readable, modular, and manually editable.
 - Prefer semantic LaTeX and maintainability over clever abstractions.
 - Do not overengineer or create speculative content structures.
+- Write in a concise lecture-script style, not in long prose. Make the essential
+  content immediately scannable and let formulas, diagrams, and figures carry
+  the explanation wherever possible. Communicate each idea with as little text
+  as clarity permits, and clarify complex relationships through deliberate
+  spatial arrangement of formulas, labels, and graphics.
 
 ## 2. Content structure and mandatory filename consultation
 The author decides content filenames and folder names interactively.
@@ -108,7 +113,7 @@ Also maintain `tools/build-all.ps1`. It builds all four variants with `latexmk`,
 After shared-infrastructure changes, run `tools/build-all.ps1` and require all four variants to compile.
 
 ## 6. Language, shared resources, labels
-Provide one central helper for shared language-dependent text, e.g. `\Lang{deutscher Text}{English text}`. Use it for TikZ labels, title-page interface text, box titles, header/footer text, shared tables, and the bilingual front-matter files `content/usage_notes.tex` and `content/recommended_reading.tex`. Long chapter prose stays in separate DE/EN content trees.
+Provide one central helper for shared language-dependent text, e.g. `\Lang{deutscher Text}{English text}`. Use it for TikZ labels, title-page interface text, box titles, header/footer text, shared tables, and the bilingual files under `content/front_matter/`. Long chapter prose stays in separate DE/EN content trees.
 
 Shared TikZ figures, images, layout, commands, bibliography, and branding normally exist only once. Do not duplicate TikZ solely for translated labels.
 
