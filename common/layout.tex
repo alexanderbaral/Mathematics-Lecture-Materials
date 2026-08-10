@@ -1,0 +1,140 @@
+\ExplSyntaxOn
+\bool_if:NTF \g_script_english_bool
+  { \AtBeginDocument{\selectlanguage{english}} }
+  { \AtBeginDocument{\selectlanguage{ngerman}} }
+\ExplSyntaxOff
+
+\hypersetup{
+  pdftitle={\ScriptTitle},
+  pdfauthor={\ScriptAuthor},
+  pdfcreator={LuaLaTeX}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setcounter{secnumdepth}{2}
+\setcounter{tocdepth}{2}
+\KOMAoptions{headsepline=false,footsepline=false}
+
+% Restrained TH Mannheim typography and hierarchy.
+\setkomafont{chapter}{\normalfont\sffamily\bfseries\Huge\color{black}}
+\setkomafont{section}{\normalfont\sffamily\bfseries\Large\color{black}}
+\setkomafont{subsection}{\normalfont\sffamily\bfseries\large\color{black}}
+\renewcommand*{\chapterformat}{\thechapter\autodot\enskip}
+\renewcommand*{\sectionformat}{\thesection\autodot\enskip}
+\renewcommand*{\subsectionformat}{\thesubsection\autodot\enskip}
+\RedeclareSectionCommand[beforeskip=0pt,afterskip=1.25\baselineskip]{chapter}
+\RedeclareSectionCommands[beforeskip=1.7\baselineskip,afterskip=.6\baselineskip]{section,subsection}
+
+\setlist[itemize,1]{
+  label=\textcolor{THMBlue}{\bfseries+},
+  leftmargin=1.5em,
+  itemsep=.2em,
+  topsep=.35em
+}
+\setlist[itemize,2]{
+  label=\textcolor{black!55}{\bfseries+},
+  leftmargin=1.5em,
+  itemsep=.15em,
+  topsep=.25em
+}
+
+\newcommand{\BrandPlaceholder}[2]{%
+  \fcolorbox{black!20}{black!2}{%
+    \parbox[c][#2][c]{#1}{\centering\sffamily\footnotesize\color{black!45}\Lang{Platzhalter}{Placeholder}}}%
+}
+\newcommand{\BrandLogo}{%
+  \IfFileExists{\BrandLogoPath}
+    {\includegraphics[width=10.8cm,height=4.8cm,keepaspectratio]{\BrandLogoPath}}
+    {\BrandPlaceholder{10.8cm}{4.8cm}}%
+}
+\newcommand{\BrandDotGraphic}[2]{%
+  \IfFileExists{\BrandDotPath}
+    {\includegraphics[width=#1,height=#1,keepaspectratio]{\BrandDotPath}}
+    {\tikz\fill[THMBlue!55] (0,0) circle[radius=#2];}%
+}
+\newcommand{\BrandDot}{\BrandDotGraphic{5mm}{2mm}}
+\newcommand{\BrandChapterDot}{\BrandDotGraphic{12mm}{5mm}}
+\newcommand{\BrandChapterDotHeader}{\smash{\raisebox{-3mm}{\BrandChapterDot}}}
+\newcommand{\BrandTitleVisual}{%
+  \IfFileExists{\BrandTitleVisualPath}
+    {\includegraphics[width=2.9cm,keepaspectratio]{\BrandTitleVisualPath}}
+    {}%
+}
+
+\clearpairofpagestyles
+\ihead*{}
+\ohead[\BrandChapterDotHeader]{\BrandDot}
+\ifoot*{\footnotesize\color{black!70}\Lang{Mathematik}{Mathematics}\enspace\textperiodcentered\enspace\Lang{Semester}{Semester} \Semester}
+\newcommand{\ScriptPageMark}{\footnotesize\color{black!70}\Lang{Seite}{Page} \pagemark}
+\newcommand{\UseUnnumberedFrontMatter}{%
+  \hypersetup{pageanchor=false}%
+  \pagenumbering{gobble}%
+  \ofoot*{}%
+}
+\newcommand{\StartMainMatter}{%
+  \clearpage
+  \pagenumbering{arabic}%
+  \hypersetup{pageanchor=true}%
+  \ofoot*{\ScriptPageMark}%
+}
+\ofoot*{\ScriptPageMark}
+\pagestyle{scrheadings}
+
+\newcommand{\MakeScriptTitle}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[THMBlue]
+        ([xshift=-3.8cm]current page.north east) rectangle
+        (current page.south east);
+      \node[anchor=south,inner sep=0pt]
+        at ([xshift=-1.9cm,yshift=1.8cm]current page.south east)
+        {\BrandTitleVisual};
+    \end{tikzpicture}
+
+    \noindent\begin{minipage}[t][0.94\textheight][t]{0.72\textwidth}
+      \BrandLogo
+      \vspace*{3.1cm}
+
+      {\color{THMBlue}\rule{\linewidth}{1.2pt}}\par
+      \vspace{1.0cm}
+      {\Huge\bfseries \ScriptTitle\par}
+      \vspace{0.5cm}
+      {\Large \Lang{Vorlesungsskript}{Lecture Notes}%
+        \IfClozeTF{\space(\Lang{Lückenskript}{Fill-in-the-Blank Version})}{}\par}
+      \vspace{1.5cm}
+      {\large \ScriptAuthor\par}
+      \vfill
+      {\large \Institution\par}
+      {\large \Faculty\par}
+      \vspace{0.8cm}
+      {\large \Lang{Semester}{Semester} \Semester\par}
+    \end{minipage}
+  \end{titlepage}
+}
+
+\tcbset{
+  scriptbox/.style={
+    enhanced,
+    breakable,
+    colback=black!2,
+    colbacktitle=black!2,
+    colframe=black!2,
+    boxrule=0pt,
+    borderline west={1.2pt}{0pt}{THMBlue},
+    sharp corners,
+    left=2.5mm,right=2mm,top=1.5mm,bottom=1.5mm,
+    fonttitle=\bfseries,
+    coltitle=black
+  }
+}
+\newtcbtheorem[number within=chapter]{DefinitionBox}{\Lang{Definition}{Definition}}
+  {scriptbox}{def}
+\newtcbtheorem{KeyPointBox}{\Lang{Merke}{Key Point}}
+  {scriptbox,borderline west={2pt}{0pt}{THMBlue}}{key}
+\newtcbtheorem[number within=chapter]{ExampleBox}{\Lang{Beispiel}{Example}}
+  {scriptbox,borderline west={1.2pt}{0pt}{black!40}}{ex}
+\newtcbtheorem[number within=chapter]{TheoremBox}{\Lang{Satz}{Theorem}}
+  {scriptbox,borderline west={1.8pt}{0pt}{THMBlue!70!black}}{thm}
+\newtcolorbox{RemarkBox}[1][]{scriptbox,borderline west={1.2pt}{0pt}{black!40},title=\Lang{Hinweis}{Remark},#1}

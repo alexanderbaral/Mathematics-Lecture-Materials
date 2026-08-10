@@ -1,0 +1,27 @@
+\usepackage{iftex}
+\ifLuaTeX\else
+  \PackageError{preamble}{LuaLaTeX required}{Build this project with LuaLaTeX via latexmk.}
+\fi
+
+\usepackage[ngerman,english]{babel}
+\usepackage{fontspec}
+\usepackage{mathtools}
+\usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
+\setsansfont{Fira Sans}
+\renewcommand{\familydefault}{\sfdefault}
+\setmathfont{Libertinus Math}
+
+\usepackage[left=1.5cm,right=1.5cm,top=1.0cm,bottom=1.5cm,includeheadfoot]{geometry}
+\usepackage{microtype}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\definecolor{THMBlue}{RGB}{\THMBlueRGB}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+\usepackage{scrlayer-scrpage}
+\usepackage{lastpage}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
