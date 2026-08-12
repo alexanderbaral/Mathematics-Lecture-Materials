@@ -1,39 +1,35 @@
 \subsection{Negation}
 \label{subsec:fundamentals_negation}
 
-Negationen sind wesentlich, weil wir mit ihnen das Gegenteil einer Aussage
-präzise ausdrücken und dadurch logische Zusammenhänge systematisch untersuchen
-können.
-
-\begin{DefinitionBox}{Negation}{fundamentals_negation}
+\begin{DefinitionBox}{Negation $\neg$}{fundamentals_negation}
   Die \emph{Negation} \EnglishTerm{negation} einer Aussage $A$ wird mit
   $\neg A$ bezeichnet und kehrt den Wahrheitswert von $A$ um: Ist $A$ wahr, so
   ist $\neg A$ falsch; ist $A$ falsch, so ist $\neg A$ wahr.
 \end{DefinitionBox}
 
 \begin{ExampleBox}{Negation von Aussagen}{fundamentals_negation_example}
-  Negieren Sie jeweils die angegebene Aussage $A$.
+  Wir negieren jeweils die angegebene Aussage $A$.
   \begin{enumerate}[label=(\alph*),itemsep=0.8em]
     \item Für eine feste reelle Zahl $x$:
       \par\smallskip
-      \makebox[1.5cm][l]{$A:$}$x>5$\\[0.4em]
+      \makebox[1.5cm][l]{$\phantom{\neg}A:$}$x>5$\\[0.4em]
       \makebox[1.5cm][l]{$\neg A:$}\Cloze{5cm}{$x\leq 5$}
 
     \item
       \par\smallskip
-      \makebox[1.5cm][l]{$A:$}„Die Zahl $17$ ist eine Primzahl.“\\[0.4em]
+      \makebox[1.5cm][l]{$\phantom{\neg}A:$}„Die Zahl $17$ ist eine Primzahl.“\\[0.4em]
       \makebox[1.5cm][l]{$\neg A:$}\Cloze{9cm}{„Die Zahl $17$ ist keine Primzahl.“}
 
     \item
       \par\smallskip
-      \makebox[1.5cm][l]{$A:$}„Heute regnet es.“\\[0.4em]
+      \makebox[1.5cm][l]{$\phantom{\neg}A:$}„Heute regnet es.“\\[0.4em]
       \makebox[1.5cm][l]{$\neg A:$}\Cloze{9cm}{„Heute regnet es nicht.“}
   \end{enumerate}
 \end{ExampleBox}
 
+
 Wendet man eine Negation auf eine UND- oder ODER-Verknüpfung an, so muss man die
-de-morganschen Regeln berücksichtigen. Mit dem zuvor eingeführten
-Äquivalenzzeichen lassen sich diese präzise formulieren.
+de-morganschen Regeln berücksichtigen.
 
 \begin{TheoremBox}{De-morgansche Regeln}{fundamentals_de_morgan_rules}
   Beim Negieren einer Verknüpfung werden UND und ODER miteinander vertauscht

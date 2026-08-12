@@ -1,0 +1,117 @@
+\section{Darstellung von Zahlen}
+\label{sec:fundamentals_number_representation}
+
+Dieselbe Zahl kann auf unterschiedliche Weise geschrieben werden. Die
+gewöhnliche Dezimalschreibweise und die Gleitkommadarstellung bezeichnen daher
+keine verschiedenen Zahlenarten, sondern verschiedene \emph{Darstellungen}
+desselben Werts. Hier betrachten wir die dezimale wissenschaftliche
+Schreibweise zur Basis $10$; die binäre Speicherung in Computern ist nicht
+Gegenstand dieses Abschnitts.
+
+In der Dezimalschreibweise bestimmt die Position einer Ziffer ihren
+Stellenwert. Links vom Dezimalkomma stehen nichtnegative, rechts davon negative
+Zehnerpotenzen. Die Stellenwerte sind am Beispiel der Zahl $1153{,}537$
+dargestellt:
+
+\begin{center}
+  \input{content/resources/chapters/fundamentals/tikz/decimal_to_floating_point.tex}
+\end{center}
+
+Damit gilt
+\begin{align*}
+  1153{,}537
+  ={}&1\cdot10^3+1\cdot10^2+5\cdot10^1+3\cdot10^0\\
+     &+5\cdot10^{-1}+3\cdot10^{-2}+7\cdot10^{-3}.
+\end{align*}
+
+Für Zahlen in der Nähe von $1$ ist diese Schreibweise unmittelbar lesbar. Bei
+sehr großen oder sehr kleinen Größen entstehen dagegen lange Folgen von
+Nullen. Dadurch werden Stellen leicht übersehen und Größenordnungen sind nur
+schwer vergleichbar.
+
+\begin{DefinitionBox}{Dezimale Gleitkommadarstellung}{fundamentals_decimal_floating_point}
+  Eine von null verschiedene Zahl $x$ wird in \emph{normalisierter
+  Gleitkommadarstellung} als
+  \[
+    x=m\cdot10^e,
+    \qquad
+    1\leq |m|<10,
+    \qquad
+    e\in\Z
+  \]
+  geschrieben. $m$ heißt \emph{Mantisse}, $e$ heißt \emph{Exponent}.
+\end{DefinitionBox}
+
+Das Dezimalkomma wird so verschoben, dass vor ihm genau eine von null
+verschiedene Ziffer steht. Der Exponent hält fest, um wie viele Stellen und in
+welche Richtung das Komma verschoben wurde:
+\[
+  1153{,}537
+    =\underbrace{1{,}153537}_{\text{Mantisse}}
+     \cdot\underbrace{10^3}_{\text{Zehnerpotenz}},
+  \qquad
+  0{,}000532=5{,}32\cdot10^{-4}.
+\]
+
+\begin{RemarkBox}
+  Wird das Komma nach \emph{links} verschoben, ist der Exponent positiv; wird
+  es nach \emph{rechts} verschoben, ist er negativ. Angefügte beziehungsweise
+  entfernte Nullen ändern den Wert nicht.
+\end{RemarkBox}
+
+\begin{ExampleBox}{Zahlen normalisieren}{fundamentals_normalizing_numbers}
+  \begin{enumerate}[label=(\alph*),itemsep=0.7em]
+    \item $78000=\Cloze{4cm}{7{,}8\cdot10^4}$
+    \item $0{,}000025=\Cloze{4cm}{2{,}5\cdot10^{-5}}$
+    \item $-913{,}4=\Cloze{4cm}{-9{,}134\cdot10^2}$
+  \end{enumerate}
+\end{ExampleBox}
+
+Natur- und Ingenieurwissenschaften umfassen viele Größenordnungen. Die
+Gleitkommadarstellung trennt die aussagekräftigen Ziffern von der
+Größenordnung:
+
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{@{}l X@{}}
+  \toprule
+  \multicolumn{2}{@{}l}{\textbf{Leiterbahn eines Mikrochips}} \\
+  Dezimal: & $0{,}000\,000\,003\,\mathrm m$ \\
+  Gleitkomma: & $3\cdot10^{-9}\,\mathrm m$ \\[0.5em]
+
+  \multicolumn{2}{@{}l}{\textbf{Wellenlänge von grünem Licht}} \\
+  Dezimal: & $0{,}000\,000\,532\,\mathrm m$ \\
+  Gleitkomma: & $5{,}32\cdot10^{-7}\,\mathrm m$ \\[0.5em]
+
+  \multicolumn{2}{@{}l}{\textbf{Masse eines Elektrons}} \\
+  Dezimal:
+    & $0{,}000\,000\,000\,000\,000\,000\,000\,000\,000\,000\,910\,94
+      \,\mathrm{kg}$ \\
+  Gleitkomma: & $9{,}1094\cdot10^{-31}\,\mathrm{kg}$ \\[0.5em]
+
+  \multicolumn{2}{@{}l}{\textbf{Masse der Erde}} \\
+  Dezimal:
+    & $5\,972\,200\,000\,000\,000\,000\,000\,000\,\mathrm{kg}$ \\
+  Gleitkomma: & $5{,}9722\cdot10^{24}\,\mathrm{kg}$ \\
+  \bottomrule
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+Die Exponenten machen die Größenordnung sofort sichtbar. So ist etwa
+$10^{-7}$ hundertmal größer als $10^{-9}$, ohne dass Nullen abgezählt werden
+müssen. Auch Multiplikation und Division werden übersichtlicher, weil die
+Zehnerpotenzen getrennt verarbeitet werden:
+\[
+  (2\cdot10^3)(4\cdot10^{-5})
+  =8\cdot10^{-2}.
+\]
+
+\begin{KeyPointBox}{Technischer Nutzen}{fundamentals_floating_point_advantages}
+  Die Gleitkommadarstellung
+  \begin{itemize}
+    \item verkürzt sehr große und sehr kleine Zahlen,
+    \item zeigt ihre Größenordnung unmittelbar,
+    \item erleichtert Vergleiche und Überschlagsrechnungen und
+    \item macht die Zahl der angegebenen Ziffern und damit die dargestellte
+      Genauigkeit besser erkennbar.
+  \end{itemize}
+\end{KeyPointBox}

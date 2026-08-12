@@ -3,22 +3,18 @@
 
 Mit Implikationen und Äquivalenzen stellen wir logische Zusammenhänge zwischen
 Aussagen her und können präzise beschreiben, wie die Gültigkeit einer Aussage
-von einer anderen abhängt.
+von einer anderen abhängt. Dias ist besonders wichtig, um mathematische Zusammnenhänge zu verstehen.
 
 \begin{DefinitionBox}{Implikation}{fundamentals_implication}
   Die \emph{Implikation} \EnglishTerm{implication} zeigt an, welche Aussage aus einer anderen folgt:
-  \[
-    A\Rightarrow B
-  \]
-  bedeutet: „Wenn $A$ gilt, dann gilt auch $B$.“
+  \begin{align*}
+    A \Rightarrow B \quad :& \quad \text{„Wenn $A$ gilt, dann gilt auch $B$.“} \\
+    A  \Leftarrow B \quad :& \quad \text{„Wenn $B$ gilt, dann gilt auch $A$.“}
+  \end{align*}
 \end{DefinitionBox}
 
 
-\begin{RemarkBox}
-  Eine Implikation gilt nicht notwendigerweise in beide Richtungen: Aus
-  $A\Rightarrow B$ folgt im Allgemeinen nicht $B\Rightarrow A$.
-\end{RemarkBox}
-
+Viele Aussagen implizieren einander nicht in beide Richtungen, wie das folgende Beispiel zeigt.
 \begin{ExampleBox}{Implikation}{fundamentals_implication_example}
   Für eine ganze Zahl $x$ gilt die folgende Implikation:
   \[
@@ -29,43 +25,55 @@ von einer anderen abhängt.
   Dreht man den Implikationspfeil lediglich um, erhält man dagegen eine falsche
   Aussage:
     \begin{center}
-      \begin{ClozeArea}[0.6\linewidth]{1.5cm}
+      \begin{ClozeArea}[20]{3}
       \[
-           x \text{ ist gerade} \quad \nRightarrow \quad x=4.
+           x=4 \quad \nLeftarrow \quad x \text{ ist gerade}.
       \]
       \end{ClozeArea}
     \end{center}
-  Das Gegenbeispiel $x=2$ widerlegt die Aussage.
+    Die Implikation gilt also nur in eine Richtung, wie das Beispiel $x=2$ zeigt.
 \end{ExampleBox}
 
-\begin{DefinitionBox}{Äquivalenz}{fundamentals_equivalence}
+\begin{DefinitionBox}{Äquivalenz $\Leftrightarrow$}{fundamentals_equivalence}
   Die \emph{Äquivalenz} \EnglishTerm{equivalence}
   \[
-    A\Leftrightarrow B
+    A \Leftrightarrow B
+    \quad \text{entspricht} \quad
+    \left( A \Rightarrow B \right) \text{ und }  \left( A \Leftarrow B \right).
   \]
-  bedeutet, dass sowohl $A\Rightarrow B$ als auch $B\Rightarrow A$ gilt. Das bedeutet, dass die Aussagen $A$ und $B$ äquivalent, also logisch gleichwertig sind. Sie sind entweder beide wahr oder beide falsch.
+  Damit sind Aussagen $A$ und $B$ äquivalent, d.h. logisch gleichwertig.
+  Sie sind entweder beide wahr oder beide falsch.
 \end{DefinitionBox}
 
-\begin{samepage}
-Eine Wahrheitstabelle prüft alle möglichen Fälle; durch das Ausfüllen sehen wir,
-unter welchen Wahrheitswerten eine Implikation oder eine Äquivalenz gilt.
+\begin{ExampleBox}{Äquivalenz oder Implikation}{fundamentals_equivalence_example}
+  Wir setzten jeweils das passende Zeichen $\Rightarrow$, $\Leftarrow$ oder $\Leftrightarrow$ ein:
+  \begin{enumerate}[label=(\alph*),itemsep=0.9em]
+    \item \[
+      x-2=1
+      \quad\Cloze{1.8cm}{\Longleftrightarrow}\quad
+      x=3
+      \]
+      ..., da \Cloze{14cm}{beide Gleichungen genau dieselbe Lösung besitzen}.
 
-\begin{center}
-  \renewcommand{\arraystretch}{1.55}
-  \setlength{\tabcolsep}{12pt}
-  \begin{tabular}{cccc}
-    \toprule
-    $A$ & $B$ & $A\Rightarrow B$ & $A\Leftrightarrow B$\\
-    \midrule
-    T & T & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{T}\\
-    T & F & \Cloze{1.8cm}{F} & \Cloze{1.8cm}{F}\\
-    F & T & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{F}\\
-    F & F & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{T}\\
-    \bottomrule
-  \end{tabular}
-\end{center}
-\end{samepage}
+    \item \[
+      x^2=9
+      \quad\Cloze{1.8cm}{\Longleftarrow}\quad
+      x=3
+      \]
+      ..., da \Cloze{14cm}{$x=3$ die Gleichung $x^2=9$ erfüllt, $x=-3$ aber ebenso}.
 
-Bei einer Implikation ist $A$ eine hinreichende Bedingung für $B$ und $B$ eine
-notwendige Bedingung für $A$. Für eine Äquivalenz müssen diese Beziehungen in
-beiden Richtungen gelten.
+    \item \[
+      n\text{ ist durch }6\text{ teilbar}
+      \quad\Cloze{1.8cm}{\Longrightarrow}\quad
+      n\text{ ist durch }3\text{ teilbar}
+      \]
+      ... da \Cloze{14cm}{jedes Vielfache von $6$ zugleich ein Vielfaches von $3$ ist, aber nicht umgekehrt}.
+
+    \item \[
+      \text{Das Tier ist ein Hund}
+      \quad\Cloze{1.8cm}{\Longrightarrow}\quad
+      \text{Das Tier ist ein Säugetier}
+      \]
+      ..., da \Cloze{14cm}{jeder Hund ein Säugetier ist, aber nicht jedes Säugetier ein Hund}.
+  \end{enumerate}
+\end{ExampleBox}

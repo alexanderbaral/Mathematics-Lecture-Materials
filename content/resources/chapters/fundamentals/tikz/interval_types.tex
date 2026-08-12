@@ -1,0 +1,29 @@
+\begin{tikzpicture}[x=1.25cm,y=1cm,font=\small]
+  \foreach \y/\interval in {3/{[a,b]},2/{(a,b)},1/{[a,b)},0/{(a,b]}} {
+    \node[anchor=east,font=\bfseries] at (-2.6,\y) {$\interval$};
+    \draw[->,black!55] (-2.25,\y) -- (3.1,\y);
+    \draw[THMBlue,line width=2.2pt] (-1.25,\y) -- (2.0,\y);
+    \node[below=3pt] at (-1.25,\y) {$a$};
+    \node[below=3pt] at (2.0,\y) {$b$};
+  }
+
+  % Abgeschlossenes Intervall [a,b]
+  \fill[THMBlue] (-1.25,3) circle (2.3pt);
+  \fill[THMBlue] (2.0,3) circle (2.3pt);
+
+  % Offenes Intervall (a,b)
+  \fill[white] (-1.25,2) circle (2.8pt);
+  \draw[THMBlue,line width=1pt] (-1.25,2) circle (2.8pt);
+  \fill[white] (2.0,2) circle (2.8pt);
+  \draw[THMBlue,line width=1pt] (2.0,2) circle (2.8pt);
+
+  % Halboffenes Intervall [a,b)
+  \fill[THMBlue] (-1.25,1) circle (2.3pt);
+  \fill[white] (2.0,1) circle (2.8pt);
+  \draw[THMBlue,line width=1pt] (2.0,1) circle (2.8pt);
+
+  % Halboffenes Intervall (a,b]
+  \fill[white] (-1.25,0) circle (2.8pt);
+  \draw[THMBlue,line width=1pt] (-1.25,0) circle (2.8pt);
+  \fill[THMBlue] (2.0,0) circle (2.3pt);
+\end{tikzpicture}

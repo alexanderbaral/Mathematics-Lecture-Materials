@@ -1,0 +1,28 @@
+\begin{tikzpicture}[x=2.1cm,y=1cm,font=\small]
+  \foreach \x/\digit/\power/\name in {
+    0/1/{10^3}/{\Lang{Tausender}{thousands}},
+    1/1/{10^2}/{\Lang{Hunderter}{hundreds}},
+    2/5/{10^1}/{\Lang{Zehner}{tens}},
+    3/3/{10^0}/{\Lang{Einer}{ones}},
+    4/5/{10^{-1}}/{\Lang{Zehntel}{tenths}},
+    5/3/{10^{-2}}/{\Lang{Hundertstel}{hundredths}},
+    6/7/{10^{-3}}/{\Lang{Tausendstel}{thousandths}}} {
+    \node[font=\footnotesize,align=center,text width=1.9cm] at (\x,1.65)
+      {\name};
+    \node[draw=black!35,fill=black!2,minimum width=1.8cm,
+      minimum height=0.9cm,font=\Large\bfseries] at (\x,0.85) {$\digit$};
+    \node[text=black!60] at (\x,0.1) {$\power$};
+  }
+
+  \node[font=\footnotesize,text=THMBlue] at (3.5,2.15)
+    {\Lang{Komma}{decimal point}};
+  \draw[->,THMBlue,line width=0.6pt] (3.5,1.95) -- (3.5,1.18);
+  \node[font=\Large\bfseries,text=THMBlue] at (3.5,0.85) {$,$};
+
+  \draw[THMBlue,line width=0.8pt] (-0.44,-0.35) -- (3.44,-0.35);
+  \draw[THMBlue,line width=0.8pt] (3.56,-0.35) -- (6.44,-0.35);
+  \node[font=\scriptsize,text=THMBlue] at (1.5,-0.65)
+    {\Lang{Vorkommastellen}{integer part}};
+  \node[font=\scriptsize,text=THMBlue] at (5,-0.65)
+    {\Lang{Nachkommastellen}{fractional part}};
+\end{tikzpicture}

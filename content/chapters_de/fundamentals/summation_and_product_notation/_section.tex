@@ -1,0 +1,46 @@
+\section{Summen- und Produktnotation}
+\label{sec:fundamentals_summation_and_product_notation}
+
+Bevor wir uns mit der Summen- und Produktnotation beschäftigen, wollen wir
+zunächst den Begriff der \emph{Folge} einführen. Er ist für das Verständnis
+der Summen- und Produktnotation von zentraler Bedeutung.
+
+\begin{DefinitionBox}{Folge}{fundamentals_sequence}
+  Eine \emph{Folge} \EnglishTerm{sequence} ist eine unendliche geordnete
+  Anordnung von Zahlen oder Termen.
+  \[
+    (a_k)_{k\in\N}=(a_1,a_2,a_3,\ldots)
+  \]
+  Dabei bezeichnet $k$ den \emph{Index} und $a_k$ das dazugehörige
+  Folgenglied. Die Punkte zeigen an, dass die Folge unbegrenzt fortgesetzt wird.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Folgen}{fundamentals_sequence_examples}
+  \begin{enumerate}[label=(\alph*),leftmargin=2em,itemsep=0.7em]
+    \item $a_k=k$ für $k\in\N$:
+      \begin{ClozeArea}[30]{2}
+        \[
+          (a_k)_{k\in\N}=(1,2,3,4,\ldots)
+        \]
+      \end{ClozeArea}
+    \item $b_k=2^{k-1}$ für $k\in\N$:
+      \begin{ClozeArea}[30]{2}
+        \[
+          (b_k)_{k\in\N}=(1,2,4,8,16,\ldots)
+        \]
+      \end{ClozeArea}
+    \item $c_k=(-1)^k$ für $k\in\N$:
+      \begin{ClozeArea}[30]{2}
+        \[
+          (c_k)_{k\in\N}=(-1,1,-1,1,-1,\ldots)
+        \]
+      \end{ClozeArea}
+  \end{enumerate}
+\end{ExampleBox}
+
+Auf dieser Folgenschreibweise bauen Summen- und Produktzeichen auf: Sie fassen
+die Glieder einer Folge kompakt zu einer Summe beziehungsweise einem Produkt
+zusammen.
+
+\input{content/chapters_de/fundamentals/summation_and_product_notation/summation_notation.tex}
+\input{content/chapters_de/fundamentals/summation_and_product_notation/product_notation.tex}

@@ -137,11 +137,20 @@ Semantics:
 
 Provide a simple short-gap interface such as `\Cloze{<width>}{<content>}`: complete mode shows content; cloze mode shows a writing line.
 
-Also provide a robust long-calculation interface: complete mode shows the solution; cloze mode shows an approximately 5 mm grid. Prefer default width `\linewidth`, allow optional explicit width, make height easy to specify, and support multi-line/`align`-style mathematics robustly. The internal implementation may be a command or environment, whichever is safer. Do not use local ad-hoc solution switches in chapter files.
+Also provide a robust long-calculation interface: complete mode shows the
+solution; cloze mode shows an exact 5 mm grid. Specify every `ClozeArea` by an
+integer number of grid columns and rows,
+`\begin{ClozeArea}[<columns>]{<rows>}`; never pass lengths such as `\linewidth`
+or `3cm`. The default is 34 columns. Choose the row count from the handwritten
+space actually needed, so width and height always contain complete squares.
+Support multi-line/`align`-style mathematics robustly. Do not use local ad-hoc
+solution switches in chapter files.
 
 Use the gray `\Cloze` box for every short, single-line inline answer. Use the
 5 mm grid (`ClozeArea`) whenever a larger response area or multiple handwritten
 lines are needed, especially for longer calculations and derivations.
+When adapting an existing grid, preserve its approximate physical area while
+rounding both dimensions to whole 5 mm squares.
 The width argument of `\Cloze` controls only the gray field in cloze mode. In
 the complete version, render the solution at its natural width without
 reserving the width of the cloze field.
@@ -187,6 +196,26 @@ Values come from central configuration/language logic. Institution/faculty belon
 ## 9. Mathematics conventions
 Use modern mathematical LaTeX, a clean package set, and no duplicate package loads. Use suitable tools such as `amsmath`/`mathtools`, TikZ, `tcolorbox`, `microtype`, `booktabs`, `tabularx`, `hyperref` only as needed. Avoid obsolete `\rm`, `\bf`, `\it` definitions.
 
+For displayed transformation chains, align successive equivalence signs
+vertically. Each line represents one complete equation; place the operation
+that produces the following line in a separate right-hand column after a tall
+vertical bar. For a continuing calculation of one expression, align at the
+equals signs instead. Do not force simultaneous alignment at equivalence and
+equals signs when this creates excessive horizontal gaps.
+
+Use a separate left-aligned equation column in transformation chains so that
+the first mathematical expression of every line starts at the same horizontal
+position. Keep an introductory sentence that directly announces or explains a
+longer transformation on the same PDF page as the transformation itself.
+
+Choose one uniform row spacing for each complete transformation chain. Base it
+on the tallest or most crowded line in that chain, increasing the spacing when
+fractions, roots, stacked indices, or similar constructions need more room.
+Never vary the row spacing within one transformation chain. For chains with
+tall mathematical expressions, add the same explicit vertical space after
+every row; changing only an array strut or `\arraystretch` may not create
+visible clearance where fractions and roots already determine the row height.
+
 Provide robust central shortcuts where useful, e.g. `\R`, `\N`, `\Q`, `\Z`, `\C`. `siunitx` may be available but is not a core requirement.
 
 Provide calm semantic styling at least for Definition, Merke/Key Point, Beispiel/Example; Satz/Theorem and Hinweis/Remark are also reasonable. Proofs remain visually restrained initially.
@@ -224,7 +253,12 @@ After visual/layout/TikZ/cloze/title-page changes, visually inspect affected PDF
 
 Codex may inspect `git status`, `git diff`, and `git log`. Do not commit, push, or publish changes unless explicitly asked. Before handing back substantial work, summarize meaningful changes and `git status`.
 
-Keep generated LaTeX artifacts, logs, auxiliary files, and generated PDFs under `build/` out of source control unless explicitly requested. Source, configuration, documentation, and required branding assets belong in the repository.
+Keep generated LaTeX artifacts, logs, and auxiliary files under `build/` out of
+source control. As an explicit project exception, version exactly the four
+deliverables `build-de.pdf`, `build-de-cloze.pdf`, `build-en.pdf`, and
+`build-en-cloze.pdf` from that folder; ignore every other generated PDF.
+Source, configuration, documentation, and required branding assets belong in
+the repository.
 
 ## 12. Legacy, README, and scope discipline
 Except for the temporary inbox under `legacy/notes/handwritten/`, files under `legacy/` are historical references only. Do not include them in normal builds or copy their package setup wholesale. They may inform fonts, colors, and prior author conventions.

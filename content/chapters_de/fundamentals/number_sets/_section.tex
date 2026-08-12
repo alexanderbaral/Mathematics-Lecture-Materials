@@ -1,0 +1,148 @@
+\subsection{Zahlenmengen}
+\label{subsec:fundamentals_number_sets}
+
+Ausgehend von den natürlichen Zahlen werden die Zahlenmengen schrittweise
+erweitert. Der Grund ist stets derselbe: Eine Rechenoperation soll ausführbar
+sein, ihr Ergebnis liegt aber nicht mehr in der bisherigen Zahlenmenge.
+
+\begin{DefinitionBox}{Abgeschlossenheit}{fundamentals_closure}
+  Eine Zahlenmenge $M$ heißt bezüglich einer Rechenoperation $\circ$
+  \emph{abgeschlossen} \EnglishTerm{closed}, wenn für alle $a,b\in M$ auch
+  \[
+    a\circ b\in M
+  \]
+  gilt, sofern die Rechenoperation definiert ist.
+\end{DefinitionBox}
+
+\subsubsection{Natürliche Zahlen}
+\label{subsubsec:fundamentals_natural_numbers}
+
+Die \emph{natürlichen Zahlen} dienen dem Zählen:
+\[
+  \N=\{1,2,3,4,\ldots\},
+  \qquad
+  \N_0=\N\cup\{0\}=\{0,1,2,3,\ldots\}.
+\]
+Die Addition und Multiplikation natürlicher Zahlen führen wieder zu einer
+natürlichen Zahl. Die natürlichen Zahlen sind bezüglich $+$ und $\cdot$
+abgeschlossen:
+\[
+  3+5=8\in\N,
+  \qquad
+  3\cdot5=15\in\N.
+\]
+
+Bezüglich der Subtraktion sind die natürlichen Zahlen dagegen nicht
+abgeschlossen:
+\[
+  3-5=-2\notin\N.
+\]
+
+\subsubsection{Ganze Zahlen}
+\label{subsubsec:fundamentals_integer_numbers}
+
+Damit auch solche Differenzen erfasst werden, ergänzt man die negativen Zahlen
+und erhält die \emph{ganzen Zahlen}:
+\[
+  \Z=\{\ldots,-3,-2,-1,0,1,2,3,\ldots\}.
+\]
+In $\Z$ sind Addition, Subtraktion und Multiplikation abgeschlossen.
+
+\begin{center}
+  \begingroup
+    \def\NumberSetStage{2}
+    \input{content/resources/chapters/fundamentals/tikz/number_set_inclusions.tex}
+  \endgroup
+\end{center}
+
+Bezüglich der Division sind die ganzen Zahlen nicht abgeschlossen:
+\[
+  3:5=\frac35=0{,}6\notin\Z.
+\]
+
+\subsubsection{Rationale Zahlen}
+\label{subsubsec:fundamentals_rational_numbers}
+
+Damit auch Quotienten ganzer Zahlen erfasst werden, erweitert man $\Z$ zu den
+\emph{rationalen Zahlen}:
+\[
+  \Q=\left\{\frac pq\,\middle|\,p\in\Z,\ q\in\N\right\}.
+\]
+Jede rationale Zahl lässt sich als Bruch ganzer Zahlen darstellen. Endliche
+und periodische Dezimalzahlen sind daher rational, zum Beispiel
+\[
+  -\frac12=-0{,}5\in\Q,
+  \qquad
+  \frac19=0{,}\overline{1}\in\Q.
+\]
+Die rationalen Zahlen sind bezüglich $+$, $-$, $\cdot$ und der Division durch
+eine von null verschiedene Zahl abgeschlossen.
+
+\begin{center}
+  \begingroup
+    \def\NumberSetStage{3}
+    \input{content/resources/chapters/fundamentals/tikz/number_set_inclusions.tex}
+  \endgroup
+\end{center}
+
+Bezüglich des Wurzelziehens sind die rationalen Zahlen nicht abgeschlossen. So
+gibt es keine rationale Zahl, deren Quadrat gleich $2$ ist:
+\[
+  x^2=2
+  \quad\Longrightarrow\quad
+  x=\sqrt2\notin\Q.
+\]
+
+\subsubsection{Reelle Zahlen}
+\label{subsubsec:fundamentals_real_numbers}
+
+Zahlen, die sich nicht als Quotient ganzer Zahlen darstellen lassen, heißen
+\emph{irrationale Zahlen}. Beispiele sind
+\[
+  \sqrt2=1{,}4142\ldots,
+  \qquad
+  \pi=3{,}14159\ldots,
+  \qquad
+  \mathrm e=2{,}71828\ldots.
+\]
+Rationale und irrationale Zahlen bilden zusammen die \emph{reellen Zahlen}.
+
+\begin{center}
+  \begingroup
+    \def\NumberSetStage{4}
+    \input{content/resources/chapters/fundamentals/tikz/number_set_inclusions.tex}
+  \endgroup
+\end{center}
+
+Bezüglich des Wurzelziehens sind auch die reellen Zahlen nicht abgeschlossen:
+Die Gleichung
+\[
+  x^2=-1
+\]
+besitzt in $\R$ keine Lösung, denn das Quadrat jeder reellen Zahl ist
+nichtnegativ.
+
+\subsubsection{Komplexe Zahlen}
+\label{subsubsec:fundamentals_complex_numbers}
+
+Man führt die \emph{imaginäre Einheit} $\mathrm i$ mit
+\[
+  \mathrm i^2=-1
+\]
+ein. Die dadurch entstehenden \emph{komplexen Zahlen} haben die Form
+\[
+  \C=\{a+b\mathrm i\mid a,b\in\R\}.
+\]
+Jede reelle Zahl ist wegen $a=a+0\mathrm i$ zugleich eine komplexe Zahl. In
+$\C$ sind Addition, Subtraktion, Multiplikation und die Division durch eine von
+null verschiedene Zahl abgeschlossen; außerdem ist nun $x^2=-1$ lösbar:
+\[
+  x=\pm\mathrm i\in\C.
+\]
+
+\begin{center}
+  \begingroup
+    \def\NumberSetStage{5}
+    \input{content/resources/chapters/fundamentals/tikz/number_set_inclusions.tex}
+  \endgroup
+\end{center}

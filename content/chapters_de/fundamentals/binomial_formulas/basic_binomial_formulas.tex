@@ -17,24 +17,38 @@ Zunächst wird das Quadrat als Produkt geschrieben und ausmultipliziert:
     &=a^2+2ab+b^2.
 \end{align*}
 
+\begin{center}
+  \begin{minipage}[c]{0.48\linewidth}
+    \raggedright
+    Die erste binomische Formel lässt sich auch geometrisch motivieren. Ein Quadrat
+    mit der Seitenlänge $a+b$ zerfällt in ein Quadrat der Fläche $a^2$,
+    zwei Rechtecke der Fläche $ab$ und ein Quadrat der Fläche $b^2$. Somit gilt
+    auch für die Flächen:\par\medskip
+    \begingroup
+      \setlength{\fboxsep}{4pt}
+      \[
+        (a+b)^2
+        =\colorbox{yellow!70}{$\displaystyle a^2$}
+        +\colorbox{green!55!black}{\textcolor{white}{$\displaystyle 2ab$}}
+        +\colorbox{black!18}{$\displaystyle b^2$}
+      \]
+    \endgroup
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.46\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/first_binomial_formula_area.tex}
+  \end{minipage}
+\end{center}
+
+
 \begin{TheoremBox}{Erste binomische Formel}{fundamentals_first_binomial_formula}
-  \begin{ClozeArea}[\linewidth]{1.5cm}
+  \begin{ClozeArea}[34]{3}
     \[
       (a+b)^2=a^2+2ab+b^2.
     \]
   \end{ClozeArea}
 \end{TheoremBox}
 
-Die erste binomische Formel lässt sich auch geometrisch motivieren. Ein
-Quadrat mit der Seitenlänge $a+b$ zerfällt in ein Quadrat der Fläche $a^2$,
-zwei Rechtecke der Fläche $ab$ und ein Quadrat der Fläche $b^2$. Somit gilt
-auch für die Flächen
-\[
-  (a+b)^2=a^2+ab+ab+b^2=a^2+2ab+b^2.
-\]
-\begin{center}
-  \input{content/resources/chapters/fundamentals/tikz/first_binomial_formula_area.tex}
-\end{center}
 
 \subsubsection{Zweite binomische Formel}
 \label{subsubsec:fundamentals_second_binomial_formula}
@@ -48,7 +62,7 @@ Auch hier wird zunächst ausmultipliziert und anschließend zusammengefasst:
 \end{align*}
 
 \begin{TheoremBox}{Zweite binomische Formel}{fundamentals_second_binomial_formula}
-  \begin{ClozeArea}[\linewidth]{1.5cm}
+  \begin{ClozeArea}[34]{3}
     \[
       (a-b)^2=a^2-2ab+b^2.
     \]
@@ -67,7 +81,7 @@ gegenseitig auf:
 \end{align*}
 
 \begin{TheoremBox}{Dritte binomische Formel}{fundamentals_third_binomial_formula}
-  \begin{ClozeArea}[\linewidth]{1.5cm}
+  \begin{ClozeArea}[34]{3}
     \[
       a^2-b^2=(a-b)(a+b).
     \]
@@ -108,7 +122,7 @@ gegenseitig auf:
 \begin{ExampleBox}{Quadratische Ergänzung}{fundamentals_completing_the_square_example}
   Der Term $x^2-2x+5$ enthält zunächst kein vollständiges Binom. Durch
   Ergänzen von $1$ erhält man
-  \begin{ClozeArea}[\linewidth]{2.5cm}
+  \begin{ClozeArea}[34]{5}
     \begin{align*}
       x^2-2x+5
         &=x^2-2x+1-1+5 \\

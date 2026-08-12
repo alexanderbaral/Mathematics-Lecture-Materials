@@ -1,0 +1,70 @@
+\subsection{Intervalle}
+\label{subsec:fundamentals_intervals}
+
+\begin{DefinitionBox}{Intervall}{fundamentals_interval}
+  Ein \emph{Intervall} \EnglishTerm{interval} ist eine Teilmenge $I\subseteq\R$
+  mit folgender Eigenschaft: Liegen zwei Zahlen $x,z\in I$, dann liegen auch
+  alle Zahlen dazwischen in $I$:
+  \[
+    x,z\in I,\quad x\leq y\leq z
+    \quad\Longrightarrow\quad
+    y\in I.
+  \]
+\end{DefinitionBox}
+
+Ein beschränktes Intervall wird durch zwei Randpunkte $a,b\in\R$ mit $a<b$
+festgelegt. Runde Klammern schließen einen Randpunkt aus, eckige Klammern
+schließen ihn ein. Je nachdem, welche Randpunkte enthalten sind, unterscheidet
+man abgeschlossene, offene und halboffene Intervalle.
+
+\begin{center}
+  \input{content/resources/chapters/fundamentals/tikz/interval_types.tex}
+\end{center}
+
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{@{}l X l@{}}
+  \toprule
+  \textbf{Intervalltyp} & \textbf{Mengenschreibweise} & \textbf{Randpunkte} \\
+  \midrule
+  abgeschlossen
+    & $[a,b]=\{x\in\R\mid a\leq x\leq b\}$
+    & $a,b$ enthalten \\
+  offen
+    & $(a,b)=\{x\in\R\mid a<x<b\}$
+    & $a,b$ nicht enthalten \\
+  links abgeschlossen
+    & $[a,b)=\{x\in\R\mid a\leq x<b\}$
+    & nur $a$ enthalten \\
+  rechts abgeschlossen
+    & $(a,b]=\{x\in\R\mid a<x\leq b\}$
+    & nur $b$ enthalten \\
+  \bottomrule
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\begin{RemarkBox}
+  Für offene und halboffene Intervalle ist im deutschsprachigen Raum auch
+  folgende Schreibweise üblich:
+  \[
+    (a,b)=]a,b[,
+    \qquad
+    [a,b)=[a,b[,
+    \qquad
+    (a,b]=]a,b].
+  \]
+\end{RemarkBox}
+
+Ist ein Intervall nur auf einer Seite begrenzt, verwendet man $-\infty$ oder
+$\infty$:
+\begin{align*}
+  (-\infty,b]&=\{x\in\R\mid x\leq b\},
+  &(-\infty,b)&=\{x\in\R\mid x<b\},\\
+  [a,\infty)&=\{x\in\R\mid a\leq x\},
+  &(a,\infty)&=\{x\in\R\mid a<x\}.
+\end{align*}
+
+\begin{KeyPointBox}{Unendliche Randpunkte}{fundamentals_infinite_interval_endpoints}
+  Die Symbole $-\infty$ und $\infty$ sind keine reellen Zahlen und gehören
+  daher nie zum Intervall. An einer unendlichen Seite steht immer eine runde
+  Klammer.
+\end{KeyPointBox}

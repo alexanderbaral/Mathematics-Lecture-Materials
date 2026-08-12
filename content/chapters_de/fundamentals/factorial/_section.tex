@@ -1,0 +1,58 @@
+\section{Fakultät}
+\label{sec:fundamentals_factorial}
+
+\begin{DefinitionBox}{Fakultät}{fundamentals_factorial}
+  Für $n\in\N$ ist die \emph{Fakultät} \EnglishTerm{factorial} von $n$
+  definiert durch
+  \[
+    n!=\prod_{k=1}^{n}k=1\cdot2\cdot3\cdots n.
+  \]
+  Zusätzlich wird festgelegt:
+  \[
+    0!=1.
+  \]
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Erste Fakultäten}{fundamentals_first_factorials}
+  \begin{enumerate}[label=(\alph*),leftmargin=2em,itemsep=0.8em]
+    \item Fakultäten von $0$ bis $5$:
+      \begin{ClozeArea}[28]{11}
+        \[
+          \begin{array}{r@{\;}c@{\;}l}
+            0!&=&1,\\[0.5em]
+            1!&=&1,\\[0.5em]
+            2!&=&1\cdot2=2,\\[0.5em]
+            3!&=&1\cdot2\cdot3=6,\\[0.5em]
+            4!&=&1\cdot2\cdot3\cdot4=24,\\[0.5em]
+            5!&=&1\cdot2\cdot3\cdot4\cdot5=120.
+          \end{array}
+        \]
+      \end{ClozeArea}
+
+    \item Quotient zweier konkreter Fakultäten:
+      \begin{ClozeArea}[28]{5}
+        \[
+          \frac{7!}{6!}
+            =\frac{1\cdot2\cdots6\cdot7}{1\cdot2\cdots6}
+            =7.
+        \]
+      \end{ClozeArea}
+
+    \item Allgemeiner Quotient aufeinanderfolgender Fakultäten:
+      \begin{ClozeArea}[28]{6}
+        \[
+          \frac{(n+1)!}{n!}
+            =\frac{1\cdot2\cdots n\cdot(n+1)}{1\cdot2\cdots n}
+            =n+1.
+        \]
+      \end{ClozeArea}
+  \end{enumerate}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Rekursive Berechnung}{fundamentals_factorial_recursion}
+  Für $n\in\N_0$ gilt
+  \[
+    (n+1)!=\Cloze{8cm}{(n+1)\,n!}.
+  \]
+  Damit lässt sich jede Fakultät aus der vorhergehenden berechnen.
+\end{KeyPointBox}

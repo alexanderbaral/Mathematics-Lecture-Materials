@@ -1,0 +1,62 @@
+\section{Lösen von Ungleichungen}
+\label{sec:fundamentals_solving_inequalities}
+
+Ungleichungen werden grundsätzlich analog zu Gleichungen umgeformt: Auf beiden
+Seiten wird dieselbe zulässige Rechenoperation durchgeführt. Eine Besonderheit
+tritt bei der Multiplikation oder Division mit einer negativen Zahl auf.
+
+\begin{DefinitionBox}{Ungleichung}{fundamentals_inequality}
+  Eine \emph{Ungleichung} \EnglishTerm{inequality} vergleicht zwei Terme mit
+  einem der Vergleichszeichen
+  \[
+    <,\qquad \leq,\qquad >,\qquad \geq.
+  \]
+  Beispielsweise sind $5x+2=3$ eine Gleichung und $5x+2>3$ eine Ungleichung.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Lineare Ungleichung}{fundamentals_linear_inequality_example}
+  Gesucht sind alle $x\in\R$ mit $5x+2>3$.
+  \begin{ClozeArea}[25]{7}
+    \begin{align*}
+      &\phantom{\Longleftrightarrow}\quad 5x+2>3
+        &&\quad\Big|\;-2 \\
+      &\Longleftrightarrow\quad 5x>1
+        &&\quad\Big|\;:5 \\
+      &\Longleftrightarrow\quad x>\frac15.
+    \end{align*}
+  \end{ClozeArea}
+  Damit ist die Lösungsmenge
+  \[
+    \mathcal{L}=\Cloze{7cm}{\left(\frac15,\infty\right)}.
+  \]
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Umkehrung des Vergleichszeichens}{fundamentals_reversing_inequality_sign}
+  Wird eine Ungleichung auf beiden Seiten mit einer negativen Zahl
+  multipliziert oder durch eine negative Zahl dividiert, kehrt sich das
+  Vergleichszeichen um:
+  \begin{ClozeArea}[28]{6}
+    \[
+      a<b \quad\Longleftrightarrow\quad -a>-b,
+      \qquad
+      a\leq b \quad\Longleftrightarrow\quad -a\geq-b.
+    \]
+  \end{ClozeArea}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Division durch eine negative Zahl}{fundamentals_negative_division_inequality_example}
+  Gesucht sind alle $x\in\R$ mit $-2x+3<7$.
+  \begin{ClozeArea}[27]{7}
+    \begin{align*}
+      &\phantom{\Longleftrightarrow}\quad -2x+3<7
+        &&\quad\Big|\;-3 \\
+      &\Longleftrightarrow\quad -2x<4
+        &&\quad\Big|\;:(-2) \\
+      &\Longleftrightarrow\quad x>-2.
+    \end{align*}
+  \end{ClozeArea}
+  Bei der Division durch $-2$ wird aus $<$ das Zeichen $>$. Somit gilt
+  \[
+    \mathcal{L}=\Cloze{7cm}{(-2,\infty)}.
+  \]
+\end{ExampleBox}

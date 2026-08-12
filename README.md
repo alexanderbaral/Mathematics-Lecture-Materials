@@ -10,7 +10,7 @@ The project uses LuaLaTeX via `latexmk` (TeX Live 2026). `main.tex` is the sole 
 .\tools\build-all.ps1
 ```
 
-This creates all four variants under `build/`: German complete, German cloze, English complete, and English cloze. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
+This creates all four variants under `build/`: German complete, German cloze, English complete, and English cloze. These four PDFs are versioned as ready-to-download deliverables; all other generated build files remain ignored. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
 
 ## Structure and configuration
 
@@ -28,17 +28,3 @@ This creates all four variants under `build/`: German complete, German cloze, En
 Before any content path is created or renamed under `content/chapters_de/` or `content/chapters_en/`, its English `snake_case` technical name must be proposed and explicitly approved. German content is authoritative. Handwritten notes are removed only after approved transfer and successful verification.
 
 Author-facing metadata is edited in `common/config.tex`. Global branding files live in `content/resources/shared/` (PDF preferred, PNG supported); set `\BrandLogoPath` and `\BrandDotPath` there. Each chapter may keep its own visual material in `content/resources/chapters/<chapter>/images/` and `content/resources/chapters/<chapter>/tikz/`, mirroring the approved chapter name under `content/chapters_de/` and `content/chapters_en/`. Missing branding files automatically produce restrained placeholders.
-
-## Cloze authoring
-
-Use `\Cloze{<width>}{<content>}` for a short writing gap. For longer calculations use:
-
-```latex
-\begin{ClozeArea}[\linewidth]{5cm}
-  \begin{align*}
-    % complete solution
-  \end{align*}
-\end{ClozeArea}
-```
-
-Complete builds show the content; cloze builds replace it with a 5 mm grid.

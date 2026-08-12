@@ -3,29 +3,23 @@
   \def\bside{1.7}
   \pgfmathsetmacro{\totalside}{\aside+\bside}
 
-  \fill[THMBlue!22] (0,\bside) rectangle (\aside,\totalside);
-  \fill[THMBlue!10] (\aside,\bside) rectangle (\totalside,\totalside);
-  \fill[THMBlue!10] (0,0) rectangle (\aside,\bside);
-  \fill[black!10] (\aside,0) rectangle (\totalside,\bside);
+  \fill[yellow!70] (0,\bside) rectangle (\aside,\totalside);
+  \fill[green!55!black] (\aside,\bside) rectangle (\totalside,\totalside);
+  \fill[green!55!black] (0,0) rectangle (\aside,\bside);
+  \fill[black!18] (\aside,0) rectangle (\totalside,\bside);
 
   \draw[thick] (0,0) rectangle (\totalside,\totalside);
   \draw[thick] (\aside,0) -- (\aside,\totalside);
   \draw[thick] (0,\bside) -- (\totalside,\bside);
 
   \node at ({0.5*\aside},{\bside+0.5*\aside}) {$a^2$};
-  \node at ({\aside+0.5*\bside},{\bside+0.5*\aside}) {$ab$};
-  \node at ({0.5*\aside},{0.5*\bside}) {$ab$};
+  \node[text=white] at ({\aside+0.5*\bside},{\bside+0.5*\aside}) {$ab$};
+  \node[text=white] at ({0.5*\aside},{0.5*\bside}) {$ab$};
   \node at ({\aside+0.5*\bside},{0.5*\bside}) {$b^2$};
 
-  \draw (0,\totalside) -- (0,\totalside+0.25);
-  \draw (\aside,\totalside) -- (\aside,\totalside+0.25);
-  \draw (\totalside,\totalside) -- (\totalside,\totalside+0.25);
-  \node[above] at ({0.5*\aside},\totalside+0.1) {$a$};
-  \node[above] at ({\aside+0.5*\bside},\totalside+0.1) {$b$};
+  \node[above=2pt] at ({0.5*\aside},\totalside) {$a$};
+  \node[above=2pt] at ({\aside+0.5*\bside},\totalside) {$b$};
 
-  \draw (0,0) -- (-0.25,0);
-  \draw (0,\bside) -- (-0.25,\bside);
-  \draw (0,\totalside) -- (-0.25,\totalside);
-  \node[left] at (-0.1,{\bside+0.5*\aside}) {$a$};
-  \node[left] at (-0.1,{0.5*\bside}) {$b$};
+  \node[left=2pt] at (0,{\bside+0.5*\aside}) {$a$};
+  \node[left=2pt] at (0,{0.5*\bside}) {$b$};
 \end{tikzpicture}

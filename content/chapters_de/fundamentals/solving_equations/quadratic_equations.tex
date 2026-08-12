@@ -1,0 +1,80 @@
+\IfClozeTF{\clearpage}{\medskip}
+\subsection{Quadratische Gleichungen}
+\label{subsec:fundamentals_quadratic_equations}
+
+Eine quadratische Gleichung in einer Variablen hat die Form
+\[
+  ax^2+bx+c=0, \qquad a\neq 0.
+\]
+\noindent\begin{minipage}{\linewidth}
+  Die quadratische Ergänzung führt auf eine binomische Formel:
+  \begin{ClozeArea}[34]{24}
+    \[
+      \begin{array}{r@{\quad}l@{\qquad}l}
+        & ax^2+bx+c=0
+          & \Big|\;-c \\[1.1em]
+        \Longleftrightarrow & ax^2+bx=-c
+          & \Big|\;:a \quad (a\neq0) \\[1.1em]
+        \Longleftrightarrow & x^2+\dfrac{b}{a}x=-\dfrac{c}{a}
+          & {\color{THMBlue}\Big|\;+\dfrac{b^2}{4a^2}}
+            \qquad\text{\color{THMBlue}\enquote{quadratische Ergänzung}} \\[1.1em]
+        \Longleftrightarrow
+          & x^2+\dfrac{b}{a}x{\color{THMBlue}+\dfrac{b^2}{4a^2}}
+            =-\dfrac{c}{a}{\color{THMBlue}+\dfrac{b^2}{4a^2}}
+          & \\[1.1em]
+        \Longleftrightarrow
+          & \left(x+\dfrac{b}{2a}\right)^2
+            =\dfrac{b^2-4ac}{4a^2}
+          & \Big|\;\pm\sqrt{\vphantom{b^2}} \\[1.1em]
+        \Longleftrightarrow
+          & x+\dfrac{b}{2a}
+            =\pm\dfrac{\sqrt{b^2-4ac}}{2a}
+          & \Big|\;-\dfrac{b}{2a} \\[1.1em]
+        \Longleftrightarrow
+          & x=-\dfrac{b}{2a}\pm\dfrac{\sqrt{b^2-4ac}}{2a}.
+          &
+      \end{array}
+    \]
+  \end{ClozeArea}
+\end{minipage}
+
+\begin{TheoremBox}{abc-Formel}{fundamentals_quadratic_formula}
+  Für $a\neq0$ lauten die Lösungen der quadratischen Gleichung
+  $ax^2+bx+c=0$, sofern sie in $\R$ existieren,
+    \[
+      x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
+    \]
+\end{TheoremBox}
+
+\begin{RemarkBox}[title=Bemerkung: Diskriminante]
+  Die \emph{Diskriminante} $D=b^2-4ac$ bestimmt die Anzahl der reellen
+  Lösungen:
+  \[
+    \begin{array}{ccl}
+      D<0 &\Longrightarrow& \text{keine reelle Lösung},\\
+      D=0 &\Longrightarrow& \text{eine reelle Lösung},\\
+      D>0 &\Longrightarrow& \text{zwei reelle Lösungen}.
+    \end{array}
+  \]
+  Für $D<0$ existieren Lösungen in $\C$, aber nicht in $\R$.
+\end{RemarkBox}
+
+\begin{ExampleBox}{Quadratische Gleichung}{fundamentals_quadratic_equation_example}
+  Gesucht sind die Lösungen der quadratischen Gleichung
+  \[
+    2x^2-6x+4=0.
+  \]
+  \begin{ClozeArea}[34]{14}
+    Da die Diskriminante
+    \[
+      D=b^2-4ac=(-6)^2-4\cdot2\cdot4=4>0.
+    \]
+    positiv ist besitzt die Gleichung zwei reelle Lösungen. Mit der abc-Formel folgt
+    \begin{align*}
+      x_{1,2} = \frac{-(-6)\pm\sqrt{4}}{2\cdot2} = \frac{6\pm2}{4} 
+      \qquad \Longrightarrow \qquad 
+      x_1=1 \quad \text{und} \quad x_2=2.
+    \end{align*}
+  \end{ClozeArea}
+  Die Lösungsmenge enthält $\Cloze{1cm}{2}$ Elemente und lautet $\mathcal{L}=\Cloze{5cm}{\{1,2\}}$.
+\end{ExampleBox}

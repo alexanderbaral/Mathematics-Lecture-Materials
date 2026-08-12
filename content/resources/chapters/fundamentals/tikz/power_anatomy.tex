@@ -1,0 +1,9 @@
+\begin{tikzpicture}[font=\small,>=stealth]
+  \node (power) at (0,0) {\Huge $a^n$};
+  \node[anchor=east,text=THMBlue] (base) at (-1.25,-0.9)
+    {\Lang{Basis}{base}};
+  \node[anchor=west,text=THMBlue] (exponent) at (1.25,0.9)
+    {\Lang{Exponent}{exponent}};
+  \draw[->,THMBlue,line width=0.7pt] (base.north east) -- (-0.28,-0.22);
+  \draw[->,THMBlue,line width=0.7pt] (exponent.south west) -- (0.28,0.2);
+\end{tikzpicture}
