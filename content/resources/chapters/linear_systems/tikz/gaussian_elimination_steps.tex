@@ -1,0 +1,49 @@
+\begin{tikzpicture}[
+  >=Latex,
+  gaussmatrix/.style={
+    matrix of math nodes,
+    left delimiter={[},right delimiter={]},
+    nodes={minimum width=0.82cm,minimum height=0.62cm,anchor=center},
+    column sep=1pt,row sep=1pt
+  },
+  operation/.style={font=\normalsize,anchor=west}
+]
+  \matrix (M0) [gaussmatrix] {
+    2& 1&-1& 3\\
+    3& 5&-4& 1\\
+    4&-3& 2& 2\\
+  };
+  \draw[line width=0.6pt]
+    ($(M0-1-3.north east)!0.5!(M0-1-4.north west)+(0,0.12)$)--
+    ($(M0-3-3.south east)!0.5!(M0-3-4.south west)-(0,0.12)$);
+  \node[operation] (op02) at ($(M0-2-4.east)+(2.0,0)$)
+    {$Z_2\leftarrow 2Z_2-3Z_1$};
+  \node[operation] (op03) at ($(M0-3-4.east)+(2.0,0)$)
+    {$Z_3\leftarrow Z_3-2Z_1$};
+  \draw[->,line width=0.7pt]
+    ($(M0-2-4.east)+(0.72,0)$)--($(op02.west)+(-0.15,0)$);
+  \draw[->,line width=0.7pt]
+    ($(M0-3-4.east)+(0.72,0)$)--($(op03.west)+(-0.15,0)$);
+
+  \matrix (M1) [gaussmatrix,below=0.85cm of M0] {
+    2& 1&-1& 3\\
+    0& 7&-5&-7\\
+    0&-5& 4&-4\\
+  };
+  \draw[line width=0.6pt]
+    ($(M1-1-3.north east)!0.5!(M1-1-4.north west)+(0,0.12)$)--
+    ($(M1-3-3.south east)!0.5!(M1-3-4.south west)-(0,0.12)$);
+  \node[operation] (op13) at ($(M1-3-4.east)+(2.0,0)$)
+    {$Z_3\leftarrow 7Z_3+5Z_2$};
+  \draw[->,line width=0.7pt]
+    ($(M1-3-4.east)+(0.72,0)$)--($(op13.west)+(-0.15,0)$);
+
+  \matrix (M2) [gaussmatrix,below=0.85cm of M1] {
+    |[text=THMBlue]| 2& 1&-1& 3\\
+    0&|[text=THMBlue]| 7&-5&-7\\
+    0&0&|[text=THMBlue]| 3&-63\\
+  };
+  \draw[line width=0.6pt]
+    ($(M2-1-3.north east)!0.5!(M2-1-4.north west)+(0,0.12)$)--
+    ($(M2-3-3.south east)!0.5!(M2-3-4.south west)-(0,0.12)$);
+\end{tikzpicture}

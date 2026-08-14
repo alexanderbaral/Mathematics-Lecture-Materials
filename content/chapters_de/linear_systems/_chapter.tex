@@ -1,0 +1,50 @@
+\chapter{Lineare Gleichungssysteme}
+\label{chap:linear_systems}
+
+Bedingungen gleichzeitig erfüllt sein müssen. Im Maschinenbau bilden Lineare 
+Gleichungssysteme (kurz: LGS) die Grundlage zahlreicher Berechnungsverfahren,
+etwa in der Statik, bei der Finite-Elemente-Methode und innerhalb numerischer
+Crashsimulationen. Weitere Anwendungen finden sich bei der Berechnung elektrischer
+Netzwerke, von Strömungsmodellen und bei der Ausgleichsrechnung aus Messdaten.
+
+
+\subsection*{Motivation}
+
+Eine Last mit der Gewichtskraft $F_G=\qty{100}{\newton}$ wird von zwei Seilen
+gehalten. Das erste Seil trägt $\qty{20}{\newton}$ mehr als das zweite. 
+Um die unbekannten Seilkräfte $F_1$ und $F_2$ zu bestimmen, formulieren wir zwei
+lineare Bedingungen:
+
+\noindent
+\begin{minipage}[c]{0.28\linewidth}
+  \centering
+  \input{content/resources/chapters/linear_systems/tikz/force_balance_mass.tex}
+\end{minipage}%
+\hfill
+\begin{minipage}[c]{0.69\linewidth}
+  \begin{ClozeArea}[24]{10}
+    \centering
+    \input{content/resources/chapters/linear_systems/tikz/force_balance_equations.tex}
+  \end{ClozeArea}
+\end{minipage}
+
+Beide linearen Gleichungen müssen gleichzeitig erfüllt sein. Wie man leicht sehen kann, ist das der Fall für
+\[
+  F_1=\Cloze{2cm}{60}\,\unit{\newton}
+  \quad \text{und} \quad
+  F_2=\Cloze{2cm}{40}\,\unit{\newton}.
+\]
+
+\par\vspace{1cm}
+In diesem Kapitel wollen wir die folgenden offenen Fragen klären:
+\begin{itemize}
+  \item Wie kann man systematisch die Lösungen eines LGS bestimmen?
+  \item Wie viele Lösungen hat ein LGS?
+\end{itemize}
+
+\clearpage
+\input{content/chapters_de/linear_systems/fundamentals/_section.tex}
+\clearpage
+\input{content/chapters_de/linear_systems/gaussian_elimination/_section.tex}
+\clearpage
+\input{content/chapters_de/linear_systems/solution_structure/_section.tex}

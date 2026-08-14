@@ -1,0 +1,33 @@
+\subsection{Lösung und Lösungsmenge}
+\label{subsec:linear_systems_solution_sets_and_geometry}
+
+\begin{DefinitionBox}{Lösung und Lösungsmenge}{linear_systems_solution_set}
+  Ein Tupel $(x_1,\dots,x_n)\in\R^n$ heißt \emph{Lösung} eines LGS, wenn es
+  alle Gleichungen gleichzeitig erfüllt. Die Menge aller Lösungen heißt
+  \emph{Lösungsmenge} $L$.
+\end{DefinitionBox}
+
+Ein lineares Gleichungssystem besitzt entweder genau eine, keine oder
+unendlich viele Lösungen. Für zwei Unbekannte lässt sich dies geometrisch
+durch Geraden veranschaulichen:
+
+\begin{center}
+  \input{content/resources/chapters/linear_systems/tikz/geometric_solution_cases.tex}
+\end{center}
+
+Die Bilder zeigen nur den zweidimensionalen Fall. In höheren Dimensionen
+beschreibt jede lineare Gleichung eine Hyperebene; die drei möglichen Anzahlen
+von Lösungen bleiben dieselben.
+
+\begin{KeyPointBox}{Nur drei Lösungstypen}{linear_systems_three_solution_types}
+  Ein LGS über $\R$ besitzt
+  \[
+    \boxed{\text{keine}},\qquad
+    \boxed{\text{genau eine}}
+    \qquad\text{oder}\qquad
+    \boxed{\text{unendlich viele Lösungen}}.
+  \]
+  Zwei verschiedene Lösungen erzeugen bereits eine ganze Gerade von Lösungen;
+  daher kann es nicht genau zwei oder allgemein endlich viele Lösungen größer
+  als eins geben.
+\end{KeyPointBox}

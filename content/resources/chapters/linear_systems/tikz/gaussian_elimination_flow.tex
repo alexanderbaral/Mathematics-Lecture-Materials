@@ -1,0 +1,23 @@
+\begin{tikzpicture}[
+  >=Latex,
+  processbox/.style={
+    draw=black!25,fill=black!2,rounded corners=2pt,
+    minimum height=1.35cm,text width=3cm,align=center,font=\footnotesize
+  },
+  arrow/.style={->,THMBlue,line width=0.9pt}
+]
+  \node[processbox] (system) {LGS\\$Ax=b$};
+  \node[processbox,right=0.3cm of system] (matrix)
+    {erweiterte Matrix\\$[A\mid b]$};
+  \node[processbox,right=0.3cm of matrix] (forward)
+    {Vorwärts-\\elimination\\Zeilenstufenform};
+  \node[processbox,right=0.3cm of forward] (decision)
+    {Rang und\\Lösbarkeit prüfen};
+  \node[processbox,right=0.3cm of decision] (back)
+    {Rückwärts-\\einsetzen oder\\parametrisieren};
+
+  \draw[arrow] (system)--(matrix);
+  \draw[arrow] (matrix)--(forward);
+  \draw[arrow] (forward)--(decision);
+  \draw[arrow] (decision)--(back);
+\end{tikzpicture}

@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  >=Latex,
+  axis/.style={->,black!60,line width=0.5pt},
+  linea/.style={THMBlue,line width=1.1pt},
+  lineb/.style={black!60,line width=1.1pt},
+  title/.style={font=\small\bfseries,align=center},
+  result/.style={font=\small,align=center}
+]
+  \foreach \shift/\case in {0/one,5.5/none,11/many}{
+    \begin{scope}[xshift=\shift cm]
+      \draw[axis] (-2,-1.65)--(2,-1.65) node[right] {$x_1$};
+      \draw[axis] (0,-2)--(0,1.75) node[above] {$x_2$};
+    \end{scope}
+  }
+
+  \begin{scope}
+    \draw[linea] (-1.75,-1.95)--(1.55,1.35);
+    \draw[lineb] (-1.65,1.25)--(1.75,-2.15);
+    \fill[THMBlue] (0,-0.2) circle (1.8pt);
+    \node[title] at (0,2.35) {genau eine Lösung};
+    \node[result] at (0,-2.65) {$L=\{S\}$};
+  \end{scope}
+
+  \begin{scope}[xshift=5.5cm]
+    \draw[linea] (-1.75,-1.75)--(1.7,1.7);
+    \draw[lineb] (-1.75,-0.95)--(0.9,1.7);
+    \node[title] at (0,2.35) {keine Lösung};
+    \node[result] at (0,-2.65) {$L=\varnothing$};
+  \end{scope}
+
+  \begin{scope}[xshift=11cm]
+    \draw[lineb,line width=2.6pt] (-1.75,-1.75)--(1.7,1.7);
+    \draw[linea] (-1.75,-1.75)--(1.7,1.7);
+    \node[title] at (0,2.35) {unendlich viele Lösungen};
+    \node[result] at (0,-2.65) {$L=$ gemeinsame Gerade};
+  \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+  % Die äußere Fläche stellt B dar, die vollständig darin liegende Fläche A.
+  \fill[THMBlue!16]
+    (0,0) ellipse (3.8cm and 1.75cm);
+  \draw[THMBlue!75!black,line width=1pt]
+    (0,0) ellipse (3.8cm and 1.75cm);
+
+  \fill[THMBlue!5]
+    (0.85,-0.05) ellipse (1.75cm and 0.95cm);
+  \draw[THMBlue!75!black,line width=1pt]
+    (0.85,-0.05) ellipse (1.75cm and 0.95cm);
+
+  \node[font=\Large,text=THMBlue!70!black] at (-1.85,0.1) {$B$};
+  \node[font=\Large,text=THMBlue!70!black] at (0.85,-0.05) {$A$};
+\end{tikzpicture}

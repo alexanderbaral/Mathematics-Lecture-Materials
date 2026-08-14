@@ -1,66 +1,77 @@
 \section{Mengen}
 \label{sec:fundamentals_sets}
 
+Der Mengenbegriff ermöglicht es uns später unter anderem,
+Zahlenräume abzugrenzen und Definitions- sowie Wertemengen von Funktionen präzise anzugeben.
+
 \begin{DefinitionBox}{Menge}{fundamentals_set}
-  Eine \emph{Menge} \EnglishTerm{set} ist eine Zusammenfassung bestimmter,
-  aber unterschiedlicher, \enquote{Elemente} zu einem Ganzen.
+  Eine \emph{Menge} \EnglishTerm{set} ist eine Zusammenfassung bestimmter
+  \enquote{Elemente} \EnglishTerm{elements} zu einem Ganzen. Jedes Element
+  kann höchstens einmal in einer Menge enthalten sein; die Reihenfolge der
+  Elemente spielt keine Rolle.
 \end{DefinitionBox}
 
-\begin{RemarkBox}
-  Ein Element kann alles sein, was wir uns vorstellen können, zum Beispiel
-  eine Zahl, ein Objekt oder auch eine Menge. Jedes Element kann höchstens
-  einmal in einer Menge enthalten sein.
-\end{RemarkBox}
+Elemente einer Menge können beispielsweise Zahlen, Objekte oder selbst wieder Mengen sein.\\
 
-Für Mengen werden zwei Schreibweisen verwendet:
+Um eine Menge eindeutig anzugeben, werden zwei Schreibweisen verwendet:
 \begin{enumerate}[label=(\roman*),itemsep=0.8em]
-  \item \emph{Aufzählende Form:} Eine Menge, die die Elemente $a$, $b$ und
+  \item \textbf{Aufzählende Form:} Eine Menge, die die Elemente $a$, $b$ und
     $c$ enthält, schreibt man als
-    \begin{ClozeArea}[33]{3}
+    \begin{ClozeArea}[33]{2}
       \[
         M=\{a,b,c\}.
       \]
     \end{ClozeArea}
-    Die Reihenfolge spielt dabei keine Rolle.
-
-  \item \emph{Beschreibende Form:} Eine Menge, die alle Elemente mit einer
+  \item \textbf{Beschreibende Form:} Eine Menge, die alle Elemente mit einer
     bestimmten Eigenschaft enthält, schreibt man als
-    \begin{ClozeArea}[33]{3}
+    \begin{ClozeArea}[33]{2}
       \[
-        M=\{x\mid x\text{ hat eine bestimmte Eigenschaft}\}.
+        M=\{x\mid x\text{ besitzt die Eigenschaft }E\}.
       \]
     \end{ClozeArea}
 \end{enumerate}
 
 \begin{ExampleBox}{Aufzählende vs. Beschreibende Form}{fundamentals_set_notation_example}
-  Die Menge $M$ der ganzen Zahlen zwischen $1$ und $5$ kann dauf 2 Arbeiten geschrieben werden:
-      \[
-        \Cloze{8cm}{\{n \in \mathbb{N} \mid 1 \leq n \leq 5 \} = M = \{1,2,3,4,5\}}.
-      \]
+  Die Menge $M$ der ganzen Zahlen von $1$ bis $5$ kann auf zwei Arten
+  geschrieben werden:
+  \begin{align*}
+    \text{Aufzählende Form:}\quad
+      M &= \Cloze{6.3cm}{\{1,2,3,4,5\}},\\[0.5em]
+    \text{Beschreibende Form:}\quad
+      M &= \Cloze{6.3cm}{\{n\in\mathbb{N}\mid 1\leq n\leq 5\}}.
+  \end{align*}
 \end{ExampleBox}
 
+Auch eine Menge ohne Elemente ist eine wohldefinierte Menge. Sie wird als
+leere Menge bezeichnet.
 
 \begin{DefinitionBox}{Leere Menge}{fundamentals_emptyset}
-  Unter der \emph{leere Menge} \EnglishTerm{empty set} versteht man eine Menge, die kein Element enthält. Sie wird mit dem Symbol $\emptyset$ bezeichnet.
+  Die \emph{leere Menge} \EnglishTerm{empty set} ist die Menge, die kein
+  Element enthält. Sie kann gleichwertig mit dem Symbol $\emptyset$ oder durch
+  leere geschweifte Klammern $\{\}$ bezeichnet werden:
+  \[
+    \emptyset=\{\}.
+  \]
 \end{DefinitionBox}
 
 
 
+\begin{minipage}{\linewidth}
+Um sinnvoll mit Mengen arbeiten zu können, müssen wir angeben können, ob ein
+bestimmtes Objekt Element einer Menge ist oder nicht.
 
 \begin{DefinitionBox}{Element einer Menge}{fundamentals_set_element}
   Ist $a$ ein \emph{Element} \EnglishTerm{element} aus der Menge $M$, so
   schreibt man
   \begin{align*}
-    &a\in M
+    &\Cloze{2.8cm}{a\in M}
     \qquad \text{\enquote{ist Element von}}, \\
     %
     \text{sonst} \quad
-    &a\notin M
+    &\Cloze{2.8cm}{a\notin M}
     \qquad\text{\enquote{ist kein Element von}}.
   \end{align*}
 \end{DefinitionBox}
-
-
 
 \begin{ExampleBox}{Elemente von Mengen}{fundamentals_elements_of_sets}
   \begin{enumerate}[label=(\alph*),itemsep=0.6em]
@@ -69,6 +80,9 @@ Für Mengen werden zwei Schreibweisen verwendet:
       \{\text{Franz},\text{Anne}\}$
   \end{enumerate}
 \end{ExampleBox}
+\end{minipage}
+
+
 
 \input{content/chapters_de/fundamentals/sets/subsets.tex}
 \input{content/chapters_de/fundamentals/sets/set_operations.tex}

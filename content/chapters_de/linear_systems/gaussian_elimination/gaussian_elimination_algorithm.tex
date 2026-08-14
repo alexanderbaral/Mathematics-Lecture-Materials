@@ -1,0 +1,130 @@
+\subsection{Zeilenstufenform, Pivotpositionen und Rang}
+\label{subsec:linear_systems_row_echelon_rank}
+
+Ziel der Vorwärtselimination ist nicht nur eine Dreiecksform für quadratische
+Matrizen, sondern die allgemeinere \emph{Zeilenstufenform}.
+
+\begin{DefinitionBox}{Zeilenstufenform}{linear_systems_row_echelon_form}
+  Eine Matrix besitzt Zeilenstufenform, wenn
+  \begin{enumerate}[label=\arabic*.,itemsep=0.25em]
+    \item alle Nullzeilen unterhalb der Nichtnullzeilen stehen,
+    \item der erste von null verschiedene Eintrag jeder Nichtnullzeile weiter
+      rechts steht als derjenige der vorherigen Zeile und
+    \item unter jedem solchen führenden Eintrag nur Nullen stehen.
+  \end{enumerate}
+\end{DefinitionBox}
+
+\begin{DefinitionBox}{Pivotelement und Pivotvariable}{linear_systems_pivot_terms}
+  In einer Zeilenstufenform heißt der erste von null verschiedene Eintrag
+  jeder Nichtnullzeile \emph{Pivotelement}. Seine Stelle in der Matrix heißt
+  \emph{Pivotposition}; die zugehörige Spalte der Koeffizientenmatrix heißt
+  \emph{Pivotspalte}. Die Unbekannte einer Pivotspalte ist eine
+  \emph{Pivotvariable}.
+
+  Eine Variablenspalte ohne Pivotposition gehört zu einer \emph{freien
+  Variablen}. Ein Pivotelement muss nicht den Wert $1$ besitzen.
+\end{DefinitionBox}
+
+\begin{center}
+  \input{content/resources/chapters/linear_systems/tikz/row_echelon_form.tex}
+\end{center}
+
+Freie Variablen können bei einem lösbaren LGS als Parameter gewählt werden.
+
+\clearpage
+\begin{samepage}
+  \begin{DefinitionBox}{Rang einer Matrix}{linear_systems_matrix_rank}
+    Der \emph{Rang} einer Matrix ist die Anzahl ihrer Pivotpositionen in einer
+    Zeilenstufenform. Gleichbedeutend ist er die Anzahl der Nichtnullzeilen
+    einer Zeilenstufenform. Man schreibt $\operatorname{rang}(A)$.
+  \end{DefinitionBox}
+
+  Elementare Zeilenumformungen verändern den Rang nicht. Obwohl eine Matrix
+  auf verschiedenen Wegen in Zeilenstufenform gebracht werden kann, ist die
+  Anzahl ihrer Pivotpositionen daher eindeutig.
+
+  \begin{ExampleBox}{Rang und freie Variablen ablesen}{linear_systems_rank_example}
+    \[
+      A\sim
+      \left[
+        \begin{array}{rrrr}
+          1&2&0&-1\\
+          0&0&1& 4\\
+          0&0&0& 0
+        \end{array}
+      \right].
+    \]
+    Die Pivotpositionen liegen in Spalte $1$ und $3$. Somit gilt
+    \[
+      \operatorname{rang}(A)=2,
+      \qquad
+      x_1,x_3\text{ sind Pivotvariablen},
+      \qquad
+      x_2,x_4\text{ sind frei}.
+    \]
+    Die Rangzahl ist nicht die Zahl der Spalten, sondern die Zahl der
+    voneinander unabhängigen Stufen.
+  \end{ExampleBox}
+\end{samepage}
+
+Das Gauß-Verfahren verbindet diese Begriffe zu einem festen Ablauf:
+
+\begin{center}
+  \input{content/resources/chapters/linear_systems/tikz/gaussian_elimination_flow.tex}
+\end{center}
+
+\begin{KeyPointBox}{Gauß-Verfahren}{linear_systems_gaussian_algorithm}
+  \begin{enumerate}[label=\arabic*.,itemsep=0.3em]
+    \item Erweiterte Matrix $[A\mid b]$ aufstellen.
+    \item Mit elementaren Zeilenumformungen Zeilenstufenform erzeugen.
+    \item Zuerst auf eine Widerspruchszeile prüfen.
+    \item Bei einem lösbaren System freie Variablen wählen und die
+      Pivotvariablen von unten nach oben bestimmen.
+  \end{enumerate}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Vorwärtselimination und Rückwärtseinsetzen}{linear_systems_gaussian_example}
+  \begin{ClozeArea}[34]{30}
+    Ausgangssystem und erweiterte Matrix:
+    \[
+      \begin{aligned}
+        2x_1+x_2-x_3&=3,\\
+        3x_1+5x_2-4x_3&=1,\\
+        4x_1-3x_2+2x_3&=2
+      \end{aligned}
+      \qquad\Longleftrightarrow\qquad
+      \left[
+        \begin{array}{rrr|r}
+          2& 1&-1&3\\
+          3& 5&-4&1\\
+          4&-3& 2&2
+        \end{array}
+      \right].
+    \]
+    Die Operationen stehen jeweils rechts neben der Matrix, auf die sie
+    angewendet werden:
+    \[
+      \input{content/resources/chapters/linear_systems/tikz/gaussian_elimination_steps.tex}
+    \]
+    Die Koeffizientenmatrix besitzt drei Pivotpositionen, also Rang $3$.
+    Nun wird von der letzten Gleichung nach oben eingesetzt:
+    \begin{align*}
+      3x_3&=-63
+        &\Longrightarrow\qquad x_3&=-21,\\[0.7em]
+      7x_2-5x_3&=-7
+        &\Longrightarrow 7x_2-5(-21)&=-7,\\
+      &&7x_2+105&=-7,\\
+      &&7x_2&=-112,\\
+      &&x_2&=-16,\\[0.7em]
+      2x_1+x_2-x_3&=3
+        &\Longrightarrow 2x_1+(-16)-(-21)&=3,\\
+      &&2x_1+5&=3,\\
+      &&2x_1&=-2,\\
+      &&x_1&=-1.
+    \end{align*}
+    Somit lautet die eindeutige Lösung
+    \[
+      L=\{(-1,-16,-21)\}.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}

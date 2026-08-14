@@ -20,5 +20,9 @@
 
 \StartMainMatter
 \input{content/chapters_\ScriptLanguage/fundamentals/_chapter.tex}
+\IfEnglishTF{}{
+  \clearpage
+  \input{content/chapters_de/linear_systems/_chapter.tex}
+}
 
 \end{document}

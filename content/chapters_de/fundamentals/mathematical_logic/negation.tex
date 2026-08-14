@@ -3,8 +3,17 @@
 
 \begin{DefinitionBox}{Negation $\neg$}{fundamentals_negation}
   Die \emph{Negation} \EnglishTerm{negation} einer Aussage $A$ wird mit
-  $\neg A$ bezeichnet und kehrt den Wahrheitswert von $A$ um: Ist $A$ wahr, so
-  ist $\neg A$ falsch; ist $A$ falsch, so ist $\neg A$ wahr.
+  $\neg A$ bezeichnet und ist das logische Gegenteil von $A$. Es gilt:
+  \[
+    A\text{ ist wahr}
+    \quad\Longleftrightarrow\quad
+    \neg A\text{ ist falsch},
+  \]
+  \[
+    A\text{ ist falsch}
+    \quad\Longleftrightarrow\quad
+    \neg A\text{ ist wahr}.
+  \]
 \end{DefinitionBox}
 
 \begin{ExampleBox}{Negation von Aussagen}{fundamentals_negation_example}
@@ -43,23 +52,34 @@ de-morganschen Regeln berücksichtigen.
 \end{TheoremBox}
 
 \begin{ExampleBox}{De-morgansche Regeln}{fundamentals_de_morgan_rules_example}
-  Es seien $a,b,x\in\R$ mit $a\leq b$. Nach der zweiten de-morganschen Regel
-  gilt
+  Wir betrachten die Betriebsfreigabe einer Maschine mit zwei Bedingungen:
+  \[
+    \begin{aligned}
+      A &: \ \text{„Die Maschine ist eingeschaltet.“},\\
+      B &: \ \text{„Die Schutztür ist geschlossen.“}
+    \end{aligned}
+  \]
+
+  Die Betriebsfreigabe lautet:
   \begin{align*}
-    \neg\bigl((x<a)\lor(x>b)\bigr)
-      &\Leftrightarrow
-        \Cloze{7.2cm}{\neg(x<a)\land\neg(x>b)}\\
-      &\Leftrightarrow
-        \Cloze{7.2cm}{(x\geq a)\land(x\leq b)}.
+    \text{Logischer Ausdruck:}\quad &A\land B,\\[0.4em]
+    \text{In Worten:}\quad
+      &\begin{aligned}[t]
+        &\Cloze{12cm}{\text{„Die Maschine ist eingeschaltet und}}\\[0.25em]
+        &\Cloze{12cm}{\text{die Schutztür ist geschlossen.“}}
+      \end{aligned}
   \end{align*}
 
-  \begin{center}
-    \input{content/resources/chapters/fundamentals/tikz/de_morgan_interval.tex}
-  \end{center}
-
-  Die ursprüngliche Aussage schließt aus, dass $x$ links von $a$ oder rechts
-  von $b$ liegt. Daher muss gleichzeitig $x\geq a$ und $x\leq b$ gelten. Dies
-  ist genau der auf dem Zahlenstrahl markierte Bereich $x\in[a,b]$; die
-  Randpunkte gehören dazu, weil die strengen Ungleichungen $x<a$ und $x>b$
-  negiert werden.
+  Keine Betriebsfreigabe wird mit der de-morganschen Regel wie folgt
+  formuliert:
+  \begin{align*}
+    \text{Logischer Ausdruck:}\quad
+      &\neg(A\land B)\Leftrightarrow
+        \Cloze{4.5cm}{(\neg A)\lor(\neg B)},\\[0.4em]
+    \text{In Worten:}\quad
+      &\begin{aligned}[t]
+        &\Cloze{12cm}{\text{„Die Maschine ist nicht eingeschaltet oder}}\\[0.25em]
+        &\Cloze{12cm}{\text{die Schutztür ist nicht geschlossen.“}}
+      \end{aligned}
+  \end{align*}
 \end{ExampleBox}

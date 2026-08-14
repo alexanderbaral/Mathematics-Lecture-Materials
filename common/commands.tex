@@ -3,6 +3,8 @@
   { \bool_if:NTF \g_script_english_bool {#2} {#1} }
 \NewExpandableDocumentCommand{\IfClozeTF}{m m}
   { \bool_if:NTF \g_script_cloze_bool {#1} {#2} }
+\NewExpandableDocumentCommand{\IfEnglishTF}{m m}
+  { \bool_if:NTF \g_script_english_bool {#1} {#2} }
 \ExplSyntaxOff
 
 \NewDocumentCommand{\EnglishTerm}{m}{%

@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  >=Latex,
+  every node/.style={font=\small},
+  brace/.style={decorate,decoration={brace,amplitude=5pt}}
+]
+  \matrix (M) [
+    matrix of math nodes,
+    left delimiter={[},right delimiter={]},
+    nodes={minimum width=1.05cm,minimum height=0.65cm,anchor=center},
+    column sep=1pt,row sep=1pt
+  ] {
+    a_{11}&a_{12}&\cdots&a_{1n}&b_1\\
+    a_{21}&a_{22}&\cdots&a_{2n}&b_2\\
+    \vdots&\vdots&\ddots&\vdots&\vdots\\
+    a_{m1}&a_{m2}&\cdots&a_{mn}&b_m\\
+  };
+
+  \coordinate (bar-top) at ($(M-1-4.north east)!0.5!(M-1-5.north west)+(0,0.18)$);
+  \coordinate (bar-bottom) at ($(M-4-4.south east)!0.5!(M-4-5.south west)-(0,0.18)$);
+  \draw[line width=0.7pt] (bar-top)--(bar-bottom);
+
+  \draw[brace,THMBlue,line width=0.7pt]
+    ($(M-4-1.south west)+(0,-0.25)$)--($(M-4-4.south east)+(0,-0.25)$)
+    node[midway,below=7pt,text=THMBlue] {Koeffizientenmatrix $A$};
+  \draw[brace,black!55,line width=0.7pt]
+    ($(M-4-5.south west)+(0,-0.25)$)--($(M-4-5.south east)+(0,-0.25)$)
+    node[midway,below=7pt,text=black!65] {Vektor $b$};
+  \node[anchor=west,font=\large] at ($(M.east)+(1.1,0)$) {$=[A\mid b]$};
+\end{tikzpicture}

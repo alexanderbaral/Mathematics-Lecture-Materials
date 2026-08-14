@@ -2,40 +2,41 @@
 \label{subsec:fundamentals_subsets}
 
 \begin{DefinitionBox}{Teilmenge}{fundamentals_subset}
-  Eine Menge $A$ heißt \emph{Teilmenge} \EnglishTerm{subset} einer Menge $B$,
-  wenn jedes Element von $A$ auch Element von $B$ ist. Man schreibt
-  \[
-    A\subseteq B
-    \quad\Longleftrightarrow\quad
-    \forall x:\; x\in A\Rightarrow x\in B.
-  \]
+  \begin{minipage}[t]{0.62\linewidth}
+    \vspace{0pt}
+    Eine Menge $A$ heißt \emph{Teilmenge} \EnglishTerm{subset} einer Menge
+    $B$, wenn jedes Element von $A$ auch Element von $B$ ist. Man schreibt
+    \[
+      A\subseteq B
+      \quad\Longleftrightarrow\quad
+      \forall x:\; x\in A\Rightarrow x\in B.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.32\linewidth}
+    \vspace{0pt}
+    \centering
+    \resizebox{\linewidth}{!}{%
+      \input{content/resources/chapters/fundamentals/tikz/subset_inclusion.tex}%
+    }
+  \end{minipage}
 \end{DefinitionBox}
 
-\begin{RemarkBox}[title=\Lang{Bemerkung}{Remark}]
-  \begin{minipage}[t]{0.46\linewidth}
-    \textbf{Teilmenge}
-    \[
-      B\subseteq A
-    \]
-    Hier ist $B=A$ erlaubt.
-  \end{minipage}
-  \hfill
-  \begin{minipage}[t]{0.46\linewidth}
-    \textbf{Echte Teilmenge}
-    \[
-      B\subsetneq A
-    \]
-    Hier ist $B=A$ nicht erlaubt, es gilt also $B\neq A$.
-  \end{minipage}
+\begin{RemarkBox}[title=Teilmenge und echte Teilmenge]
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{\linewidth}{@{}>{\bfseries}l c X@{}}
+    \toprule
+    Begriff & Schreibweise & Bedeutung \\
+    \midrule
+    Teilmenge
+      & $A\subseteq B$
+      & Jedes Element von $A$ ist auch Element von $B$; $A=B$ ist erlaubt. \\
+    Echte Teilmenge
+      & $A\subsetneq B$
+      & $A\subseteq B$ und zusätzlich $A\neq B$. \\
+    \bottomrule
+  \end{tabularx}
 \end{RemarkBox}
 
-Zwei Mengen sind genau dann gleich, wenn sie dieselben Elemente enthalten.
-Damit gilt
-\[
-  A=B
-  \quad\Longleftrightarrow\quad
-  A\subseteq B\ \land\ B\subseteq A.
-\]
 
 \begin{ExampleBox}{Teilmengen}{fundamentals_subset_example}
   Für $A=\{1,2\}$ und $B=\{1,2,3\}$ gilt

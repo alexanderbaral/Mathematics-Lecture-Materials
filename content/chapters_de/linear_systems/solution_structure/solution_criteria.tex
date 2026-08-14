@@ -1,0 +1,61 @@
+\subsection{Anzahl der Lösungen erkennen}
+\label{subsec:linear_systems_solution_criteria}
+
+Sei $A$ die Koeffizientenmatrix eines LGS mit $n$ Unbekannten und
+$[A\mid b]$ seine erweiterte Matrix. Nach der Vorwärtselimination wird zuerst
+geprüft, ob eine Zeile der Form
+\[
+  \left[\begin{array}{cccc|c}
+    0&0&\cdots&0&c
+  \end{array}\right],
+  \qquad c\neq0,
+\]
+auftritt. Sie entspricht der unmöglichen Gleichung $0=c$.
+
+\begin{TheoremBox}{Lösbarkeits- und Rangkriterium}{linear_systems_rank_criterion}
+  Für ein LGS $Ax=b$ mit $n$ Unbekannten gilt:
+  \[
+    \begin{array}{rcll}
+      \operatorname{rang}(A)
+      &<&\operatorname{rang}([A\mid b])
+      &\Longleftrightarrow\quad \text{keine Lösung},\\[0.7em]
+      \operatorname{rang}(A)
+      &=&\operatorname{rang}([A\mid b])=n
+      &\Longleftrightarrow\quad \text{genau eine Lösung},\\[0.7em]
+      \operatorname{rang}(A)
+      &=&\operatorname{rang}([A\mid b])<n
+      &\Longleftrightarrow\quad \text{unendlich viele Lösungen}.
+    \end{array}
+  \]
+\end{TheoremBox}
+
+Der Rangvergleich prüft zunächst die Verträglichkeit der Gleichungen. Sind die
+Ränge gleich, entscheidet die Zahl der Pivotpositionen relativ zur Zahl $n$
+der Unbekannten, ob freie Variablen vorhanden sind.
+
+\begin{center}
+  \input{content/resources/chapters/linear_systems/tikz/solution_case_diagnostics.tex}
+\end{center}
+
+\begin{ExampleBox}{Drei letzte Zeilen, drei Aussagen}{linear_systems_three_last_rows}
+  Für ein LGS mit drei Unbekannten können nach der Elimination beispielsweise
+  folgende Situationen auftreten:
+  \[
+    \begin{array}{c@{\qquad}l}
+      [,0\;0\;0\mid -4,]
+        &\Rightarrow 0=-4:\quad \text{keine Lösung},\\[0.7em]
+      [,0\;0\;3\mid -63,]
+        &\Rightarrow x_3=-21:\quad \text{Pivot in jeder Variablenspalte},\\[0.7em]
+      [,0\;0\;0\mid 0,]
+        &\Rightarrow 0=0:\quad \text{keine neue Bedingung}.
+    \end{array}
+  \]
+  Im letzten Fall entscheidet die Zahl der vorherigen Pivotpositionen, ob eine
+  oder mehrere Variablen frei sind.
+\end{ExampleBox}
+
+\begin{RemarkBox}
+  Die Zahl der Nichtnullzeilen der \emph{erweiterten} Matrix allein ist kein
+  Kriterium für unendlich viele Lösungen: Eine Widerspruchszeile ist dort eine
+  Nichtnullzeile. Deshalb wird stets zuerst die Lösbarkeit geprüft.
+\end{RemarkBox}
