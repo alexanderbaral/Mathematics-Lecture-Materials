@@ -11,6 +11,7 @@
       \quad\Longleftrightarrow\quad
       \forall x:\; x\in A\Rightarrow x\in B.
     \]
+    Ist $A$ keine Teilmenge von $B$, so schreibt man $A\not\subseteq B$.
   \end{minipage}\hfill
   \begin{minipage}[t]{0.32\linewidth}
     \vspace{0pt}
@@ -21,28 +22,18 @@
   \end{minipage}
 \end{DefinitionBox}
 
-\begin{RemarkBox}[title=Teilmenge und echte Teilmenge]
-  \renewcommand{\arraystretch}{1.35}
-  \begin{tabularx}{\linewidth}{@{}>{\bfseries}l c X@{}}
-    \toprule
-    Begriff & Schreibweise & Bedeutung \\
-    \midrule
-    Teilmenge
-      & $A\subseteq B$
-      & Jedes Element von $A$ ist auch Element von $B$; $A=B$ ist erlaubt. \\
-    Echte Teilmenge
-      & $A\subsetneq B$
-      & $A\subseteq B$ und zusätzlich $A\neq B$. \\
-    \bottomrule
-  \end{tabularx}
-\end{RemarkBox}
-
-
-\begin{ExampleBox}{Teilmengen}{fundamentals_subset_example}
-  Für $A=\{1,2\}$ und $B=\{1,2,3\}$ gilt
-  \[
-    A\ \Cloze{1.8cm}{\subseteq B},
-    \qquad
-    B\ \Cloze{1.8cm}{\not\subseteq A}.
-  \]
+\begin{ExampleBox}[after skip=0pt]{Teilmengen}{fundamentals_subset_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.6em]
+    \item $\{1,2,3\}\ \Cloze{1.8cm}{\subseteq}\ \{1,4,3,2\}$
+    \item $\{1,2\}\ \Cloze{1.8cm}{\not\subseteq}\ \{1,3\}$,
+      denn $\Cloze{2.8cm}{2\notin\{1,3\}}$.
+    \item $\emptyset\ \Cloze{1.8cm}{\subseteq}\ M\quad(\forall M)$
+    \par\smallskip
+    Die leere Menge ist Teilmenge jeder Menge.
+  \end{enumerate}
 \end{ExampleBox}
+
+\par\nobreak\noindent\rule{0pt}{1.35\baselineskip}\textbf{Hinweis.}
+Bei $A\subseteq B$ ist die Gleichheit $A=B$ erlaubt. Gilt zusätzlich
+$A\neq B$, so heißt $A$ eine \textbf{echte Teilmenge}
+\EnglishTerm{proper subset} von $B$; man schreibt $A\subsetneq B$.

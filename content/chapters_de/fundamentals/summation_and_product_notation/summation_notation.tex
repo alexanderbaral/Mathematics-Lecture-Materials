@@ -48,8 +48,7 @@ geschlossene Form. Drei wichtige geschlossene Formen sind:
     Für $n\in\N$ gilt
     \[
       \sum_{k=1}^{n}1
-        =\underbrace{1+1+\dots+1}_{n\text{-mal}}
-        =n.
+        =\Cloze{8cm}{\underbrace{1+1+\dots+1}_{n\text{-mal}}=n}.
     \]
 
   \item
@@ -57,7 +56,7 @@ geschlossene Form. Drei wichtige geschlossene Formen sind:
       \textbf{Gaußsche Summenformel.}
       Für $n\in\N$ bezeichnen wir die Summe bis zum Index $n$ mit
       \[
-        S_n:=\sum_{k=1}^{n}k=1+2+\dots+n.
+        S_n:=\sum_{k=1}^{n}k=\Cloze{8cm}{1+2+\dots+n}.
       \]
       Schreibt man dieselbe Summe einmal vorwärts und einmal rückwärts, werden
       jeweils der erste und letzte, der zweite und vorletzte Summand usw.
@@ -79,11 +78,9 @@ geschlossene Form. Drei wichtige geschlossene Formen sind:
 
     \begin{TheoremBox}{Gaußsche Summenformel}{fundamentals_gaussian_sum_formula}
       Für $n\in\N$ gilt
-      \begin{ClozeArea}[27]{4}
-        \[
-          \sum_{k=1}^{n}k=1+2+\dots+n=\frac{n(n+1)}{2}.
-        \]
-      \end{ClozeArea}
+      \[
+        \sum_{k=1}^{n}k=1+2+\dots+n=\frac{n(n+1)}{2}.
+      \]
     \end{TheoremBox}
 
   \item
@@ -92,7 +89,7 @@ geschlossene Form. Drei wichtige geschlossene Formen sind:
       Für $n\in\N_0$ bezeichnen wir die Summe der Potenzen von $q$ bis zum
       Index $n$ mit
       \[
-        S_n:=\sum_{k=0}^{n}q^k=1+q+q^2+\dots+q^n.
+        S_n:=\sum_{k=0}^{n}q^k=\Cloze{8cm}{1+q+q^2+\dots+q^n}.
       \]
     \end{minipage}
 
@@ -136,15 +133,13 @@ geschlossene Form. Drei wichtige geschlossene Formen sind:
 
     \begin{TheoremBox}{Endliche geometrische Summenformel}{fundamentals_finite_geometric_sum_formula}
       Für $q\in\R$ und $n\in\N_0$ gilt
-      \begin{ClozeArea}[28]{7}
-        \[
-          \sum_{k=0}^{n}q^k
-          =
-          \begin{cases}
-            \dfrac{1-q^{n+1}}{1-q}, & q\neq1,\\[0.8em]
-            n+1, & q=1.
-          \end{cases}
-        \]
-      \end{ClozeArea}
+      \[
+        \sum_{k=0}^{n}q^k
+        =
+        \begin{cases}
+          \dfrac{1-q^{n+1}}{1-q}, & q\neq1,\\[0.8em]
+          n+1, & q=1.
+        \end{cases}
+      \]
     \end{TheoremBox}
 \end{enumerate}
