@@ -179,6 +179,11 @@ Do not enlarge these margins for conventional print-layout reasons. The script i
 
 Use Fira Sans as primary text typeface. Choose a high-quality readable mathematics font compatible with Fira Sans; do not force sans-serif mathematics if readability suffers. The exact mathematics font may be refined after visual testing.
 
+Text labels inside figures and diagrams must be at least as large as the
+surrounding body text. Do not shrink a figure with `\resizebox`, `\scalebox`,
+or a similar mechanism when this would make its labels smaller than the
+adjacent text; adapt the figure geometry or surrounding layout instead.
+
 Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
 
 Shared visual resources live under `content/resources/`. Global files used across chapters, such as branding assets, live in `content/resources/shared/`; its `images/` and `tikz/` subfolders hold other shared visual resources. Chapter-specific resources mirror the approved chapter name and use `content/resources/chapters/<chapter>/images/` for raster or vector illustrations and `content/resources/chapters/<chapter>/tikz/` for TikZ sources. Do not create resource folders for future chapters. The author will provide the official TH Mannheim/faculty logo and Mannheimer Punkt. Prefer PDF vector assets; PNG is acceptable; support EPS only if actually needed. If assets are missing, compilation must still succeed with unobtrusive placeholders and README guidance.

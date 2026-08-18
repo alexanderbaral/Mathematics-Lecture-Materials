@@ -1,22 +1,18 @@
 \subsection{Allgemeiner binomischer Lehrsatz}
 \label{subsec:fundamentals_general_binomial_theorem}
 
-Die erste und zweite binomische Formel aus Abschnitt \ref{subsec:fundamentals_basic_binomial_formulas}
-beschreibt das Quadrieren einer Summe, d.h. $(a\pmb)^2$. \\
-
-Es ist naheligend zu fragen, ob es auch eine Formel für höhere Potenzen gibt. Hierfr
-
-Hierfür gibt es den verallgemeinerten binomischen Lehrsatz.
+Die 1. und 2. binomische Formel aus Abschnitt \ref{subsec:fundamentals_basic_binomial_formulas}
+erleichtern das Quadrieren einer Summe, d.h. $(a \pm b)^2$. Es ist naheligend zu fragen, ob es
+auch eine Formel für höhere Potenzen gibt, d.h. $(a \pm b)^n$ mit $n\in\N$. Hierfür gibt es den
+verallgemeinerten binomischen Lehrsatz.
 
 
 \begin{TheoremBox}{Allgemeiner binomischer Lehrsatz}{fundamentals_general_binomial_theorem}
   Für $a,b\in\R$ und $n\in\N_0$ gilt
-  \begin{ClozeArea}[34]{4}
-    \[
-      (a+b)^n =\sum_{k=0}^{n} \; \binom{n}{k} \; a^{n-k} \; b^k.
-    \]
-  \end{ClozeArea}
-  wobei $\binom{n}{k}$ der sogenannte Binomialkoeffizient ist.
+  \[
+    (a+b)^n =\sum_{k=0}^{n} \; \binom{n}{k} \; a^{n-k} \; b^k.
+  \]
+  wobei $\binom{n}{k}$ der Binomialkoeffizient ist.
 \end{TheoremBox}
 
 \begin{DefinitionBox}{Binomialkoeffizient}{fundamentals_binomial_coefficient}
@@ -25,7 +21,6 @@ Hierfür gibt es den verallgemeinerten binomischen Lehrsatz.
   \[
     \binom{n}{k}=\frac{n!}{k!(n-k)!}.
   \]
-  Dabei gilt insbesondere $0!=1$.
 \end{DefinitionBox}
 
 Die Potenz von $a$ beginnt bei $n$ und nimmt in jedem Summanden um $1$ ab.
@@ -65,7 +60,8 @@ Analog ergibt sich für $n = 1, 2, 3, 4, 5 , \ldots$ der folgende Überblick:
   &\vdots
 \end{align*}
 
-\clearpage
+
+
 \subsubsection{Pascalsches Dreieck}
 \label{subsubsec:fundamentals_pascals_triangle}
 

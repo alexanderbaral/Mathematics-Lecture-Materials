@@ -1,0 +1,57 @@
+\subsection{Wurzeln als Potenzen}
+\label{subsec:fundamentals_roots_as_powers}
+
+Die Schreibweise für rationale Exponenten soll mit dem dritten Potenzgesetz
+verträglich sein. Für $a>0$ setzen wir daher $\sqrt[n]{a}=a^r$. Da die
+$n$-te Potenz der $n$-ten Wurzel wieder $a$ ergibt, muss gelten:
+\[
+  (a^r)^n=a
+  \quad\Longleftrightarrow\quad
+  a^{rn}=a^1
+  \quad\Longleftrightarrow\quad
+  rn=1
+  \quad\Longleftrightarrow\quad
+  r=\frac1n.
+\]
+
+\begin{KeyPointBox}{Rationale Exponenten}{fundamentals_rational_exponents}
+  Für $a>0$, $m\in\Z$ und $n\in\N$ mit $n\geq2$ gilt
+  \[
+    \sqrt[n]{a}=a^{1/n},
+    \qquad
+    a^{m/n}=\sqrt[n]{a^m}=\left(\sqrt[n]{a}\right)^m.
+  \]
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Wurzelgesetze}{fundamentals_root_laws}
+  Da sich Wurzeln als Potenzen schreiben lassen, gelten analog zu den Potenzgesetzen (kurz: PG) die folgenden Wurzelgesetze.
+  Sie sind keine neuen Rechengesetze, sondern unmittelbare Folge der Potenzgesetze.
+  \begin{align*}
+    \sqrt[n]{a}\,\sqrt[n]{b} =\sqrt[n]{ab},
+    &\qquad \qquad \text{, da} \quad
+    \Cloze{12cm}{\sqrt[n]{a}\,\sqrt[n]{b} = a^{1/n}b^{1/n} \overset{\text{2. PG}}{=} (ab)^{1/n} =\sqrt[n]{ab}}; \\[0.9em]
+    %
+    \frac{\sqrt[n]{a}}{\sqrt[n]{b}} =\sqrt[n]{\frac ab},
+    &\qquad \qquad \text{, da} \quad
+    \Cloze{12cm}{\frac{\sqrt[n]{a}}{\sqrt[n]{b}} =\frac{a^{1/n}}{b^{1/n}} \overset{\text{2. PG}}{=} \left(\frac ab\right)^{1/n} =\sqrt[n]{\frac ab}}; \\[0.9em]
+    %
+    \sqrt[n]{\sqrt[m]{a}} =\sqrt[nm]{a},
+    &\qquad \qquad \text{, da} \quad 
+    \Cloze{12cm}{\sqrt[n]{\sqrt[m]{a}} =\left(a^{1/m}\right)^{1/n} \overset{\text{3. PG}}{=} a^{1/(mn)} =\sqrt[nm]{a}}.
+  \end{align*}
+\end{KeyPointBox}
+
+\begin{RemarkBox}
+Wurzeln dürfen also über Produkte und Quotienten verteilt werden, aber keinesfalls über Summen oder Differenzen: Im Allgemeinen gilt
+  \[
+    \sqrt{a+b}\neq\sqrt a+\sqrt b.
+  \]
+\end{RemarkBox}
+
+\begin{ExampleBox}{Rationale Exponenten}{fundamentals_rational_exponents_example}
+  \begin{enumerate}[label=(\alph*),itemsep=0.35em]
+    \item $27^{2/3} = \Cloze{9cm}{\left(\sqrt[3]{27}\right)^2=3^2=9}$
+    \item $9^{-1/2} = \Cloze{9cm}{\displaystyle\frac1{\sqrt9}=\frac13}$
+    \item $\sqrt{\sqrt[3]{64}} = \Cloze{9cm}{\sqrt[6]{64}=2}$
+  \end{enumerate}
+\end{ExampleBox}

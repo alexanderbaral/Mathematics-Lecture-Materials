@@ -1,0 +1,150 @@
+\subsection{Potenzen}
+\label{subsec:fundamentals_powers}
+
+\begin{samepage}
+  \begin{DefinitionBox}{Potenz}{fundamentals_power}
+    Eine Potenz besteht aus einer \emph{Basis} $a$ und einem \emph{Exponenten} $n$ und
+    fasst eine wiederholte Multiplikation gleicher Faktoren zusammen:\par
+    \begin{minipage}[c]{0.61\linewidth}
+      \[
+        a^n = \underbrace{a\cdot a\cdots a}_{n\text{-mal}},
+        \qquad n\in\N,\quad n\geq1.
+      \]
+    Zusätzlich gilt: $a^0=1 \qquad (a\neq0)$.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.3\linewidth}
+      \centering
+      \resizebox{\linewidth}{!}{%
+        \input{content/resources/chapters/fundamentals/tikz/power_anatomy.tex}%
+      }
+    \end{minipage}\par\smallskip
+  \end{DefinitionBox}
+
+  \vspace{-0.5\baselineskip}
+  \begin{ExampleBox}{Potenzen auswerten}{fundamentals_power_examples}
+    \begin{enumerate}[label=(\alph*),itemsep=0.55em]
+      \item $5^0=\Cloze{12cm}{1}$
+      \item $5^3=\Cloze{12cm}{5\cdot5\cdot5=125}$
+      \item $0^2=\Cloze{12cm}{0\cdot0=0}$
+      \item $0^0$ ist \Cloze{12cm}{im Allgemeinen nicht definiert}.
+    \end{enumerate}
+  \end{ExampleBox}
+\end{samepage}
+
+\subsubsection{Potenzgesetze}
+\label{subsubsec:fundamentals_power_laws}
+
+Die drei Potenzgesetze vereinfachen Produkte, Quotienten und Potenzen von
+Potenzen.
+
+\begin{TheoremBox}{Potenzgesetze}{fundamentals_power_laws}
+  \begingroup
+  \setlength{\abovedisplayskip}{0.45em}
+  \setlength{\abovedisplayshortskip}{0.45em}
+  \setlength{\belowdisplayskip}{0pt}
+  \setlength{\belowdisplayshortskip}{0pt}
+  \begin{itemize}[leftmargin=*,topsep=0.35em,itemsep=0.9em]
+    \item \textbf{Erstes Potenzgesetz -- bei gleicher Basis}
+      \[
+        a^m\cdot a^n=a^{m+n}
+        \qquad\text{und}\qquad
+        \frac{a^m}{a^n}=a^{m-n}\quad(a\neq0).
+      \]
+
+    \item \textbf{Zweites Potenzgesetz -- bei gleichem Exponenten}
+      \[
+        a^n\cdot b^n=(ab)^n
+        \qquad\text{und}\qquad
+        \frac{a^n}{b^n}=\left(\frac ab\right)^n\quad(b\neq0).
+      \]
+
+    \item \textbf{Drittes Potenzgesetz -- Verkettung von Potenzen}
+      \[
+        (a^m)^n=a^{mn}=(a^n)^m.
+      \]
+  \end{itemize}
+  \endgroup
+\end{TheoremBox}
+
+Beim 3.Potenzgesetz ist auf richtige Klammersetzung zu achten, denn im Allgemeinen gilt:
+\[
+  (a^m)^n=a^{mn}\neq a^{(m^n)}=a^{m^n}.
+\]
+
+\begin{ExampleBox}{Potenzgesetze}{fundamentals_power_laws_examples}
+  \begin{itemize}[leftmargin=*,itemsep=0.8em]
+    \item \textbf{Erstes Potenzgesetz -- gleiche Basis}
+      \begin{enumerate}[
+        label=(\alph*),itemsep=0.35em,series=power_law_examples]
+        \item
+          \EquationBranches
+            {3^4\cdot3^2}
+            {\Cloze{6cm}{81\cdot9=729}}
+            {(ohne Potenzgesetz)}
+            {\Cloze{6cm}{3^{4+2}=3^6=729}}
+            {(mit dem ersten Potenzgesetz)}
+        \item
+          \EquationBranches
+            {\displaystyle\prod_{k=1}^{100}a^k}
+            {\Cloze{6cm}{a \cdot a^2 \cdot a^3 \cdot \ldots \cdot a^{100} = \ldots}}
+            {(ohne Potenzgesetz)}
+            {\Cloze{6cm}{a^{\sum_{k=1}^{100}k}
+              =a^{\frac{100\cdot101}{2}}=a^{5050}}}
+            {(mit dem ersten Potenzgesetz)}
+      \end{enumerate}
+
+    \item \textbf{Zweites Potenzgesetz -- gleicher Exponent}
+      \begin{enumerate}[
+        label=(\alph*),itemsep=0.35em,resume=power_law_examples]
+        \item
+          \EquationBranches
+            {2^3\cdot5^3}
+            {\Cloze{6cm}{8\cdot125=1000}}
+            {(ohne Potenzgesetz)}
+            {\Cloze{6cm}{(2\cdot5)^3=10^3=1000}}
+            {(mit dem zweiten Potenzgesetz)}
+        \item
+          \EquationBranches
+            {\displaystyle\frac{6^3}{3^3}}
+            {\Cloze{6cm}{\displaystyle\frac{216}{27}=8}}
+            {(ohne Potenzgesetz)}
+            {\Cloze{6cm}{\left(\frac63\right)^3=2^3=8}}
+            {(mit dem zweiten Potenzgesetz)}
+      \end{enumerate}
+
+    \item \textbf{Drittes Potenzgesetz -- Verkettung von Potenzen}
+      \begin{enumerate}[
+        label=(\alph*),itemsep=0.35em,resume=power_law_examples]
+        \item
+          \EquationBranches
+            {(2^3)^2}
+            {\Cloze{6cm}{8^2=64}}
+            {(ohne Potenzgesetz)}
+            {\Cloze{6cm}{2^{3\cdot2}=2^6=64}}
+            {(mit dem dritten Potenzgesetz)}
+        \item $5^{(2^5)}=\Cloze{12cm}{5^{32}
+          \qquad
+          \text{\textcolor{red}{(aber $5^{(2^5)} \neq 5^{2\cdot 5}$,
+                                 da 3. Potenzgesetz nicht anwendbar) }}}$
+      \end{enumerate}
+  \end{itemize}
+\end{ExampleBox}
+
+\begin{RemarkBox}
+  Als Spezialfall des 1. Potenzgesetzes mit $m=-n$ ergibt sich
+  \[
+  \EquationMerge
+    {}
+    {\Cloze{6cm}{a^n\cdot\MathHighlight{a^{-n}}=a^{n+(-n)}=a^0}}
+    {}
+    {\Cloze{4cm}{a^n\cdot\MathHighlight{\frac{1}{a^n}}}}
+    {\Cloze{1cm}{1}}
+  \]
+  Ein Vergleich der Terme zeit, dass
+  \begin{ClozeArea}[8]{3}
+    \[
+      a^{-n}=\frac{1}{a^n}.
+    \]
+  \end{ClozeArea}
+  Kehrwertbildung tauscht das Vorzeichen im Exponenten!
+\end{RemarkBox}
