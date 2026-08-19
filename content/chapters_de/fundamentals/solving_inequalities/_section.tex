@@ -11,19 +11,22 @@ tritt bei der Multiplikation oder Division mit einer negativen Zahl auf.
   \[
     <,\qquad \leq,\qquad >,\qquad \geq.
   \]
-  Beispielsweise sind $5x+2=3$ eine Gleichung und $5x+2>3$ eine Ungleichung.
 \end{DefinitionBox}
 
+Beispielsweise ist $\begin{array}{c} 5x+2=3 \\ [0.3em] 5x+2>3 \end{array}$ eine
+$\begin{array}{l} \text{Gleichung.} \\[0.3em] \text{Ungleichung.} \end{array}$ \\
+
+Ungleichungen lassen sich ähnlich wie Gleichungen umformen.
 \begin{ExampleBox}{Lineare Ungleichung}{fundamentals_linear_inequality_example}
-  Gesucht sind alle $x\in\R$ mit $5x+2>3$.
+  Gesucht sind alle reellen Lösungen $x\in\R$ der Ungleichung $5x+2>3$.
   \begin{ClozeArea}[25]{7}
-    \begin{align*}
-      &\phantom{\Longleftrightarrow}\quad 5x+2>3
-        &&\quad\Big|\;-2 \\
-      &\Longleftrightarrow\quad 5x>1
-        &&\quad\Big|\;:5 \\
-      &\Longleftrightarrow\quad x>\frac15.
-    \end{align*}
+    \[
+      \begin{array}{r@{\quad}l@{\qquad}l}
+        & 5x+2>3 & \TransformOp{-2} \\[0.7em]
+        \Longleftrightarrow & 5x>1 & \TransformOp{:5} \\[0.7em]
+        \Longleftrightarrow & x>\dfrac15. &
+      \end{array}
+    \]
   \end{ClozeArea}
   Damit ist die Lösungsmenge
   \[
@@ -31,32 +34,47 @@ tritt bei der Multiplikation oder Division mit einer negativen Zahl auf.
   \]
 \end{ExampleBox}
 
+
 \begin{KeyPointBox}{Umkehrung des Vergleichszeichens}{fundamentals_reversing_inequality_sign}
-  Wird eine Ungleichung auf beiden Seiten mit einer negativen Zahl
-  multipliziert oder durch eine negative Zahl dividiert, kehrt sich das
-  Vergleichszeichen um:
-  \begin{ClozeArea}[28]{6}
-    \[
-      a<b \quad\Longleftrightarrow\quad -a>-b,
-      \qquad
-      a\leq b \quad\Longleftrightarrow\quad -a\geq-b.
-    \]
-  \end{ClozeArea}
+  Wird eine Ungleichung auf beiden Seiten mit einer negativen Zahl multipliziert (oder der Kehrwert gebildet),
+  kehrt sich das Vergleichszeichen um.
+  \begin{align*}
+      a<b \quad &\Longleftrightarrow \quad -a>-b, \\
+      a\leq b \quad &\Longleftrightarrow \quad -a\geq-b.
+  \end{align*}
 \end{KeyPointBox}
 
-\begin{ExampleBox}{Division durch eine negative Zahl}{fundamentals_negative_division_inequality_example}
-  Gesucht sind alle $x\in\R$ mit $-2x+3<7$.
-  \begin{ClozeArea}[27]{7}
-    \begin{align*}
-      &\phantom{\Longleftrightarrow}\quad -2x+3<7
-        &&\quad\Big|\;-3 \\
-      &\Longleftrightarrow\quad -2x<4
-        &&\quad\Big|\;:(-2) \\
-      &\Longleftrightarrow\quad x>-2.
-    \end{align*}
-  \end{ClozeArea}
-  Bei der Division durch $-2$ wird aus $<$ das Zeichen $>$. Somit gilt
-  \[
-    \mathcal{L}=\Cloze{7cm}{(-2,\infty)}.
-  \]
+
+\begin{ExampleBox}{Umkehrung des Vergleichszeichens in Ungleichungen}{fundamentals_reversing_inequality_sign_examples}
+    \begin{enumerate}[label=(\alph*)]
+      \item Vergleichszeichen bei Multiplikation mit einer negativen Zahl
+        \[
+          \displaystyle 4<5 \quad\TransformOp{\cdot(-1)}
+          \qquad \Longleftrightarrow \qquad
+          -4\Cloze{0.6cm}{>}-5.
+        \]
+      \item Vergleichszeichen bei Kehrwertbildung
+        \[
+          3\geq2 \quad\TransformOp{\frac{1}{\left(\ldots\right)}}
+          \qquad \Longleftrightarrow \qquad
+          \frac{1}{3}\Cloze{0.6cm}{\leq}\frac{1}{2}
+        \]
+
+      \item Lösen der Ungleichung $-2x+3<7$.
+        \IfClozeTF{%
+          \begin{ClozeArea}[31]{8}
+          \end{ClozeArea}
+        }{%
+          \[
+            \begin{array}{r@{\quad}l@{\qquad}l}
+              & -2x+3<7 & \TransformOp{-3} \\[0.7em]
+              \Longleftrightarrow & -2x<4
+                & \TransformOp{:(-2)\quad\text{(Vergleichszeichen wird umgekehrt)}} \\[0.7em]
+              \Longleftrightarrow & x>-2. &
+            \end{array}
+          \]
+        }
+        Somit ist die Lösungsmenge
+        $\mathcal{L}=\Cloze{2.5cm}{(-2,\infty)}$.
+    \end{enumerate}
 \end{ExampleBox}

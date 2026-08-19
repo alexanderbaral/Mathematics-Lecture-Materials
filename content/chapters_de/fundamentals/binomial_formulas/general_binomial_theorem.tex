@@ -9,23 +9,30 @@ verallgemeinerten binomischen Lehrsatz.
 
 \begin{TheoremBox}{Allgemeiner binomischer Lehrsatz}{fundamentals_general_binomial_theorem}
   Für $a,b\in\R$ und $n\in\N_0$ gilt
-  \[
-    (a+b)^n =\sum_{k=0}^{n} \; \binom{n}{k} \; a^{n-k} \; b^k.
-  \]
+  \begin{align*}
+    (a+b)^n
+      &=\sum_{k=0}^{n}\binom{n}{k}\;a^{n-k}\;b^k \\
+      &=\binom{n}{0}\;a^n\;b^0
+        +\binom{n}{1}\;a^{n-1}\;b^1
+        +\binom{n}{2}\;a^{n-2}\;b^2
+        +\dots
+        +\binom{n}{n-1}\;a^1\;b^{n-1}
+        +\binom{n}{n}\;a^0\;b^n.
+  \end{align*}
   wobei $\binom{n}{k}$ der Binomialkoeffizient ist.
 \end{TheoremBox}
+Die Exponenten von \(a\) und \(b\) laufen gegenläufig. Die Summe der Exponenten ist in jedem Summanden gleich \(n\).
 
+Um die Formel anwenden zu können fehlt nun noch die Definition des Binomialkoeffizienten $\binom{n}{k}$.
 \begin{DefinitionBox}{Binomialkoeffizient}{fundamentals_binomial_coefficient}
-  Für $n\in\N_0$ und $k\in\{0,1,\dots,n\}$ heißt
-  \emph{Binomialkoeffizient} \EnglishTerm{binomial coefficient} die Zahl
+  Für $n\in\N_0$ ist der \emph{Binomialkoeffizient} \EnglishTerm{binomial coefficient} gegeben durch
   \[
-    \binom{n}{k}=\frac{n!}{k!(n-k)!}.
+    \binom{n}{k} := \frac{n!}{k! \; (n-k)!}.
+    \qquad (0 \leq k \leq n)
   \]
 \end{DefinitionBox}
 
-Die Potenz von $a$ beginnt bei $n$ und nimmt in jedem Summanden um $1$ ab.
-Gleichzeitig beginnt die Potenz von $b$ bei $0$ und nimmt jeweils um $1$ zu.
-Die Summe der beiden Exponenten ist in jedem Summanden gleich $n$.
+
 
 \begin{ExampleBox}{Binomischer Lehrsatz für $n=3$}{fundamentals_binomial_theorem_n_three}
   \begin{ClozeArea}[34]{30}
@@ -49,16 +56,16 @@ Die Summe der beiden Exponenten ist in jedem Summanden gleich $n$.
   \end{ClozeArea}
 \end{ExampleBox}
 
-Analog ergibt sich für $n = 1, 2, 3, 4, 5 , \ldots$ der folgende Überblick:
-\begin{align*}
-  (a+b)^0 &= 1,\\
-  (a+b)^1 &= a+b,\\
-  (a+b)^2 &= a^2+2ab+b^2,\\
-  (a+b)^3 &= a^3+3a^2b+3ab^2+b^3,\\
-  (a+b)^4 &= a^4+4a^3b+6a^2b^2+4ab^3+b^4,\\
-  (a+b)^5 &= a^5+5a^4b+10a^3b^2+10a^2b^3+5ab^4+b^5 \\
-  &\vdots
-\end{align*}
+Analog ergibt sich für $n=0,1,2,3,4,5,\ldots$ der folgende Überblick:
+\begin{alignat*}{2}
+  n&=0:\qquad &(a+b)^0&=1,\\
+  n&=1:\qquad &(a+b)^1&=a+b,\\
+  n&=2:\qquad &(a+b)^2&=a^2+2ab+b^2,\\
+  n&=3:\qquad &(a+b)^3&=a^3+3a^2b+3ab^2+b^3,\\
+  n&=4:\qquad &(a+b)^4&=a^4+4a^3b+6a^2b^2+4ab^3+b^4,\\
+  n&=5:\qquad &(a+b)^5&=a^5+5a^4b+10a^3b^2+10a^2b^3+5ab^4+b^5 \\
+   &&&\vdots
+\end{alignat*}
 
 
 
@@ -104,7 +111,13 @@ Regeln:
   \node[anchor=east,text=black!55] at (-3.4,-3) {$n=3$};
   \node[fill=white] at (-1.5,-3) {$1$};
   \node[fill=white] at (-0.5,-3) {$3$};
-  \node[fill=white] at (0.5,-3) {$3$};
+  \node[
+    fill=white,
+    draw=olive!85!black,
+    very thick,
+    rounded corners=2pt,
+    inner sep=2pt
+  ] (exampleCoefficient) at (0.5,-3) {$3$};
   \node[fill=white] at (1.5,-3) {$1$};
 
   \node[anchor=east,text=black!55] at (-3.4,-4) {$n=4$};
@@ -121,6 +134,17 @@ Regeln:
   \node[fill=white] at (0.5,-5) {$10$};
   \node[fill=white] at (1.5,-5) {$5$};
   \node[fill=white] at (2.5,-5) {$1$};
+
+  \node[
+    anchor=west,
+    font=\normalsize,
+    fill=white,
+    text=olive!85!black,
+    inner sep=2pt
+  ] (exampleCoefficientLabel) at (2.8,-2.45)
+    {$\binom{3}{2}=3$};
+  \draw[olive!85!black,very thick]
+    (exampleCoefficient.north) -- ++(0,0.18) -- (exampleCoefficientLabel.west);
 
 \end{tikzpicture}
 \end{center}
@@ -139,13 +163,89 @@ Regeln:
 \IfClozeTF{\PascalTriangleGrid}{\PascalTriangleFigure}
 \endgroup
 
-Die Zeile bestimmt den oberen Index $n$. Die blau gestrichelten, schräg
-verlaufenden Spalten markieren jeweils einen festen unteren Index $k$. Der
-Eintrag in der Zeile $n$ und der Spalte $k$ ist somit $\binom{n}{k}$.
-Beispielsweise enthält die Zeile $n=5$ die Koeffizienten
-\[
-  1,\ 5,\ 10,\ 10,\ 5,\ 1.
-\]
+\noindent\begin{minipage}{\linewidth}
+\begin{KeyPointBox}{Binomialkoeffizienten im Pascalschen Dreieck}%
+  {fundamentals_pascal_triangle_binomial_coefficients}
+  Im Pascalschen Dreieck stehen alle Binomialkoeffizienten $\binom{n}{k}$.
+  \begin{center}
+    \begin{tikzpicture}
+      \node[inner sep=0pt,font=\Large] (coefficient)
+        {$\displaystyle\binom{n}{k}$};
+
+      \node[anchor=west,font=\normalsize] (rowLabel)
+        at (2.2cm,0.6cm) {Zeile im Dreieck};
+      \node[anchor=west,font=\normalsize] (columnLabel)
+        at (2.2cm,-0.6cm) {Spalte im Dreieck};
+
+      \draw[black,thick,-{Stealth[length=2mm]}]
+        ([xshift=0.6mm,yshift=4.1mm]coefficient.east)
+        -- ([xshift=-1.5mm]rowLabel.west);
+      \draw[black,thick,-{Stealth[length=2mm]}]
+        ([xshift=0.6mm,yshift=-4.1mm]coefficient.east)
+        -- ([xshift=-1.5mm]columnLabel.west);
+    \end{tikzpicture}
+  \end{center}
+  Damit lassen sich die Koeffizienten einer binomischen Formel direkt aus der
+  Zeile $n$ ablesen.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Binomische Formel für $n=5$}%
+  {fundamentals_pascal_triangle_binomial_formula_n_five}
+  Die Koeffizienten der binomischen Formel liefert uns direkt die Zeile $n=5$
+  im Pascalschen Dreieck:
+  \begin{center}
+    \begin{tikzpicture}
+      \matrix (coefficientMap) [
+        matrix of math nodes,
+        nodes={font=\normalsize,inner sep=1pt,anchor=base},
+        column sep=1.5pt,
+        row sep=1.5mm
+      ] {
+        {}
+          & |[text=black!55]| \displaystyle\binom{5}{0} & {} & {}
+          & |[text=black!55]| \displaystyle\binom{5}{1} & {} & {}
+          & |[text=black!55]| \displaystyle\binom{5}{2} & {} & {}
+          & |[text=black!55]| \displaystyle\binom{5}{3} & {} & {}
+          & |[text=black!55]| \displaystyle\binom{5}{4} & {} & {}
+          & |[text=black!55]| \displaystyle\binom{5}{5} & {} \\
+        {}
+          & |[text=black!55]| \rotatebox[origin=c]{90}{$=$} & {} & {}
+          & |[text=black!55]| \rotatebox[origin=c]{90}{$=$} & {} & {}
+          & |[text=black!55]| \rotatebox[origin=c]{90}{$=$} & {} & {}
+          & |[text=black!55]| \rotatebox[origin=c]{90}{$=$} & {} & {}
+          & |[text=black!55]| \rotatebox[origin=c]{90}{$=$} & {} & {}
+          & |[text=black!55]| \rotatebox[origin=c]{90}{$=$} & {} \\
+        |[text=black!55]| n=5:
+          & |[draw=THMBlue,very thick,rounded corners=2pt,minimum width=8mm,minimum height=8mm]| \Cloze{7mm}{1}
+          & {} & {}
+          & |[draw=THMBlue,very thick,rounded corners=2pt,minimum width=8mm,minimum height=8mm]| \Cloze{7mm}{5}
+          & {} & {}
+          & |[draw=THMBlue,very thick,rounded corners=2pt,minimum width=8mm,minimum height=8mm]| \Cloze{7mm}{10}
+          & {} & {}
+          & |[draw=THMBlue,very thick,rounded corners=2pt,minimum width=8mm,minimum height=8mm]| \Cloze{7mm}{10}
+          & {} & {}
+          & |[draw=THMBlue,very thick,rounded corners=2pt,minimum width=8mm,minimum height=8mm]| \Cloze{7mm}{5}
+          & {} & {}
+          & |[draw=THMBlue,very thick,rounded corners=2pt,minimum width=8mm,minimum height=8mm]| \Cloze{7mm}{1}
+          & {} \\[5mm]
+        (a+b)^5=
+          & \Cloze{7mm}{\textcolor{THMBlue}{1}} & a^5 & +
+          & \Cloze{7mm}{\textcolor{THMBlue}{5}} & a^4b & +
+          & \Cloze{7mm}{\textcolor{THMBlue}{10}} & a^3b^2 & +
+          & \Cloze{7mm}{\textcolor{THMBlue}{10}} & a^2b^3 & +
+          & \Cloze{7mm}{\textcolor{THMBlue}{5}} & ab^4 & +
+          & \Cloze{7mm}{\textcolor{THMBlue}{1}} & b^5 \\
+      };
+
+      \foreach \column in {2,5,8,11,14,17} {
+        \draw[THMBlue!75,thick,-{Stealth[length=2mm]}]
+          (coefficientMap-3-\column.south)
+          -- (coefficientMap-4-\column.north);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
 
 \begin{RemarkBox}[
   title=\Lang{Eigenschaften der Binomialkoeffizienten}{Properties of binomial coefficients},
@@ -153,20 +253,36 @@ Beispielsweise enthält die Zeile $n=5$ die Koeffizienten
 ]
   Für die Binomialkoeffizienten gelten folgende Eigenschaften:
   \begin{itemize}
-    \item Für $n\in\N_0$ sind die beiden Randwerte jeder Zeile gleich $1$:
-      \[
-        \binom{n}{0}=1=\binom{n}{n}.
-      \]
-    \item Für $n\in\N$ sind die beiden unmittelbar danebenliegenden Werte
-      gleich $n$:
-      \[
-        \binom{n}{1}=n=\binom{n}{n-1}.
-      \]
-    \item Für $n\in\N_0$ und $0\leq k\leq n$ ist das Pascalsche Dreieck
-      bezüglich seiner Mitte symmetrisch:
-      \[
-        \binom{n}{k}=\binom{n}{n-k}.
-      \]
-      Beispielsweise ist $\binom{7}{2}=\binom{7}{5}=21$.
+    \item In jeder Zeile sind die beiden Randwerte gleich $1$ und die unmittelbar danebenliegenden Werte gleich $n$
+      \begin{center}
+        \IfClozeTF{%
+          \begin{tikzpicture}[baseline=(current bounding box.center)]
+            \draw[step=5mm,black!14,line width=0.2pt]
+              (0,0) grid (40mm,10mm);
+            \draw[black!25,line width=0.3pt]
+              (0,0) rectangle (40mm,10mm);
+          \end{tikzpicture}
+          \qquad und \qquad
+          \begin{tikzpicture}[baseline=(current bounding box.center)]
+            \draw[step=5mm,black!14,line width=0.2pt]
+              (0,0) grid (40mm,10mm);
+            \draw[black!25,line width=0.3pt]
+              (0,0) rectangle (40mm,10mm);
+          \end{tikzpicture}%
+        }{%
+          $\displaystyle
+            \binom{n}{0}=1=\binom{n}{n}
+            \qquad \text{und} \qquad
+            \binom{n}{1}=n=\binom{n}{n-1}.$%
+        }
+      \end{center}
+    \item Das Pascalsche Dreieck ist bezüglich seiner Mitte symmetrisch:
+      \begin{ClozeArea}[14]{2}
+        \centering
+        $\displaystyle
+          \binom{n}{k}=\binom{n}{n-k}.$
+      \end{ClozeArea}
+      Anschaulich bedeutet dies, dass sich jede Zeile wie ein
+      \Cloze{5cm}{Palindrom} in der Sprachwissenschaft liest.
   \end{itemize}
 \end{RemarkBox}

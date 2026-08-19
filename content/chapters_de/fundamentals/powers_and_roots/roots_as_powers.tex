@@ -4,15 +4,17 @@
 Die Schreibweise für rationale Exponenten soll mit dem dritten Potenzgesetz
 verträglich sein. Für $a>0$ setzen wir daher $\sqrt[n]{a}=a^r$. Da die
 $n$-te Potenz der $n$-ten Wurzel wieder $a$ ergibt, muss gelten:
-\[
-  (a^r)^n=a
-  \quad\Longleftrightarrow\quad
-  a^{rn}=a^1
-  \quad\Longleftrightarrow\quad
-  rn=1
-  \quad\Longleftrightarrow\quad
-  r=\frac1n.
-\]
+\begin{ClozeArea}{3}
+  \centering
+  $\displaystyle
+    (a^r)^n=a
+    \quad\Longleftrightarrow\quad
+    a^{rn}=a^1
+    \quad\Longleftrightarrow\quad
+    rn=1
+    \quad\Longleftrightarrow\quad
+    r=\frac1n.$
+\end{ClozeArea}
 
 \begin{KeyPointBox}{Rationale Exponenten}{fundamentals_rational_exponents}
   Für $a>0$, $m\in\Z$ und $n\in\N$ mit $n\geq2$ gilt
@@ -28,30 +30,49 @@ $n$-te Potenz der $n$-ten Wurzel wieder $a$ ergibt, muss gelten:
   Sie sind keine neuen Rechengesetze, sondern unmittelbare Folge der Potenzgesetze.
   \begin{align*}
     \sqrt[n]{a}\,\sqrt[n]{b} =\sqrt[n]{ab},
-    &\qquad \qquad \text{, da} \quad
+    &\qquad \text{, da} \quad
     \Cloze{12cm}{\sqrt[n]{a}\,\sqrt[n]{b} = a^{1/n}b^{1/n} \overset{\text{2. PG}}{=} (ab)^{1/n} =\sqrt[n]{ab}}; \\[0.9em]
     %
     \frac{\sqrt[n]{a}}{\sqrt[n]{b}} =\sqrt[n]{\frac ab},
-    &\qquad \qquad \text{, da} \quad
+    &\qquad \text{, da} \quad
     \Cloze{12cm}{\frac{\sqrt[n]{a}}{\sqrt[n]{b}} =\frac{a^{1/n}}{b^{1/n}} \overset{\text{2. PG}}{=} \left(\frac ab\right)^{1/n} =\sqrt[n]{\frac ab}}; \\[0.9em]
     %
     \sqrt[n]{\sqrt[m]{a}} =\sqrt[nm]{a},
-    &\qquad \qquad \text{, da} \quad 
+    &\qquad \text{, da} \quad
     \Cloze{12cm}{\sqrt[n]{\sqrt[m]{a}} =\left(a^{1/m}\right)^{1/n} \overset{\text{3. PG}}{=} a^{1/(mn)} =\sqrt[nm]{a}}.
   \end{align*}
 \end{KeyPointBox}
 
 \begin{RemarkBox}
-Wurzeln dürfen also über Produkte und Quotienten verteilt werden, aber keinesfalls über Summen oder Differenzen: Im Allgemeinen gilt
-  \[
-    \sqrt{a+b}\neq\sqrt a+\sqrt b.
-  \]
+  Wurzeln dürfen über Produkte und Quotienten verteilt werden, aber keinesfalls
+  über Summen oder Differenzen.
+
+  \begin{center}
+    \begin{tabularx}{0.94\linewidth}{@{}>{\centering\arraybackslash}X >{\centering\arraybackslash}X@{}}
+      $\sqrt{ab}\,\Cloze{8mm}{=}\,\sqrt a\cdot\sqrt b$
+        \IfClozeTF{}{%
+          \quad\textcolor{green!50!black}{%
+            \tikz[baseline=-0.55ex]
+              \draw[line width=1.3pt]
+                (0,0.6ex) -- (0.5ex,0) -- (1.55ex,1.4ex);%
+          }%
+        }
+      &
+      \textcolor{red!75!black}{%
+        $\sqrt{a+b}\,\Cloze{8mm}{\neq}\,\sqrt a+\sqrt b$%
+      }
+        \IfClozeTF{}{%
+          \quad\textcolor{red!75!black}{\textbf{i.\,A. falsch}}%
+        }
+    \end{tabularx}
+  \end{center}
 \end{RemarkBox}
 
 \begin{ExampleBox}{Rationale Exponenten}{fundamentals_rational_exponents_example}
   \begin{enumerate}[label=(\alph*),itemsep=0.35em]
-    \item $27^{2/3} = \Cloze{9cm}{\left(\sqrt[3]{27}\right)^2=3^2=9}$
-    \item $9^{-1/2} = \Cloze{9cm}{\displaystyle\frac1{\sqrt9}=\frac13}$
-    \item $\sqrt{\sqrt[3]{64}} = \Cloze{9cm}{\sqrt[6]{64}=2}$
+    \item $27^{2/3} = \Cloze{12cm}{\left(\sqrt[3]{27}\right)^2=3^2=9}$
+    \item $9^{-1/2} = \Cloze{12cm}{\displaystyle\frac1{\sqrt9}=\frac13}$
+    \item $4^{2,5} = \Cloze{12cm}{4^{\frac{5}{2}}=\left(4^{\frac{1}{2}}\right)^5=\left(\sqrt{4}\right)^5=4\sqrt{2}}$
+    \item $\sqrt{\sqrt[3]{64}} = \Cloze{12cm}{\sqrt[6]{64}=2}$
   \end{enumerate}
 \end{ExampleBox}

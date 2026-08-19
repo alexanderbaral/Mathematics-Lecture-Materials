@@ -14,6 +14,11 @@
   {\color{black!55}\itshape(German: #1)}%
 }
 
+% Right-hand operation in an equation transformation chain.
+\NewDocumentCommand{\TransformOp}{m}{%
+  {\color{black!55}\Big|\;#1}%
+}
+
 \NewDocumentCommand{\Cloze}{m m}{%
   \IfClozeTF
     {{\setlength{\fboxsep}{0pt}%
