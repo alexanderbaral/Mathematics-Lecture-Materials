@@ -5,34 +5,45 @@ Der Satz des Pythagoras verknüpft die drei Seitenlängen eines rechtwinkligen
 Dreiecks. Dabei bezeichnet $c$ die Hypotenuse und $a,b$ die Katheten.
 
 \begin{TheoremBox}{Satz des Pythagoras}{fundamentals_pythagorean_theorem}
-  Ein Dreieck mit der längsten Seite $c$ ist genau dann rechtwinklig, wenn
-  \begin{ClozeArea}[25]{4}
-    \[
-      a^2+b^2=c^2.
-    \]
-  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[t]{0.64\linewidth}
+    Für jedes Dreieck sind die folgenden Aussagen äquivalent:
+    \begin{ClozeArea}[22]{3}
+      \[
+        \begin{gathered}
+          \text{Dreieck ist rechtwinklig}\\[-0.1em]
+          \gamma=90^\circ
+        \end{gathered}
+        \quad \Longleftrightarrow \quad
+        a^2+b^2=c^2.
+      \]
+    \end{ClozeArea}
+    Dabei ist die Seite $c$ die dem Winkel $\gamma$ gegenüberliegende Seite.
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.31\linewidth}
+    \vspace{0pt}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
+  \end{minipage}
 \end{TheoremBox}
+Aufgrund der Äquivalenz beider Aussagen ist der Satz des Pythagoras nicht nur ein Werkzeug
+um Seitenlängen in rechtwinkligen Dreiecken zu berechnen, sondern auch um die
+Rechtwinkligkeit eines Dreiecks zu prüfen.
 
-Die Aussage gilt in beide Richtungen: In jedem rechtwinkligen Dreieck gilt die
-Gleichung. Umgekehrt ist ein Dreieck rechtwinklig, wenn seine Seitenlängen die
-Gleichung erfüllen.
-
-\begin{ExampleBox}{Fehlende Kathete}{fundamentals_pythagorean_theorem_example}
+\begin{ExampleBox}{Satz des Pythagoras}{fundamentals_pythagorean_theorem_example}
+  \begin{minipage}[c]{0.62\linewidth}
   Gegeben sind die Hypotenuse $c=5\,\mathrm{cm}$ und die Kathete
   $b=4\,\mathrm{cm}$. Gesucht ist die Kathete $a$.
-
-  \begin{center}
+    \begin{ClozeArea}[22]{7}
+      \begin{align*}
+        \phantom{\Longrightarrow \quad} c^2&=a^2+b^2,\\
+        \Longrightarrow \quad a&=\sqrt{c^2-b^2}=\sqrt{(5\,\mathrm{cm})^2-(4\,\mathrm{cm})^2}
+         =\sqrt{9\,\mathrm{cm}^2}=3\,\mathrm{cm}.
+      \end{align*}
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.33\linewidth}
+    \centering
     \input{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
-  \end{center}
-
-  \begin{ClozeArea}[34]{9}
-    \begin{align*}
-      c^2&=a^2+b^2,\\
-      a&=\sqrt{c^2-b^2}
-        =\sqrt{(5\,\mathrm{cm})^2-(4\,\mathrm{cm})^2}\\
-       &=\sqrt{9\,\mathrm{cm}^2}=3\,\mathrm{cm}.
-    \end{align*}
-  \end{ClozeArea}
-
-  Die negative Lösung wird verworfen, da eine Seitenlänge positiv ist.
+  \end{minipage}
 \end{ExampleBox}

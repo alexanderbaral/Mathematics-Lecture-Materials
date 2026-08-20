@@ -4,8 +4,8 @@
     line cap=round,
     every node/.style={font=\small}
   ]
-  \draw[->,thick] (-0.35,0.55) -- (4.55,0.55)
-    node[right] {$\alpha_{\mathrm G}$};
+  \draw[->,thick,olive] (-0.35,0.55) -- (4.55,0.55)
+    node[right,text=olive] {$\alpha_{\mathrm G}$};
   \draw[->,thick,THMBlue] (-0.35,-0.75) -- (4.55,-0.75)
     node[right] {$\alpha_{\mathrm B}$};
 
@@ -17,13 +17,13 @@
       4/{360^\circ}/{2\pi}
     } {
       \draw[black!45,densely dashed] (\x,1.12) -- (\x,-1.18);
-      \draw[thick] (\x,0.45) -- (\x,0.65);
+      \draw[olive,thick] (\x,0.45) -- (\x,0.65);
       \draw[THMBlue,thick] (\x,-0.85) -- (\x,-0.65);
-      \node[below] at (\x,0.42) {$\degree$};
+      \node[below,olive] at (\x,0.42) {$\degree$};
       \node[below,THMBlue] at (\x,-0.88) {$\radian$};
     }
 
-  \node[anchor=east,font=\bfseries] at (-0.45,0.55)
+  \node[anchor=east,font=\bfseries,olive] at (-0.45,0.55)
     {\Lang{Gradmaß}{Degree measure}:};
   \node[anchor=east,font=\bfseries,THMBlue] at (-0.45,-0.75)
     {\Lang{Bogenmaß}{Radian measure}:};

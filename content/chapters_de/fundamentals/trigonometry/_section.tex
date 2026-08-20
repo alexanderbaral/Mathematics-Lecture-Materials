@@ -9,33 +9,35 @@ am allgemeinen Dreieck.
   Ein \emph{Dreieck} \EnglishTerm{triangle} ist ein Vieleck mit drei Ecken,
   drei Seiten und drei Innenwinkeln.
 
-  \begin{center}
+  \medskip
+  \noindent
+  \begin{minipage}[c]{0.50\linewidth}
+    \centering
     \input{content/resources/chapters/fundamentals/tikz/general_triangle.tex}
-  \end{center}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.47\linewidth}
+    \centering
+    \renewcommand{\arraystretch}{1.35}
+    \begin{tabular}{@{}c|c|c@{}}
+      \toprule
+      \textbf{Ecke}
+        & \shortstack{\textbf{gegenüberliegende}\\\textbf{Seite}}
+        & \textbf{Innenwinkel}\\
+      \midrule
+      $A$ & \Cloze{2.7cm}{$a$} & \Cloze{1.9cm}{$\alpha$}\\
+      $B$ & \Cloze{2.7cm}{$b$} & \Cloze{1.9cm}{$\beta$}\\
+      $C$ & \Cloze{2.7cm}{$c$} & \Cloze{1.9cm}{$\gamma$}\\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
 
   Die Seite, die einer Ecke gegenüberliegt, wird mit dem entsprechenden
   Kleinbuchstaben bezeichnet. Der Innenwinkel an einer Ecke trägt den
   entsprechenden griechischen Buchstaben.
-
-  \begin{center}
-    \renewcommand{\arraystretch}{1.35}
-    \begin{tabular}{c|c|c}
-      \toprule
-      \textbf{Ecke} & \textbf{gegenüberliegende Seite} & \textbf{Innenwinkel}\\
-      \midrule
-      $A$ & $a$ & $\alpha$\\
-      $B$ & $b$ & $\beta$\\
-      $C$ & $c$ & $\gamma$\\
-      \bottomrule
-    \end{tabular}
-  \end{center}
 \end{DefinitionBox}
-
+%
 \begin{KeyPointBox}{Winkelsumme im Dreieck}{fundamentals_triangle_angle_sum}
-  In jedem Dreieck beträgt die Summe der drei Innenwinkel $180^\circ$:
-  \[
-    \Cloze{7cm}{\alpha+\beta+\gamma=180^\circ.}
-  \]
+  In jedem Dreieck beträgt die Winkelsumme $180^\circ$: $\quad \Cloze{7cm}{\alpha+\beta+\gamma=180^\circ.}$
 \end{KeyPointBox}
 
 \input{content/chapters_de/fundamentals/trigonometry/right_triangles.tex}

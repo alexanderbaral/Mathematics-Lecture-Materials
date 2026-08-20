@@ -58,6 +58,9 @@
 \newlength{\EquationTemplateUpperWidth}
 \newlength{\EquationTemplateLowerWidth}
 \newlength{\EquationTemplateMaxWidth}
+\newlength{\EquationTemplateUpperNoteWidth}
+\newlength{\EquationTemplateLowerNoteWidth}
+\newlength{\EquationTemplateMaxNoteWidth}
 \NewDocumentCommand{\EquationTemplateMeasure}{m m}{%
   \settowidth{\EquationTemplateUpperWidth}{\ensuremath{\displaystyle #1}}%
   \settowidth{\EquationTemplateLowerWidth}{\ensuremath{\displaystyle #2}}%
@@ -67,12 +70,24 @@
     \setlength{\EquationTemplateMaxWidth}{\EquationTemplateLowerWidth}%
   \fi
 }
+\NewDocumentCommand{\EquationTemplateMeasureNotes}{m m}{%
+  \settowidth{\EquationTemplateUpperNoteWidth}{#1}%
+  \settowidth{\EquationTemplateLowerNoteWidth}{#2}%
+  \ifdim\EquationTemplateUpperNoteWidth>\EquationTemplateLowerNoteWidth
+    \setlength{\EquationTemplateMaxNoteWidth}{\EquationTemplateUpperNoteWidth}%
+  \else
+    \setlength{\EquationTemplateMaxNoteWidth}{\EquationTemplateLowerNoteWidth}%
+  \fi
+}
 \NewDocumentCommand{\EquationTemplateOverlay}{m m m}{%
   \makebox[0pt][l]{%
     \hspace{#2}\raisebox{#1}[0pt][0pt]{#3}}%
 }
+\NewDocumentCommand{\EquationTemplateRelation}{m m}{%
+  \rotatebox{#2}{\ensuremath{\displaystyle #1}}%
+}
 \NewDocumentCommand{\EquationTemplateEquals}{m}{%
-  \rotatebox{#1}{\ensuremath{\displaystyle =}}%
+  \EquationTemplateRelation{=}{#1}%
 }
 \NewDocumentCommand{\EquationTemplateUse}{m}{%
   \ifmmode
@@ -89,28 +104,34 @@
 }
 
 % One expression continued in two alternative directions:
-% \EquationBranches{<start>}{<upper continuation>}{<upper note>}
-%                  {<lower continuation>}{<lower note>}
-\NewDocumentCommand{\EquationBranchesContent}{m m m m m}{%
+% \EquationBranches[<relation>]{<start>}{<upper continuation>}{<upper note>}
+%                              {<lower continuation>}{<lower note>}
+\NewDocumentCommand{\EquationBranchesContent}{O{=} m m m m m}{%
   \begingroup
-  \EquationTemplateMeasure{#2}{#4}%
-  \ensuremath{\displaystyle #1}%
+  \EquationTemplateMeasure{#3}{#5}%
+  \EquationTemplateMeasureNotes{#4}{#6}%
+  \ensuremath{\displaystyle #2}%
   \hspace{0.15cm}%
-  \EquationTemplateOverlay{0.7em}{0pt}{\EquationTemplateEquals{35}}%
+  \EquationTemplateOverlay{0.7em}{0pt}{\EquationTemplateRelation{#1}{35}}%
   \EquationTemplateOverlay{1.4em}{0.55cm}{%
-    \makebox[\EquationTemplateMaxWidth][l]{\ensuremath{\displaystyle #2}}%
-    \hspace{0.55cm}#3}%
-  \EquationTemplateOverlay{-0.7em}{0pt}{\EquationTemplateEquals{-35}}%
+    \makebox[\EquationTemplateMaxWidth][l]{\ensuremath{\displaystyle #3}}%
+    \hspace{0.55cm}#4}%
+  \EquationTemplateOverlay{-0.7em}{0pt}{\EquationTemplateRelation{#1}{-35}}%
   \EquationTemplateOverlay{-1.4em}{0.55cm}{%
-    \makebox[\EquationTemplateMaxWidth][l]{\ensuremath{\displaystyle #4}}%
-    \hspace{0.55cm}#5}%
+    \makebox[\EquationTemplateMaxWidth][l]{\ensuremath{\displaystyle #5}}%
+    \hspace{0.55cm}#6}%
   \rule[-1.8em]{0pt}{4.3em}%
+  % Reserve the full visible branch width so the complete construction,
+  % including both notes, is centered by the surrounding display.
+  \hspace{1.10cm}%
+  \hspace{\EquationTemplateMaxWidth}%
+  \hspace{\EquationTemplateMaxNoteWidth}%
   \endgroup
 }
 
-\NewDocumentCommand{\EquationBranches}{m m m m m}{%
+\NewDocumentCommand{\EquationBranches}{O{=} m m m m m}{%
   \EquationTemplateUse{%
-    \EquationBranchesContent{#1}{#2}{#3}{#4}{#5}}%
+    \EquationBranchesContent[#1]{#2}{#3}{#4}{#5}{#6}}%
 }
 
 % Two alternative expressions leading to one common result:

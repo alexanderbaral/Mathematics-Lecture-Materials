@@ -1,4 +1,4 @@
-\subsubsection{Trigonometrische Seitenverhältnisse}
+\subsubsection{Trigonometrische Funktionen}
 \label{subsubsec:fundamentals_right_triangles_trigonometric_ratios}
 
 Bezogen auf einen Winkel $\alpha$ heißen die beiden Katheten Ankathete und
@@ -15,82 +15,194 @@ wird.
   \end{center}
 \end{DefinitionBox}
 
+\IfClozeTF{\clearpage}{}
+Im rechtwinkligen Dreieck bestimmt das Verhältnis zweier Seiten den
+betrachteten spitzen Winkel eindeutig; diesen nichttrivialen Zusammenhang
+beschreiben die trigonometrischen Funktionen Sinus, Kosinus und Tangens.
+
 \begin{DefinitionBox}{Sinus, Kosinus und Tangens}{fundamentals_sine_cosine_tangent}
-  Die drei grundlegenden trigonometrischen Seitenverhältnisse sind
+  Die drei grundlegenden trigonometrischen Funktionen sind
   \emph{Sinus} \EnglishTerm{sine}, \emph{Kosinus} \EnglishTerm{cosine} und
-  \emph{Tangens} \EnglishTerm{tangent}:
-  \begin{ClozeArea}[34]{9}
-    \begin{align*}
-      \sin(\alpha)
-        &=\frac{\text{Gegenkathete}}{\text{Hypotenuse}}
-         =\frac{a}{c},\\
-      \cos(\alpha)
-        &=\frac{\text{Ankathete}}{\text{Hypotenuse}}
-         =\frac{b}{c},\\
-      \tan(\alpha)
-        &=\frac{\text{Gegenkathete}}{\text{Ankathete}}
-         =\frac{a}{b}.
-    \end{align*}
-  \end{ClozeArea}
+  \emph{Tangens} \EnglishTerm{tangent}. Mit ihnen wird aus einem gegebenen
+  Winkel das jeweilige Seitenverhältnis berechnet:
+  \par\smallskip
+  \noindent
+  \begin{minipage}[c]{0.54\linewidth}
+    \begin{ClozeArea}[18]{8}
+      \begin{align*}
+        \sin(\alpha)
+          &\coloneqq\frac{\text{Gegenkathete}}{\text{Hypotenuse}}
+           =\frac{a}{c},\\
+        \cos(\alpha)
+          &\coloneqq\frac{\text{Ankathete}}{\text{Hypotenuse}}
+           =\frac{b}{c},\\
+        \tan(\alpha)
+          &\coloneqq\frac{\text{Gegenkathete}}{\text{Ankathete}}
+           =\frac{a}{b}.
+      \end{align*}
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.42\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
+  \end{minipage}
 \end{DefinitionBox}
 
-\begin{RemarkBox}
-  Beim Rechnen muss der Taschenrechner auf das verwendete Winkelmaß eingestellt
-  sein: DEG für Gradmaß oder RAD für Bogenmaß.
-\end{RemarkBox}
-
-Um aus einem bekannten Seitenverhältnis den Winkel zu bestimmen, werden die
-Umkehrungen der trigonometrischen Seitenverhältnisse verwendet:
-
-\begin{KeyPointBox}{Umkehrungen}{fundamentals_inverse_trigonometric_ratios}
-  \begin{align*}
-    \sin(\alpha)=x &\quad\Longleftrightarrow\quad
-      \alpha=\arcsin(x),\\
-    \cos(\alpha)=x &\quad\Longleftrightarrow\quad
-      \alpha=\arccos(x),\\
-    \tan(\alpha)=x &\quad\Longleftrightarrow\quad
-      \alpha=\arctan(x).
-  \end{align*}
+\begin{KeyPointBox}[breakable=false]{Arkusfunktionen}{fundamentals_inverse_trigonometric_ratios}
+  Sinus, Kosinus und Tangens berechnen aus einem Winkel ein Seitenverhältnis.
+  Die \emph{Arkusfunktionen} kehren diese Zuordnung um: Mit ihnen wird aus
+  einem Seitenverhältnis der zugehörige Winkel berechnet.
+  \[
+    \begin{array}{@{}r@{\qquad}l@{\qquad}c@{\qquad}l@{}}
+      \sin(\alpha)=x
+      & \TransformOp{\arcsin(\ldots)}
+      & \Longleftrightarrow
+      & \alpha=\arcsin(x)\\[0.9em]
+      \cos(\alpha)=x
+      & \TransformOp{\arccos(\ldots)}
+      & \Longleftrightarrow
+      & \alpha=\arccos(x)\\[0.9em]
+      \tan(\alpha)=x
+      & \TransformOp{\arctan(\ldots)}
+      & \Longleftrightarrow
+      & \alpha=\arctan(x)
+    \end{array}
+  \]
   Auf vielen Taschenrechnern stehen dafür die Tasten
   $\sin^{-1}$, $\cos^{-1}$ und $\tan^{-1}$.
 \end{KeyPointBox}
 
+\begin{RemarkBox}
+  \noindent
+  \begin{minipage}[c]{0.58\linewidth}
+    Der Taschenrechner muss wissen, in welchem Winkelmaß eine trigonometrische
+    Funktion einen Winkel annimmt bzw. eine Arkusfunktion einen Winkel ausgibt:
+    \texttt{DEG} steht für Gradmaß, \texttt{RAD} für Bogenmaß. Mit der Taste
+    \texttt{DRG} wechselt man zwischen den Modi. \\
+    \begin{equation*}
+      \begin{aligned}
+      \text{\texttt{DEG}}
+        &\;\longleftrightarrow\; \text{Gradmaß }\text{\EnglishTerm{degree measure}},\\
+      \text{\texttt{RAD}}
+        &\;\longleftrightarrow\; \text{Bogenmaß }\text{\EnglishTerm{radian measure}}.
+      \end{aligned}
+    \end{equation*}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.38\linewidth}
+    \centering
+    \includegraphics[width=0.82\linewidth]{content/resources/chapters/fundamentals/images/calculator_angle_mode_rad.png}
+  \end{minipage}
+\end{RemarkBox}
+
 \begin{ExampleBox}{Winkel und Kathete bestimmen}{fundamentals_trigonometric_ratios_example}
-  Gegeben sind $c=5\,\mathrm{cm}$ und $b=4\,\mathrm{cm}$. Gesucht sind der
-  Winkel $\alpha$ und die Kathete $a$.
+  \noindent
+  \begin{minipage}[t]{0.72\linewidth}
+    \vspace{0pt}
+    Gegeben ist ein rechtwinkliges Dreieck mit der Hypotenuse $c=5\,\mathrm{cm}$ und einer Kathete
+    $b=4\,\mathrm{cm}$. Gesucht sind der Winkel $\alpha$ und die Kathete $a$. \\
 
-  \begin{center}
+    Wir berechnen zunächst den Winkel $\alpha$. Da $c$, die Hypotenuse, und $b$,
+    die Ankathete von $\alpha$, bekannt sind, verwenden wir hierfür die Kosinus-Funktion
+    bzw. die Arkus-Kosinus-Funktion:
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.24\linewidth}
+    \vspace{0pt}
+    \centering
     \input{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
-  \end{center}
+  \end{minipage}
+  %
+  \[
+    \Cloze{3.1cm}{\cos(\alpha)=\frac{b}{c}}
+    \quad\Longrightarrow\quad
+    \EquationBranches[\approx]
+      {\Cloze{5.8cm}{%
+        \alpha=\arccos\!\left(\frac{b}{c}\right)
+          =\arccos\!\left(\frac{4\,\mathrm{cm}}{5\,\mathrm{cm}}\right)}}
+      {\Cloze{1.6cm}{36{,}9^\circ}}
+      {\text{(Gradmaß)}}
+      {\Cloze{1.6cm}{0{,}644}}
+      {\text{(Bogenmaß)}}
+  \]
 
-  Zunächst wird der Winkel über den Kosinus bestimmt. Anschließend kann die
-  Kathete mit dem Sinus oder dem Tangens berechnet werden.
-  \begin{ClozeArea}[34]{14}
-    \begin{align*}
-      \cos(\alpha)&=\frac{b}{c}=\frac{4}{5}=0{,}8,\\
-      \alpha&=\arccos(0{,}8)
-        \approx36{,}9^\circ
-        \approx0{,}644
-        \approx0{,}2\pi,\\[0.5em]
-      a&=\sin(36{,}9^\circ)\cdot5\,\mathrm{cm}
-        \approx3\,\mathrm{cm}.
-    \end{align*}
-    Alternativ gilt
-    \[
-      a=\tan(36{,}9^\circ)\cdot4\,\mathrm{cm}
-        \approx3\,\mathrm{cm}.
-    \]
-  \end{ClozeArea}
+  Anschließend berechnen wir die Kathete $a$ mit \dots
+  \begingroup
+  \setlength{\abovedisplayskip}{0.45em}
+  \setlength{\abovedisplayshortskip}{0.45em}
+  \setlength{\belowdisplayskip}{0.65em}
+  \setlength{\belowdisplayshortskip}{0.65em}
+  \begin{itemize}[leftmargin=*,topsep=0.35em,itemsep=0pt,parsep=0pt]
+    \item der Sinus-Funktion:
+      \[
+        \Cloze{3.2cm}{\sin(\alpha)=\frac{a}{c}}
+        \quad\Longrightarrow\quad
+        \Cloze{9.7cm}{%
+          a=\sin(\alpha) \cdot c
+            =\sin(36{,}9^\circ)\cdot5\,\mathrm{cm}
+            \approx3\,\mathrm{cm}}
+      \]
+    \item der Tangens-Funktion:
+      \[
+        \Cloze{3.2cm}{\tan(\alpha)=\frac{a}{b}}
+        \quad\Longrightarrow\quad
+        \Cloze{9.7cm}{%
+          a=\tan(\alpha) \cdot b
+            =\tan(36{,}9^\circ)\cdot4\,\mathrm{cm}
+            \approx3\,\mathrm{cm}}
+      \]
+    \item dem Satz des Pythagoras:
+      \[
+        \Cloze{3.2cm}{a^2+b^2=c^2}
+        \quad\Longrightarrow\quad
+        \Cloze{9.7cm}{%
+          a=\sqrt{c^2-b^2}
+            =\sqrt{(5\,\mathrm{cm})^2-(4\,\mathrm{cm})^2}
+            =3\,\mathrm{cm}}
+      \]
+  \end{itemize}
+  \endgroup
 \end{ExampleBox}
 
+\IfClozeTF{}{\clearpage}
+\subsubsection{Tangens als Quotient}
+
+Aus den Definitionen der trigonometrischen Funktionen folgt unmittelbar:
+
+\begin{KeyPointBox}{Tangens als Quotient}{fundamentals_tangent_quotient}
+  \noindent
+  \begin{minipage}[c]{0.73\linewidth}
+    Im Quotienten aus Sinus und Kosinus kürzt sich die Hypotenuse $c$ heraus:
+    \begin{ClozeArea}[23]{6}
+      \[
+        \frac{\sin(\alpha)}{\cos(\alpha)}
+          =\frac{a/c}{b/c}
+           =\frac{a}{b}
+           =\tan(\alpha)
+        \quad\Longrightarrow\quad
+        \tan(\alpha)=\frac{\sin(\alpha)}{\cos(\alpha)}.
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.23\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
+  \end{minipage}
+\end{KeyPointBox}
+
+Damit können wir nun die Werte der Tangensfunktion $\tan(\ldots)$ aus den entsprechenden Sinus- und
+Kosinuswerten berechnen.
+
+\IfClozeTF{\clearpage}{}
 \subsubsection{Wichtige Winkelwerte}
 
-Für häufig auftretende Winkel sind die Seitenverhältnisse exakt bekannt:
+Für häufig auftretende Winkel sind die Werte der trigonometrischen Funktionen
+exakt bekannt:
 
 \begin{center}
-  \renewcommand{\arraystretch}{1.6}
-  \setlength{\tabcolsep}{7pt}
-  \begin{tabular}{c|ccccc}
+  \IfClozeTF
+    {\renewcommand{\arraystretch}{2.05}}
+    {\renewcommand{\arraystretch}{1.6}}
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\linewidth}{>{\raggedleft\arraybackslash}p{3.6cm}|*{5}{>{\centering\arraybackslash}X}}
     \toprule
     $\alpha$ im Gradmaß
       & $0^\circ$ & $30^\circ$ & $45^\circ$ & $60^\circ$ & $90^\circ$\\
@@ -99,70 +211,95 @@ Für häufig auftretende Winkel sind die Seitenverhältnisse exakt bekannt:
       & $\frac{\pi}{3}$ & $\frac{\pi}{2}$\\
     \midrule
     $\sin(\alpha)$
-      & \Cloze{1cm}{$0$}
-      & \Cloze{1cm}{$\frac12$}
-      & \Cloze{1cm}{$\frac{\sqrt2}{2}$}
-      & \Cloze{1cm}{$\frac{\sqrt3}{2}$}
-      & \Cloze{1cm}{$1$}\\
+      & \Cloze{2.2cm}{$\frac{\sqrt{0}}{2}\mathrlap{\textcolor{gray}{\, = 0 }}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{1}}{2}\mathrlap{\textcolor{gray}{\, = \frac12 }}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{2}}{2}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{3}}{2}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{4}}{2}\mathrlap{\textcolor{gray}{\, = 1 }}$}\\
     $\cos(\alpha)$
-      & \Cloze{1cm}{$1$}
-      & \Cloze{1cm}{$\frac{\sqrt3}{2}$}
-      & \Cloze{1cm}{$\frac{\sqrt2}{2}$}
-      & \Cloze{1cm}{$\frac12$}
-      & \Cloze{1cm}{$0$}\\
+      & \Cloze{2.2cm}{$\frac{\sqrt{4}}{2}\mathrlap{\textcolor{gray}{\, = 1 }}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{3}}{2}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{2}}{2}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{1}}{2}\mathrlap{\textcolor{gray}{\, = \frac12 }}$}
+      & \Cloze{2.2cm}{$\frac{\sqrt{0}}{2}\mathrlap{\textcolor{gray}{\, = 0 }}$}\\
     $\tan(\alpha)$
       & \Cloze{1cm}{$0$}
       & \Cloze{1cm}{$\frac{1}{\sqrt3}$}
       & \Cloze{1cm}{$1$}
       & \Cloze{1cm}{$\sqrt3$}
-      & \Cloze{1.8cm}{\text{nicht definiert}}\\
+      & \textemdash\\
     \bottomrule
-  \end{tabular}
+  \end{tabularx}
 \end{center}
+%
 
-Der Tangens ist bei $90^\circ$ nicht definiert, da dort
-$\cos(90^\circ)=0$ gilt.
+\IfClozeTF{}{\clearpage}
+\subsubsection{Trigonometrischer Pythagoras}
 
-\subsubsection{Beziehungen zwischen Sinus, Kosinus und Tangens}
+Aus dem Satz des Pythagoras folgt eine grundlegende Beziehung zwischen Sinus
+und Kosinus.
 
-Aus den Seitenverhältnissen folgen unmittelbar zwei wichtige Beziehungen.
-
-\begin{KeyPointBox}{Tangens als Quotient}{fundamentals_tangent_quotient}
-  \begin{ClozeArea}[26]{6}
-    \begin{align*}
-      \frac{\sin(\alpha)}{\cos(\alpha)}
-        &=\frac{a/c}{b/c}
-         =\frac{a}{b}
-         =\tan(\alpha),\\
-      \tan(\alpha)&=\frac{\sin(\alpha)}{\cos(\alpha)}.
-    \end{align*}
-  \end{ClozeArea}
+\begin{KeyPointBox}[breakable=false]{Trigonometrischer Pythagoras}{fundamentals_trigonometric_pythagorean_identity}
+  \noindent
+  \begin{minipage}[c]{0.68\linewidth}
+    Ausgehend vom Satz des Pythagoras gilt:
+    \begin{ClozeArea}[21]{8}
+      \[
+        \begin{array}{@{}c@{\quad}l@{\qquad}l@{}}
+          & \vphantom{\left(\frac{a}{c}\right)^2
+              +\left(\frac{b}{c}\right)^2}a^2+b^2=c^2
+          & \TransformOp{:c^2}\\[0.7em]
+          \Longleftrightarrow
+          & \vphantom{\left(\frac{a}{c}\right)^2
+              +\left(\frac{b}{c}\right)^2}
+            \left(\frac{a}{c}\right)^2
+            +\left(\frac{b}{c}\right)^2=1
+          & \\[0.7em]
+          \Longleftrightarrow
+          & \vphantom{\left(\frac{a}{c}\right)^2
+              +\left(\frac{b}{c}\right)^2}
+            \sin^2(\alpha)+\cos^2(\alpha)=1
+            \mathrlap{\quad\text{(trigonometrischer Pythagoras)}}
+          &
+        \end{array}
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.2\linewidth}
+    \centering
+    \input{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
+  \end{minipage}
 \end{KeyPointBox}
 
-\begin{KeyPointBox}{Trigonometrischer Pythagoras}{fundamentals_trigonometric_pythagorean_identity}
-  Teilt man $a^2+b^2=c^2$ durch $c^2$, so folgt
-  \begin{ClozeArea}[26]{6}
-    \[
-      \left(\frac{a}{c}\right)^2
-      +\left(\frac{b}{c}\right)^2=1
-      \quad\Longrightarrow\quad
-      \sin^2(\alpha)+\cos^2(\alpha)=1.
-    \]
-  \end{ClozeArea}
-\end{KeyPointBox}
-
-Beispielsweise gilt
-\[
-  \sin^2(45^\circ)+\cos^2(45^\circ)
-  =\Cloze{7cm}{\left(\frac{\sqrt2}{2}\right)^2
-    +\left(\frac{\sqrt2}{2}\right)^2=1}.
-\]
-Ebenso erhält man
-\[
-  \sin^2(30^\circ)+\cos^2(30^\circ)
-  =\Cloze{7cm}{\left(\frac12\right)^2
-    +\left(\frac{\sqrt3}{2}\right)^2=1}.
-\]
+\begin{ExampleBox}{Kosinuswerte mit dem trigonometrischen Pythagoras berechnen}{fundamentals_trigonometric_pythagorean_identity_example}
+  Für Winkel zwischen $0^\circ$ und $90^\circ$ ist der Kosinus nicht negativ.
+  Daher erhalten wir aus den bekannten Sinuswerten
+  \begin{enumerate}[label=\alph*),leftmargin=2em,labelsep=0.6em,
+      topsep=0.4em,itemsep=0.7em]
+    \item aus $\displaystyle \sin(45^\circ)=\frac{\sqrt2}{2}$:
+      \[
+        \cos(45^\circ)
+        =\Cloze{10cm}{%
+          \sqrt{1-\sin^2(45^\circ)}
+          =\sqrt{1-\left(\frac{\sqrt2}{2}\right)^2}
+          =\frac{\sqrt2}{2}
+          \quad\mathord{\tikz[x=1ex,y=1ex,baseline=-0.1ex]
+            \draw[green!55!black,line width=1.2pt,line cap=round,line join=round]
+              (0,0.35)--(0.3,0)--(0.9,0.8);}}
+      \]
+    \item aus $\displaystyle \sin(30^\circ)=\frac12$:
+      \[
+        \cos(30^\circ)
+        =\Cloze{10cm}{%
+          \sqrt{1-\sin^2(30^\circ)}
+          =\sqrt{1-\left(\frac12\right)^2}
+          =\frac{\sqrt3}{2}
+          \quad\mathord{\tikz[x=1ex,y=1ex,baseline=-0.1ex]
+            \draw[green!55!black,line width=1.2pt,line cap=round,line join=round]
+              (0,0.35)--(0.3,0)--(0.9,0.8);}}
+      \]
+  \end{enumerate}
+\end{ExampleBox}
 
 \subsubsection{Additionstheoreme}
 
@@ -182,7 +319,7 @@ Winkel an.
   \end{ClozeArea}
 \end{TheoremBox}
 
-Für $\beta=\alpha$ erhält man als Spezialfälle die Doppelwinkelformeln.
+Besonders wichig ist der Spezialfall $\beta=\alpha$ für den man Doppelwinkelformeln erhält.
 
 \begin{KeyPointBox}{Doppelwinkelformeln}{fundamentals_trigonometric_double_angle_formulas}
   \begin{ClozeArea}[28]{6}
