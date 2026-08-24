@@ -1,8 +1,9 @@
 \chapter{Lineare Gleichungssysteme}
 \label{chap:linear_systems}
 
-Bedingungen gleichzeitig erfüllt sein müssen. Im Maschinenbau bilden Lineare 
-Gleichungssysteme (kurz: LGS) die Grundlage zahlreicher Berechnungsverfahren,
+In vielen Anwendungen müssen mehrere lineare Bedingungen gleichzeitig erfüllt
+sein. Im Maschinenbau bilden lineare Gleichungssysteme (kurz: LGS) die
+Grundlage zahlreicher Berechnungsverfahren,
 etwa in der Statik, bei der Finite-Elemente-Methode und innerhalb numerischer
 Crashsimulationen. Weitere Anwendungen finden sich bei der Berechnung elektrischer
 Netzwerke, von Strömungsmodellen und bei der Ausgleichsrechnung aus Messdaten.
@@ -18,13 +19,13 @@ lineare Bedingungen:
 \noindent
 \begin{minipage}[c]{0.28\linewidth}
   \centering
-  \input{content/resources/chapters/linear_systems/tikz/force_balance_mass.tex}
+  \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/force_balance_mass.tex}
 \end{minipage}%
 \hfill
 \begin{minipage}[c]{0.69\linewidth}
   \begin{ClozeArea}[24]{10}
     \centering
-    \input{content/resources/chapters/linear_systems/tikz/force_balance_equations.tex}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/force_balance_equations.tex}
   \end{ClozeArea}
 \end{minipage}
 
@@ -32,7 +33,7 @@ Beide linearen Gleichungen müssen gleichzeitig erfüllt sein. Wie man leicht se
 \[
   F_1=\Cloze{2cm}{60}\,\unit{\newton}
   \quad \text{und} \quad
-  F_2=\Cloze{2cm}{40}\,\unit{\newton}.
+  F_2=\Cloze{2cm}{39}\,\unit{\newton}.
 \]
 
 \par\vspace{1cm}
@@ -47,4 +48,4 @@ In diesem Kapitel wollen wir die folgenden offenen Fragen klären:
 \clearpage
 \input{content/chapters_de/linear_systems/gaussian_elimination/_section.tex}
 \clearpage
-\input{content/chapters_de/linear_systems/solution_structure/_section.tex}
+\input{content/chapters_de/linear_systems/solution_sets/_section.tex}

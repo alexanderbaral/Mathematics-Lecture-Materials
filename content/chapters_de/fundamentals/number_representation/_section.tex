@@ -7,7 +7,7 @@ Stellenwert: Tausender, Hunderter, Zehner und Einer sowie nach dem Komma Zehntel
 Hundertstel, Tausendstel, usw...
 
 {\centering
-  \input{content/resources/chapters/fundamentals/tikz/decimal_to_floating_point.tex}
+  \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/decimal_to_floating_point.tex}
   \par}
 
 Bei sehr großen und sehr kleinen Zahlen ist diese Darstellung jedoch umständlich
@@ -16,19 +16,39 @@ werden müssen. Abhilfe schafft die dezimale Gleitkommadarstellung.
 
 \begin{DefinitionBox}{Dezimale Gleitkommadarstellung}{fundamentals_decimal_floating_point}
   \noindent
-  \begin{minipage}[c]{0.42\linewidth}
-    Jede Zahl $x\neq0$ lässt sich normalisiert in Gleitkommadarstellung
-    schreiben.
-
-    \smallskip
-    Es gilt $1\leq |m|<10$ und $e\in\Z$. Die Mantisse beginnt daher mit genau
-    einer von null verschiedenen Ziffer.
+  \begin{minipage}[c]{0.67\linewidth}
+    In Gleitkommadarstellung setzt sich eine Zahl aus
+    \begin{itemize}
+      \item einer Mantisse $m$, mit $1 \leq |m| \leq 10$
+      \item einem Exponent $e\in\Z$
+    \end{itemize}
   \end{minipage}\hfill
-  \begin{minipage}[c]{0.54\linewidth}
+  \begin{minipage}[c]{0.3\linewidth}
     \centering
-    \input{content/resources/chapters/fundamentals/tikz/floating_point_anatomy.tex}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/floating_point_anatomy.tex}
   \end{minipage}
+  Der Exponent $e$ bestimmt die Größenordnung der Zahl.
 \end{DefinitionBox}
+
+\begin{ExampleBox}{Umrechnung von der Dezimal- in die Gleitkommadarstellung}{fundamentals_decimal_to_floating_point_conversion}
+  Wir überführen die Zahl $1153{,}537$ von der Dezimal in die Gleitkommadarstellung.
+  \begin{ClozeArea}[34]{4}
+    \begingroup
+    \setlength{\fboxsep}{7pt}
+    \[
+      \boxed{\begin{gathered}
+        \text{Dezimaldarstellung}\\[0.25em]
+        1153{,}537
+      \end{gathered}}
+      =1{,}153537\cdot1000
+      =\boxed{\begin{gathered}
+        \text{Gleitkommadarstellung}\\[0.25em]
+        1{,}153537\cdot10^3
+      \end{gathered}}.
+    \]
+    \endgroup
+  \end{ClozeArea}
+\end{ExampleBox}
 
 \begin{ExampleBox}{Darstellungen im Vergleich}{fundamentals_floating_point_comparison}
   \renewcommand{\arraystretch}{1.15}
@@ -41,32 +61,35 @@ werden müssen. Abhilfe schafft die dezimale Gleitkommadarstellung.
     \midrule
     {}
       & $1153{,}537$
-      & $1{,}153537\cdot10^3$\\[0.35em]
+      & $\Cloze{4cm}{1{,}153537\cdot10^3}$\\[0.35em]
     Masse der Erde
       & $5\,972\,200\,000\,000\,000\,000\,000\,000\,\mathrm{kg}$
-      & $5{,}9722\cdot10^{24}\,\mathrm{kg}$\\[0.35em]
+      & $\Cloze{4cm}{5{,}9722\cdot10^{24}\,\mathrm{kg}}$\\[0.35em]
+    Elastizitätsmodul von Stahl
+      & $210\,000\,000\,000\,\mathrm{Pa}$
+      & $\Cloze{4cm}{2{,}1\cdot10^{11}\,\mathrm{Pa}}$\\[0.35em]
     Leiterbahnbreite
       & $0{,}000\,000\,003\,\mathrm m$
-      & $3\cdot10^{-9}\,\mathrm m$\\
+      & $\Cloze{4cm}{3\cdot10^{-9}\,\mathrm m}$\\
     \bottomrule
   \end{tabularx}
   \renewcommand{\arraystretch}{1}
 \end{ExampleBox}
 
 \begin{KeyPointBox}[breakable=false]{Vorteile der Gleitkommadarstellung}{fundamentals_floating_point_advantages}
-  \begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.2em]
+  \begin{itemize}
     \item Sehr große und sehr kleine Zahlen werden kompakt dargestellt.
     \item Der Exponent zeigt die Größenordnung und erleichtert Vergleiche.
     \item Potenzgesetze vereinfachen Multiplikationen unterschiedlicher
       Größenordnungen, z.B.
       \[
-        (2\cdot10^3)\cdot(4\cdot10^{-5})=(2\cdot4)\cdot10^{3-5}=8\cdot10^{-2}.
+        (2\cdot10^3)\cdot(4\cdot10^{-5})=(2\cdot4)\cdot10^{(3-5)}=8\cdot10^{-2}.
       \]
     \item Durch Runden der Mantisse auf die benötigte Genauigkeit entfallen
       nicht-aussagekräftige Ziffern, z.B.
       \[
         6\,724\,891\,356\,000\,000\,000\,000\,000 \approx 6{,}72\cdot10^{24}.
       \]
-  \end{enumerate}
+  \end{itemize}
 \end{KeyPointBox}
-Aus diesem Gründen ist die Gleitkommadarstellung in Naturwissenschaft und Technik sehr verbreitet.
+Die Gleitkommadarstellung ist in Naturwissenschaft und Technik sehr verbreitet.

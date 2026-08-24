@@ -1,0 +1,56 @@
+\begin{tikzpicture}[
+  gaussmatrix/.style={
+    matrix of math nodes,
+    left delimiter={[},right delimiter={]},
+    nodes={minimum width=0.72cm,minimum height=0.72cm,inner sep=0pt,anchor=center},
+    column sep=1pt,row sep=1pt
+  },
+  operation/.style={font=\normalsize,color=black!55,anchor=west},
+  operationbar/.style={draw=black!55,line width=0.6pt},
+  solution/.style={font=\normalsize,anchor=west}
+]
+  \matrix (M0) [gaussmatrix] at (0,0) {
+     1& 1& 2\\
+     0& 1& 1\\
+  };
+  \matrix (M1) [gaussmatrix] at (0,-2.00) {
+     \Cloze{0.55cm}{0}& \Cloze{0.55cm}{1}& \Cloze{0.55cm}{1}\\
+     \Cloze{0.55cm}{1}& \Cloze{0.55cm}{1}& \Cloze{0.55cm}{2}\\
+  };
+  \matrix (M2) [gaussmatrix] at (0,-4.00) {
+     \Cloze{0.55cm}{0}& \Cloze{0.55cm}{ 2}& \Cloze{0.55cm}{ 2}\\
+     \Cloze{0.55cm}{-3}& \Cloze{0.55cm}{-3}& \Cloze{0.55cm}{-6}\\
+  };
+  \matrix (M3) [gaussmatrix] at (0,-6.00) {
+     \Cloze{0.55cm}{0}& \Cloze{0.55cm}{ 2}& \Cloze{0.55cm}{ 2}\\
+     \Cloze{0.55cm}{-3}& \Cloze{0.55cm}{-1}& \Cloze{0.55cm}{-4}\\
+  };
+
+  \foreach \M in {M0,M1,M2,M3}{
+    \draw[line width=0.6pt]
+      ($(\M-1-2.north east)!0.5!(\M-1-3.north west)+(0,0.12)$)--
+      ($(\M-2-2.south east)!0.5!(\M-2-3.south west)-(0,0.12)$);
+  }
+
+  \foreach \M in {M0,M1,M2}{
+    \draw[operationbar]
+      ($(\M.north east)+(0.75,0)$)--($(\M.south east)+(0.75,0)$);
+  }
+
+  \coordinate (M0op) at ($(M0.east)+(0.98,0)$);
+  \coordinate (M1op) at ($(M1.east)+(0.98,0)$);
+  \coordinate (M2op) at ($(M2.east)+(0.98,0)$);
+  \node[operation] at (M0op |- M0.center)
+    {$Z_1\leftrightarrow Z_2$};
+  \node[operation] at (M1op |- M1-1-3.center)
+    {$2Z_1$};
+  \node[operation] at (M1op |- M1-2-3.center)
+    {$-3Z_2$};
+  \node[operation] at (M2op |- M2-2-3.center)
+    {$Z_2+Z_1$};
+
+  \foreach \M in {M0,M1,M2,M3}{
+    \node[solution] at (5.15,0 |- \M.center)
+      {$\mathcal{L}=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}$};
+  }
+\end{tikzpicture}

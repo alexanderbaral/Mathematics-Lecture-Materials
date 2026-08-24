@@ -1,39 +1,80 @@
 \subsection{Erweiterte Koeffizientenmatrix}
 \label{subsec:linear_systems_augmented_matrix}
 
-Mit
-\[
-  A=(a_{ij})\in\R^{m\times n},
-  \qquad
-  x=\begin{pmatrix}x_1\\ \vdots\\ x_n\end{pmatrix},
-  \qquad
-  b=\begin{pmatrix}b_1\\ \vdots\\ b_m\end{pmatrix}
-\]
-lässt sich ein LGS kurz als $Ax=b$ schreiben. Für das Gauß-Verfahren werden die
-Unbekannten nicht mitgeführt; benötigt wird nur die erweiterte
-Koeffizientenmatrix $[A\mid b]$.
+Die Koeffizienten und Absolutglieder eines LGS lassen sich in einem rechteckigen
+Zahlenschema anordnen. Die ersten $n$ Spalten bilden die
+\emph{Koeffizientenmatrix} \EnglishTerm{coefficient matrix} $A$, die letzte
+Spalte enthält den Vektor $b$ der Absolutglieder. Zusammen bilden sie die
+\emph{erweiterte Koeffizientenmatrix} \EnglishTerm{augmented matrix}
+$[A\mid b]$.
 
 \begin{center}
-  \input{content/resources/chapters/linear_systems/tikz/augmented_matrix_anatomy.tex}
+  \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/augmented_matrix_anatomy.tex}
 \end{center}
 
-Die Reihenfolge der Spalten ist fest: Die $j$-te Spalte von $A$ gehört zur
-Unbekannten $x_j$, die letzte Spalte enthält die Absolutglieder.
+Diese Notation verzichtet auf eine explizite Nennung der Unbekannten $x_j$.
+Ihre Anzahl entspricht der Anzahl der Spalten von $A$.
+
+Die Symbole $A$ und $b$ dienen hier ausschließlich als kompakte Notation;
+Matrizen werden später ausführlich behandelt.
 
 \begin{ExampleBox}{Vom LGS zur erweiterten Matrix}{linear_systems_augmented_matrix_example}
-  \[
-    \begin{aligned}
-       x_1- x_2          &=1,\\
-      2x_1+3x_2+4x_3&=5
-    \end{aligned}
-    \qquad\Longleftrightarrow\qquad
-    \left[
-      \begin{array}{rrr|r}
-        1&-1&0&1\\
-        2& 3&4&5
-      \end{array}
-    \right].
-  \]
-  Der fehlende Term $x_3$ in der ersten Gleichung erhält den Koeffizienten
-  null.
+  Wir überführen die LGS in ihre erweiterte Koeffizientenmatrix $[A\mid b]$.
+  \begin{itemize}[leftmargin=1.4em,itemsep=0.8em]
+    \item
+      \noindent
+      \begin{minipage}[c]{0.47\linewidth}
+        \[
+          \begin{aligned}
+             x_1-x_2       &=1,\\
+            2x_1+3x_2+4x_3&=5
+          \end{aligned}
+        \]
+      \end{minipage}%
+      \begin{minipage}[c]{0.08\linewidth}
+        \centering $\Longleftrightarrow$
+      \end{minipage}%
+      \begin{minipage}[c]{0.42\linewidth}
+        \begin{ClozeArea}[12]{4}
+          \centering
+          \[
+            \left[
+              \begin{array}{rrr|r}
+                1&-1&0&1\\
+                2& 3&4&5
+              \end{array}
+            \right]
+          \]
+        \end{ClozeArea}
+      \end{minipage}
+
+    \item
+      \noindent
+      \begin{minipage}[c]{0.47\linewidth}
+        \[
+          \begin{aligned}
+             2x_1+x_2&= 0,\\
+              -x_1+3x_2&= 7,\\
+                   4x_2&=-2
+          \end{aligned}
+        \]
+      \end{minipage}%
+      \begin{minipage}[c]{0.08\linewidth}
+        \centering $\Longleftrightarrow$
+      \end{minipage}%
+      \begin{minipage}[c]{0.42\linewidth}
+        \begin{ClozeArea}[12]{6}
+          \centering
+          \[
+            \left[
+              \begin{array}{rr|r}
+                 2&1& 0\\
+                -1&3& 7\\
+                 0&4&-2
+              \end{array}
+            \right]
+          \]
+        \end{ClozeArea}
+      \end{minipage}
+  \end{itemize}
 \end{ExampleBox}

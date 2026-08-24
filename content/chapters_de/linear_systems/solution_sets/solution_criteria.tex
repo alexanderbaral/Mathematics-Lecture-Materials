@@ -1,0 +1,268 @@
+\subsection{Rang und Lösungstyp}
+\label{subsec:linear_systems_solution_criteria}
+
+Mit Hilfe der Zeilenstufenform kann man ablesen, zu welchem Lösungstyp
+ein LGS gehört. Eine zentrale Rolle nimmt dabei der Begriff des Rangs ein.
+
+\begin{DefinitionBox}{Rang einer Matrix}{linear_systems_matrix_rank}
+  Der \emph{Rang} \EnglishTerm{rank} einer Matrix ist die Anzahl der
+  Nichtnullzeilen in einer Zeilenstufenform, wobei eine Nichtnullzeile
+  mindestens einen Eintrag ungleich $0$ enthält. Man schreibt
+  $\operatorname{rang}(A)$.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/row_echelon_rank.tex}
+  \end{center}
+\end{DefinitionBox}
+
+Auf diese Weise können bei einem LGS sowohl der Rang der Koeffizientenmatrix
+$A$ als auch der Rang der erweiterten Koeffizientenmatrix $[A\mid b]$
+berechnet werden.
+
+Elementare Zeilenumformungen verändern den Rang nicht. Obwohl eine Matrix auf
+verschiedenen Wegen in Zeilenstufenform gebracht werden kann, ist diese Anzahl
+daher eindeutig.
+
+\begin{ExampleBox}{Rang ablesen}{linear_systems_rank_example}
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1.3em]
+    \item
+      \[
+        [A\mid b]\sim
+        \left[
+          \begin{array}{rrr|r}
+            \phantom{-}1&\phantom{-}2&\phantom{-}0&\phantom{-}3\\
+            \phantom{-}0&\phantom{-}0&\phantom{-}1&\phantom{-}5
+          \end{array}
+        \right]
+        \quad\Longrightarrow\quad
+        \begin{aligned}
+          n&=\Cloze{1cm}{3},\\[0.5em]
+          \operatorname{rang}(A)&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}([A\mid b])&=\Cloze{1cm}{2}
+        \end{aligned}
+      \]
+
+    \item
+      \[
+        [A\mid b]\sim
+        \left[
+          \begin{array}{rr|r}
+            \phantom{-}1&-1&\phantom{-}3\\
+            \phantom{-}0&\phantom{-}1&\phantom{-}5\\
+            \phantom{-}0&\phantom{-}0&\phantom{-}1
+          \end{array}
+        \right]
+        \quad\Longrightarrow\quad
+        \begin{aligned}
+          n&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}(A)&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}([A\mid b])&=\Cloze{1cm}{3}
+        \end{aligned}
+      \]
+  \end{enumerate}
+\end{ExampleBox}
+
+\begin{TheoremBox}{Lösbarkeits- und Rangkriterium}{linear_systems_rank_criterion}
+  Für ein LGS mit $n$ Unbekannten, Koeffizientenmatrix $A$ und erweiterter
+  Koeffizientenmatrix $[A\mid b]$ gilt:
+  \[
+    \begin{array}{rcll}
+      \operatorname{rang}(A)
+      &<&\operatorname{rang}([A\mid b])
+      &\Longleftrightarrow\quad \text{keine Lösung},\\[0.7em]
+      \operatorname{rang}(A)
+      &=&\operatorname{rang}([A\mid b])=n
+      &\Longleftrightarrow\quad \text{genau eine Lösung},\\[0.7em]
+      \operatorname{rang}(A)
+      &=&\operatorname{rang}([A\mid b])<n
+      &\Longleftrightarrow\quad \text{unendlich viele Lösungen}.
+    \end{array}
+  \]
+\end{TheoremBox}
+
+Der Rangvergleich prüft zunächst die \emph{Verträglichkeit}
+\EnglishTerm{consistency} der Gleichungen. Sind die Ränge gleich, entscheidet
+der Vergleich von $\operatorname{rang}(A)$ mit der Zahl $n$ der Unbekannten,
+ob genau eine oder unendlich viele Lösungen vorliegen.
+
+\clearpage
+\begin{ExampleBox}{Lösungstyp an ZSF erkennen}{linear_systems_rank_solution_types_example}
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1.3em]
+    \item
+      \[
+        [A\mid b]\sim
+        \left[
+          \begin{array}{rr|r}
+            \phantom{-}1&\phantom{-}2&\phantom{-}3\\
+            \phantom{-}0&\phantom{-}0&\phantom{-}1\\
+            \phantom{-}0&\phantom{-}0&\phantom{-}0
+          \end{array}
+        \right]
+        \quad\Longrightarrow\quad
+        \left.
+        \begin{aligned}
+          n&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}(A)&=\Cloze{1cm}{1},\\[0.5em]
+          \operatorname{rang}([A\mid b])&=\Cloze{1cm}{2}
+        \end{aligned}
+        \quad\right\}
+        \quad\Longrightarrow\quad
+        \Cloze{4cm}{\text{keine Lösung}}
+      \]
+
+    \item
+      \[
+        [A\mid b]\sim
+        \left[
+          \begin{array}{rr|r}
+            \phantom{-}1&\phantom{-}2&\phantom{-}3\\
+            \phantom{-}0&\phantom{-}1&\phantom{-}5
+          \end{array}
+        \right]
+        \quad\Longrightarrow\quad
+        \left.
+        \begin{aligned}
+          n&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}(A)&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}([A\mid b])&=\Cloze{1cm}{2}
+        \end{aligned}
+        \quad\right\}
+        \quad\Longrightarrow\quad
+        \Cloze{4cm}{\text{genau eine Lösung}}
+      \]
+
+    \item
+      \[
+        [A\mid b]\sim
+        \left[
+          \begin{array}{rrr|r}
+            \phantom{-}1&\phantom{-}2&\phantom{-}0&\phantom{-}3\\
+            \phantom{-}0&\phantom{-}0&\phantom{-}1&\phantom{-}5
+          \end{array}
+        \right]
+        \quad\Longrightarrow\quad
+        \left.
+        \begin{aligned}
+          n&=\Cloze{1cm}{3},\\[0.5em]
+          \operatorname{rang}(A)&=\Cloze{1cm}{2},\\[0.5em]
+          \operatorname{rang}([A\mid b])&=\Cloze{1cm}{2}
+        \end{aligned}
+        \quad\right\}
+        \quad\Longrightarrow\quad
+        \Cloze{4cm}{\infty\text{-viele Lösungen}}
+      \]
+  \end{enumerate}
+\end{ExampleBox}
+
+\begin{ExampleBox}{Lösungstyp eines $3\times3$-LGS bestimmen}{linear_systems_inconsistent_three_by_three_example}
+  Bringen Sie die erweiterte Koeffizientenmatrix des folgenden LGS in ZSF und
+  bestimmen Sie den Lösungstyp:
+  \[
+    \begin{aligned}
+      x_1+x_2+x_3&=3,\\
+      2x_1+x_2-x_3&=1,\\
+      3x_1+2x_2&=5
+    \end{aligned}
+    \quad\Longleftrightarrow\quad
+    [A\mid b]=
+    \left[
+      \begin{array}{rrr|r}
+        1&1& 1&3\\
+        2&1&-1&1\\
+        3&2& 0&5
+      \end{array}
+    \right].
+  \]
+
+  \begin{ClozeArea}[32]{20}
+    \textbf{Vorwärtselimination:}
+    \[
+      \left[
+        \begin{array}{rrr|r}
+          1&1& 1&3\\
+          2&1&-1&1\\
+          3&2& 0&5
+        \end{array}
+      \right]
+      \quad
+      \textcolor{black!55}{
+        \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
+        \quad
+        \begin{array}{l}
+          \phantom{Z_2-2Z_1}\\
+          Z_2-2Z_1\\
+          Z_3-3Z_1
+        \end{array}
+      }
+      \quad\Longrightarrow\quad
+      \left[
+        \begin{array}{rrr|r}
+          1& 1& 1& 3\\
+          0&-1&-3&-5\\
+          0&-1&-3&-4
+        \end{array}
+      \right]
+    \]
+    \[
+      \left[
+        \begin{array}{rrr|r}
+          1& 1& 1& 3\\
+          0&-1&-3&-5\\
+          0&-1&-3&-4
+        \end{array}
+      \right]
+      \quad
+      \textcolor{black!55}{
+        \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
+        \quad
+        \begin{array}{l}
+          \phantom{Z_3-Z_2}\\
+          \phantom{Z_3-Z_2}\\
+          Z_3-Z_2
+        \end{array}
+      }
+      \quad\Longrightarrow\quad
+      \left[
+        \begin{array}{rrr|r}
+          1& 1& 1& 3\\
+          0&-1&-3&-5\\
+          0& 0& 0& 1
+        \end{array}
+      \right].
+    \]
+    \textbf{Rangvergleich:}
+    \[
+      \left.
+      \begin{aligned}
+        n&=3,\\[0.5em]
+        \operatorname{rang}(A)&=2,\\[0.5em]
+        \operatorname{rang}([A\mid b])&=3
+      \end{aligned}
+      \quad\right\}
+      \quad\Longrightarrow\quad
+      \text{keine Lösung}.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Widerspruchszeile}{linear_systems_inconsistent_row}
+  Eine Zeile der Form
+  \[
+    0x_1+0x_2+\dots+0x_n=c
+    \quad\Longleftrightarrow\quad
+    \left[\begin{array}{cccc|c}
+      0&0&\cdots&0&c
+    \end{array}\right],
+    \qquad c\neq0,
+  \]
+  heißt \emph{Widerspruchszeile} \EnglishTerm{inconsistent row}. Sie
+  entspricht der unmöglichen Gleichung $0=c$. In der Koeffizientenmatrix ist
+  diese Zeile eine Nullzeile, in der erweiterten Koeffizientenmatrix dagegen
+  eine Nichtnullzeile. In einer Zeilenstufenform gilt daher
+  \[
+    \exists\;\text{Widerspruchszeile}
+    \quad\Longleftrightarrow\quad
+    \operatorname{rang}(A)<\operatorname{rang}([A\mid b])
+    \quad\Longleftrightarrow\quad
+    \text{keine Lösung}.
+  \]
+\end{KeyPointBox}

@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  every node/.style={font=\normalsize},
+  staircase/.style={draw=olive!80!black,line width=1.4pt,line join=round},
+  brace/.style={decorate,decoration={brace,mirror,amplitude=4pt}}
+]
+  \matrix (M) [
+    matrix of math nodes,
+    left delimiter={[},right delimiter={]},
+    nodes={minimum width=0.92cm,minimum height=0.62cm,anchor=center,inner sep=1pt},
+    column sep=0pt,row sep=0pt
+  ] {
+    \bullet&\ast&\ast&\ast&\ast&\ast&b_1\\
+    \color{THMBlue}0&\bullet&\ast&\ast&\ast&\ast&b_2\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\bullet&\ast&\ast&b_3\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\bullet&\ast&b_4\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\bullet&b_5\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0\\
+  };
+
+  % Die olivfarbene Linie macht die Stufen der Nichtnullzeilen sichtbar.
+  \draw[staircase]
+    (M-1-1.north west)
+    -- (M-1-1.south west) -- (M-1-1.south east)
+    -- (M-2-2.south west) -- (M-2-2.south east)
+    -- (M-2-3.south east)
+    -- (M-3-4.south west) -- (M-3-4.south east)
+    -- (M-4-5.south west) -- (M-4-5.south east)
+    -- (M-5-6.south west) -- (M-5-6.south east);
+
+  \coordinate (bar-top) at ($(M-1-6.north east)!0.5!(M-1-7.north west)$);
+  \coordinate (bar-bottom) at ($(M-6-6.south east)!0.5!(M-6-7.south west)$);
+  \draw[line width=0.7pt] (bar-top)--(bar-bottom);
+
+  \draw[brace,black!55]
+    ($(M-6-1.south west)+(0,-0.22)$)--($(M-6-6.south east)+(0,-0.22)$)
+    node[midway,below=6pt,text=black!65] {$n$ Variablenspalten};
+\end{tikzpicture}

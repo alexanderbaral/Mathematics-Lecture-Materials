@@ -1,7 +1,7 @@
 \begin{tikzpicture}[
   >=Latex,
   every node/.style={font=\small},
-  brace/.style={decorate,decoration={brace,amplitude=5pt}}
+  brace/.style={decorate,decoration={brace,mirror,amplitude=5pt}}
 ]
   \matrix (M) [
     matrix of math nodes,
@@ -21,9 +21,15 @@
 
   \draw[brace,THMBlue,line width=0.7pt]
     ($(M-4-1.south west)+(0,-0.25)$)--($(M-4-4.south east)+(0,-0.25)$)
-    node[midway,below=7pt,text=THMBlue] {Koeffizientenmatrix $A$};
+    node[midway,below=9pt,xshift=-0.15cm,text=THMBlue] {Koeffizientenmatrix $A$};
   \draw[brace,black!55,line width=0.7pt]
     ($(M-4-5.south west)+(0,-0.25)$)--($(M-4-5.south east)+(0,-0.25)$)
-    node[midway,below=7pt,text=black!65] {Vektor $b$};
-  \node[anchor=west,font=\large] at ($(M.east)+(1.1,0)$) {$=[A\mid b]$};
+    node[midway,below=9pt,xshift=0.3cm,text=black!65] {Vektor $b$};
+
+  \coordinate (matrix-mid) at ($(bar-top)!0.5!(bar-bottom)$);
+  \coordinate (matrix-right) at (M.east |- matrix-mid);
+  \node[anchor=west,font=\large] (compact-matrix)
+    at ($(matrix-right)+(2.4,0)$) {$[A\mid b]$};
+  \node[font=\large]
+    at ($(matrix-right)!0.5!(compact-matrix.west)$) {$=$};
 \end{tikzpicture}

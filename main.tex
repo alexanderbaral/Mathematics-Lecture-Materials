@@ -1,7 +1,11 @@
 \providecommand{\ScriptLanguage}{de}
 \providecommand{\ClozeMode}{false}
+\providecommand{\TikzCacheVariant}{main}
+\providecommand{\TikzCacheRoot}{build/tikz/\TikzCacheVariant}
 
 \documentclass[a4paper,12pt,headinclude=true,footinclude=true]{scrreprt}
+
+\InputIfFileExists{build/tikz-cache-path.tex}{}{}
 
 \input{common/config.tex}
 \input{common/preamble.tex}

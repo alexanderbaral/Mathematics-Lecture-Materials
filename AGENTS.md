@@ -14,6 +14,89 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
   as clarity permits, and clarify complex relationships through deliberate
   spatial arrangement of formulas, labels, and graphics.
 
+### 1.1 Evolving chapter design principles
+The completed and author-revised chapters define the target style for new
+content. Treat the following principles as a provisional, binding design
+standard. After each completed chapter, review and refine them with the author
+so that future drafts increasingly match the style of the revised material.
+
+#### Content order and orientation
+- Arrange topics according to their mathematical dependencies. Introduce a
+  concept only after the prerequisites needed to understand it, and progress
+  from elementary concepts through rules and procedures to more demanding
+  applications.
+- Begin each section with a short orientation of only a few sentences. State
+  the topic's significance, connect it to prior knowledge, announce its later
+  use, or identify the section's central problem. Do not front-load detailed
+  explanations into this opening.
+
+#### Concise mathematical presentation
+- Use prose mainly for orientation, transitions, and interpretation. Let
+  formulas, tables, diagrams, and deliberate spatial arrangement carry the
+  explanation whenever they express the relationship more directly.
+- Avoid extended prose when a precise visual or mathematical representation
+  makes the same relationship easier to scan.
+
+#### Semantic roles
+- Give each semantic box one clear purpose; do not mix several roles in one
+  box:
+  - `DefinitionBox` introduces a term together with its notation and necessary
+    assumptions.
+  - `TheoremBox` states a durable mathematical result or formula.
+  - `KeyPointBox` emphasizes an especially important rule, consequence, or
+    relationship.
+  - `ExampleBox` applies the material concretely or checks understanding.
+  - `RemarkBox` records pitfalls, technical guidance, interpretations, or a
+    supplementary viewpoint.
+- Keep formal definitions compact and self-contained. Include the emphasized
+  term, the author-established English translation where required, the
+  mathematical statement, all necessary assumptions, and the associated
+  notation. Put applications, longer explanations, and consequences after the
+  definition or in separate semantic elements.
+- When a technical term is explicitly introduced for the first time, place its
+  translation immediately after that term using the central language command:
+  German uses `\EnglishTerm{...}` and English uses `\GermanTerm{...}`. This
+  applies both to formal definitions and to explicitly introduced technical or
+  procedural terms outside a definition box. Do not repeat the translation at
+  ordinary later uses of the same term.
+
+#### Examples
+- Make every example perform a genuine learning step rather than merely
+  substitute numbers into a finished formula. Appropriate steps include
+  choosing a representation, recognizing a rule, determining a quantity,
+  justifying a statement, interpreting a result, or comparing useful solution
+  methods.
+- For calculations, make the given information, the quantity sought, the
+  calculation, and the result recognizable where appropriate. Carry units
+  consistently throughout.
+- Prefer technical or mechanical-engineering quantities when they arise
+  naturally from the topic; do not force an artificial application context.
+
+#### Figures and color
+- Place a figure directly beside or immediately after the thought that needs
+  it. Use side-by-side text, formulas, tables, and figures when this makes their
+  correspondence visible without page turning or unnecessary eye movement.
+- A figure may be repeated deliberately when it serves again as the immediate
+  working basis of a later theorem, derivation, or example.
+- Keep black and grayscale as the visual foundation, with TH Mannheim blue for
+  semantic structure. Use additional colors only as local carriers of meaning,
+  such as linking corresponding quantities, expressions, or geometric areas.
+  Within one representation, a color must retain one meaning and must never be
+  added merely for decoration.
+
+#### Cloze design
+- Preserve the complete reasoning context in the cloze version: prompts,
+  assumptions, diagrams, and the surrounding mathematical structure remain
+  visible. Hide specifically the learning steps students should reproduce.
+- Use a gray `\Cloze` field for a short result, symbol, or single-line response,
+  and a `ClozeArea` grid for multi-line calculations, derivations, drawings, or
+  constructions. Size every response area for the handwriting realistically
+  required.
+- The complete and cloze variants must contain the same material in the same
+  order, but they need not have identical pagination. In the complete variant,
+  show solutions at their natural size without preserving the cloze field's
+  artificial width.
+
 ## 2. Content structure and mandatory filename consultation
 The author decides content filenames and folder names interactively.
 
@@ -55,10 +138,11 @@ When asked to synchronize English:
 ### Translation glossary
 Use author-established terminology consistently.
 
-Add a translation parenthetical only to the term that is explicitly being
-defined in a formal definition. Do not add translation notes to terms outside
-definitions unless the author explicitly requests an exception. Render the
-entire parenthetical in italic gray using the central commands: German uses
+Add a translation parenthetical when a technical term is explicitly introduced
+for the first time, whether in a formal definition or as a named technical or
+procedural concept outside a definition box. Do not repeat translation notes at
+ordinary later uses of the same term. Render the entire parenthetical in italic
+gray using the central commands: German uses
 `Dreieck \EnglishTerm{triangle}` and English uses
 `triangle \GermanTerm{Dreieck}`.
 

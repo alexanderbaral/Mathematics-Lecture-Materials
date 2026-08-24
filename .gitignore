@@ -1,8 +1,6 @@
 /build/*
 !/build/build-de.pdf
 !/build/build-de-cloze.pdf
-!/build/build-en.pdf
-!/build/build-en-cloze.pdf
 *.synctex.gz
 *.fls
 *.fdb_latexmk

@@ -11,7 +11,7 @@ wird.
   Kathete heißt \emph{Gegenkathete} \EnglishTerm{opposite leg}.
 
   \begin{center}
-    \input{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
   \end{center}
 \end{DefinitionBox}
 
@@ -44,7 +44,7 @@ beschreiben die trigonometrischen Funktionen Sinus, Kosinus und Tangens.
   \end{minipage}\hfill
   \begin{minipage}[c]{0.42\linewidth}
     \centering
-    \input{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
   \end{minipage}
 \end{DefinitionBox}
 
@@ -108,7 +108,7 @@ beschreiben die trigonometrischen Funktionen Sinus, Kosinus und Tangens.
   \begin{minipage}[t]{0.24\linewidth}
     \vspace{0pt}
     \centering
-    \input{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
   \end{minipage}
   %
   \[
@@ -184,7 +184,7 @@ Aus den Definitionen der trigonometrischen Funktionen folgt unmittelbar:
   \end{minipage}\hfill
   \begin{minipage}[c]{0.23\linewidth}
     \centering
-    \input{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
   \end{minipage}
 \end{KeyPointBox}
 
@@ -267,37 +267,32 @@ und Kosinus.
   \end{minipage}\hfill
   \begin{minipage}[c]{0.2\linewidth}
     \centering
-    \input{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
   \end{minipage}
 \end{KeyPointBox}
 
-\begin{ExampleBox}{Kosinuswerte mit dem trigonometrischen Pythagoras berechnen}{fundamentals_trigonometric_pythagorean_identity_example}
-  Für Winkel zwischen $0^\circ$ und $90^\circ$ ist der Kosinus nicht negativ.
-  Daher erhalten wir aus den bekannten Sinuswerten
+\begin{ExampleBox}{Trigonometrischen Pythagoras überprüfen}{fundamentals_trigonometric_pythagorean_identity_example}
+  Mit den Werten aus der Tabelle erhalten wir:
   \begin{enumerate}[label=\alph*),leftmargin=2em,labelsep=0.6em,
       topsep=0.4em,itemsep=0.7em]
-    \item aus $\displaystyle \sin(45^\circ)=\frac{\sqrt2}{2}$:
-      \[
-        \cos(45^\circ)
-        =\Cloze{10cm}{%
-          \sqrt{1-\sin^2(45^\circ)}
-          =\sqrt{1-\left(\frac{\sqrt2}{2}\right)^2}
-          =\frac{\sqrt2}{2}
-          \quad\mathord{\tikz[x=1ex,y=1ex,baseline=-0.1ex]
-            \draw[green!55!black,line width=1.2pt,line cap=round,line join=round]
-              (0,0.35)--(0.3,0)--(0.9,0.8);}}
-      \]
-    \item aus $\displaystyle \sin(30^\circ)=\frac12$:
-      \[
-        \cos(30^\circ)
-        =\Cloze{10cm}{%
-          \sqrt{1-\sin^2(30^\circ)}
-          =\sqrt{1-\left(\frac12\right)^2}
-          =\frac{\sqrt3}{2}
-          \quad\mathord{\tikz[x=1ex,y=1ex,baseline=-0.1ex]
-            \draw[green!55!black,line width=1.2pt,line cap=round,line join=round]
-              (0,0.35)--(0.3,0)--(0.9,0.8);}}
-      \]
+    \item $\displaystyle
+      \sin^2(45^\circ)+\cos^2(45^\circ)
+      =\Cloze{9cm}{%
+        \left(\frac{\sqrt2}{2}\right)^2
+        +\left(\frac{\sqrt2}{2}\right)^2
+        =\frac12+\frac12=1
+        \quad\mathord{\tikz[x=1ex,y=1ex,baseline=-0.1ex]
+          \draw[green!55!black,line width=1.2pt,line cap=round,line join=round]
+            (0,0.35)--(0.3,0)--(0.9,0.8);}}$
+    \item $\displaystyle
+      \sin^2(30^\circ)+\cos^2(30^\circ)
+      =\Cloze{9cm}{%
+        \left(\frac12\right)^2
+        +\left(\frac{\sqrt3}{2}\right)^2
+        =\frac14+\frac34=1
+        \quad\mathord{\tikz[x=1ex,y=1ex,baseline=-0.1ex]
+          \draw[green!55!black,line width=1.2pt,line cap=round,line join=round]
+            (0,0.35)--(0.3,0)--(0.9,0.8);}}$
   \end{enumerate}
 \end{ExampleBox}
 

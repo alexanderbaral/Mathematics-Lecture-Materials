@@ -13,42 +13,15 @@ Die folgenden Umformungen ändern die Lösungsmenge nicht:
   \end{alignedat}
 \]
 
-Sie heißen \emph{elementare Zeilenumformungen}. Jede von ihnen ist umkehrbar;
-deshalb entsteht jeweils ein äquivalentes LGS mit derselben Lösungsmenge.
+Sie heißen \emph{elementare Zeilenumformungen} \EnglishTerm{elementary row
+operations}. Das entstehende LGS ist zum Ausgangssystem äquivalent und besitzt
+dieselbe Lösungsmenge.
 
-\begin{ExampleBox}{Eine Variable eliminieren}{linear_systems_eliminate_variable}
+\begin{ExampleBox}{Die drei elementaren Zeilenumformungen}{linear_systems_eliminate_variable}
+  Das folgende Beispiel enthält alle drei elementaren Zeilenumformungen. Die
+  jeweils rechts angegebene Operation wird auf die nebenstehende Matrix
+  angewendet. Die Lösungsmenge bleibt dabei unverändert.
   \begin{center}
-    \begin{tikzpicture}[
-      >=Latex,
-      gaussmatrix/.style={
-        matrix of math nodes,
-        left delimiter={[},right delimiter={]},
-        nodes={minimum width=0.75cm,minimum height=0.58cm,anchor=center},
-        column sep=1pt,row sep=1pt
-      },
-      operation/.style={font=\normalsize,anchor=west}
-    ]
-      \matrix (M0) [gaussmatrix] {
-        1&1&2\\
-        2&3&5\\
-      };
-      \draw[line width=0.6pt]
-        ($(M0-1-2.north east)!0.5!(M0-1-3.north west)+(0,0.12)$)--
-        ($(M0-2-2.south east)!0.5!(M0-2-3.south west)-(0,0.12)$);
-      \node[operation] (op) at ($(M0.east)+(1.45,0)$ |- M0-2-3.east)
-        {$Z_2\leftarrow Z_2-2Z_1$};
-      \draw[->,line width=0.7pt]
-        ($(M0.east)+(0.15,0)$ |- M0-2-3.east)--($(op.west)+(-0.15,0)$);
-
-      \matrix (M1) [gaussmatrix,below=0.8cm of M0] {
-        1&1&2\\
-        0&1&1\\
-      };
-      \draw[line width=0.6pt]
-        ($(M1-1-2.north east)!0.5!(M1-1-3.north west)+(0,0.12)$)--
-        ($(M1-2-2.south east)!0.5!(M1-2-3.south west)-(0,0.12)$);
-    \end{tikzpicture}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/elementary_row_operations_example.tex}
   \end{center}
-  Die neue zweite Zeile enthält $x_1$ nicht mehr. Aus $x_2=1$ folgt durch
-  Rückwärtseinsetzen $x_1=1$.
 \end{ExampleBox}
