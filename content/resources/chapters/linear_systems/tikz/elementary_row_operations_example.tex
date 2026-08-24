@@ -41,13 +41,13 @@
   \coordinate (M1op) at ($(M1.east)+(0.98,0)$);
   \coordinate (M2op) at ($(M2.east)+(0.98,0)$);
   \node[operation] at (M0op |- M0.center)
-    {$Z_1\leftrightarrow Z_2$};
+    {$\Cloze{2.0cm}{Z_1\leftrightarrow Z_2}$};
   \node[operation] at (M1op |- M1-1-3.center)
-    {$2Z_1$};
+    {$\Cloze{1.1cm}{2Z_1}$};
   \node[operation] at (M1op |- M1-2-3.center)
-    {$-3Z_2$};
+    {$\Cloze{1.1cm}{-3Z_2}$};
   \node[operation] at (M2op |- M2-2-3.center)
-    {$Z_2+Z_1$};
+    {$\Cloze{2.0cm}{Z_2+Z_1}$};
 
   \foreach \M in {M0,M1,M2,M3}{
     \node[solution] at (5.15,0 |- \M.center)

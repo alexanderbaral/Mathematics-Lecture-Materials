@@ -74,7 +74,7 @@ daher eindeutig.
       &\Longleftrightarrow\quad \text{genau eine Lösung},\\[0.7em]
       \operatorname{rang}(A)
       &=&\operatorname{rang}([A\mid b])<n
-      &\Longleftrightarrow\quad \text{unendlich viele Lösungen}.
+      &\Longleftrightarrow\quad \infty\text{-viele Lösungen}.
     \end{array}
   \]
 \end{TheoremBox}
@@ -85,7 +85,7 @@ der Vergleich von $\operatorname{rang}(A)$ mit der Zahl $n$ der Unbekannten,
 ob genau eine oder unendlich viele Lösungen vorliegen.
 
 \clearpage
-\begin{ExampleBox}{Lösungstyp an ZSF erkennen}{linear_systems_rank_solution_types_example}
+\begin{ExampleBox}{Lösungstyp an der Zeilenstufenform erkennen}{linear_systems_rank_solution_types_example}
   \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1.3em]
     \item
       \[
@@ -153,9 +153,32 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
   \end{enumerate}
 \end{ExampleBox}
 
+
+\begin{KeyPointBox}{Widerspruchszeile}{linear_systems_inconsistent_row}
+  Ein lineare Gleich, die niemals erfüllt werden kann, ist
+  \[
+    0x_1+0x_2+\dots+0x_n=c
+    \quad\Longleftrightarrow\quad
+    \left[\begin{array}{cccc|c}
+      0&0&\cdots&0&c
+    \end{array}\right],
+    \qquad c\neq0,
+  \]
+  und heißt \emph{Widerspruchszeile} \EnglishTerm{inconsistent row}. 
+  Für ein LGS in Zeilenstufenform gilt daher
+  \[
+    \exists\;\text{Widerspruchszeile}
+    \quad\Longleftrightarrow\quad
+    \operatorname{rang}(A)<\operatorname{rang}([A\mid b])
+    \quad\Longleftrightarrow\quad
+    \text{keine Lösung}.
+  \]
+\end{KeyPointBox}
+
+
 \begin{ExampleBox}{Lösungstyp eines $3\times3$-LGS bestimmen}{linear_systems_inconsistent_three_by_three_example}
-  Bringen Sie die erweiterte Koeffizientenmatrix des folgenden LGS in ZSF und
-  bestimmen Sie den Lösungstyp:
+  Bringen Sie die erweiterte Koeffizientenmatrix des folgenden LGS in
+  Zeilenstufenform und bestimmen Sie den Lösungstyp:
   \[
     \begin{aligned}
       x_1+x_2+x_3&=3,\\
@@ -173,61 +196,55 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
     \right].
   \]
 
-  \begin{ClozeArea}[32]{20}
+  \begin{ClozeArea}[32]{30}
     \textbf{Vorwärtselimination:}
     \[
-      \left[
-        \begin{array}{rrr|r}
-          1&1& 1&3\\
-          2&1&-1&1\\
-          3&2& 0&5
-        \end{array}
-      \right]
-      \quad
-      \textcolor{black!55}{
-        \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
-        \quad
-        \begin{array}{l}
-          \phantom{Z_2-2Z_1}\\
-          Z_2-2Z_1\\
-          Z_3-3Z_1
-        \end{array}
-      }
-      \quad\Longrightarrow\quad
-      \left[
-        \begin{array}{rrr|r}
-          1& 1& 1& 3\\
-          0&-1&-3&-5\\
-          0&-1&-3&-4
-        \end{array}
-      \right]
-    \]
-    \[
-      \left[
-        \begin{array}{rrr|r}
-          1& 1& 1& 3\\
-          0&-1&-3&-5\\
-          0&-1&-3&-4
-        \end{array}
-      \right]
-      \quad
-      \textcolor{black!55}{
-        \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
-        \quad
-        \begin{array}{l}
-          \phantom{Z_3-Z_2}\\
-          \phantom{Z_3-Z_2}\\
-          Z_3-Z_2
-        \end{array}
-      }
-      \quad\Longrightarrow\quad
-      \left[
-        \begin{array}{rrr|r}
-          1& 1& 1& 3\\
-          0&-1&-3&-5\\
-          0& 0& 0& 1
-        \end{array}
-      \right].
+      \begin{aligned}
+        &\left[
+          \begin{array}{rrr|r}
+            1&1& 1&3\\
+            2&1&-1&1\\
+            3&2& 0&5
+          \end{array}
+        \right]
+        &&\textcolor{black!55}{
+          \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
+          \quad
+          \begin{array}{l}
+            \phantom{Z_2-2Z_1}\\
+            Z_2-2Z_1\\
+            Z_3-3Z_1
+          \end{array}
+        }
+        \\[0.8em]
+        \Longleftrightarrow\quad
+        &\left[
+          \begin{array}{rrr|r}
+            1& 1& 1& 3\\
+            0&-1&-3&-5\\
+            0&-1&-3&-4
+          \end{array}
+        \right]
+        &&\textcolor{black!55}{
+          \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
+          \quad
+          \begin{array}{l}
+            \phantom{Z_3-Z_2}\\
+            \phantom{Z_3-Z_2}\\
+            Z_3-Z_2
+          \end{array}
+        }
+        \\[0.8em]
+        \Longleftrightarrow\quad
+        &\left[
+          \begin{array}{rrr|r}
+            1& 1& 1& 3\\
+            0&-1&-3&-5\\
+            0& 0& 0& 1
+          \end{array}
+        \right]
+        &&\text{Zeilenstufenform}.
+      \end{aligned}
     \]
     \textbf{Rangvergleich:}
     \[
@@ -243,26 +260,3 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
     \]
   \end{ClozeArea}
 \end{ExampleBox}
-
-\begin{KeyPointBox}{Widerspruchszeile}{linear_systems_inconsistent_row}
-  Eine Zeile der Form
-  \[
-    0x_1+0x_2+\dots+0x_n=c
-    \quad\Longleftrightarrow\quad
-    \left[\begin{array}{cccc|c}
-      0&0&\cdots&0&c
-    \end{array}\right],
-    \qquad c\neq0,
-  \]
-  heißt \emph{Widerspruchszeile} \EnglishTerm{inconsistent row}. Sie
-  entspricht der unmöglichen Gleichung $0=c$. In der Koeffizientenmatrix ist
-  diese Zeile eine Nullzeile, in der erweiterten Koeffizientenmatrix dagegen
-  eine Nichtnullzeile. In einer Zeilenstufenform gilt daher
-  \[
-    \exists\;\text{Widerspruchszeile}
-    \quad\Longleftrightarrow\quad
-    \operatorname{rang}(A)<\operatorname{rang}([A\mid b])
-    \quad\Longleftrightarrow\quad
-    \text{keine Lösung}.
-  \]
-\end{KeyPointBox}

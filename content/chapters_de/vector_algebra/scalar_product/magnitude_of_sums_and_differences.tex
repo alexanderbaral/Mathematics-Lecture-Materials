@@ -1,0 +1,57 @@
+\subsection{Betrag von Summen und Differenzen}
+\label{subsec:vector_algebra_magnitude_sums_differences}
+
+Das Skalarprodukt macht sichtbar, wie der eingeschlossene Winkel den Betrag
+von $\vec a+\vec b$ beziehungsweise $\vec a-\vec b$ beeinflusst.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_sum_difference_magnitudes.tex}
+\end{center}
+
+Für $\vec a,\vec b\ne\vec 0$ und den eingeschlossenen Winkel $\varphi$ gilt:
+\begin{ClozeArea}[34]{7}
+  \[
+    \begin{aligned}
+      |\vec a\pm\vec b|^2
+      &=(\vec a\pm\vec b)\cdot(\vec a\pm\vec b)\\[0.5em]
+      &=\vec a\cdot\vec a+\vec b\cdot\vec b
+        \pm2\,\vec a\cdot\vec b\\[0.5em]
+      &=|\vec a|^2+|\vec b|^2
+        \pm2|\vec a|\,|\vec b|\cos(\varphi).
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Beträge von Vektorkombinationen}{vector_algebra_sum_difference_magnitudes}
+  \[
+    \boxed{
+      |\vec a\pm\vec b|
+      =\sqrt{|\vec a|^2+|\vec b|^2
+        \pm2|\vec a|\,|\vec b|\cos(\varphi)}
+    }.
+  \]
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Kosinussatz als Differenzfall}{vector_algebra_cosine_rule_derivation}
+  Bilden $\vec a$ und $\vec b$ zwei Dreiecksseiten mit gemeinsamem
+  Anfangspunkt und ist $\vec c=\vec a-\vec b$, so folgt unmittelbar
+  \[
+    \boxed{c^2=a^2+b^2-2ab\cos(\varphi)}.
+  \]
+  Für $\varphi=90^\circ$ bleibt der Satz des Pythagoras.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Differenz zweier gleich langer Vektoren}{vector_algebra_difference_magnitude_example}
+  Für $|\vec a|=|\vec b|=\qty{3}{\centi\meter}$ und
+  $\varphi=30^\circ$ gilt
+  \[
+    |\vec a-\vec b|^2
+    =(\qty{3}{\centi\meter})^2+(\qty{3}{\centi\meter})^2
+    -2(\qty{3}{\centi\meter})(\qty{3}{\centi\meter})\cos(30^\circ),
+  \]
+  \[
+    |\vec a-\vec b|
+    =\Cloze{5cm}{\sqrt{18-9\sqrt3}\,\unit{\centi\meter}
+      \approx\qty{1.55}{\centi\meter}}.
+  \]
+\end{ExampleBox}

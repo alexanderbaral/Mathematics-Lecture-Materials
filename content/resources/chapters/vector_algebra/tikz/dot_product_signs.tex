@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \foreach \shift/\angle/\condition/\sign in {
+      0/35/{0<\varphi<90^\circ}/{\vec a\cdot\vec b>0},
+      5.1/90/{\varphi=90^\circ}/{\vec a\cdot\vec b=0},
+      10.2/140/{90^\circ<\varphi\le180^\circ}/{\vec a\cdot\vec b<0}}
+  {
+    \begin{scope}[xshift=\shift cm]
+      \draw[->,THMBlue,line width=1.15pt] (0,0)--(2.8,0)
+        node[below] {$\vec a$};
+      \draw[->,olive!80!black,line width=1.15pt]
+        (0,0)--({2.25*cos(\angle)},{2.25*sin(\angle)})
+        node[above] {$\vec b$};
+      \draw[black!55,line width=0.65pt]
+        (0.7,0) arc[start angle=0,end angle=\angle,radius=0.7];
+      \node at ({1.0*cos(\angle/2)},{1.0*sin(\angle/2)}) {$\varphi$};
+      \node[align=center] at (1.35,-0.85) {$\condition$\\[0.25em]$\sign$};
+    \end{scope}
+  }
+\end{tikzpicture}

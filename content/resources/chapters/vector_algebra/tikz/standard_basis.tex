@@ -1,0 +1,23 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \node[font=\bfseries] at (2.5,4.1) {$\R^2$};
+  \draw[->,black!60] (0.1,0)--(4.6,0) node[right] {$x_1$};
+  \draw[->,black!60] (0.5,-0.4)--(0.5,3.6) node[above] {$x_2$};
+  \draw[->,THMBlue,line width=1.4pt] (0.5,0)--(2.2,0)
+    node[midway,below] {$\vec e_1$};
+  \draw[->,olive!80!black,line width=1.4pt] (0.5,0)--(0.5,1.7)
+    node[midway,left] {$\vec e_2$};
+  \draw[black!45] (0.5,0.28)--(0.78,0.28)--(0.78,0);
+
+  \draw[black!25] (6.0,-0.4)--(6.0,4.0);
+  \node[font=\bfseries] at (10.2,4.1) {$\R^3$};
+  \coordinate (O) at (9.2,0.65);
+  \draw[->,black!60] (O)--++(3.5,0) node[right] {$x_1$};
+  \draw[->,black!60] (O)--++(0,3.0) node[above] {$x_2$};
+  \draw[->,black!60] (O)--++(-2.0,-1.6) node[below left] {$x_3$};
+  \draw[->,THMBlue,line width=1.4pt] (O)--++(1.7,0)
+    node[midway,below] {$\vec e_1$};
+  \draw[->,olive!80!black,line width=1.4pt] (O)--++(0,1.7)
+    node[midway,left] {$\vec e_2$};
+  \draw[->,red!70!black,line width=1.4pt] (O)--++(-1.15,-0.92)
+    node[midway,above left] {$\vec e_3$};
+\end{tikzpicture}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (2.4,1.0);
+  \draw[->,black!60,line width=0.6pt] (O)--++(3.1,0) node[right] {$x_1$};
+  \draw[->,black!60,line width=0.6pt] (O)--++(0,3.0) node[above] {$x_2$};
+  \draw[->,black!60,line width=0.6pt] (O)--++(-1.8,-1.3) node[below left] {$x_3$};
+  \coordinate (C) at ($(O)+(2.1,1.6)+(-0.75,-0.54)$);
+  \draw[THMBlue!45,densely dashed] (O)--++(2.1,0)--++(0,1.6)--(C);
+  \draw[THMBlue!45,densely dashed] ($(O)+(2.1,1.6)$)--(C);
+  \draw[->,THMBlue,line width=1.35pt] (O)--(C)
+    node[midway,above left] {$\vec c$};
+  \node[text=black!55,anchor=west] at (5.8,2.1)
+    {$\vec c=(2,1,3)^{\mathsf T}$};
+\end{tikzpicture}

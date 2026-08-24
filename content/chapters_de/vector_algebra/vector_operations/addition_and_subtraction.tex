@@ -1,0 +1,55 @@
+\subsection{Addition und Subtraktion}
+\label{subsec:vector_algebra_addition_subtraction}
+
+\begin{DefinitionBox}{Vektoraddition und Vektorsubtraktion}{vector_algebra_addition_subtraction}
+  Für $\vec a,\vec b\in\R^n$ werden Addition und Subtraktion
+  komponentenweise ausgeführt:
+  \[
+    \vec a+\vec b
+    =\begin{pmatrix}a_1\\\vdots\\a_n\end{pmatrix}
+     +\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}
+    =\begin{pmatrix}a_1+b_1\\\vdots\\a_n+b_n\end{pmatrix},
+  \]
+  \[
+    \vec a-\vec b
+    =\vec a+(-\vec b)
+    =\begin{pmatrix}a_1-b_1\\\vdots\\a_n-b_n\end{pmatrix}.
+  \]
+\end{DefinitionBox}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_addition_subtraction.tex}
+\end{center}
+
+\begin{TheoremBox}{Rechenregeln der Vektoraddition}{vector_algebra_addition_laws}
+  Für $\vec a,\vec b,\vec c\in\R^n$ gilt
+  \[
+    \begin{aligned}
+      \vec a+\vec b&=\vec b+\vec a
+        &&\text{(Kommutativgesetz)},\\[0.5em]
+      \vec a+(\vec b+\vec c)&=(\vec a+\vec b)+\vec c
+        &&\text{(Assoziativgesetz)},\\[0.5em]
+      \vec a+\vec 0&=\vec a,
+      &\qquad \vec a+(-\vec a)&=\vec 0.
+    \end{aligned}
+  \]
+\end{TheoremBox}
+
+\begin{ExampleBox}{Vektoren komponentenweise verrechnen}{vector_algebra_componentwise_operations}
+  Gegeben seien
+  \[
+    \vec a=\begin{pmatrix}2\\0\\4\end{pmatrix},
+    \qquad
+    \vec b=\begin{pmatrix}-1\\2\\-10\end{pmatrix}.
+  \]
+  Dann gilt
+  \[
+    \vec a+\vec b
+    =\begin{pmatrix}2+(-1)\\0+2\\4+(-10)\end{pmatrix}
+    =\Cloze{3cm}{\begin{pmatrix}1\\2\\-6\end{pmatrix}},
+    \qquad
+    \vec a-\vec b
+    =\begin{pmatrix}2-(-1)\\0-2\\4-(-10)\end{pmatrix}
+    =\Cloze{3cm}{\begin{pmatrix}3\\-2\\14\end{pmatrix}}.
+  \]
+\end{ExampleBox}

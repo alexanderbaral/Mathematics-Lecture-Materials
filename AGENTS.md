@@ -66,6 +66,11 @@ so that future drafts increasingly match the style of the revised material.
   choosing a representation, recognizing a rule, determining a quantity,
   justifying a statement, interpreting a result, or comparing useful solution
   methods.
+- Structure each example as a recognizable learning path where appropriate:
+  choose or construct a representation, identify and carry out the relevant
+  operation or method, name the resulting mathematical state, and interpret
+  the result. Show the essential reasoning steps and compress routine algebra
+  when it is not itself the learning objective.
 - For calculations, make the given information, the quantity sought, the
   calculation, and the result recognizable where appropriate. Carry units
   consistently throughout.
@@ -83,6 +88,14 @@ so that future drafts increasingly match the style of the revised material.
   such as linking corresponding quantities, expressions, or geometric areas.
   Within one representation, a color must retain one meaning and must never be
   added merely for decoration.
+- Give recurring mathematical roles a stable visual grammar throughout the
+  script. Use the same arrow type, alignment, annotation position, color, and
+  final-state labeling whenever the same kind of relationship recurs. In
+  multi-step procedures, align successive states vertically where practical,
+  place an operation beside the state to which it is applied, and explicitly
+  name a mathematically significant final state. Use `\Longleftrightarrow` only
+  for equivalent statements or states and `\Longrightarrow` for one-way
+  consequences.
 
 #### Cloze design
 - Preserve the complete reasoning context in the cloze version: prompts,

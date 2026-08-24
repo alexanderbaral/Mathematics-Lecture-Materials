@@ -1,0 +1,11 @@
+\begin{tikzpicture}[>=Latex,x=1.05cm,y=1.05cm]
+  \draw[->,black!65,line width=0.6pt] (-0.25,0)--(4.4,0) node[right] {$x_1$};
+  \draw[->,black!65,line width=0.6pt] (0,-0.25)--(0,3.4) node[above] {$x_2$};
+  \foreach \x in {1,2,3}{\draw[black!55] (\x,0.06)--(\x,-0.06) node[below] {$\x$};}
+  \foreach \y in {1,2,3}{\draw[black!55] (0.06,\y)--(-0.06,\y) node[left] {$\y$};}
+  \draw[THMBlue!55,densely dashed] (0,0)--(3,0)--(3,2);
+  \draw[->,THMBlue,line width=1.35pt] (0,0)--(3,2);
+  \node[THMBlue,above left] at (2.0,1.5) {$\vec a$};
+  \node[THMBlue,below] at (1.5,0) {$a_1$};
+  \node[THMBlue,right] at (3,1) {$a_2$};
+\end{tikzpicture}

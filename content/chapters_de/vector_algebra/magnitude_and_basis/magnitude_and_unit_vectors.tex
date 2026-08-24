@@ -1,0 +1,74 @@
+\subsection{Betrag und Einheitsvektor}
+\label{subsec:vector_algebra_magnitude_unit_vectors}
+
+\begin{DefinitionBox}{Betrag eines Vektors}{vector_algebra_vector_magnitude}
+  Der \emph{Betrag} \EnglishTerm{magnitude} eines Vektors
+  $\vec a=(a_1,\dots,a_n)^{\mathsf T}\in\R^n$ ist seine Länge
+  \[
+    |\vec a|
+    =\sqrt{a_1^2+a_2^2+\dots+a_n^2}.
+  \]
+\end{DefinitionBox}
+
+\noindent
+\begin{minipage}[c]{0.52\linewidth}
+  Für $\vec a=(3,4)^{\mathsf T}$ liefert der Satz des Pythagoras
+  \[
+    |\vec a|
+    =\Cloze{5cm}{\sqrt{3^2+4^2}=5}.
+  \]
+  Für $\vec b=(1,1,1)^{\mathsf T}\in\R^3$ gilt
+  \[
+    |\vec b|
+    =\Cloze{5cm}{\sqrt{1^2+1^2+1^2}=\sqrt3}.
+  \]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.44\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_magnitude.tex}
+\end{minipage}
+
+\begin{TheoremBox}{Rechenregeln für den Betrag}{vector_algebra_magnitude_laws}
+  Für $\lambda\in\R$ und $\vec a,\vec b\in\R^n$ gilt
+  \[
+    |\vec a|\ge0,
+    \qquad
+    |\lambda\vec a|=|\lambda|\,|\vec a|,
+    \qquad
+    |\vec a+\vec b|\le|\vec a|+|\vec b|.
+  \]
+  Die letzte Beziehung heißt \emph{Dreiecksungleichung}
+  \EnglishTerm{triangle inequality}.
+\end{TheoremBox}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/triangle_inequality.tex}
+\end{center}
+
+\clearpage
+\begin{DefinitionBox}{Einheitsvektor}{vector_algebra_unit_vector}
+  Ein \emph{Einheitsvektor} \EnglishTerm{unit vector} $\vec e$ besitzt die
+  Länge
+  \[
+    |\vec e|=1.
+  \]
+  Zu jedem $\vec a\ne\vec 0$ gehört der gleichgerichtete Einheitsvektor
+  \[
+    \boxed{\vec e_a=\frac{\vec a}{|\vec a|}}.
+  \]
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Einen Vektor normieren}{vector_algebra_normalize_vector}
+  Für $\vec a=(1,1)^{\mathsf T}$ gilt
+  \[
+    |\vec a|=\sqrt2,
+    \qquad
+    \vec e_a
+    =\frac{\vec a}{|\vec a|}
+    =\Cloze{5cm}{\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}}.
+  \]
+  Damit zerfällt der Vektor in Länge und Richtung:
+  \[
+    \boxed{\vec a=|\vec a|\,\vec e_a}.
+  \]
+\end{ExampleBox}

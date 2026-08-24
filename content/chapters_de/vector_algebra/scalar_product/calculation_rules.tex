@@ -1,0 +1,41 @@
+\subsection{Rechenregeln}
+\label{subsec:vector_algebra_scalar_product_rules}
+
+\begin{TheoremBox}{Rechenregeln des Skalarprodukts}{vector_algebra_dot_product_laws}
+  Für $\vec a,\vec b,\vec c\in\R^n$ und $\lambda\in\R$ gilt
+  \[
+    \begin{aligned}
+      \vec a\cdot\vec b
+        &=\vec b\cdot\vec a
+        &&\text{(Kommutativgesetz)},\\[0.5em]
+      \vec a\cdot(\vec b+\vec c)
+        &=\vec a\cdot\vec b+\vec a\cdot\vec c
+        &&\text{(Distributivgesetz)},\\[0.5em]
+      (\lambda\vec a)\cdot\vec b
+        &=\lambda(\vec a\cdot\vec b)
+        =\vec a\cdot(\lambda\vec b).
+    \end{aligned}
+  \]
+\end{TheoremBox}
+
+\begin{RemarkBox}[title=Keine Assoziativität]
+  \label{rem:vector_algebra_dot_product_not_associative}
+  Ein Assoziativgesetz ist nicht möglich: $\vec a\cdot\vec b$ ist bereits
+  ein Skalar. Daher sind $(\vec a\cdot\vec b)\cdot\vec c$ und
+  $\vec a\cdot(\vec b\cdot\vec c)$ keine Skalarprodukte zweier Vektoren.
+\end{RemarkBox}
+
+\begin{ExampleBox}{Rechenregeln anwenden}{vector_algebra_dot_product_laws_example}
+  Für
+  \[
+    \vec a=\begin{pmatrix}1\\2\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}3\\-1\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}-1\\4\end{pmatrix}
+  \]
+  folgt
+  \[
+    \vec a\cdot(\vec b+\vec c)
+    =\vec a\cdot\vec b+\vec a\cdot\vec c
+    =\Cloze{5cm}{1+7=8}.
+  \]
+\end{ExampleBox}

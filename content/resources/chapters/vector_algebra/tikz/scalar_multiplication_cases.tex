@@ -1,0 +1,25 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \foreach \x in {3.8,7.6,11.4}{\draw[black!25] (\x,0)--(\x,3.3);}
+  \node[font=\bfseries] at (1.9,3.5) {$\lambda>1$};
+  \node[font=\bfseries] at (5.7,3.5) {$0<\lambda<1$};
+  \node[font=\bfseries] at (9.5,3.5) {$\lambda<0$};
+  \node[font=\bfseries] at (13.3,3.5) {$\lambda=-1$};
+
+  \foreach \x in {0.45,4.25,8.05,11.85}{
+    \draw[->,black,line width=1.0pt] (\x,0.45)--++(1.05,1.05)
+      node[midway,above left] {$\vec a$};
+  }
+  \draw[->,THMBlue,line width=1.35pt] (0.45,0.45)--++(2.15,2.15)
+    node[midway,below right] {$\lambda\vec a$};
+  \draw[->,THMBlue,line width=1.35pt] (4.25,0.45)--++(0.6,0.6)
+    node[right] {$\lambda\vec a$};
+  \draw[->,THMBlue,line width=1.35pt] (9.10,1.50)--++(-1.65,-1.65)
+    node[midway,below right] {$\lambda\vec a$};
+  \draw[->,THMBlue,line width=1.35pt] (12.90,1.50)--++(-1.05,-1.05)
+    node[midway,below right] {$-\vec a$};
+
+  \node[text=black!60] at (1.9,-0.25) {Streckung};
+  \node[text=black!60] at (5.7,-0.25) {Stauchung};
+  \node[text=black!60] at (9.5,-0.25) {Richtungsumkehr};
+  \node[text=black!60] at (13.3,-0.25) {Gegenvektor};
+\end{tikzpicture}

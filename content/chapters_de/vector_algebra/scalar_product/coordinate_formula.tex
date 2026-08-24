@@ -1,0 +1,61 @@
+\subsection{Berechnung aus Koordinaten}
+\label{subsec:vector_algebra_dot_product_coordinates}
+
+Die Koordinateneinheitsvektoren sind paarweise senkrecht und besitzen den
+Betrag $1$. Daher gilt
+\[
+  \vec e_i\cdot\vec e_j
+  =\begin{cases}
+     1,&i=j,\\
+     0,&i\ne j.
+   \end{cases}
+\]
+
+Für $\vec a,\vec b\in\R^3$ liefert die Darstellung in der Standardbasis:
+\begin{ClozeArea}[34]{5}
+  \[
+    \begin{aligned}
+      \vec a\cdot\vec b
+      &=(a_1\vec e_1+a_2\vec e_2+a_3\vec e_3)
+        \cdot(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)\\[0.5em]
+      &=a_1b_1(\vec e_1\cdot\vec e_1)
+        +a_2b_2(\vec e_2\cdot\vec e_2)
+        +a_3b_3(\vec e_3\cdot\vec e_3)\\[0.5em]
+      &=a_1b_1+a_2b_2+a_3b_3.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Koordinatenformel}{vector_algebra_dot_product_coordinate_formula}
+  Für $\vec a,\vec b\in\R^n$ gilt
+  \[
+    \boxed{
+      \vec a\cdot\vec b
+      =a_1b_1+a_2b_2+\dots+a_nb_n
+      =\sum_{i=1}^{n}a_i b_i
+    }.
+  \]
+  Entsprechende Koordinaten werden multipliziert, anschließend werden die
+  Produkte addiert.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Skalarprodukt aus Koordinaten}{vector_algebra_coordinate_dot_product_example}
+  Für
+  \[
+    \vec a=\begin{pmatrix}1\\2\\3\end{pmatrix},
+    \qquad
+    \vec b=\begin{pmatrix}4\\5\\6\end{pmatrix}
+  \]
+  gilt
+  \[
+    \vec a\cdot\vec b
+    =1\cdot4+2\cdot5+3\cdot6
+    =\Cloze{3cm}{32}.
+  \]
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Betrag aus dem Skalarprodukt}{vector_algebra_magnitude_from_dot_product}
+  \[
+    \boxed{|\vec a|=\sqrt{\vec a\cdot\vec a}}.
+  \]
+\end{KeyPointBox}
