@@ -1,43 +1,68 @@
 \subsection{Vektoren als Verschiebungspfeile}
 \label{subsec:vector_algebra_vectors_as_displacements}
 
-\begin{DefinitionBox}{Vektor}{vector_algebra_vector}
-  Ein \emph{Vektor} \EnglishTerm{vector} ist durch seine Länge und seine
-  Richtung bestimmt. Geometrisch stellen wir ihn als
-  \emph{Verschiebungspfeil} \EnglishTerm{displacement arrow} dar und schreiben
-  beispielsweise $\vec a$.
-  \[
-    \vec a
-    \quad\widehat{=}\quad
-    \text{Länge und Richtung}
-  \]
-  Ein Vektor besitzt keine feste Position im Raum: Paralleles Verschieben
-  ändert den Vektor nicht.
+Die Menge aller \emph{Verschiebungspfeile} \EnglishTerm{displacement arrows}
+bildet einen Vektorraum: Verschiebungspfeile lassen sich addieren und mit
+Skalaren multiplizieren; die Ergebnisse sind wieder Verschiebungspfeile. Wenn
+im Folgenden von Vektoren die Rede ist, sind stets diese Verschiebungspfeile
+gemeint.
+
+\begin{DefinitionBox}{Vektor als Verschiebungspfeil}{vector_algebra_vector}
+  Abhängig vom betrachteten Vektorraum können Vektoren durch unterschiedliche
+  mathematische Objekte realisiert werden. Im Vektorraum der Verschiebungen
+  stellen wir einen Vektor als Verschiebungspfeil dar. Diese geometrische
+  Realisierung ist durch ihre Länge und ihre Richtung eindeutig bestimmt.
+
+  Vektoren kennzeichnen wir in Gleichungen durch einen Pfeil über dem
+  mathematischen Symbol, z. B.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_arrow_notation.tex}
+  \end{center}
+  Ein Verschiebungspfeil besitzt keine feste Position im Raum: Paralleles
+  Verschieben ändert den dargestellten Vektor nicht. Zwei Pfeile mit gleicher
+  Länge und gleicher Richtung stellen daher denselben Vektor dar.
+  \par\smallskip
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_translation.tex}
+  \par
 \end{DefinitionBox}
 
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_translation.tex}
-\end{center}
-
+Um die gegenseitige Ausrichtung von Vektoren beschreiben zu können, haben wir für die
+folgenden Spezialfälle eine besondere Notation.
 \begin{KeyPointBox}{Beziehungen zwischen Vektoren}{vector_algebra_vector_relations}
-  \noindent
-  \begin{minipage}[c]{0.50\linewidth}
-    \begin{align*}
-      \vec a=\vec b
-      &\quad\Longleftrightarrow\quad
-      \text{gleiche Länge und Richtung},\\[0.6em]
-      \vec a\parallel\vec b
-      &\quad\Longleftrightarrow\quad
-      \text{parallel oder antiparallel},\\[0.6em]
-      \vec b=-\vec a
-      &\quad\Longleftrightarrow\quad
-      \text{Gegenvektoren}.
-    \end{align*}
-  \end{minipage}\hfill
-  \begin{minipage}[c]{0.46\linewidth}
-    \centering
-    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_relations.tex}
-  \end{minipage}
+  \begin{itemize}[leftmargin=1.4em,itemsep=0.6em,parsep=0pt,topsep=0pt]
+    \item
+      \begin{tabularx}{\linewidth}[t]{@{}X
+          >{\centering\arraybackslash}p{3.8cm}
+          >{\centering\arraybackslash}p{3.8cm}@{}}
+        gleich \EnglishTerm{equal}: gleicher Betrag und gleiche Richtung
+          & $\vec a=\vec b$
+          & \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/equal_vectors_relation.tex}
+      \end{tabularx}
+    \item
+      \begin{tabularx}{\linewidth}[t]{@{}X
+          >{\centering\arraybackslash}p{3.8cm}
+          >{\centering\arraybackslash}p{3.8cm}@{}}
+        parallel \EnglishTerm{parallel}: gleiche Richtung
+          & $\vec a\upuparrows\vec b$
+          & \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/parallel_vectors_relation.tex}
+      \end{tabularx}
+    \item
+      \begin{tabularx}{\linewidth}[t]{@{}X
+          >{\centering\arraybackslash}p{3.8cm}
+          >{\centering\arraybackslash}p{3.8cm}@{}}
+        antiparallel \EnglishTerm{antiparallel}: entgegengesetzte Richtung
+          & $\vec a\updownarrows\vec b$
+          & \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/antiparallel_vectors_relation.tex}
+      \end{tabularx}
+    \item
+      \begin{tabularx}{\linewidth}[t]{@{}X
+          >{\centering\arraybackslash}p{3.8cm}
+          >{\centering\arraybackslash}p{3.8cm}@{}}
+        \emph{Gegenvektoren} \EnglishTerm{opposite vectors}: gleicher Betrag
+        und entgegengesetzte Richtung
+          & $\vec b=-\vec a$
+          & \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/opposite_vectors_relation.tex}
+      \end{tabularx}
+  \end{itemize}
 \end{KeyPointBox}
-
-Der \emph{Gegenvektor} \EnglishTerm{opposite vector} zu $\vec a$ ist $-\vec a$.

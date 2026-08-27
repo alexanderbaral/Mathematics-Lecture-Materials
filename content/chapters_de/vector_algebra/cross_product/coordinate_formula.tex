@@ -1,0 +1,90 @@
+\subsection{Kreuzprodukt in Koordinatendarstellung}
+\label{subsec:vector_algebra_cross_product_coordinates}
+
+Wir stellen $\vec a,\vec b\in\R^3$ mithilfe der kanonischen Einheitsvektoren
+dar:
+\[
+  \vec a=a_1\vec e_1+a_2\vec e_2+a_3\vec e_3,
+  \qquad
+  \vec b=b_1\vec e_1+b_2\vec e_2+b_3\vec e_3.
+\]
+Mit den Kreuzprodukten der kanonischen Einheitsvektoren folgt durch
+Ausmultiplizieren
+\begin{ClozeArea}[34]{10}
+  \[
+    \begin{aligned}
+      \vec a\times\vec b
+      &=(a_1\vec e_1+a_2\vec e_2+a_3\vec e_3)
+        \times(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)\\[0.6em]
+      &=a_1b_2\vec e_3-a_1b_3\vec e_2
+        -a_2b_1\vec e_3+a_2b_3\vec e_1\\
+      &\quad
+        +a_3b_1\vec e_2-a_3b_2\vec e_1\\[0.6em]
+      &=(a_2b_3-a_3b_2)\vec e_1
+        +(a_3b_1-a_1b_3)\vec e_2
+        +(a_1b_2-a_2b_1)\vec e_3.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Koordinatenformel}{vector_algebra_cross_product_coordinate_formula}
+  Für $\vec a,\vec b\in\R^3$ gilt
+  \[
+    \vec a\times\vec b
+    =\begin{ClozeContinuation}[22]{3}
+      \begin{pmatrix}
+        a_2b_3-a_3b_2\\
+        a_3b_1-a_1b_3\\
+        a_1b_2-a_2b_1
+      \end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+\end{KeyPointBox}
+
+Als Merkhilfe lässt sich dieselbe Koordinatenformel formal als Determinante
+schreiben:
+\[
+  \vec a\times\vec b
+  =\Cloze{11cm}{
+    \det\!\begin{pmatrix}
+      \vec e_1&\vec e_2&\vec e_3\\
+      a_1&a_2&a_3\\
+      b_1&b_2&b_3
+    \end{pmatrix}}.
+\]
+Die Entwicklung nach der ersten Zeile liefert die drei Komponenten des
+Kreuzprodukts. Diese Schreibweise dient hier nur als Merkhilfe; definiert wurde
+das Kreuzprodukt geometrisch.
+
+\begin{ExampleBox}{Kreuzprodukt aus Koordinaten}{vector_algebra_cross_product_coordinates_example}
+  Für
+  \[
+    \vec a=\begin{pmatrix}2\\1\\-2\end{pmatrix},
+    \qquad
+    \vec b=\begin{pmatrix}-1\\2\\-1\end{pmatrix}
+  \]
+  ergibt sich
+  \[
+    \vec c=\vec a\times\vec b
+    =\begin{ClozeContinuation}[22]{4}
+      \begin{pmatrix}
+        1\cdot(-1)-(-2)\cdot2\\
+        (-2)\cdot(-1)-2\cdot(-1)\\
+        2\cdot2-1\cdot(-1)
+      \end{pmatrix}
+      =\begin{pmatrix}3\\4\\5\end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+  Die Orthogonalität zu beiden Ausgangsvektoren wird durch das Skalarprodukt
+  bestätigt:
+  \[
+    \vec c\cdot\vec a=\Cloze{5cm}{6+4-10=0},
+    \qquad
+    \vec c\cdot\vec b=\Cloze{5cm}{-3+8-5=0}.
+  \]
+  Der aufgespannte Flächeninhalt beträgt
+  \[
+    A=|\vec a\times\vec b|
+    =\Cloze{7cm}{\sqrt{3^2+4^2+5^2}=\sqrt{50}}.
+  \]
+\end{ExampleBox}

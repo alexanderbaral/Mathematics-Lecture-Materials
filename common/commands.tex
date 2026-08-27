@@ -101,6 +101,25 @@
   \par\medskip
 }{}
 
+% Grid that continues a visible equation within the same display.
+% Dimensions again count exact 5 mm squares.
+\NewDocumentEnvironment{ClozeContinuation}{O{12} m +b}{%
+  \pgfmathsetlengthmacro{\InlineClozeAreaWidth}{#1*5mm}%
+  \pgfmathsetlengthmacro{\InlineClozeAreaHeight}{#2*5mm}%
+  \IfClozeTF{%
+    \vcenter{\hbox{%
+      \begin{tikzpicture}
+        \path[use as bounding box]
+          (0,0) rectangle (\InlineClozeAreaWidth,\InlineClozeAreaHeight);
+        \draw[step=5mm,black!14,line width=0.2pt]
+          (0,0) grid (\InlineClozeAreaWidth,\InlineClozeAreaHeight);
+        \draw[black!25,line width=0.3pt]
+          (0,0) rectangle (\InlineClozeAreaWidth,\InlineClozeAreaHeight);
+      \end{tikzpicture}%
+    }}%
+  }{#3}%
+}{}
+
 % Shared geometry for branching and merging equations.
 \newlength{\EquationTemplateUpperWidth}
 \newlength{\EquationTemplateLowerWidth}

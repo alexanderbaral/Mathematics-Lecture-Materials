@@ -1,0 +1,39 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \node (topa) at (0,2.35)
+    {$S=(\textcolor{THMBlue}{\vec a}\times
+      \textcolor{olive!80!black}{\vec b})\cdot
+      \textcolor{red!70!black}{\vec c}$};
+  \node (topb) at (5.25,2.35)
+    {$=(\textcolor{olive!80!black}{\vec b}\times
+      \textcolor{red!70!black}{\vec c})\cdot
+      \textcolor{THMBlue}{\vec a}$};
+  \node (topc) at (10.10,2.35)
+    {$=(\textcolor{red!70!black}{\vec c}\times
+      \textcolor{THMBlue}{\vec a})\cdot
+      \textcolor{olive!80!black}{\vec b}$};
+
+  \node[THMBlue] at (5.05,3.08)
+    {zyklische Vertauschung: zwei Paartausche};
+
+  \node (bottoma) at (0,0)
+    {$(\textcolor{olive!80!black}{\vec b}\times
+      \textcolor{THMBlue}{\vec a})\cdot
+      \textcolor{red!70!black}{\vec c}=-S$};
+  \node (bottomb) at (5.25,0)
+    {$(\textcolor{red!70!black}{\vec c}\times
+      \textcolor{olive!80!black}{\vec b})\cdot
+      \textcolor{THMBlue}{\vec a}=-S$};
+  \node (bottomc) at (10.10,0)
+    {$(\textcolor{THMBlue}{\vec a}\times
+      \textcolor{red!70!black}{\vec c})\cdot
+      \textcolor{olive!80!black}{\vec b}=-S$};
+
+  \foreach \top/\bottom in {topa/bottoma,topb/bottomb,topc/bottomc}{
+    \draw[->,black!55,line width=0.9pt]
+      (\top.south)--(\bottom.north)
+      node[midway,fill=white,inner sep=2pt]{ein Paartausch};
+  }
+
+  \node[font=\bfseries] at (5.05,-0.85)
+    {$V=|S|$: Das Volumen bleibt unverändert.};
+\end{tikzpicture}

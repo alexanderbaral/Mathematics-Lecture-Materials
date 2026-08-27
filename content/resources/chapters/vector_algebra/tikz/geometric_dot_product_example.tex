@@ -1,0 +1,14 @@
+\begin{tikzpicture}[>=Latex,x=1.3cm,y=1.3cm]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (2,0);
+  \coordinate (B) at ({3*cos(30)},{3*sin(30)});
+
+  \draw[->,THMBlue,line width=1.35pt]
+    (O)--(A) node[midway,below] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt]
+    (O)--(B) node[midway,above left] {$\vec b$};
+
+  \draw[black!65,line width=0.75pt]
+    (1.20,0) arc[start angle=0,end angle=30,radius=1.20];
+  \node at ({0.82*cos(15)},{0.82*sin(15)}) {$30^\circ$};
+\end{tikzpicture}

@@ -1,0 +1,65 @@
+\subsection{Rechenregeln}
+\label{subsec:vector_algebra_cross_product_rules}
+
+\begin{TheoremBox}{Rechenregeln des Kreuzprodukts}{vector_algebra_cross_product_laws}
+  Für $\vec a,\vec b,\vec c\in\R^3$ und $\lambda\in\R$ gilt
+  \[
+    \begin{aligned}
+      \vec a\times\vec b
+        &=\Cloze{7cm}{-\vec b\times\vec a}
+        &&\text{(Antikommutativgesetz)},\\[0.7em]
+      \lambda(\vec a\times\vec b)
+        &=\Cloze{10cm}{(\lambda\vec a)\times\vec b
+          =\vec a\times(\lambda\vec b)},\\[0.7em]
+      \vec a\times(\vec b+\vec c)
+        &=\Cloze{9cm}{\vec a\times\vec b+\vec a\times\vec c}
+        &&\text{(Distributivgesetz)},\\[0.7em]
+      (\vec a+\vec b)\times\vec c
+        &=\Cloze{9cm}{\vec a\times\vec c+\vec b\times\vec c}
+        &&\text{(Distributivgesetz)}.
+    \end{aligned}
+  \]
+\end{TheoremBox}
+
+Damit begegnen uns erstmals bei einer Vektoroperation zwei vertraute
+Rechengesetze, die nicht gelten.
+
+\begin{RemarkBox}[title=Weder kommutativ noch assoziativ]
+  Das Kommutativgesetz wird durch die Antikommutativität ersetzt:
+  \[
+    \vec a\times\vec b=-\vec b\times\vec a.
+  \]
+  Beide Klammerungen eines dreifachen Kreuzprodukts sind zwar definiert, im
+  Allgemeinen gilt jedoch
+  \[
+    \vec a\times(\vec b\times\vec c)
+    \ne(\vec a\times\vec b)\times\vec c.
+  \]
+\end{RemarkBox}
+
+\begin{ExampleBox}{Reihenfolge beim Kreuzprodukt}{vector_algebra_cross_product_order_example}
+  Für
+  \[
+    \vec a=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad
+    \vec b=\begin{pmatrix}4\\5\\6\end{pmatrix},\quad
+    \vec c=\begin{pmatrix}7\\8\\9\end{pmatrix}
+  \]
+  zeigt die vertauschte Reihenfolge
+  \[
+    \vec a\times\vec b
+      =\Cloze{4cm}{\begin{pmatrix}-3\\6\\-3\end{pmatrix}},
+    \qquad
+    \vec b\times\vec a
+      =\Cloze{4cm}{\begin{pmatrix}3\\-6\\3\end{pmatrix}}.
+  \]
+  Die beiden möglichen Klammerungen liefern
+  \[
+    \begin{aligned}
+      \vec a\times(\vec b\times\vec c)
+        &=\Cloze{5cm}{\begin{pmatrix}-24\\-6\\12\end{pmatrix}},\\[0.8em]
+      (\vec a\times\vec b)\times\vec c
+        &=\Cloze{5cm}{\begin{pmatrix}78\\6\\-66\end{pmatrix}}.
+    \end{aligned}
+  \]
+  Somit ist das Kreuzprodukt weder kommutativ noch assoziativ.
+\end{ExampleBox}

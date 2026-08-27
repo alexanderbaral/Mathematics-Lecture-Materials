@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (2.3,1.0);
+  \draw[->,black!60] (O)--++(3.5,0) node[right] {$x_1$};
+  \draw[->,black!60] (O)--++(0,3.0) node[above] {$x_2$};
+  \draw[->,black!60] (O)--++(-2.0,-1.6) node[below left] {$x_3$};
+
+  % The three spatial right angles appear with different openings in projection.
+  \draw[black!55,line width=0.8pt]
+    ($(O)+(6:0.42)$)
+      arc[start angle=6,end angle=84,radius=0.42];
+  \fill[black!55] ($(O)+(45:0.23)$) circle[radius=1pt];
+
+  \draw[black!55,line width=0.8pt]
+    ($(O)+(96:0.42)$)
+      arc[start angle=96,end angle=212.4,radius=0.42];
+  \fill[black!55] ($(O)+(154.2:0.23)$) circle[radius=1pt];
+
+  \draw[black!55,line width=0.8pt]
+    ($(O)+(224.4:0.42)$)
+      arc[start angle=224.4,end angle=354,radius=0.42];
+  \fill[black!55] ($(O)+(289.2:0.23)$) circle[radius=1pt];
+
+  \draw[->,THMBlue,line width=1.4pt] (O)--++(1.7,0)
+    node[midway,below] {$\vec e_1$};
+  \draw[->,olive!80!black,line width=1.4pt] (O)--++(0,1.7)
+    node[midway,left] {$\vec e_2$};
+  \draw[->,red!70!black,line width=1.4pt] (O)--++(-1.15,-0.92)
+    node[midway,above left] {$\vec e_3$};
+\end{tikzpicture}

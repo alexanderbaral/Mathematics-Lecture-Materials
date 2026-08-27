@@ -1,25 +1,60 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
-  \foreach \x in {3.8,7.6,11.4}{\draw[black!25] (\x,0)--(\x,3.3);}
-  \node[font=\bfseries] at (1.9,3.5) {$\lambda>1$};
-  \node[font=\bfseries] at (5.7,3.5) {$0<\lambda<1$};
-  \node[font=\bfseries] at (9.5,3.5) {$\lambda<0$};
-  \node[font=\bfseries] at (13.3,3.5) {$\lambda=-1$};
-
-  \foreach \x in {0.45,4.25,8.05,11.85}{
-    \draw[->,black,line width=1.0pt] (\x,0.45)--++(1.05,1.05)
-      node[midway,above left] {$\vec a$};
+  \foreach \x in {3.8,7.6,11.4}{
+    \draw[black!25] (\x,0.25)--(\x,3.05);
   }
-  \draw[->,THMBlue,line width=1.35pt] (0.45,0.45)--++(2.15,2.15)
-    node[midway,below right] {$\lambda\vec a$};
-  \draw[->,THMBlue,line width=1.35pt] (4.25,0.45)--++(0.6,0.6)
-    node[right] {$\lambda\vec a$};
-  \draw[->,THMBlue,line width=1.35pt] (9.10,1.50)--++(-1.65,-1.65)
-    node[midway,below right] {$\lambda\vec a$};
-  \draw[->,THMBlue,line width=1.35pt] (12.90,1.50)--++(-1.05,-1.05)
-    node[midway,below right] {$-\vec a$};
+  \node[font=\bfseries] at (1.9,3.35) {$\lambda=-1$};
+  \node[font=\bfseries] at (5.7,3.35) {$\lambda<0$};
+  \node[font=\bfseries] at (9.5,3.35) {$0<\lambda<1$};
+  \node[font=\bfseries] at (13.3,3.35) {$\lambda>1$};
 
-  \node[text=black!60] at (1.9,-0.25) {Streckung};
-  \node[text=black!60] at (5.7,-0.25) {Stauchung};
-  \node[text=black!60] at (9.5,-0.25) {Richtungsumkehr};
-  \node[text=black!60] at (13.3,-0.25) {Gegenvektor};
+  % All arrow pairs are centered at the same height in their table cell.
+  \begin{scope}[shift={(1.9,1.65)}]
+    \draw[->,black,line width=1.0pt]
+      (-0.75,-0.45)--(0.05,0.35) node[midway,above left] {$\vec a$};
+    \IfClozeTF{}{%
+      \draw[->,THMBlue,line width=1.35pt]
+        (0.65,0.45)--(-0.15,-0.35) node[midway,below right] {$-\vec a$};
+    }
+  \end{scope}
+
+  \begin{scope}[shift={(5.7,1.65)}]
+    \draw[->,black,line width=1.0pt]
+      (-0.75,-0.45)--(0.05,0.35) node[midway,above left] {$\vec a$};
+    \IfClozeTF{}{%
+      \draw[->,THMBlue,line width=1.35pt]
+        (0.95,0.75)--(-0.55,-0.75) node[midway,below right] {$\lambda\vec a$};
+    }
+  \end{scope}
+
+  \begin{scope}[shift={(9.5,1.65)}]
+    \draw[->,black,line width=1.0pt]
+      (-0.75,-0.45)--(0.25,0.55) node[midway,above left] {$\vec a$};
+    \IfClozeTF{}{%
+      \draw[->,THMBlue,line width=1.35pt]
+        (-0.25,-0.45)--(0.25,0.05) node[midway,below right] {$\lambda\vec a$};
+    }
+  \end{scope}
+
+  \begin{scope}[shift={(13.3,1.65)}]
+    \draw[->,black,line width=1.0pt]
+      (-0.75,-0.45)--(0.05,0.35) node[midway,above left] {$\vec a$};
+    \IfClozeTF{}{%
+      \draw[->,THMBlue,line width=1.35pt]
+        (-0.55,-0.75)--(0.95,0.75) node[midway,below right] {$\lambda\vec a$};
+    }
+  \end{scope}
+
+  \node[text=black!60] at (1.9,0) {\Cloze{2.8cm}{Gegenvektor}};
+  \node[text=black!60] at (5.7,0) {\Cloze{3.2cm}{Richtungsumkehr}};
+  \node[text=black!60] at (9.5,0) {\Cloze{2.5cm}{Stauchung}};
+  \node[text=black!60] at (13.3,0) {\Cloze{2.3cm}{Streckung}};
+
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},black!55,
+      line width=0.7pt]
+    (0.20,-0.35)--(7.40,-0.35)
+    node[midway,below=7pt] {\Cloze{2.8cm}{antiparallele} Ausrichtung};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},black!55,
+      line width=0.7pt]
+    (7.80,-0.35)--(15.00,-0.35)
+    node[midway,below=7pt] {\Cloze{2.2cm}{parallele} Ausrichtung};
 \end{tikzpicture}

@@ -1,0 +1,13 @@
+\begin{tikzpicture}
+  \node[anchor=south west,inner sep=0pt] (hand) at (0,0) {%
+    \includegraphics[width=5.7cm]{content/resources/chapters/vector_algebra/images/right_handed_basis_hand.png}%
+  };
+  \begin{scope}[x={(hand.south east)},y={(hand.north west)}]
+    \fill[white] (0.19,0.83) rectangle (0.31,0.99);
+    \fill[white] (0.65,0.83) rectangle (0.77,0.99);
+    \fill[white] (0.88,0.48) rectangle (0.98,0.63);
+    \node[red!70!black] at (0.25,0.91) {$x_3$};
+    \node[olive!80!black] at (0.71,0.91) {$x_2$};
+    \node[THMBlue] at (0.93,0.55) {$x_1$};
+  \end{scope}
+\end{tikzpicture}

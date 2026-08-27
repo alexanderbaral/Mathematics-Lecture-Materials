@@ -1,0 +1,68 @@
+\subsection{Geometrische Definition}
+\label{subsec:vector_algebra_cross_product_geometric_definition}
+
+\begin{DefinitionBox}{Kreuzprodukt}{vector_algebra_cross_product}
+  \begin{minipage}[c]{0.58\linewidth}
+    Das \emph{Kreuzprodukt} \EnglishTerm{cross product} zweier Vektoren
+    $\vec a,\vec b\in\R^3$ ist der Vektor
+    \[
+      \vec c=\vec a\times\vec b
+    \]
+    mit den folgenden Eigenschaften:
+    \begin{itemize}[leftmargin=1.4em,itemsep=0.45em]
+      \item $|\vec c|=|\vec a|\,|\vec b|\sin(\varphi)$,
+      \item $\vec c\perp\vec a$ und $\vec c\perp\vec b$,
+      \item $\vec a,\vec b,\vec c$ bilden in dieser Reihenfolge ein
+        Rechtssystem.
+    \end{itemize}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.38\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_geometry.tex}
+  \end{minipage}
+\end{DefinitionBox}
+
+Das Ergebnis des Kreuzprodukts ist somit wieder ein Vektor. Das Kreuzprodukt
+ist in diesem Skript ausschließlich für Vektoren im $\R^3$ definiert.
+
+Die Orientierung des Ergebnisvektors wird mit der \emph{Rechte-Hand-Regel}
+\EnglishTerm{right-hand rule} bestimmt: Zeigt der Daumen in Richtung von
+$\vec a$ und der Zeigefinger in Richtung von $\vec b$, so zeigt der
+Mittelfinger in Richtung von $\vec a\times\vec b$.
+
+\noindent
+\begin{minipage}[c]{0.43\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_unit_vectors.tex}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.54\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_right_hand_rule.tex}
+\end{minipage}
+
+\begin{KeyPointBox}{Geometrische Sonderfälle}{vector_algebra_cross_product_special_cases}
+  Für $\vec a,\vec b\in\R^3$ gilt:
+  \begin{itemize}[leftmargin=1.5em,itemsep=0.55em]
+    \item Sind $\vec a$ und $\vec b$ kollinear, so ist
+      $\vec a\times\vec b=\vec 0$.
+    \item Sind $\vec a$ und $\vec b$ orthogonal, so ist
+      $|\vec a\times\vec b|=|\vec a|\,|\vec b|$.
+  \end{itemize}
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Kreuzprodukte der kanonischen Einheitsvektoren}{vector_algebra_cross_product_unit_vectors}
+  In zyklischer Reihenfolge gilt
+  \[
+    \vec e_1\times\vec e_2=\vec e_3,
+    \qquad
+    \vec e_2\times\vec e_3=\vec e_1,
+    \qquad
+    \vec e_3\times\vec e_1=\vec e_2.
+  \]
+  Bei umgekehrter Reihenfolge kehrt sich die Richtung um, beispielsweise
+  \[
+    \vec e_2\times\vec e_1=-\vec e_3.
+  \]
+  Das Vertauschen der beiden Faktoren hat also eine erkennbare Wirkung. Diese
+  Beobachtung wird in den Rechenregeln verallgemeinert.
+\end{KeyPointBox}

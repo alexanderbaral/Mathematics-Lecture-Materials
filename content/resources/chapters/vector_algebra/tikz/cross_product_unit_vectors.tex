@@ -1,0 +1,30 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (2.0,1.35);
+  \coordinate (Eone) at ($(O)+(2.25,0)$);
+  \coordinate (Etwo) at ($(O)+(0,2.25)$);
+  \coordinate (Ethree) at ($(O)+(-1.50,-1.18)$);
+
+  \draw[->,THMBlue,line width=1.35pt] (O)--(Eone)
+    node[right] {$\vec e_1$};
+  \draw[->,olive!80!black,line width=1.35pt] (O)--(Etwo)
+    node[above] {$\vec e_2$};
+  \draw[->,red!70!black,line width=1.35pt] (O)--(Ethree)
+    node[below left] {$\vec e_3$};
+
+  % Die drei räumlichen rechten Winkel erscheinen in der Projektion
+  % unterschiedlich weit geöffnet.
+  \draw[black!55,line width=0.8pt]
+    ($(O)+(6:0.42)$)
+      arc[start angle=6,end angle=84,radius=0.42];
+  \fill[black!55] ($(O)+(45:0.23)$) circle[radius=1pt];
+
+  \draw[black!55,line width=0.8pt]
+    ($(O)+(96:0.42)$)
+      arc[start angle=96,end angle=212.2,radius=0.42];
+  \fill[black!55] ($(O)+(154.1:0.23)$) circle[radius=1pt];
+
+  \draw[black!55,line width=0.8pt]
+    ($(O)+(224.2:0.42)$)
+      arc[start angle=224.2,end angle=354,radius=0.42];
+  \fill[black!55] ($(O)+(289.1:0.23)$) circle[radius=1pt];
+\end{tikzpicture}

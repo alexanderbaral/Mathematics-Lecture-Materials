@@ -1,0 +1,21 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0.4,0.35);
+  \coordinate (A) at (3.0,2.45);
+  \coordinate (B) at (5.1,1.15);
+  \coordinate (S) at ($(A)+(B)-(O)$);
+
+  \path[use as bounding box] (0,0) rectangle (9.5,3.7);
+
+  \draw[->,THMBlue,line width=1.25pt]
+    (O)--(A) node[midway,above left] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.25pt]
+    (O)--(B) node[midway,below] {$\vec b$};
+  \IfClozeTF{}{%
+    \draw[->,olive!80!black,line width=1.25pt]
+      (A)--(S) node[midway,above right] {$\vec b$};
+    \draw[THMBlue!55,densely dashed] (B)--(S);
+    \draw[->,black,line width=1.3pt]
+      (O)--(S) node[at end,anchor=west,xshift=0.14cm,yshift=-0.14cm]
+        {$\vec a+\vec b$};
+  }
+\end{tikzpicture}

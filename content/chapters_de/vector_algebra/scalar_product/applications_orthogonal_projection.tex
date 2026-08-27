@@ -1,0 +1,121 @@
+\subsubsection{Orthogonale Projektion}
+\label{subsubsec:vector_algebra_orthogonal_projection}
+
+Mit dem Skalarprodukt lässt sich die orthogonale Projektion
+\EnglishTerm{orthogonal projection} eines Vektors auf einen anderen
+berechnen. Dies hat im Maschinenbau vielfältige Anwendungen: Wirkt eine Kraft
+auf einen Stab, so erzeugt ihre parallele Komponente eine axiale Zug- oder
+Druckbeanspruchung und ihre senkrechte Komponente eine Biege- beziehungsweise
+Drehwirkung.
+
+Um diese Wirkungen getrennt untersuchen zu können, zerlegen wir die Kraft in
+ihre parallele und senkrechte Komponente. Allgemein lässt sich ein Vektor
+$\vec b$ relativ zu einer Richtung $\vec a\ne\vec 0$ schreiben als
+\[
+  \vec b=\vec b_{\parallel}+\vec b_{\perp}.
+\]
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_projection.tex}
+\end{center}
+
+Mit dem Einheitsvektor $\vec e_a=\vec a/|\vec a|$ ergibt sich die
+vorzeichenbehaftete Komponente von $\vec b$ in Richtung $\vec a$:
+\begin{ClozeArea}[34]{5}
+  \[
+    \begin{aligned}
+      \vec b\cdot\vec e_a
+      &=(\vec b_{\parallel}+\vec b_{\perp})\cdot\vec e_a\\[0.5em]
+      &=\vec b_{\parallel}\cdot\vec e_a
+        +\underbrace{\vec b_{\perp}\cdot\vec e_a}_{=0}.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Parallele und senkrechte Komponente}{vector_algebra_projection_components}
+  Die Komponente eines Vektors $\vec{b}$ \dots
+  \begin{itemize}
+    \item parallel zum senkrecht, zum 
+      \[
+        \vec b_{\parallel} = (\vec b\cdot\vec e_a)\,\vec e_a
+      \]
+      %
+      \item senkrecht zum ????
+        \[
+          \vec b_{\perp} = \vec b-\vec b_{\parallel}.
+        \]
+  \end{itemize} 
+
+
+  Dabei gilt $|\vec b_{\parallel}|=|\vec b\cdot\vec e_a|$ und
+  $\vec a\cdot\vec b_{\perp}=0$.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Einen Vektor orthogonal zerlegen}{vector_algebra_projection_example}
+  \noindent
+  \begin{minipage}[c]{0.57\linewidth}
+    Gegeben seien
+    \[
+      \textcolor{THMBlue}{\vec a}=\begin{pmatrix}4\\2\end{pmatrix},
+      \qquad
+      \textcolor{olive!80!black}{\vec b}=\begin{pmatrix}1\\3\end{pmatrix}.
+    \]
+    Dann gilt
+    \[
+      \begin{aligned}
+        \vec b_{\parallel}
+        &=\frac{\textcolor{THMBlue}{\vec a}\cdot
+            \textcolor{olive!80!black}{\vec b}}
+          {\textcolor{THMBlue}{\vec a}\cdot
+            \textcolor{THMBlue}{\vec a}}\,
+          \textcolor{THMBlue}{\vec a}
+          =\frac{10}{20}\begin{pmatrix}4\\2\end{pmatrix}\\
+        &=\Cloze{2.5cm}{\begin{pmatrix}2\\1\end{pmatrix}},
+      \end{aligned}
+    \]
+    \[
+      \textcolor{black!60}{\vec b_{\perp}}
+      =\textcolor{olive!80!black}{\vec b}-\vec b_{\parallel}
+      =\Cloze{2.5cm}{\begin{pmatrix}-1\\2\end{pmatrix}},
+      \qquad
+      \textcolor{THMBlue}{\vec a}\cdot
+      \textcolor{black!60}{\vec b_{\perp}}=0.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.39\linewidth}
+    \centering
+    \begin{tikzpicture}[>=Latex,x=0.72cm,y=0.72cm]
+      \draw[step=1cm,black!10,line width=0.35pt]
+        (-1.35,-0.45) grid (4.45,3.45);
+      \draw[->,black!55,line width=0.75pt]
+        (-1.35,0)--(4.55,0) node[right] {$x_1$};
+      \draw[->,black!55,line width=0.75pt]
+        (0,-0.45)--(0,3.55) node[above] {$x_2$};
+      \foreach \x in {-1,1,2,3,4}
+        \draw[black!55] (\x,0.07)--(\x,-0.07)
+          node[below=2pt] {$\x$};
+      \foreach \y in {1,2,3}
+        \draw[black!55] (0.07,\y)--(-0.07,\y)
+          node[left=2pt] {$\y$};
+
+      \coordinate (O) at (0,0);
+      \coordinate (A) at (4,2);
+      \coordinate (P) at (2,1);
+      \coordinate (B) at (1,3);
+      \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+        node[pos=0.82,below right] {$\vec a$};
+      \draw[->,olive!80!black,line width=1.35pt] (O)--(B)
+        node[pos=0.72,left] {$\vec b$};
+
+      \IfClozeTF{}{%
+        \draw[->,black,line width=1.25pt] (O)--(P)
+          node[pos=0.58,below right] {$\vec b_{\parallel}$};
+        \draw[->,black!60,line width=1.25pt] (P)--(B)
+          node[midway,right] {$\vec b_{\perp}$};
+        \draw[black!55,line width=0.75pt]
+          ($(P)!0.16!(O)$)--++(-0.16,0.32)--++(0.32,0.16);
+      }%
+      \fill[black] (O) circle[radius=1.2pt];
+    \end{tikzpicture}
+  \end{minipage}
+\end{ExampleBox}

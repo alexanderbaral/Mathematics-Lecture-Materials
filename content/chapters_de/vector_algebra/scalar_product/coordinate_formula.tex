@@ -1,8 +1,18 @@
-\subsection{Berechnung aus Koordinaten}
+\clearpage
+\subsection{Skalarprodukt in Koordinatendarstellung}
 \label{subsec:vector_algebra_dot_product_coordinates}
 
-Die Koordinateneinheitsvektoren sind paarweise senkrecht und besitzen den
-Betrag $1$. Daher gilt
+Wir leiten die Koordinatenformel des Skalarprodukts aus den zuvor eingeführten
+Rechenregeln her. Dazu stellen wir zunächst zwei Vektoren
+$\vec a,\vec b\in\R^3$ mit den kanonischen Einheitsvektoren dar:
+\[
+  \vec a=a_1\vec e_1+a_2\vec e_2+a_3\vec e_3,
+  \qquad
+  \vec b=b_1\vec e_1+b_2\vec e_2+b_3\vec e_3.
+\]
+
+Die kanonischen Einheitsvektoren sind orthonormal, d.h. sie sind 
+paarweise senkrecht und haben den Betrag $1$. Daher gilt
 \[
   \vec e_i\cdot\vec e_j
   =\begin{cases}
@@ -11,17 +21,27 @@ Betrag $1$. Daher gilt
    \end{cases}
 \]
 
-Für $\vec a,\vec b\in\R^3$ liefert die Darstellung in der Standardbasis:
-\begin{ClozeArea}[34]{5}
+Einsetzen und Ausmultiplizieren liefert:
+\begin{ClozeArea}[34]{10}
   \[
     \begin{aligned}
       \vec a\cdot\vec b
       &=(a_1\vec e_1+a_2\vec e_2+a_3\vec e_3)
-        \cdot(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)\\[0.5em]
-      &=a_1b_1(\vec e_1\cdot\vec e_1)
-        +a_2b_2(\vec e_2\cdot\vec e_2)
-        +a_3b_3(\vec e_3\cdot\vec e_3)\\[0.5em]
-      &=a_1b_1+a_2b_2+a_3b_3.
+        \cdot(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)
+        \vphantom{\overbrace{(\vec e_1\cdot\vec e_1)}^{1}}\\[0.7em]
+      &=a_1b_1\overbrace{(\vec e_1\cdot\vec e_1)}^{1}
+        +a_1b_2\overbrace{(\vec e_1\cdot\vec e_2)}^{0}
+        +a_1b_3\overbrace{(\vec e_1\cdot\vec e_3)}^{0}\\[0.7em]
+      &\quad
+        +a_2b_1\overbrace{(\vec e_2\cdot\vec e_1)}^{0}
+        +a_2b_2\overbrace{(\vec e_2\cdot\vec e_2)}^{1}
+        +a_2b_3\overbrace{(\vec e_2\cdot\vec e_3)}^{0}\\[0.7em]
+      &\quad
+        +a_3b_1\overbrace{(\vec e_3\cdot\vec e_1)}^{0}
+        +a_3b_2\overbrace{(\vec e_3\cdot\vec e_2)}^{0}
+        +a_3b_3\overbrace{(\vec e_3\cdot\vec e_3)}^{1}\\[0.7em]
+      &=a_1b_1+a_2b_2+a_3b_3
+        \vphantom{\overbrace{(\vec e_1\cdot\vec e_1)}^{1}}.
     \end{aligned}
   \]
 \end{ClozeArea}
@@ -29,33 +49,26 @@ Für $\vec a,\vec b\in\R^3$ liefert die Darstellung in der Standardbasis:
 \begin{KeyPointBox}{Koordinatenformel}{vector_algebra_dot_product_coordinate_formula}
   Für $\vec a,\vec b\in\R^n$ gilt
   \[
-    \boxed{
-      \vec a\cdot\vec b
-      =a_1b_1+a_2b_2+\dots+a_nb_n
-      =\sum_{i=1}^{n}a_i b_i
-    }.
+    \vec a\cdot\vec b
+    =a_1b_1+a_2b_2+\dots+a_nb_n
+    =\sum_{i=1}^{n}a_i b_i.
   \]
   Entsprechende Koordinaten werden multipliziert, anschließend werden die
   Produkte addiert.
 \end{KeyPointBox}
 
 \begin{ExampleBox}{Skalarprodukt aus Koordinaten}{vector_algebra_coordinate_dot_product_example}
-  Für
+  Für das Skalarprdukt der beiden Vektoren
   \[
     \vec a=\begin{pmatrix}1\\2\\3\end{pmatrix},
-    \qquad
+    \quad \text{und} \quad
     \vec b=\begin{pmatrix}4\\5\\6\end{pmatrix}
   \]
-  gilt
+  ergitb sich
   \[
-    \vec a\cdot\vec b
-    =1\cdot4+2\cdot5+3\cdot6
-    =\Cloze{3cm}{32}.
+    \vec a\cdot\vec b = 
+    \Cloze{10cm}{
+    1\cdot4 + 2\cdot5 + 3\cdot6 = 32.
+    }
   \]
 \end{ExampleBox}
-
-\begin{KeyPointBox}{Betrag aus dem Skalarprodukt}{vector_algebra_magnitude_from_dot_product}
-  \[
-    \boxed{|\vec a|=\sqrt{\vec a\cdot\vec a}}.
-  \]
-\end{KeyPointBox}

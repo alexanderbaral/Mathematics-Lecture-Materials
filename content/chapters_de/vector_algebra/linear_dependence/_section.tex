@@ -1,0 +1,187 @@
+\section{Lineare Abhängigkeit und Unabhängigkeit}
+\label{sec:vector_algebra_linear_dependence}
+
+Vektoren beschreiben Verschiebungen. Daher stellt sich die Frage, ob eine
+Verschiebung durch eine gewichtete Kombination anderer Verschiebungen erzeugt
+werden kann. In technischen Modellen zeigt dies beispielsweise, ob eine
+zusätzliche Kraft- oder Stellgröße eine neue Wirkung ermöglicht oder durch
+bereits vorhandene Größen ersetzt werden kann. Diese Frage führt auf die
+lineare Abhängigkeit und Unabhängigkeit von Vektoren.
+
+\subsection{Zusammensetzen und kompensieren}
+\label{subsec:vector_algebra_linear_dependence_construction}
+
+Wir beginnen mit der Frage, ob sich ein Vektor $\vec c$ aus zwei anderen
+Vektoren zusammensetzen lässt:
+\[
+  \text{Gibt es }\alpha,\beta\in\R\text{ mit}
+  \qquad
+  \alpha\vec a+\beta\vec b=\vec c\,?
+\]
+Durch Verschieben von $\vec c$ auf die linke Seite erhalten wir die
+gleichwertige Kompensationsfrage:
+\[
+  \alpha\vec a+\beta\vec b=\vec c
+  \quad\Longleftrightarrow\quad
+  \alpha\vec a+\beta\vec b-\vec c=\vec 0.
+\]
+Die von $\alpha\vec a$ und $\beta\vec b$ erzeugte Verschiebung kann also durch
+$-\vec c$ vollständig kompensiert werden. Beide Sichtweisen beschreiben
+denselben geschlossenen Vektorzug.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/linear_dependence_construction_and_compensation.tex}
+\end{center}
+
+Eine gewichtete Summe
+$\lambda_1\vec v_1+\dots+\lambda_k\vec v_k$ heißt
+\emph{Linearkombination} \EnglishTerm{linear combination} der Vektoren. Die
+Ausgangsfrage lautet somit: Ist $\vec c$ eine Linearkombination von $\vec a$
+und $\vec b$?
+
+Allgemeiner suchen wir Koeffizienten $\alpha,\beta,\gamma$, für die
+\[
+  \alpha\vec a+\beta\vec b+\gamma\vec c=\vec 0
+\]
+gilt. In Koordinaten ist dies das homogene lineare Gleichungssystem
+\[
+  \begin{aligned}
+    a_1\alpha+b_1\beta+c_1\gamma&=0,\\
+    a_2\alpha+b_2\beta+c_2\gamma&=0,\\
+    &\mathrel{\phantom{=}}\vdots\\
+    a_n\alpha+b_n\beta+c_n\gamma&=0.
+  \end{aligned}
+  \qquad\Longleftrightarrow\qquad
+  \left[
+    \begin{array}{ccc|c}
+      a_1&b_1&c_1&0\\
+      a_2&b_2&c_2&0\\
+      \vdots&\vdots&\vdots&\vdots\\
+      a_n&b_n&c_n&0
+    \end{array}
+  \right].
+\]
+Die ursprüngliche Baufrage ist darin als Spezialfall $\gamma=-1$ enthalten.
+
+\begin{DefinitionBox}{Lineare Abhängigkeit und Unabhängigkeit}{vector_algebra_linear_dependence}
+  Die Vektoren $\vec v_1,\dots,\vec v_k\in\R^n$ heißen \emph{linear abhängig}
+  \EnglishTerm{linearly dependent}, wenn das homogene Gleichungssystem
+  \[
+    \lambda_1\vec v_1+\dots+\lambda_k\vec v_k=\vec 0
+  \]
+  eine nichttriviale Lösung besitzt, also mindestens ein
+  $\lambda_i\ne0$ ist. Besitzt es nur die triviale Lösung
+  $\lambda_1=\dots=\lambda_k=0$, heißen die Vektoren \emph{linear unabhängig}
+  \EnglishTerm{linearly independent}.
+
+  Da ein homogenes LGS nicht ohne Lösung sein kann, ergibt sich damit die
+  folgende Zuordnung:
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/linear_dependence_solution_types.tex}
+  \end{center}
+\end{DefinitionBox}
+
+Damit sind die folgenden Fragen gleichwertig:
+\begin{itemize}[leftmargin=1.7em,itemsep=0.45em]
+  \item Lässt sich einer der Vektoren aus den anderen zusammensetzen?
+  \item Können sich gewichtete Verschiebungen der Vektoren gegenseitig
+    kompensieren, ohne dass alle Gewichte null sind?
+  \item Besitzt das zugehörige homogene LGS eine nichttriviale Lösung?
+\end{itemize}
+
+\subsection{Entscheidung mithilfe der Determinante}
+\label{subsec:vector_algebra_linear_dependence_determinant}
+
+Nach Merke~\ref{key:linear_systems_homogeneous_solution_sets} besitzt ein
+homogenes LGS entweder nur die triviale oder unendlich viele Lösungen. Für
+genau $n$ Vektoren $\vec v_1,\dots,\vec v_n\in\R^n$ ist die zugehörige
+Koeffizientenmatrix $M$ quadratisch. Ihre Spalten enthalten die Koordinaten der
+Vektoren. Damit entscheidet die Determinante zwischen den beiden möglichen
+Lösungsmengen.
+
+Ist $\det(M)\ne0$, besitzt das LGS genau eine Lösung. Da die triviale Lösung
+bei einem homogenen LGS immer vorhanden ist, muss sie die einzige Lösung sein.
+Ist dagegen $\det(M)=0$, besitzt das LGS nicht genau eine Lösung. Da seine
+Lösungsmenge auch nicht leer sein kann, bleiben nur unendlich viele Lösungen,
+darunter auch nichttriviale.
+
+\begin{TheoremBox}{Determinantenkriterium}{vector_algebra_linear_dependence_determinant_criterion}
+  Für $n$ Vektoren $\vec v_1,\dots,\vec v_n\in\R^n$ und ihre
+  Koeffizientenmatrix $M$ gilt
+  \[
+    \begin{aligned}
+      \det(M)\ne0
+      &\quad\Longleftrightarrow\quad
+      \text{das homogene LGS besitzt nur die triviale Lösung}\\[-0.1em]
+      &\quad\Longleftrightarrow\quad
+      \vec v_1,\dots,\vec v_n\text{ sind }
+      \Cloze{4.1cm}{\text{linear unabhängig}},\\[0.8em]
+      \det(M)=0
+      &\quad\Longleftrightarrow\quad
+      \text{das homogene LGS besitzt nichttriviale Lösungen}\\[-0.1em]
+      &\quad\Longleftrightarrow\quad
+      \vec v_1,\dots,\vec v_n\text{ sind }
+      \Cloze{3.7cm}{\text{linear abhängig}}.
+    \end{aligned}
+  \]
+\end{TheoremBox}
+
+\begin{ExampleBox}{Unabhängigkeit mit der Determinante prüfen}{vector_algebra_linear_independence_determinant}
+  Für
+  \[
+    \vec a=\begin{pmatrix}2\\1\\1\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}2\\3\\4\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}7\\9\\11\end{pmatrix}
+  \]
+  prüfen wir die Koeffizientenmatrix mit den Vektoren als Spalten:
+  \[
+    \det(M)
+    =\begin{ClozeContinuation}[25]{5}
+      \det\!\begin{pmatrix}
+        2&2&7\\
+        1&3&9\\
+        1&4&11
+      \end{pmatrix}
+      =2(33-36)-2(11-9)+7(4-3)
+      =-3
+    \end{ClozeContinuation}.
+  \]
+  Da $\det(M)\ne0$ ist, sind $\vec a$, $\vec b$ und $\vec c$
+  \Cloze{4.1cm}{linear unabhängig}.
+\end{ExampleBox}
+
+\begin{RemarkBox}[title=Wann ist die Determinante anwendbar?]
+  Das Determinantenkriterium gilt unmittelbar für $n$ Vektoren im $\R^n$.
+  Bei einer anderen Anzahl von Vektoren untersuchen wir das homogene LGS mit
+  dem Gauß-Verfahren. Mehr als $n$ Vektoren im $\R^n$ sind stets linear
+  abhängig.
+\end{RemarkBox}
+
+\subsection{Geometrische Bedeutung}
+\label{subsec:vector_algebra_linear_dependence_geometry}
+
+In zwei und drei Dimensionen lässt sich die Determinante geometrisch deuten.
+Für drei Vektoren im $\R^3$ ist sie gerade das Spatprodukt:
+\[
+  \det(\vec a\ \vec b\ \vec c)
+  =(\vec a\times\vec b)\cdot\vec c.
+\]
+
+\begin{KeyPointBox}{Fläche und Volumen zeigen Unabhängigkeit}{vector_algebra_linear_dependence_geometry}
+  Unabhängige Richtungen spannen einen nicht verschwindenden geometrischen
+  Inhalt auf:
+  \[
+    \begin{aligned}
+      \vec a,\vec b\in\R^2\text{ linear unabhängig}
+      &\quad\Longleftrightarrow\quad
+      |\det(\vec a\ \vec b)|>0
+      &&\text{(Flächeninhalt)},\\[0.7em]
+      \vec a,\vec b,\vec c\in\R^3\text{ linear unabhängig}
+      &\quad\Longleftrightarrow\quad
+      |(\vec a\times\vec b)\cdot\vec c|>0
+      &&\text{(Volumen)}.
+    \end{aligned}
+  \]
+  Kollabiert die aufgespannte Fläche oder das aufgespannte Volumen zu null,
+  sind die beteiligten Vektoren linear abhängig.
+\end{KeyPointBox}

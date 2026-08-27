@@ -1,8 +1,8 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
-  \foreach \shift/\angle/\condition/\sign in {
-      0/35/{0<\varphi<90^\circ}/{\vec a\cdot\vec b>0},
-      5.1/90/{\varphi=90^\circ}/{\vec a\cdot\vec b=0},
-      10.2/140/{90^\circ<\varphi\le180^\circ}/{\vec a\cdot\vec b<0}}
+  \foreach \shift/\angle/\arcRadius/\labelRadius/\condition/\comparison in {
+      0/35/1.00/0.62/{0<\varphi<90^\circ}/{>},
+      5.1/90/0.80/0.50/{\varphi=90^\circ}/{=},
+      10.2/140/0.75/0.46/{90^\circ<\varphi\le180^\circ}/{<}}
   {
     \begin{scope}[xshift=\shift cm]
       \draw[->,THMBlue,line width=1.15pt] (0,0)--(2.8,0)
@@ -11,9 +11,14 @@
         (0,0)--({2.25*cos(\angle)},{2.25*sin(\angle)})
         node[above] {$\vec b$};
       \draw[black!55,line width=0.65pt]
-        (0.7,0) arc[start angle=0,end angle=\angle,radius=0.7];
-      \node at ({1.0*cos(\angle/2)},{1.0*sin(\angle/2)}) {$\varphi$};
-      \node[align=center] at (1.35,-0.85) {$\condition$\\[0.25em]$\sign$};
+        (\arcRadius,0)
+        arc[start angle=0,end angle=\angle,radius=\arcRadius];
+      \node at
+        ({\labelRadius*cos(\angle/2)},{\labelRadius*sin(\angle/2)})
+        {$\varphi$};
+      \node at (1.35,3.05) {$\condition$};
+      \node at (1.35,-0.65)
+        {$\vec a\cdot\vec b\,\Cloze{0.7cm}{\comparison}\,0$};
     \end{scope}
   }
 \end{tikzpicture}

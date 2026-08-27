@@ -1,0 +1,72 @@
+\subsection{Volumeninterpretation}
+\label{subsec:vector_algebra_scalar_triple_product_volume}
+
+Die Vektoren $\vec a$ und $\vec b$ spannen ein Parallelogramm auf. Wird dieses
+entlang von $\vec c$ verschoben, entsteht ein Spat.
+
+\noindent
+\begin{minipage}[c]{0.57\linewidth}
+  Die Grundfläche hat den Inhalt
+  $A=|\vec a\times\vec b|$. Ist $\varphi$ der Winkel zwischen $\vec c$ und
+  $\vec a\times\vec b$, so beträgt die senkrechte Höhe
+  \[
+    h=|\vec c|\,|\cos(\varphi)|.
+  \]
+  Damit folgt
+  \[
+    \begin{aligned}
+      V=A h
+      &=|\vec a\times\vec b|\,|\vec c|\,|\cos(\varphi)|\\
+      &=\bigl|(\vec a\times\vec b)\cdot\vec c\bigr|.
+    \end{aligned}
+  \]
+  Ein Quader ist der Sonderfall mit drei paarweise orthogonalen Kanten. Für
+  Spat und Quader liefert somit derselbe Ausdruck das Volumen.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.39\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_volume.tex}
+\end{minipage}
+
+\begin{DefinitionBox}{Spatprodukt}{vector_algebra_scalar_triple_product}
+  Das \emph{Spatprodukt} \EnglishTerm{scalar triple product} der Vektoren
+  $\vec a,\vec b,\vec c\in\R^3$ ist der Skalar
+  \[
+    S=(\vec a\times\vec b)\cdot\vec c.
+  \]
+  Es ist ein orientiertes Volumen: $|S|$ ist das Volumen des aufgespannten
+  Spats, das Vorzeichen von $S$ beschreibt seine Orientierung.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Volumen eines Spats}{vector_algebra_scalar_triple_product_volume_example}
+  Die Vektoren
+  \[
+    \vec a=\begin{pmatrix}4\\2\\1\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}3\\-1\\2\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}0\\2\\-5\end{pmatrix}
+  \]
+  spannen einen Spat auf. Zunächst berechnen wir
+  \[
+    \vec a\times\vec b
+    =\begin{ClozeContinuation}[19]{3}
+      \begin{pmatrix}
+        2\cdot2-1\cdot(-1)\\
+        1\cdot3-4\cdot2\\
+        4\cdot(-1)-2\cdot3
+      \end{pmatrix}
+      =\begin{pmatrix}5\\-5\\-10\end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+  Damit beträgt das Volumen
+  \[
+    V
+    =\begin{ClozeContinuation}[20]{3}
+      \left|
+        \begin{pmatrix}5\\-5\\-10\end{pmatrix}
+        \cdot
+        \begin{pmatrix}0\\2\\-5\end{pmatrix}
+      \right|
+      =|0-10+50|=40
+    \end{ClozeContinuation}.
+  \]
+\end{ExampleBox}

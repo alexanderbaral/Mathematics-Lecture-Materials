@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+  >=Latex,
+  x=0.75cm,
+  y=0.75cm,
+  vector label/.style={inner sep=1.5pt}
+]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4,3);
+  \coordinate (B) at (1,2);
+  \coordinate (MinusB) at (-1,-2);
+  \coordinate (D) at (3,1);
+
+  \draw[step=1cm,black!8,very thin] (-2.15,-2.65) grid (6.15,4.15);
+  \draw[->,black!60,line width=0.6pt]
+    (-2.25,0)--(6.35,0) node[right] {$x_1$};
+  \draw[->,black!60,line width=0.6pt]
+    (0,-2.75)--(0,4.35) node[above] {$x_2$};
+  \foreach \x in {-2,-1,1,2,3,4,5,6}{
+    \draw[black!50] (\x,0.06)--(\x,-0.06) node[below] {$\x$};
+  }
+  \foreach \y in {-2,-1,1,2,3,4}{
+    \draw[black!50] (0.06,\y)--(-0.06,\y) node[left] {$\y$};
+  }
+
+  \IfClozeTF{}{%
+    \draw[->,THMBlue,line width=1.3pt]
+      (O)--(A) node[midway,above=1pt,vector label,text=THMBlue] {$\vec a$};
+    \draw[->,olive!80!black,line width=1.3pt]
+      (O)--(B) node[pos=0.58,left=3pt,vector label,text=olive!80!black] {$\vec b$};
+    \draw[->,olive!80!black,densely dashed,line width=1.3pt]
+      (O)--(MinusB)
+      node[pos=0.68,left=3pt,vector label,text=olive!80!black] {$-\vec b$};
+    \draw[->,olive!80!black,densely dashed,line width=1.3pt]
+      (A)--(D)
+      node[pos=0.52,right=4pt,vector label,text=olive!80!black] {$-\vec b$};
+    \draw[THMBlue!55,densely dashed] (MinusB)--(D);
+    \draw[->,black,line width=1.35pt]
+      (O)--(D)
+      node[at end,anchor=north west,xshift=0.10cm,yshift=-0.04cm,vector label]
+        {$\vec a+(-\vec b)$};
+    \draw[->,black,line width=1.2pt]
+      (B)--(A) node[pos=0.52,above=4pt,vector label] {$\vec a-\vec b$};
+  }
+\end{tikzpicture}

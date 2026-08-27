@@ -107,16 +107,14 @@ Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
 \end{ExampleBox}
 
 \begin{KeyPointBox}{Anzahl der freien Variablen}{linear_systems_number_free_variables}
-  Für ein lösbares LGS mit $n$ Unbekannten gilt für die zur Beschreibung der
-  Lösungsmenge benötigten unabhängigen Parameter:
+  Variablen für man einen freien Parameter einführt, nennt man \emph{freie Variablen} 
+  \EnglishTerm{free variables}. Für ein lösbares LGS mit $n$ Unbekannten ist die Anzahl
+  freier Variablen gegeben durch
   \[
-    \boxed{
-      \#\{\text{benötigte Parameter}\}
-      =\#\{\text{freie Variablen}\}
-      =n-\operatorname{rang}(A)
-    }.
+    \#\{\text{freie Variablen}\}
+    = \#\{\text{benötigte Parameter}\}
+    =n-\operatorname{rang}(A).
   \]
-  Man spricht hierbei von \emph{freien Variablen} \EnglishTerm{free variables}.
   \par\smallskip
   \hfill
   {\footnotesize\color{black!55}
@@ -125,7 +123,7 @@ Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
 
 
 Die Anzahl der freien Variablen bestimmt zugleich die Dimension der
-Lösungsmenge (bei einem homogenen LGS: des Lösungsraums):
+Lösungsmenge:
 \[
   \begin{aligned}
     0\ \text{freie Variable}

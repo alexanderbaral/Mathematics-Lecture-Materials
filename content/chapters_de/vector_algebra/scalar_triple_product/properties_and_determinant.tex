@@ -1,0 +1,46 @@
+\subsection{Eigenschaften und Determinantendarstellung}
+\label{subsec:vector_algebra_scalar_triple_product_properties}
+
+\begin{TheoremBox}{Zyklische Vertauschung}{vector_algebra_scalar_triple_product_cyclic_permutation}
+  Mit $S=(\vec a\times\vec b)\cdot\vec c$ gilt bei zyklischer Vertauschung
+  \[
+    S
+    =(\vec a\times\vec b)\cdot\vec c
+    =(\vec b\times\vec c)\cdot\vec a
+    =(\vec c\times\vec a)\cdot\vec b.
+  \]
+  Ein einzelner Paartausch ändert dagegen das Vorzeichen.
+
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_permutations.tex}
+  \end{center}
+\end{TheoremBox}
+
+\begin{KeyPointBox}{Spatprodukt als Determinante}{vector_algebra_scalar_triple_product_determinant}
+  Für
+  \[
+    \vec a=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}
+  \]
+  gilt
+  \[
+    (\vec a\times\vec b)\cdot\vec c
+    =\Cloze{10cm}{
+      \det\!\begin{pmatrix}
+        a_1&a_2&a_3\\
+        b_1&b_2&b_3\\
+        c_1&c_2&c_3
+      \end{pmatrix}}.
+  \]
+  Jedes Spatprodukt lässt sich somit als Determinante einer $3\times3$-Matrix
+  schreiben.
+\end{KeyPointBox}
+
+\begin{RemarkBox}[title=Verschwindendes Volumen]
+  Genau dann, wenn die drei Vektoren keinen räumlichen Spat aufspannen, gilt
+  \[
+    (\vec a\times\vec b)\cdot\vec c=0.
+  \]
+  In diesem Fall liegen die drei Vektoren in einer gemeinsamen Ebene.
+\end{RemarkBox}

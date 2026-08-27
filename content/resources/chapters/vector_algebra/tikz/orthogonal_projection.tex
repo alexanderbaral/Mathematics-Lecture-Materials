@@ -11,8 +11,10 @@
     node[midway,below] {$\vec b_{\parallel}$};
   \draw[->,black!55,line width=1.25pt] (P)--(B)
     node[midway,right] {$\vec b_{\perp}$};
-  \draw[black!55] (4.05,0)--(4.05,0.35)--(4.4,0.35);
-  \draw[->,black!60,line width=0.75pt]
+  \draw[black!55,line width=0.7pt]
+    (4.05,0) arc[start angle=180,end angle=90,radius=0.35];
+  \fill[black!55] (4.225,0.175) circle[radius=1pt];
+  \draw[black!60,line width=0.75pt]
     (1.1,0) arc[start angle=0,end angle=36.0,radius=1.1];
   \node at (1.42,0.48) {$\varphi$};
   \node[anchor=west,align=left] at (8.1,2.2)

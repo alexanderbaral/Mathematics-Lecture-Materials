@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3.1,0);
+  \coordinate (B) at (1.05,0.85);
+  \coordinate (AB) at (4.15,0.85);
+  \coordinate (C) at (0.75,2.35);
+  \coordinate (AC) at (3.85,2.35);
+  \coordinate (BC) at (1.80,3.20);
+  \coordinate (ABC) at (4.90,3.20);
+
+  \fill[black!6] (O)--(A)--(AB)--(B)--cycle;
+  \draw[black!45] (O)--(A)--(AB)--(B)--cycle;
+  \draw[black!45,dashed] (C)--(AC)--(ABC)--(BC)--cycle;
+  \draw[black!35,dashed] (O)--(C) (A)--(AC) (B)--(BC) (AB)--(ABC);
+
+  \draw[->,THMBlue,line width=1.3pt] (O)--(A)
+    node[midway,below] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.3pt] (O)--(B)
+    node[midway,above left] {$\vec b$};
+  \draw[->,red!70!black,line width=1.3pt] (O)--(C)
+    node[midway,left] {$\vec c$};
+  \draw[->,black!65,line width=1.1pt] (O)--(0,2.35)
+    node[midway,left] {$h$};
+  \draw[black!45,dashed] (0,2.35)--(C);
+  \draw[black!55,line width=0.75pt]
+    (0,0.38) arc[start angle=90,end angle=72.3,radius=0.38];
+  \node at (0.22,0.55) {$\varphi$};
+  \node[black!65] at (2.35,0.40) {$A=|\vec a\times\vec b|$};
+\end{tikzpicture}

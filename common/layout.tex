@@ -72,8 +72,14 @@
 }
 
 \clearpairofpagestyles
-\automark{section}
-\ihead[]{\footnotesize\normalfont\color{black!45}\headmark}
+\manualmark
+\renewcommand*{\chaptermark}[1]{%
+  \markboth{#1}{}%
+}
+\renewcommand*{\sectionmark}[1]{%
+  \markright{#1}%
+}
+\ihead[]{\footnotesize\normalfont\color{black!45}\leftmark:\enspace\rightmark}
 \ohead*{}
 \ifoot*{\footnotesize\color{black!70}\Lang{Mathematik}{Mathematics}\enspace\textperiodcentered\enspace\Lang{Semester}{Semester} \Semester}
 \newcommand{\ScriptPageMark}{\footnotesize\color{black!70}\Lang{Seite}{Page} \pagemark}

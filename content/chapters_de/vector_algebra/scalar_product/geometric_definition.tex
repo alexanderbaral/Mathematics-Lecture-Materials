@@ -2,42 +2,88 @@
 \label{subsec:vector_algebra_scalar_product_definition}
 
 \begin{DefinitionBox}{Skalarprodukt}{vector_algebra_scalar_product}
-  Für zwei von null verschiedene Vektoren $\vec a,\vec b\in\R^n$ und den
-  eingeschlossenen Winkel $0\le\varphi\le\pi$ ist das
-  \emph{Skalarprodukt} \EnglishTerm{dot product} definiert durch
-  \[
-    \boxed{\vec a\cdot\vec b=|\vec a|\,|\vec b|\cos(\varphi)}.
-  \]
-  Für den Nullvektor wird $\vec a\cdot\vec 0=\vec 0\cdot\vec a=0$ gesetzt.
+  \begin{minipage}[c]{0.65\linewidth}
+    Das Skalarprodukt \EnglishTerm{dot product} zweier Vektoren $\vec a,\vec b\in\R^n$
+    mit einem Zwischenwinkel $\varphi$ ist definiert durch
+    \[
+      \vec a\cdot\vec b
+      =|\vec a|\,|\vec b|\cos(\varphi)\in\R,
+    \]
+    Das Ergebnis eines Skalarprodukts ist immer ein Skalar!
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.33\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_geometry.tex}
+  \end{minipage}
 \end{DefinitionBox}
 
-\noindent
-\begin{minipage}[c]{0.49\linewidth}
-  \centering
-  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_geometry.tex}
-\end{minipage}\hfill
-\begin{minipage}[c]{0.47\linewidth}
-  \begin{KeyPointBox}{Das Ergebnis ist ein Skalar}{vector_algebra_dot_product_scalar}
-    \[
-      \underbrace{\vec a}_{\text{Vektor}}
-      \cdot
-      \underbrace{\vec b}_{\text{Vektor}}
-      =
-      \underbrace{s}_{\text{Skalar}}\in\R.
-    \]
-    Das Skalarprodukt ist kein Vektor und wird nicht komponentenweise als
-    Vektor ausgegeben.
-  \end{KeyPointBox}
-\end{minipage}
-
 \begin{ExampleBox}{Skalarprodukt aus Längen und Winkel}{vector_algebra_geometric_dot_product_example}
-  Für $|\vec a|=2$, $|\vec b|=3$ und $\varphi=30^\circ$ gilt
-  \[
-    \vec a\cdot\vec b
-    =2\cdot3\cdot\cos(30^\circ)
-    =\Cloze{4cm}{3\sqrt3}.
-  \]
+  \noindent
+  \begin{minipage}[c]{0.65\linewidth}
+    Für zwei Vektoren mit den Längen $|\vec a|=2$ und 
+    $|\vec b|=3$ sowie einem Zwischenwinkel $\varphi=30^\circ$
+    ist das Skalarprodukt
+    \[
+      \vec a\cdot\vec b
+      =\Cloze{8cm}{
+        2\cdot3\cdot\cos(30^\circ) = 2\cdot3\cdot\frac{\sqrt3}{2} = 3\sqrt3
+        }.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.33\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/geometric_dot_product_example.tex}
+  \end{minipage}
 \end{ExampleBox}
+
+Aus Definition~\ref{def:vector_algebra_scalar_product} lassen sich unmittelbar
+essentielle Folgerungen ableiten.
+\begin{KeyPointBox}{Skalarprodukt senkrechter Vektoren}{vector_algebra_dot_product_orthogonal_vectors}
+  \begin{minipage}[c]{0.68\linewidth}
+    Für senkrechte Vektoren ist der Zwischenwinkel $\varphi=90^\circ$.
+    Da $\cos(90^\circ)=0$ folgt für das Skalarprodukt
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\perp\vec b
+        \quad \Longleftrightarrow \quad
+        \vec a\cdot\vec b=0.}
+    \]
+    Zwei Vektoren sind genau dann \emph{orthogonal} \EnglishTerm{orthogonal},
+    wenn ihr Skalarprodukt null ist.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.27\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_vectors_dot_product.tex}
+  \end{minipage}
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Skalarprodukt paralleler Vektoren}{vector_algebra_dot_product_parallel_vectors}
+  \begin{minipage}[c]{0.68\linewidth}
+    Für gleichgerichtete parallele Vektoren ist der Zwischenwinkel
+    $\varphi=0^\circ$. Aus
+    Definition~\ref{def:vector_algebra_scalar_product} folgt damit
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\parallel\vec b
+        \quad \Longleftrightarrow \quad
+        \vec a\cdot\vec b=|\vec a|\,|\vec b|.}
+    \]
+    Das Skalarprodukt paralleler Vektoren entspricht dem Produkt der Beträge. \\
+    Spezialfall: Für $\vec b=\vec a$ ergibt sich 
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\cdot\vec a=|\vec a|^2
+        \quad\Longleftrightarrow\quad
+        |\vec a|=\sqrt{\vec a\cdot\vec a}.}
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.27\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/parallel_vectors_dot_product.tex}
+  \end{minipage}
+\end{KeyPointBox}
+
+Zusammenfassend bestimmt der Zwischenwinkel das Vorzeichen des Skalarprodukts.
 
 \begin{KeyPointBox}{Vorzeichen und eingeschlossener Winkel}{vector_algebra_dot_product_sign}
   \begin{center}

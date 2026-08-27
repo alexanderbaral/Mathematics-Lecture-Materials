@@ -1,13 +1,11 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
   \coordinate (O) at (0,0);
-  \coordinate (A) at (3.0,1.8);
-  \coordinate (B) at (7.0,0.2);
+  \coordinate (A) at (1.6,1.5);
+  \coordinate (B) at (4.0,0.2);
   \draw[->,THMBlue,line width=1.3pt] (O)--(A)
     node[midway,above left] {$\vec a$};
   \draw[->,olive!80!black,line width=1.3pt] (A)--(B)
     node[midway,above right] {$\vec b$};
   \draw[->,black,line width=1.3pt] (O)--(B)
     node[midway,below] {$\vec a+\vec b$};
-  \node[anchor=west] at (7.7,1.0)
-    {$|\vec a+\vec b|\le |\vec a|+|\vec b|$};
 \end{tikzpicture}

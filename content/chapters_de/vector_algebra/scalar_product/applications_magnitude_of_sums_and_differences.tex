@@ -1,0 +1,92 @@
+\subsubsection{Betrag von Summen und Differenzen}
+\label{subsubsec:vector_algebra_magnitude_sums_differences}
+
+Das Skalarprodukt macht sichtbar, wie der eingeschlossene Winkel den Betrag
+von $\vec a+\vec b$ beziehungsweise $\vec a-\vec b$ beeinflusst.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_sum_difference_magnitudes.tex}
+\end{center}
+
+Für $\vec a,\vec b\ne\vec 0$ und den eingeschlossenen Winkel $\varphi$ gilt:
+\begin{ClozeArea}[34]{7}
+  \[
+    \begin{aligned}
+      |\vec a\pm\vec b|^2
+      &=(\vec a\pm\vec b)\cdot(\vec a\pm\vec b)\\[0.5em]
+      &=\vec a\cdot\vec a+\vec b\cdot\vec b
+        \pm2\,\vec a\cdot\vec b\\[0.5em]
+      &=|\vec a|^2+|\vec b|^2
+        \pm2|\vec a|\,|\vec b|\cos(\varphi).
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Beträge von Vektorkombinationen}{vector_algebra_sum_difference_magnitudes}
+  \[
+    |\vec a\pm\vec b|
+    =\sqrt{|\vec a|^2+|\vec b|^2
+      \pm2|\vec a|\,|\vec b|\cos(\varphi)}.
+  \]
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Kosinussatz als Differenzfall}{vector_algebra_cosine_rule_derivation}
+  Bilden $\vec a$ und $\vec b$ zwei Dreiecksseiten mit gemeinsamem
+  Anfangspunkt und ist $\vec c=\vec a-\vec b$, so folgt unmittelbar
+  \[
+    c^2=a^2+b^2-2ab\cos(\varphi).
+  \]
+  Für $\varphi=90^\circ$ bleibt der Satz des Pythagoras.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Resultierende Kraft}{vector_algebra_resultant_force_example}
+  \noindent
+  \begin{minipage}[c]{0.55\linewidth}
+    Auf eine Masse wirken zwei Kräfte mit
+    \[
+      |\textcolor{THMBlue}{\vec F_1}|=\qty{1}{\newton},\qquad
+      |\textcolor{olive!80!black}{\vec F_2}|=\qty{2}{\newton}
+    \]
+    unter einem Winkel von $30^\circ$. Für die resultierende Kraft
+    $\vec F_{\mathrm R}=\textcolor{THMBlue}{\vec F_1}
+      +\textcolor{olive!80!black}{\vec F_2}$ gilt
+    \[
+      \begin{aligned}
+        |\vec F_{\mathrm R}|
+        &=\sqrt{|\textcolor{THMBlue}{\vec F_1}|^2
+          +|\textcolor{olive!80!black}{\vec F_2}|^2
+          +2|\textcolor{THMBlue}{\vec F_1}|
+          \,|\textcolor{olive!80!black}{\vec F_2}|\cos(30^\circ)}\\
+        &=\Cloze{4.8cm}{\sqrt{5+2\sqrt3}\,\unit{\newton}
+          \approx\qty{2.91}{\newton}}.
+      \end{aligned}
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.41\linewidth}
+    \centering
+    \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+      \coordinate (M) at (0,0);
+      \coordinate (Fone) at (1.45,0.68);
+      \coordinate (Ftwo) at (1.72,2.46);
+      \coordinate (FR) at (3.17,3.14);
+
+      \draw[->,THMBlue,line width=1.25pt] (M)--(Fone)
+        node[midway,below] {$\vec F_1$};
+      \draw[->,olive!80!black,line width=1.25pt] (M)--(Ftwo)
+        node[midway,above left] {$\vec F_2$};
+      \draw[THMBlue!45,densely dashed] (Ftwo)--(FR);
+      \draw[olive!55!black,densely dashed] (Fone)--(FR);
+      \draw[->,black,line width=1.35pt] (M)--(FR)
+        node[above right] {$\vec F_{\mathrm R}$};
+
+      \draw[black!55,line width=0.8pt]
+        (0.73,0.34) arc[start angle=25,end angle=55,radius=0.80];
+      \node[anchor=east] (anglelabel) at (0.30,1.03)
+        {$\varphi=30^\circ$};
+      \draw[->,black!55,line width=0.75pt]
+        (anglelabel.south east) to[bend right=28] (0.61,0.51);
+      \fill[black] (M) circle[radius=0.09]
+        node[below left=2pt] {$m$};
+    \end{tikzpicture}
+  \end{minipage}
+\end{ExampleBox}

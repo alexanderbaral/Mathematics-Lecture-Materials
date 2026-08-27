@@ -36,6 +36,9 @@ so that future drafts increasingly match the style of the revised material.
   explanation whenever they express the relationship more directly.
 - Avoid extended prose when a precise visual or mathematical representation
   makes the same relationship easier to scan.
+- Do not emphasize equations with black frames such as `\boxed`. Use the
+  surrounding semantic box, spatial arrangement, or restrained typography to
+  communicate their role instead.
 
 #### Semantic roles
 - Give each semantic box one clear purpose; do not mix several roles in one
@@ -276,14 +279,26 @@ Do not enlarge these margins for conventional print-layout reasons. The script i
 
 Use Fira Sans as primary text typeface. Choose a high-quality readable mathematics font compatible with Fira Sans; do not force sans-serif mathematics if readability suffers. The exact mathematics font may be refined after visual testing.
 
-Text labels inside figures and diagrams must be at least as large as the
-surrounding body text. Do not shrink a figure with `\resizebox`, `\scalebox`,
-or a similar mechanism when this would make its labels smaller than the
-adjacent text; adapt the figure geometry or surrounding layout instead.
+All text inside figures and diagrams must use the same font size as the
+surrounding body text. This applies equally to prose, mathematical expressions
+and symbols, axis labels, annotations, and vector labels. Do not shrink a
+figure with `\resizebox`, `\scalebox`, or a similar mechanism when this would
+make its labels smaller than the adjacent text; adapt the figure geometry or
+surrounding layout instead.
+
+Draw angle arcs in figures and diagrams without arrowheads. Place the angle
+symbol or angle measure inside the corresponding angle sector; enlarge the arc
+when necessary so the label remains legible and is clearly assigned to that
+angle.
 
 Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
 
 Shared visual resources live under `content/resources/`. Global files used across chapters, such as branding assets, live in `content/resources/shared/`; its `images/` and `tikz/` subfolders hold other shared visual resources. Chapter-specific resources mirror the approved chapter name and use `content/resources/chapters/<chapter>/images/` for raster or vector illustrations and `content/resources/chapters/<chapter>/tikz/` for TikZ sources. Do not create resource folders for future chapters. The author will provide the official TH Mannheim/faculty logo and Mannheimer Punkt. Prefer PDF vector assets; PNG is acceptable; support EPS only if actually needed. If assets are missing, compilation must still succeed with unobtrusive placeholders and README guidance.
+
+Always place every new TikZ graphic immediately in its own semantically named
+file in the appropriate `content/resources/**/tikz/` folder. Do not leave new
+`tikzpicture` environments inline in chapter or section content files; include
+the external resource through the project's central TikZ-loading command.
 
 Title page includes logo, language-dependent script title, `Vorlesungsskript`/`Lecture Notes`, author, language-dependent institution/faculty, and semester. Keep the first design restrained and modular.
 

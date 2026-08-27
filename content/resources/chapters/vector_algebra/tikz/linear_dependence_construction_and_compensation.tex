@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (Oleft) at (0,0);
+  \coordinate (Aleft) at (2.65,0.45);
+  \coordinate (Cleft) at (3.85,2.05);
+
+  \node[font=\bfseries] at (1.95,2.75) {Zusammensetzen};
+  \draw[->,THMBlue,line width=1.35pt] (Oleft)--(Aleft)
+    node[midway,below] {$\alpha\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt] (Aleft)--(Cleft)
+    node[midway,right] {$\beta\vec b$};
+  \draw[->,red!70!black,line width=1.35pt] (Oleft)--(Cleft)
+    node[midway,above left] {$\vec c$};
+
+  \node at (5.05,1.05) {$\Longleftrightarrow$};
+
+  \coordinate (Oright) at (6.20,0);
+  \coordinate (Aright) at (8.85,0.45);
+  \coordinate (Cright) at (10.05,2.05);
+
+  \node[font=\bfseries] at (8.15,2.75) {Kompensieren};
+  \draw[->,THMBlue,line width=1.35pt] (Oright)--(Aright)
+    node[midway,below] {$\alpha\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt] (Aright)--(Cright)
+    node[midway,right] {$\beta\vec b$};
+  \draw[->,red!70!black,line width=1.35pt] (Cright)--(Oright)
+    node[midway,above left] {$-\vec c$};
+  \fill[black] (Oright) circle[radius=1.2pt];
+  \node[below=0.25cm of Oright] {$\vec 0$};
+\end{tikzpicture}

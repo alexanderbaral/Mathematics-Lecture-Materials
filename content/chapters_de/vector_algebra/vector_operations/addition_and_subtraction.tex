@@ -1,55 +1,140 @@
-\subsection{Addition und Subtraktion}
-\label{subsec:vector_algebra_addition_subtraction}
+\subsection{Addition von Vektoren}
+\label{subsec:vector_algebra_addition}
 
-\begin{DefinitionBox}{Vektoraddition und Vektorsubtraktion}{vector_algebra_addition_subtraction}
-  Für $\vec a,\vec b\in\R^n$ werden Addition und Subtraktion
-  komponentenweise ausgeführt:
+\begin{DefinitionBox}{Vektoraddition}{vector_algebra_addition}
+  Die \emph{Vektoraddition} \EnglishTerm{vector addition} zweier Vektoren
+  $\vec a,\vec b\in\R^n$ erfolgt komponentenweise:
   \[
     \vec a+\vec b
-    =\begin{pmatrix}a_1\\\vdots\\a_n\end{pmatrix}
-     +\begin{pmatrix}b_1\\\vdots\\b_n\end{pmatrix}
-    =\begin{pmatrix}a_1+b_1\\\vdots\\a_n+b_n\end{pmatrix},
+    =\begin{pmatrix}a_1\\a_2\\\vdots\\a_n\end{pmatrix}
+     +\begin{pmatrix}b_1\\b_2\\\vdots\\b_n\end{pmatrix}
+    =\begin{pmatrix}
+      \Cloze{2.4cm}{a_1+b_1}\\[0.25em]
+      \Cloze{2.4cm}{a_2+b_2}\\[0.25em]
+      \vdots\\[0.25em]
+      \Cloze{2.4cm}{a_n+b_n}
+    \end{pmatrix}.
   \]
-  \[
-    \vec a-\vec b
-    =\vec a+(-\vec b)
-    =\begin{pmatrix}a_1-b_1\\\vdots\\a_n-b_n\end{pmatrix}.
-  \]
+  Vektoren unterschiedlicher Dimension können nicht addiert werden.
 \end{DefinitionBox}
 
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_addition_subtraction.tex}
-\end{center}
+\begin{KeyPointBox}{Geometrische Vektoraddition}{vector_algebra_geometric_addition}
+  Um die Summe zweier Vektoren geometrisch zu konstruieren, zeichnet man
+  $\vec a$ und $\vec b$ mit gemeinsamem Anfangspunkt und ergänzt sie zu einem
+  Parallelogramm. Die vom gemeinsamen Anfangspunkt ausgehende Diagonale ist der
+  Summenvektor $\vec a+\vec b$.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_addition.tex}
+  \end{center}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Vektoren rechnerisch und geometrisch addieren}{vector_algebra_addition_example_2d}
+  \begin{minipage}[c]{0.52\linewidth}
+    Gegeben seien die beiden Vektoren
+    \[
+      \vec a=\begin{pmatrix}1\\2\end{pmatrix},
+      \qquad
+      \vec b=\begin{pmatrix}3\\1\end{pmatrix}.
+    \]
+    Die komponentenweise Addition liefert
+    \[
+      \vec a+\vec b=
+      \begin{ClozeContinuation}[12]{2}
+        \begin{pmatrix}1+3\\2+1\end{pmatrix}
+        =\begin{pmatrix}4\\3\end{pmatrix}
+      \end{ClozeContinuation}
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.44\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_addition_example_2d.tex}
+  \end{minipage}
+  \par\smallskip
+  Rechnerisch und geometrisch erhalten wir somit dasselbe Ergebnis.
+\end{ExampleBox}
+
+Da Vektoren komponentenweise addiert werden, lassen sich die Rechengesetze
+der Addition von Zahlen unmittelbar auf die Vektoraddition übertragen.
 
 \begin{TheoremBox}{Rechenregeln der Vektoraddition}{vector_algebra_addition_laws}
-  Für $\vec a,\vec b,\vec c\in\R^n$ gilt
+  Bei der Addition beliebiger Vektoren $\vec a,\vec b,\vec c\in\R^n$ gelten die
+  üblichen algebraischen Rechenregeln:
   \[
     \begin{aligned}
-      \vec a+\vec b&=\vec b+\vec a
-        &&\text{(Kommutativgesetz)},\\[0.5em]
-      \vec a+(\vec b+\vec c)&=(\vec a+\vec b)+\vec c
-        &&\text{(Assoziativgesetz)},\\[0.5em]
-      \vec a+\vec 0&=\vec a,
-      &\qquad \vec a+(-\vec a)&=\vec 0.
+      \vec a+\vec b
+        &=\Cloze{5cm}{\vec b+\vec a}
+        &&\qquad\text{(Kommutativgesetz)},\\[0.5em]
+      \vec a+(\vec b+\vec c)
+        &=\Cloze{5cm}{(\vec a+\vec b)+\vec c}
+        &&\qquad\text{(Assoziativgesetz)}
     \end{aligned}
   \]
 \end{TheoremBox}
 
-\begin{ExampleBox}{Vektoren komponentenweise verrechnen}{vector_algebra_componentwise_operations}
-  Gegeben seien
+Daher können Vektoren beim Umstellen von Gleichungen hinsichtlich Addition
+und Subtraktion genauso wie Zahlen behandelt werden.
+
+\subsubsection{Subtraktion als Addition des Gegenvektors}
+\label{subsubsec:vector_algebra_subtraction}
+
+Für die Subtraktion führen wir keine neue Rechenart ein. Sie baut auf der
+Vektoraddition und dem Gegenvektor auf.
+
+\begin{DefinitionBox}{Vektorsubtraktion}{vector_algebra_subtraction}
+  Die \emph{Vektorsubtraktion} \EnglishTerm{vector subtraction} ist als
+  Addition von $\vec a$ mit dem Gegenvektor $-\vec b$ definiert:
   \[
-    \vec a=\begin{pmatrix}2\\0\\4\end{pmatrix},
-    \qquad
-    \vec b=\begin{pmatrix}-1\\2\\-10\end{pmatrix}.
-  \]
-  Dann gilt
-  \[
-    \vec a+\vec b
-    =\begin{pmatrix}2+(-1)\\0+2\\4+(-10)\end{pmatrix}
-    =\Cloze{3cm}{\begin{pmatrix}1\\2\\-6\end{pmatrix}},
-    \qquad
     \vec a-\vec b
-    =\begin{pmatrix}2-(-1)\\0-2\\4-(-10)\end{pmatrix}
-    =\Cloze{3cm}{\begin{pmatrix}3\\-2\\14\end{pmatrix}}.
+    :=\vec a+(-\vec b)
+    =\begin{pmatrix}a_1\\a_2\\\vdots\\a_n\end{pmatrix}
+     +\begin{pmatrix}-b_1\\-b_2\\\vdots\\-b_n\end{pmatrix}
+    =\begin{pmatrix}
+      \Cloze{2.4cm}{a_1-b_1}\\[0.25em]
+      \Cloze{2.4cm}{a_2-b_2}\\[0.25em]
+      \vdots\\[0.25em]
+      \Cloze{2.4cm}{a_n-b_n}
+    \end{pmatrix}.
   \]
+\end{DefinitionBox}
+
+\begin{KeyPointBox}{Geometrische Vektorsubtraktion}{vector_algebra_geometric_subtraction}
+  Gemäß der Definition schreiben wir die Differenz als Summe mit dem
+  Gegenvektor:
+  \[
+    \vec a-\vec b=\vec a+(-\vec b).
+  \]
+  Zur geometrischen Konstruktion zeichnen wir, wie bei einer Summe üblich,
+  $\vec a$ und $-\vec b$ mit gemeinsamem Anfangspunkt zu einem Parallelogramm.
+  Dessen Diagonale ist der Differenzvektor $\vec a-\vec b$.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_subtraction_as_addition.tex}
+  \end{center}
+  Zugleich ist $\vec a-\vec b$ der Verbindungsvektor von der Spitze von
+  $\vec b$ zur Spitze von $\vec a$.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Vektoren subtrahieren}{vector_algebra_componentwise_subtraction}
+  \begin{minipage}[c]{0.52\linewidth}
+    Gegeben seien die beiden Vektoren
+    \[
+      \vec a=\begin{pmatrix}4\\3\end{pmatrix},
+      \qquad
+      \vec b=\begin{pmatrix}1\\2\end{pmatrix}.
+    \]
+    Die Subtraktion liefert
+    \[
+      \vec a-\vec b=
+      \begin{ClozeContinuation}[12]{2}
+        \vec a+(-\vec b)
+        =\begin{pmatrix}4-1\\3-2\end{pmatrix}
+        =\begin{pmatrix}3\\1\end{pmatrix}
+      \end{ClozeContinuation}
+    \]
+    Rechnerisch und geometrisch erhalten wir somit dasselbe Ergebnis.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.44\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_subtraction_example_2d.tex}
+  \end{minipage}
+  \par\smallskip
 \end{ExampleBox}
