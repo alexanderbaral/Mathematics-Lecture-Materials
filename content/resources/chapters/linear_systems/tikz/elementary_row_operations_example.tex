@@ -1,9 +1,13 @@
 \begin{tikzpicture}[
   gaussmatrix/.style={
     matrix of math nodes,
+    inner sep=0pt,
     left delimiter={[},right delimiter={]},
-    nodes={minimum width=0.72cm,minimum height=0.72cm,inner sep=0pt,anchor=center},
-    column sep=1pt,row sep=1pt
+    nodes={minimum height=0.72cm,inner sep=0pt,anchor=center},
+    column 1/.style={nodes={text width=\IfClozeTF{0.55cm}{0.32cm},align=right}},
+    column 2/.style={nodes={text width=\IfClozeTF{0.55cm}{0.32cm},align=right}},
+    column 3/.style={nodes={text width=\IfClozeTF{0.55cm}{0.32cm},align=right}},
+    column sep=0.35cm,row sep=1pt
   },
   operation/.style={font=\normalsize,color=black!55,anchor=west},
   operationbar/.style={draw=black!55,line width=0.6pt},
@@ -19,11 +23,11 @@
   };
   \matrix (M2) [gaussmatrix] at (0,-4.00) {
      \Cloze{0.55cm}{0}& \Cloze{0.55cm}{ 2}& \Cloze{0.55cm}{ 2}\\
-     \Cloze{0.55cm}{-3}& \Cloze{0.55cm}{-3}& \Cloze{0.55cm}{-6}\\
+     \Cloze{0.55cm}{\mathllap{-}3}& \Cloze{0.55cm}{\mathllap{-}3}& \Cloze{0.55cm}{\mathllap{-}6}\\
   };
   \matrix (M3) [gaussmatrix] at (0,-6.00) {
      \Cloze{0.55cm}{0}& \Cloze{0.55cm}{ 2}& \Cloze{0.55cm}{ 2}\\
-     \Cloze{0.55cm}{-3}& \Cloze{0.55cm}{-1}& \Cloze{0.55cm}{-4}\\
+     \Cloze{0.55cm}{\mathllap{-}3}& \Cloze{0.55cm}{\mathllap{-}1}& \Cloze{0.55cm}{\mathllap{-}4}\\
   };
 
   \foreach \M in {M0,M1,M2,M3}{

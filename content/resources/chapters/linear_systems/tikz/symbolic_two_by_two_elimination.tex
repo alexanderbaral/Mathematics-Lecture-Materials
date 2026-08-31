@@ -1,0 +1,37 @@
+\begin{tikzpicture}[
+  every node/.style={font=\normalsize},
+  gauss matrix/.style={
+    matrix of math nodes,
+    inner sep=0pt,
+    left delimiter={[},right delimiter={]},
+    nodes={minimum height=0.72cm,inner xsep=0.10cm,inner ysep=0pt,anchor=center},
+    column sep=0.20cm,row sep=1pt
+  },
+  operation/.style={text=black!55,anchor=west},
+  operation bar/.style={black!55,line width=0.6pt},
+  relation/.style={anchor=east}
+]
+  \matrix (Mzero) [gauss matrix] at (0,0) {
+    a_{11}&a_{12}&b_1\\
+    a_{21}&a_{22}&b_2\\
+  };
+  \matrix (Mone) [gauss matrix,below=1.05cm of Mzero] {
+    a_{11}&a_{12}&b_1\\
+    0&a_{11}a_{22}-a_{12}a_{21}&a_{11}b_2-a_{21}b_1\\
+  };
+
+  \foreach \M in {Mzero,Mone}{
+    \draw[line width=0.6pt]
+      ($(\M-1-2.north east)!0.5!(\M-1-3.north west)+(0,0.12)$)--
+      ($(\M-2-2.south east)!0.5!(\M-2-3.south west)-(0,0.12)$);
+  }
+
+  \draw[operation bar]
+    ($(Mzero.north east)+(0.72,0)$)--($(Mzero.south east)+(0.72,0)$);
+  \coordinate (Mzeroop) at ($(Mzero.east)+(0.96,0)$);
+  \node[operation] at (Mzeroop |- Mzero-2-3.center)
+    {$a_{11}Z_2-a_{21}Z_1$};
+
+  \node[relation] at ($(Mone.west)+(-0.65,0)$) {$\Longleftrightarrow$};
+  \node[anchor=west] at ($(Mone.east)+(0.80,0)$) {Zeilenstufenform};
+\end{tikzpicture}

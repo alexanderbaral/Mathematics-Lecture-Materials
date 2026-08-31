@@ -1,6 +1,6 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
   \begin{scope}
-    \node[font=\bfseries] at (3.2,3.6) {Summe};
+    \node[font=\normalfont] at (3.2,4.65) {Summe};
     \coordinate (O) at (0.3,0.2);
     \coordinate (A) at (3.5,1.35);
     \coordinate (B) at (1.65,2.75);
@@ -12,15 +12,21 @@
     \draw[THMBlue!45,densely dashed] (B)--(S);
     \draw[olive!55!black,densely dashed] (A)--(S);
     \draw[->,black,line width=1.35pt] (O)--(S)
-      node[midway,above right] {$\vec a+\vec b$};
-    \draw[black!55] (1.0,0.45) arc[start angle=20,end angle=62,radius=0.75];
-    \node at (1.14,0.9) {$\varphi$};
+      node[right] {$\vec a+\vec b$};
+    \draw[black!55,line width=0.7pt]
+      ($(O)+(20:0.90)$)
+      arc[start angle=20,end angle=62,radius=0.90];
+    \coordinate (sumAngleMid) at ($(O)+(41:0.52)$);
+    \node (sumAngleLabel) at (0.30,1.55) {$\varphi$};
+    \draw[->,black!55,line width=0.65pt,shorten <=1.5pt]
+      (sumAngleLabel.south east)
+      to[out=-25,in=115] (sumAngleMid);
   \end{scope}
 
-  \draw[black!25,line width=0.5pt] (7.0,-0.1)--(7.0,4.2);
+  \draw[black!25,line width=0.5pt] (7.0,-0.1)--(7.0,4.9);
 
   \begin{scope}[xshift=7.5cm]
-    \node[font=\bfseries] at (3.2,3.6) {Differenz};
+    \node[font=\normalfont] at (3.2,4.65) {Differenz};
     \coordinate (O) at (0.3,0.2);
     \coordinate (A) at (3.5,1.35);
     \coordinate (B) at (1.65,2.75);
@@ -30,7 +36,9 @@
       node[midway,above left] {$\vec b$};
     \draw[->,black,line width=1.35pt] (B)--(A)
       node[midway,above right] {$\vec a-\vec b$};
-    \draw[black!55] (1.0,0.45) arc[start angle=20,end angle=62,radius=0.75];
-    \node at (1.14,0.9) {$\varphi$};
+    \draw[black!55,line width=0.7pt]
+      ($(O)+(20:1.10)$)
+      arc[start angle=20,end angle=62,radius=1.10];
+    \node at ($(O)+(41:0.68)$) {$\varphi$};
   \end{scope}
 \end{tikzpicture}

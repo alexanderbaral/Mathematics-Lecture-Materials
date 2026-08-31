@@ -10,19 +10,34 @@ dar:
 \]
 Mit den Kreuzprodukten der kanonischen Einheitsvektoren folgt durch
 Ausmultiplizieren
-\begin{ClozeArea}[34]{10}
+\begin{ClozeArea}[34]{16}
   \[
     \begin{aligned}
       \vec a\times\vec b
       &=(a_1\vec e_1+a_2\vec e_2+a_3\vec e_3)
-        \times(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)\\[0.6em]
-      &=a_1b_2\vec e_3-a_1b_3\vec e_2
-        -a_2b_1\vec e_3+a_2b_3\vec e_1\\
+        \times(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)\\[1.5em]
+      &=a_1b_1\overbrace{(\vec e_1\times\vec e_1)}^{=\,\vec 0}
+        +a_1b_2\overbrace{(\vec e_1\times\vec e_2)}^{=\,\vec e_3}
+        +a_1b_3\overbrace{(\vec e_1\times\vec e_3)}^{=\,-\vec e_2}
+        \\[0.9em]
       &\quad
-        +a_3b_1\vec e_2-a_3b_2\vec e_1\\[0.6em]
+        +a_2b_1\overbrace{(\vec e_2\times\vec e_1)}^{=\,-\vec e_3}
+        +a_2b_2\overbrace{(\vec e_2\times\vec e_2)}^{=\,\vec 0}
+        +a_2b_3\overbrace{(\vec e_2\times\vec e_3)}^{=\,\vec e_1}
+        \\[0.9em]
+      &\quad
+        +a_3b_1\overbrace{(\vec e_3\times\vec e_1)}^{=\,\vec e_2}
+        +a_3b_2\overbrace{(\vec e_3\times\vec e_2)}^{=\,-\vec e_1}
+        +a_3b_3\overbrace{(\vec e_3\times\vec e_3)}^{=\,\vec 0}
+        \\[1.3em]
       &=(a_2b_3-a_3b_2)\vec e_1
         +(a_3b_1-a_1b_3)\vec e_2
-        +(a_1b_2-a_2b_1)\vec e_3.
+        +(a_1b_2-a_2b_1)\vec e_3\\[1em]
+      &=\begin{pmatrix}
+          a_2b_3-a_3b_2\\
+          a_3b_1-a_1b_3\\
+          a_1b_2-a_2b_1
+        \end{pmatrix}.
     \end{aligned}
   \]
 \end{ClozeArea}
@@ -41,20 +56,64 @@ Ausmultiplizieren
   \]
 \end{KeyPointBox}
 
-Als Merkhilfe lässt sich dieselbe Koordinatenformel formal als Determinante
-schreiben:
-\[
-  \vec a\times\vec b
-  =\Cloze{11cm}{
-    \det\!\begin{pmatrix}
-      \vec e_1&\vec e_2&\vec e_3\\
-      a_1&a_2&a_3\\
-      b_1&b_2&b_3
-    \end{pmatrix}}.
-\]
-Die Entwicklung nach der ersten Zeile liefert die drei Komponenten des
-Kreuzprodukts. Diese Schreibweise dient hier nur als Merkhilfe; definiert wurde
-das Kreuzprodukt geometrisch.
+Aus der Koordinatenformel in
+Merke~\ref{key:vector_algebra_cross_product_coordinate_formula} gewinnen wir
+die Determinantenschreibweise schrittweise. Zunächst zerlegen wir den
+Koordinatenvektor in die kanonischen Einheitsvektoren:
+\begin{ClozeArea}[34]{12}
+  \[
+    \begin{aligned}
+      \vec a\times\vec b
+      &=\begin{pmatrix}
+          a_2b_3-a_3b_2\\
+          a_3b_1-a_1b_3\\
+          a_1b_2-a_2b_1
+        \end{pmatrix}
+        =(a_2b_3-a_3b_2)\vec e_1
+        +(a_3b_1-a_1b_3)\vec e_2
+        +(a_1b_2-a_2b_1)\vec e_3
+        \\[1.4em]
+      &=\det\!\begin{pmatrix}
+          a_2&b_2\\
+          a_3&b_3
+        \end{pmatrix}\vec e_1
+        -\det\!\begin{pmatrix}
+          a_1&b_1\\
+          a_3&b_3
+        \end{pmatrix}\vec e_2
+        +\det\!\begin{pmatrix}
+          a_1&b_1\\
+          a_2&b_2
+        \end{pmatrix}\vec e_3
+        \\[1.4em]
+      &=\det\!\begin{pmatrix}
+          \MathHighlight{\vec e_1}&a_1&b_1\\
+          \MathHighlight{\vec e_2}&a_2&b_2\\
+          \MathHighlight{\vec e_3}&a_3&b_3
+        \end{pmatrix}.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+Die letzte Gleichheit liest die Entwicklung nach der gelb markierten ersten
+Spalte rückwärts. Die Matrix ist gegenüber der üblichen Zeilendarstellung
+transponiert, sodass die Koordinaten von $\vec a$ und $\vec b$ in den Spalten
+stehen. Wegen $\det(M^{\mathsf T})=\det(M)$ ändert die Transposition den
+Determinantenwert nicht. Diese Schreibweise dient nur als formale Merkhilfe;
+definiert wurde das Kreuzprodukt geometrisch.
+
+\begin{KeyPointBox}{Determinantenschreibweise}{vector_algebra_cross_product_determinant_notation}
+  Das Kreuzprodukt lässt sich formal schreiben als
+  \[
+    \vec a\times\vec b
+    =\begin{ClozeContinuation}[22]{4}
+      \det\!\begin{pmatrix}
+        \vec e_1&a_1&b_1 \\
+        \vec e_2&a_2&b_2 \\
+        \vec e_3&a_3&b_3
+      \end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+\end{KeyPointBox}
 
 \begin{ExampleBox}{Kreuzprodukt aus Koordinaten}{vector_algebra_cross_product_coordinates_example}
   Für

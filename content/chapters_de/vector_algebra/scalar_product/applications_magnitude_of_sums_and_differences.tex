@@ -1,14 +1,15 @@
 \subsubsection{Betrag von Summen und Differenzen}
 \label{subsubsec:vector_algebra_magnitude_sums_differences}
 
-Das Skalarprodukt macht sichtbar, wie der eingeschlossene Winkel den Betrag
-von $\vec a+\vec b$ beziehungsweise $\vec a-\vec b$ beeinflusst.
+Mit dem Skalarprodukt berechnen wir den Betrag des resultierenden Vektors und
+behandeln dabei Summe und Differenz in einer gemeinsamen Herleitung.
 
 \begin{center}
   \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_sum_difference_magnitudes.tex}
 \end{center}
 
-Für $\vec a,\vec b\ne\vec 0$ und den eingeschlossenen Winkel $\varphi$ gilt:
+Bezeichnet $\varphi$ den eingeschlossenen Winkel von $\vec a$ und $\vec b$,
+so gilt:
 \begin{ClozeArea}[34]{7}
   \[
     \begin{aligned}
@@ -36,7 +37,6 @@ Für $\vec a,\vec b\ne\vec 0$ und den eingeschlossenen Winkel $\varphi$ gilt:
   \[
     c^2=a^2+b^2-2ab\cos(\varphi).
   \]
-  Für $\varphi=90^\circ$ bleibt der Satz des Pythagoras.
 \end{KeyPointBox}
 
 \begin{ExampleBox}{Resultierende Kraft}{vector_algebra_resultant_force_example}
@@ -47,7 +47,7 @@ Für $\vec a,\vec b\ne\vec 0$ und den eingeschlossenen Winkel $\varphi$ gilt:
       |\textcolor{THMBlue}{\vec F_1}|=\qty{1}{\newton},\qquad
       |\textcolor{olive!80!black}{\vec F_2}|=\qty{2}{\newton}
     \]
-    unter einem Winkel von $30^\circ$. Für die resultierende Kraft
+    unter einem Winkel von $60^\circ$. Für die resultierende Kraft
     $\vec F_{\mathrm R}=\textcolor{THMBlue}{\vec F_1}
       +\textcolor{olive!80!black}{\vec F_2}$ gilt
     \[
@@ -56,37 +56,14 @@ Für $\vec a,\vec b\ne\vec 0$ und den eingeschlossenen Winkel $\varphi$ gilt:
         &=\sqrt{|\textcolor{THMBlue}{\vec F_1}|^2
           +|\textcolor{olive!80!black}{\vec F_2}|^2
           +2|\textcolor{THMBlue}{\vec F_1}|
-          \,|\textcolor{olive!80!black}{\vec F_2}|\cos(30^\circ)}\\
-        &=\Cloze{4.8cm}{\sqrt{5+2\sqrt3}\,\unit{\newton}
-          \approx\qty{2.91}{\newton}}.
+          \,|\textcolor{olive!80!black}{\vec F_2}|\cos(60^\circ)}\\
+        &=\Cloze{4.8cm}{\sqrt7\,\unit{\newton}
+          \approx\qty{2.65}{\newton}}.
       \end{aligned}
     \]
   \end{minipage}\hfill
   \begin{minipage}[c]{0.41\linewidth}
     \centering
-    \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
-      \coordinate (M) at (0,0);
-      \coordinate (Fone) at (1.45,0.68);
-      \coordinate (Ftwo) at (1.72,2.46);
-      \coordinate (FR) at (3.17,3.14);
-
-      \draw[->,THMBlue,line width=1.25pt] (M)--(Fone)
-        node[midway,below] {$\vec F_1$};
-      \draw[->,olive!80!black,line width=1.25pt] (M)--(Ftwo)
-        node[midway,above left] {$\vec F_2$};
-      \draw[THMBlue!45,densely dashed] (Ftwo)--(FR);
-      \draw[olive!55!black,densely dashed] (Fone)--(FR);
-      \draw[->,black,line width=1.35pt] (M)--(FR)
-        node[above right] {$\vec F_{\mathrm R}$};
-
-      \draw[black!55,line width=0.8pt]
-        (0.73,0.34) arc[start angle=25,end angle=55,radius=0.80];
-      \node[anchor=east] (anglelabel) at (0.30,1.03)
-        {$\varphi=30^\circ$};
-      \draw[->,black!55,line width=0.75pt]
-        (anglelabel.south east) to[bend right=28] (0.61,0.51);
-      \fill[black] (M) circle[radius=0.09]
-        node[below left=2pt] {$m$};
-    \end{tikzpicture}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/resultant_force_example.tex}
   \end{minipage}
 \end{ExampleBox}

@@ -1,0 +1,129 @@
+\subsection{Determinante von $n\times n$-Matrizen}
+\label{subsec:linear_systems_laplace_expansion}
+
+Bei drei Unbekannten tritt eine $3\times3$-Determinante auf. Wir führen ihre
+Berechnung zunächst konkret an der ersten Zeile durch. Zu jedem Eintrag wird
+seine Zeile und seine Spalte gestrichen; die vier verbleibenden Einträge bilden
+eine $2\times2$-Determinante.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/three_by_three_laplace_expansion.tex}
+\end{center}
+
+Für einen Eintrag $a_{ij}$ wird seine Zeile $i$ und seine Spalte $j$ entfernt.
+Die verbleibende $(n-1)\times(n-1)$-Matrix bezeichnen wir mit $A_{ij}$.
+
+\begin{TheoremBox}{Laplacescher Entwicklungssatz}{linear_systems_laplace_expansion}
+  Eine $n\times n$-Determinante kann nach jeder beliebigen Zeile oder Spalte
+  entwickelt werden. Dabei gehen wir schrittweise vor:
+  \begin{enumerate}[label=\textbf{Schritt \arabic*:},leftmargin=7.2em,itemsep=0.7em]
+    \item Die gedachten Vorzeichen werden nach dem Schachbrettmuster
+      eingetragen:
+      \[
+        \begin{pmatrix}
+          +&-&+&\cdots\\
+          -&+&-&\cdots\\
+          +&-&+&\cdots\\
+          \vdots&\vdots&\vdots&\ddots
+        \end{pmatrix}.
+      \]
+    \item Eine beliebige Zeile oder Spalte wird für die Entwicklung ausgewählt.
+    \item Entlang dieser Zeile oder Spalte wird für jeden Eintrag $a_{ij}$ der
+      Summand
+      \[
+        \text{Vorzeichen an der Stelle }(i,j)
+        \;\cdot\;a_{ij}\;\cdot\;\det(A_{ij})
+      \]
+      gebildet. Die Summe aller Summanden ist $\det(A)$.
+  \end{enumerate}
+  Dieses Vorgehen heißt \emph{Laplace-Entwicklung}
+  \EnglishTerm{Laplace expansion}.
+\end{TheoremBox}
+
+\begin{ExampleBox}{Eine $3\times3$-Determinante nach Zeile und Spalte entwickeln}{linear_systems_three_by_three_determinant}
+  Wir berechnen dieselbe Determinante auf zwei Wegen.
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=0.8em]
+    \item \textbf{Entwicklung nach der ersten Zeile:}
+      \[
+        D=\det\!\begin{pmatrix}
+          \IfClozeTF{1}{\colorbox{yellow!30}{\(\mathstrut 1\)}}&
+          \IfClozeTF{2}{\colorbox{yellow!30}{\(\mathstrut 2\)}}&
+          \IfClozeTF{3}{\colorbox{yellow!30}{\(\mathstrut 3\)}}\\
+          4&5&6\\
+          7&8&0
+        \end{pmatrix}.
+      \]
+      \begin{ClozeArea}[32]{12}
+        \[
+          \begin{aligned}
+            D
+            &={+}\,1\det\!\begin{pmatrix}5&6\\8&0\end{pmatrix}
+              -2\det\!\begin{pmatrix}4&6\\7&0\end{pmatrix}
+              +3\det\!\begin{pmatrix}4&5\\7&8\end{pmatrix}\\[0.7em]
+            &=1(5\cdot0-6\cdot8)
+              -2(4\cdot0-6\cdot7)
+              +3(4\cdot8-5\cdot7)\\[0.7em]
+            &=-48+84-9=27.
+          \end{aligned}
+        \]
+      \end{ClozeArea}
+    \item \textbf{Entwicklung nach der zweiten Spalte:}
+      \[
+        D=\det\!\begin{pmatrix}
+          1&\IfClozeTF{2}{\colorbox{yellow!30}{\(\mathstrut 2\)}}&3\\
+          4&\IfClozeTF{5}{\colorbox{yellow!30}{\(\mathstrut 5\)}}&6\\
+          7&\IfClozeTF{8}{\colorbox{yellow!30}{\(\mathstrut 8\)}}&0
+        \end{pmatrix}.
+      \]
+      \begin{ClozeArea}[32]{12}
+        \[
+          \begin{aligned}
+            D
+            &=-2\det\!\begin{pmatrix}4&6\\7&0\end{pmatrix}
+              +5\det\!\begin{pmatrix}1&3\\7&0\end{pmatrix}
+              -8\det\!\begin{pmatrix}1&3\\4&6\end{pmatrix}\\[0.7em]
+            &=-2(4\cdot0-6\cdot7)
+              +5(1\cdot0-3\cdot7)
+              -8(1\cdot6-3\cdot4)\\[0.7em]
+            &=84-105+48=27.
+          \end{aligned}
+        \]
+      \end{ClozeArea}
+  \end{enumerate}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Günstig entwickeln}{linear_systems_laplace_choose_row_or_column}
+  Das Ergebnis ist unabhängig von der gewählten Zeile oder Spalte. Zweckmäßig
+  ist eine Zeile oder Spalte mit möglichst vielen Nullen: Jeder Eintrag null
+  lässt einen vollständigen Summanden entfallen.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Nullen gezielt nutzen}{linear_systems_laplace_sparse_column}
+  In der dritten Spalte ist nur ein Eintrag von null verschieden. Daher
+  entwickeln wir zuerst nach dieser Spalte und anschließend nach der ersten
+  Spalte der verbleibenden $3\times3$-Determinante:
+  \[
+    D=\det\!\begin{pmatrix}
+      1&2& 0&4\\
+      0&7& 0&2\\
+      0&5& 0&4\\
+      3&3&-1&2
+    \end{pmatrix}.
+  \]
+  \begin{ClozeArea}[30]{13}
+    \[
+      \begin{aligned}
+        D
+        &=(-1)^{4+3}(-1)
+          \det\!\begin{pmatrix}
+            1&2&4\\
+            0&7&2\\
+            0&5&4
+          \end{pmatrix}\\[0.8em]
+        &=1\det\!\begin{pmatrix}7&2\\5&4\end{pmatrix}
+          =7\cdot4-2\cdot5
+          =18.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}

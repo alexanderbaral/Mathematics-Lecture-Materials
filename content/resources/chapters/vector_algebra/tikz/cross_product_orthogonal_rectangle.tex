@@ -1,0 +1,17 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (2.60,0);
+  \coordinate (B) at (0,1.75);
+  \coordinate (P) at (2.60,1.75);
+
+  \fill[yellow!55] (O)--(A)--(P)--(B)--cycle;
+  \draw[black!45,dashed] (A)--(P)--(B);
+  \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+    node[right] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt] (O)--(B)
+    node[above] {$\vec b$};
+
+  \draw[black!55,line width=0.75pt]
+    (0.42,0) arc[start angle=0,end angle=90,radius=0.42];
+  \fill[black!55] (45:0.25) circle[radius=1pt];
+\end{tikzpicture}

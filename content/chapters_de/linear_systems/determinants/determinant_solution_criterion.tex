@@ -1,0 +1,102 @@
+\subsection{Determinante und Lösungstyp}
+\label{subsec:linear_systems_determinant_solution_criterion}
+
+Die Cramersche Regel scheint zunächst für jedes $n\times n$-LGS eine explizite
+Lösung anzugeben. Das wirkt überraschend: Wir kennen bereits quadratische LGS
+ohne eindeutige Lösung. Wie passt beides zusammen?
+
+\begin{KeyPointBox}{Wann kann die Cramersche Regel scheitern?}{linear_systems_cramers_rule_denominator}
+  In jeder Cramerschen Lösungsformel
+  \[
+    x_j=\frac{\det(A_j)}{\det(A)}
+  \]
+  steht derselbe Nenner $\det(A)$. Ist $\det(A)\neq0$, sind alle Quotienten
+  definiert und Cramer liefert die eindeutige Lösung. Die Formel kann daher
+  nur dann scheitern, wenn
+  \[
+    \det(A)=0
+  \]
+  ist. Die folgende Verbindung mit dem Rang zeigt, dass dies nicht nur ein
+  technisches Versagen der Formel ist: Genau dann ist eine eindeutige Lösung
+  unmöglich.
+\end{KeyPointBox}
+
+Die Determinante prüft die Eindeutigkeit somit, ohne dass das LGS vollständig
+gelöst werden muss.
+
+\begin{TheoremBox}{Determinantenkriterium für $n\times n$-LGS}{linear_systems_determinant_solution_criterion}
+  Für ein $n\times n$-LGS mit Koeffizientenmatrix $A$ gilt
+  \[
+    \det(A)\neq0
+    \quad\Longleftrightarrow\quad
+    \operatorname{rang}(A)=n
+    \quad\Longleftrightarrow\quad
+    \text{genau eine Lösung}.
+  \]
+  Entsprechend gilt
+  \[
+    \det(A)=0
+    \quad\Longleftrightarrow\quad
+    \operatorname{rang}(A)<n
+    \quad\Longleftrightarrow\quad
+    \text{keine oder unendlich viele Lösungen}.
+  \]
+\end{TheoremBox}
+
+\begin{ExampleBox}{Gleiche Determinante, verschiedene Lösungstypen}{linear_systems_zero_determinant_solution_types}
+  Die beiden LGS besitzen dieselbe Koeffizientenmatrix
+  \[
+    A=\begin{pmatrix}1&1\\1&1\end{pmatrix},
+    \qquad \det(A)=1\cdot1-1\cdot1=0,
+  \]
+  aber verschiedene Absolutglieder:
+
+  \smallskip
+  \noindent
+  \begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}\centering
+    \textbf{LGS I}\par\smallskip
+    \(
+      \begin{aligned}
+        x_1+x_2&=2,\\
+        x_1+x_2&=1
+      \end{aligned}
+    \)
+    \par\medskip
+    \Cloze{4.2cm}{\text{keine Lösung}}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}\centering
+    \textbf{LGS II}\par\smallskip
+    \(
+      \begin{aligned}
+        x_1+x_2&=2,\\
+        x_1+x_2&=2
+      \end{aligned}
+    \)
+    \par\medskip
+    \Cloze{5.0cm}{\infty\text{-viele Lösungen}}
+  \end{minipage}
+
+  \medskip
+  Die Determinante erkennt in beiden Fällen, dass die Lösung nicht eindeutig
+  ist. Zwischen keiner und unendlich vielen Lösungen entscheidet erst der
+  Rangvergleich der erweiterten Koeffizientenmatrix.
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Spezialfall: homogenes $n\times n$-LGS}{linear_systems_homogeneous_determinant_criterion}
+  Ein homogenes LGS besitzt immer die triviale Lösung. Deshalb bleiben nur
+  zwei Fälle:
+  \[
+    \begin{aligned}
+      \det(A)\neq0
+      &\quad\Longleftrightarrow\quad
+      \text{nur die triviale Lösung},\\[0.8em]
+      \det(A)=0
+      &\quad\Longleftrightarrow\quad
+      \text{unendlich viele Lösungen, darunter nichttriviale}.
+    \end{aligned}
+  \]
+  Dieses Kriterium verwenden wir später, um lineare Abhängigkeit und
+  Unabhängigkeit von Vektoren zu prüfen.
+\end{KeyPointBox}

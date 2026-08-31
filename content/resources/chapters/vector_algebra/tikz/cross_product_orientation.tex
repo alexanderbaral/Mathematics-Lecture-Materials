@@ -1,0 +1,21 @@
+\begin{tikzpicture}
+  \path[use as bounding box] (0,0.85) rectangle (5.1,5.1);
+  \clip (0,0.85) rectangle (5.1,5.1);
+  % Die Handgrafik besitzt einen transparenten Hintergrund.
+  \node[anchor=south west,inner sep=0pt] (hand) at (0,0) {%
+    \includegraphics[width=5.1cm]{content/resources/chapters/vector_algebra/images/cross_product_right_hand.png}%
+  };
+  \begin{scope}[x={(hand.south east)},y={(hand.north west)}]
+    \draw[->,THMBlue,line width=1.25pt]
+      (0.58,0.55)--(0.90,0.58)
+      node[right] {$\vec a$};
+    \draw[->,olive!80!black,line width=1.25pt]
+      (0.59,0.56)--(0.67,0.92)
+      node[above] {$\vec b$};
+    \draw[->,red!70!black,line width=1.25pt]
+      (0.53,0.57)--(0.31,0.87)
+      node[above left] {$\vec c$};
+    \node[font=\bfseries,align=center,anchor=north,inner sep=0pt]
+      at (0.80,0.47) {Rechte-\\Hand-\\Regel};
+  \end{scope}
+\end{tikzpicture}

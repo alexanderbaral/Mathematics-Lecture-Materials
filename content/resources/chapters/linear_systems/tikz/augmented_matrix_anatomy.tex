@@ -5,9 +5,15 @@
 ]
   \matrix (M) [
     matrix of math nodes,
+    inner sep=0pt,
     left delimiter={[},right delimiter={]},
-    nodes={minimum width=1.05cm,minimum height=0.65cm,anchor=center},
-    column sep=1pt,row sep=1pt
+    nodes={minimum height=0.65cm,inner sep=0pt,anchor=center},
+    column 1/.style={nodes={text width=0.72cm,align=left}},
+    column 2/.style={nodes={text width=0.72cm,align=center}},
+    column 3/.style={nodes={text width=0.72cm,align=center}},
+    column 4/.style={nodes={text width=0.72cm,align=center}},
+    column 5/.style={nodes={text width=0.72cm,align=right}},
+    column sep=0.35cm,row sep=1pt
   ] {
     a_{11}&a_{12}&\cdots&a_{1n}&b_1\\
     a_{21}&a_{22}&\cdots&a_{2n}&b_2\\

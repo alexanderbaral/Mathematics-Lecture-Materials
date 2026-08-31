@@ -5,8 +5,11 @@
 ]
   \matrix (M) [
     matrix of math nodes,
+    inner sep=0pt,
     left delimiter={[},right delimiter={]},
-    nodes={minimum width=0.92cm,minimum height=0.62cm,anchor=center,inner sep=1pt},
+    nodes={minimum height=0.62cm,anchor=center,inner sep=0pt,text width=0.75cm,align=center},
+    column 1/.style={nodes={align=left}},
+    column 7/.style={nodes={align=right}},
     column sep=0pt,row sep=0pt
   ] {
     \bullet&\ast&\ast&\ast&\ast&\ast&b_1\\

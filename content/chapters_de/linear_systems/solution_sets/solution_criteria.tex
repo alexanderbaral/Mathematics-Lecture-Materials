@@ -28,7 +28,7 @@ daher eindeutig.
       \[
         [A\mid b]\sim
         \left[
-          \begin{array}{rrr|r}
+          \begin{array}{@{}rrr|r@{}}
             \phantom{-}1&\phantom{-}2&\phantom{-}0&\phantom{-}3\\
             \phantom{-}0&\phantom{-}0&\phantom{-}1&\phantom{-}5
           \end{array}
@@ -45,7 +45,7 @@ daher eindeutig.
       \[
         [A\mid b]\sim
         \left[
-          \begin{array}{rr|r}
+          \begin{array}{@{}rr|r@{}}
             \phantom{-}1&-1&\phantom{-}3\\
             \phantom{-}0&\phantom{-}1&\phantom{-}5\\
             \phantom{-}0&\phantom{-}0&\phantom{-}1
@@ -91,10 +91,10 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
       \[
         [A\mid b]\sim
         \left[
-          \begin{array}{rr|r}
-            \phantom{-}1&\phantom{-}2&\phantom{-}3\\
-            \phantom{-}0&\phantom{-}0&\phantom{-}1\\
-            \phantom{-}0&\phantom{-}0&\phantom{-}0
+          \begin{array}{@{}rr|r@{}}
+            1&2&3\\
+            0&0&1\\
+            0&0&0
           \end{array}
         \right]
         \quad\Longrightarrow\quad
@@ -113,9 +113,9 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
       \[
         [A\mid b]\sim
         \left[
-          \begin{array}{rr|r}
-            \phantom{-}1&\phantom{-}2&\phantom{-}3\\
-            \phantom{-}0&\phantom{-}1&\phantom{-}5
+          \begin{array}{@{}rr|r@{}}
+            1&2&3\\
+            0&1&5
           \end{array}
         \right]
         \quad\Longrightarrow\quad
@@ -134,9 +134,9 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
       \[
         [A\mid b]\sim
         \left[
-          \begin{array}{rrr|r}
-            \phantom{-}1&\phantom{-}2&\phantom{-}0&\phantom{-}3\\
-            \phantom{-}0&\phantom{-}0&\phantom{-}1&\phantom{-}5
+          \begin{array}{@{}rrr|r@{}}
+            1&2&0&3\\
+            0&0&1&5
           \end{array}
         \right]
         \quad\Longrightarrow\quad
@@ -159,7 +159,7 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
   \[
     0x_1+0x_2+\dots+0x_n=c
     \quad\Longleftrightarrow\quad
-    \left[\begin{array}{cccc|c}
+    \left[\begin{array}{@{}cccc|c@{}}
       0&0&\cdots&0&c
     \end{array}\right],
     \qquad c\neq0,
@@ -188,7 +188,7 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
     \quad\Longleftrightarrow\quad
     [A\mid b]=
     \left[
-      \begin{array}{rrr|r}
+      \begin{array}{@{}rrr|r@{}}
         1&1& 1&3\\
         2&1&-1&1\\
         3&2& 0&5
@@ -196,55 +196,16 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
     \right].
   \]
 
-  \begin{ClozeArea}[32]{30}
+  \begin{ClozeArea}[32]{35}
     \textbf{Vorwärtselimination:}
     \[
-      \begin{aligned}
-        &\left[
-          \begin{array}{rrr|r}
-            1&1& 1&3\\
-            2&1&-1&1\\
-            3&2& 0&5
-          \end{array}
-        \right]
-        &&\textcolor{black!55}{
-          \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
-          \quad
-          \begin{array}{l}
-            \phantom{Z_2-2Z_1}\\
-            Z_2-2Z_1\\
-            Z_3-3Z_1
-          \end{array}
-        }
-        \\[0.8em]
-        \Longleftrightarrow\quad
-        &\left[
-          \begin{array}{rrr|r}
-            1& 1& 1& 3\\
-            0&-1&-3&-5\\
-            0&-1&-3&-4
-          \end{array}
-        \right]
-        &&\textcolor{black!55}{
-          \left.\vphantom{\begin{array}{c}0\\0\\0\end{array}}\right|
-          \quad
-          \begin{array}{l}
-            \phantom{Z_3-Z_2}\\
-            \phantom{Z_3-Z_2}\\
-            Z_3-Z_2
-          \end{array}
-        }
-        \\[0.8em]
-        \Longleftrightarrow\quad
-        &\left[
-          \begin{array}{rrr|r}
-            1& 1& 1& 3\\
-            0&-1&-3&-5\\
-            0& 0& 0& 1
-          \end{array}
-        \right]
-        &&\text{Zeilenstufenform}.
-      \end{aligned}
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/inconsistent_system_elimination_steps.tex}
+    \]
+    Die letzte Zeile ist die \emph{Widerspruchszeile}:
+    \[
+      0x_1+0x_2+0x_3=1
+      \quad\Longleftrightarrow\quad
+      0=1.
     \]
     \textbf{Rangvergleich:}
     \[
@@ -257,6 +218,10 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
       \quad\right\}
       \quad\Longrightarrow\quad
       \text{keine Lösung}.
+    \]
+    Damit ist die Lösungsmenge
+    \[
+      \mathcal L=\varnothing.
     \]
   \end{ClozeArea}
 \end{ExampleBox}

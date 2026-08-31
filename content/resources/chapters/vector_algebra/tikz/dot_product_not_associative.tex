@@ -1,0 +1,54 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \tikzset{
+    operation label/.style={font=\normalfont,align=center,text=black!65},
+    operation arrow/.style={->,black!55,line width=0.65pt},
+    result/.style={font=\normalfont,text=black!65,anchor=west}
+  }
+
+  \begin{scope}[text=THMBlue]
+    \node (aone) at (0,0) {$\vec a$};
+    \node (dotoneouter) at (0.65,0) {$\boldsymbol{\cdot}$};
+    \node (lparenone) at (1.10,0) {$($};
+    \node (bone) at (1.55,0) {$\vec b$};
+    \node (dotoneinner) at (2.15,0) {$\boldsymbol{\cdot}$};
+    \node (cone) at (2.75,0) {$\vec c$};
+    \node (rparenone) at (3.20,0) {$)$};
+  \end{scope}
+
+  \node[text=red!75!black] at (4.45,0) {$\boldsymbol{\ne}$};
+
+  \begin{scope}[text=olive!80!black]
+    \node (lparentwo) at (5.70,0) {$($};
+    \node (atwo) at (6.15,0) {$\vec a$};
+    \node (dottwoinner) at (6.75,0) {$\boldsymbol{\cdot}$};
+    \node (btwo) at (7.35,0) {$\vec b$};
+    \node (rparentwo) at (7.80,0) {$)$};
+    \node (dottwoouter) at (8.35,0) {$\boldsymbol{\cdot}$};
+    \node (ctwo) at (8.95,0) {$\vec c$};
+  \end{scope}
+
+  \node[operation label] (scalarmultone) at (-0.20,1.65)
+    {Multiplikation mit\\Skalar};
+  \draw[operation arrow]
+    (scalarmultone.south) to[out=-90,in=90] (dotoneouter.north);
+  \node[operation label] (scalarproductone) at (2.65,1.10)
+    {Skalarprodukt};
+  \draw[operation arrow]
+    (scalarproductone.south) to[out=-90,in=90] (dotoneinner.north);
+
+  \node[operation label] (scalarproducttwo) at (6.15,1.10)
+    {Skalarprodukt};
+  \draw[operation arrow]
+    (scalarproducttwo.south) to[out=-90,in=90] (dottwoinner.north);
+  \node[operation label] (scalarmulttwo) at (9.15,1.65)
+    {Multiplikation mit\\Skalar};
+  \draw[operation arrow]
+    (scalarmulttwo.south) to[out=-90,in=90] (dottwoouter.north);
+
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},THMBlue,line width=0.65pt]
+    (-0.40,-0.45) -- (3.50,-0.45)
+    node[midway,below=8pt,operation label,text=THMBlue] {parallel zu $\vec a$};
+  \draw[decorate,decoration={brace,mirror,amplitude=5pt},olive!80!black,line width=0.65pt]
+    (5.40,-0.45) -- (9.30,-0.45)
+    node[midway,below=8pt,operation label,text=olive!80!black] {parallel zu $\vec c$};
+\end{tikzpicture}

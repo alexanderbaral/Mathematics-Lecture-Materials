@@ -92,18 +92,12 @@ Damit sind die folgenden Fragen gleichwertig:
 \subsection{Entscheidung mithilfe der Determinante}
 \label{subsec:vector_algebra_linear_dependence_determinant}
 
-Nach Merke~\ref{key:linear_systems_homogeneous_solution_sets} besitzt ein
-homogenes LGS entweder nur die triviale oder unendlich viele Lösungen. Für
-genau $n$ Vektoren $\vec v_1,\dots,\vec v_n\in\R^n$ ist die zugehörige
-Koeffizientenmatrix $M$ quadratisch. Ihre Spalten enthalten die Koordinaten der
-Vektoren. Damit entscheidet die Determinante zwischen den beiden möglichen
-Lösungsmengen.
-
-Ist $\det(M)\ne0$, besitzt das LGS genau eine Lösung. Da die triviale Lösung
-bei einem homogenen LGS immer vorhanden ist, muss sie die einzige Lösung sein.
-Ist dagegen $\det(M)=0$, besitzt das LGS nicht genau eine Lösung. Da seine
-Lösungsmenge auch nicht leer sein kann, bleiben nur unendlich viele Lösungen,
-darunter auch nichttriviale.
+Nach Merke~\ref{key:linear_systems_homogeneous_determinant_criterion}
+entscheidet die Determinante bei einem homogenen $n\times n$-LGS zwischen der
+trivialen Lösung und unendlich vielen Lösungen. Für genau $n$ Vektoren
+$\vec v_1,\dots,\vec v_n\in\R^n$ ist die zugehörige Koeffizientenmatrix $M$
+quadratisch; ihre Spalten enthalten die Koordinaten der Vektoren. Das bekannte
+Kriterium lässt sich daher unmittelbar auf die Vektoren übertragen.
 
 \begin{TheoremBox}{Determinantenkriterium}{vector_algebra_linear_dependence_determinant_criterion}
   Für $n$ Vektoren $\vec v_1,\dots,\vec v_n\in\R^n$ und ihre

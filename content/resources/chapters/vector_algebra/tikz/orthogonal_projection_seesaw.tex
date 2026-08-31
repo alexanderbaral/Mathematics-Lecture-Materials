@@ -1,0 +1,53 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (H) at (0,0);
+  \coordinate (P) at (3.45,0.61);
+  \coordinate (ParallelEnd) at (1.98,0.35);
+  \coordinate (PerpendicularEnd) at (3.85,-1.25);
+  \coordinate (ForceEnd) at (2.38,-1.56);
+
+  % Ground and hinged wedge support.
+  \draw[black!55,line width=0.75pt] (-1.25,-1.35)--(1.25,-1.35);
+  \foreach \x in {-1.10,-0.75,...,1.10}
+    \draw[black!35,line width=0.55pt]
+      (\x,-1.35)--++(-0.18,-0.18);
+  \path[fill=black!10,draw=black!65,line width=0.85pt]
+    (-0.72,-1.35)--(0,-0.12)--(0.72,-1.35)--cycle;
+
+  % Board and hinge.
+  \draw[black!55,line width=8pt,line cap=round]
+    (-3.30,-0.58)--(3.65,0.64);
+  \draw[black!15,line width=5pt,line cap=round]
+    (-3.30,-0.58)--(3.65,0.64);
+  \draw[->,THMBlue,line width=1.35pt]
+    (H)--(-2.20,-0.39)
+    node[midway,below,text=THMBlue] {$\vec a$};
+  \fill[white] (H) circle[radius=0.16];
+  \draw[black,line width=0.9pt] (H) circle[radius=0.16];
+  \fill[black] (H) circle[radius=1.2pt];
+
+  % Force decomposition at the right end of the board.
+  \draw[->,red!75!black,line width=1.6pt]
+    (P)--(ForceEnd)
+    node[pos=0.72,left,text=red!75!black] {$\vec F$};
+  \draw[->,black,line width=1.45pt]
+    (P)--(ParallelEnd)
+    node[midway,above,text=black] {$\vec F_{\parallel}$};
+  \draw[->,olive!80!black,line width=1.45pt]
+    (P)--(PerpendicularEnd)
+    node[midway,right,text=olive!80!black] {$\vec F_{\perp}$};
+
+  \draw[black!40,densely dashed,line width=0.65pt]
+    (PerpendicularEnd)--(ForceEnd);
+  \draw[olive!55!black,densely dashed,line width=0.65pt]
+    (ParallelEnd)--(ForceEnd);
+
+  % Right angle between the two component directions.
+  \draw[black!55,line width=0.7pt]
+    ($(P)+(190:0.43)$)
+      arc[start angle=190,end angle=280,radius=0.43];
+  \fill[black!55]
+    ($(P)+(235:0.24)$) circle[radius=1pt];
+
+  \node[align=center,text=black!65] at (0,-1.82)
+    {Gelenklager};
+\end{tikzpicture}

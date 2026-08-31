@@ -1,0 +1,54 @@
+\begin{tikzpicture}[
+  every node/.style={font=\normalsize},
+  coefficient matrix/.style={
+    matrix of math nodes,
+    left delimiter={(},right delimiter={)},
+    nodes={minimum width=0.75cm,minimum height=0.68cm,inner sep=0pt,anchor=center},
+    column sep=0pt,row sep=0pt
+  },
+  active/.style={text=THMBlue,font=\normalsize\bfseries},
+  removed/.style={text=black!28},
+  strike/.style={black!20,line width=2.5pt,line cap=round},
+  result arrow/.style={->,THMBlue!75,line width=0.8pt}
+]
+  \matrix (Mone) [coefficient matrix] at (0,0) {
+    |[active]| a_{11}&|[removed]| a_{12}&|[removed]| a_{13}\\
+    |[removed]| a_{21}&a_{22}&a_{23}\\
+    |[removed]| a_{31}&a_{32}&a_{33}\\
+  };
+  \matrix (Mtwo) [coefficient matrix] at (5.15,0) {
+    |[removed]| a_{11}&|[active]| a_{12}&|[removed]| a_{13}\\
+    a_{21}&|[removed]| a_{22}&a_{23}\\
+    a_{31}&|[removed]| a_{32}&a_{33}\\
+  };
+  \matrix (Mthree) [coefficient matrix] at (10.30,0) {
+    |[removed]| a_{11}&|[removed]| a_{12}&|[active]| a_{13}\\
+    a_{21}&a_{22}&|[removed]| a_{23}\\
+    a_{31}&a_{32}&|[removed]| a_{33}\\
+  };
+
+  \foreach \M/\col in {Mone/1,Mtwo/2,Mthree/3}{
+    \draw[strike] ($(\M-1-1.west)+(0.05,0)$)--($(\M-1-3.east)+(-0.05,0)$);
+    \draw[strike] ($(\M-1-\col.north)+(0,-0.04)$)--($(\M-3-\col.south)+(0,0.04)$);
+  }
+
+  \node[above=0.28cm of Mone,text=THMBlue] {aktiver Eintrag $a_{11}$};
+  \node[above=0.28cm of Mtwo,text=THMBlue] {aktiver Eintrag $a_{12}$};
+  \node[above=0.28cm of Mthree,text=THMBlue] {aktiver Eintrag $a_{13}$};
+
+  \node (Tone) at (0,-2.05)
+    {$+\,\textcolor{THMBlue}{a_{11}}
+      \det\!\begin{pmatrix}a_{22}&a_{23}\\a_{32}&a_{33}\end{pmatrix}$};
+  \node (Ttwo) at (5.15,-2.05)
+    {$-\,\textcolor{THMBlue}{a_{12}}
+      \det\!\begin{pmatrix}a_{21}&a_{23}\\a_{31}&a_{33}\end{pmatrix}$};
+  \node (Tthree) at (10.30,-2.05)
+    {$+\,\textcolor{THMBlue}{a_{13}}
+      \det\!\begin{pmatrix}a_{21}&a_{22}\\a_{31}&a_{32}\end{pmatrix}$};
+
+  \draw[result arrow] (Mone.south)--(Tone.north);
+  \draw[result arrow] (Mtwo.south)--(Ttwo.north);
+  \draw[result arrow] (Mthree.south)--(Tthree.north);
+
+  \node[anchor=east] at ($(Tone.west)+(-0.28,0)$) {$\det(A)=$};
+\end{tikzpicture}

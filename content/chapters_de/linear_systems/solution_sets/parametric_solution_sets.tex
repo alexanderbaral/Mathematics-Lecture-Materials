@@ -17,7 +17,7 @@ Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
     \end{aligned}
     \quad\Longleftrightarrow\quad
     \left[
-      \begin{array}{rr|r}
+      \begin{array}{@{}rr|r@{}}
         \Cloze{0.7cm}{\textcolor{THMBlue}{1}}&
         \Cloze{0.7cm}{\textcolor{THMBlue}{1}}&
         \Cloze{0.7cm}{\textcolor{THMBlue}{2}}\\[0.35em]
@@ -29,33 +29,8 @@ Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
   \]
   Die Vorwärtselimination liefert die Zeilenstufenform
   \begin{ClozeArea}[32]{8}
-    \[
-      \begin{aligned}
-        &\left[
-          \begin{array}{rr|r}
-            \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
-            \textcolor{olive!80!black}{2}&\textcolor{olive!80!black}{2}&\textcolor{olive!80!black}{4}
-          \end{array}
-        \right]
-        &&\textcolor{black!55}{
-          \left.\vphantom{\begin{array}{c}0\\0\end{array}}\right|
-          \quad
-          \begin{array}{l}
-            \phantom{Z_2-2Z_1}\\
-            Z_2-2Z_1
-          \end{array}
-        }
-        \\[0.8em]
-        \Longleftrightarrow\quad
-        &\left[
-          \begin{array}{rr|r}
-            \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
-            \textcolor{olive!80!black}{0}&\textcolor{olive!80!black}{0}&\textcolor{olive!80!black}{0}
-          \end{array}
-        \right]
-        &&\text{Zeilenstufenform}
-      \end{aligned}
-    \]
+    \centering
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/parametric_elimination_steps.tex}
   \end{ClozeArea}
   Es gilt
   \[

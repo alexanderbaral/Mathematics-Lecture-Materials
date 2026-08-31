@@ -2,9 +2,14 @@
   >=Latex,
   gaussmatrix/.style={
     matrix of math nodes,
+    inner sep=0pt,
     left delimiter={[},right delimiter={]},
-    nodes={minimum width=0.82cm,minimum height=0.62cm,anchor=center},
-    column sep=1pt,row sep=1pt
+    nodes={minimum height=0.62cm,inner sep=0pt,anchor=center},
+    column 1/.style={nodes={text width=0.42cm,align=right}},
+    column 2/.style={nodes={text width=0.42cm,align=right}},
+    column 3/.style={nodes={text width=0.42cm,align=right}},
+    column 4/.style={nodes={text width=0.58cm,align=right}},
+    column sep=0.35cm,row sep=1pt
   },
   operation/.style={font=\normalsize,color=black!55,anchor=west},
   operationbar/.style={draw=black!55,line width=0.6pt}
@@ -46,6 +51,7 @@
     |[text=THMBlue]| 0& 7&-5&-7\\
     |[text=THMBlue]| 0&|[text=THMBlue]| 0& 3&-63\\
   };
+
   \draw[line width=0.6pt]
     ($(M2-1-3.north east)!0.5!(M2-1-4.north west)+(0,0.12)$)--
     ($(M2-3-3.south east)!0.5!(M2-3-4.south west)-(0,0.12)$);

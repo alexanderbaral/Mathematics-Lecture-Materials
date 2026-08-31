@@ -1,41 +1,37 @@
 \subsection{Rechenregeln}
 \label{subsec:vector_algebra_cross_product_rules}
 
+Bereits an den Kreuzprodukten der kanonischen Einheitsvektoren haben wir
+gesehen, dass das Kreuzprodukt nicht kommutativ sein kann. Daher ist es
+besonders wichtig, seine algebraischen Rechenregeln genauer zu betrachten.
+
 \begin{TheoremBox}{Rechenregeln des Kreuzprodukts}{vector_algebra_cross_product_laws}
-  Für $\vec a,\vec b,\vec c\in\R^3$ und $\lambda\in\R$ gilt
+  Für Vektoren $\vec a,\vec b,\vec c\in\R^3$ und einen Skalar
+  $\lambda\in\R$ gelten die folgenden algebraischen Rechenregeln:
   \[
-    \begin{aligned}
+    \begin{array}{r@{\;}c@{\;}l@{\qquad}l}
       \vec a\times\vec b
-        &=\Cloze{7cm}{-\vec b\times\vec a}
-        &&\text{(Antikommutativgesetz)},\\[0.7em]
-      \lambda(\vec a\times\vec b)
-        &=\Cloze{10cm}{(\lambda\vec a)\times\vec b
-          =\vec a\times(\lambda\vec b)},\\[0.7em]
+        &=&\Cloze{8cm}{-\vec b\times\vec a}
+        &\text{Antikommutativgesetz}\\[0.7em]
+      \vec a\times(\vec b\times\vec c)
+        &\ne&\Cloze{8cm}{(\vec a\times\vec b)\times\vec c}
+        &\text{\textcolor{red!75!black}{\bfseries kein Assoziativgesetz}}\\[0.7em]
       \vec a\times(\vec b+\vec c)
-        &=\Cloze{9cm}{\vec a\times\vec b+\vec a\times\vec c}
-        &&\text{(Distributivgesetz)},\\[0.7em]
-      (\vec a+\vec b)\times\vec c
-        &=\Cloze{9cm}{\vec a\times\vec c+\vec b\times\vec c}
-        &&\text{(Distributivgesetz)}.
-    \end{aligned}
+        &=&\Cloze{8cm}{\vec a\times\vec b+\vec a\times\vec c}
+        &\text{Distributivgesetz}
+    \end{array}
+  \]
+  Zusätzlich ist das Kreuzprodukt homogen bezüglich der Multiplikation mit
+  einem Skalar:
+  \[
+    \begin{array}{r@{\;}c@{\;}l@{\qquad}l}
+      \lambda(\vec a\times\vec b)
+        &=&\Cloze{8cm}{(\lambda\vec a)\times\vec b
+          =\vec a\times(\lambda\vec b)}
+        &\text{Homogenität}
+    \end{array}
   \]
 \end{TheoremBox}
-
-Damit begegnen uns erstmals bei einer Vektoroperation zwei vertraute
-Rechengesetze, die nicht gelten.
-
-\begin{RemarkBox}[title=Weder kommutativ noch assoziativ]
-  Das Kommutativgesetz wird durch die Antikommutativität ersetzt:
-  \[
-    \vec a\times\vec b=-\vec b\times\vec a.
-  \]
-  Beide Klammerungen eines dreifachen Kreuzprodukts sind zwar definiert, im
-  Allgemeinen gilt jedoch
-  \[
-    \vec a\times(\vec b\times\vec c)
-    \ne(\vec a\times\vec b)\times\vec c.
-  \]
-\end{RemarkBox}
 
 \begin{ExampleBox}{Reihenfolge beim Kreuzprodukt}{vector_algebra_cross_product_order_example}
   Für
@@ -44,22 +40,32 @@ Rechengesetze, die nicht gelten.
     \vec b=\begin{pmatrix}4\\5\\6\end{pmatrix},\quad
     \vec c=\begin{pmatrix}7\\8\\9\end{pmatrix}
   \]
-  zeigt die vertauschte Reihenfolge
-  \[
-    \vec a\times\vec b
-      =\Cloze{4cm}{\begin{pmatrix}-3\\6\\-3\end{pmatrix}},
-    \qquad
-    \vec b\times\vec a
-      =\Cloze{4cm}{\begin{pmatrix}3\\-6\\3\end{pmatrix}}.
-  \]
-  Die beiden möglichen Klammerungen liefern
-  \[
-    \begin{aligned}
-      \vec a\times(\vec b\times\vec c)
-        &=\Cloze{5cm}{\begin{pmatrix}-24\\-6\\12\end{pmatrix}},\\[0.8em]
-      (\vec a\times\vec b)\times\vec c
-        &=\Cloze{5cm}{\begin{pmatrix}78\\6\\-66\end{pmatrix}}.
-    \end{aligned}
-  \]
-  Somit ist das Kreuzprodukt weder kommutativ noch assoziativ.
+  untersuchen wir zwei Rechenregeln.
+  \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=*,itemsep=1em]
+    \item \textbf{Antikommutativität:}
+      Beim Vertauschen der Faktoren erhalten wir
+      \[
+        \vec a\times\vec b
+          =\Cloze{4cm}{\begin{pmatrix}-3\\6\\-3\end{pmatrix}},
+        \qquad
+        \vec b\times\vec a
+          =\Cloze{4cm}{\begin{pmatrix}3\\-6\\3\end{pmatrix}}.
+      \]
+      Die beiden Ergebnisse sind entgegengesetzt, also
+      $\vec a\times\vec b=-\vec b\times\vec a$.
+
+    \item \textbf{Kein Assoziativgesetz:}
+      Die beiden möglichen Klammerungen liefern
+      \[
+        \begin{aligned}
+          \vec a\times(\vec b\times\vec c)
+            &=\Cloze{5cm}{\begin{pmatrix}-24\\-6\\12\end{pmatrix}},\\[0.8em]
+          (\vec a\times\vec b)\times\vec c
+            &=\Cloze{5cm}{\begin{pmatrix}78\\6\\-66\end{pmatrix}}.
+        \end{aligned}
+      \]
+      Damit gilt
+      $\vec a\times(\vec b\times\vec c)
+        \ne(\vec a\times\vec b)\times\vec c$.
+  \end{enumerate}
 \end{ExampleBox}
