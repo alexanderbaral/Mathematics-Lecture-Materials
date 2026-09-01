@@ -1,65 +1,103 @@
 \subsection{Determinante von $n\times n$-Matrizen}
 \label{subsec:linear_systems_laplace_expansion}
 
-Bei drei Unbekannten tritt eine $3\times3$-Determinante auf. Wir führen ihre
-Berechnung zunächst konkret an der ersten Zeile durch. Zu jedem Eintrag wird
-seine Zeile und seine Spalte gestrichen; die vier verbleibenden Einträge bilden
-eine $2\times2$-Determinante.
+Eine Determinante höherer Ordnung lässt sich schrittweise auf kleinere,
+bereits berechenbare Determinanten zurückführen. Dieses Verfahren heißt
+\emph{Laplace-Entwicklung} \EnglishTerm{Laplace expansion}.
 
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/three_by_three_laplace_expansion.tex}
-\end{center}
+\begin{TheoremBox}{Kochrezept: Laplace-Entwicklung}{linear_systems_laplace_expansion}
+\begin{enumerate}[label=\textbf{Schritt \arabic*:},leftmargin=*,itemsep=0.15em]
+  \item \textbf{Gedachte Vorzeichen.}
+    Die gedachten Vorzeichen werden nach dem Schachbrettmuster ergänzt.
+    Sie gehören nicht zur Matrix:
+    \begin{center}
+      \vspace{-0.35\baselineskip}
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/laplace_sign_pattern_start.tex}
+      \vspace{-0.35\baselineskip}
+    \end{center}
+  \item \textbf{Zeile oder Spalte auswählen.}
+    Für die Entwicklung wird eine beliebige Zeile oder Spalte ausgewählt;
+    das Ergebnis ist unabhängig von dieser Wahl:
 
-Für einen Eintrag $a_{ij}$ wird seine Zeile $i$ und seine Spalte $j$ entfernt.
-Die verbleibende $(n-1)\times(n-1)$-Matrix bezeichnen wir mit $A_{ij}$.
+    \begin{center}
+      \vspace{-0.2\baselineskip}
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/laplace_row_or_column_selection.tex}
+      \vspace{-0.2\baselineskip}
+    \end{center}
+  \item \textbf{Entwicklungsschritt:}
+    Zu jedem ausgewählten Eintrag werden seine Zeile und Spalte gestrichen;
+    die entstehenden Summanden werden addiert:
+    \[
+      \det(A)
+      =\sum_{\substack{\text{Einträge der gewählten}\\
+                       \text{Zeile oder Spalte}}}
+       \text{\textcolor{olive!80!black}{„gedachtes Vorzeichen“}}
+       \;\cdot\;\textcolor{THMBlue}{a_{ij}}
+       \;\cdot\;\det(A_{ij}).
+    \]
+    Die sogenannte \emph{Untermatrix} \EnglishTerm{submatrix} $A_{ij}$ ergibt
+    sich aus Matrix $A$ durch Streichen von Zeile $i$ und Spalte $j$.
 
-\begin{TheoremBox}{Laplacescher Entwicklungssatz}{linear_systems_laplace_expansion}
-  Eine $n\times n$-Determinante kann nach jeder beliebigen Zeile oder Spalte
-  entwickelt werden. Dabei gehen wir schrittweise vor:
-  \begin{enumerate}[label=\textbf{Schritt \arabic*:},leftmargin=7.2em,itemsep=0.7em]
-    \item Die gedachten Vorzeichen werden nach dem Schachbrettmuster
-      eingetragen:
-      \[
-        \begin{pmatrix}
-          +&-&+&\cdots\\
-          -&+&-&\cdots\\
-          +&-&+&\cdots\\
-          \vdots&\vdots&\vdots&\ddots
-        \end{pmatrix}.
-      \]
-    \item Eine beliebige Zeile oder Spalte wird für die Entwicklung ausgewählt.
-    \item Entlang dieser Zeile oder Spalte wird für jeden Eintrag $a_{ij}$ der
-      Summand
-      \[
-        \text{Vorzeichen an der Stelle }(i,j)
-        \;\cdot\;a_{ij}\;\cdot\;\det(A_{ij})
-      \]
-      gebildet. Die Summe aller Summanden ist $\det(A)$.
-  \end{enumerate}
-  Dieses Vorgehen heißt \emph{Laplace-Entwicklung}
-  \EnglishTerm{Laplace expansion}.
+    \begin{center}
+      \vspace{-0.25\baselineskip}
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/laplace_submatrix_construction.tex}
+      \vspace{-0.25\baselineskip}
+    \end{center}
+
+\end{enumerate}
+Durch die Laplace-Entwicklung wird eine $n\times n$-Determinante auf $n$
+Determinanten der Größe $(n-1)\times(n-1)$ zurückgeführt.
 \end{TheoremBox}
 
-\begin{ExampleBox}{Eine $3\times3$-Determinante nach Zeile und Spalte entwickeln}{linear_systems_three_by_three_determinant}
-  Wir berechnen dieselbe Determinante auf zwei Wegen.
+\begin{minipage}{\linewidth}
+Auf diese Weise entwickeln wir eine $n\times n$-Determinante schrittweise,
+bis nur noch $2\times2$-Determinanten verbleiben, die wir nach
+Definition~\ref{def:linear_systems_two_by_two_determinant} berechnen können.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/laplace_expansion_flow.tex}
+\end{center}
+\end{minipage}
+
+\begin{ExampleBox}{Laplace-Entwicklung einer $3\times3$-Determinante}{linear_systems_three_by_three_determinant}
+  Wir berechnen die Determinante mit der Laplace-Entwicklung einmal nach der
+  ersten Zeile und einmal nach der zweiten Spalte.
+  \[
+    D=\det\!\begin{pmatrix}
+      {}^{\textcolor{olive!80!black}{\boldsymbol{+}}}\!1&
+      {}^{\textcolor{olive!80!black}{\boldsymbol{-}}}\!2&
+      {}^{\textcolor{olive!80!black}{\boldsymbol{+}}}\!3\\[0.35em]
+      {}^{\textcolor{olive!80!black}{\boldsymbol{-}}}\!4&
+      {}^{\textcolor{olive!80!black}{\boldsymbol{+}}}\!5&
+      {}^{\textcolor{olive!80!black}{\boldsymbol{-}}}\!6\\[0.35em]
+      {}^{\textcolor{olive!80!black}{\boldsymbol{+}}}\!7&
+      {}^{\textcolor{olive!80!black}{\boldsymbol{-}}}\!8&
+      {}^{\textcolor{olive!80!black}{\boldsymbol{+}}}\!0
+    \end{pmatrix}.
+  \]
   \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=0.8em]
     \item \textbf{Entwicklung nach der ersten Zeile:}
-      \[
-        D=\det\!\begin{pmatrix}
-          \IfClozeTF{1}{\colorbox{yellow!30}{\(\mathstrut 1\)}}&
-          \IfClozeTF{2}{\colorbox{yellow!30}{\(\mathstrut 2\)}}&
-          \IfClozeTF{3}{\colorbox{yellow!30}{\(\mathstrut 3\)}}\\
-          4&5&6\\
-          7&8&0
-        \end{pmatrix}.
-      \]
-      \begin{ClozeArea}[32]{12}
+      \begin{ClozeArea}[32]{9}
         \[
           \begin{aligned}
             D
-            &={+}\,1\det\!\begin{pmatrix}5&6\\8&0\end{pmatrix}
-              -2\det\!\begin{pmatrix}4&6\\7&0\end{pmatrix}
-              +3\det\!\begin{pmatrix}4&5\\7&8\end{pmatrix}\\[0.7em]
+            &=\det\!\begin{pNiceMatrix}
+                \CodeBefore
+                  \rowcolor{yellow!55}{1}
+                \Body
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!1&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!2&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!3\\[0.35em]
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!4&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!5&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!6\\[0.35em]
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!7&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!8&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!0
+              \end{pNiceMatrix}
+              \;=\;\textcolor{olive!80!black}{\boldsymbol{+}}\,1\det\!\begin{pmatrix}5&6\\8&0\end{pmatrix}
+              \textcolor{olive!80!black}{\boldsymbol{-}}\,2\det\!\begin{pmatrix}4&6\\7&0\end{pmatrix}
+              \textcolor{olive!80!black}{\boldsymbol{+}}\,3\det\!\begin{pmatrix}4&5\\7&8\end{pmatrix}\\[0.7em]
             &=1(5\cdot0-6\cdot8)
               -2(4\cdot0-6\cdot7)
               +3(4\cdot8-5\cdot7)\\[0.7em]
@@ -68,20 +106,27 @@ Die verbleibende $(n-1)\times(n-1)$-Matrix bezeichnen wir mit $A_{ij}$.
         \]
       \end{ClozeArea}
     \item \textbf{Entwicklung nach der zweiten Spalte:}
-      \[
-        D=\det\!\begin{pmatrix}
-          1&\IfClozeTF{2}{\colorbox{yellow!30}{\(\mathstrut 2\)}}&3\\
-          4&\IfClozeTF{5}{\colorbox{yellow!30}{\(\mathstrut 5\)}}&6\\
-          7&\IfClozeTF{8}{\colorbox{yellow!30}{\(\mathstrut 8\)}}&0
-        \end{pmatrix}.
-      \]
-      \begin{ClozeArea}[32]{12}
+      \begin{ClozeArea}[32]{9}
         \[
           \begin{aligned}
             D
-            &=-2\det\!\begin{pmatrix}4&6\\7&0\end{pmatrix}
-              +5\det\!\begin{pmatrix}1&3\\7&0\end{pmatrix}
-              -8\det\!\begin{pmatrix}1&3\\4&6\end{pmatrix}\\[0.7em]
+            &=\det\!\begin{pNiceMatrix}
+                \CodeBefore
+                  \columncolor{yellow!55}{2}
+                \Body
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!1&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!2&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!3\\[0.35em]
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!4&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!5&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!6\\[0.35em]
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!7&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!8&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!0
+              \end{pNiceMatrix}
+              \;=\;\textcolor{olive!80!black}{\boldsymbol{-}}\,2\det\!\begin{pmatrix}4&6\\7&0\end{pmatrix}
+              \textcolor{olive!80!black}{\boldsymbol{+}}\,5\det\!\begin{pmatrix}1&3\\7&0\end{pmatrix}
+              \textcolor{olive!80!black}{\boldsymbol{-}}\,8\det\!\begin{pmatrix}1&3\\4&6\end{pmatrix}\\[0.7em]
             &=-2(4\cdot0-6\cdot7)
               +5(1\cdot0-3\cdot7)
               -8(1\cdot6-3\cdot4)\\[0.7em]
@@ -92,38 +137,116 @@ Die verbleibende $(n-1)\times(n-1)$-Matrix bezeichnen wir mit $A_{ij}$.
   \end{enumerate}
 \end{ExampleBox}
 
-\begin{KeyPointBox}{Günstig entwickeln}{linear_systems_laplace_choose_row_or_column}
-  Das Ergebnis ist unabhängig von der gewählten Zeile oder Spalte. Zweckmäßig
-  ist eine Zeile oder Spalte mit möglichst vielen Nullen: Jeder Eintrag null
-  lässt einen vollständigen Summanden entfallen.
+\begin{KeyPointBox}{Regel von Sarrus}{linear_systems_sarrus_rule}
+  Im Spezialfall einer $3\times3$-Matrix lässt sich die Determinante auch mit
+  der \emph{Regel von Sarrus} \EnglishTerm{Sarrus' rule} berechnen:
+
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/sarrus_rule.tex}
+  \end{center}
+  \vspace{-0.3\baselineskip}
+  \begin{align*}
+    \det(A)
+    ={}&\textcolor{THMBlue}{a_{11}a_{22}a_{33}
+       +a_{12}a_{23}a_{31}
+       +a_{13}a_{21}a_{32}}\\
+     &\textcolor{red!80!black}{-a_{13}a_{22}a_{31}
+       -a_{11}a_{23}a_{32}
+       -a_{12}a_{21}a_{33}}.
+  \end{align*}
+  \textbf{Achtung:} Die Regel von Sarrus gilt ausschließlich für
+  $3\times3$-Matrizen.
 \end{KeyPointBox}
 
-\begin{ExampleBox}{Nullen gezielt nutzen}{linear_systems_laplace_sparse_column}
-  In der dritten Spalte ist nur ein Eintrag von null verschieden. Daher
-  entwickeln wir zuerst nach dieser Spalte und anschließend nach der ersten
-  Spalte der verbleibenden $3\times3$-Determinante:
-  \[
-    D=\det\!\begin{pmatrix}
-      1&2& 0&4\\
-      0&7& 0&2\\
-      0&5& 0&4\\
-      3&3&-1&2
-    \end{pmatrix}.
-  \]
-  \begin{ClozeArea}[30]{13}
-    \[
-      \begin{aligned}
-        D
-        &=(-1)^{4+3}(-1)
-          \det\!\begin{pmatrix}
-            1&2&4\\
-            0&7&2\\
-            0&5&4
-          \end{pmatrix}\\[0.8em]
-        &=1\det\!\begin{pmatrix}7&2\\5&4\end{pmatrix}
-          =7\cdot4-2\cdot5
-          =18.
-      \end{aligned}
-    \]
+\begin{minipage}{\linewidth}
+Bei der Laplace Entwicklung können sich durch die geschickte Wahl der Entwicklungszeile
+oder -spalte auch aufwendige Rechnungen drastisch vereinfachen.
+
+\begin{ExampleBox}{Laplace-Entwicklung einer dünn besetzten Matrix}{linear_systems_laplace_sparse_column}
+  Eine \emph{dünn besetzte Matrix} \EnglishTerm{sparse matrix} enthält
+  viele Nulleinträge. Wir reduzieren den Rechenaufwand deutlich, wenn wir nach Zeilen
+  oder Spalten mit vielen Nulleinträgen entwickeln.
+  \begin{ClozeArea}[32]{11}
+        \[
+          \begin{aligned}
+            D
+            &=\det\!\begin{pNiceMatrix}
+                \CodeBefore
+                  \columncolor{yellow!55}{3}
+                \Body
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!1&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!2&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!4\\[0.3em]
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!7&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!2\\[0.3em]
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!5&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!4\\[0.3em]
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!3&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!3&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!(-1)&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!2
+              \end{pNiceMatrix}\\[0.7em]
+            &=\textcolor{olive!80!black}{\pmb{-}}\,(-1) \cdot
+              \det\!\begin{pNiceMatrix}
+                \CodeBefore
+                  \columncolor{yellow!55}{1}
+                \Body
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!1&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!2&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!4\\[0.3em]
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!7&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!2\\[0.3em]
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!0&
+                {}^{\textcolor{olive!80!black}{\pmb{-}}}\!5&
+                {}^{\textcolor{olive!80!black}{\pmb{+}}}\!4
+              \end{pNiceMatrix}
+              \quad\textcolor{olive!80!black}{%
+                \longleftarrow\ \text{neues Schachbrettmuster:}%
+              }\\[0.7em]
+            &=1\det\!\begin{pmatrix}7&2\\5&4\end{pmatrix}
+              =7\cdot4-2\cdot5=18.
+          \end{aligned}
+        \]
   \end{ClozeArea}
 \end{ExampleBox}
+\end{minipage}
+
+\begin{ExampleBox}{Rechenaufwand einer $10\times10$-Determinante}{linear_systems_laplace_computational_effort}
+  In wie viele $2\times2$-Determinanten zerfällt eine
+  $10\times10$-Determinante bei vollständiger Laplace-Entwicklung, wenn keine
+  vereinfachenden Nullen genutzt werden können?
+  \begin{ClozeArea}[32]{8}
+    \[
+      \begin{aligned}
+        1\text{ Determinante der Größe }10\times10
+        &\;\longrightarrow\;10\text{ Determinanten der Größe }9\times9,\\[0.35em]
+        &\;\longrightarrow\;10\cdot9\text{ Determinanten der Größe }8\times8,\\[0.35em]
+        &\;\longrightarrow\;10\cdot9\cdot8\text{ Determinanten der Größe }7\times7,\\[-0.1em]
+        &\hspace{3.8em}\vdots\\[-0.1em]
+        &\;\longrightarrow\;10\cdot9\cdots3
+          \text{ Determinanten der Größe }2\times2.
+      \end{aligned}
+    \]
+    Somit müssen
+    \[
+      10\cdot9\cdots3=\frac{10!}{2}=1\,814\,400
+    \]
+    Determinanten der Größe $2\times2$ berechnet werden.
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Rechenaufwand der Laplace-Entwicklung}{linear_systems_laplace_computational_effort}
+  Bei der vollständigen Laplace-Entwicklung einer $n\times n$-Determinante
+  entstehen ohne Vereinfachungen
+  \[
+    n\cdot(n-1)\cdots3=\frac{n!}{2}
+  \]
+  Determinanten der Größe $2\times2$. Der Rechenaufwand wächst somit
+  faktoriell und wird für große Matrizen sehr schnell unpraktikabel.
+\end{KeyPointBox}

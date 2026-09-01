@@ -1,9 +1,9 @@
 \subsection{Rechenregeln}
 \label{subsec:vector_algebra_scalar_product_rules}
 
-Um sicher mit dem Skalarprodukt zu rechnen, betrachten wir zunächst seine
-Rechenregeln. Sie zeigen insbesondere, inwieweit es sich wie die
-Multiplikation von Zahlen behandeln lässt.
+Nach der Herleitung der Koordinatenformel fassen wir die Rechenregeln des
+Skalarprodukts systematisch zusammen. Sie zeigen insbesondere, inwieweit es
+sich wie die Multiplikation von Zahlen behandeln lässt.
 
 \begin{TheoremBox}{Algebraische Rechenregeln des Skalarprodukts}{vector_algebra_dot_product_laws}
   Für Vektoren $\vec a,\vec b,\vec c\in\R^n$ und einen Skalar
@@ -47,13 +47,13 @@ Allgemeinen verschiedene Vektoren.
 \end{minipage}
 
 \begin{ExampleBox}{Rechenregeln prüfen}{vector_algebra_dot_product_laws_example}
-  Für
+  Für die folgenden Vektoren $\vec a,\vec b,\vec c\in\R^3$ überprüfen wir
+  die das Distributivgesetz und das fehlende Assoziativgesetz explizit:
   \[
     \vec a=\begin{pmatrix}1\\2\end{pmatrix},\qquad
     \vec b=\begin{pmatrix}3\\1\end{pmatrix},\qquad
     \vec c=\begin{pmatrix}1\\1\end{pmatrix}
   \]
-  untersuchen wir zwei Regeln.
   \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=*,itemsep=1em]
     \item \textbf{Distributivgesetz:} Wir berechnen beide Seiten getrennt:
       \[
@@ -89,11 +89,6 @@ Allgemeinen verschiedene Vektoren.
                 \Cloze{0.8cm}{5}
               \end{pmatrix}.
         \end{aligned}
-      \]
-      Die Ergebnisse sind verschieden:
-      \[
-        \vec a\cdot(\vec b\cdot\vec c)
-          \ne(\vec a\cdot\vec b)\cdot\vec c.
       \]
   \end{enumerate}
 \end{ExampleBox}

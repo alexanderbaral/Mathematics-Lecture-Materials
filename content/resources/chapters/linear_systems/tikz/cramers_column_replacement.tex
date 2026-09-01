@@ -8,7 +8,7 @@
     column sep=1pt,row sep=1pt
   },
   replacement/.style={draw=THMBlue!55,line width=0.8pt,rounded corners=2pt},
-  branch/.style={->,THMBlue,line width=0.9pt},
+  branch/.style={->,black,line width=0.9pt},
   branch label/.style={fill=white,inner xsep=3pt,inner ysep=1pt,align=center}
 ]
   \node[anchor=east] at (-1.05,0) {$A={}$};
@@ -37,8 +37,8 @@
   \coordinate (lowertarget) at ($(Atwo.west)+(-0.58,0)$);
   \draw[branch] (startpoint)--(branchpoint)|-(uppertarget);
   \draw[branch] (branchpoint)|-(lowertarget);
-  \node[branch label,anchor=south east] at ($(uppertarget)+(-0.12,0.12)$)
-    {1. Spalte durch $b$ ersetzen};
-  \node[branch label,anchor=north east] at ($(lowertarget)+(-0.12,-0.12)$)
-    {2. Spalte durch $b$ ersetzen};
+  \node[branch label,anchor=south east] at ($(uppertarget)+(-0.12,0.20)$)
+    {1. Spalte durch\\$b$ ersetzen};
+  \node[branch label,anchor=north east] at ($(lowertarget)+(-0.12,-0.20)$)
+    {2. Spalte durch\\$b$ ersetzen};
 \end{tikzpicture}

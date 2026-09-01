@@ -1,15 +1,16 @@
 \subsubsection{Betrag von Summen und Differenzen}
 \label{subsubsec:vector_algebra_magnitude_sums_differences}
 
-Mit dem Skalarprodukt berechnen wir den Betrag des resultierenden Vektors und
-behandeln dabei Summe und Differenz in einer gemeinsamen Herleitung.
+Nun verwenden wir das Skalarprodukt, um den Betrag einer Summe oder Differenz von
+Vektoren zu berechnen. Dies ist beispielsweise relevant, wenn mehrere nicht parallele
+Kräfte auf einen Körper wirken und die resultierende Kraft bestimmt werden soll.
 
 \begin{center}
   \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_sum_difference_magnitudes.tex}
 \end{center}
 
-Bezeichnet $\varphi$ den eingeschlossenen Winkel von $\vec a$ und $\vec b$,
-so gilt:
+Dazu schreiben wir das Betragsquadrat eines Vektors als sein Skalarprodukt mit
+sich selbst und multiplizieren aus:
 \begin{ClozeArea}[34]{7}
   \[
     \begin{aligned}
@@ -32,8 +33,9 @@ so gilt:
 \end{KeyPointBox}
 
 \begin{KeyPointBox}{Kosinussatz als Differenzfall}{vector_algebra_cosine_rule_derivation}
-  Bilden $\vec a$ und $\vec b$ zwei Dreiecksseiten mit gemeinsamem
-  Anfangspunkt und ist $\vec c=\vec a-\vec b$, so folgt unmittelbar
+  Der Kosinussatz ergibt sich unmittelbar aus dem oben betrachteten
+  Differenzfall mit $a=|\vec a|$, $b=|\vec b|$ und
+  $c=|\vec a-\vec b|$:
   \[
     c^2=a^2+b^2-2ab\cos(\varphi).
   \]

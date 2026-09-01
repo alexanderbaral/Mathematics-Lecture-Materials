@@ -14,7 +14,7 @@ Für eine kompakte Schreibweise führen wir dafür die Cramerschen Ersatzmatrize
   der Absolutglieder $b$. Ersetzt man in $A$ die $i$-te Spalte durch $b$, so
   entsteht die $i$-te \emph{Cramersche Ersatzmatrix}
   \EnglishTerm{Cramer replacement matrix} $A_i$.
-  \par\smallskip
+  \par\medskip
   Beispielhaft für den $2\times2$-Fall:
   \begin{center}
     \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/cramers_column_replacement.tex}
@@ -32,7 +32,7 @@ Für ein $2\times2$-LGS mit $\det(A)\neq0$ lauten die Lösungen damit
   x_2=\frac{\det(A_2)}{\det(A)}.
 \]
 
-Dieses Prinzip lässt sich auf beliebig viele Unbekannte verallgemeinern.
+Die Cramersche Regel verallgemeinert dieses Prinzip auf beliebig viele Unbekannte.
 \begin{TheoremBox}{Cramersche Regel}{linear_systems_cramers_rule_two_by_two}
   Für ein $n\times n$-LGS mit Koeffizientenmatrix $A$ und $\det(A)\neq0$
   gilt
@@ -126,9 +126,15 @@ Dieses Prinzip lässt sich auf beliebig viele Unbekannte verallgemeinern.
       Determinanten:
       \[
         \begin{aligned}
-          \det(A)&=1\cdot(-1)-1\cdot1=-2,\\
-          \det(A_1)&=2\cdot(-1)-1\cdot(-4)=2,\\
-          \det(A_2)&=1\cdot(-4)-2\cdot1=-6.
+          \det(A)
+            &=\det\!\begin{pmatrix}1&1\\1&-1\end{pmatrix}
+              =1\cdot(-1)-1\cdot1=-2,\\[0.8em]
+          \det(A_1)
+            &=\det\!\begin{pmatrix}2&1\\-4&-1\end{pmatrix}
+              =2\cdot(-1)-1\cdot(-4)=2,\\[0.8em]
+          \det(A_2)
+            &=\det\!\begin{pmatrix}1&2\\1&-4\end{pmatrix}
+              =1\cdot(-4)-2\cdot1=-6.
         \end{aligned}
       \]
       Cramersche Regel:

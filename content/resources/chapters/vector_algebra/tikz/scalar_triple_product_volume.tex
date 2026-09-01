@@ -1,29 +1,38 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
-  \coordinate (O) at (0,0);
-  \coordinate (A) at (3.1,0);
-  \coordinate (B) at (1.05,0.85);
-  \coordinate (AB) at (4.15,0.85);
-  \coordinate (C) at (0.75,2.35);
-  \coordinate (AC) at (3.85,2.35);
-  \coordinate (BC) at (1.80,3.20);
-  \coordinate (ABC) at (4.90,3.20);
+  \path[use as bounding box] (-0.15,-0.30) rectangle (6.20,3.95);
 
-  \fill[black!6] (O)--(A)--(AB)--(B)--cycle;
-  \draw[black!45] (O)--(A)--(AB)--(B)--cycle;
-  \draw[black!45,dashed] (C)--(AC)--(ABC)--(BC)--cycle;
-  \draw[black!35,dashed] (O)--(C) (A)--(AC) (B)--(BC) (AB)--(ABC);
+  \coordinate (O) at (0.45,0.35);
+  \coordinate (A) at (3.70,0.35);
+  \coordinate (B) at (1.65,1.25);
+  \coordinate (AB) at (4.90,1.25);
+  \coordinate (H) at (0.45,2.70);
+  \coordinate (C) at (1.40,2.70);
+  \coordinate (AC) at (4.65,2.70);
+  \coordinate (BC) at (2.60,3.60);
+  \coordinate (ABC) at (5.85,3.60);
+
+  \fill[yellow!22] (O)--(A)--(AB)--(B)--cycle;
+  \draw[black!48,line width=0.65pt] (O)--(A)--(AB)--(B)--cycle;
+  \draw[black!38,dashed,line width=0.6pt]
+    (C)--(AC)--(ABC)--(BC)--cycle;
+  \draw[black!32,dashed,line width=0.6pt]
+    (O)--(C) (A)--(AC) (B)--(BC) (AB)--(ABC);
+  \draw[black!40,dashed,line width=0.6pt] (H)--(C);
 
   \draw[->,THMBlue,line width=1.3pt] (O)--(A)
-    node[midway,below] {$\vec a$};
+    node[pos=0.55,below=5pt] {$\vec a$};
   \draw[->,olive!80!black,line width=1.3pt] (O)--(B)
-    node[midway,above left] {$\vec b$};
+    node[pos=0.90,above right=4pt] {$\vec b$};
   \draw[->,red!70!black,line width=1.3pt] (O)--(C)
-    node[midway,left] {$\vec c$};
-  \draw[->,black!65,line width=1.1pt] (O)--(0,2.35)
-    node[midway,left] {$h$};
-  \draw[black!45,dashed] (0,2.35)--(C);
+    node[pos=0.72,right=4pt] {$\vec c$};
+  \draw[->,black!65,line width=1.1pt] (O)--(H)
+    node[pos=0.58,left=5pt] {$h$};
+
   \draw[black!55,line width=0.75pt]
-    (0,0.38) arc[start angle=90,end angle=72.3,radius=0.38];
-  \node at (0.22,0.55) {$\varphi$};
-  \node[black!65] at (2.35,0.40) {$A=|\vec a\times\vec b|$};
+    ($(O)+(90:0.78)$)
+    arc[start angle=90,end angle=68.0,radius=0.78];
+  \node at ($(O)+(79:0.96)$) {$\varphi$};
+
+  \node[black!65,fill=yellow!22,inner sep=2pt]
+    at (2.95,0.80) {$A=|\vec a\times\vec b|$};
 \end{tikzpicture}

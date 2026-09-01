@@ -82,7 +82,7 @@ daher eindeutig.
 Der Rangvergleich prüft zunächst die \emph{Verträglichkeit}
 \EnglishTerm{consistency} der Gleichungen. Sind die Ränge gleich, entscheidet
 der Vergleich von $\operatorname{rang}(A)$ mit der Zahl $n$ der Unbekannten,
-ob genau eine oder unendlich viele Lösungen vorliegen.
+ob genau eine oder $\infty$-viele Lösungen vorliegen.
 
 \clearpage
 \begin{ExampleBox}{Lösungstyp an der Zeilenstufenform erkennen}{linear_systems_rank_solution_types_example}
@@ -199,13 +199,46 @@ ob genau eine oder unendlich viele Lösungen vorliegen.
   \begin{ClozeArea}[32]{35}
     \textbf{Vorwärtselimination:}
     \[
-      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/inconsistent_system_elimination_steps.tex}
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[\begin{array}{@{}rrr|r@{}}
+          1&1&1&3\\
+          2&1&-1&1\\
+          3&2&0&5
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{Z_2-2Z_1}}\\
+          \smash{\TransformOp{Z_3-3Z_1}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          1&1&1&3\\
+          0&-1&-3&-5\\
+          0&-1&-3&-4
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          {}\\
+          \smash{\TransformOp{Z_3-Z_2}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          1&1&1&3\\
+          0&-1&-3&-5\\
+          \textcolor{red!70!black}{0}&\textcolor{red!70!black}{0}&
+          \textcolor{red!70!black}{0}&\textcolor{red!70!black}{1}
+        \end{array}\right]
+        &\text{Zeilenstufenform}
+      \end{array}
     \]
-    Die letzte Zeile ist die \emph{Widerspruchszeile}:
+    Die letzte Zeile ist die
+    \textcolor{red!70!black}{\emph{Widerspruchszeile}}:
     \[
-      0x_1+0x_2+0x_3=1
-      \quad\Longleftrightarrow\quad
-      0=1.
+      \textcolor{red!70!black}{
+        0x_1+0x_2+0x_3=1
+        \quad\Longleftrightarrow\quad
+        0=1.
+      }
     \]
     \textbf{Rangvergleich:}
     \[

@@ -21,7 +21,38 @@ dieselbe Lösungsmenge.
   Das folgende Beispiel enthält alle drei elementaren Zeilenumformungen. Die
   jeweils rechts angegebene Operation wird auf die nebenstehende Matrix
   angewendet. Die Lösungsmenge bleibt dabei unverändert.
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/elementary_row_operations_example.tex}
-  \end{center}
+  \[
+    \begin{array}{r@{\qquad}l@{\qquad}l}
+      \left[\begin{array}{@{}rr|r@{}}
+        1&1&2\\
+        0&1&1
+      \end{array}\right]
+      &\TransformOp{\Cloze{2.0cm}{Z_1\leftrightarrow Z_2}}
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}\\[1.2em]
+      \left[\begin{array}{@{}rr|r@{}}
+        \Cloze{0.55cm}{0}&\Cloze{0.55cm}{1}&\Cloze{0.55cm}{1}\\
+        \Cloze{0.55cm}{1}&\Cloze{0.55cm}{1}&\Cloze{0.55cm}{2}
+      \end{array}\right]
+      &\begin{array}{@{}l@{}}
+        \smash{\TransformOp{\Cloze{1.1cm}{2Z_1}}}\\
+        \smash{\TransformOp{\Cloze{1.1cm}{-3Z_2}}}
+      \end{array}
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}\\[1.2em]
+      \left[\begin{array}{@{}rr|r@{}}
+        \Cloze{0.55cm}{0}&\Cloze{0.55cm}{2}&\Cloze{0.55cm}{2}\\
+        \Cloze{0.55cm}{-3}&\Cloze{0.55cm}{-3}&\Cloze{0.55cm}{-6}
+      \end{array}\right]
+      &\begin{array}{@{}l@{}}
+        {}\\
+        \smash{\TransformOp{\Cloze{2.0cm}{Z_2+Z_1}}}
+      \end{array}
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}\\[1.2em]
+      \left[\begin{array}{@{}rr|r@{}}
+        \Cloze{0.55cm}{0}&\Cloze{0.55cm}{2}&\Cloze{0.55cm}{2}\\
+        \Cloze{0.55cm}{-3}&\Cloze{0.55cm}{-1}&\Cloze{0.55cm}{-4}
+      \end{array}\right]
+      &
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}
+    \end{array}
+  \]
 \end{ExampleBox}

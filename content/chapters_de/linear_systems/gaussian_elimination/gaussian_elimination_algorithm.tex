@@ -66,7 +66,36 @@ bestimmen.
     \textbf{Vorwärtselimination:} Die Operationen stehen jeweils rechts neben
     der Matrix, auf die sie angewendet werden:
     \[
-      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/gaussian_elimination_steps.tex}
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[\begin{array}{@{}rrr|r@{}}
+          2& 1&-1& 3\\
+          3& 5&-4& 1\\
+          4&-3& 2& 2
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{2Z_2-3Z_1}}\\
+          \smash{\TransformOp{Z_3-2Z_1}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          2&1&-1& 3\\
+          \textcolor{THMBlue}{0}&7&-5&-7\\
+          \textcolor{THMBlue}{0}&-5&4&-4
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          {}\\
+          \smash{\TransformOp{7Z_3+5Z_2}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          2&1&-1&3\\
+          \textcolor{THMBlue}{0}&7&-5&-7\\
+          \textcolor{THMBlue}{0}&\textcolor{THMBlue}{0}&3&-63
+        \end{array}\right]
+        &\text{Zeilenstufenform}
+      \end{array}
     \]
     \textbf{Rückwärtseinsetzen:} Die Unbekannten werden von der letzten
     Gleichung aus nach oben bestimmt:

@@ -2,28 +2,23 @@
 \label{subsec:linear_systems_determinant_solution_criterion}
 
 Die Cramersche Regel scheint zunächst für jedes $n\times n$-LGS eine explizite
-Lösung anzugeben. Das wirkt überraschend: Wir kennen bereits quadratische LGS
-ohne eindeutige Lösung. Wie passt beides zusammen?
+Lösung anzugeben:
+\[
+  x_i=\frac{\det(A_i)}{\det(A)}
+  \qquad i=1,\ldots,n.
+\]
+Wir wissen jedoch bereits, dass quadratische LGS auch keine oder $\infty$-viele Lösungen
+besitzen können. Der gemeinsame Nenner $\det(A)$ löst diesen scheinbaren Widerspruch:
 
-\begin{KeyPointBox}{Wann kann die Cramersche Regel scheitern?}{linear_systems_cramers_rule_denominator}
-  In jeder Cramerschen Lösungsformel
-  \[
-    x_j=\frac{\det(A_j)}{\det(A)}
-  \]
-  steht derselbe Nenner $\det(A)$. Ist $\det(A)\neq0$, sind alle Quotienten
-  definiert und Cramer liefert die eindeutige Lösung. Die Formel kann daher
-  nur dann scheitern, wenn
-  \[
-    \det(A)=0
-  \]
-  ist. Die folgende Verbindung mit dem Rang zeigt, dass dies nicht nur ein
-  technisches Versagen der Formel ist: Genau dann ist eine eindeutige Lösung
-  unmöglich.
-\end{KeyPointBox}
+\begin{itemize}
+  \item $\det(A)\neq0$: Der Quotient ist definiert und die Cramersche
+        Regel liefert die eindeutige Lösung.
+  \item $\det(A)=0$: Der Quotient der Cramerschen Regel ist nicht definiert und
+        liefert daher auch keine eindeutige Lösung.
+\end{itemize}
 
-Die Determinante prüft die Eindeutigkeit somit, ohne dass das LGS vollständig
-gelöst werden muss.
-
+Damit deutet sich bereits der folgende Zusammenhang der Determinante mit dem Rang
+bzw. der Lösbarkeit eines LGS an.
 \begin{TheoremBox}{Determinantenkriterium für $n\times n$-LGS}{linear_systems_determinant_solution_criterion}
   Für ein $n\times n$-LGS mit Koeffizientenmatrix $A$ gilt
   \[
@@ -31,72 +26,107 @@ gelöst werden muss.
     \quad\Longleftrightarrow\quad
     \operatorname{rang}(A)=n
     \quad\Longleftrightarrow\quad
-    \text{genau eine Lösung}.
+    \exists\ \text{genau eine Lösung}.
   \]
-  Entsprechend gilt
+  Durch Negation dieser Aussage erhalten wir
   \[
     \det(A)=0
     \quad\Longleftrightarrow\quad
     \operatorname{rang}(A)<n
     \quad\Longleftrightarrow\quad
-    \text{keine oder unendlich viele Lösungen}.
+    \text{keine Lösung oder } \infty\text{-viele Lösungen}.
   \]
 \end{TheoremBox}
 
-\begin{ExampleBox}{Gleiche Determinante, verschiedene Lösungstypen}{linear_systems_zero_determinant_solution_types}
-  Die beiden LGS besitzen dieselbe Koeffizientenmatrix
-  \[
-    A=\begin{pmatrix}1&1\\1&1\end{pmatrix},
-    \qquad \det(A)=1\cdot1-1\cdot1=0,
-  \]
-  aber verschiedene Absolutglieder:
-
-  \smallskip
-  \noindent
-  \begin{minipage}[t]{0.47\linewidth}
-    \vspace{0pt}\centering
-    \textbf{LGS I}\par\smallskip
-    \(
-      \begin{aligned}
-        x_1+x_2&=2,\\
-        x_1+x_2&=1
-      \end{aligned}
-    \)
-    \par\medskip
-    \Cloze{4.2cm}{\text{keine Lösung}}
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.47\linewidth}
-    \vspace{0pt}\centering
-    \textbf{LGS II}\par\smallskip
-    \(
-      \begin{aligned}
-        x_1+x_2&=2,\\
-        x_1+x_2&=2
-      \end{aligned}
-    \)
-    \par\medskip
-    \Cloze{5.0cm}{\infty\text{-viele Lösungen}}
-  \end{minipage}
-
-  \medskip
-  Die Determinante erkennt in beiden Fällen, dass die Lösung nicht eindeutig
-  ist. Zwischen keiner und unendlich vielen Lösungen entscheidet erst der
-  Rangvergleich der erweiterten Koeffizientenmatrix.
-\end{ExampleBox}
-
+Besonders aussagekräftig ist die Determinante für homogene LGS.
 \begin{KeyPointBox}{Spezialfall: homogenes $n\times n$-LGS}{linear_systems_homogeneous_determinant_criterion}
-  Ein homogenes LGS besitzt immer die triviale Lösung. Deshalb bleiben nur
-  zwei Fälle:
+  Ein homogenes LGS besitzt immer die triviale Lösung $(0,\ldots,0)$, weshalb gilt:
   \[
     \begin{aligned}
       \det(A)\neq0
       &\quad\Longleftrightarrow\quad
-      \text{nur die triviale Lösung},\\[0.8em]
+      \exists\ \text{genau eine Lösung: die triviale } (x_1,\ldots,x_n)=(0,\ldots,0),\\[0.8em]
       \det(A)=0
       &\quad\Longleftrightarrow\quad
-      \text{unendlich viele Lösungen, darunter nichttriviale}.
+      \exists\ \infty\text{-viele Lösungen}.
     \end{aligned}
   \]
-  Dieses Kriterium verwenden wir später, um lineare Abhängigkeit und
-  Unabhängigkeit von Vektoren zu prüfen.
 \end{KeyPointBox}
+Dieses Kriterium verwenden wir später, um lineare Abhängigkeit und Unabhängigkeit von Vektoren zu prüfen.
+
+
+\begin{ExampleBox}{Determinantenkriterium bei homogenen LGS}{linear_systems_homogeneous_determinant_examples}
+  Wir bestimmen den Lösungstyp der folgenden homogenen LGS mithilfe der
+  Determinante. Zur geometrischen Verifikation zeichnen wir auch die Geraden
+  zu jeder Gleichung.
+
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1.5em]
+    \item
+      \textbf{Eindeutige Lösung}\par
+      \noindent
+      \begin{minipage}[c]{0.61\linewidth}
+        \vspace{-0.45\baselineskip}
+        \[
+          \begin{aligned}
+            \textcolor{THMBlue}{x_1+x_2}&\textcolor{THMBlue}{=0},\\
+            \textcolor{black!60}{x_1-x_2}&\textcolor{black!60}{=0}
+          \end{aligned}
+          \quad\Longleftrightarrow\quad
+          [A\mid 0]=
+          \left[
+            \begin{array}{@{}rr|r@{}}
+              1& 1&0\\
+              1&-1&0
+            \end{array}
+          \right].
+        \]
+        \noindent
+        Determinante der Koeffizientenmatrix:
+        \[
+          \det(A)=1\cdot(-1)-1\cdot1
+          =\Cloze{2.2cm}{-2\neq0}
+        \]
+        \noindent
+        $\Longrightarrow$\quad
+        $\exists$ nur die triviale Lösung, d.h. $\mathcal L=\Cloze{2.8cm}{\{(0,0)\}}$
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.34\linewidth}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/homogeneous_unique_solution_lines.tex}
+      \end{minipage}
+
+    \item
+      \textbf{$\infty$-viele Lösungen}\par
+      \noindent
+      \begin{minipage}[c]{0.61\linewidth}
+        \vspace{-0.45\baselineskip}
+        \[
+          \begin{aligned}
+            \textcolor{THMBlue}{x_1+x_2}&\textcolor{THMBlue}{=0},\\
+            \textcolor{olive!80!black}{2x_1+2x_2}&\textcolor{olive!80!black}{=0}
+          \end{aligned}
+          \quad\Longleftrightarrow\quad
+          [A\mid 0]=
+          \left[
+            \begin{array}{@{}rr|r@{}}
+              1&1&0\\
+              2&2&0
+            \end{array}
+          \right].
+        \]
+        \noindent
+        Determinante der Koeffizientenmatrix:
+        \[
+          \det(A)=1\cdot2-1\cdot2
+          =\Cloze{2.2cm}{0}
+        \]
+        \noindent
+        $\Longrightarrow$\quad
+        \Cloze{6.2cm}{$\exists$ $\infty$-viele Lösungen.}
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.34\linewidth}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/homogeneous_coincident_solution_lines.tex}
+      \end{minipage}
+  \end{enumerate}
+\end{ExampleBox}

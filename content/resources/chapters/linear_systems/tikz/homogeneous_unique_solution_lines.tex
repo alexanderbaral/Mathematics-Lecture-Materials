@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  >=Latex,
+  x=0.65cm,
+  y=0.65cm,
+  axis/.style={->,black!65,line width=0.6pt},
+  firstline/.style={THMBlue,line width=1.15pt},
+  secondline/.style={black!60,line width=1.15pt},
+  tick/.style={black!65,line width=0.5pt}
+]
+  \draw[axis] (-2.45,0)--(2.65,0) node[right] {$x_1$};
+  \draw[axis] (0,-2.45)--(0,2.65) node[above] {$x_2$};
+  \foreach \x in {-2,-1,1,2}{
+    \draw[tick] (\x,0.06)--(\x,-0.06);
+    \draw[tick] (0.06,\x)--(-0.06,\x);
+  }
+  \draw[firstline] (-2.3,2.3)--(2.3,-2.3);
+  \draw[secondline] (-2.3,-2.3)--(2.3,2.3);
+  \fill[THMBlue] (0,0) circle (1.8pt);
+  \node[anchor=west] at (0.86,0.55) {$S=(0,0)$};
+\end{tikzpicture}

@@ -74,10 +74,10 @@
 \clearpairofpagestyles
 \manualmark
 \renewcommand*{\chaptermark}[1]{%
-  \markboth{#1}{}%
+  \markboth{\protect\hyperlink{chapter.\thechapter}{#1}}{}%
 }
 \renewcommand*{\sectionmark}[1]{%
-  \markright{#1}%
+  \markright{\protect\hyperlink{section.\thesection}{#1}}%
 }
 \ihead[]{\footnotesize\normalfont\color{black!45}\leftmark:\enspace\rightmark}
 \ohead*{}

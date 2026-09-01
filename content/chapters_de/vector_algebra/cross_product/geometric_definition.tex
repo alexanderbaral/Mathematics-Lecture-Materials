@@ -14,7 +14,7 @@
         Der Betrag von $\vec c$ entspricht dem Flächeninhalt des von
         $\vec a$ und $\vec b$ aufgespannten Parallelogramms:
         \[
-          A=|\vec c|=|\vec a|\,|\vec b|\sin(\varphi).
+          A=|\vec c|=|\vec a \times \vec b|=|\vec a|\,|\vec b_{\perp}|=|\vec a|\,|\vec b|\sin(\varphi).
         \]
       \end{minipage}\hfill
       \begin{minipage}[t]{0.46\linewidth}
@@ -65,7 +65,7 @@
     \[
       \Cloze{9.5cm}{%
         \vec a\perp\vec b
-        \quad\Longrightarrow\quad
+        \quad\Longleftrightarrow\quad
         |\vec a\times\vec b|=|\vec a|\,|\vec b|.}
     \]
     Der Betrag entspricht dem Flächeninhalt des aufgespannten Rechtecks, also
@@ -79,12 +79,10 @@
 
 \begin{KeyPointBox}{Kreuzprodukt paralleler Vektoren}{vector_algebra_cross_product_parallel_vectors}
   \begin{minipage}[c]{0.68\linewidth}
-    \begin{enumerate}[label=\arabic*.,leftmargin=1.5em,itemsep=0.35em]
-      \item Für parallele Vektoren ist $\varphi=0^\circ$ oder
-        $\varphi=180^\circ$. Die aufgespannte Fläche verschwindet; ebenso folgt
-        aus $\sin(\varphi)=0$, dass $|\vec a\times\vec b|=0$ ist.
-      \item Der einzige Vektor mit Betrag $0$ ist der Nullvektor $\vec 0$.
-    \end{enumerate}
+    Für parallele Vektoren ist $\varphi=0^\circ$ (oder
+    $\varphi=180^\circ$). Die von ihnen aufgespannte Fläche und damit der
+    Betrag ihres Kreuzprodukts verschwinden. Da nur der Nullvektor $\vec 0$
+    den Betrag $0$ besitzt, gilt
   \end{minipage}\hfill
   \begin{minipage}[c]{0.27\linewidth}
     \centering
@@ -114,37 +112,42 @@
   \end{minipage}
 
   \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=*,itemsep=0.8em]
-    \item \textbf{Gleiche Einheitsvektoren ($i=j$):}
-      Die Vektoren sind parallel. Der aufgespannte Flächeninhalt ist null;
-      entsprechend gibt die Rechte-Hand-Regel keine ausgezeichnete Richtung
-      vor. Somit gilt
+    \item \textbf{Gleiche Einheitsvektoren $(i=j)$:}
+      Gleiche Vektoren sind parallel, weshalb deren Kreuzprodukt den Nullvektor ergibt.
       \[
         \vec e_i\times\vec e_i
         =\Cloze{1.8cm}{\vec 0}.
       \]
 
-    \item \textbf{Unterschiedliche Einheitsvektoren ($i\ne j$):}
-      Die Vektoren stehen senkrecht aufeinander. Daher hat ihr Kreuzprodukt den
-      Betrag
+    \item \textbf{Unterschiedliche Einheitsvektoren $(i\ne j)$:}
+      Diese Einheitsvektoren stehen senkrecht aufeinander. Das Kreuzprodukt hat daher
+      ebenso den Betrag $1$ und ist daher ebenso ein Einheitsvektor.
       \[
         |\vec e_i\times\vec e_j|
         =|\vec e_i|\,|\vec e_j|\sin(90^\circ)
         =1\cdot1\cdot1
         =\Cloze{1cm}{1}.
       \]
-      Die Rechte-Hand-Regel bestimmt den dritten Einheitsvektor und sein
-      Vorzeichen. In zyklischer Reihenfolge gilt
+      Die Rechte-Hand-Regel bestimmt die Richtung des Kreuzprodukts und sein
+      Vorzeichen.
       \[
-        \vec e_1\times\vec e_2=\Cloze{1.6cm}{\vec e_3},
-        \qquad
-        \vec e_2\times\vec e_3=\Cloze{1.6cm}{\vec e_1},
-        \qquad
-        \vec e_3\times\vec e_1=\Cloze{1.6cm}{\vec e_2}.
+        \begin{array}{c@{\qquad}c@{\qquad}c}
+          \vec e_1\times\vec e_2=\Cloze{1.6cm}{\vec e_3},
+          &\vec e_2\times\vec e_3=\Cloze{1.6cm}{\vec e_1},
+          &\vec e_3\times\vec e_1=\Cloze{1.6cm}{\vec e_2},\\[0.8em]
+          \vec e_2\times\vec e_1=\Cloze{1.6cm}{-\vec e_3},
+          &\vec e_3\times\vec e_2=\Cloze{1.6cm}{-\vec e_1},
+          &\vec e_1\times\vec e_3=\Cloze{1.6cm}{-\vec e_2}.
+        \end{array}
       \]
-      Bei umgekehrter Reihenfolge kehrt sich die durch die Rechte-Hand-Regel
-      bestimmte Richtung um, beispielsweise
-      \[
-        \vec e_2\times\vec e_1=\Cloze{1.8cm}{-\vec e_3}.
-      \]
+      Wir beobachten:
+      \begin{itemize}
+        \item Bei zyklischer Vertauschung ändert sich das Vorzeichen nicht.
+        \item Paarweise Vertauschung ändert das Vorzeichen.
+      \end{itemize}
   \end{enumerate}
 \end{ExampleBox}
+
+Die Kreuzprodukte der kanonischen Einheitsvektoren zeigen bereits, dass das
+Kreuzprodukt nicht kommutativ ist, z.\,B.
+$\vec e_1\times\vec e_2=-\vec e_2\times\vec e_1$.

@@ -2,9 +2,11 @@
 \subsection{Skalarprodukt in Koordinatendarstellung}
 \label{subsec:vector_algebra_dot_product_coordinates}
 
-Wir leiten die Koordinatenformel des Skalarprodukts aus den zuvor eingeführten
-Rechenregeln her. Dazu stellen wir zunächst zwei Vektoren
-$\vec a,\vec b\in\R^3$ mit den kanonischen Einheitsvektoren dar:
+Nun suchen wir noch eine Formel, um das Skalarprodukt zweier Vektoren,
+die in ihrer Koordinatenform vorliegen zu berechnen. Diese Formel heißt
+Koordinatenformel des Skalarprodukts.
+Dazu stellen wir zunächst die zwei Vektoren $\vec a,\vec b\in\R^3$ mit
+den kanonischen Einheitsvektoren dar:
 \[
   \begin{aligned}
     \vec a
@@ -24,7 +26,7 @@ paarweise senkrecht und haben den Betrag $1$. Daher gilt
    \end{cases}
 \]
 
-Einsetzen und Ausmultiplizieren liefert:
+Durch Einsetzen in das Skalarprodukt und anschliendes Ausmultiplizieren erhalten wir
 \begin{ClozeArea}[34]{10}
   \[
     \begin{aligned}
@@ -68,21 +70,21 @@ Einsetzen und Ausmultiplizieren liefert:
 \end{TheoremBox}
 
 \begin{ExampleBox}{Skalarprodukt aus Koordinaten}{vector_algebra_coordinate_dot_product_example}
-  \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=*,itemsep=1em]
-    \item \textbf{Zweidimensional:}
-      \[
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1em]
+    \item
+      \(\displaystyle
         \begin{pmatrix}1\\2\end{pmatrix}
         \cdot
         \begin{pmatrix}3\\4\end{pmatrix}
         =\Cloze{5cm}{1\cdot3+2\cdot4=11}.
-      \]
+      \)
 
-    \item \textbf{Dreidimensional:}
-      \[
+    \item
+      \(\displaystyle
         \begin{pmatrix}1\\2\\3\end{pmatrix}
         \cdot
         \begin{pmatrix}4\\5\\6\end{pmatrix}
         =\Cloze{7cm}{1\cdot4+2\cdot5+3\cdot6=32}.
-      \]
+      \)
   \end{enumerate}
 \end{ExampleBox}

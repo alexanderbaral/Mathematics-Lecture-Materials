@@ -22,9 +22,25 @@ Struktur seiner Lösung genauer zu untersuchen.
 
   \begin{ClozeArea}[34]{24}
     \textbf{Vorwärtselimination:}
-    \begin{center}
-      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/symbolic_two_by_two_elimination.tex}
-    \end{center}
+    \[
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[
+          \begin{array}{@{}cc|c@{}}
+            a_{11}&a_{12}&b_1\\
+            a_{21}&a_{22}&b_2
+          \end{array}
+        \right]
+        &\raisebox{-0.65em}{\(\TransformOp{a_{11}Z_2-a_{21}Z_1}\)}\\[1.2em]
+        \Longleftrightarrow
+        &\left[
+          \begin{array}{@{}cc|c@{}}
+            a_{11}&a_{12}&b_1\\
+            0&a_{11}a_{22}-a_{12}a_{21}&a_{11}b_2-a_{21}b_1
+          \end{array}
+        \right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
   \end{ClozeArea}
 \end{ExampleBox}
 
@@ -122,14 +138,20 @@ nun sehr übersichtlich schreiben.
 \[
   x_1=
   \frac{
-    \det\!\begin{pmatrix}b_1&a_{12}\\b_2&a_{22}\end{pmatrix}
+    \det\!\begin{pmatrix}
+      \textcolor{THMBlue}{b_1}&a_{12}\\
+      \textcolor{THMBlue}{b_2}&a_{22}
+    \end{pmatrix}
   }{
     \det\!\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
   },
   \qquad
   x_2=
   \frac{
-    \det\!\begin{pmatrix}a_{11}&b_1\\a_{21}&b_2\end{pmatrix}
+    \det\!\begin{pmatrix}
+      a_{11}&\textcolor{THMBlue}{b_1}\\
+      a_{21}&\textcolor{THMBlue}{b_2}
+    \end{pmatrix}
   }{
     \det\!\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
   }.

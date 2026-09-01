@@ -2,7 +2,7 @@
 \subsection{Unendlich viele Lösungen parametrisieren}
 \label{subsec:linear_systems_parametric_solution_sets}
 
-Besitzt ein lösbares LGS unendlich viele Lösungen, wird seine Lösungsmenge
+Besitzt ein lösbares LGS $\infty$-viele Lösungen, wird seine Lösungsmenge
 mithilfe von Parametern beschrieben.
 Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
 
@@ -29,8 +29,26 @@ Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
   \]
   Die Vorwärtselimination liefert die Zeilenstufenform
   \begin{ClozeArea}[32]{8}
-    \centering
-    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/parametric_elimination_steps.tex}
+    \[
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[\begin{array}{@{}rr|r@{}}
+          \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+          \textcolor{olive!80!black}{2}&\textcolor{olive!80!black}{2}&
+          \textcolor{olive!80!black}{4}
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{Z_2-2Z_1}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rr|r@{}}
+          \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+          \textcolor{olive!80!black}{0}&\textcolor{olive!80!black}{0}&
+          \textcolor{olive!80!black}{0}
+        \end{array}\right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
   \end{ClozeArea}
   Es gilt
   \[

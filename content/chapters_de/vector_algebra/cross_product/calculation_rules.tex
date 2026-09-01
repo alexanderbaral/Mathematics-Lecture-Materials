@@ -12,7 +12,7 @@ besonders wichtig, seine algebraischen Rechenregeln genauer zu betrachten.
     \begin{array}{r@{\;}c@{\;}l@{\qquad}l}
       \vec a\times\vec b
         &=&\Cloze{8cm}{-\vec b\times\vec a}
-        &\text{Antikommutativgesetz}\\[0.7em]
+        &\text{\textcolor{red!75!black}{\bfseries Antikommutativgesetz!!!}}\\[0.7em]
       \vec a\times(\vec b\times\vec c)
         &\ne&\Cloze{8cm}{(\vec a\times\vec b)\times\vec c}
         &\text{\textcolor{red!75!black}{\bfseries kein Assoziativgesetz}}\\[0.7em]
@@ -34,38 +34,75 @@ besonders wichtig, seine algebraischen Rechenregeln genauer zu betrachten.
 \end{TheoremBox}
 
 \begin{ExampleBox}{Reihenfolge beim Kreuzprodukt}{vector_algebra_cross_product_order_example}
-  Für
+  Für die folgenden Vektoren $\vec a,\vec b,\vec c\in\R^3$ überprüfen wir
+  die Antikommutativität und das fehlende Assoziativgesetz explizit:
   \[
-    \vec a=\begin{pmatrix}1\\2\\3\end{pmatrix},\quad
-    \vec b=\begin{pmatrix}4\\5\\6\end{pmatrix},\quad
-    \vec c=\begin{pmatrix}7\\8\\9\end{pmatrix}
+    \vec a=\begin{pmatrix}2\\1\\1\end{pmatrix},\quad
+    \vec b=\begin{pmatrix}1\\3\\1\end{pmatrix},\quad
+    \vec c=\begin{pmatrix}3\\3\\3\end{pmatrix}
   \]
-  untersuchen wir zwei Rechenregeln.
-  \begin{enumerate}[label=\textbf{(\alph*)},leftmargin=*,itemsep=1em]
+
+  \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=1em]
     \item \textbf{Antikommutativität:}
-      Beim Vertauschen der Faktoren erhalten wir
+      \begin{ClozeArea}[34]{17}
       \[
-        \vec a\times\vec b
-          =\Cloze{4cm}{\begin{pmatrix}-3\\6\\-3\end{pmatrix}},
-        \qquad
-        \vec b\times\vec a
-          =\Cloze{4cm}{\begin{pmatrix}3\\-6\\3\end{pmatrix}}.
+        \left.
+        \begin{aligned}
+          \vec a\times\vec b
+            &=\begin{pmatrix}2\\1\\1\end{pmatrix}
+              \times\begin{pmatrix}1\\3\\1\end{pmatrix}
+              =\begin{pmatrix}
+                1\cdot1-1\cdot3\\
+                1\cdot1-2\cdot1\\
+                2\cdot3-1\cdot1
+              \end{pmatrix}
+              =\begin{pmatrix}-2\\-1\\5\end{pmatrix},\\[1em]
+          \vec b\times\vec a
+            &=\begin{pmatrix}1\\3\\1\end{pmatrix}
+              \times\begin{pmatrix}2\\1\\1\end{pmatrix}
+              =\begin{pmatrix}
+                3\cdot1-1\cdot1\\
+                1\cdot2-1\cdot1\\
+                1\cdot1-3\cdot2
+              \end{pmatrix}
+              =\begin{pmatrix}2\\1\\-5\end{pmatrix}.
+        \end{aligned}
+        \right\}
+        \quad
+        \vec a\times\vec b=-\vec b\times\vec a
       \]
-      Die beiden Ergebnisse sind entgegengesetzt, also
-      $\vec a\times\vec b=-\vec b\times\vec a$.
+      \end{ClozeArea}
 
     \item \textbf{Kein Assoziativgesetz:}
-      Die beiden möglichen Klammerungen liefern
+      \begin{ClozeArea}[34]{17}
       \[
+        \left.
         \begin{aligned}
           \vec a\times(\vec b\times\vec c)
-            &=\Cloze{5cm}{\begin{pmatrix}-24\\-6\\12\end{pmatrix}},\\[0.8em]
+            &=\begin{pmatrix}2\\1\\1\end{pmatrix}
+              \times\left(
+                \begin{pmatrix}1\\3\\1\end{pmatrix}
+                \times\begin{pmatrix}3\\3\\3\end{pmatrix}
+              \right)
+              =\begin{pmatrix}2\\1\\1\end{pmatrix}
+                \times\begin{pmatrix}6\\0\\-6\end{pmatrix}
+              =\begin{pmatrix}-6\\18\\-6\end{pmatrix},\\[1em]
           (\vec a\times\vec b)\times\vec c
-            &=\Cloze{5cm}{\begin{pmatrix}78\\6\\-66\end{pmatrix}}.
+            &=\left(
+                \begin{pmatrix}2\\1\\1\end{pmatrix}
+                \times\begin{pmatrix}1\\3\\1\end{pmatrix}
+              \right)
+              \times\begin{pmatrix}3\\3\\3\end{pmatrix}
+              =\begin{pmatrix}-2\\-1\\5\end{pmatrix}
+              \times\begin{pmatrix}3\\3\\3\end{pmatrix}
+              =\begin{pmatrix}-18\\21\\-3\end{pmatrix}.
         \end{aligned}
+        \right\}
+        \quad
+        \begin{gathered}
+          \vec a\times(\vec b\times\vec c) \ne (\vec a\times\vec b)\times\vec c
+        \end{gathered}
       \]
-      Damit gilt
-      $\vec a\times(\vec b\times\vec c)
-        \ne(\vec a\times\vec b)\times\vec c$.
+      \end{ClozeArea}
   \end{enumerate}
 \end{ExampleBox}
