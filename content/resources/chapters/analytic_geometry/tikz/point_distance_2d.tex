@@ -1,0 +1,24 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (-0.45,-0.40) rectangle (5.35,4.65);
+  \draw[->,black!60,line width=0.8pt] (-0.2,0)--(5.05,0)
+    node[below] {$x_1$};
+  \draw[->,black!60,line width=0.8pt] (0,-0.2)--(0,4.35)
+    node[left] {$x_2$};
+  \foreach \x in {1,2,3,4}{
+    \draw[black!50] (\x,-0.08)--(\x,0.08);
+    \node[below=3pt] at (\x,0) {$\x$};
+  }
+  \foreach \y in {1,2,3,4}{
+    \draw[black!50] (-0.08,\y)--(0.08,\y);
+    \node[left=3pt] at (0,\y) {$\y$};
+  }
+  \coordinate (Pone) at (1,1);
+  \coordinate (Ptwo) at (3,3);
+  \draw[->,THMBlue,line width=1.5pt] (Pone)--(Ptwo)
+    node[midway,above left=5pt,fill=white,inner sep=1pt]
+      {$d=2\sqrt 2$};
+  \fill (Pone) circle (1.7pt)
+    node[below right=3pt,fill=white,inner sep=1pt] {$P_1(1,1)$};
+  \fill (Ptwo) circle (1.7pt)
+    node[above right=3pt,fill=white,inner sep=1pt] {$P_2(3,3)$};
+\end{tikzpicture}

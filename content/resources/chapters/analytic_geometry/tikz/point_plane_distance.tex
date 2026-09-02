@@ -1,0 +1,32 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (-0.10,-0.20) rectangle (10.30,5.55);
+
+  \fill[black!5]
+    (0.45,0.55)--(7.35,0.55)--(9.55,2.35)--(2.65,2.35)--cycle;
+  \draw[black!45,line width=0.8pt]
+    (0.45,0.55)--(7.35,0.55)--(9.55,2.35)--(2.65,2.35)--cycle;
+  \node[fill=white,inner sep=1.5pt] at (8.95,1.00) {$E$};
+
+  \coordinate (P) at (2.55,1.30);
+  \coordinate (H) at (6.00,1.58);
+  \coordinate (Q) at (5.00,4.75);
+  \coordinate (N) at (5.25,3.95);
+
+  \draw[->,olive!80!black,line width=1.15pt] (P)--(Q)
+    node[pos=0.46,left=6pt,fill=white,inner sep=1.5pt]
+      {$\vec q-\vec p$};
+  \draw[->,THMBlue,line width=1.25pt] (H)--(N)
+    node[pos=0.60,right=5pt,fill=white,inner sep=1.5pt] {$\vec e_n$};
+  \draw[red!75!black,line width=1.3pt] (H)--(Q)
+    node[pos=0.55,right=7pt,fill=white,inner sep=1.5pt] {$d(Q,E)$};
+
+  \fill (P) circle (1.9pt)
+    node[below left=4pt,fill=white,inner sep=1.5pt] {$P$};
+  \fill (H) circle (1.9pt)
+    node[below right=4pt,fill=white,inner sep=1.5pt] {$H$};
+  \fill (Q) circle (1.9pt)
+    node[above=4pt,fill=white,inner sep=1.5pt] {$Q$};
+
+  \draw[black!60,line width=0.65pt]
+    ($(H)!0.16!(P)$)--++(-0.08,0.25)--++(0.25,0.02);
+\end{tikzpicture}

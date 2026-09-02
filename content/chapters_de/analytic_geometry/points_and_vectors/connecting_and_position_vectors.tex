@@ -1,0 +1,61 @@
+\subsection{Verbindungs- und Ortsvektoren}
+\label{subsec:analytic_geometry_connecting_and_position_vectors}
+
+Vektoren übersetzen die relative Lage zweier Punkte in eine Richtung mit
+Länge. Mit einem festen Ursprung lässt sich außerdem jeder Punkt durch genau
+einen Ortsvektor beschreiben.
+
+\begin{DefinitionBox}{Verbindungsvektor}{analytic_geometry_connecting_vector}
+  Der \emph{Verbindungsvektor} \EnglishTerm{displacement vector} vom Punkt
+  $P_1(x_1,y_1,z_1)$ zum Punkt $P_2(x_2,y_2,z_2)$ ist
+  \[
+    \overrightarrow{P_1P_2}
+    =\vec p_2-\vec p_1
+    =\begin{pmatrix}
+       x_2-x_1\\ y_2-y_1\\ z_2-z_1
+     \end{pmatrix}.
+  \]
+  Sein Aufpunkt ist $P_1$, seine Pfeilspitze liegt in $P_2$.
+\end{DefinitionBox}
+
+\begin{KeyPointBox}{Abstand zweier Punkte}{analytic_geometry_point_distance}
+  Der Abstand $d(P_1,P_2)$ ist die Länge des Verbindungsvektors:
+  \[
+    d(P_1,P_2)
+    =\left|\overrightarrow{P_1P_2}\right|
+    =\sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}.
+  \]
+\end{KeyPointBox}
+
+\begin{DefinitionBox}{Ortsvektor}{analytic_geometry_position_vector}
+  Der \emph{Ortsvektor} \EnglishTerm{position vector} eines Punktes
+  $P(x,y,z)$ ist der Verbindungsvektor vom Ursprung $O(0,0,0)$ zu $P$:
+  \[
+    \vec p=\overrightarrow{OP}=\begin{pmatrix}x\\y\\z\end{pmatrix}.
+  \]
+  Sein Aufpunkt ist immer der Ursprung.
+\end{DefinitionBox}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/connecting_position_vectors.tex}
+\end{center}
+
+\begin{ExampleBox}{Verbindungsvektor und Punktabstand}{analytic_geometry_point_distance_example}
+  Gegeben sind $P_1(1,1)$ und $P_2(3,3)$. Der Verbindungsvektor lautet
+  \[
+    \overrightarrow{P_1P_2}
+    =\begin{ClozeContinuation}[11]{3}
+      \begin{pmatrix}3-1\\3-1\end{pmatrix}
+      =\begin{pmatrix}2\\2\end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+  Damit ergibt sich der Abstand zu
+  \[
+    d(P_1,P_2)
+    =\Cloze{7cm}{\sqrt{2^2+2^2}=\sqrt 8=2\sqrt 2}.
+  \]
+  Die Rechnung bestimmt also zugleich Richtung und Länge der Verbindung.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/point_distance_2d.tex}
+  \end{center}
+\end{ExampleBox}

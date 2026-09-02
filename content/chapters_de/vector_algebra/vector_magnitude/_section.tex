@@ -1,12 +1,11 @@
 \section{Betrag eines Vektors}
 \label{sec:vector_algebra_magnitude}
 
-Eine Kraft ist eine vektorielle Größe: Sie besitzt eine Richtung und eine
-Stärke. Interessiert nur die Stärke der Kraft, wird die Länge des
-Kraftvektors betrachtet. Ebenso besitzt jede durch einen Vektor beschriebene
-Verschiebung eine Länge. Diese in der Mathematik und den
-Ingenieurwissenschaften wichtige Größe heißt Betrag des Vektors.
+Jede durch einen Vektor beschriebene Verschiebung besitzt eine Länge. Im
+Folgenden leiten wir diese Größe zunächst geometrisch her und verallgemeinern
+sie anschließend auf Vektoren im $\R^n$.
 
+\vspace{\baselineskip}
 \noindent
 \begin{minipage}[c]{0.56\linewidth}
   Für den 2D-Vektor in Koordinatendarstellung
@@ -39,12 +38,13 @@ verallgemeinern.
   \[
     |\vec a| = \Cloze{8cm}{\sqrt{a_1^2+a_2^2+\dots+a_n^2}}
   \]
-  und entspricht der Länge des Vektors.
-  Alternativ schreiben wir $a:=|\vec a|$; der Buchstabe ohne Vektorpfeil
-  bezeichnet den skalaren Betrag.
+  und entspricht der Länge des Vektors. \\
+  Für den Betrag schreiben wir alternativ auch Buchstabe ohne Vektorpfeil, d.h. $$a:=|\vec a|.$$
 \end{DefinitionBox}
 
 \begin{ExampleBox}{Den Betrag von Vektoren bestimmen}{vector_algebra_calculate_magnitude}
+  Wir bestimmen den Betrag der folgenden Vektoren:\par\smallskip
+  \noindent
   \begin{minipage}[c]{0.54\linewidth}
     \begin{enumerate}[label=\alph*),leftmargin=1.7em,itemsep=1em]
       \item Für $\textcolor{THMBlue}{\vec a}=\begin{pmatrix}3\\4\end{pmatrix}$ gilt

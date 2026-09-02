@@ -56,8 +56,9 @@ so that future drafts increasingly match the style of the revised material.
   mathematical statement, all necessary assumptions, and the associated
   notation. Put applications, longer explanations, and consequences after the
   definition or in separate semantic elements.
-- When a technical term is explicitly introduced for the first time, place its
-  translation immediately after that term using the central language command:
+- Add a technical term's translation exactly once per language version: place
+  it immediately after the term when that term is explicitly introduced for
+  the first time, using the central language command:
   German uses `\EnglishTerm{...}` and English uses `\GermanTerm{...}`. This
   applies both to formal definitions and to explicitly introduced technical or
   procedural terms outside a definition box. Do not repeat the translation at
@@ -154,11 +155,11 @@ When asked to synchronize English:
 ### Translation glossary
 Use author-established terminology consistently.
 
-Add a translation parenthetical when a technical term is explicitly introduced
-for the first time, whether in a formal definition or as a named technical or
-procedural concept outside a definition box. Do not repeat translation notes at
-ordinary later uses of the same term. Render the entire parenthetical in italic
-gray using the central commands: German uses
+Add a translation parenthetical exactly once per language version: at the first
+explicit introduction of a technical term, whether in a formal definition or
+as a named technical or procedural concept outside a definition box. Do not
+repeat translation notes at ordinary later uses of the same term. Render the
+entire parenthetical in italic gray using the central commands: German uses
 `Dreieck \EnglishTerm{triangle}` and English uses
 `triangle \GermanTerm{Dreieck}`.
 

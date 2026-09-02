@@ -128,8 +128,8 @@ $tikzSources = @(
     Get-ChildItem -LiteralPath (Join-Path $projectRoot 'content/resources') -Recurse -Filter '*.tex' -File |
         Where-Object {
             $_.Directory.Name -eq 'tikz' -and
-            # This source is parameterized by \NumberSetStage at each call site.
-            $_.BaseName -ne 'number_set_inclusions'
+            # These sources are parameterized by caller-defined commands.
+            $_.BaseName -notin @('number_set_inclusions', 'parameterized_line_representation')
         } |
         Sort-Object -Property FullName
 )

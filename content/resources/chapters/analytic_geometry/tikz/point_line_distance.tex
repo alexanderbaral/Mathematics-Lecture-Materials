@@ -1,0 +1,30 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (0.15,0.35) rectangle (10.85,5.45);
+
+  \coordinate (P) at (2.00,1.57);
+  \coordinate (H) at (6.50,2.94);
+  \coordinate (Q) at (5.90,4.91);
+
+  \draw[black!65,line width=1.0pt] (0.70,1.17)--(10.15,4.05)
+    node[right=4pt,fill=white,inner sep=1.5pt] {$g$};
+  \draw[->,olive!80!black,line width=1.15pt] (P)--(Q)
+    node[pos=0.53,left=5pt,fill=white,inner sep=1.5pt] {$\vec r$};
+  \draw[->,THMBlue,line width=1.25pt] (P)--(H)
+    node[pos=0.55,below=5pt,fill=white,inner sep=1.5pt]
+      {$\vec r_{\parallel}$};
+  \draw[->,red!75!black,line width=1.25pt] (H)--(Q)
+    node[pos=0.56,right=5pt,fill=white,inner sep=1.5pt]
+      {$\vec r_{\perp}$};
+
+  \fill (P) circle (1.9pt)
+    node[below left=4pt,fill=white,inner sep=1.5pt] {$P$};
+  \fill (H) circle (1.9pt)
+    node[below right=4pt,fill=white,inner sep=1.5pt] {$H$};
+  \fill (Q) circle (1.9pt)
+    node[above=4pt,fill=white,inner sep=1.5pt] {$Q$};
+
+  \draw[black!60,line width=0.65pt]
+    ($(H)!0.13!(P)$)--++(-0.07,0.23)--++(0.22,0.07);
+  \node[red!75!black,fill=white,inner sep=1.5pt]
+    at (8.70,2.15) {$d(Q,g)=\lvert\vec r_{\perp}\rvert$};
+\end{tikzpicture}

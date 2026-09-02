@@ -1,0 +1,57 @@
+\subsection{Ebene durch drei Punkte}
+\label{subsec:analytic_geometry_plane_through_three_points}
+
+Drei nicht auf einer Geraden liegende Punkte bestimmen eine Ebene eindeutig.
+Verbindungsvektoren zwischen den Punkten liefern unmittelbar zwei geeignete
+Richtungen.
+
+\begin{TheoremBox}{Ebene durch drei Punkte}{analytic_geometry_plane_from_three_points}
+  Sind $A$, $B$ und $C$ nicht \emph{kollinear} \EnglishTerm{collinear}, so sind beispielsweise
+  $\overrightarrow{AB}$ und $\overrightarrow{BC}$ linear unabhängig. Damit
+  gilt
+  \[
+    E:\quad
+    \vec x=\vec a
+    +\lambda\overrightarrow{AB}
+    +\mu\overrightarrow{BC},
+    \qquad \lambda,\mu\in\R,
+  \]
+  wobei $\vec a=\overrightarrow{OA}$ der Ortsvektor von $A$ ist.
+\end{TheoremBox}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_through_three_points.tex}
+\end{center}
+
+\begin{ExampleBox}{Ebene durch drei Punkte bestimmen}{analytic_geometry_plane_from_points_example}
+  Gesucht ist die Ebene durch
+  \[
+    A(6,3,-5),\qquad B(2,-1,3),\qquad C(1,2,4).
+  \]
+  Wir wählen $A$ als Aufpunkt und konstruieren zwei Richtungen:
+  \begin{ClozeArea}[34]{10}
+    \[
+      \begin{aligned}
+        \overrightarrow{AB}
+          &=\begin{pmatrix}2\\-1\\3\end{pmatrix}
+            -\begin{pmatrix}6\\3\\-5\end{pmatrix}
+            =\begin{pmatrix}-4\\-4\\8\end{pmatrix}
+            =-4\begin{pmatrix}1\\1\\-2\end{pmatrix},\\[1em]
+        \overrightarrow{BC}
+          &=\begin{pmatrix}1\\2\\4\end{pmatrix}
+            -\begin{pmatrix}2\\-1\\3\end{pmatrix}
+            =\begin{pmatrix}-1\\3\\1\end{pmatrix}.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  Die beiden Richtungen sind keine Vielfachen voneinander. Eine kompakte
+  Parameterdarstellung lautet daher
+  \[
+    E:\quad
+    \vec x
+    =\begin{pmatrix}6\\3\\-5\end{pmatrix}
+    +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+    +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix},
+    \qquad \lambda,\mu\in\R.
+  \]
+\end{ExampleBox}

@@ -36,6 +36,7 @@ vorgegebene Rechenvorschrift tatsächlich einen Einheitsvektor liefert:
 \end{ClozeArea}
 
 \begin{ExampleBox}{Normierung eines Vektors}{vector_algebra_normalize_vector}
+  Wir normieren die folgenden Vektoren:
   \begin{enumerate}[label=\alph*),leftmargin=1.7em,itemsep=0.2em]
     \item
       \begin{minipage}[t]{0.66\linewidth}
@@ -68,6 +69,10 @@ vorgegebene Rechenvorschrift tatsächlich einen Einheitsvektor liefert:
   \end{enumerate}
 \end{ExampleBox}
 
+Durch Normieren gewinnen wir aus einem Vektor seinen Einheitsvektor.
+Umgekehrt lässt sich der ursprüngliche Vektor aus seinem Betrag und diesem
+Einheitsvektor zusammensetzen.
+
 \begin{TheoremBox}{Zerlegung in Länge und Richtung}{vector_algebra_magnitude_direction_decomposition}
   Jeder Vektor $\vec a\ne\vec 0$ lässt sich als Produkt aus seinem Betrag und
   dem zugehörigen Einheitsvektor darstellen:
@@ -75,7 +80,7 @@ vorgegebene Rechenvorschrift tatsächlich einen Einheitsvektor liefert:
     \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_magnitude_direction_decomposition.tex}
   \end{center}
   Damit werden die beiden Eigenschaften eines Vektors sichtbar aufgetrennt:
-  \begin{itemize}[leftmargin=1.7em,itemsep=0.35em]
+  \begin{itemize}[leftmargin=1.7em,topsep=0.7em,itemsep=0.35em]
     \item Die \Cloze{2.2cm}{Länge} wird durch den Betrag $|\vec a|$ des Vektors beschrieben.
     \item Die \Cloze{2.4cm}{Richtung} wird durch den Einheitsvektor $\vec e_a$ beschrieben.
   \end{itemize}

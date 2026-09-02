@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (-0.20,-0.25) rectangle (8.15,4.35);
+  \coordinate (A) at (1.80,1.15);
+  \coordinate (B) at (5.65,1.55);
+  \coordinate (C) at (4.10,3.35);
+  \fill[black!5] (0.55,0.55)--(5.85,0.55)--(7.35,3.75)--(2.05,3.75)--cycle;
+  \draw[black!45,line width=0.8pt]
+    (0.55,0.55)--(5.85,0.55)--(7.35,3.75)--(2.05,3.75)--cycle;
+  \fill[THMBlue!5] (A)--(B)--(C)--cycle;
+  \draw[->,THMBlue,line width=1.35pt] (A)--(B)
+    node[midway,below=4pt,fill=white,inner sep=1pt]
+      {$\overrightarrow{AB}$};
+  \draw[->,olive!80!black,line width=1.35pt] (B)--(C)
+    node[midway,above right=4pt,fill=white,inner sep=1pt]
+      {$\overrightarrow{BC}$};
+  \draw[black!65,line width=0.8pt] (C)--(A);
+  \foreach \point/\position in {A/below left,B/below right,C/above}{
+    \fill (\point) circle (1.8pt) node[\position=4pt] {$\point$};
+  }
+  \node at (6.65,1.05) {$E$};
+\end{tikzpicture}

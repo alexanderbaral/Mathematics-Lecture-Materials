@@ -1,39 +1,29 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
-  \node (topa) at (0,2.35)
-    {$S=(\textcolor{THMBlue}{\vec a}\times
-      \textcolor{olive!80!black}{\vec b})\cdot
-      \textcolor{red!70!black}{\vec c}$};
-  \node (topb) at (5.25,2.35)
-    {$=(\textcolor{olive!80!black}{\vec b}\times
-      \textcolor{red!70!black}{\vec c})\cdot
-      \textcolor{THMBlue}{\vec a}$};
-  \node (topc) at (10.10,2.35)
-    {$=(\textcolor{red!70!black}{\vec c}\times
-      \textcolor{THMBlue}{\vec a})\cdot
-      \textcolor{olive!80!black}{\vec b}$};
-
-  \node[THMBlue] at (5.05,3.08)
-    {zyklische Vertauschung: zwei Paartausche};
+  \node (topa) at (0,2.50)
+    {$(\vec a\times\vec b)\cdot\vec c=S$};
+  \node (topb) at (5.40,2.50)
+    {$(\vec b\times\vec c)\cdot\vec a=S$};
+  \node (topc) at (10.80,2.50)
+    {$(\vec c\times\vec a)\cdot\vec b=S$};
 
   \node (bottoma) at (0,0)
-    {$(\textcolor{olive!80!black}{\vec b}\times
-      \textcolor{THMBlue}{\vec a})\cdot
-      \textcolor{red!70!black}{\vec c}=-S$};
-  \node (bottomb) at (5.25,0)
-    {$(\textcolor{red!70!black}{\vec c}\times
-      \textcolor{olive!80!black}{\vec b})\cdot
-      \textcolor{THMBlue}{\vec a}=-S$};
-  \node (bottomc) at (10.10,0)
-    {$(\textcolor{THMBlue}{\vec a}\times
-      \textcolor{red!70!black}{\vec c})\cdot
-      \textcolor{olive!80!black}{\vec b}=-S$};
+    {$(\vec b\times\vec a)\cdot\vec c=-S$};
+  \node (bottomb) at (5.40,0)
+    {$(\vec c\times\vec b)\cdot\vec a=-S$};
+  \node (bottomc) at (10.80,0)
+    {$(\vec a\times\vec c)\cdot\vec b=-S$};
 
-  \foreach \top/\bottom in {topa/bottoma,topb/bottomb,topc/bottomc}{
-    \draw[->,black!55,line width=0.9pt]
-      (\top.south)--(\bottom.north)
-      node[midway,fill=white,inner sep=2pt]{ein Paartausch};
+  \foreach \leftnode/\rightnode in {topa/topb,topb/topc,bottoma/bottomb,bottomb/bottomc}{
+    \draw[<->,THMBlue,line width=1pt]
+      (\leftnode.east)--(\rightnode.west)
+      node[midway,above=3pt,fill=white,inner sep=1.5pt,text=THMBlue]
+      {zyklisch};
   }
 
-  \node[font=\bfseries] at (5.05,-0.85)
-    {$V=|S|$: Das Volumen bleibt unverändert.};
+  \foreach \top/\bottom in {topa/bottoma,topb/bottomb,topc/bottomc}{
+    \draw[<->,olive!80!black,line width=0.9pt]
+      (\top.south)--(\bottom.north)
+      node[midway,fill=white,inner sep=2pt,align=center,text=olive!80!black]
+      {paarweise};
+  }
 \end{tikzpicture}

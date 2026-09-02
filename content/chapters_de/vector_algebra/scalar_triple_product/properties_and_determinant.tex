@@ -1,46 +1,61 @@
-\subsection{Eigenschaften und Determinantendarstellung}
+\subsection{Tauschoperationen im Spatprodukt}
 \label{subsec:vector_algebra_scalar_triple_product_properties}
 
-\begin{TheoremBox}{Zyklische Vertauschung}{vector_algebra_scalar_triple_product_cyclic_permutation}
-  Mit $S=(\vec a\times\vec b)\cdot\vec c$ gilt bei zyklischer Vertauschung
-  \[
-    S
-    =(\vec a\times\vec b)\cdot\vec c
-    =(\vec b\times\vec c)\cdot\vec a
-    =(\vec c\times\vec a)\cdot\vec b.
-  \]
-  Ein einzelner Paartausch ändert dagegen das Vorzeichen.
+Das Spatprodukt bleibt bei bestimmten Änderungen der Reihenfolge unverändert,
+während andere lediglich sein Vorzeichen ändern. Um beide Fälle sicher zu
+unterscheiden, betrachten wir zunächst zyklische und paarweise Vertauschungen.
 
+\begin{DefinitionBox}{Zyklische vs. Paarweise Vertauschung}{vector_algebra_cyclic_permutation}
+  In einer geordneten Folge unterscheiden wir im Folgenden zwei Arten von
+  Vertauschungen:
+  \begin{itemize}[leftmargin=1.6em,itemsep=0.5em,topsep=0.3em]
+    \item Bei einer \emph{zyklischen Vertauschung}
+      \EnglishTerm{cyclic permutation} werden alle Glieder um eine Position
+      verschoben. Das erste Glied rückt dabei an das Ende. Für drei Glieder gilt:
+      \[
+        (a,b,c)
+        \longmapsto\Cloze{2.7cm}{(b,c,a)}
+        \longmapsto\Cloze{2.7cm}{(c,a,b)}
+        \longmapsto\Cloze{2.7cm}{(a,b,c)}.
+      \]
+    \item Eine \emph{paarweise Vertauschung}, kurz \emph{Paartausch}
+      \EnglishTerm{transposition}, vertauscht genau zwei Glieder. Alle übrigen
+      Glieder behalten ihre Position:
+      \[
+        (a,b,c)\longmapsto\Cloze{2.7cm}{(b,a,c)}.
+      \]
+  \end{itemize}
+  Ein Paartausch ist daher im Allgemeinen keine zyklische Vertauschung.
+\end{DefinitionBox}
+
+
+Für das Spatprodukt zeigt der folgende Satz, wie sich beide Arten der
+Vertauschung auf den Wert auswirken.
+\begin{TheoremBox}{Vertauschungen im Spatprodukt}{vector_algebra_scalar_triple_product_cyclic_permutation}
+  Das Spatprodukt $S=(\vec a\times\vec b)\cdot\vec c$
+  \smallskip
+  \begin{itemize}[leftmargin=1.6em,itemsep=0.2em,topsep=0pt]
+    \item bleibt bei \textcolor{THMBlue}{zyklischer Vertauschung} der Vektoren
+      unverändert,
+    \item wechselt bei \textcolor{olive!80!black}{paarweiser Vertauschung} der
+      Vektoren sein Vorzeichen.
+  \end{itemize}
   \begin{center}
     \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_permutations.tex}
   \end{center}
+  Beide Vertauschungen lassen das Volumen unverändert, da $V=|S|$ gilt.
 \end{TheoremBox}
 
-\begin{KeyPointBox}{Spatprodukt als Determinante}{vector_algebra_scalar_triple_product_determinant}
-  Für
+\begin{ExampleBox}{Vertauschungen im Spatprodukt}{vector_algebra_scalar_triple_product_permutation_example}
+  Für die Vektoren
   \[
-    \vec a=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix},\qquad
-    \vec b=\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix},\qquad
-    \vec c=\begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}
+    \vec a=\begin{pmatrix}3\\-1\\2\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}4\\2\\1\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}0\\2\\-5\end{pmatrix}
   \]
-  gilt
-  \[
-    (\vec a\times\vec b)\cdot\vec c
-    =\Cloze{10cm}{
-      \det\!\begin{pmatrix}
-        a_1&a_2&a_3\\
-        b_1&b_2&b_3\\
-        c_1&c_2&c_3
-      \end{pmatrix}}.
-  \]
-  Jedes Spatprodukt lässt sich somit als Determinante einer $3\times3$-Matrix
-  schreiben.
-\end{KeyPointBox}
-
-\begin{RemarkBox}[title=Verschwindendes Volumen]
-  Genau dann, wenn die drei Vektoren keinen räumlichen Spat aufspannen, gilt
-  \[
-    (\vec a\times\vec b)\cdot\vec c=0.
-  \]
-  In diesem Fall liegen die drei Vektoren in einer gemeinsamen Ebene.
-\end{RemarkBox}
+  berechnen und vergleichen wir drei Spatprodukte, die sich jeweils nur durch
+  eine Vertauschung der Vektoren unterscheiden.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_permutation_example.tex}
+  \end{center}
+\end{ExampleBox}

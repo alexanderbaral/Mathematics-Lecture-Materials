@@ -1,0 +1,85 @@
+\subsection{Ebenendarstellungen umformen}
+\label{subsec:analytic_geometry_converting_plane_representations}
+
+Parameter- und Normalenform beschreiben dieselbe Ebene aus zwei Blickwinkeln.
+Die Umrechnung macht jeweils die für eine Aufgabe günstigere Information
+sichtbar.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_representation_conversion.tex}
+\end{center}
+
+\begin{KeyPointBox}{Wechsel zwischen Parameter- und Normalenform}{analytic_geometry_plane_representation_conversion}
+  \[
+    \begin{array}{c@{\qquad\Longrightarrow\qquad}c}
+      \text{Parameterform} & \text{Normalenform}\\[0.3em]
+      \vec x=\vec p+\lambda\vec a+\mu\vec b
+      & (\vec x-\vec p)\cdot(\vec a\times\vec b)=0
+    \end{array}
+  \]
+  In der Gegenrichtung wählt man einen Punkt $P$ der Ebene und zwei linear
+  unabhängige Lösungen von $\vec n\cdot\vec r=0$ als Richtungsvektoren.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Parameterform in Normalenform überführen}{analytic_geometry_parameter_to_normal_example}
+  Gegeben ist die bereits bekannte Ebene
+  \[
+    E:\quad
+    \vec x=\begin{pmatrix}6\\3\\-5\end{pmatrix}
+      +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+      +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}.
+  \]
+  Ein Normalenvektor entsteht aus dem Kreuzprodukt der Richtungsvektoren:
+  \begin{ClozeArea}[34]{12}
+    \[
+      \vec n
+      =\begin{pmatrix}1\\1\\-2\end{pmatrix}
+        \times\begin{pmatrix}-1\\3\\1\end{pmatrix}
+      =\begin{pmatrix}
+          1\cdot1-(-2)\cdot3\\
+          (-2)\cdot(-1)-1\cdot1\\
+          1\cdot3-1\cdot(-1)
+        \end{pmatrix}
+      =\begin{pmatrix}7\\1\\4\end{pmatrix}.
+    \]
+  \end{ClozeArea}
+  Damit lauten Normalen- und Koordinatenform
+  \begin{ClozeArea}[34]{8}
+    \[
+      \begin{aligned}
+        E:\quad
+        \left(\vec x-\begin{pmatrix}6\\3\\-5\end{pmatrix}\right)
+          \cdot\begin{pmatrix}7\\1\\4\end{pmatrix}&=0,\\[0.8em]
+        7x_1+x_2+4x_3&=25.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{ExampleBox}{Normalenform in Parameterform überführen}{analytic_geometry_normal_to_parameter_example}
+  Gegeben ist
+  \[
+    E:\quad
+    \left(\vec x-\begin{pmatrix}2\\1\\0\end{pmatrix}\right)
+      \cdot\begin{pmatrix}2\\-1\\1\end{pmatrix}=0.
+  \]
+  Der Aufpunkt bleibt erhalten. Für Richtungsvektoren $\vec r$ muss
+  $\vec n\cdot\vec r=0$ gelten. Zwei unabhängige Lösungen sind
+  \begin{ClozeArea}[34]{8}
+    \[
+      \vec a=\begin{pmatrix}1\\2\\0\end{pmatrix},
+      \qquad
+      \vec b=\begin{pmatrix}1\\1\\-1\end{pmatrix},
+      \qquad
+      \vec n\cdot\vec a=\vec n\cdot\vec b=0.
+    \]
+  \end{ClozeArea}
+  Somit besitzt die Ebene beispielsweise die Parameterdarstellung
+  \[
+    E:\quad
+    \vec x=\begin{pmatrix}2\\1\\0\end{pmatrix}
+      +\lambda\begin{pmatrix}1\\2\\0\end{pmatrix}
+      +\mu\begin{pmatrix}1\\1\\-1\end{pmatrix},
+    \qquad \lambda,\mu\in\R.
+  \]
+\end{ExampleBox}

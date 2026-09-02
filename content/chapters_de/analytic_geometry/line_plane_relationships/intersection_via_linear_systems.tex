@@ -1,0 +1,143 @@
+\subsection{Schnittpunktberechnung mit einem LGS}
+\label{subsec:analytic_geometry_line_plane_intersection}
+
+Die Anzahl gemeinsamer Punkte entspricht der Anzahl der Lösungen des beim
+Gleichsetzen entstehenden LGS. Damit lassen sich alle drei Lagefälle mit einem
+einheitlichen Verfahren unterscheiden.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/line_plane_relationships.tex}
+\end{center}
+
+\begin{KeyPointBox}{Drei mögliche Lagebeziehungen}{analytic_geometry_line_plane_cases}
+  Für eine Gerade $g$ und eine Ebene $E$ gibt es genau drei Fälle:
+  \[
+    \begin{array}{c@{\qquad\Longleftrightarrow\qquad}c}
+      \text{genau eine Lösung} & g\text{ schneidet }E,\\[0.5em]
+      \text{keine Lösung} & g\parallel E\text{ ohne gemeinsamen Punkt},\\[0.5em]
+      \infty\text{-viele Lösungen} & g\subset E.
+    \end{array}
+  \]
+\end{KeyPointBox}
+
+\begin{TheoremBox}{Gleichsetzen der Parameterdarstellungen}{analytic_geometry_equating_line_plane}
+  Für
+  \[
+    E:\ \vec x=\vec p+\lambda\vec a+\mu\vec b,
+    \qquad
+    g:\ \vec x=\vec q+\nu\vec c
+  \]
+  beschreiben die Lösungen von
+  \[
+    \vec p+\lambda\vec a+\mu\vec b
+    =\vec q+\nu\vec c
+  \]
+  genau die gemeinsamen Punkte von $E$ und $g$.
+\end{TheoremBox}
+
+\begin{ExampleBox}{Schnittpunkt von Gerade und Ebene}{analytic_geometry_line_plane_intersection_example}
+  Gegeben sind
+  \[
+    E:\quad
+    \vec x=\begin{pmatrix}6\\3\\-5\end{pmatrix}
+      +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+      +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}
+  \]
+  und
+  \[
+    g:\quad
+    \vec x=\begin{pmatrix}6\\7\\-6\end{pmatrix}
+      +\nu\begin{pmatrix}7\\1\\4\end{pmatrix}.
+  \]
+  Durch Gleichsetzen und Ordnen nach den Parametern folgt
+  \begin{ClozeArea}[34]{12}
+    \[
+      \lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+      +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}
+      -\nu\begin{pmatrix}7\\1\\4\end{pmatrix}
+      =\begin{pmatrix}0\\4\\-1\end{pmatrix}
+    \]
+    und damit das LGS
+    \[
+      \left[
+        \begin{array}{rrr|r}
+          1&-1&-7&0\\
+          1& 3&-1&4\\
+         -2& 1&-4&-1
+        \end{array}
+      \right].
+    \]
+  \end{ClozeArea}
+  Die Determinante der Koeffizientenmatrix ist $-66\ne0$. Somit existiert genau
+  ein Parametersatz und daher genau ein Schnittpunkt.
+\end{ExampleBox}
+
+\clearpage
+\begin{tcolorbox}[
+  scriptbox,
+  breakable=false,
+  borderline west={1.2pt}{0pt}{black!40},
+  title={Beispiel~\ref{ex:analytic_geometry_line_plane_intersection_example}: Schnittpunkt von Gerade und Ebene -- Fortsetzung}
+]
+  Das Gauß-Verfahren liefert die Parameter:
+  \begin{ClozeArea}[34]{18}
+    \[
+      \begin{array}{r@{\quad}l@{\qquad}l}
+        \phantom{\Longleftrightarrow}
+        &\left[
+          \begin{array}{rrr|r}
+            1&-1&-7&0\\
+            1& 3&-1&4\\
+           -2& 1&-4&-1
+          \end{array}
+        \right]
+        &\TransformOp{Z_2-Z_1,\;Z_3+2Z_1}\\[1.3em]
+        \Longleftrightarrow
+        &\left[
+          \begin{array}{rrr|r}
+            1&-1& -7& 0\\
+            0& 4&  6& 4\\
+            0&-1&-18&-1
+          \end{array}
+        \right]
+        &\TransformOp{4Z_3+Z_2}\\[1.3em]
+        \Longleftrightarrow
+        &\left[
+          \begin{array}{rrr|r}
+            1&-1& -7&0\\
+            0& 4&  6&4\\
+            0& 0&-66&0
+          \end{array}
+        \right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
+    \[
+      -66\nu=0\Longrightarrow\nu=0,\qquad
+      4\mu+6\nu=4\Longrightarrow\mu=1,\qquad
+      \lambda-\mu-7\nu=0\Longrightarrow\lambda=1.
+    \]
+  \end{ClozeArea}
+  Einsetzen in beide Darstellungen bestätigt denselben Punkt:
+  \begin{ClozeArea}[34]{7}
+    \[
+      \begin{aligned}
+        E:\quad
+        \vec x
+          &=\begin{pmatrix}6\\3\\-5\end{pmatrix}
+            +\begin{pmatrix}1\\1\\-2\end{pmatrix}
+            +\begin{pmatrix}-1\\3\\1\end{pmatrix}
+            =\begin{pmatrix}6\\7\\-6\end{pmatrix},\\[1em]
+        g:\quad
+        \vec x
+          &=\begin{pmatrix}6\\7\\-6\end{pmatrix}
+            +0\begin{pmatrix}7\\1\\4\end{pmatrix}
+            =\begin{pmatrix}6\\7\\-6\end{pmatrix}.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  Der Schnittpunkt ist somit
+  \[
+    S=\Cloze{4cm}{(6,7,-6)}.
+  \]
+\end{tcolorbox}

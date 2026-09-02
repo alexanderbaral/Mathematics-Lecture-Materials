@@ -25,8 +25,7 @@ bereits berechenbare Determinanten zurückführen. Dieses Verfahren heißt
       \vspace{-0.2\baselineskip}
     \end{center}
   \item \textbf{Entwicklungsschritt:}
-    Zu jedem ausgewählten Eintrag werden seine Zeile und Spalte gestrichen;
-    die entstehenden Summanden werden addiert:
+    Wir entwicklen die Determinate in die folgende Summe entlang der gewählten Zeile oder Spalte:
     \[
       \det(A)
       =\sum_{\substack{\text{Einträge der gewählten}\\
@@ -35,8 +34,8 @@ bereits berechenbare Determinanten zurückführen. Dieses Verfahren heißt
        \;\cdot\;\textcolor{THMBlue}{a_{ij}}
        \;\cdot\;\det(A_{ij}).
     \]
-    Die sogenannte \emph{Untermatrix} \EnglishTerm{submatrix} $A_{ij}$ ergibt
-    sich aus Matrix $A$ durch Streichen von Zeile $i$ und Spalte $j$.
+    Dabei ist $A_{ij}$ die sogenannte \emph{Untermatrix} \EnglishTerm{submatrix}, die
+    sich aus Matrix $A$ durch Streichen von Zeile $i$ und Spalte $j$ ergibt.
 
     \begin{center}
       \vspace{-0.25\baselineskip}
@@ -50,9 +49,10 @@ Determinanten der Größe $(n-1)\times(n-1)$ zurückgeführt.
 \end{TheoremBox}
 
 \begin{minipage}{\linewidth}
-Auf diese Weise entwickeln wir eine $n\times n$-Determinante schrittweise,
-bis nur noch $2\times2$-Determinanten verbleiben, die wir nach
-Definition~\ref{def:linear_systems_two_by_two_determinant} berechnen können.
+Mithilfe der Laplace-Entwicklung führen wir $n\times n$-Determinanten
+schrittweise auf Determinanten niedrigerer Ordnung zurück, bis nur noch
+$2\times2$-Determinanten verbleiben. Diese können wir nach
+Definition~\ref{def:linear_systems_two_by_two_determinant} berechnen.
 
 \begin{center}
   \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/laplace_expansion_flow.tex}
@@ -136,27 +136,6 @@ Definition~\ref{def:linear_systems_two_by_two_determinant} berechnen können.
       \end{ClozeArea}
   \end{enumerate}
 \end{ExampleBox}
-
-\begin{KeyPointBox}{Regel von Sarrus}{linear_systems_sarrus_rule}
-  Im Spezialfall einer $3\times3$-Matrix lässt sich die Determinante auch mit
-  der \emph{Regel von Sarrus} \EnglishTerm{Sarrus' rule} berechnen:
-
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/sarrus_rule.tex}
-  \end{center}
-  \vspace{-0.3\baselineskip}
-  \begin{align*}
-    \det(A)
-    ={}&\textcolor{THMBlue}{a_{11}a_{22}a_{33}
-       +a_{12}a_{23}a_{31}
-       +a_{13}a_{21}a_{32}}\\
-     &\textcolor{red!80!black}{-a_{13}a_{22}a_{31}
-       -a_{11}a_{23}a_{32}
-       -a_{12}a_{21}a_{33}}.
-  \end{align*}
-  \textbf{Achtung:} Die Regel von Sarrus gilt ausschließlich für
-  $3\times3$-Matrizen.
-\end{KeyPointBox}
 
 \begin{minipage}{\linewidth}
 Bei der Laplace Entwicklung können sich durch die geschickte Wahl der Entwicklungszeile

@@ -1,0 +1,62 @@
+\subsection{Abstand eines Punktes von einer Ebene}
+\label{subsec:analytic_geometry_point_to_plane_distance}
+
+Bei einer Ebene zeigt der Normalenvektor bereits in Richtung der kürzesten
+Verbindung. Deshalb genügt eine skalare Projektion auf diese Richtung.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/point_plane_distance.tex}
+\end{center}
+
+\begin{TheoremBox}{Punkt--Ebenen-Abstand}{analytic_geometry_point_plane_distance}
+  Sei $P$ ein Punkt der Ebene $E$ mit Ortsvektor $\vec p$, sei $\vec n$ ein
+  Normalenvektor und sei $Q$ ein beliebiger Punkt mit Ortsvektor $\vec q$.
+  Dann gilt
+  \[
+    d(Q,E)
+    =\left\lvert(\vec q-\vec p)\cdot\vec e_n\right\rvert
+    =\frac{\left\lvert(\vec q-\vec p)\cdot\vec n\right\rvert}
+           {\lvert\vec n\rvert},
+    \qquad
+    \vec e_n=\frac{\vec n}{\lvert\vec n\rvert}.
+  \]
+  Der Betrag macht den Abstand unabhängig von der Orientierung des
+  Normalenvektors.
+\end{TheoremBox}
+
+\begin{ExampleBox}{Abstand eines Punktes von einer Ebene}{analytic_geometry_point_plane_distance_example}
+  Gegeben sind
+  \[
+    E:\quad
+    \vec x=\begin{pmatrix}1\\0\\0\end{pmatrix}
+      +\lambda\begin{pmatrix}0\\1\\2\end{pmatrix}
+      +\mu\begin{pmatrix}0\\2\\-1\end{pmatrix}
+    \qquad\text{und}\qquad Q(3,2,2).
+  \]
+  Zunächst bestimmen wir einen Einheitsnormalenvektor:
+  \begin{ClozeArea}[34]{11}
+    \[
+      \begin{pmatrix}0\\1\\2\end{pmatrix}
+      \times
+      \begin{pmatrix}0\\2\\-1\end{pmatrix}
+      =\begin{pmatrix}-5\\0\\0\end{pmatrix}
+      \quad\Longrightarrow\quad
+      \vec e_n=\begin{pmatrix}1\\0\\0\end{pmatrix}.
+    \]
+  \end{ClozeArea}
+  Damit folgt
+  \begin{ClozeArea}[34]{7}
+    \[
+      d(Q,E)
+      =\left\lvert
+        \left(
+          \begin{pmatrix}3\\2\\2\end{pmatrix}
+          -\begin{pmatrix}1\\0\\0\end{pmatrix}
+        \right)\cdot
+        \begin{pmatrix}1\\0\\0\end{pmatrix}
+      \right\rvert
+      =2.
+    \]
+  \end{ClozeArea}
+  Der Punkt $Q$ hat somit den Abstand $\Cloze{3cm}{2}$ von der Ebene.
+\end{ExampleBox}

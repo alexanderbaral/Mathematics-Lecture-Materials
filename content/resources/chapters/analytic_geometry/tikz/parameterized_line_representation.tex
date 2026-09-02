@@ -1,0 +1,35 @@
+\providecommand{\LineSupportX}{2}
+\providecommand{\LineSupportY}{2}
+\providecommand{\LineDirectionX}{1}
+\providecommand{\LineDirectionY}{-1}
+\providecommand{\LineLambdaMin}{-2}
+\providecommand{\LineLambdaMax}{2}
+\providecommand{\LineUnit}{0.75}
+
+\begin{tikzpicture}[x=\LineUnit cm,y=\LineUnit cm,>=Latex]
+  \path[use as bounding box] (-0.45,-0.45) rectangle (4.75,4.75);
+  \clip (-0.45,-0.45) rectangle (4.75,4.75);
+  \draw[->,black!55,line width=0.7pt] (-0.15,0)--(4.5,0)
+    node[below] {$x_1$};
+  \draw[->,black!55,line width=0.7pt] (0,-0.15)--(0,4.5)
+    node[left] {$x_2$};
+
+  \coordinate (O) at (0,0);
+  \coordinate (P) at (\LineSupportX,\LineSupportY);
+  \coordinate (D) at
+    ({\LineSupportX+\LineDirectionX},{\LineSupportY+\LineDirectionY});
+  \coordinate (Lmin) at
+    ({\LineSupportX+\LineLambdaMin*\LineDirectionX},
+     {\LineSupportY+\LineLambdaMin*\LineDirectionY});
+  \coordinate (Lmax) at
+    ({\LineSupportX+\LineLambdaMax*\LineDirectionX},
+     {\LineSupportY+\LineLambdaMax*\LineDirectionY});
+
+  \draw[black!70,line width=0.9pt] (Lmin)--(Lmax);
+  \draw[->,olive!80!black,line width=1.15pt] (O)--(P)
+    node[pos=0.52,below right=2pt,fill=white,inner sep=1pt] {$\vec p$};
+  \draw[->,THMBlue,line width=1.35pt] (P)--(D)
+    node[pos=0.62,right=3pt,fill=white,inner sep=1pt] {$\vec a$};
+  \fill (P) circle (1.8pt)
+    node[above left=3pt,fill=white,inner sep=1pt] {$P$};
+\end{tikzpicture}

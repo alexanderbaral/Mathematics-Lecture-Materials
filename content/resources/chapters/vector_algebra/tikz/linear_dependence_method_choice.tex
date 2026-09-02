@@ -1,0 +1,41 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \tikzset{
+    decision/.style={
+      draw=THMBlue,
+      fill=THMBlue!4,
+      line width=1pt,
+      rounded corners=2pt,
+      minimum width=5.0cm,
+      minimum height=1.05cm,
+      align=center
+    },
+    method/.style={
+      draw=black!55,
+      fill=black!2,
+      line width=0.7pt,
+      rounded corners=2pt,
+      minimum width=5.0cm,
+      minimum height=1.05cm,
+      align=center
+    }
+  }
+
+  \node[decision] (start) at (0,3.3)
+    {$k$ \Lang{Vektoren im}{vectors in} $\R^n$};
+  \node[decision] (question) at (0,1.65)
+    {$k=n$?};
+  \node[method] (determinant) at (-3.25,0)
+    {\Lang{quadratisches homogenes LGS}{square homogeneous system}\\
+     \textbf{\Lang{Determinante oder Gauß}{determinant or elimination}}};
+  \node[method] (gauss) at (3.25,0)
+    {\Lang{nicht quadratisches homogenes LGS}{non-square homogeneous system}\\
+     \textbf{\Lang{Gauß-Verfahren}{Gaussian elimination}}};
+
+  \draw[->,THMBlue,line width=1pt] (start)--(question);
+  \draw[->,THMBlue,line width=1pt] (question.south west)--(determinant.north)
+    node[pos=0.52,above left=2pt,fill=white,inner sep=1pt]
+      {\Lang{ja}{yes}};
+  \draw[->,THMBlue,line width=1pt] (question.south east)--(gauss.north)
+    node[pos=0.52,above right=2pt,fill=white,inner sep=1pt]
+      {\Lang{nein}{no}};
+\end{tikzpicture}

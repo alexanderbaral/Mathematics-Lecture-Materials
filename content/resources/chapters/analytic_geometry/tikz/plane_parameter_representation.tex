@@ -1,0 +1,25 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (-0.25,-0.45) rectangle (8.25,4.75);
+  \coordinate (O) at (0.35,0.15);
+  \coordinate (P) at (2.35,1.65);
+  \coordinate (A) at (5.45,1.65);
+  \coordinate (B) at (3.45,3.15);
+  \coordinate (AB) at (6.55,3.15);
+  \coordinate (X) at (5.15,2.70);
+
+  \fill[black!5] (1.35,1.15)--(5.75,1.15)--(7.45,3.55)--(3.05,3.55)--cycle;
+  \draw[black!45,line width=0.8pt]
+    (1.35,1.15)--(5.75,1.15)--(7.45,3.55)--(3.05,3.55)--cycle;
+  \draw[->,olive!80!black,line width=1.25pt] (O)--(P)
+    node[pos=0.55,left=4pt,fill=white,inner sep=1pt] {$\vec p$};
+  \draw[->,THMBlue,line width=1.35pt] (P)--(A)
+    node[midway,below=4pt,fill=white,inner sep=1pt] {$\vec a$};
+  \draw[->,THMBlue,line width=1.35pt] (P)--(B)
+    node[midway,above left=4pt,fill=white,inner sep=1pt] {$\vec b$};
+  \draw[->,red!70!black,line width=1.15pt] (O)--(X)
+    node[pos=0.66,right=4pt,fill=white,inner sep=1pt] {$\vec x$};
+  \fill (O) circle (1.5pt) node[below left] {$O$};
+  \fill (P) circle (1.8pt) node[above left=3pt] {$P$};
+  \fill (X) circle (1.8pt) node[above right=3pt] {$X$};
+  \node[anchor=west] at (6.30,1.55) {$E$};
+\end{tikzpicture}
