@@ -1,0 +1,18 @@
+% !TeX program = lualatex
+\providecommand{\ScriptLanguage}{de}
+\providecommand{\ShowSolutions}{false}
+\providecommand{\SheetId}{fundamentals}
+\providecommand{\TikzCacheRoot}{build/tikz}
+\documentclass[a4paper,12pt,headinclude=true,footinclude=true]{scrreprt}
+\input{common/config.tex}
+\input{common/preamble.tex}
+\input{common/commands.tex}
+\input{common/layout.tex}
+\IfFileExists{\SheetEntry}{}{%
+  \PackageError{main}{Missing content: \SheetEntry}{No fallback language is allowed.}%
+}
+\begin{document}
+\setcounter{chapter}{\SheetNumber}
+\MakeSheetHeader
+\input{\SheetEntry}
+\end{document}

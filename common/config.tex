@@ -1,0 +1,153 @@
+% Author-facing metadata and independent build switches.
+\newcommand{\ScriptTitle}{\Lang{Mathematik}{Mathematics}}
+\newcommand{\Semester}{WS 26/27}
+\newcommand{\ScriptAuthor}{Prof. Dr. Alexander Baral}
+\newcommand{\BrandLogoPath}{content/resources/shared/THM_Logo_Fak_M_hochkant_RGB_blau.png}
+\newcommand{\BrandDotPath}{content/resources/shared/TH_Mannheim_Favicon.png}
+% Uniform source-page crop: left, bottom, right, top; originals stay untouched.
+\newcommand{\SolutionPdfTrim}{0mm 7mm 0mm 18mm}
+\newcommand{\THMBlueRGB}{0,0,255}
+\ExplSyntaxOn
+\str_case:VnF \ScriptLanguage {{de}{} {en}{}}
+  {\PackageError{config}{Unknown~ScriptLanguage}{Use~de~or~en.}}
+\str_case:VnF \ShowSolutions {{true}{} {false}{}}
+  {\PackageError{config}{Unknown~ShowSolutions}{Use~true~or~false.}}
+\bool_new:N \g_script_english_bool
+\bool_new:N \g_sheet_solutions_bool
+\str_if_eq:VnT \ScriptLanguage {en}{\bool_gset_true:N \g_script_english_bool}
+\str_if_eq:VnT \ShowSolutions {true}{\bool_gset_true:N \g_sheet_solutions_bool}
+
+% Ordered sheet registry: id, chapter, number, DE title, EN title.
+% Entry paths use the same semantic id; additional sheets may share a chapter.
+\prop_new:N \g_sheet_registry_prop
+\NewDocumentCommand{\DeclareSheet}{m m m m m m}{
+  \prop_gput:Nnn \g_sheet_registry_prop {#1}{{#2}{#3}{#4}{#5}{#6}}
+}
+\DeclareSheet{fundamentals}{fundamentals}{1}{Grundlagen}{Fundamentals}{fundamentals/_chapter.tex}
+\DeclareSheet{linear_systems}{linear_systems}{2}{Lineare~Gleichungssysteme}{Linear~systems}{linear_systems/_chapter.tex}
+\DeclareSheet{vector_algebra}{vector_algebra}{3}{Vektorrechnung}{Vector algebra}{vector_algebra/_chapter.tex}
+\DeclareSheet{functions}{functions}{4}{Funktionen}{Functions}{functions/_chapter.tex}
+\DeclareSheet{differential_calculus}{differential_calculus}{5}{Differenzialrechnung}{Differential~calculus}{differential_calculus/_chapter.tex}
+\DeclareSheet{integral_calculus}{integral_calculus}{6}{Integralrechnung}{Integral~calculus}{integral_calculus/_chapter.tex}
+\DeclareSheet{complex_numbers}{complex_numbers}{7}{Komplexe~Zahlen}{Complex~numbers}{complex_numbers/_chapter.tex}
+\cs_new_protected:Npn \sheet_select:nnnnn #1#2#3#4#5 {
+  \def\SheetChapter{#1}\def\SheetNumber{#2}
+  \def\SheetTitle{\Lang{#3}{#4}}
+  \def\SheetEntry{content/chapters_\ScriptLanguage/#5}
+}
+\prop_get:NVNTF \g_sheet_registry_prop \SheetId \l_tmpa_tl
+  {\exp_after:wN \sheet_select:nnnnn \l_tmpa_tl}
+  {\PackageError{config}{Unknown~sheet~'\SheetId'}{Select~a~registered~sheet.}}
+
+% One active solution per id: type, source, PDF options, approval status.
+\prop_new:N \g_sheet_solution_prop
+\NewDocumentCommand{\DeclareSolution}{m m m m m}{
+  \prop_if_in:NnT \g_sheet_solution_prop {#1}
+    {\PackageError{config}{Duplicate~solution~#1}{Use~one~active~source.}}
+  \prop_gput:Nnn \g_sheet_solution_prop {#1}{{#2}{#3}{#4}{#5}}
+}
+\ExplSyntaxOff
+
+% SOLUTION_REGISTRY: declarations below are retained when a source is replaced.
+
+\DeclareSolution{fundamentals_propositional_logic}{pdf}{content/resources/chapters/fundamentals/solutions/propositional_logic.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_set_operations}{pdf}{content/resources/chapters/fundamentals/solutions/set_operations.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_summation_notation}{pdf}{content/resources/chapters/fundamentals/solutions/summation_notation.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_factorial}{pdf}{content/resources/chapters/fundamentals/solutions/factorial.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_binomial_coefficients}{pdf}{content/resources/chapters/fundamentals/solutions/binomial_coefficients.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_power_rules}{pdf}{content/resources/chapters/fundamentals/solutions/power_rules.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_binomial_expansion}{pdf}{content/resources/chapters/fundamentals/solutions/binomial_expansion.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_quadratic_equations}{pdf}{content/resources/chapters/fundamentals/solutions/quadratic_equations.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_quadratic_parameter}{pdf}{content/resources/chapters/fundamentals/solutions/quadratic_parameter.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_geometric_sum_induction}{pdf}{content/resources/chapters/fundamentals/solutions/geometric_sum_induction.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_inequalities}{pdf}{content/resources/chapters/fundamentals/solutions/inequalities.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_quadratic_formula}{pdf}{content/resources/chapters/fundamentals/solutions/quadratic_formula.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_absolute_value_equations}{pdf}{content/resources/chapters/fundamentals/solutions/absolute_value_equations.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_trigonometric_values}{pdf}{content/resources/chapters/fundamentals/solutions/trigonometric_values.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_scientific_notation}{pdf}{content/resources/chapters/fundamentals/solutions/scientific_notation.pdf}{pages=-}{pending}
+\DeclareSolution{fundamentals_python_trigonometric_identity}{none}{}{}{unavailable}
+\DeclareSolution{linear_systems_gaussian_elimination}{pdf}{content/resources/chapters/linear_systems/solutions/gaussian_elimination.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_dependent_equations}{pdf}{content/resources/chapters/linear_systems/solutions/dependent_equations.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_parameter_system}{pdf}{content/resources/chapters/linear_systems/solutions/parameter_system.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_determinants}{pdf}{content/resources/chapters/linear_systems/solutions/determinants.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_dependent_rows}{pdf}{content/resources/chapters/linear_systems/solutions/dependent_rows.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_sarrus_rule}{pdf}{content/resources/chapters/linear_systems/solutions/sarrus_rule.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_cramers_rule}{pdf}{content/resources/chapters/linear_systems/solutions/cramers_rule.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_homogeneous_system}{pdf}{content/resources/chapters/linear_systems/solutions/homogeneous_system.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_word_problems}{pdf}{content/resources/chapters/linear_systems/solutions/word_problems.pdf}{pages=-}{pending}
+\DeclareSolution{linear_systems_python_determinants}{none}{}{}{unavailable}
+\DeclareSolution{vector_algebra_magnitude_and_unit_vector}{pdf}{content/resources/chapters/vector_algebra/solutions/magnitude_and_unit_vector.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_vector_magnitude}{pdf}{content/resources/chapters/vector_algebra/solutions/vector_magnitude.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_scalar_and_cross_products}{pdf}{content/resources/chapters/vector_algebra/solutions/scalar_and_cross_products.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_bac_cab_identity}{pdf}{content/resources/chapters/vector_algebra/solutions/bac_cab_identity.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_product_expressions}{pdf}{content/resources/chapters/vector_algebra/solutions/product_expressions.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_unit_vector_representation}{pdf}{content/resources/chapters/vector_algebra/solutions/unit_vector_representation.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_areas}{pdf}{content/resources/chapters/vector_algebra/solutions/areas.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_scalar_triple_product}{pdf}{content/resources/chapters/vector_algebra/solutions/scalar_triple_product.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_vector_angles}{pdf}{content/resources/chapters/vector_algebra/solutions/vector_angles.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_triangle_projection}{pdf}{content/resources/chapters/vector_algebra/solutions/triangle_projection.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_thales_theorem}{pdf}{content/resources/chapters/vector_algebra/solutions/thales_theorem.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_cube_diagonals}{pdf}{content/resources/chapters/vector_algebra/solutions/cube_diagonals.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_linear_dependence}{pdf}{content/resources/chapters/vector_algebra/solutions/linear_dependence.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_point_line_distance}{pdf}{content/resources/chapters/vector_algebra/solutions/point_line_distance.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_plane_representations}{pdf}{content/resources/chapters/vector_algebra/solutions/plane_representations.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_pyramid_height}{pdf}{content/resources/chapters/vector_algebra/solutions/pyramid_height.pdf}{pages=-}{pending}
+\DeclareSolution{vector_algebra_python_scalar_triple_product}{none}{}{}{unavailable}
+\DeclareSolution{functions_domain_and_range}{pdf}{content/resources/chapters/functions/solutions/domain_and_range.pdf}{pages=-}{pending}
+\DeclareSolution{functions_symmetry}{pdf}{content/resources/chapters/functions/solutions/symmetry.pdf}{pages=-}{pending}
+\DeclareSolution{functions_symmetry_rules}{pdf}{content/resources/chapters/functions/solutions/symmetry_rules.pdf}{pages=-}{pending}
+\DeclareSolution{functions_symmetrization}{pdf}{content/resources/chapters/functions/solutions/symmetrization.pdf}{pages=-}{pending}
+\DeclareSolution{functions_polynomial_interpolation}{pdf}{content/resources/chapters/functions/solutions/polynomial_interpolation.pdf}{pages=-}{pending}
+\DeclareSolution{functions_polynomial_division}{pdf}{content/resources/chapters/functions/solutions/polynomial_division.pdf}{pages=-}{pending}
+\DeclareSolution{functions_polynomial_factorization}{pdf}{content/resources/chapters/functions/solutions/polynomial_factorization.pdf}{pages=-}{pending}
+\DeclareSolution{functions_limits}{pdf}{content/resources/chapters/functions/solutions/limits.pdf}{pages=-}{pending}
+\DeclareSolution{functions_squeeze_theorem}{pdf}{content/resources/chapters/functions/solutions/squeeze_theorem.pdf}{pages=-}{pending}
+\DeclareSolution{functions_rational_functions}{pdf}{content/resources/chapters/functions/solutions/rational_functions.pdf}{pages=-}{pending}
+\DeclareSolution{functions_boundedness}{pdf}{content/resources/chapters/functions/solutions/boundedness.pdf}{pages=-}{pending}
+\DeclareSolution{functions_rational_function_construction}{pdf}{content/resources/chapters/functions/solutions/rational_function_construction.pdf}{pages=-}{pending}
+\DeclareSolution{functions_logarithm_and_power_rules}{pdf}{content/resources/chapters/functions/solutions/logarithm_and_power_rules.pdf}{pages=-}{pending}
+\DeclareSolution{functions_trigonometric_identities}{pdf}{content/resources/chapters/functions/solutions/trigonometric_identities.pdf}{pages=-}{pending}
+\DeclareSolution{functions_trigonometric_equations}{pdf}{content/resources/chapters/functions/solutions/trigonometric_equations.pdf}{pages=-}{pending}
+\DeclareSolution{functions_hyperbolic_functions}{pdf}{content/resources/chapters/functions/solutions/hyperbolic_functions.pdf}{pages=-}{pending}
+\DeclareSolution{functions_inverse_hyperbolic_cosine}{pdf}{content/resources/chapters/functions/solutions/inverse_hyperbolic_cosine.pdf}{pages=-}{pending}
+\DeclareSolution{functions_python_function_plots}{none}{}{}{unavailable}
+\DeclareSolution{differential_calculus_derivatives}{pdf}{content/resources/chapters/differential_calculus/solutions/derivatives.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_difference_quotient}{pdf}{content/resources/chapters/differential_calculus/solutions/difference_quotient.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_simplification_and_product_rule}{pdf}{content/resources/chapters/differential_calculus/solutions/simplification_and_product_rule.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_inverse_function_derivative}{pdf}{content/resources/chapters/differential_calculus/solutions/inverse_function_derivative.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_higher_derivatives}{pdf}{content/resources/chapters/differential_calculus/solutions/higher_derivatives.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_quadratic_polynomial}{pdf}{content/resources/chapters/differential_calculus/solutions/quadratic_polynomial.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_extrema_and_inflection}{pdf}{content/resources/chapters/differential_calculus/solutions/extrema_and_inflection.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_logarithmic_differentiation}{pdf}{content/resources/chapters/differential_calculus/solutions/logarithmic_differentiation.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_inflection_tangent}{pdf}{content/resources/chapters/differential_calculus/solutions/inflection_tangent.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_cylinder_optimization}{pdf}{content/resources/chapters/differential_calculus/solutions/cylinder_optimization.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_inscribed_rectangle}{pdf}{content/resources/chapters/differential_calculus/solutions/inscribed_rectangle.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_alley_transport}{pdf}{content/resources/chapters/differential_calculus/solutions/alley_transport.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_distance_optimization}{pdf}{content/resources/chapters/differential_calculus/solutions/distance_optimization.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_lhopital_limits}{pdf}{content/resources/chapters/differential_calculus/solutions/lhopital_limits.pdf}{pages=-}{pending}
+\DeclareSolution{differential_calculus_python_numerical_derivative}{none}{}{}{unavailable}
+\DeclareSolution{integral_calculus_antiderivatives}{pdf}{content/resources/chapters/integral_calculus/solutions/antiderivatives.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_definite_integrals}{pdf}{content/resources/chapters/integral_calculus/solutions/definite_integrals.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_fundamental_theorem}{pdf}{content/resources/chapters/integral_calculus/solutions/fundamental_theorem.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_integral_parameter}{pdf}{content/resources/chapters/integral_calculus/solutions/integral_parameter.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_symmetry}{pdf}{content/resources/chapters/integral_calculus/solutions/symmetry.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_mean_value}{pdf}{content/resources/chapters/integral_calculus/solutions/mean_value.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_area_between_functions}{pdf}{content/resources/chapters/integral_calculus/solutions/area_between_functions.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_area_bisection}{pdf}{content/resources/chapters/integral_calculus/solutions/area_bisection.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_integration_bound}{pdf}{content/resources/chapters/integral_calculus/solutions/integration_bound.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_area_optimization}{pdf}{content/resources/chapters/integral_calculus/solutions/area_optimization.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_integration_by_parts}{pdf}{content/resources/chapters/integral_calculus/solutions/integration_by_parts.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_substitution}{pdf}{content/resources/chapters/integral_calculus/solutions/substitution.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_mixed_integration}{pdf}{content/resources/chapters/integral_calculus/solutions/mixed_integration.pdf}{pages=-}{pending}
+\DeclareSolution{integral_calculus_python_numerical_integration}{none}{}{}{unavailable}
+\DeclareSolution{complex_numbers_conjugation}{pdf}{content/resources/chapters/complex_numbers/solutions/conjugation.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_complex_number_properties}{pdf}{content/resources/chapters/complex_numbers/solutions/complex_number_properties.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_complex_loci}{pdf}{content/resources/chapters/complex_numbers/solutions/complex_loci.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_representation_conversion}{pdf}{content/resources/chapters/complex_numbers/solutions/representation_conversion.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_geometric_interpretation}{pdf}{content/resources/chapters/complex_numbers/solutions/geometric_interpretation.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_trigonometric_identities}{pdf}{content/resources/chapters/complex_numbers/solutions/trigonometric_identities.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_de_moivre}{pdf}{content/resources/chapters/complex_numbers/solutions/de_moivre.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_trigonometric_derivative}{pdf}{content/resources/chapters/complex_numbers/solutions/trigonometric_derivative.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_complex_expressions}{pdf}{content/resources/chapters/complex_numbers/solutions/complex_expressions.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_polynomial_factorization}{pdf}{content/resources/chapters/complex_numbers/solutions/polynomial_factorization.pdf}{pages=-}{pending}
+\DeclareSolution{complex_numbers_complex_roots}{pdf}{content/resources/chapters/complex_numbers/solutions/complex_roots.pdf}{pages=-}{pending}
