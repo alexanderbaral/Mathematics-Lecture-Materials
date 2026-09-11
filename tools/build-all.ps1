@@ -4,8 +4,66 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
+$buildTimer = [System.Diagnostics.Stopwatch]::StartNew()
+try {
 
 $projectRoot = Split-Path -Parent $PSScriptRoot
+$fileHashes = @{}
+
+# In-memory only: every build still checks file contents, not timestamps.
+function Get-BuildFileHash([string]$Path) {
+    if (-not $fileHashes.ContainsKey($Path)) {
+        $fileHashes[$Path] = if ([System.IO.File]::Exists($Path)) {
+            (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash
+        }
+        else { $null }
+    }
+    return $fileHashes[$Path]
+}
+
+# Recorder inputs include nested TeX files and images. Track project sources,
+# not TeX Live packages or generated build/cache files. Missing recorder data
+# deliberately causes one rebuild of figures created by older script versions.
+function Get-TikzDependencyFingerprint([string]$RecorderFile, [switch]$Refresh) {
+    $dependencyFile = [System.IO.Path]::ChangeExtension($RecorderFile, '.deps')
+    if (-not $Refresh -and [System.IO.File]::Exists($dependencyFile)) {
+        $inputs = [System.IO.File]::ReadAllLines($dependencyFile)
+    }
+    else {
+        if (-not [System.IO.File]::Exists($RecorderFile)) { return $null }
+        $rootPrefix = $projectRoot.TrimEnd('\') + '\'
+        $buildPrefix = Join-Path $rootPrefix 'build\'
+        $inputs = @([System.IO.File]::ReadAllLines($RecorderFile) | ForEach-Object {
+            if ($_.StartsWith('INPUT ')) {
+                $inputPath = $_.Substring(6).Replace('/', '\')
+                if (-not [System.IO.Path]::IsPathRooted($inputPath)) {
+                    $inputPath = Join-Path $projectRoot $inputPath
+                }
+                $inputPath = [System.IO.Path]::GetFullPath($inputPath)
+                if ($inputPath.StartsWith($rootPrefix, [System.StringComparison]::OrdinalIgnoreCase) -and
+                    -not $inputPath.StartsWith($buildPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+                    $inputPath
+                }
+            }
+        } | Sort-Object -Unique)
+        # Existing recorder files migrate without recompiling the figures.
+        [System.IO.File]::WriteAllLines($dependencyFile, [string[]]$inputs)
+    }
+    if ($inputs.Count -eq 0) { return $null }
+    $lines = [System.Collections.Generic.List[string]]::new()
+    foreach ($inputPath in $inputs) {
+        $inputHash = Get-BuildFileHash $inputPath
+        if (-not $inputHash) { return $null }
+        $lines.Add(('{0}:{1}' -f $inputPath, $inputHash))
+    }
+    $hash = [System.Security.Cryptography.SHA256]::Create()
+    try {
+        [System.BitConverter]::ToString(
+            $hash.ComputeHash([System.Text.Encoding]::UTF8.GetBytes(($lines -join "`n")))
+        ).Replace('-', '').ToLowerInvariant()
+    }
+    finally { $hash.Dispose() }
+}
 
 $variants = @(
     @{ File = 'tools/build-de.tex';       Label = 'German complete'; Language = 'de'; Cloze = 'false' },
@@ -57,7 +115,7 @@ $globalTikzInputs = @(
     Get-Item -LiteralPath (Join-Path $projectRoot 'tools/build-tikz.tex')
 )
 $fingerprintLines = foreach ($file in $globalTikzInputs) {
-    '{0}:{1}' -f $file.FullName, (Get-FileHash -LiteralPath $file.FullName -Algorithm SHA256).Hash
+    '{0}:{1}' -f $file.FullName, (Get-BuildFileHash $file.FullName)
 }
 $sha256 = [System.Security.Cryptography.SHA256]::Create()
 try {
@@ -173,8 +231,10 @@ foreach ($variant in $variants) {
         $figureName = $source.BaseName
         $figurePdf = Join-Path $variantTikzCacheDirectory "$figureName.pdf"
         $figureFingerprintFile = Join-Path $variantTikzCacheDirectory "$figureName.sha256"
-        $sourceFingerprint = (Get-FileHash -LiteralPath $source.FullName -Algorithm SHA256).Hash
-        $figureFingerprint = "$tikzFingerprint`:$sourceFingerprint`:$($variant.Language)`:$($variant.Cloze)"
+        $figureRecorderFile = Join-Path $variantTikzCacheDirectory "$figureName.fls"
+        $dependencyFingerprint = Get-TikzDependencyFingerprint $figureRecorderFile
+        $sourceFingerprint = Get-BuildFileHash $source.FullName
+        $figureFingerprint = "$tikzFingerprint`:$sourceFingerprint`:$($variant.Language)`:$($variant.Cloze)`:$dependencyFingerprint"
         $storedFigureFingerprint = if (Test-Path -LiteralPath $figureFingerprintFile) {
             (Get-Content -LiteralPath $figureFingerprintFile -Raw).Trim()
         }
@@ -182,7 +242,7 @@ foreach ($variant in $variants) {
             ''
         }
 
-        if ($storedFigureFingerprint -eq $figureFingerprint -and (Test-Path -LiteralPath $figurePdf)) {
+        if ($dependencyFingerprint -and $storedFigureFingerprint -eq $figureFingerprint -and (Test-Path -LiteralPath $figurePdf)) {
             continue
         }
 
@@ -194,12 +254,18 @@ foreach ($variant in $variants) {
         $relativeSource = $source.FullName.Substring($projectRootPrefix.Length).Replace('\', '/')
         $texCommand = "\def\ScriptLanguage{$($variant.Language)}\def\ClozeMode{$($variant.Cloze)}\def\TikzCacheVariant{$jobName}\def\TikzSource{$relativeSource}\input{tools/build-tikz.tex}"
         $figureBuildLog = Join-Path $variantTikzCacheDirectory "$figureName.build.log"
-        & $lualatex '-halt-on-error' '-interaction=nonstopmode' "-output-directory=$variantTikzCacheDirectory" "-jobname=$figureName" $texCommand *> $figureBuildLog
+        Set-Location -LiteralPath $projectRoot
+        & $lualatex '-recorder' '-halt-on-error' '-interaction=nonstopmode' "-output-directory=$variantTikzCacheDirectory" "-jobname=$figureName" $texCommand *> $figureBuildLog
         if ($LASTEXITCODE -ne 0 -or -not (Test-Path -LiteralPath $figurePdf)) {
             Write-Host "[FAILED] TikZ figure $figureName for $($variant.Label)" -ForegroundColor Red
             Get-Content -LiteralPath $figureBuildLog | Out-Host
             exit 1
         }
+        $dependencyFingerprint = Get-TikzDependencyFingerprint $figureRecorderFile -Refresh
+        if (-not $dependencyFingerprint) {
+            throw "Missing or incomplete recorder inputs for TikZ figure $figureName"
+        }
+        $figureFingerprint = "$tikzFingerprint`:$sourceFingerprint`:$($variant.Language)`:$($variant.Cloze)`:$dependencyFingerprint"
         Set-Content -LiteralPath $figureFingerprintFile -Value $figureFingerprint -Encoding ascii
         @('.aux', '.log') | ForEach-Object {
             $temporaryFigureFile = Join-Path $variantTikzCacheDirectory "$figureName$_"
@@ -251,3 +317,8 @@ if ($failed) {
 }
 
 exit 0
+}
+finally {
+    $buildTimer.Stop()
+    Write-Host ('Total build time: {0:F2} s' -f $buildTimer.Elapsed.TotalSeconds)
+}
