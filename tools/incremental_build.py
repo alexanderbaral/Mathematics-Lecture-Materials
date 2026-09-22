@@ -8,6 +8,22 @@ import re
 from pathlib import Path
 
 
+def sheet_output_filename(sheet, language, solutions):
+    title = sheet[3] if language == 'de' else sheet[4]
+    title = title.replace('~', ' ')
+    prefix = 'Übungsblatt' if language == 'de' else 'Exercise Sheet'
+    stem = f"{prefix} {sheet[2]} - {title}"
+    if solutions == 'on':
+        stem += ' (mit Lösungen)' if language == 'de' else ' (with Solutions)'
+    return stem + '.pdf'
+
+
+def combined_output_filename(language, solutions):
+    if solutions != 'on':
+        return '_Übungsblatt Alle.pdf' if language == 'de' else '_Exercise Sheet All.pdf'
+    return '_Übungsblatt Alle (mit Lösungen).pdf' if language == 'de' else '_Exercise Sheet All (with Solutions).pdf'
+
+
 def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
 
@@ -45,6 +61,10 @@ class Planner:
         temporary.write_text(json.dumps(self.hashes), encoding='utf-8')
         temporary.replace(self.hash_path)
 
+    def sheets(self):
+        registry = (self.stage / 'common/config.tex').read_text(encoding='utf-8-sig')
+        return re.findall(r'^\\DeclareSheet\{([a-z_]+)\}\{([a-z_]+)\}\{(\d+)\}\{([^{}]+)\}\{([^{}]+)\}\{([^{}]+)\}', registry, re.M)
+
     def fingerprint(self, language, sheet):
         sid, chapter, number, de, en, entry = sheet
         paths = {self.stage / 'main.tex', self.stage / 'latexmkrc'}
@@ -70,8 +90,7 @@ class Planner:
         return hashlib.sha256(json.dumps([sheet, values], ensure_ascii=False).encode()).hexdigest()
 
     def plan(self):
-        registry = (self.stage / 'common/config.tex').read_text(encoding='utf-8-sig')
-        sheets = re.findall(r'^\\DeclareSheet\{([a-z_]+)\}\{([a-z_]+)\}\{(\d+)\}\{([^{}]+)\}\{([^{}]+)\}\{([^{}]+)\}', registry, re.M)
+        sheets = self.sheets()
         items = {}
         for language in ('de', 'en'):
             for sheet in sheets:
@@ -79,13 +98,15 @@ class Planner:
                 exists = (self.stage / f'content/chapters_{language}/{sheet[5]}').is_file()
                 for variant in (language, language + '_solutions'):
                     key = f'{variant}/{sheet[0]}'
-                    output_hash = self.file_digest(self.root / f'build/{key}.pdf')
+                    mode = 'on' if variant.endswith('_solutions') else 'off'
+                    output_hash = self.file_digest(self.root / f'build/{variant}/{sheet_output_filename(sheet, language, mode)}')
                     old = self.state.get(key, {})
                     items[key] = {'signature': signature, 'reuse': bool(exists and output_hash and
                                   old.get('signature') == signature and old.get('pdf') == output_hash)}
         for variant in ('de', 'de_solutions', 'en', 'en_solutions'):
             key = variant + '/all_exercises'
-            output_hash = self.file_digest(self.root / f'build/{key}.pdf')
+            mode = 'on' if variant.endswith('_solutions') else 'off'
+            output_hash = self.file_digest(self.root / f'build/{variant}/{combined_output_filename('de' if variant.startswith('de') else 'en', mode)}')
             items[key] = {'reuse': bool(output_hash and self.state.get(key, {}).get('pdf') == output_hash and
                                       all(items[f'{variant}/{s[0]}']['reuse'] for s in sheets))}
         return items
@@ -95,12 +116,13 @@ class Planner:
             return
         # Re-evaluate recorder dependencies after successful builds against the fixed stage.
         items = self.plan()
+        sheets = self.sheets()
         for row in results:
             variant = row['language'] + ('_solutions' if row['solutions'] == 'on' else '')
             key = variant + '/' + row['sheet']
             if row['status'] == 'ok':
                 self.state[key] = {'signature': items[key].get('signature'),
-                                   'pdf': self.file_digest(self.root / f'build/{key}.pdf')}
+                                   'pdf': self.file_digest(self.root / f'build/{variant}/{combined_output_filename(row["language"], row["solutions"])}' if row['sheet'] == 'all_exercises' else self.root / f'build/{variant}/{sheet_output_filename(next(s for s in sheets if s[0] == row["sheet"]), row["language"], row["solutions"])}')}
             else:
                 self.state.pop(key, None)
         temporary = self.state_path.with_suffix('.tmp')

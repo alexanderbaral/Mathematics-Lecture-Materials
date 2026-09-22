@@ -65,7 +65,7 @@ Der Neubuild benötigte weiterhin 28 LuaLaTeX-Durchläufe und dauerte rund 63 % 
 
 Der Gesamt-PDF-Cache berücksichtigt die Bytes aller Einzel-PDFs, ihre Reihenfolge, Pfade und Lesezeichentitel sowie die Version des Zusammenführungsprogramms anhand dessen Quelltextes. Die gespeicherte Ausgabe wird vor Wiederverwendung gegen ihre SHA-256-Prüfsumme geprüft. Alle Varianten müssen zuvor erfolgreich durch latexmk geprüft oder gebaut worden sein. Die bisherige Entfernung veralteter Gesamtausgaben bei Teilbuilds oder Fehlern bleibt bestehen.
 
-Gezielte Prüfungen: Cache-Treffer ohne erneutes Zusammenfügen; neue Zusammenführung nach Änderung von Titel, Reihenfolge oder Quelldatei; Wiederherstellung bei beschädigter Cache-PDF; fehlende englische Aufgaben werden als Fehler gemeldet. Die reguläre Projektprüfung kontrolliert weiterhin Originalerhalt, 101 Aufgaben, alle deutschen Einzel-PDFs und beide Gesamt-PDFs.
+Gezielte Prüfungen: Cache-Treffer ohne erneutes Zusammenfügen; neue Zusammenführung nach Änderung von Titel, Reihenfolge oder Quelldatei; Wiederherstellung bei beschädigter Cache-PDF; fehlende englische Aufgaben werden als Fehler gemeldet. Die reguläre Projektprüfung kontrolliert weiterhin Originalerhalt, 100 aktive Aufgaben, alle deutschen Einzel-PDFs und beide Gesamt-PDFs.
 
 Empfohlener Entwicklungsaufruf: `./tools/build-all.ps1 -Language de -Solutions both -Warm`. Vier parallele Prozesse sind Standard. Mehr Prozesse erst nach erneutem Vergleich empfehlen; der Rechner soll während der Arbeit bedienbar bleiben. Nur eine Instanz des vollständigen Buildskripts gleichzeitig ausführen, da Arbeitskopie und Berichte gemeinsam verwendet werden.
 

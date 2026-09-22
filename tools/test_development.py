@@ -23,7 +23,15 @@ class DevelopmentTests(unittest.TestCase):
         self.rows = []
         for variant, mode in [('de', 'off'), ('de_solutions', 'on')]:
             for s in ('alpha', 'beta', 'all_exercises'):
-                p = self.root / f'build/{variant}/{s}.pdf'
+                if s == 'all_exercises':
+                    filename = '_Übungsblatt Alle (mit Lösungen).pdf' if mode == 'on' else '_Übungsblatt Alle.pdf'
+                else:
+                    number = '1' if s == 'alpha' else '2'
+                    filename = f'Übungsblatt {number} - Title'
+                    if mode == 'on' and variant == 'de_solutions':
+                        filename += ' (mit Lösungen)'
+                    filename += '.pdf'
+                p = self.root / f'build/{variant}/{filename}'
                 p.parent.mkdir(parents=True, exist_ok=True)
                 p.write_bytes(b'output bytes')
                 self.rows.append(dict(sheet=s, language='de', solutions=mode, status='ok'))
@@ -64,7 +72,7 @@ class DevelopmentTests(unittest.TestCase):
 
     def test_deleted_source_and_corrupt_output(self):
         (self.stage / 'content/chapters_de/alpha/_chapter.tex').unlink()
-        (self.root / 'build/de/beta.pdf').write_bytes(b'corrupt')
+        (self.root / 'build/de/Übungsblatt 2 - Title.pdf').write_bytes(b'corrupt')
         plan = self.plan()
         self.assertFalse(plan['de/alpha']['reuse'])
         self.assertFalse(plan['de/beta']['reuse'])

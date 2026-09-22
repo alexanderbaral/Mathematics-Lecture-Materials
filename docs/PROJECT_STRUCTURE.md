@@ -14,8 +14,8 @@ content/resources/shared/      gemeinsam verwendete Brandingdateien
 content/resources/chapters/    Lösungen, Bilder, Code und ergänzende Ressourcen
 tools/                         Build, PDF-Zusammenführung, Inventar und Prüfung
 references/build-de.pdf        aktuelle Skript-PDF, ausschließlich Strukturreferenz
-build/de/                      deutsche Aufgaben-PDFs und all_exercises.pdf
-build/de_solutions/             deutsche Lösungs-PDFs und all_exercises.pdf
+build/de/                      deutsche Aufgaben-PDFs `Übungsblatt <Nummer> - <Titel>.pdf`
+build/de_solutions/             deutsche Lösungs-PDFs mit `(mit Lösungen).pdf`
 Lokaler Cache/latex_runs/      isolierte Buildläufe und Zusammenführungslisten
 Lokaler Cache/visual_review/   aktuelle Renderings zur Sichtprüfung
 ```
@@ -32,7 +32,7 @@ Englisch wird erst auf ausdrücklichen Auftrag unter `content/chapters_en/` mit 
 
 ## Gesamt-PDF und Prüfunterlagen
 
-Ein vollständiger Build fügt die frisch erzeugten Einzel-PDFs pro Variante in Registry-Reihenfolge zu `all_exercises.pdf` zusammen. Lesezeichen springen zum jeweiligen Blatt; die gedruckten Seitennummern bleiben blattweise erhalten. Ein Teilbuild entfernt die betroffene veraltete Gesamt-PDF; zum Aktualisieren alle Blätter bauen.
+Ein vollständiger Build fügt die frisch erzeugten Einzel-PDFs pro Variante in Registry-Reihenfolge zu einer Gesamt-PDF zusammen. Die Gesamtdateien heißen `_Übungsblatt Alle.pdf` bzw. `_Übungsblatt Alle (mit Lösungen).pdf`; in der späteren englischen Variante entsprechend `_Exercise Sheet All.pdf` bzw. `_Exercise Sheet All (with Solutions).pdf`. Der Unterstrich stellt die alphabetische Sortierung an den Anfang. Lesezeichen springen zum jeweiligen Blatt; die gedruckten Seitennummern bleiben blattweise erhalten. Ein Teilbuild entfernt die betroffene veraltete Gesamt-PDF; zum Aktualisieren alle Blätter bauen.
 
 `docs/migration_status.md` hält Quellen, Korrekturen, Lösungsstand und Prüfstatus fest. `docs/didactic_review.md` hält den späteren Abgleich mit dem wachsenden Skript offen. `tools/migration_manifest.json` bleibt die Vergleichsgrundlage für die unveränderten Aufgabenressourcen und ihre Übernahme. Die Skriptreferenz wird ausschließlich unter `references/build-de.pdf` gelesen und auf Lesbarkeit geprüft; sie darf durch eine neue Autorversion ersetzt werden. Das Quellinventar und die Prüfwerkzeuge bleiben zur weiteren Entwicklung erhalten; der einmalige Startprompt und Importgenerator wurden entfernt.
 

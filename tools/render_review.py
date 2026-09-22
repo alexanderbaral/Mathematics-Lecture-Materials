@@ -19,7 +19,7 @@ def render():
     for variant in ('de','de_solutions'):
         for pdf in sorted((ROOT/'build'/variant).glob('*.pdf')):
             # Combined files repeat these pages unchanged; verify their page order separately.
-            if pdf.stem == 'all_exercises':
+            if pdf.name.startswith('_'):
                 continue
             folder=OUTPUT/variant/pdf.stem
             folder.mkdir(parents=True,exist_ok=True)

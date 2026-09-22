@@ -33,6 +33,15 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
+% Empty handwriting field, centred on the math axis in formulas.
+\NewDocumentCommand{\Cloze}{O{18mm}}{%
+  \begingroup\setlength{\fboxsep}{0pt}%
+  \ifmmode
+    \mathrel{\vcenter{\hbox{\colorbox{black!10}{\rule{0pt}{5mm}\hspace{#1}}}}}%
+  \else
+    \colorbox{black!10}{\rule[-1mm]{0pt}{5mm}\hspace{#1}}%
+  \fi\endgroup
+}
 % Retain the legacy sheets' equation numbering without chapter prefixes.
 \renewcommand{\theequation}{\arabic{equation}}
 \NewDocumentCommand{\TransformOp}{m}{{\color{black!55}\Big|\;#1}}

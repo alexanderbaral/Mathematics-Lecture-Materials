@@ -62,6 +62,27 @@ if ('all' -notin $Sheet) { $sheets = @($sheets | Where-Object Id -in $Sheet) }
 $languages = if ($Language -eq 'all') { @('de','en') } else { @($Language) }
 $modes = if ($Solutions -eq 'both') { @('off','on') } else { @($Solutions) }
 $latexmk = (Get-Command latexmk -ErrorAction Stop).Source
+function Get-SheetOutputFileName {
+    param([object]$Sheet, [string]$Language, [string]$Mode)
+    $title = if ($Language -eq 'de') { $Sheet.TitleDe } else { $Sheet.TitleEn }
+    $title = $title.Replace('~', ' ')
+    $prefix = if ($Language -eq 'de') { ([char]0x00DC).ToString() + 'bungsblatt' } else { 'Exercise Sheet' }
+    $fileStem = "$prefix $($Sheet.Number) - $title"
+    if ($Mode -eq 'on') {
+        if ($Language -eq 'de') { $fileStem += (' (mit L' + [char]0x00F6 + 'sungen)') }
+        else { $fileStem += ' (with Solutions)' }
+    }
+    return "$fileStem.pdf"
+}
+function Get-CombinedOutputFileName {
+    param([string]$Language, [string]$Mode)
+    if ($Mode -eq 'on') {
+        if ($Language -eq 'de') { return ('_' + [char]0x00DC + 'bungsblatt Alle (mit L' + [char]0x00F6 + 'sungen).pdf') }
+        return '_Exercise Sheet All (with Solutions).pdf'
+    }
+    if ($Language -eq 'de') { return ('_' + [char]0x00DC + 'bungsblatt Alle.pdf') }
+    return '_Exercise Sheet All.pdf'
+}
 
         $pythonCandidates = if ($Python) { @($Python) } else {
             @('python', (Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'))
@@ -108,7 +129,7 @@ try {
     # Never keep a stale overview after rebuilding any of its component sheets.
     foreach ($lang in $languages) { foreach ($mode in $modes) {
         $variant = if ($mode -eq 'on') { "${lang}_solutions" } else { $lang }
-        $combined = "build/$variant/all_exercises.pdf"
+        $combined = "build/$variant/$(Get-CombinedOutputFileName $lang $mode)"
         if (-not ($Incremental -and $plan."$variant/all_exercises".reuse) -and (Test-Path -LiteralPath $combined)) { Remove-Item -LiteralPath $combined }
     } }
     foreach ($lang in $languages) { foreach ($sheetEntry in $sheets) { foreach ($mode in $modes) {
@@ -116,7 +137,7 @@ try {
         $id = $sheetEntry.Id
         if ($Incremental -and $plan."$variant/$id".reuse) {
             Write-Host "[unchanged] $variant/$id"
-            $results.Add([pscustomobject]@{sheet=$id;language=$lang;solutions=$mode;status='ok';detail="build/$variant/$id.pdf";seconds=0;cache_reused=$true;latex_passes=0;unchanged=$true})
+            $results.Add([pscustomobject]@{sheet=$id;language=$lang;solutions=$mode;status='ok';detail="build/$variant/$(Get-SheetOutputFileName $sheetEntry $lang $mode)";seconds=0;cache_reused=$true;latex_passes=0;unchanged=$true})
             continue
         }
         while ($activeJobs.Count -ge $Jobs) { Receive-BuildJobs }
@@ -131,11 +152,11 @@ try {
             $variant = if ($mode -eq 'on') { "${lang}_solutions" } else { $lang }
             if ($Incremental -and $plan."$variant/all_exercises".reuse) {
                 Write-Host "[unchanged] $variant/all_exercises"
-                $results.Add([pscustomobject]@{sheet='all_exercises';language=$lang;solutions=$mode;status='ok';detail="build/$variant/all_exercises.pdf";seconds=0;unchanged=$true})
+            $results.Add([pscustomobject]@{sheet='all_exercises';language=$lang;solutions=$mode;status='ok';detail="build/$variant/$(Get-CombinedOutputFileName $lang $mode)";seconds=0;unchanged=$true})
                 continue
             }
             $combineTimer = [Diagnostics.Stopwatch]::StartNew()
-            $output = "build/$variant/all_exercises.pdf"
+            $output = "build/$variant/$(Get-CombinedOutputFileName $lang $mode)"
             $components = @($results | Where-Object { $_.language -eq $lang -and $_.solutions -eq $mode })
             $status = 'failed'
             $detail = 'Incomplete current build; no combined PDF generated.'
@@ -144,7 +165,7 @@ try {
                 else {
                     $manifest = @($allSheets | ForEach-Object {
                         $title = if ($lang -eq 'de') { "Blatt $($_.Number) - $($_.TitleDe)" } else { "Sheet $($_.Number) - $($_.TitleEn)" }
-                        @{path="build/$variant/$($_.Id).pdf";title=$title}
+                        @{path="build/$variant/$(Get-SheetOutputFileName $_ $lang $mode)";title=$title}
                     })
                     $manifestPath = Join-Path $cacheRoot "latex_runs/combined_${variant}_$runId.json"
                     [IO.File]::WriteAllText($manifestPath, (ConvertTo-Json -InputObject $manifest), [Text.UTF8Encoding]::new($false))

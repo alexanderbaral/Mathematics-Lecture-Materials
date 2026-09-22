@@ -20,7 +20,16 @@ Set-Location -LiteralPath $projectRoot
             }
         }
         $latexPasses = 0
-        $output = "$outDir/$id.pdf"
+        $title = if ($lang -eq 'de') { $sheetEntry.TitleDe } else { $sheetEntry.TitleEn }
+        $title = $title.Replace('~', ' ')
+        $prefix = if ($lang -eq 'de') { ([char]0x00DC).ToString() + 'bungsblatt' } else { 'Exercise Sheet' }
+        $fileStem = "$prefix $($sheetEntry.Number) - $title"
+        if ($mode -eq 'on') {
+            if ($lang -eq 'de') { $fileStem += (' (mit L' + [char]0x00F6 + 'sungen)') }
+            else { $fileStem += ' (with Solutions)' }
+        }
+        $fileName = "$fileStem.pdf"
+        $output = "$outDir/$fileName"
         New-Item -ItemType Directory -Force -Path $outDir,$auxDir | Out-Null
         # A failed or missing build must never leave an old PDF at the delivery path.
         if (Test-Path -LiteralPath $output) { Remove-Item -LiteralPath $output }

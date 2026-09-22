@@ -1386,6 +1386,7 @@
       "source_line": 158,
       "old_title": "Aufgabe 10 - Summenformel und vollständige Induktion",
       "number": "10",
+      "active": false,
       "title": "Summenformel und vollständige Induktion",
       "target": "content/chapters_de/fundamentals/geometric_sum_induction.tex",
       "chapter": "fundamentals",

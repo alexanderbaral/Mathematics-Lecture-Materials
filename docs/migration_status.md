@@ -4,7 +4,7 @@ Stand: 10. September 2026.
 
 ## Umfang und Autorentscheidungen
 
-Die sieben regulären alten Blätter werden mit 101 Aufgaben übernommen. Alte Blattgrenzen, Reihenfolge, sichtbare Aufgabennummern und Teilaufgaben bleiben erhalten. Inhaltsnamen legt Codex gemäß Autorentscheidung selbstständig fest. Funktionen, Differenzialrechnung und Integralrechnung werden trotz noch fehlender Skriptkapitel übernommen; Komplexe Zahlen trotz bislang leerem Kapitel. Die Geometrieaufgaben bleiben vorerst auf dem Vektorblatt. Keine EN-Übersetzung beauftragt.
+Die sieben regulären alten Blätter wurden zunächst mit 101 Aufgaben übernommen. Aktuell sind 100 Aufgaben aktiv; Aufgabe 10 zur vollständigen Induktion ist für dieses Semester auskommentiert. Alte Blattgrenzen, Reihenfolge, sichtbare Aufgabennummern und Teilaufgaben bleiben erhalten. Inhaltsnamen legt Codex gemäß Autorentscheidung selbstständig fest. Funktionen, Differenzialrechnung und Integralrechnung werden trotz noch fehlender Skriptkapitel übernommen; Komplexe Zahlen trotz bislang leerem Kapitel. Die Geometrieaufgaben bleiben vorerst auf dem Vektorblatt. Keine EN-Übersetzung beauftragt.
 
 ## Referenzstand
 
@@ -14,7 +14,7 @@ Verwendete Skriptfassung: `references/build-de.pdf` (beim dokumentierten Abgleic
 
 Für jede unten aufgeführte Aufgabe und jeden angegebenen Teilpunkt gilt: Aufgabenquelle übertragen; Handschrift nicht transkribiert; Autorfreigabe einer gesetzten Lösung nicht erteilt; aktive Lösung wie angegeben; EN fehlt. Initiale PDF-Übernahme bedeutet keine fachliche Freigabe. Bei einer Gesamtaufgaben-PDF gelten alle Originalseiten für die Aufgabe; es wurden keine Seitenzuordnungen zu einzelnen Teilaufgaben geraten.
 
-Build und Sichtprüfung: für alle 101 Aufgaben und beide deutschen Varianten abgeschlossen; der abschließende Prüfstand steht unten. Die fachliche Freigabe der handschriftlichen Lösungen ist davon getrennt und weiterhin offen.
+Build und Sichtprüfung: für alle 100 aktiven Aufgaben und beide deutschen Varianten abgeschlossen; der abschließende Prüfstand steht unten. Die fachliche Freigabe der handschriftlichen Lösungen ist davon getrennt und weiterhin offen.
 
 ## Aufgaben und Teilpunkte
 
@@ -516,15 +516,35 @@ Die Autorentscheidungen zur Weiterentwicklung gelten für alle sieben Blätter:
 
 Build und Prüfung abgeschlossen: alle 14 deutschen Einzelvarianten sowie beide Gesamt-PDFs erfolgreich gebaut. Die 34 Aufgabenseiten und 265 Lösungsfassungsseiten wurden vollständig gerendert und über 60 Kontaktübersichten auf Layout, Beschnitt, Branding und Umbrüche gesichtet. Die Gesamt-PDFs wurden zusätzlich gerendert und sind pixelgleich zur jeweiligen Folge der Einzelblätter. Der abschließende Neubuild nach der Cache-/Referenzbereinigung enthält dieselben Seiteninhaltsströme in allen 14 Einzel-PDFs.
 
-`tools/verify.py` besteht für alle 101 Aufgaben, 164 proportional und einheitlich beschnittenen Originalseiten, 135 erhaltenen Ressourcen-Herkunftseinträge und die Skript-PDF. Aufgabenreihenfolge, Teilaufgaben, ursprüngliche Zahlen abzüglich dokumentierter Korrekturen, Lösungsausschluss und Zusammenführung wurden geprüft. Keine Aufgabe wird unzulässig auf mehrere Seiten verteilt. Diese technische Prüfung ist keine vollständige fachliche Freigabe der Handschriften. Englische Varianten sind weiterhin nicht befüllt.
+`tools/verify.py` besteht für alle 100 aktiven Aufgaben, 164 proportional und einheitlich beschnittenen Originalseiten, 135 erhaltenen Ressourcen-Herkunftseinträge und die Skript-PDF. Aufgabenreihenfolge, Teilaufgaben, ursprüngliche Zahlen abzüglich dokumentierter Korrekturen, Lösungsausschluss und Zusammenführung wurden geprüft. Keine Aufgabe wird unzulässig auf mehrere Seiten verteilt. Diese technische Prüfung ist keine vollständige fachliche Freigabe der Handschriften. Englische Varianten sind weiterhin nicht befüllt.
 
 Alle Hilfsdateien, SyncTeX, Font-Caches, Arbeitskopien, Renderings und technischen Prüfberichte liegen unter `%LOCALAPPDATA%/_tmp_LatexCache/mathematics_exercise_sheets/`. Der damalige direkte Editor-Build wurde geprüft und inzwischen auf Autorauftrag entfernt. Editor und Kommandozeile verwenden jetzt ausschließlich das reguläre Buildskript. Der Hauptordner enthält keine Bauartefakte, `build/` ausschließlich PDFs; die Python-Werkzeuge erzeugen keine projektinternen Bytecode-Caches. Keine Commits oder Pushes vorgenommen.
 
 ## Titelkopf vom 11. September 2026
 
 Der Blatttitel verwendet nun 28 pt Schriftgröße bei 32 pt Zeilenabstand. Die Zeile „Mit Musterlösungen“ wird im Aufgabenmodus mit `\phantom` in voller Größe reserviert. Der Autorenname steht dadurch pro Blatt in beiden Varianten an identischen PDF-Koordinaten. Die eigentlichen Aufgaben und Lösungs-PDFs bleiben unverändert.
-Prüfung abgeschlossen: alle 14 Einzelvarianten, beide Gesamt-PDFs und der direkte Editor-Build erfolgreich aktualisiert. Alle 14 Titelköpfe gerendert und visuell geprüft; Autorenkoordinaten zwischen den Modi für jedes Blatt identisch, unsichtbarer Lösungshinweis nicht im PDF-Text enthalten. Die vollständige automatische Prüfung aller 101 Aufgaben besteht; Seitenzahlen unverändert.
+Prüfung abgeschlossen: alle 14 Einzelvarianten und beide Gesamt-PDFs erfolgreich aktualisiert. Alle 14 Titelköpfe gerendert und visuell geprüft; Autorenkoordinaten zwischen den Modi für jedes Blatt identisch, unsichtbarer Lösungshinweis nicht im PDF-Text enthalten. Die vollständige automatische Prüfung aller 100 aktiven Aufgaben besteht; Seitenzahlen unverändert.
 
 ## Entwicklungsmodus vom 11. September 2026
 
 Automatische Änderungserkennung und gezielte parallele Warm-Builds für beide deutschen Fassungen ergänzt. Reguläre vollständige Builds bleiben verfügbar. Acht Regressionstests, automatischer Speichertest mit zwei gezielt aktualisierten Blattvarianten, Übernahme aller unveränderten Ausgaben und Sperre gegen gleichzeitige Builds erfolgreich geprüft. Der vorübergehende Testkommentar wurde vollständig entfernt; keine fachlichen Inhaltsänderungen.
+
+## Aufgabe 1 Grundlagen: Lückenfelder, 22. September 2026
+
+Auf Autorauftrag die sechs Punktfolgen in `content/chapters_de/fundamentals/propositional_logic.tex` durch graue `\Cloze`-Felder (18 × 5 mm) ersetzt. Den bisher nur erwähnten Befehl in `common/commands.tex` definiert. Aufgabeninhalt, einzutragende Pfeile und handschriftliche Lösung unverändert; Felder in beiden Fassungen leer.
+
+## Aufgabe 2 Grundlagen: Mengendarstellung, 22. September 2026
+
+Auf Autorauftrag die vier Mengengleichungen linksbündig und mit `&=` sauber ausgerichtet gesetzt. Die Primzahlmenge ist jetzt als `{x \in \N \mid x\text{ ist eine Primzahl}}` formuliert; die geraden natürlichen Zahlen als `{2k \mid k \in \N}`. Die Aufgabenstruktur und alle zehn Rechenaufträge bleiben unverändert.
+
+## Aufgabe 7 Grundlagen: Gleichheitszeichen, 22. September 2026
+
+Auf Autorauftrag hinter jedem der drei Binome in `content/chapters_de/fundamentals/binomial_expansion.tex` ein Gleichheitszeichen ergänzt. Dadurch ist sichtbar, dass jeweils bis zur entwickelten Form weitergerechnet werden soll; die Ausdrücke und die Aufgabenreihenfolge bleiben unverändert.
+
+## Aufgabe 9 Grundlagen: zentrierte Gleichung, 22. September 2026
+
+Die Gleichung `2x^2+4x=c` steht in `content/chapters_de/fundamentals/quadratic_parameter.tex` jetzt in einer zentrierten `equation*`-Umgebung. Der übrige Aufgabentext bleibt unverändert.
+
+## Aufgabe 10 Grundlagen: vorläufig deaktiviert, 22. September 2026
+
+Die Aufgabe „Summenformel und vollständige Induktion“ ist für dieses Semester vollständig auskommentiert, einschließlich der Lösungseinbindung. Die Quelldatei und die historische Lösungs-PDF bleiben erhalten; der Migrationsstatus markiert den Datensatz als `active: false`.

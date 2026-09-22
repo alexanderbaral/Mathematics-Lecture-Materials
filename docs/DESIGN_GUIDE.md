@@ -35,3 +35,5 @@ Nach zentralen Layoutänderungen alle befüllten Varianten bauen und rendern. Di
 Nummerierte Aufzählungen: ausschließlich schließende Klammer, also a), b) und in nummerischen Unterlisten 1), 2). Globale Vorgaben stehen in common/layout.tex. Handschriftliche Abbildungen bleiben davon ausgenommen.
 
 Temporäre Renderings und Build-Arbeitsdateien einschließlich der lokalen Quellenkopie liegen außerhalb der Synchronisierung im projektbezogenen Ordner unter %LOCALAPPDATA%/_tmp_LatexCache/. Im Projekt-build/ ausschließlich fertige PDFs ablegen.
+
+Kurze handschriftliche Antworten: `\Cloze` erzeugt ein leeres hellgraues Feld (18 mm breit, 5 mm hoch; Breite optional über `\Cloze[<Länge>]`). In Formeln auf der mathematischen Achse zentriert. Die Aufgabenfelder bleiben in beiden Lösungsmodi leer.

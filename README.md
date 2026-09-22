@@ -1,20 +1,20 @@
 # Mathematik – Übungsblätter
 
-Eigenständiges LuaLaTeX-Projekt für sieben Übungsblätter der TH Mannheim, Fakultät für Maschinenbau. Deutsch ist der Master. 101 Aufgaben wurden aus den sieben regulären alten Blättern in bisheriger Reihenfolge übernommen; Schreibfehler und dokumentierte mathematische Fehler wurden korrigiert. Die 164 referenzierten Lösungsseiten werden einheitlich oben um 18 mm und unten um 7 mm beschnitten und proportional bis zur verfügbaren Textbreite oder Texthöhe maximal vergrößert eingebunden; die Originaldateien bleiben unverändert.
+Eigenständiges LuaLaTeX-Projekt für sieben Übungsblätter der TH Mannheim, Fakultät für Maschinenbau. Deutsch ist der Master. 101 Aufgaben wurden zunächst aus den sieben regulären alten Blättern in bisheriger Reihenfolge übernommen; derzeit sind 100 Aufgaben aktiv, weil Aufgabe 10 zur vollständigen Induktion für dieses Semester auskommentiert ist. Schreibfehler und dokumentierte mathematische Fehler wurden korrigiert. Die 164 referenzierten Lösungsseiten werden einheitlich oben um 18 mm und unten um 7 mm beschnitten und proportional bis zur verfügbaren Textbreite oder Texthöhe maximal vergrößert eingebunden; die Originaldateien bleiben unverändert.
 
 ## PDFs
 
-Für den Überblick während der Entwicklung: **[Alle Aufgaben](build/de/all_exercises.pdf)** und **[Alle Aufgaben mit Lösungen](build/de_solutions/all_exercises.pdf)**. Beide Gesamt-PDFs enthalten Blatt-Lesezeichen und die Einzelblätter in der festgelegten Reihenfolge.
+Für den Überblick während der Entwicklung: **[Alle Aufgaben](build/de/_%C3%9Cbungsblatt%20Alle.pdf)** und **[Alle Aufgaben mit Lösungen](build/de_solutions/_%C3%9Cbungsblatt%20Alle%20%28mit%20L%C3%B6sungen%29.pdf)**. Beide Gesamt-PDFs enthalten Blatt-Lesezeichen und die Einzelblätter in der festgelegten Reihenfolge.
 
 | Blatt | Aufgaben | Mit Musterlösungen |
 | --- | --- | --- |
-| 1 Grundlagen | [PDF](build/de/fundamentals.pdf) | [PDF](build/de_solutions/fundamentals.pdf) |
-| 2 Lineare Gleichungssysteme | [PDF](build/de/linear_systems.pdf) | [PDF](build/de_solutions/linear_systems.pdf) |
-| 3 Vektorrechnung | [PDF](build/de/vector_algebra.pdf) | [PDF](build/de_solutions/vector_algebra.pdf) |
-| 4 Funktionen | [PDF](build/de/functions.pdf) | [PDF](build/de_solutions/functions.pdf) |
-| 5 Differenzialrechnung | [PDF](build/de/differential_calculus.pdf) | [PDF](build/de_solutions/differential_calculus.pdf) |
-| 6 Integralrechnung | [PDF](build/de/integral_calculus.pdf) | [PDF](build/de_solutions/integral_calculus.pdf) |
-| 7 Komplexe Zahlen | [PDF](build/de/complex_numbers.pdf) | [PDF](build/de_solutions/complex_numbers.pdf) |
+| 1 Grundlagen | [PDF](build/de/%C3%9Cbungsblatt%201%20-%20Grundlagen.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%201%20-%20Grundlagen%20%28mit%20L%C3%B6sungen%29.pdf) |
+| 2 Lineare Gleichungssysteme | [PDF](build/de/%C3%9Cbungsblatt%202%20-%20Lineare%20Gleichungssysteme.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%202%20-%20Lineare%20Gleichungssysteme%20%28mit%20L%C3%B6sungen%29.pdf) |
+| 3 Vektorrechnung | [PDF](build/de/%C3%9Cbungsblatt%203%20-%20Vektorrechnung.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%203%20-%20Vektorrechnung%20%28mit%20L%C3%B6sungen%29.pdf) |
+| 4 Funktionen | [PDF](build/de/%C3%9Cbungsblatt%204%20-%20Funktionen.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%204%20-%20Funktionen%20%28mit%20L%C3%B6sungen%29.pdf) |
+| 5 Differenzialrechnung | [PDF](build/de/%C3%9Cbungsblatt%205%20-%20Differenzialrechnung.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%205%20-%20Differenzialrechnung%20%28mit%20L%C3%B6sungen%29.pdf) |
+| 6 Integralrechnung | [PDF](build/de/%C3%9Cbungsblatt%206%20-%20Integralrechnung.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%206%20-%20Integralrechnung%20%28mit%20L%C3%B6sungen%29.pdf) |
+| 7 Komplexe Zahlen | [PDF](build/de/%C3%9Cbungsblatt%207%20-%20Komplexe%20Zahlen.pdf) | [PDF](build/de_solutions/%C3%9Cbungsblatt%207%20-%20Komplexe%20Zahlen%20%28mit%20L%C3%B6sungen%29.pdf) |
 
 Die PDF-Links gelten nach lokalem Build. `build/` wird nicht versioniert. Englisch ist vorbereitet, aber noch nicht übersetzt; derzeit gibt es keine englischen PDFs.
 
@@ -28,7 +28,7 @@ Einmal im Projektordner starten:
 
 Der Entwicklungsmodus aktualisiert **immer beide deutschen Fassungen**: ohne und mit Musterlösungen, einschließlich beider Gesamt-PDFs. Er läuft bis `Strg+C`. Nach dem Speichern wartet er kurz, bis die Schreibvorgänge abgeschlossen sind, und baut nur betroffene Blätter mit bis zu vier Prozessen. Änderungen während eines Builds werden anschließend verarbeitet. Bei Fehlern bleibt die Überwachung aktiv; nach der nächsten Korrektur wird erneut gebaut.
 
-Die beiden Gesamt-PDFs unter `build/de/all_exercises.pdf` und `build/de_solutions/all_exercises.pdf` im PDF-Betrachter öffnen. Ein Betrachter mit automatischem Neuladen zeigt die aktualisierten Dateien; das Skript selbst steuert den Betrachter nicht.
+Die beiden Gesamt-PDFs unter `build/de/_Übungsblatt Alle.pdf` und `build/de_solutions/_Übungsblatt Alle (mit Lösungen).pdf` in VS Code mit dem integrierten LaTeX-Workshop-PDF-Betrachter öffnen. Die Projektkonfiguration lädt ein geöffnetes PDF nach jedem Build automatisch neu und behält dabei die aktuelle Ansicht; das Skript selbst steuert den Betrachter nicht.
 
 Für eine einzelne Aktualisierung ohne laufende Überwachung:
 
@@ -73,7 +73,7 @@ Bei lokal gesperrten PowerShell-Skripten ist ein einzelner Aufruf mit `powershel
 
 Jede Variante erhält einen eigenen Buildstatus und Hilfsdateien unter `%LOCALAPPDATA%/_tmp_LatexCache/mathematics_exercise_sheets/latex_runs/<variante>/<blatt>/<lauf>/`. Getrennte Läufe vermeiden das Überschreiben von Hilfsdateien, die ein Synchronisierungsdienst vorübergehend sperrt. Fehlende Inhalte oder Fehler liefern Exitcode 1; am betroffenen Ausgabepfad verbleibt keine alte PDF. Andere Varianten werden weiter bearbeitet. Der letzte Aufruf schreibt `build_status.json` im lokalen Cache. Ein Build führt keine Übersetzung durch. `-Force` erzwingt einen Neubuild. `-Warm` verwendet das jüngste vorhandene Arbeitsverzeichnis je Blatt/Variante mit PDF und latexmk-Zustand; latexmk prüft dort die Abhängigkeiten und baut bei Änderungen neu. Ohne passenden Cache erfolgt ein normaler Build. Die Optionen `-Warm` und `-Force` sind nicht kombinierbar. Ohne `-Warm` bleiben die bisherigen isolierten Neubuilds bestehen.
 
-Bei vollständiger Blattauswahl erzeugt derselbe Aufruf automatisch `all_exercises.pdf` je gewählter Sprache/Lösungsvariante. Nur erfolgreiche Einzel-PDFs aus diesem Lauf werden zusammengefügt; die Gesamt-PDF hat einen eigenen Buildstatus. Ein Teilbuild entfernt die betroffene alte Gesamt-PDF, damit sie nicht einen veralteten Entwicklungsstand zeigt. Für eine neue Gesamtübersicht den Befehl ohne `-Sheet` ausführen. Gedruckte Seitenzahlen bleiben blattweise; Lesezeichen erleichtern die Navigation.
+Bei vollständiger Blattauswahl erzeugt derselbe Aufruf automatisch `_Übungsblatt Alle.pdf` bzw. `_Übungsblatt Alle (mit Lösungen).pdf` je gewählter Sprache/Lösungsvariante. Nur erfolgreiche Einzel-PDFs aus diesem Lauf werden zusammengefügt; die Gesamt-PDF hat einen eigenen Buildstatus. Ein Teilbuild entfernt die betroffene alte Gesamt-PDF, damit sie nicht einen veralteten Entwicklungsstand zeigt. Für eine neue Gesamtübersicht den Befehl ohne `-Sheet` ausführen. Gedruckte Seitenzahlen bleiben blattweise; Lesezeichen erleichtern die Navigation.
 
 Die Editor-Buildaktion ruft ebenfalls `tools/build-all.ps1` für alle deutschen Blätter und beide Lösungsmodi auf. Es gibt keinen separaten Direct-Build. `main.tex` bleibt der gemeinsame Dokumentkörper. Laufzeiten pro Blatt/Variante, PDF-Zusammenführung und Gesamtbuild stehen im lokalen Cache in `build_timing.json`; `build_status.json` enthält zusätzlich die Dauer jeder Ausgabe.
 
