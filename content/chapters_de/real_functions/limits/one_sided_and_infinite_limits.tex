@@ -1,0 +1,100 @@
+\subsection{Annäherung von links und von rechts}
+\label{subsec:real_functions_one_sided_limits}
+Das Verhalten kann davon abhängen, von welcher Seite wir uns nähern.
+Deshalb unterscheiden wir \emph{einseitige Grenzwerte}
+\EnglishTerm{one-sided limits}:
+\[
+  \lim_{x\to a^-}f(x)
+  \quad\text{mit }x<a,
+  \qquad
+  \lim_{x\to a^+}f(x)
+  \quad\text{mit }x>a.
+\]
+\begin{ExampleBox}{Ein Sprung hat zwei verschiedene Annäherungswerte}{real_functions_jump_limit}
+  Eine idealisierte Schaltfunktion sei durch
+  $s(x)=0$ für $x<0$ und $s(x)=1$ für $x\ge0$ gegeben.
+  \par\smallskip
+  \begin{minipage}[c]{0.47\linewidth}
+    Beide Seiten liefern ein eindeutiges, aber unterschiedliches Ergebnis:
+    \[
+      \lim_{x\to0^-}s(x)=\Cloze{1cm}{0},
+      \qquad
+      \lim_{x\to0^+}s(x)=\Cloze{1cm}{1}.
+    \]
+    Der zweiseitige Grenzwert bei null existiert nicht.
+    Auch eine Änderung von $s(0)$ würde daran nichts ändern.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.49\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_jump.tex}
+  \end{minipage}
+\end{ExampleBox}
+\begin{KeyPointBox}{Beide Seiten müssen zusammenpassen}{real_functions_two_sided_criterion}
+  Wenn eine Annäherung von beiden Seiten möglich ist, gilt für $L\in\R$:
+  \[
+    \lim_{x\to a}f(x)=L
+    \quad\Longleftrightarrow\quad
+    \lim_{x\to a^-}f(x)=\lim_{x\to a^+}f(x)=L.
+  \]
+  Am Rand der Definitionsmenge betrachten wir nur die zulässige Seite,
+  etwa $x\to0^+$ bei $\sqrt{x}$ auf $[0,\infty)$.
+\end{KeyPointBox}
+
+\subsection{Unbegrenzte Eingaben und unbegrenzte Funktionswerte}
+\label{subsec:real_functions_infinite_limits}
+Die Schreibweise mit $\infty$ kann zwei verschiedene Fragen ausdrücken.
+Man muss unterscheiden, \emph{was} unbegrenzt wird.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Grenzverhalten im Unendlichen}{real_functions_limit_at_infinity}
+  Bei $x\to+\infty$ wächst die Eingabe über jede feste Schranke,
+  bei $x\to-\infty$ wird sie beliebig stark negativ.
+
+  Die Aussage $\lim_{x\to+\infty}f(x)=L$ bedeutet:
+  Die Funktionswerte liegen und bleiben beliebig nahe bei $L$,
+  sobald $x$ genügend groß ist. Für $x\to-\infty$ gilt dies entsprechend.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Die Eingabe wächst -- die Ausgabe nähert sich null}{real_functions_reciprocal_infinity}
+  Für große positive Eingaben vergleichen wir die Werte von $f(x)=1/x$:
+  \[
+    \begin{array}{c|rrrr}
+      x&10&100&1000&10000\\ \hline
+      1/x&0{,}1&0{,}01&0{,}001&0{,}0001
+    \end{array}
+    \qquad
+    \lim_{x\to+\infty}\frac1x=\Cloze{1cm}{0}.
+  \]
+  Der Wert null wird nie angenommen. Ein Grenzwert muss also kein
+  Funktionswert sein. Auch für $x\to-\infty$ gilt $1/x\to0$.
+\end{ExampleBox}
+\end{minipage}
+
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Uneigentliches Grenzverhalten}{real_functions_divergence}
+  Die Schreibweise $f(x)\to+\infty$ bedeutet, dass $f(x)$ schließlich
+  jede feste obere Schranke überschreitet und darüber bleibt.
+  Entsprechend bedeutet $f(x)\to-\infty$ ein dauerhaftes Unterschreiten
+  jeder festen unteren Schranke. Man spricht von einem
+  \emph{uneigentlichen Grenzwert} \EnglishTerm{infinite limit}.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Eine endliche Stelle -- unbegrenzte Werte}{real_functions_reciprocal_zero}
+  Bei $f(x)=1/x$ nähern wir uns nun nicht dem Unendlichen, sondern der
+  ausgeschlossenen Stelle null:
+  \[
+    \lim_{x\to0^-}\frac1x=\Cloze{2cm}{-\infty},
+    \qquad
+    \lim_{x\to0^+}\frac1x=\Cloze{2cm}{+\infty}.
+  \]
+  Es gibt bei null weder einen gemeinsamen endlichen noch einen
+  gemeinsamen uneigentlichen Grenzwert.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_reciprocal.tex}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
+
+\begin{RemarkBox}
+  $\infty$ ist keine reelle Zahl. Insbesondere sind
+  $1/0$, $\infty-\infty$ und $\infty/\infty$ keine zulässigen
+  gewöhnlichen Rechnungen.
+\end{RemarkBox}

@@ -1,0 +1,78 @@
+\subsection{Sinus und Kosinus am Einheitskreis}
+\label{subsec:real_functions_unit_circle}
+Der \emph{Einheitskreis} \EnglishTerm{unit circle} hat den Radius $1$.
+Wir beginnen bei $(1,0)$ und tragen den Winkel $x$ gegen den Uhrzeigersinn
+ab; negative Winkel werden im Uhrzeigersinn gemessen.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Sinus und Kosinus für beliebige Winkel}{real_functions_sine_cosine}
+  \begin{minipage}[c]{0.49\linewidth}
+    Zum Winkel $x\in\R$ gehört auf dem Einheitskreis der Punkt
+    \[
+      P=(\cos x,\sin x).
+    \]
+    Der Kosinus ist seine horizontale, der Sinus seine vertikale Koordinate.
+    Nach dem Satz des Pythagoras gilt
+    \[
+      \cos^2x+\sin^2x=1.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.47\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_unit_circle.tex}
+  \end{minipage}
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Eine Umdrehung in Viertelschritten}{real_functions_quarter_turns}
+  Lesen Sie die Koordinaten an den vier Achsenschnittpunkten des Kreises ab.
+  \[
+    \begin{array}{c|ccccc}
+      x&0&\pi/2&\pi&3\pi/2&2\pi\\ \hline
+      \cos x&1&\Cloze{1cm}{0}&\Cloze{1cm}{-1}&\Cloze{1cm}{0}&1\\[0.6em]
+      \sin x&0&\Cloze{1cm}{1}&\Cloze{1cm}{0}&\Cloze{1cm}{-1}&0
+    \end{array}
+  \]
+  Nach einer ganzen Umdrehung wird derselbe Punkt wieder erreicht.
+\end{ExampleBox}
+\end{minipage}
+
+
+\clearpage
+\subsection{Periodizität: Derselbe Verlauf wiederholt sich}
+\label{subsec:real_functions_periodicity}
+Anders als eine Exponentialfunktion behalten Sinus und Kosinus ihre
+Richtung nicht dauerhaft bei. Stattdessen wiederholt sich ihr Verlauf.
+\begin{DefinitionBox}{Funktionseigenschaft -- Periodizität}{real_functions_periodic}
+  Eine Funktion $f:D\to\R$ heißt \emph{periodisch}
+  \EnglishTerm{periodic}, wenn es eine Zahl $T>0$ mit $D+T=D$ und
+  \[
+    f(x+T)=f(x)\qquad\text{für alle }x\in D
+  \]
+  gibt. Die Zahl $T$ heißt \emph{Periode} \EnglishTerm{period}.
+  Die kleinste positive Periode, falls vorhanden, heißt
+  \emph{Grundperiode} \EnglishTerm{fundamental period}.
+\end{DefinitionBox}
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_sine_cosine.tex}
+\end{center}
+\begin{TheoremBox}{Eigenschaften von Sinus und Kosinus}{real_functions_trig_properties}
+  Beide Funktionen sind auf $\R$ stetig, beschränkt und besitzen die
+  \textcolor{green!55!black}{Wertemenge} $[-1,1]$ sowie die Grundperiode $2\pi$.
+  \[
+    \begin{array}{c@{\qquad}c}
+      \sin(-x)=-\sin x&\cos(-x)=\cos x\\
+      \text{ungerade}&\text{gerade}
+    \end{array}
+  \]
+  Ihre Nullstellen und ihre Beziehung durch Verschiebung lauten:
+  \[
+    \begin{aligned}
+      \sin x=0&\Longleftrightarrow x=k\pi,\\
+      \cos x=0&\Longleftrightarrow x=\frac\pi2+k\pi,
+           \qquad k\in\Z,\\
+      \cos x&=\sin\left(x+\frac\pi2\right).
+    \end{aligned}
+  \]
+\end{TheoremBox}
+Sinus und Kosinus sind auf ganz $\R$ nicht monoton.
+Jedoch steigt $\sin x$ auf $[-\pi/2,\pi/2]$ streng monoton;
+$\cos x$ fällt auf $[0,\pi]$ streng monoton.
+Diese Intervalle werden für die Umkehrfunktionen wichtig.

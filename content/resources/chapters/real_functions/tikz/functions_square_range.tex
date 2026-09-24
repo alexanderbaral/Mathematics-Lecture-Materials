@@ -1,0 +1,53 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.05cm,y=0.86cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2.3,0)--(2.5,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.35)--(0,4.45) node[above] {$y$};
+  \draw[<->,black!55] (-3.15,-1.25)--(-3.15,4.35);
+  \node[rotate=90] at (-3.65,1.55) {\Lang{Zielmenge}{codomain} $Z=\R$};
+
+  \foreach \x/\name in {-2/xtmtwo,-1/xtmone,1/xtone,2/xttwo}{
+    \draw[black!50] (\x,-0.055)--(\x,0.055);
+    \node[below=4pt,inner sep=1pt] (\name) at (\x,0) {$\x$};
+  }
+  \foreach \y/\name in {-1/ytmone,1/ytone,2/yttwo,3/ytthree,4/ytfour}{
+    \draw[black!50] (-0.055,\y)--(0.055,\y);
+    \node[left=4pt,inner sep=1pt] (\name) at (0,\y) {$\y$};
+  }
+
+  \begin{scope}
+    \clip (-2.12,-1.25) rectangle (2.12,4.35);
+    \draw[THMBlue,line width=1.15pt,domain=-2.1:2.1,samples=93]
+      plot (\x,{\x*\x});
+    \foreach \x in {-2,-1,0,1,2}
+      \fill[THMBlue] (\x,{\x*\x}) circle (1.7pt);
+  \end{scope}
+  \node[anchor=west,inner sep=0pt,text=THMBlue] (graphlabel)
+    at (0.32,3.45) {$f(x)=x^2$};
+
+  \draw[green!55!black,line width=1.2pt,decorate,
+    decoration={brace,amplitude=6pt}] (3.15,4.25)--(3.15,0);
+  \draw[red!75!black,line width=1.2pt,decorate,
+    decoration={brace,amplitude=6pt}] (3.15,0)--(3.15,-1.25);
+  \node[anchor=west,text=green!55!black] at (3.48,2.18)
+    {\Lang{Wertemenge}{range} $W_f$};
+  \node[anchor=west,text=red!75!black] at (3.48,-0.65)
+    {\Lang{nicht angenommen}{not attained}};
+
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2,-1) rectangle (2,4)
+        (xtmtwo.south west) rectangle (xtmtwo.north east)
+        (xtmone.south west) rectangle (xtmone.north east)
+        (xtone.south west) rectangle (xtone.north east)
+        (xttwo.south west) rectangle (xttwo.north east)
+        (ytmone.south west) rectangle (ytmone.north east)
+        (ytone.south west) rectangle (ytone.north east)
+        (yttwo.south west) rectangle (yttwo.north east)
+        (ytthree.south west) rectangle (ytthree.north east)
+        (ytfour.south west) rectangle (ytfour.north east)
+        (graphlabel.south west) rectangle (graphlabel.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2,-1) grid (2,4);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

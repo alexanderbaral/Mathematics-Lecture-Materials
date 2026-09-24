@@ -1,0 +1,74 @@
+\subsection{Eindeutig rückwärts zuordnen}
+\label{subsec:real_functions_inverse_principle}
+Eine Rückwärtszuordnung ist nur dann eine Funktion, wenn kein Ausgangswert
+zu zwei verschiedenen Eingaben gehört. Zum Beispiel liefern $-2$ und $2$
+beim Quadrieren denselben Wert $4$: Auf ganz $\R$ lässt sich das
+Quadrieren nicht eindeutig umkehren.
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Funktionseigenschaft -- Injektivität und Umkehrfunktion}{real_functions_inverse}
+  Eine Funktion $f:D\to\R$ heißt \emph{injektiv} \EnglishTerm{injective},
+  wenn verschiedene Eingaben verschiedene Ausgangswerte liefern:
+  \[
+    x_1\ne x_2\quad\Longrightarrow\quad f(x_1)\ne f(x_2).
+  \]
+  Dann existiert auf ihrer \textcolor{green!55!black}{Wertemenge} ${\color{green!55!black}W}=f(D)$ die
+  \emph{Umkehrfunktion} \EnglishTerm{inverse function}
+  $f^{-1}:W\to D$, bestimmt durch
+  \[
+    y=f(x)\quad\Longleftrightarrow\quad x=f^{-1}(y).
+  \]
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Eine Geradengleichung umkehren}{real_functions_inverse_affine}
+  Für $f(x)=2x+1$ soll zu einem Ausgangswert $y$ die Eingabe bestimmt werden.
+  \begin{ClozeArea}[34]{6}
+    Wir lösen die Gleichung nach der bisherigen Eingabe auf:
+    \[
+      \begin{array}{r@{\quad}l@{\qquad}l}
+        &y=2x+1&\TransformOp{-1}\\[0.7em]
+        \Longleftrightarrow&y-1=2x&\TransformOp{:2}\\[0.7em]
+        \Longleftrightarrow&\dfrac{y-1}{2}=x.&
+      \end{array}
+    \]
+    Somit ist $f^{-1}(y)=(y-1)/2$, oder mit dem üblichen Variablennamen
+    $f^{-1}(x)=(x-1)/2$.
+  \end{ClozeArea}
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{KeyPointBox}{Hinweg und Rückweg heben sich auf}{real_functions_inverse_identities}
+  Die Definitions- und \textcolor{green!55!black}{Wertemenge} tauschen ihre Rollen:
+  \[
+    f^{-1}(f(x))=x\quad(x\in D),\qquad
+    f(f^{-1}(y))=y\quad(y\in W).
+  \]
+  Die Schreibweise $f^{-1}$ bezeichnet die Umkehrfunktion,
+  \emph{nicht} den Kehrwert $1/f$.
+\end{KeyPointBox}
+
+\begin{TheoremBox}{Monotonie sichert die Umkehrbarkeit}{real_functions_monotone_inverse}
+  Eine auf einem Intervall streng monotone Funktion ist injektiv.
+  Ist sie zusätzlich stetig, ist ihre Umkehrfunktion auf der \textcolor{green!55!black}{Wertemenge}
+  ebenfalls stetig und streng monoton in derselben Richtung.
+\end{TheoremBox}
+\begin{ExampleBox}{Den Definitionsbereich passend einschränken}{real_functions_square_inverse}
+  Wir beschränken $f(x)=x^2$ auf $[0,\infty)$. Dort ist $f$ streng
+  monoton steigend und hat die \textcolor{green!55!black}{Wertemenge} $[0,\infty)$.
+  \[
+    y=x^2,\ x\ge0
+    \quad\Longleftrightarrow\quad
+    x=\sqrt y.
+  \]
+  Die Umkehrfunktion ist daher $\Cloze{4cm}{f^{-1}(x)=\sqrt x}$.
+  Eine Einschränkung auf $(-\infty,0]$ würde dagegen den Rückweg
+  $y\mapsto-\sqrt y$ liefern.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_inverse_reflection.tex}
+  \end{center}
+\end{ExampleBox}
+\begin{KeyPointBox}{Graphisch werden die Koordinaten vertauscht}{real_functions_inverse_graph}
+  Aus $(x,y)$ auf dem Graphen von $f$ wird $(y,x)$ auf dem Graphen von
+  $f^{-1}$. Bei gleicher Skalierung beider Achsen entspricht dies einer
+  Spiegelung an der Geraden $y=x$.
+\end{KeyPointBox}

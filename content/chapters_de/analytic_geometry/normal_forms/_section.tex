@@ -1,10 +1,55 @@
-\section{Normalformen}
+\section{Normalform einer Ebene}
 \label{sec:analytic_geometry_normal_forms}
 
-Normalformen beschreiben eine Ebene über ihre senkrechte Richtung. Dadurch
-werden Lageprüfungen, Umformungen und später auch Abstandsberechnungen besonders
-kompakt.
+Im Gegensetz zur Parameterform einer Ebene, die 2 Richtungsvektoren verwendet, 
+beschreibt die Normalform eine Ebene durch eine zu ihr senkrechte Richtung. 
+Das ermöglicht kompakte Lageprüfungen und bereitet die Abstandsberechnung vor.
 
-\input{content/chapters_de/analytic_geometry/normal_forms/plane_normal_form.tex}
+\begin{TheoremBox}{Normalenform einer Ebene}{analytic_geometry_plane_normal_equation}
+  Sei $P$ ein Punkt der Ebene $E$ mit Ortsvektor $\overrightarrow{OP}$ und
+  $\vec n\ne\vec 0$ ein Vektor, der senkrecht auf $E$ steht. Er heißt
+  \emph{Normalenvektor} \EnglishTerm{normal vector} der Ebene.
+  Die \emph{Normalenform}
+  \EnglishTerm{normal equation} der Ebene lautet
+  \[
+    E:\quad (\vec x-\overrightarrow{OP})\cdot\vec n=0.
+  \]
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_normal_form.tex}
+  \end{center}
+\end{TheoremBox}
+
+\begin{KeyPointBox}{Hessesche Normalform}{analytic_geometry_hesse_normal_form}
+  Mit dem Einheitsnormalenvektor
+  $\vec e_n=\vec n/\lvert\vec n\rvert$ erhält man als Spezialfall die
+  \emph{Hessesche Normalform} \EnglishTerm{Hesse normal form}
+  \[
+    E:\quad (\vec x-\overrightarrow{OP})\cdot\vec e_n=0.
+  \]
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Normalenform in verschiedenen Dimensionen}{analytic_geometry_line_normal_equation}
+  Die Normalenform lässt sich in jeder Raumdimension verwenden. Für einen
+  Stützvektor $\overrightarrow{OP}\in\R^m$ und einen Normalenvektor
+  $\vec n\in\R^m\setminus\{\vec 0\}$ lautet sie
+  \[
+    (\vec x-\overrightarrow{OP})\cdot\vec n=0.
+  \]
+  \begin{minipage}[c]{0.52\linewidth}
+  Geometrisch beschreibt die Normalenform immer ein geometrisches Gebilde, dessen Dimension
+  um eins kleiner ist als die des umgebenden Raums:
+
+  \begin{itemize}
+    \item In $\R^2$ ist dies eine Gerade (siehe Abbildung).
+    \item In $\R^3$ ist dies eine Ebene. (siehe Satz~\ref{analytic_geometry_plane_normal_equation})
+  \end{itemize}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.45\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/line_normal_form.tex}
+  \end{minipage}
+
+
+\end{KeyPointBox}
 
 \input{content/chapters_de/analytic_geometry/normal_forms/converting_plane_representations.tex}

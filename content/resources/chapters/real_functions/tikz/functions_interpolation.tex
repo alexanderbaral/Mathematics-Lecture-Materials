@@ -1,0 +1,29 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=2cm,y=2.4cm,>=Latex,line cap=round]
+  \draw[->,black!55] (0,0)--(2.7,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,1.8) node[above] {$y$};
+  \draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (2,0) {$2$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt2) at (0,1) {$1$};
+
+  \begin{scope}
+    \clip (0,0) rectangle (2.5,1.6);
+    \draw[THMBlue,line width=1.15pt,domain=0:2,samples=81] plot (\x,{2*\x-\x*\x});
+\fill[THMBlue] (0,0) circle (2pt) (1,1) circle (2pt) (2,0) circle (2pt);
+  \end{scope}
+  \node[anchor=south] at (1.250,2.150) {$p(x)=\Cloze{3cm}{-x^2+2x}$};
+  
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (0,0) rectangle (2.5,1.6)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (yt2.south west) rectangle (yt2.north east);
+      \draw[step=1,black!8,line width=0.25pt] (0,0) grid (2.5,1.6);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,32 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (0.15,-0.85) rectangle (7.45,4.55);
+  \coordinate (O) at (2.10,0);
+  \coordinate (X) at (2.10,2.40);
+  \coordinate (P) at (4.50,1.60);
+
+  \draw[black!65,line width=0.9pt]
+    (0.55,2.9167)--(6.85,0.8167);
+  \draw[->,olive!80!black,line width=1.25pt] (O)--(P)
+    node[pos=0.55,below right=4pt] {$\overrightarrow{OP}$};
+  \draw[->,red!75!black,line width=1.25pt] (O)--(X)
+    node[pos=0.45,left=6pt] {$\vec x$};
+  \draw[->,teal!80!black,line width=1.35pt] (P)--(X);
+  \node[text=teal!80!black] at (3.75,2.52)
+    {$\vec x-\overrightarrow{OP}$};
+  \draw[->,THMBlue,line width=1.5pt] (X)--(2.70,4.20)
+    node[pos=0.78,right=6pt] {$\vec n$};
+
+  % Quarter circle between the normal and the line, with an interior dot.
+  \draw[black!65,line width=0.7pt]
+    ($(X)+(-18.435:0.40)$)
+    arc[start angle=-18.435,end angle=71.565,radius=0.40];
+  \fill[black!65] ($(X)+(26.565:0.25)$) circle (0.8pt);
+  \fill (O) circle (1.7pt) node[below=4pt] {$O$};
+  \fill (P) circle (1.7pt) node[above right=4pt] {$P$};
+  \fill (X) circle (1.7pt);
+
+  \node (lineLabel) at (5.90,0.05) {\Lang{Gerade}{Line} $g$};
+  \draw[->,black!65,line width=0.75pt]
+    (lineLabel.north west) .. controls (5.25,0.42) and (5.55,0.95)
+      .. (5.85,1.15);
+\end{tikzpicture}

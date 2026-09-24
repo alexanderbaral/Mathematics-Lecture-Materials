@@ -1,22 +1,44 @@
 \begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
-  \path[use as bounding box] (-0.25,-0.65) rectangle (15.85,4.15);
+  \path[use as bounding box] (-0.15,-0.15) rectangle (15.75,9.55);
 
-  \foreach \shift in {0,5.35,10.70}{
-    \begin{scope}[shift={(\shift,0)}]
-      \fill[black!5] (0.25,0.65)--(3.70,0.65)--(4.65,2.15)--(1.20,2.15)--cycle;
-      \draw[black!45,line width=0.7pt]
-        (0.25,0.65)--(3.70,0.65)--(4.65,2.15)--(1.20,2.15)--cycle;
+  % Exactly one solution: the line intersects the plane in one point.
+  \begin{scope}[shift={(0,8.25)}]
+    \fill[black!5] (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+    \draw[black!45,line width=0.7pt]
+      (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+    \draw[THMBlue,line width=1.25pt] (0.55,1.15)--(3.95,-1.15);
+    \fill (2.35,-0.07) circle (1.8pt)
+      node[above right=2pt,inner sep=1pt] {$S$};
+  \end{scope}
+  \node at (10.25,8.25) {\Lang{genau eine Lösung}{exactly one solution}%
+    \hspace{0.45cm}$\Longleftrightarrow$\hspace{0.45cm}%
+    \Cloze{5.2cm}{\Lang{$g$ schneidet $E$}{$g$ intersects $E$}}};
+
+  % No solution: the line is parallel to the plane with positive distance.
+  \begin{scope}[shift={(0,4.85)}]
+    \fill[black!5] (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+    \draw[black!45,line width=0.7pt]
+      (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+    \begin{scope}
+      \clip (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+      \draw[black!8,line width=6pt,line cap=round] (0.70,-0.05)--(3.75,-0.05);
+      \draw[black!15,line width=3pt,line cap=round] (0.70,-0.05)--(3.75,-0.05);
     \end{scope}
-  }
+    \draw[THMBlue,line width=1.25pt] (0.70,1.15)--(3.75,1.15);
+  \end{scope}
+  \node at (10.25,4.85) {\Lang{keine Lösung}{no solution}%
+    \hspace{0.45cm}$\Longleftrightarrow$\hspace{0.45cm}%
+    \Cloze{5.2cm}{$g\parallel E$}};
 
-  \draw[THMBlue,line width=1.25pt] (0.65,3.45)--(4.25,0.15);
-  \fill (2.55,1.70) circle (1.8pt)
-    node[above right=3pt,fill=white,inner sep=1pt] {$S$};
-  \node at (2.45,-0.15) {\Lang{ein Schnittpunkt}{one intersection}};
-
-  \draw[THMBlue,line width=1.25pt] (5.80,3.25)--(9.75,3.25);
-  \node at (7.80,-0.15) {\Lang{parallel, kein Schnittpunkt}{parallel, no intersection}};
-
-  \draw[THMBlue,line width=1.25pt] (11.30,1.35)--(14.90,1.90);
-  \node at (13.15,-0.15) {\Lang{Gerade liegt in der Ebene}{line contained in plane}};
+  % Infinitely many solutions: the line lies in the plane.
+  \begin{scope}[shift={(0,1.45)}]
+    \fill[black!5] (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+    \draw[black!45,line width=0.7pt]
+      (0.25,-0.70)--(3.55,-0.70)--(4.20,0.70)--(0.90,0.70)--cycle;
+    \draw[black!15,line width=3.5pt,line cap=round] (0.75,-0.32)--(3.65,0.30);
+    \draw[THMBlue,line width=1.25pt] (0.75,-0.32)--(3.65,0.30);
+  \end{scope}
+  \node at (10.25,1.45) {\Lang{$\infty$-viele Lösungen}{$\infty$ many solutions}%
+    \hspace{0.45cm}$\Longleftrightarrow$\hspace{0.45cm}%
+    \Cloze{5.2cm}{\Lang{$g$ liegt in $E$}{$g$ lies in $E$}}};
 \end{tikzpicture}

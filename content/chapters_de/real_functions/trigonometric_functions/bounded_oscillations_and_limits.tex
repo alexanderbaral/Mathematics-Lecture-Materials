@@ -1,0 +1,43 @@
+\clearpage
+\subsection{Grenzwerte trotz Schwingung}
+\label{subsec:real_functions_squeeze}
+Der Sinus besitzt für $x\to+\infty$ keinen Grenzwert:
+Bei $x=\pi/2+2k\pi$ ist sein Wert $1$, bei $x=3\pi/2+2k\pi$ ist er $-1$.
+Beide Arten von Eingaben werden beliebig groß. Beschränktheit allein
+reicht also nicht aus.
+
+Eine immer kleiner werdende Hülle kann die Schwingung dennoch
+auf einen Grenzwert festlegen.
+\begin{TheoremBox}{Einschließungsprinzip}{real_functions_squeeze}
+  Gilt für die betrachtete Annäherung schließlich
+  $u(x)\le f(x)\le v(x)$ und haben beide äußeren Funktionen denselben
+  endlichen Grenzwert $L$, dann gilt auch
+  \[
+    \lim u(x)=\lim v(x)=L
+    \quad\Longrightarrow\quad
+    \lim f(x)=L.
+  \]
+  Diese Aussage heißt \emph{Einschließungsprinzip}
+  \EnglishTerm{squeeze theorem}.
+\end{TheoremBox}
+\begin{ExampleBox}{Eine abklingende Schwingung}{real_functions_sinc_infinity}
+  Bestimmen Sie das Verhalten von $f(x)=\sin x/x$ für $x\to\pm\infty$.
+  \begin{ClozeArea}[34]{6}
+    Aus der Beschränktheit des Sinus folgt für $x\ne0$
+    \[
+      \left|\frac{\sin x}{x}\right|\le\frac1{|x|}
+      \quad\Longrightarrow\quad
+      -\frac1{|x|}\le\frac{\sin x}{x}\le\frac1{|x|}.
+    \]
+    Beide Schranken gehen gegen null. Also gilt
+    $\lim_{x\to\pm\infty}\sin x/x=0$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_squeeze.tex}
+  \end{center}
+\end{ExampleBox}
+\begin{RemarkBox}
+  Hier wurde das Verhalten für große $|x|$ untersucht, nicht für $x\to0$.
+  An der Stelle null hilft die Schranke $1/|x|$ nicht.
+  Den dortigen Grenzwert behandeln wir bei der Differentialrechnung.
+\end{RemarkBox}

@@ -31,6 +31,12 @@ so that future drafts increasingly match the style of the revised material.
   explanations into this opening.
 
 #### Concise mathematical presentation
+- Before a displayed equation, write a meaningful introductory sentence whose
+  first line fills at least approximately half the available text width.
+  Avoid isolated one- or two-word introductions such as "Für" or "Gegeben".
+  Move useful context from after the equation into its introduction when
+  needed; do not add filler merely to lengthen the line. Check this visually,
+  especially in examples and minipages.
 - Use prose mainly for orientation, transitions, and interpretation. Let
   formulas, tables, diagrams, and deliberate spatial arrangement carry the
   explanation whenever they express the relationship more directly.
@@ -78,10 +84,20 @@ so that future drafts increasingly match the style of the revised material.
 - For calculations, make the given information, the quantity sought, the
   calculation, and the result recognizable where appropriate. Carry units
   consistently throughout.
+- Before concrete numerical vectors are used in a calculation, identify their
+  mathematical role through a preceding general formula, concise prose, or
+  explicit annotations. Do not apply an operation to unexplained numerical
+  vectors; make clear, for example, whether a vector is a support vector, a
+  direction vector, a normal vector, or a projection.
 - Prefer technical or mechanical-engineering quantities when they arise
   naturally from the topic; do not force an artificial application context.
 
 #### Figures and color
+- In coordinate diagrams for concrete numerical examples, show a subtle
+  background grid at integer coordinate values and label the integer axis
+  ticks (for example 1, 2, 3, 4). Grid spacing and tick values must match the
+  numerical coordinates, including when drawing units are enlarged. Keep
+  the grid visually subordinate to vectors and labels.
 - Place a figure directly beside or immediately after the thought that needs
   it. Use side-by-side text, formulas, tables, and figures when this makes their
   correspondence visible without page turning or unnecessary eye movement.
@@ -100,6 +116,10 @@ so that future drafts increasingly match the style of the revised material.
   name a mathematically significant final state. Use `\Longleftrightarrow` only
   for equivalent statements or states and `\Longrightarrow` for one-way
   consequences.
+- Before completing any TikZ figure, visually check every label and
+  mathematical expression: it must not cross, touch, or be obscured by an axis,
+  geometric object, arrow, line, or another label. Use transparent label
+  backgrounds unless the author explicitly requests an exception.
 
 #### Cloze design
 - Preserve the complete reasoning context in the cloze version: prompts,
@@ -314,6 +334,20 @@ Values come from central configuration/language logic. Institution/faculty belon
 ## 9. Mathematics conventions
 Use modern mathematical LaTeX, a clean package set, and no duplicate package loads. Use suitable tools such as `amsmath`/`mathtools`, TikZ, `tcolorbox`, `microtype`, `booktabs`, `tabularx`, `hyperref` only as needed. Avoid obsolete `\rm`, `\bf`, `\it` definitions.
 
+### Analytic-geometry notation
+- Name distinct points with distinct uppercase letters such as $P$, $Q$, and
+  $R$. Use their direct connecting vectors such as $\overrightarrow{PQ}$ and
+  $\overrightarrow{OP}$ unless separate position-vector symbols are needed
+  later in a calculation.
+- Write vector components with exactly one index, for example
+  $\vec p=(p_1,p_2,p_3)^{\mathsf T}$ and
+  $\vec q=(q_1,q_2,q_3)^{\mathsf T}$. Avoid double indices such as
+  $x_{i,j}$ in introductory analytic geometry.
+- Use $x_1,x_2,x_3$ for coordinate axes and the components of a general
+  position vector $\vec x$. Choose other vector letters from their
+  mathematical role rather than using $\vec x,\vec y,\vec z$ merely to
+  distinguish several vectors.
+
 For displayed transformation chains, align successive equivalence signs
 vertically. Each line represents one complete equation; place the operation
 that produces the following line in a separate right-hand column after a tall
@@ -371,12 +405,16 @@ After visual/layout/TikZ/cloze/title-page changes, visually inspect affected PDF
 
 Codex may inspect `git status`, `git diff`, and `git log`. Do not commit, push, or publish changes unless explicitly asked. Before handing back substantial work, summarize meaningful changes and `git status`.
 
-Keep generated LaTeX artifacts, logs, and auxiliary files under `build/` out of
-source control. As an explicit project exception, version exactly the four
-deliverables `build-de.pdf`, `build-de-cloze.pdf`, `build-en.pdf`, and
-`build-en-cloze.pdf` from that folder; ignore every other generated PDF.
-Source, configuration, documentation, and required branding assets belong in
-the repository.
+Keep generated LaTeX artifacts, logs, and auxiliary files out of source control.
+The `build/` folder may contain the final PDFs and their `.synctex.gz` source
+maps; the source maps are needed by the PDF viewer to jump from a PDF position
+to the corresponding TeX location. Store all other auxiliary files, logs, and
+caches under the user's local temporary folder. As an explicit project
+exception, version exactly the four deliverables `build-de.pdf`,
+`build-de-cloze.pdf`, `build-en.pdf`, and `build-en-cloze.pdf` from `build/`;
+ignore all `.synctex.gz` files and every other generated PDF. Source,
+configuration, documentation, and required branding assets belong in the
+repository.
 
 ## 12. Legacy, README, and scope discipline
 Except for the temporary inbox under `legacy/notes/handwritten/`, files under `legacy/` are historical references only. Do not include them in normal builds or copy their package setup wholesale. They may inform fonts, colors, and prior author conventions.

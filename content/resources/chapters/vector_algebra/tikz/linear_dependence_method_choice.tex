@@ -1,41 +1,64 @@
-\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
   \tikzset{
-    decision/.style={
-      draw=THMBlue,
-      fill=THMBlue!4,
-      line width=1pt,
-      rounded corners=2pt,
-      minimum width=5.0cm,
-      minimum height=1.05cm,
-      align=center
+    start/.style={
+      draw=black, fill=white, line width=0.9pt, rounded corners=2pt,
+      text width=5.2cm, minimum height=1.0cm, align=center
     },
     method/.style={
-      draw=black!55,
-      fill=black!2,
-      line width=0.7pt,
-      rounded corners=2pt,
-      minimum width=5.0cm,
-      minimum height=1.05cm,
-      align=center
-    }
+      draw=black!60, fill=black!2, line width=0.7pt, rounded corners=2pt,
+      text width=3.7cm, minimum height=1.0cm, align=center
+    },
+    independent result/.style={
+      draw=THMBlue, fill=THMBlue!8, line width=0.9pt, rounded corners=2pt,
+      text width=2.3cm, minimum height=0.9cm, align=center, font=\bfseries
+    },
+    dependent result/.style={
+      draw=olive!80!black, fill=olive!14, line width=0.9pt, rounded corners=2pt,
+      text width=2.3cm, minimum height=0.9cm, align=center, font=\bfseries
+    },
+    connection/.style={->,black,line width=0.9pt}
   }
 
-  \node[decision] (start) at (0,3.3)
-    {$k$ \Lang{Vektoren im}{vectors in} $\R^n$};
-  \node[decision] (question) at (0,1.65)
-    {$k=n$?};
-  \node[method] (determinant) at (-3.25,0)
-    {\Lang{quadratisches homogenes LGS}{square homogeneous system}\\
-     \textbf{\Lang{Determinante oder Gauß}{determinant or elimination}}};
-  \node[method] (gauss) at (3.25,0)
-    {\Lang{nicht quadratisches homogenes LGS}{non-square homogeneous system}\\
-     \textbf{\Lang{Gauß-Verfahren}{Gaussian elimination}}};
+  \node[start] (start) at (0,6.7)
+    {$k$ \Lang{Vektoren in}{vectors in} $\R^n$};
 
-  \draw[->,THMBlue,line width=1pt] (start)--(question);
-  \draw[->,THMBlue,line width=1pt] (question.south west)--(determinant.north)
-    node[pos=0.52,above left=2pt,fill=white,inner sep=1pt]
-      {\Lang{ja}{yes}};
-  \draw[->,THMBlue,line width=1pt] (question.south east)--(gauss.north)
-    node[pos=0.52,above right=2pt,fill=white,inner sep=1pt]
-      {\Lang{nein}{no}};
+  \node[method] (gauss) at (-6,3.8)
+    {\textbf{\Lang{Gauß-Verfahren}{Gaussian elimination}}};
+  \node[method,text width=4.8cm] (determinant) at (0,3.8)
+    {\textbf{\Lang{Determinantenkriterium}{determinant criterion}}\\
+     $\det(\vec v_1,\dots,\vec v_n)$};
+  \node[dependent result] (immediate) at (6,3.8)
+    {\Lang{linear abhängig}{linearly dependent}};
+
+  \node[independent result] (gaussIndependent) at (-7.5,0.4)
+    {\Lang{linear unabhängig}{linearly independent}};
+  \node[dependent result] (gaussDependent) at (-4.5,0.4)
+    {\Lang{linear abhängig}{linearly dependent}};
+  \node[independent result] (detIndependent) at (-1.5,0.4)
+    {\Lang{linear unabhängig}{linearly independent}};
+  \node[dependent result] (detDependent) at (1.5,0.4)
+    {\Lang{linear abhängig}{linearly dependent}};
+
+  \draw[connection] (start.south west)--(gauss.north)
+    node[pos=0.55,above left=2pt,fill=white,inner sep=1pt] {$k<n$};
+  \draw[connection] (start)--(determinant)
+    node[pos=0.55,right=2pt,fill=white,inner sep=1pt] {$k=n$};
+  \draw[connection] (start.south east)--(immediate.north)
+    node[pos=0.55,above right=2pt,fill=white,inner sep=1pt] {$k>n$};
+
+  \draw[connection] (gauss.south)--(gaussIndependent.north)
+    node[pos=0.70,above left=2pt,fill=white,fill opacity=0.75,text opacity=1,
+      inner sep=1pt,align=center]
+      {$\operatorname{rang}(A)=k$};
+  \draw[connection] (gauss.south)--(gaussDependent.north)
+    node[pos=0.70,above right=2pt,fill=white,fill opacity=0.75,text opacity=1,
+      inner sep=1pt,align=center]
+      {$\operatorname{rang}(A)<k$};
+
+  \draw[connection] (determinant.south)--(detIndependent.north)
+    node[pos=0.30,below left=3pt,fill=white,fill opacity=0.75,text opacity=1,
+      inner sep=1pt,xshift=-9pt] {$\det\ne0$};
+  \draw[connection] (determinant.south)--(detDependent.north)
+    node[pos=0.30,below right=3pt,fill=white,fill opacity=0.75,text opacity=1,
+      inner sep=1pt,xshift=9pt] {$\det=0$};
 \end{tikzpicture}

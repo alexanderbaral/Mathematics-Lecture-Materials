@@ -1,0 +1,80 @@
+\subsection{Nullstellen, Linearfaktoren und Vielfachheit}
+\label{subsec:real_functions_polynomial_zeros}
+Die ausmultiplizierte Form zeigt die Koeffizienten. Eine Produktdarstellung
+macht dagegen die Nullstellen sichtbar und wird später beim Kürzen von
+Brüchen wichtig.
+\begin{TheoremBox}{Nullstelle und Linearfaktor}{real_functions_factor_theorem}
+  Für ein Polynom $p$ ist $x_0$ genau dann eine Nullstelle, wenn der
+  \emph{Linearfaktor} \EnglishTerm{linear factor} $(x-x_0)$ abgespalten
+  werden kann:
+  \[
+    p(x_0)=0
+    \quad\Longleftrightarrow\quad
+    p(x)=(x-x_0)q(x)
+  \]
+  mit einem Polynom $q$. Ist $p$ nicht das Nullpolynom und vom Grad $n$,
+  so hat es höchstens $n$ verschiedene reelle Nullstellen.
+\end{TheoremBox}
+
+\begin{ExampleBox}{Eine bekannte Nullstelle nutzen}{real_functions_polynomial_division}
+  Für $p(x)=x^3-x^2-x+1$ erkennt man $p(1)=0$.
+  Die \emph{Polynomdivision} \EnglishTerm{polynomial division}
+  durch $x-1$ verringert den Grad.
+  \begin{ClozeArea}[34]{11}
+    Nacheinander wird jeweils der höchste Term durch $x$ geteilt und das
+    zugehörige Vielfache von $x-1$ abgezogen:
+    \[
+      \begin{array}{r@{\;}r@{\;}r@{\;}r@{\qquad}l}
+        x^3&-x^2&-x&+1&:(x-1)=x^2-1\\
+        -(x^3&-x^2)&&&\\ \cline{1-2}
+        &&-x&+1&\\
+        &&-(-x&+1)&\\ \cline{3-4}
+        &&&0&\text{Rest}
+      \end{array}
+    \]
+    Die binomische Formel liefert anschließend die vollständige Zerlegung:
+    \[
+      p(x)=(x-1)(x^2-1)=(x-1)^2(x+1).
+    \]
+  \end{ClozeArea}
+  Die Nullstellen sind $\Cloze{4cm}{x=-1\ \text{und}\ x=1}$.
+\end{ExampleBox}
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Vielfachheit einer Nullstelle}{real_functions_multiplicity}
+  Eine Nullstelle $x_0$ eines Polynoms $p\ne0$ heißt
+  \emph{$k$-fach} \EnglishTerm{of multiplicity $k$}, wenn
+  \[
+    p(x)=(x-x_0)^kq(x),\qquad q(x_0)\ne0.
+  \]
+  Der Faktor $(x-x_0)$ tritt also genau $k$-mal auf.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Schneiden oder Berühren?}{real_functions_multiplicity_graph}
+  Bei $p(x)=(x+1)(x-1)^2$ haben die beiden Nullstellen unterschiedliche
+  Vielfachheiten.
+  \par\smallskip
+  \begin{minipage}[c]{0.46\linewidth}
+    Bei $x=-1$ wechselt $x+1$ sein Vorzeichen: Der Graph
+    $\Cloze{3cm}{\text{schneidet}}$ die $x$-Achse.
+
+    Bei $x=1$ bleibt $(x-1)^2$ auf beiden Seiten positiv: Der Graph
+    $\Cloze{3cm}{\text{berührt}}$ die $x$-Achse.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.50\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_multiplicity.tex}
+  \end{minipage}
+\end{ExampleBox}
+\end{minipage}
+
+\begin{KeyPointBox}{Vielfachheit und Vorzeichenwechsel}{real_functions_multiplicity_sign}
+  An einer reellen Nullstelle eines Polynoms gilt:
+  \[
+    \begin{array}{c@{\qquad}l}
+      k\text{ ungerade}&\text{Vorzeichenwechsel: Achse wird geschnitten},\\
+      k\text{ gerade}&\text{kein Vorzeichenwechsel: Achse wird berührt}.
+    \end{array}
+  \]
+  Ein Polynom muss nicht so viele reelle Nullstellen wie sein Grad besitzen:
+  $x^2+1$ hat beispielsweise keine reelle Nullstelle.
+\end{KeyPointBox}

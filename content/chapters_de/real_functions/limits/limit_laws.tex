@@ -1,0 +1,90 @@
+\clearpage
+\subsection{Grenzwertgesetze}
+\label{subsec:real_functions_limit_laws}
+Grenzwerte müssen nicht jedes Mal durch eine neue Annäherungsbetrachtung
+bestimmt werden. Wir zerlegen einen Term in bekannte Bausteine und
+verknüpfen deren Grenzwerte.
+\begin{TheoremBox}{Rechnen mit endlichen Grenzwerten}{real_functions_limit_laws}
+  Für dieselbe Annäherung seien $f(x)\to A$ und $g(x)\to B$ mit
+  $A,B\in\R$. Für $c\in\R$ gelten dann:
+  \[
+    \begin{aligned}
+      f(x)+g(x)&\to A+B,&
+      f(x)-g(x)&\to A-B,\\[0.6em]
+      c f(x)&\to cA,&
+      f(x)g(x)&\to AB,\\[0.6em]
+      \frac{f(x)}{g(x)}&\to\frac AB
+        &&\text{falls }B\ne0.
+    \end{aligned}
+  \]
+  Die Regeln gelten bei $x\to a$, bei einseitiger Annäherung und bei
+  $x\to\pm\infty$, sofern die genannten endlichen Grenzwerte existieren.
+\end{TheoremBox}
+\begin{KeyPointBox}{Bei Polynomen darf eingesetzt werden}{real_functions_polynomial_limit}
+  Aus $\lim_{x\to a}x=a$ und den Summen- und Produktregeln folgt für
+  jedes Polynom $p$:
+  \[
+    \lim_{x\to a}p(x)=p(a).
+  \]
+  Für einen Quotienten von Polynomen darf ebenfalls eingesetzt werden,
+  sofern der Nenner an der betreffenden Stelle nicht null ist.
+\end{KeyPointBox}
+\begin{TheoremBox}{Im Unendlichen entscheidet die höchste Potenz}{real_functions_leading_power}
+  Für ein Polynom $p(x)=a_nx^n+\dots+a_0$ mit $n\ge1$ und $a_n\ne0$
+  klammern wir die höchste Potenz aus:
+  \[
+    p(x)=x^n\left(a_n+\frac{a_{n-1}}x+\dots+\frac{a_0}{x^n}\right).
+  \]
+  Die Klammer geht für $x\to\pm\infty$ gegen $a_n$.
+  Für $a_n>0$ ergibt sich deshalb:
+  \[
+    \begin{array}{c|cc}
+       &x\to-\infty&x\to+\infty\\ \hline
+      n\text{ gerade}&p(x)\to+\infty&p(x)\to+\infty\\[0.4em]
+      n\text{ ungerade}&p(x)\to-\infty&p(x)\to+\infty
+    \end{array}
+  \]
+  Für $a_n<0$ kehren sich sämtliche Vorzeichen der uneigentlichen
+  Grenzwerte um. Die niedrigeren Potenzen ändern das Endverhalten nicht.
+\end{TheoremBox}
+\begin{ExampleBox}{Den dominierenden Term erkennen}{real_functions_polynomial_infinity}
+  Für $p(x)=-2x^3+5x^2+7$ ist der höchste Term $-2x^3$.
+  Ergänzen Sie das Verhalten in beiden Richtungen:
+  \[
+    \lim_{x\to-\infty}p(x)=\Cloze{2cm}{+\infty},
+    \qquad
+    \lim_{x\to+\infty}p(x)=\Cloze{2cm}{-\infty}.
+  \]
+  Der ungerade Grad liefert entgegengesetzte Richtungen; der negative
+  Leitkoeffizient legt ihre Orientierung fest.
+\end{ExampleBox}
+\begin{ExampleBox}{Einsetzen oder erst umformen?}{real_functions_limit_law_examples}
+  Vergleichen Sie die beiden Aufgaben. Prüfen Sie zuerst, ob die
+  Quotientenregel unmittelbar anwendbar ist.
+  \[
+    \text{a)}\quad\lim_{x\to2}\frac{x^2+1}{x+1},
+    \qquad
+    \text{b)}\quad\lim_{x\to+\infty}\frac{3x^2+1}{x^2+2x}.
+  \]
+  \begin{ClozeArea}[34]{9}
+    Bei $x\to2$ hat der Nenner einen von null verschiedenen Grenzwert:
+    \[
+      \lim_{x\to2}\frac{x^2+1}{x+1}=\frac{2^2+1}{2+1}=\frac53.
+    \]
+    Bei $x\to+\infty$ sind die Grenzwerte von Zähler und Nenner nicht
+    endlich. Nach Division durch $x^2$ sind die Regeln anwendbar:
+    \[
+      \lim_{x\to+\infty}\frac{3x^2+1}{x^2+2x}
+      =\lim_{x\to+\infty}\frac{3+1/x^2}{1+2/x}
+      =\frac{3+0}{1+0}=3.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Unbestimmte Formen sind ein Arbeitsauftrag}{real_functions_indeterminate_forms}
+  Führen Zähler und Nenner beide gegen null oder beide betragsmäßig
+  gegen unendlich, ist der Grenzwert noch nicht bestimmt.
+  Die Kurzformen $0/0$ und $\infty/\infty$ bezeichnen solche
+  \emph{unbestimmten Formen} \EnglishTerm{indeterminate forms},
+  keine Ergebnisse. Zuerst muss der Term geeignet umgeformt werden.
+\end{KeyPointBox}

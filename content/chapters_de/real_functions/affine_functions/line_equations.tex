@@ -1,0 +1,193 @@
+\begin{DefinitionBox}{Geradengleichung}{real_functions_affine}
+  Eine \emph{affine Funktion} \EnglishTerm{affine function} besitzt mit
+  $m,b\in\R$ und $D=\R$ die Gleichung
+  \[
+    f(x)=mx+b.
+  \]
+  Ihr Graph ist eine Gerade. Dabei ist $m$ die \emph{Steigung}
+  \EnglishTerm{slope}; $b=f(0)$ ist der $y$-Achsenabschnitt.
+  Für $b=0$ ist die Zuordnung proportional.
+\end{DefinitionBox}
+In der Schulmathematik nennt man $f(x)=mx+b$ oft eine \emph{lineare Funktion}
+\EnglishTerm{linear function}. Im strengeren algebraischen Sinn ist nur
+$f(x)=mx$ linear. Eine senkrechte Gerade $x=c$ hat keine endliche Steigung
+und ist kein Graph einer Funktion $y=f(x)$.
+
+
+\begin{KeyPointBox}{Steigung und Lage der Geraden}{real_functions_line_parameters}
+  Das Vorzeichen von $m$ bestimmt die Richtung des Graphen:
+  \[
+    \begin{array}{c@{\qquad}c@{\qquad}c}
+      m>0&m=0&m<0\\
+      \text{steigende Gerade}&\text{waagerechte Gerade}&\text{fallende Gerade}
+    \end{array}
+  \]
+\end{KeyPointBox}
+
+\clearpage
+\subsection{Nullstelle einer Geraden}
+\label{subsec:real_functions_line_zero}
+\begin{KeyPointBox}{Nullstelle und $y$-Achsenabschnitt einer Geraden}{real_functions_line_intercepts}
+  Für eine Gerade $f(x)=mx+b$ mit $m,b\in\R$ ergeben sich die beiden
+  Achsenabschnitte direkt aus der Geradengleichung:
+  \begin{itemize}[leftmargin=1.3em,itemsep=0.4em,topsep=0.3em]
+    \item $y$-Achsenabschnitt:\par
+      \[y_0=f(0)=b.\]
+    \item Nullstelle für $m\ne0$:\par
+      \[f(x_0)=0\Longleftrightarrow mx_0+b=0
+        \Longleftrightarrow x_0=-\frac{b}{m}.\]
+  \end{itemize}
+  Die zugehörigen Punkte sind $(0,b)$ und $(x_0,0)$.
+  Für $m=0$ gilt: Ist $b\ne0$, gibt es keine Nullstelle; ist $b=0$,
+  ist jede reelle Zahl eine Nullstelle.
+\end{KeyPointBox}
+\begin{ExampleBox}{Nullstelle und $y$-Achsenabschnitt einer Geraden}{real_functions_line_intercepts_example}
+  Wir betrachten die Geradengleichung $f(x)=mx+b$ mit $m=\frac12$ und $b=1$.
+  \begin{minipage}[c]{0.50\linewidth}
+     Mit den Formeln aus
+    Merke~\ref{key:real_functions_line_intercepts} berechnen wir:
+    \begin{itemize}[leftmargin=1.3em,itemsep=0.4em,topsep=0.3em]
+      \item $y$-Achsenabschnitt:\par
+        $y_0=b=\Cloze{1.2cm}{1}$.
+      \item Nullstelle:\par
+        $x_0=-\frac{b}{m}
+            =-\frac{1}{\frac12}
+            =\Cloze{1.2cm}{-2}$.
+    \end{itemize}
+    Die Achsenpunkte sind $(0,\Cloze{1.2cm}{1})$ und
+    $(\Cloze{1.2cm}{-2},0)$.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.49\linewidth}
+    \raggedleft
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_line_intercepts.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+\clearpage
+\subsection{Eine Gerade aus zwei Punkten bestimmen}
+\label{subsec:real_functions_two_points}
+Zwei Punkte $P_A=(x_A,y_A)$ und $P_B=(x_B,y_B)$ mit $x_A\ne x_B$
+bestimmen genau eine Gerade. Die Gleichung $y=mx+b$ enthält die beiden
+Unbekannten $m$ und $b$; jeder Punkt liefert dafür eine Gleichung.
+So entsteht ein quadratisches LGS.
+Vor der erweiterten Matrix ordnen wir die Terme nach $b$ und $m$:
+\[
+  \begin{aligned}
+    mx_A+b&=y_A,\\
+    mx_B+b&=y_B
+  \end{aligned}
+  \quad\Longleftrightarrow\quad
+  \begin{aligned}
+    b+x_A m&=y_A,\\
+    b+x_B m&=y_B
+  \end{aligned}
+  \quad\Longleftrightarrow\quad
+  \left[\begin{array}{@{}cc|c@{}}
+    \Cloze{0.7cm}{1}&\Cloze{0.8cm}{x_A}&\Cloze{0.8cm}{y_A}\\[0.3em]
+    \Cloze{0.7cm}{1}&\Cloze{0.8cm}{x_B}&\Cloze{0.8cm}{y_B}
+  \end{array}\right].
+\]
+Wie in Kapitel 2 eliminieren wir zunächst einen Koeffizienten und setzen
+anschließend von der letzten Zeile aus rückwärts ein:
+\par\noindent\textbf{Vorwärtselimination:} Die Operation steht rechts neben der Matrix,
+auf die sie angewendet wird:
+\begin{ClozeArea}[34]{6}
+  \[
+    \begin{array}{r@{\;}r@{\qquad}l}
+      &\left[\begin{array}{@{}cc|c@{}}
+        1&x_A&y_A\\
+        1&x_B&y_B
+      \end{array}\right]
+      &\raisebox{-0.65em}{\(\TransformOp{Z_2-Z_1}\)}\\[1.2em]
+      \Longleftrightarrow
+      &\left[\begin{array}{@{}cc|c@{}}
+        1&x_A&y_A\\
+        \textcolor{THMBlue}{0}&x_B-x_A&y_B-y_A
+      \end{array}\right]
+      &\text{Zeilenstufenform}
+    \end{array}
+  \]
+\end{ClozeArea}
+\noindent\textbf{Rückwärtseinsetzen:} Aus Zeile 2 folgt die Steigung:
+\begin{ClozeArea}[34]{4}
+  \[
+    (x_B-x_A)m=y_B-y_A
+    \quad\Longleftrightarrow\quad
+    m=\frac{y_B-y_A}{x_B-x_A}.
+  \]
+\end{ClozeArea}
+\noindent Einsetzen in Zeile 1 liefert den $y$-Achsenabschnitt:
+\begin{ClozeArea}[34]{5}
+  \[
+    b=y_A-x_A m
+     =y_A-x_A\frac{y_B-y_A}{x_B-x_A}
+     =\frac{x_By_A-x_Ay_B}{x_B-x_A}.
+  \]
+\end{ClozeArea}
+\begin{KeyPointBox}{Zweipunkteform}{real_functions_two_point_form}
+  \begin{minipage}[c]{0.52\linewidth}
+    Die Gerade durch $P_A=(x_A,y_A)$ und $P_B=(x_B,y_B)$ mit
+    $x_A\ne x_B$ hat die Gleichung
+    \[
+      f(x)=mx+b
+    \]
+    mit
+    \[
+      \begin{aligned}
+        m&=\frac{y_B-y_A}{x_B-x_A}
+          \quad\textcolor{green!55!black}{\text{(Steigungsdreieck)}}\\[0.4em]
+        b&=y_A-mx_A
+          =\frac{x_By_A-x_Ay_B}{x_B-x_A}.
+      \end{aligned}
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.46\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_two_point_line.tex}
+  \end{minipage}
+\end{KeyPointBox}
+\begin{ExampleBox}{Gerade durch zwei Punkte}{real_functions_two_point_numeric_example}
+  Welche Gerade verläuft durch $P_A=(1,1)$ und $P_B=(3,2)$?
+  \par\smallskip
+  \begin{minipage}[c]{0.45\linewidth}
+    Aus den beiden Punkten bestimmen wir zunächst die Steigung und danach
+    den $y$-Achsenabschnitt:
+    \[
+      \begin{aligned}
+        m&=\frac{2-1}{3-1}=\Cloze{1.4cm}{\frac12},\\[0.5em]
+        b&=1-m\cdot1=\Cloze{1.4cm}{\frac12}.
+      \end{aligned}
+    \]
+    Damit lautet die Geradengleichung
+    \[
+      f(x)=\Cloze{3.5cm}{\frac12x+\frac12}.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.54\linewidth}
+    \raggedleft
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_two_point_numeric_example.tex}
+  \end{minipage}
+\end{ExampleBox}
+\begin{ExampleBox}{Kalibrierung eines Wegsensors}{real_functions_sensor_calibration}
+  Ein Sensor liefert bei $s=10\,\mathrm{mm}$ die Spannung
+  $U=1\,\mathrm{V}$ und bei $s=50\,\mathrm{mm}$ die Spannung
+  $U=9\,\mathrm{V}$. Wir nehmen einen affinen Zusammenhang an und
+  bestimmen $U(s)$ sowie die Spannung bei $s=30\,\mathrm{mm}$.
+  \begin{ClozeArea}[34]{9}
+    Die beiden Messpunkte bestimmen die Empfindlichkeit und den Achsenabschnitt:
+    \[
+      \begin{aligned}
+        m&=\frac{9\,\mathrm{V}-1\,\mathrm{V}}
+                 {50\,\mathrm{mm}-10\,\mathrm{mm}}
+          =0{,}2\,\frac{\mathrm{V}}{\mathrm{mm}},\\[0.6em]
+        b&=1\,\mathrm{V}
+          -0{,}2\,\frac{\mathrm{V}}{\mathrm{mm}}\cdot10\,\mathrm{mm}
+          =-1\,\mathrm{V},\\[0.6em]
+        U(s)&=0{,}2\,\frac{\mathrm{V}}{\mathrm{mm}}\,s-1\,\mathrm{V},
+        \qquad U(30\,\mathrm{mm})=5\,\mathrm{V}.
+      \end{aligned}
+    \]
+    Das Modell ist zunächst nur im kalibrierten Messbereich
+    $10\,\mathrm{mm}\le s\le50\,\mathrm{mm}$ abgesichert.
+  \end{ClozeArea}
+\end{ExampleBox}

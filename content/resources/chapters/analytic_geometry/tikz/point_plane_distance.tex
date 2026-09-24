@@ -1,32 +1,43 @@
 \begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
-  \path[use as bounding box] (-0.10,-0.20) rectangle (10.30,5.55);
+  \path[use as bounding box] (-0.85,-0.55) rectangle (10.15,5.55);
+  \coordinate (O) at (5.90,0.08);
+  \coordinate (P) at (3.10,1.80);
+  \coordinate (N) at (3.10,3.05);
+  \coordinate (R) at (3.10,4.85);
+  \coordinate (Q) at (5.35,4.85);
 
-  \fill[black!5]
-    (0.45,0.55)--(7.35,0.55)--(9.55,2.35)--(2.65,2.35)--cycle;
-  \draw[black!45,line width=0.8pt]
-    (0.45,0.55)--(7.35,0.55)--(9.55,2.35)--(2.65,2.35)--cycle;
-  \node[fill=white,inner sep=1.5pt] at (8.95,1.00) {$E$};
+  \filldraw[fill=black!8,draw=black!50,line width=0.8pt]
+    (0.55,0.90)--(6.95,0.90)--(9.35,2.75)--(2.95,2.75)--cycle;
 
-  \coordinate (P) at (2.55,1.30);
-  \coordinate (H) at (6.00,1.58);
-  \coordinate (Q) at (5.00,4.75);
-  \coordinate (N) at (5.25,3.95);
+  % The two height levels continue all the way to the distance brace.
+  \draw[red!75!black,densely dashed,line width=0.75pt]
+    (1.60,4.85)--(Q);
+  \draw[black!60,densely dashed,line width=0.75pt]
+    (1.60,1.80)--(3.80,1.80);
+  \draw[decorate,decoration={brace,amplitude=5pt,raise=3pt},black!75]
+    (1.60,1.80)--(1.60,4.85)
+    node[midway,left=10pt,align=center] {\Lang{Abstand}{Distance}\\$d$};
 
-  \draw[->,olive!80!black,line width=1.15pt] (P)--(Q)
-    node[pos=0.46,left=6pt,fill=white,inner sep=1.5pt]
-      {$\vec q-\vec p$};
-  \draw[->,THMBlue,line width=1.25pt] (H)--(N)
-    node[pos=0.60,right=5pt,fill=white,inner sep=1.5pt] {$\vec e_n$};
-  \draw[red!75!black,line width=1.3pt] (H)--(Q)
-    node[pos=0.55,right=7pt,fill=white,inner sep=1.5pt] {$d(Q,E)$};
+  \draw[->,olive!80!black,line width=1.15pt] (O)--(P);
+  \draw[->,red!75!black,line width=1.30pt] (P)--(Q);
+  \draw[->,black!75,line width=1.15pt] (P)--(R);
+  \draw[->,THMBlue,line width=1.55pt] ($(P)+(-0.22,0)$)--($(N)+(-0.22,0)$);
+  \node[text=olive!80!black] at (4.65,0.28) {$\overrightarrow{OP}$};
+  \node[text=red!75!black] at (4.98,3.38) {$\overrightarrow{PQ}$};
+  \node[text=THMBlue] at (2.50,2.72) {$\vec n$};
+  \node[text=black!75] at (2.48,4.03) {$\overrightarrow{PQ}_{\parallel}$};
 
-  \fill (P) circle (1.9pt)
-    node[below left=4pt,fill=white,inner sep=1.5pt] {$P$};
-  \fill (H) circle (1.9pt)
-    node[below right=4pt,fill=white,inner sep=1.5pt] {$H$};
-  \fill (Q) circle (1.9pt)
-    node[above=4pt,fill=white,inner sep=1.5pt] {$Q$};
+  % The quarter circle touches the offset normal vector without covering it.
+  \draw[black!65,line width=0.75pt]
+    ($(P)+(-0.22,0)+(0.42,0)$)
+    arc[start angle=0,end angle=90,radius=0.42];
+  \fill[black!65] ($(P)+(-0.22,0)+(45:0.27)$) circle (0.85pt);
 
-  \draw[black!60,line width=0.65pt]
-    ($(H)!0.16!(P)$)--++(-0.08,0.25)--++(0.25,0.02);
+  \fill (O) circle (1.9pt) node[below left=3pt] {$O$};
+  \fill (P) circle (1.9pt) node[below left=5pt] {$P$};
+  \fill (Q) circle (1.9pt) node[above right=3pt] {$Q$};
+  \node (planeLabel) at (8.50,3.65) {\Lang{Ebene}{Plane} $E$};
+  \draw[->,black!65,line width=0.75pt]
+    (planeLabel.west) .. controls ($(planeLabel.west)+(0,-0.55)$)
+      and (7.40,2.65) .. (7.70,2.15);
 \end{tikzpicture}

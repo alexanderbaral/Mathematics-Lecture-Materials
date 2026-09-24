@@ -1,0 +1,87 @@
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Gebrochen-rationale Funktion}{real_functions_rational}
+  Sind $p$ und $q$ Polynome mit $q$ nicht identisch null, heißt
+  \[
+    f(x)=\frac{p(x)}{q(x)},\qquad D_f=\{x\in\R\mid q(x)\ne0\},
+  \]
+  eine \emph{gebrochen-rationale Funktion} \EnglishTerm{rational function}
+  auf ihrer natürlichen Definitionsmenge.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Gekürzt -- aber nicht überall definiert}{real_functions_cancelled_hole}
+  Untersuchen Sie $f(x)=(x^2-1)/(x+1)$: Welche Eingabe ist
+  ausgeschlossen, und was geschieht in ihrer Nähe?
+  \begin{ClozeArea}[34]{7}
+    Der Nenner schließt $x=-1$ aus. Für alle anderen Eingaben gilt
+    \[
+      f(x)=\frac{(x-1)(x+1)}{x+1}=x-1
+      \qquad(x\ne-1).
+    \]
+    Deshalb ist $\lim_{x\to-1}f(x)=-2$, obwohl $f(-1)$ nicht definiert ist.
+    Die einzige Nullstelle ist $x=1$; $x=-1$ gehört nicht zur Definitionsmenge.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_removable_gap.tex}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
+
+
+\subsection{Stetigkeit: Grenzwert und Funktionswert passen zusammen}
+\label{subsec:real_functions_continuity}
+Beim gekürzten Term $x-1$ stimmen Annäherungswert und eingesetzter Wert
+überein. Diese Übereinstimmung erhält nun einen eigenen Namen.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Funktionseigenschaft -- Stetigkeit}{real_functions_continuity}
+  Eine Funktion $f:D\to\R$ heißt an einer Stelle $a\in D$
+  \emph{stetig} \EnglishTerm{continuous}, wenn
+  \[
+    \lim_{\substack{x\to a\\x\in D}}f(x)=f(a).
+  \]
+  Am Rand eines Intervalls ist die Annäherung einseitig.
+  Eine Funktion heißt auf einem Intervall stetig, wenn sie an jeder
+  Stelle dieses Intervalls stetig ist.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Einen Übergang ohne Sprung gestalten}{real_functions_continuous_join}
+  Die Funktion $g(x)=x+1$ für $x<1$ und $g(x)=c$ für $x\ge1$
+  soll bei $x=1$ stetig sein. Bestimmen Sie $c$.
+  \[
+    \lim_{x\to1^-}g(x)=\Cloze{1cm}{2},
+    \qquad
+    \lim_{x\to1^+}g(x)=g(1)=c
+    \quad\Longrightarrow\quad c=\Cloze{1cm}{2}.
+  \]
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{DefinitionBox}{Hebbare Definitionslücke}{real_functions_removable_gap}
+  Ist $f$ in der Nähe von $a$, aber nicht bei $a$ definiert und existiert
+  ein endlicher Grenzwert $L=\lim_{x\to a}f(x)$, so heißt $a$ eine
+  \emph{hebbare Definitionslücke} \EnglishTerm{removable singularity}.
+  Durch die \emph{stetige Fortsetzung} \EnglishTerm{continuous extension}
+  \[
+    \widetilde f(x)=
+      \begin{cases}f(x),&x\ne a,\\L,&x=a,\end{cases}
+  \]
+  wird die Lücke geschlossen.
+\end{DefinitionBox}
+Für das Beispiel $f(x)=(x^2-1)/(x+1)$ muss genau der Wert
+$\widetilde f(-1)=\Cloze{1cm}{-2}$ ergänzt werden.
+Ein anderer ergänzter Wert ergäbe keine Stetigkeit.
+
+\begin{TheoremBox}{Stetigkeit bleibt beim Rechnen erhalten}{real_functions_continuity_rules}
+  Summen, Differenzen und Produkte stetiger Funktionen sind stetig;
+  Quotienten sind stetig, wo der Nenner nicht null ist.
+  Daher sind Polynome auf $\R$ und gebrochen-rationale Funktionen
+  auf ihrer natürlichen Definitionsmenge stetig.
+
+  Auch eine \emph{Verkettung} \EnglishTerm{composition}
+  $(f\circ g)(x)=f(g(x))$ ist bei $a$ stetig, wenn $g$ bei $a$ und
+  $f$ bei $g(a)$ stetig sind und die Verkettung in der Nähe definiert ist.
+\end{TheoremBox}
+\begin{RemarkBox}
+  Eine fehlende Stelle gehört nicht zur Definitionsmenge: Dort behaupten
+  wir keine Stetigkeit oder Unstetigkeit der ursprünglichen Funktion.
+  Insbesondere ist $1/x$ auf $\R\setminus\{0\}$ stetig, obwohl sein
+  Graph aus zwei getrennten Ästen besteht.
+\end{RemarkBox}

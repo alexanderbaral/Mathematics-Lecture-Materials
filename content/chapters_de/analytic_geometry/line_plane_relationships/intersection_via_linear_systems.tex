@@ -1,63 +1,60 @@
-\subsection{Schnittpunktberechnung mit einem LGS}
-\label{subsec:analytic_geometry_line_plane_intersection}
-
-Die Anzahl gemeinsamer Punkte entspricht der Anzahl der Lösungen des beim
-Gleichsetzen entstehenden LGS. Damit lassen sich alle drei Lagefälle mit einem
-einheitlichen Verfahren unterscheiden.
-
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/line_plane_relationships.tex}
-\end{center}
-
-\begin{KeyPointBox}{Drei mögliche Lagebeziehungen}{analytic_geometry_line_plane_cases}
-  Für eine Gerade $g$ und eine Ebene $E$ gibt es genau drei Fälle:
+\begin{KeyPointBox}{Schnittpunkte von Gerade und Ebene}{analytic_geometry_line_plane_cases}
+  Wir betrachten eine Gerade und eine Ebene in der Parameterdarstellung:
   \[
-    \begin{array}{c@{\qquad\Longleftrightarrow\qquad}c}
-      \text{genau eine Lösung} & g\text{ schneidet }E,\\[0.5em]
-      \text{keine Lösung} & g\parallel E\text{ ohne gemeinsamen Punkt},\\[0.5em]
-      \infty\text{-viele Lösungen} & g\subset E.
-    \end{array}
+    E\mathord{:}\enspace \vec x=\overrightarrow{OP}+\lambda\vec a+\mu\vec b
+    \qquad\text{und}\qquad
+    g\mathord{:}\enspace \vec x=\overrightarrow{OQ}+\nu\vec c.
   \]
+  Durch Gleichsetzen des Ortsvektors $\vec x$ erhalten wir ein inhomogenes lineares
+  Gleichungssystem mit den Unbekannten $\lambda$, $\mu$ und $\nu$ :
+  \[
+    \begin{aligned}
+      \overrightarrow{OP}+\lambda\vec a+\mu\vec b
+        &=\overrightarrow{OQ}+\nu\vec c,\\[0.4em]
+      \lambda\vec a+\mu\vec b-\nu\vec c
+        &=\overrightarrow{OQ}-\overrightarrow{OP}.
+    \end{aligned}
+  \]
+  Jedes Lösungstupel $(\lambda,\mu,\nu)$ gehört zu einem gemeinsamen Punkt
+  von Gerade $g$ und Ebene $E$.
+
+  \par\medskip
+  Die Anzahl der Lösungen bestimmt daher die geometrische Lage von $g$ und $E$:
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/line_plane_relationships.tex}
+  \end{center}
 \end{KeyPointBox}
 
-\begin{TheoremBox}{Gleichsetzen der Parameterdarstellungen}{analytic_geometry_equating_line_plane}
-  Für
-  \[
-    E:\ \vec x=\vec p+\lambda\vec a+\mu\vec b,
-    \qquad
-    g:\ \vec x=\vec q+\nu\vec c
-  \]
-  beschreiben die Lösungen von
-  \[
-    \vec p+\lambda\vec a+\mu\vec b
-    =\vec q+\nu\vec c
-  \]
-  genau die gemeinsamen Punkte von $E$ und $g$.
-\end{TheoremBox}
-
 \begin{ExampleBox}{Schnittpunkt von Gerade und Ebene}{analytic_geometry_line_plane_intersection_example}
-  Gegeben sind
+  Wir suchen den Schnittpunkt $S$ der Geraden $g$ mit der Ebene $E$ und prüfen
+  zunächst, ob dieser eindeutig existiert. Gegeben sind
   \[
     E:\quad
     \vec x=\begin{pmatrix}6\\3\\-5\end{pmatrix}
       +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
       +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}
-  \]
-  und
-  \[
+    \qquad\text{und}\qquad
     g:\quad
     \vec x=\begin{pmatrix}6\\7\\-6\end{pmatrix}
       +\nu\begin{pmatrix}7\\1\\4\end{pmatrix}.
   \]
-  Durch Gleichsetzen und Ordnen nach den Parametern folgt
-  \begin{ClozeArea}[34]{12}
+  Durch Gleichsetzen der Parameterdarstellungen folgt:
+  \begin{ClozeArea}[34]{20}
+    \[
+      \begin{pmatrix}6\\3\\-5\end{pmatrix}
+        +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+        +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}
+      =\begin{pmatrix}6\\7\\-6\end{pmatrix}
+        +\nu\begin{pmatrix}7\\1\\4\end{pmatrix}.
+    \]
     \[
       \lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
       +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}
       -\nu\begin{pmatrix}7\\1\\4\end{pmatrix}
       =\begin{pmatrix}0\\4\\-1\end{pmatrix}
     \]
-    und damit das LGS
+    Dies ist das erwartete \emph{inhomogene lineare Gleichungssystem} in $\lambda$,
+    $\mu$ und $\nu$, das wir in seiner erweiterten Koeffizientenmatrix darstellen:
     \[
       \left[
         \begin{array}{rrr|r}
@@ -68,8 +65,32 @@ einheitlichen Verfahren unterscheiden.
       \right].
     \]
   \end{ClozeArea}
-  Die Determinante der Koeffizientenmatrix ist $-66\ne0$. Somit existiert genau
-  ein Parametersatz und daher genau ein Schnittpunkt.
+  Bevor wir das LGS lösen, können wir mit der Determinante prüfen, ob der
+  Schnittpunkt eindeutig ist.
+  \begin{ClozeArea}[34]{11}
+    \[
+      \begin{aligned}
+        D
+        &=\det\!\begin{pNiceMatrix}
+            \CodeBefore
+              \rowcolor{yellow!55}{1}
+            \Body
+            1&-1&-7\\[0.35em]
+            1& 3&-1\\[0.35em]
+           -2& 1&-4
+          \end{pNiceMatrix}\\[0.7em]
+        &=1\det\!\begin{pmatrix}3&-1\\1&-4\end{pmatrix}
+          -(-1)\det\!\begin{pmatrix}1&-1\\-2&-4\end{pmatrix}
+          +(-7)\det\!\begin{pmatrix}1&3\\-2&1\end{pmatrix}\\[0.7em]
+        &=1\cdot(-11)-(-1)\cdot(-6)+(-7)\cdot7\\[0.7em]
+        &=-11-6-49=-66\ne0.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  Nach dem Determinantenkriterium für $n\times n$-LGS
+  (Satz~\ref{thm:linear_systems_determinant_solution_criterion}) besitzt das
+  LGS wegen $D=-66\ne0$ eine eindeutige Lösung, d.h. die Gerade schneidet die
+  Ebene in genau einem Punkt.
 \end{ExampleBox}
 
 \clearpage
@@ -77,33 +98,41 @@ einheitlichen Verfahren unterscheiden.
   scriptbox,
   breakable=false,
   borderline west={1.2pt}{0pt}{black!40},
-  title={Beispiel~\ref{ex:analytic_geometry_line_plane_intersection_example}: Schnittpunkt von Gerade und Ebene -- Fortsetzung}
+  title={Beispiel~\ref{ex:analytic_geometry_line_plane_intersection_example} -- Fortsetzung}
 ]
-  Das Gauß-Verfahren liefert die Parameter:
-  \begin{ClozeArea}[34]{18}
+  Mit dem Gauß-Verfahren finden wir die Lösung $(\lambda,\mu,\nu)$:
+  \begin{ClozeArea}[34]{25}
     \[
-      \begin{array}{r@{\quad}l@{\qquad}l}
+      \begin{array}{r@{\;}r@{\qquad}l}
         \phantom{\Longleftrightarrow}
         &\left[
-          \begin{array}{rrr|r}
+          \begin{array}{@{}rrr|r@{}}
             1&-1&-7&0\\
             1& 3&-1&4\\
            -2& 1&-4&-1
           \end{array}
         \right]
-        &\TransformOp{Z_2-Z_1,\;Z_3+2Z_1}\\[1.3em]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{Z_2-Z_1}}\\
+          \smash{\TransformOp{Z_3+2Z_1}}
+        \end{array}\\[1.45em]
         \Longleftrightarrow
         &\left[
-          \begin{array}{rrr|r}
+          \begin{array}{@{}rrr|r@{}}
             1&-1& -7& 0\\
             0& 4&  6& 4\\
             0&-1&-18&-1
           \end{array}
         \right]
-        &\TransformOp{4Z_3+Z_2}\\[1.3em]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          {}\\
+          \smash{\TransformOp{4Z_3+Z_2}}
+        \end{array}\\[1.45em]
         \Longleftrightarrow
         &\left[
-          \begin{array}{rrr|r}
+          \begin{array}{@{}rrr|r@{}}
             1&-1& -7&0\\
             0& 4&  6&4\\
             0& 0&-66&0
@@ -112,24 +141,50 @@ einheitlichen Verfahren unterscheiden.
         &\text{Zeilenstufenform}
       \end{array}
     \]
-    \[
-      -66\nu=0\Longrightarrow\nu=0,\qquad
-      4\mu+6\nu=4\Longrightarrow\mu=1,\qquad
-      \lambda-\mu-7\nu=0\Longrightarrow\lambda=1.
-    \]
+    \textbf{Rückwärtseinsetzen:} Die Unbekannten werden von der letzten
+    Gleichung aus nach oben bestimmt:
+    \begin{itemize}[leftmargin=1.6em,itemsep=0.25em,topsep=0.2em]
+      \item In Zeile 3 einsetzen:
+        \[
+          -66\nu=0
+          \quad\Longleftrightarrow\quad
+          \nu=0.
+        \]
+      \item In Zeile 2 einsetzen:
+        \[
+          4\mu+6\nu=4
+          \;\overset{\nu=0}{\Longleftrightarrow}\;
+          4\mu=4
+          \quad\Longleftrightarrow\quad
+          \mu=1.
+        \]
+      \item In Zeile 1 einsetzen:
+        \[
+          \lambda-\mu-7\nu=0
+          \;\overset{\mu=1,\;\nu=0}{\Longleftrightarrow}\;
+          \lambda-1=0
+          \quad\Longleftrightarrow\quad
+          \lambda=1.
+        \]
+    \end{itemize}
   \end{ClozeArea}
-  Einsetzen in beide Darstellungen bestätigt denselben Punkt:
+  Wir erhalten tatsächlich eine eindeutige Lösung:
+  \[
+    \mathcal L=\Cloze{6cm}{\{(\lambda,\mu,\nu)=(1,1,0)\}}.
+  \]
+  Einsetzen in beide Darstellungen bestätigt denselben Ortsvektor 
+  $\vec{x}_S$ des Schnittpunktes $S$:
   \begin{ClozeArea}[34]{7}
     \[
       \begin{aligned}
         E:\quad
-        \vec x
+        \vec{x}_S
           &=\begin{pmatrix}6\\3\\-5\end{pmatrix}
             +\begin{pmatrix}1\\1\\-2\end{pmatrix}
             +\begin{pmatrix}-1\\3\\1\end{pmatrix}
             =\begin{pmatrix}6\\7\\-6\end{pmatrix},\\[1em]
         g:\quad
-        \vec x
+        \vec{x}_S
           &=\begin{pmatrix}6\\7\\-6\end{pmatrix}
             +0\begin{pmatrix}7\\1\\4\end{pmatrix}
             =\begin{pmatrix}6\\7\\-6\end{pmatrix}.

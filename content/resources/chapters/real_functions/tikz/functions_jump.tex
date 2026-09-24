@@ -1,0 +1,37 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.1cm,y=1.9cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2.5,0)--(2.7,0) node[right] {$x$};
+  \draw[->,black!55] (0,-0.5)--(0,2) node[above] {$y$};
+  \draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (2,0) {$2$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt4) at (0,1) {$1$};
+
+  \begin{scope}
+    \clip (-2.5,-0.5) rectangle (2.5,1.8);
+    \draw[THMBlue,line width=1.6pt] (-2.5,0)--(-0.065,0);
+\draw[THMBlue,line width=1.6pt] (0,1)--(2.5,1);
+\draw[THMBlue,line width=1pt] (0,0) circle (2pt);
+\fill[THMBlue] (0,1) circle (2pt);
+  \end{scope}
+  \node[anchor=south] at (0.000,2.395) {$s(x)$};
+  
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2.5,-0.5) rectangle (2.5,1.8)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (yt4.south west) rectangle (yt4.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2.5,-0.5) grid (2.5,1.8);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

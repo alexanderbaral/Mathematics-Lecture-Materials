@@ -1,0 +1,44 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.6cm,y=0.75cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-1.6,0)--(2.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,-2)--(0,3.5) node[above] {$y$};
+  \draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[above left=4pt,inner sep=1pt] (xt0) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (2,0) {$2$};
+\draw[black!50] (-0.055,-2)--(0.055,-2);
+\node[left=4pt,inner sep=1pt] (yt3) at (0,-2) {$-2$};
+\draw[black!50] (-0.055,-1)--(0.055,-1);
+\node[left=4pt,inner sep=1pt] (yt4) at (0,-1) {$-1$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[below left=4pt,inner sep=1pt] (yt5) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt6) at (0,2) {$2$};
+\draw[black!50] (-0.055,3)--(0.055,3);
+\node[left=4pt,inner sep=1pt] (yt7) at (0,3) {$3$};
+
+  \begin{scope}
+    \clip (-1.6,-2) rectangle (2,3.3);
+    \draw[THMBlue,line width=1.15pt,domain=-1.6:2,samples=141] plot (\x,{(\x+1)*(\x-1)^2});
+\fill[THMBlue] (-1,0) circle (2pt) (1,0) circle (2pt);
+  \end{scope}
+  \node[anchor=south] at (0.200,4.500) {$p(x)=(x+1)(x-1)^2$};
+  
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-1.6,-2) rectangle (2,3.3)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (yt3.south west) rectangle (yt3.north east)
+        (yt4.south west) rectangle (yt4.north east)
+        (yt5.south west) rectangle (yt5.north east)
+        (yt6.south west) rectangle (yt6.north east)
+        (yt7.south west) rectangle (yt7.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-1.6,-2) grid (2,3.3);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

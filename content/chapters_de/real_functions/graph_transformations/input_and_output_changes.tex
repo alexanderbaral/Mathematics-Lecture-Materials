@@ -1,0 +1,65 @@
+\begin{TheoremBox}{Verschieben, Strecken und Spiegeln}{real_functions_transformations}
+  Für reelle Parameter entsteht aus einem Punkt $(u,f(u))$ des
+  ursprünglichen Graphen bei der jeweiligen
+  \emph{Transformation} \EnglishTerm{transformation}:
+  \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      Neuer Term & Neuer Punkt & Wirkung\\ \midrule
+      $f(x)+d$ & $(u,f(u)+d)$ & um $d$ nach oben\\
+      $f(x-c)$ & $(u+c,f(u))$ & um $c$ nach rechts\\
+      $a f(x)$ & $(u,a f(u))$ & vertikaler Faktor $a$\\
+      $f(bx)$, $b\ne0$ & $(u/b,f(u))$ & horizontaler Faktor $1/b$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Negative Verschiebungen wirken in die Gegenrichtung.
+  Für $|a|>1$ wird vertikal gestreckt, für $0<|a|<1$ gestaucht.
+  Für $|b|>1$ wird horizontal gestaucht, für $0<|b|<1$ gestreckt.
+  Ein negativer Faktor bewirkt zusätzlich eine Spiegelung:
+  $a<0$ an der $x$-Achse, $b<0$ an der $y$-Achse.
+\end{TheoremBox}
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_transformations.tex}
+\end{center}
+\begin{KeyPointBox}{Außen direkt -- innen über die Eingabe}{real_functions_inside_outside}
+  Bei $f(x)+d$ wird zum Funktionswert $d$ addiert.
+  Bei $f(x-c)$ muss dagegen $x=u+c$ eingesetzt werden, damit im Inneren
+  wieder die alte Eingabe $u$ steht.
+
+  Daher verschiebt $f(x-2)$ den Graphen nach \emph{rechts}, nicht nach links.
+\end{KeyPointBox}
+
+\subsection{Mehrere Transformationen kombinieren}
+\label{subsec:real_functions_combined_transformations}
+Für $g(x)=a\,f(b(x-c))+d$ mit $b\ne0$ bleibt die Zuordnung der Punkte
+auch bei mehreren Änderungen eindeutig:
+\[
+  (u,f(u))\quad\longmapsto\quad
+  \left(c+\frac{u}{b},\,d+a f(u)\right),
+  \qquad
+  D_g=\left\{c+\frac{u}{b}\,\middle|\,u\in D_f\right\}.
+\]
+\begin{ExampleBox}{Eine Parabel aus bekannten Punkten konstruieren}{real_functions_transformed_parabola}
+  Aus $f(x)=x^2$ soll $g(x)=-2(x-1)^2+3$ entstehen.
+  Bestimmen Sie die Bilder der drei Punkte $(-1,1)$, $(0,0)$ und $(1,1)$.
+  \begin{ClozeArea}[34]{7}
+    Wir verschieben um $1$ nach rechts, multiplizieren die Höhen mit $-2$
+    und verschieben um $3$ nach oben:
+    \[
+      \begin{array}{c@{\quad\longmapsto\quad}c}
+        (-1,1)&(0,1)\\[0.4em]
+        (0,0)&(1,3)\\[0.4em]
+        (1,1)&(2,1).
+      \end{array}
+    \]
+    Die neue Parabel ist nach unten geöffnet und zur Geraden $x=1$
+    symmetrisch. Ihr höchster Punkt ist $(1,3)$.
+  \end{ClozeArea}
+\end{ExampleBox}
+\begin{RemarkBox}
+  Vor dem Ablesen einer horizontalen Verschiebung muss der innere Term
+  passend ausgeklammert werden:
+  $f(2x-4)=f(2(x-2))$ hat die Verschiebung $c=2$, nicht $c=4$.
+\end{RemarkBox}

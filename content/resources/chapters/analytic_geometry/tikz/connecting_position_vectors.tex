@@ -1,24 +1,26 @@
-\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
-  \path[use as bounding box] (-0.45,-0.45) rectangle (7.45,4.15);
+\begin{tikzpicture}[x=0.54cm,y=0.54cm,>=Latex]
+  \path[use as bounding box] (-3.5,-2.8) rectangle (10.0,6.3);
   \coordinate (O) at (0,0);
-  \coordinate (Pone) at (2.1,1.25);
-  \coordinate (Ptwo) at (6.2,3.15);
+  \coordinate (Pone) at (1.25,1.55);
+  \coordinate (Ptwo) at (4.65,3.35);
 
-  \draw[->,black!55,line width=0.8pt] (-0.25,0)--(7.1,0)
+  \draw[->,black!55,line width=0.8pt] (-0.25,0)--(5.8,0)
     node[below] {$x_1$};
-  \draw[->,black!55,line width=0.8pt] (0,-0.25)--(0,3.85)
+  \draw[->,black!55,line width=0.8pt] (0,-0.25)--(0,4.35)
     node[left] {$x_2$};
+  \draw[->,black!55,line width=0.8pt] (0,0)--(-1.75,-1.45)
+    node[below left] {$x_3$};
 
-  \draw[->,olive!80!black,line width=1.2pt] (O)--(Pone)
-    node[pos=0.48,below right=3pt] {$\vec p_1=\overrightarrow{OP_1}$};
-  \draw[->,black!45,line width=1pt] (O)--(Ptwo)
-    node[pos=0.67,above left=3pt,fill=white,inner sep=1pt]
-      {$\vec p_2=\overrightarrow{OP_2}$};
-  \draw[->,THMBlue,line width=1.4pt] (Pone)--(Ptwo)
-    node[pos=0.55,below right=5pt,fill=white,inner sep=1pt]
-      {$\overrightarrow{P_1P_2}=\vec p_2-\vec p_1$};
+  \draw[->,THMBlue,line width=1.35pt] (Pone)--(Ptwo)
+    node[pos=0.52,above left=4pt,inner sep=2pt]
+      {\textcolor{THMBlue}{$\overrightarrow{PQ}$}};
 
-  \fill (O) circle (1.5pt) node[below left] {$O$};
-  \fill (Pone) circle (1.7pt) node[above left=3pt] {$P_1$};
-  \fill (Ptwo) circle (1.7pt) node[above right=3pt] {$P_2$};
+  \fill (O) circle (1.5pt)
+    node[below right=4pt,fill=white,inner sep=1pt] {$O$};
+  \fill (Pone) circle (2.0pt)
+    node[below right=4pt,inner sep=1pt]
+      {$P(p_1,p_2,p_3)$};
+  \fill (Ptwo) circle (2.0pt)
+    node[above right=6pt,inner sep=2pt]
+      {$Q(q_1,q_2,q_3)$};
 \end{tikzpicture}

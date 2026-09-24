@@ -1,11 +1,12 @@
 \begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
-  \path[use as bounding box] (-0.15,-0.30) rectangle (6.20,3.95);
+  \path[use as bounding box] (-0.65,-0.30) rectangle (6.20,4.20);
 
   \coordinate (O) at (0.45,0.35);
   \coordinate (A) at (3.70,0.35);
   \coordinate (B) at (1.65,1.25);
   \coordinate (AB) at (4.90,1.25);
   \coordinate (H) at (0.45,2.70);
+  \coordinate (N) at (0.45,3.45);
   \coordinate (C) at (1.40,2.70);
   \coordinate (AC) at (4.65,2.70);
   \coordinate (BC) at (2.60,3.60);
@@ -25,14 +26,19 @@
     node[pos=0.90,above right=4pt] {$\vec b$};
   \draw[->,red!70!black,line width=1.3pt] (O)--(C)
     node[pos=0.72,right=4pt] {$\vec c$};
-  \draw[->,black!65,line width=1.1pt] (O)--(H)
-    node[pos=0.58,left=5pt] {$h$};
+  % The normal arrow shows direction schematically; h is the geometric height.
+  \draw[->,black!65,line width=1.1pt] (O)--(N)
+    node[above=4pt] {$\vec a\times\vec b$};
+  \draw[black!65,line width=0.75pt,decorate,
+    decoration={brace,amplitude=4pt}]
+    ($(O)+(-0.20,0)$)--($(H)+(-0.20,0)$)
+    node[midway,left=8pt] {$h$};
 
   \draw[black!55,line width=0.75pt]
-    ($(O)+(90:0.78)$)
-    arc[start angle=90,end angle=68.0,radius=0.78];
-  \node at ($(O)+(79:0.96)$) {$\varphi$};
+    ($(O)+(90:1.65)$)
+    arc[start angle=90,end angle=68.0,radius=1.65];
+  \node at ($(O)+(79:1.20)$) {$\varphi$};
 
   \node[black!65,fill=yellow!22,inner sep=2pt]
-    at (2.95,0.80) {$A=|\vec a\times\vec b|$};
+    at ($(O)!0.5!(AB)$) {$A=|\vec a\times\vec b|$};
 \end{tikzpicture}

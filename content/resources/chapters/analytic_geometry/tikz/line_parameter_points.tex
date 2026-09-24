@@ -1,0 +1,65 @@
+\pgfdeclarelayer{linegrid}
+\pgfsetlayers{linegrid,main}
+\begin{tikzpicture}[x=1cm,y=1.3cm,>=Latex]
+  \path[use as bounding box] (-0.75,-1.65) rectangle (6.65,5.35);
+  \draw[->,black!60,line width=0.8pt] (-0.2,0)--(5.45,0)
+    node[below right] {$x_1$};
+  \draw[->,black!60,line width=0.8pt] (0,-0.2)--(0,5.0)
+    node[left] {$x_2$};
+  \foreach \t in {1,2,3,4} {
+    \draw[black!55,line width=0.6pt] (\t,-0.06)--(\t,0.06)
+      ;
+    \ifnum\t<3\relax
+      \node[anchor=south,inner sep=1pt] (tick\t) at (\t,0.05) {$\t$};
+    \else
+      \node[below=3pt] (tick\t) at (\t,0) {$\t$};
+    \fi
+    \draw[black!55,line width=0.6pt] (-0.06,\t)--(0.06,\t)
+      node[left=4pt] {$\t$};
+  }
+  \draw[black!70,line width=0.9pt] (-0.30,4.30)--(5.40,-1.40);
+  \coordinate (Xm) at (1,3);
+  \coordinate (P) at (2,2);
+  \coordinate (Xp) at (3,1);
+  \coordinate (Xt) at (5,-1);
+  \draw[->,olive!80!black,line width=1.25pt] (0,0)--(P);
+  \draw[->,THMBlue,line width=1.35pt] (P)--(Xp);
+  \IfClozeTF{}{%
+    \draw[->,violet!80!black,densely dashed,line width=1.15pt] (0,0)--(Xm);
+    \draw[->,red!75!black,densely dashed,line width=1.15pt] (0,0)--(Xp);
+    \draw[->,teal!80!black,densely dashed,line width=1.15pt] (0,0)--(Xt);
+    \node[text=violet!80!black] (xmLabel) at (1.20,3.38) {$\vec x_{-1}$};
+    \node[text=red!75!black] (xpLabel) at (2.48,0.48) {$\vec x_{+1}$};
+    \node[text=teal!80!black] (xtLabel) at (3.10,-1.05) {$\vec x_{+3}$};
+    \foreach \point in {Xm,Xp,Xt} {\fill (\point) circle (1.8pt);}
+  }
+  \node[anchor=west,text=olive!80!black] (supportLabel) at (2.75,3.05)
+    {$\overrightarrow{OP}=\begin{ClozeContinuation}[2]{2}\begin{pmatrix}2\\2\end{pmatrix}\end{ClozeContinuation}$};
+  \draw[->,olive!80!black,line width=0.6pt]
+    (supportLabel.west) .. controls (2.40,3.05) and (2.25,2.60) .. (2.10,2.18);
+  \node[anchor=west,text=THMBlue] (directionLabel) at (4.05,1.85)
+    {$\vec a=\begin{ClozeContinuation}[2]{2}\begin{pmatrix}1\\-1\end{pmatrix}\end{ClozeContinuation}$};
+  \draw[->,THMBlue,line width=0.6pt]
+    (directionLabel.west) .. controls (3.60,1.85) and (3.20,1.72) .. (2.72,1.43);
+  \fill (P) circle (1.8pt);
+  \fill (0,0) circle (1.4pt) node[below left] {$O$};
+  \node (lineLabel) at (2.65,4.42) {\Lang{Gerade}{Line} $g$};
+  \draw[->,black!65,line width=0.75pt]
+    (lineLabel.west) .. controls (1.20,4.42) and (1.00,3.98) .. (0.45,3.55);
+  % Leave transparent openings in the grid around the mathematical labels.
+  \begin{pgfonlayer}{linegrid}
+    \begin{scope}[even odd rule]
+      \clip (-1,-2) rectangle (7,6)
+        (supportLabel.south west) rectangle (supportLabel.north east)
+        (directionLabel.south west) rectangle (directionLabel.north east)
+        (tick1.south west) rectangle (tick1.north east)
+        (tick2.south west) rectangle (tick2.north east);
+      \IfClozeTF{}{\clip (-1,-2) rectangle (7,6)
+        (xmLabel.south west) rectangle (xmLabel.north east)
+        (xpLabel.south west) rectangle (xpLabel.north east)
+        (xtLabel.south west) rectangle (xtLabel.north east);}
+      \draw[step=1,black!8,line width=0.3pt] (0,-1) grid (5,4);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}
+

@@ -10,7 +10,7 @@ The project uses LuaLaTeX via `latexmk` (TeX Live 2026). `main.tex` is the sole 
 .\tools\build-all.ps1
 ```
 
-This creates all four variants under `build/`: German complete, German cloze, English complete, and English cloze. These four PDFs are versioned as ready-to-download deliverables; all other generated build files remain ignored. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
+This creates the active PDF variants under `build/`. The folder contains the final PDFs and their `.synctex.gz` source maps, which let the PDF viewer jump from a PDF position to the corresponding TeX source. All other auxiliary files, logs, and cached TikZ figures are stored under the current user's `%LOCALAPPDATA%\Temp\Mathematik1-Skript\` folder. Those local temporary files are rebuilt when needed and are not shared with the project. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
 
 ## Structure and configuration
 

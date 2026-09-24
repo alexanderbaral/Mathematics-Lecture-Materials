@@ -1,0 +1,59 @@
+\subsection{Annäherung statt Auswertung}
+\label{subsec:real_functions_limit_intuition}
+Wir beginnen mit der bekannten Funktion $f(x)=x^2$.
+Die Eingaben nähern sich der Stelle $2$ von links und von rechts;
+den Wert bei $x=2$ lassen wir zunächst aus.
+\begin{center}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{@{}c|rrr@{\qquad}rrr@{}}
+    $x$ & $1{,}9$ & $1{,}99$ & $1{,}999$ & $2{,}001$ & $2{,}01$ & $2{,}1$\\
+    $x^2$ & $3{,}61$ & $3{,}9601$ & $3{,}996001$ &
+      $4{,}004001$ & $4{,}0401$ & $4{,}41$\\
+  \end{tabular}
+\end{center}
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_limit_approach.tex}
+\end{center}
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Grenzwert -- anschauliche Bedeutung}{real_functions_limit}
+  Die Funktion $f$ hat für $x\to a$ den \emph{Grenzwert}
+  \EnglishTerm{limit} $L\in\R$, wenn ihre Werte beliebig nahe bei $L$
+  liegen und bleiben, sobald $x$ hinreichend nahe bei $a$ liegt,
+  aber $x\ne a$ ist. Wir schreiben
+  \[
+    \lim_{x\to a}f(x)=L
+    \qquad\text{oder}\qquad
+    f(x)\to L\quad\text{für }x\to a.
+  \]
+  Die Annäherung erfolgt nur mit $x\in D_f$; solche Stellen müssen
+  beliebig nahe bei $a$ liegen.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Die Annäherung begründen}{real_functions_square_limit}
+  Warum bleiben die Werte von $x^2$ nahe bei $4$, wenn $x$ nahe bei $2$ liegt?
+  \begin{ClozeArea}[34]{6}
+    Die Differenz lässt sich mit einer binomischen Formel zerlegen:
+    \[
+      |x^2-4|=|x-2|\,|x+2|.
+    \]
+    Für $1<x<3$ ist $|x+2|<5$. Der Abstand zu $4$ ist also kleiner als
+    das Fünffache des Abstands von $x$ zu $2$. Wird letzterer beliebig
+    klein, gilt dies auch für den ersten:
+    $\lim_{x\to2}x^2=4$.
+  \end{ClozeArea}
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{KeyPointBox}{Der Wert an der Stelle ist nicht die Frage}{real_functions_limit_vs_value}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_limit_questions.tex}
+  \end{center}
+  Für den Grenzwert ist nicht entscheidend, ob $f(a)$ existiert oder
+  welchen Wert es hat. Entscheidend ist das Verhalten in der Nähe von $a$.
+\end{KeyPointBox}
+\begin{RemarkBox}
+  Eine Wertetabelle oder Zeichnung hilft beim Erkennen eines Grenzwerts.
+  Endlich viele Stichproben beweisen ihn jedoch nicht: Die Aussage muss
+  für jede hinreichend nahe zulässige Eingabe gelten.
+\end{RemarkBox}

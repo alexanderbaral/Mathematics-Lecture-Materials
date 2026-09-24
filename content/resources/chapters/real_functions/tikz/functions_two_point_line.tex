@@ -1,0 +1,17 @@
+\begin{tikzpicture}[x=1.12cm,y=1.12cm,>=Latex,line cap=round]
+  \draw[->,black!70] (-0.65,0)--(5.35,0) node[right] {$x$};
+  \draw[->,black!70] (0,-0.2)--(0,3.55) node[above] {$y$};
+  \draw[THMBlue,line width=1.15pt] (-0.55,0.575)--(4.55,3.125);
+
+  \draw[green!55!black,line width=0.9pt] (1,1.35)--(4,1.35)--(4,2.85);
+  \node[green!55!black,below=5pt] at (2.5,1.35) {$x_B-x_A$};
+  \node[green!55!black,right=5pt] at (4,2.1) {$y_B-y_A$};
+  \draw[green!55!black,line width=0.85pt,decorate,
+    decoration={brace,amplitude=3pt,mirror}] (0.18,0.03)--(0.18,0.82);
+  \node[green!55!black,right=8pt] at (0.18,0.43) {$b$};
+
+  \fill[black] (1,1.35) circle (1.5pt);
+  \fill[black] (4,2.85) circle (1.5pt);
+  \node[above=8pt] at (1,1.35) {$P_A$};
+  \node[above=9pt] at (4,2.85) {$P_B$};
+\end{tikzpicture}

@@ -1,0 +1,109 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[>=Latex]
+\begin{scope}[xshift=0cm,yshift=0cm,x=1.45cm,y=1cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-1.2,0)--(1.4,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.8)--(0,2) node[above] {$y$};
+  \draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[above=4pt,inner sep=1pt] (xt0) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (1,0) {$1$};
+\draw[black!50] (-0.055,-1.5708)--(0.055,-1.5708);
+\node[right=4pt,inner sep=1pt] (yt2) at (0,-1.5708) {$-\pi/2$};
+\draw[black!50] (-0.055,1.5708)--(0.055,1.5708);
+\node[left=4pt,inner sep=1pt] (yt3) at (0,1.5708) {$\pi/2$};
+
+  \begin{scope}
+    \clip (-1.2,-1.8) rectangle (1.2,1.8);
+    \draw[THMBlue,line width=1.15pt,domain=-90:90,samples=121] plot ({sin(\x)},{\x*pi/180});
+\fill[THMBlue] (1,1.5708) circle (1.8pt) (-1,-1.5708) circle (1.8pt);
+  \end{scope}
+  
+  \node at (0,-2.55) {$\arcsin x$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-1.2,-1.8) rectangle (1.2,1.8)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (yt2.south west) rectangle (yt2.north east)
+        (yt3.south west) rectangle (yt3.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-1.2,-1.8) grid (1.2,1.8);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+\begin{scope}[xshift=5.5cm,yshift=0cm,x=1.45cm,y=1cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-1.2,0)--(1.4,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,3.55) node[above] {$y$};
+  \draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (1,0) {$1$};
+\draw[black!50] (-0.055,1.5708)--(0.055,1.5708);
+\node[below left=5pt,inner sep=1pt] (yt2) at (0,1.5708) {$\pi/2$};
+\draw[black!50] (-0.055,3.1416)--(0.055,3.1416);
+\node[left=4pt,inner sep=1pt] (yt3) at (0,3.1416) {$\pi$};
+
+  \begin{scope}
+    \clip (-1.2,0) rectangle (1.2,3.35);
+    \draw[THMBlue,line width=1.15pt,domain=0:180,samples=121] plot ({cos(\x)},{\x*pi/180});
+\fill[THMBlue] (1,0) circle (1.8pt) (-1,3.1416) circle (1.8pt);
+  \end{scope}
+  
+  \node at (0,-2.55) {$\arccos x$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-1.2,0) rectangle (1.2,3.35)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (yt2.south west) rectangle (yt2.north east)
+        (yt3.south west) rectangle (yt3.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-1.2,0) grid (1.2,3.35);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+\begin{scope}[xshift=11.8cm,yshift=0cm,x=0.65cm,y=1cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-3.5,0)--(3.7,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.8)--(0,2) node[above] {$y$};
+  \draw[black!50] (-3,-0.055)--(-3,0.055);
+\node[above=4pt,inner sep=1pt] (xt0) at (-3,0) {$-3$};
+\draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[above=4pt,inner sep=1pt] (xt1) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[above=4pt,inner sep=1pt] (xt2) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt4) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt5) at (3,0) {$3$};
+\draw[black!50] (-0.055,-1.5708)--(0.055,-1.5708);
+\node[right=4pt,inner sep=1pt] (yt6) at (0,-1.5708) {$-\pi/2$};
+\draw[black!50] (-0.055,1.5708)--(0.055,1.5708);
+\node[left=4pt,inner sep=1pt] (yt7) at (0,1.5708) {$\pi/2$};
+
+  \begin{scope}
+    \clip (-3.5,-1.8) rectangle (3.5,1.8);
+    \draw[THMBlue,line width=1.15pt,domain=-3.5:3.5,samples=141] plot (\x,{atan(\x)*pi/180});
+\draw[black!45,dashed] (-3.5,1.5708)--(-1.5,1.5708);
+\draw[black!45,dashed] (0.3,1.5708)--(3.5,1.5708);
+\draw[black!45,dashed] (-3.5,-1.5708)--(-0.3,-1.5708);
+\draw[black!45,dashed] (1.5,-1.5708)--(3.5,-1.5708);
+  \end{scope}
+  
+  \node at (0,-2.55) {$\arctan x$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-3.5,-1.8) rectangle (3.5,1.8)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (xt4.south west) rectangle (xt4.north east)
+        (xt5.south west) rectangle (xt5.north east)
+        (yt6.south west) rectangle (yt6.north east)
+        (yt7.south west) rectangle (yt7.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-3.5,-1.8) grid (3.5,1.8);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}

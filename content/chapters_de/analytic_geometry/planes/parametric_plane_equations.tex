@@ -1,39 +1,27 @@
-\subsection{Parameterdarstellung einer Ebene}
-\label{subsec:analytic_geometry_parametric_plane_equations}
-
-Ein Aufpunkt und zwei Bewegungsrichtungen erzeugen alle Punkte einer Ebene.
-Die lineare Unabhängigkeit der Richtungen stellt sicher, dass dabei wirklich
-eine Fläche und nicht nur eine Gerade entsteht.
-
 \begin{DefinitionBox}{Parameterdarstellung einer Ebene}{analytic_geometry_parametric_plane}
-  Eine Ebene $E$ durch den Punkt $P$ mit Ortsvektor $\vec p$ und mit zwei
-  linear unabhängigen Richtungsvektoren $\vec a,\vec b\in\R^3$ besitzt die
-  Parameterdarstellung
-  \[
-    E:\quad
-    \vec x=\vec p+\lambda\vec a+\mu\vec b,
-    \qquad \lambda,\mu\in\R.
-  \]
-  Die Parameter $\lambda$ und $\mu$ steuern unabhängig die Bewegung in den
-  beiden Richtungen der Ebene.
+\noindent
+Eine Ebene $E$ mit Aufpunktvektor $\overrightarrow{OP}$ und \emph{2
+linear unabhängigen Richtungsvektoren} $\vec a,\vec b\in\R^n$ besitzt die
+Parameterdarstellung
+\par\smallskip
+\noindent
+\begin{minipage}[t]{0.54\linewidth}
+  \vspace{0pt}
+  \centering
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/parametric_plane_equation_annotation.tex}
+\end{minipage}\hfill
+\begin{minipage}[t]{0.42\linewidth}
+  \vspace{0pt}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_parameter_representation.tex}
+\end{minipage}
+\par\smallskip
+Die Parameter $\lambda$ und $\mu$ steuern unabhängig die Bewegung in den
+beiden Richtungen der Ebene.
+Nur linear unabhängige Richtungsvektoren $\vec a$ und $\vec b$ spannen
+eine Ebene auf.
 \end{DefinitionBox}
 
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_parameter_representation.tex}
-\end{center}
-
-\begin{KeyPointBox}{Wann spannen zwei Richtungen eine Ebene auf?}{analytic_geometry_plane_direction_vectors}
-  Für eine Ebene müssen $\vec a$ und $\vec b$ linear unabhängig sein:
-  \[
-    \vec a\ne\vec 0,\qquad
-    \vec b\ne\vec 0,\qquad
-    \vec b\ne t\vec a\quad\text{für alle }t\in\R.
-  \]
-  Andernfalls erzeugen beide Parameter nur Punkte auf einer Geraden.
-\end{KeyPointBox}
-
-\begin{RemarkBox}[title=Nicht eindeutige Darstellung]
-  Wie bei Geraden kann der Aufpunkt durch jeden anderen Punkt der Ebene
-  ersetzt werden. Auch jedes andere Paar linear unabhängiger Richtungsvektoren
-  in der Ebene beschreibt dieselbe Ebene.
-\end{RemarkBox}
+Wie bei Geraden kann der Aufpunkt durch jeden anderen Punkt der Ebene ersetzt
+werden. Auch jedes andere Paar linear unabhängiger Richtungsvektoren in der
+Ebene beschreibt dieselbe Ebene.

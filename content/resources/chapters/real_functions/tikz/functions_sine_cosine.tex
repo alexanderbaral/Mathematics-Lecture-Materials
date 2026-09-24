@@ -1,0 +1,75 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[>=Latex]
+\begin{scope}[xshift=0cm,yshift=0cm,x=1cm,y=1.15cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-6.2832,0)--(6.4832,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.25)--(0,1.45) node[above] {$y$};
+  \draw[black!50] (-6.2832,-0.055)--(-6.2832,0.055);
+\node[below right=4pt,inner sep=1pt] (xt0) at (-6.2832,0) {$-2\pi$};
+\draw[black!50] (-3.1416,-0.055)--(-3.1416,0.055);
+\node[below left=4pt,inner sep=1pt] (xt1) at (-3.1416,0) {$-\pi$};
+\draw[black!50] (3.1416,-0.055)--(3.1416,0.055);
+\node[below left=4pt,inner sep=1pt] (xt2) at (3.1416,0) {$\pi$};
+\draw[black!50] (6.2832,-0.055)--(6.2832,0.055);
+\node[below right=4pt,inner sep=1pt] (xt3) at (6.2832,0) {$2\pi$};
+\draw[black!50] (-0.055,-1)--(0.055,-1);
+\node[left=4pt,inner sep=1pt] (yt4) at (0,-1) {$-1$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt5) at (0,1) {$1$};
+
+  \begin{scope}
+    \clip (-6.2832,-1.25) rectangle (6.2832,1.25);
+    \draw[THMBlue,line width=1.15pt,domain=-6.2832:6.2832,samples=241] plot (\x,{sin(deg(\x))});
+  \end{scope}
+  
+  \node[anchor=east] at (-6.65,1) {$\sin x$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-6.2832,-1.25) rectangle (6.2832,1.25)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (yt4.south west) rectangle (yt4.north east)
+        (yt5.south west) rectangle (yt5.north east);
+      \draw[xstep=1.5708,ystep=1,black!8,line width=0.25pt] (-6.2832,-1.25) grid (6.2832,1.25);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+
+\begin{scope}[xshift=0cm,yshift=-4.1cm,x=1cm,y=1.15cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-6.2832,0)--(6.4832,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.25)--(0,1.45) node[above] {$y$};
+  \draw[black!50] (-6.2832,-0.055)--(-6.2832,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (-6.2832,0) {$-2\pi$};
+\draw[black!50] (-3.1416,-0.055)--(-3.1416,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (-3.1416,0) {$-\pi$};
+\draw[black!50] (3.1416,-0.055)--(3.1416,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (3.1416,0) {$\pi$};
+\draw[black!50] (6.2832,-0.055)--(6.2832,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (6.2832,0) {$2\pi$};
+\draw[black!50] (-0.055,-1)--(0.055,-1);
+\node[left=4pt,inner sep=1pt] (yt4) at (0,-1) {$-1$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[above left=5pt,inner sep=1pt] (yt5) at (0,1) {$1$};
+
+  \begin{scope}
+    \clip (-6.2832,-1.25) rectangle (6.2832,1.25);
+    \draw[THMBlue,line width=1.15pt,domain=-6.2832:6.2832,samples=241] plot (\x,{cos(deg(\x))});
+  \end{scope}
+  
+  \node[anchor=east] at (-6.65,1) {$\cos x$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-6.2832,-1.25) rectangle (6.2832,1.25)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (yt4.south west) rectangle (yt4.north east)
+        (yt5.south west) rectangle (yt5.north east);
+      \draw[xstep=1.5708,ystep=1,black!8,line width=0.25pt] (-6.2832,-1.25) grid (6.2832,1.25);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}

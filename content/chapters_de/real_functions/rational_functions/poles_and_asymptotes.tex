@@ -1,0 +1,113 @@
+\subsection{Polstellen: Was nach dem Kürzen übrig bleibt}
+\label{subsec:real_functions_poles}
+Nicht jede ausgeschlossene Eingabe lässt sich ergänzen.
+Die Vielfachheiten der gemeinsamen Faktoren entscheiden darüber,
+ob eine Lücke hebbar ist oder die Werte unbegrenzt werden.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Polstelle}{real_functions_pole}
+  Eine ausgeschlossene Stelle $a$ einer gebrochen-rationalen Funktion
+  heißt \emph{Polstelle} \EnglishTerm{pole}, wenn
+  $|f(x)|\to\infty$ für $x\to a$ gilt.
+  Die Gerade $x=a$ heißt dann \emph{senkrechte Asymptote}
+  \EnglishTerm{vertical asymptote}.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Gemeinsame Nullstellen reichen nicht aus}{real_functions_common_zeros}
+  Bei allen drei Termen werden Zähler und Nenner für $x\to1$ null.
+  Kürzen Sie und entscheiden Sie, welches Verhalten bleibt.
+  \[
+    f(x)=\frac{x-1}{x-1},\qquad
+    g(x)=\frac{(x-1)^2}{x-1},\qquad
+    h(x)=\frac{x-1}{(x-1)^2}.
+  \]
+  \begin{ClozeArea}[34]{10}
+    \[
+      \begin{array}{l@{\quad}l}
+        \dfrac{x-1}{x-1}=1
+          &\text{hebbare Lücke, Grenzwert }1,\\[1.1em]
+        \dfrac{(x-1)^2}{x-1}=x-1
+          &\text{hebbare Lücke, Grenzwert }0,\\[1.1em]
+        \dfrac{x-1}{(x-1)^2}=\dfrac1{x-1}
+          &\text{Polstelle}.
+      \end{array}
+      \qquad(x\ne1)
+    \]
+    Im dritten Fall gilt links $f(x)\to-\infty$, rechts $f(x)\to+\infty$.
+  \end{ClozeArea}
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{KeyPointBox}{Vielfachheiten vergleichen}{real_functions_pole_order}
+  An einer Nennernullstelle $a$ schreiben wir mit $r(a),s(a)\ne0$
+  \[
+    f(x)=\frac{(x-a)^m r(x)}{(x-a)^n s(x)}
+        =(x-a)^{m-n}\frac{r(x)}{s(x)},\qquad n\ge1,\ m\ge0.
+  \]
+  Für $m\ge n$ ist die Lücke hebbar. Für $m<n$ bleibt eine Polstelle
+  der Ordnung $n-m$:
+  \begin{itemize}
+    \item ungerade Ordnung: entgegengesetzte Vorzeichen auf beiden Seiten;
+    \item gerade Ordnung: dasselbe Vorzeichen auf beiden Seiten.
+  \end{itemize}
+  Das konkrete Vorzeichen ergibt sich zusätzlich aus $r(a)/s(a)$.
+\end{KeyPointBox}
+
+\clearpage
+\subsection{Asymptoten im Unendlichen}
+\label{subsec:real_functions_asymptotes}
+Ein Graph kann sich für große Eingaben einer Geraden annähern.
+Dabei muss der Unterschied der Funktionswerte gegen null gehen --
+ein bloß ähnlicher Verlauf genügt nicht.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Waagerechte und schiefe Asymptote}{real_functions_asymptote}
+  Die Gerade $y=mx+b$ ist eine \emph{Asymptote} \EnglishTerm{asymptote}
+  für $x\to+\infty$ beziehungsweise $x\to-\infty$, wenn
+  \[
+    \lim_{x\to\pm\infty}\bigl(f(x)-(mx+b)\bigr)=0
+  \]
+  für die betreffende Richtung gilt.
+  Für $m=0$ heißt sie \emph{waagerecht}
+  \EnglishTerm{horizontal}, für $m\ne0$ \emph{schief}
+  \EnglishTerm{oblique}.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Die Polynomdivision zeigt die Asymptote}{real_functions_slant_asymptote}
+  Wir untersuchen $f(x)=(x^2+1)/(x-1)$ für große positive und negative $x$.
+  \begin{ClozeArea}[34]{6}
+    Die Polynomdivision zerlegt den Term in eine Gerade und einen Rest:
+    \[
+      f(x)=x+1+\frac2{x-1}.
+    \]
+    Weil $2/(x-1)\to0$ für $x\to\pm\infty$, ist $y=x+1$
+    auf beiden Seiten eine schiefe Asymptote.
+    Zusätzlich ist $x=1$ eine senkrechte Asymptote.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_slant_asymptote.tex}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{TheoremBox}{Gradvergleich für gebrochen-rationale Funktionen}{real_functions_degree_comparison}
+  Seien $m=\deg p$, $n=\deg q$ und $a_m,b_n$ die Leitkoeffizienten.
+  Für $f=p/q$ mit $p\ne0$ gilt:
+  \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{@{}ll@{}}
+      \toprule
+      Gradvergleich & Verhalten für $x\to\pm\infty$\\ \midrule
+      $m<n$ & $f(x)\to0$\\
+      $m=n$ & $f(x)\to a_m/b_n$\\
+      $m=n+1$ & schiefe Asymptote aus Polynomdivision\\
+      $m>n+1$ & Annäherung an ein Polynom vom Grad $m-n$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Allgemein liefert die Division $p=hq+r$ mit $\deg r<n$ die Zerlegung
+  $f=h+r/q$. Wegen $r/q\to0$ beschreibt $h$ das Verhalten im Unendlichen.
+\end{TheoremBox}
+\begin{RemarkBox}
+  Für $m>n+1$ ist der Graph von $h$ eine polynomial beschriebene
+  Annäherungskurve, keine schiefe Gerade. Eine Asymptote darf außerdem
+  vom Funktionsgraphen geschnitten werden.
+\end{RemarkBox}

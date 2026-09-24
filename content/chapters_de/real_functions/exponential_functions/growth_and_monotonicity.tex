@@ -1,0 +1,84 @@
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Exponentialfunktion}{real_functions_exponential}
+  Für eine Basis $a>0$ heißt
+  \[
+    f(x)=a^x,\qquad x\in\R,
+  \]
+  eine \emph{Exponentialfunktion} \EnglishTerm{exponential function}.
+  Es gilt $a^0=1$ und $a^{x+h}=a^x a^h$: Ein fester Eingabeschritt $h$
+  multipliziert den Funktionswert mit dem festen Faktor $a^h$.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Gleicher Zuwachs oder gleicher Faktor?}{real_functions_linear_exponential}
+  Beide Funktionen starten bei $1$ und haben bei $x=1$ den Wert $2$.
+  Ergänzen Sie die weiteren Werte.
+  \[
+    \begin{array}{c|rrrrr}
+      x&0&1&2&3&4\\ \hline
+      1+x&1&2&\Cloze{1cm}{3}&\Cloze{1cm}{4}&\Cloze{1cm}{5}\\[0.6em]
+      2^x&1&2&\Cloze{1cm}{4}&\Cloze{1cm}{8}&\Cloze{1cm}{16}
+    \end{array}
+  \]
+  Bei $1+x$ wird je Schritt $1$ addiert, bei $2^x$ mit $2$ multipliziert.
+\end{ExampleBox}
+\end{minipage}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_exponentials.tex}
+\end{center}
+
+\clearpage
+\subsection{Monotonie: Wie sind Eingaben und Ausgaben geordnet?}
+\label{subsec:real_functions_monotonicity}
+$2^x$ wächst stets, $(1/2)^x$ fällt stets. Dieses Verhalten lässt
+sich ohne Kenntnis einer Ableitung durch den Vergleich zweier Stellen
+beschreiben.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Funktionseigenschaft -- Monotonie}{real_functions_monotonicity}
+  Eine Funktion $f$ heißt auf einem Intervall $I$
+  \emph{monoton steigend} \EnglishTerm{monotonically increasing},
+  wenn für alle $x_1,x_2\in I$ gilt:
+  \[
+    x_1<x_2\quad\Longrightarrow\quad f(x_1)\le f(x_2).
+  \]
+  Mit $f(x_1)<f(x_2)$ heißt sie \emph{streng monoton steigend}
+  \EnglishTerm{strictly increasing}.
+  Ersetzt man $\le$ durch $\ge$ beziehungsweise $<$ durch $>$,
+  erhält man \emph{monoton fallend} \EnglishTerm{monotonically decreasing}
+  beziehungsweise \emph{streng monoton fallend} \EnglishTerm{strictly decreasing}.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Das Intervall gehört zur Aussage}{real_functions_monotonicity_intervals}
+  Betrachten Sie erneut $f(x)=x^2$. Auf welchem Intervall ist die
+  Funktion streng monoton fallend, auf welchem streng monoton steigend?
+  \[
+    \begin{array}{c@{\qquad}c}
+      (-\infty,0]&[0,\infty)\\
+      \Cloze{5cm}{\text{streng monoton fallend}}&
+      \Cloze{5cm}{\text{streng monoton steigend}}
+    \end{array}
+  \]
+  Auf ganz $\R$ ist sie weder monoton steigend noch monoton fallend.
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{TheoremBox}{Eigenschaften der Exponentialfunktion}{real_functions_exponential_properties}
+  Für $a>0$, $a\ne1$ ist $a^x$ auf $\R$ stetig, stets positiv und
+  hat die \textcolor{green!55!black}{Wertemenge} $(0,\infty)$.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{@{}lcc@{}}
+      \toprule
+       & $a>1$ & $0<a<1$\\ \midrule
+      Monotonie & streng steigend & streng fallend\\
+      $x\to+\infty$ & $a^x\to+\infty$ & $a^x\to0$\\
+      $x\to-\infty$ & $a^x\to0$ & $a^x\to+\infty$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Die Gerade $y=0$ ist in der jeweiligen Richtung eine waagerechte
+  Asymptote. Die Funktion ist nach unten, aber nicht nach oben beschränkt.
+  Für $a=1$ ist $f(x)=1$ konstant mit \textcolor{green!55!black}{Wertemenge} $\{1\}$.
+\end{TheoremBox}
+Für $x_2>x_1$ gilt $a^{x_2}/a^{x_1}=a^{x_2-x_1}$.
+Dieser Faktor ist bei $a>1$ größer als $1$, bei $0<a<1$ kleiner als $1$;
+damit ist die jeweilige strenge Monotonie erklärt.

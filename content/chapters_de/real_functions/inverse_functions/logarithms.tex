@@ -1,0 +1,101 @@
+\clearpage
+\subsection{Logarithmen als Umkehrung des Exponenzierens}
+\label{subsec:real_functions_logarithms}
+Für $a>0$, $a\ne1$ ist $a^x$ streng monoton und nimmt jeden positiven
+Wert genau einmal an. Deshalb lässt sich aus einem positiven
+Funktionswert der zugehörige Exponent eindeutig zurückgewinnen.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Logarithmus}{real_functions_logarithm}
+  Für $a>0$, $a\ne1$ und $y>0$ ist der \emph{Logarithmus}
+  \EnglishTerm{logarithm} $\log_a y$ der Exponent, mit dem die Basis $a$
+  potenziert werden muss, um $y$ zu erhalten:
+  \[
+    a^x=y\quad\Longleftrightarrow\quad x=\log_a y.
+  \]
+  Die Logarithmusfunktion $\log_a:(0,\infty)\to\R$ ist die
+  Umkehrfunktion von $x\mapsto a^x$.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Gesucht ist der Exponent}{real_functions_logarithm_values}
+  Übersetzen Sie jede Logarithmusfrage in eine Potenzgleichung.
+  \[
+    \begin{array}{c@{\qquad}c@{\qquad}c}
+      2^{\,?}=8&10^{\,?}=0{,}01&(1/2)^{\,?}=4\\[0.5em]
+      \log_2 8=\Cloze{1cm}{3}&
+      \log_{10}0{,}01=\Cloze{1cm}{-2}&
+      \log_{1/2}4=\Cloze{1cm}{-2}
+    \end{array}
+  \]
+\end{ExampleBox}
+\end{minipage}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_logarithms.tex}
+\end{center}
+
+\begin{TheoremBox}{Eigenschaften der Logarithmusfunktion}{real_functions_log_properties}
+  Die Funktion $\log_a x$ ist auf $(0,\infty)$ stetig und hat die
+  \textcolor{green!55!black}{Wertemenge} $\R$. Es gilt $\log_a1=0$ und $\log_a a=1$.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{@{}lcc@{}}
+      \toprule
+       & $a>1$ & $0<a<1$\\ \midrule
+      Monotonie & streng steigend & streng fallend\\
+      $x\to0^+$ & $\log_a x\to-\infty$ & $\log_a x\to+\infty$\\
+      $x\to+\infty$ & $\log_a x\to+\infty$ & $\log_a x\to-\infty$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Die Gerade $x=0$ ist eine senkrechte Asymptote. Es gibt keinen
+  $y$-Achsenabschnitt.
+\end{TheoremBox}
+Die besonderen Bezeichnungen
+\emph{natürlicher Logarithmus} \EnglishTerm{natural logarithm}
+$\ln x=\log_e x$ und \emph{dekadischer Logarithmus}
+\EnglishTerm{common logarithm} $\lg x=\log_{10}x$ verwenden wir im Folgenden.
+
+\begin{TheoremBox}{Logarithmengesetze}{real_functions_log_laws}
+  Für $u,v>0$, $r\in\R$ sowie $a,b>0$ mit $a,b\ne1$ gelten:
+  \[
+    \begin{aligned}
+      \log_a(uv)&=\log_a u+\log_a v,\\[0.6em]
+      \log_a(u/v)&=\log_a u-\log_a v,\\[0.6em]
+      \log_a(u^r)&=r\log_a u,\\[0.6em]
+      \log_a u&=\frac{\log_b u}{\log_b a}
+               =\frac{\ln u}{\ln a}.
+    \end{aligned}
+  \]
+  Insbesondere gelten $\ln(e^x)=x$ für $x\in\R$ und
+  $e^{\ln x}=x$ für $x>0$.
+  Jede Exponentialfunktion lässt sich damit zur Basis $e$ schreiben:
+  $a^x=e^{x\ln a}$ für $a>0$. Bei $0<a<1$ ist $\ln a<0$,
+  entsprechend einer exponentiellen Abnahme.
+\end{TheoremBox}
+Die Produktregel folgt aus den Potenzgesetzen:
+Mit $s=\log_a u$ und $t=\log_a v$ ist
+$uv=a^s a^t=a^{s+t}$; der gesuchte Exponent ist also $s+t$.
+\begin{RemarkBox}
+  Für Summen gibt es keine entsprechende Zerlegung:
+  $\ln(u+v)$ ist im Allgemeinen nicht $\ln u+\ln v$.
+  Ein Logarithmus darf im Reellen nur auf ein positives Argument
+  angewendet werden.
+\end{RemarkBox}
+
+\begin{ExampleBox}{Wann ist die Amplitude halbiert?}{real_functions_half_life}
+  Für $A(t)=A_0e^{-t/\tau}$ mit $A_0>0$ und $\tau>0$ suchen wir die
+  \emph{Halbwertszeit} \EnglishTerm{half-life} $t_{1/2}$.
+  Berechnen Sie sie zunächst allgemein und anschließend für $\tau=2\,\mathrm{s}$.
+  \begin{ClozeArea}[34]{11}
+    Die Bedingung $A(t_{1/2})=A_0/2$ führt auf eine Gleichung für den Exponenten:
+    \[
+      \begin{array}{r@{\quad}l@{\qquad}l}
+        &A_0e^{-t_{1/2}/\tau}=A_0/2&\TransformOp{:A_0}\\[0.9em]
+        \Longleftrightarrow&e^{-t_{1/2}/\tau}=1/2&\TransformOp{\ln}\\[0.9em]
+        \Longleftrightarrow&-t_{1/2}/\tau=\ln(1/2)&\TransformOp{\cdot(-\tau)}\\[0.9em]
+        \Longleftrightarrow&t_{1/2}=\tau\ln2.&
+      \end{array}
+    \]
+    Für $\tau=2\,\mathrm{s}$ ergibt sich $t_{1/2}\approx1{,}386\,\mathrm{s}$.
+    Der Anfangswert $A_0$ beeinflusst die Halbwertszeit nicht.
+  \end{ClozeArea}
+\end{ExampleBox}

@@ -1,0 +1,55 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.25cm,y=0.85cm,>=Latex,line cap=round]
+  \draw[->,black!55] (0,0)--(8.4,0) node[right] {$t/\mathrm{s}$};
+  \draw[->,black!55] (0,-2.5)--(0,2.7) node[above] {$y/\mathrm{mm}$};
+  \draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below left=4pt,inner sep=1pt] (xt1) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (3,0) {$3$};
+\draw[black!50] (4,-0.055)--(4,0.055);
+\node[below right=4pt,inner sep=1pt] (xt3) at (4,0) {$4$};
+\draw[black!50] (5,-0.055)--(5,0.055);
+\node[below=4pt,inner sep=1pt] (xt4) at (5,0) {$5$};
+\draw[black!50] (6,-0.055)--(6,0.055);
+\node[below left=4pt,inner sep=1pt] (xt5) at (6,0) {$6$};
+\draw[black!50] (7,-0.055)--(7,0.055);
+\node[below=4pt,inner sep=1pt] (xt6) at (7,0) {$7$};
+\draw[black!50] (8,-0.055)--(8,0.055);
+\node[below right=4pt,inner sep=1pt] (xt7) at (8,0) {$8$};
+\draw[black!50] (-0.055,-2)--(0.055,-2);
+\node[left=4pt,inner sep=1pt] (yt8) at (0,-2) {$-2$};
+\draw[black!50] (-0.055,-1)--(0.055,-1);
+\node[left=4pt,inner sep=1pt] (yt9) at (0,-1) {$-1$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt10) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt11) at (0,2) {$2$};
+
+  \begin{scope}
+    \clip (0,-2.5) rectangle (8.2,2.5);
+    \draw[THMBlue,line width=1.15pt,domain=0:8.2,samples=241] plot (\x,{2*sin(90*\x)});
+  \end{scope}
+  
+  
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (0,-2.5) rectangle (8.2,2.5)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (xt4.south west) rectangle (xt4.north east)
+        (xt5.south west) rectangle (xt5.north east)
+        (xt6.south west) rectangle (xt6.north east)
+        (xt7.south west) rectangle (xt7.north east)
+        (yt8.south west) rectangle (yt8.north east)
+        (yt9.south west) rectangle (yt9.north east)
+        (yt10.south west) rectangle (yt10.north east)
+        (yt11.south west) rectangle (yt11.north east);
+      \draw[step=1,black!8,line width=0.25pt] (0,-2.5) grid (8.2,2.5);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

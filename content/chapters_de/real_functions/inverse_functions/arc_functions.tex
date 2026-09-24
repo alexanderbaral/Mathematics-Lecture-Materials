@@ -1,0 +1,90 @@
+\clearpage
+\subsection{Arkusfunktionen als Umkehrung der Winkelfunktionen}
+\label{subsec:real_functions_arc_functions}
+Sinus, Kosinus und Tangens wiederholen ihre Werte.
+Für eindeutige Umkehrfunktionen beschränken wir sie deshalb auf je ein
+Intervall, auf dem sie streng monoton sind. Die Rückwärtsfrage lautet:
+Welcher Winkel gehört zu einem vorgegebenen Funktionswert?
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Arkussinus, Arkuskosinus und Arkustangens}{real_functions_arc_functions}
+  Die \emph{Arkusfunktionen} \EnglishTerm{inverse trigonometric functions}
+  sind die Umkehrfunktionen der folgenden Einschränkungen:
+  \begin{center}
+    \renewcommand{\arraystretch}{1.6}
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      Ausgangsfunktion & Gewähltes Intervall & Umkehrfunktion\\ \midrule
+      $\sin$ & $[-\pi/2,\pi/2]$ &
+        $\arcsin:[-1,1]\to[-\pi/2,\pi/2]$\\
+      $\cos$ & $[0,\pi]$ &
+        $\arccos:[-1,1]\to[0,\pi]$\\
+      $\tan$ & $(-\pi/2,\pi/2)$ &
+        $\arctan:\R\to(-\pi/2,\pi/2)$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Sie heißen \emph{Arkussinus} \EnglishTerm{arcsine},
+  \emph{Arkuskosinus} \EnglishTerm{arccosine} und
+  \emph{Arkustangens} \EnglishTerm{arctangent}.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Der festgelegte Winkelbereich entscheidet}{real_functions_arc_values}
+  Bestimmen Sie jeweils den Winkel in der \textcolor{green!55!black}{Wertemenge} der Umkehrfunktion.
+  \[
+    \arcsin\frac12=\Cloze{2cm}{\frac\pi6},
+    \qquad
+    \arccos\left(-\frac12\right)=\Cloze{2cm}{\frac{2\pi}3},
+    \qquad
+    \arctan(-1)=\Cloze{2cm}{-\frac\pi4}.
+  \]
+\end{ExampleBox}
+\end{minipage}
+
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_arc_graphs.tex}
+\end{center}
+\begin{TheoremBox}{Eigenschaften der Arkusfunktionen}{real_functions_arc_properties}
+  Alle drei Arkusfunktionen sind auf ihrer Definitionsmenge stetig.
+  Arkussinus und Arkustangens sind streng monoton steigend und ungerade.
+  Arkuskosinus ist streng monoton fallend.
+
+  Der Arkustangens ist beschränkt und besitzt zwei waagerechte Asymptoten:
+  \[
+    \lim_{x\to-\infty}\arctan x=-\frac\pi2,\qquad
+    \lim_{x\to+\infty}\arctan x=\frac\pi2.
+  \]
+\end{TheoremBox}
+
+\begin{KeyPointBox}{Rückwärts nur im gewählten Winkelbereich}{real_functions_arc_restrictions}
+  Die beiden Richtungen der Umkehrung haben unterschiedliche Voraussetzungen:
+  \[
+    \begin{aligned}
+      \sin(\arcsin y)&=y&&\text{für }y\in[-1,1],\\
+      \arcsin(\sin x)&=x&&\text{für }x\in[-\pi/2,\pi/2].
+    \end{aligned}
+  \]
+  Für Kosinus und Tangens gelten die entsprechenden Beziehungen mit
+  ihren jeweils festgelegten Intervallen.
+\end{KeyPointBox}
+\begin{ExampleBox}{Ein Umkehrwert ist noch nicht die ganze Lösungsmenge}{real_functions_trig_equation}
+  Lösen Sie $\sin x=1/2$ für alle $x\in\R$.
+  Nutzen Sie nach dem Arkussinus auch Symmetrie und Periodizität.
+  \begin{ClozeArea}[34]{9}
+    Der Arkussinus liefert zunächst $x=\pi/6$.
+    Innerhalb einer Periode hat auch $\pi-\pi/6=5\pi/6$ denselben Sinus.
+    Durch Wiederholung ergeben sich sämtliche Lösungen:
+    \[
+      x=\frac\pi6+2k\pi
+      \quad\text{oder}\quad
+      x=\frac{5\pi}6+2k\pi,\qquad k\in\Z.
+    \]
+    Deshalb ist etwa $\arcsin(\sin(5\pi/6))=\pi/6$ und nicht $5\pi/6$:
+    Die Umkehrfunktion gibt immer einen Winkel in $[-\pi/2,\pi/2]$ zurück.
+  \end{ClozeArea}
+\end{ExampleBox}
+\begin{RemarkBox}
+  Die Taschenrechnertaste $\sin^{-1}$ bezeichnet meist $\arcsin$,
+  nicht $1/\sin$. Prüfen Sie außerdem den Winkelmodus:
+  Ein Ergebnis in Grad und eines im Bogenmaß beschreiben denselben
+  Winkel mit unterschiedlichen Zahlen.
+\end{RemarkBox}

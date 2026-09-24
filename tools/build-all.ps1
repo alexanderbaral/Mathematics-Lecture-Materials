@@ -77,9 +77,9 @@ $buildDirectory = Join-Path $projectRoot 'build'
 New-Item -ItemType Directory -Force -Path $buildDirectory | Out-Null
 
 $localAppDataDirectory = [Environment]::GetFolderPath('LocalApplicationData')
-$localCacheDirectory = Join-Path $localAppDataDirectory '_tmp_LatexCache\Mathematik1-Skript\build-cache'
+$localCacheDirectory = Join-Path $localAppDataDirectory 'Temp\Mathematik1-Skript'
 $expectedLocalCacheDirectory = [System.IO.Path]::GetFullPath(
-    (Join-Path $localAppDataDirectory '_tmp_LatexCache\Mathematik1-Skript\build-cache')
+    (Join-Path $localAppDataDirectory 'Temp\Mathematik1-Skript')
 )
 $localCacheDirectory = [System.IO.Path]::GetFullPath($localCacheDirectory)
 if ($localCacheDirectory -ne $expectedLocalCacheDirectory) {
@@ -170,7 +170,8 @@ $env:TEXMFVAR = $texmfCacheDirectory
 $env:TEXMFCACHE = $texmfCacheDirectory
 $auxDirectory = Join-Path $localCacheDirectory 'latex-aux'
 New-Item -ItemType Directory -Force -Path $auxDirectory | Out-Null
-$env:LATEXMK_OUT_DIR = $auxDirectory.Replace('\', '/')
+$env:LATEXMK_OUT_DIR = $buildDirectory.Replace('\', '/')
+$env:LATEXMK_AUX_DIR = $auxDirectory.Replace('\', '/')
 $latexmk = (Get-Command latexmk -ErrorAction Stop).Source
 $lualatex = (Get-Command lualatex -ErrorAction Stop).Source
 $latexmkArguments = @(
@@ -186,8 +187,12 @@ $tikzSources = @(
     Get-ChildItem -LiteralPath (Join-Path $projectRoot 'content/resources') -Recurse -Filter '*.tex' -File |
         Where-Object {
             $_.Directory.Name -eq 'tikz' -and
-            # These sources are parameterized by caller-defined commands.
-            $_.BaseName -notin @('number_set_inclusions', 'parameterized_line_representation')
+            # These sources need caller-defined commands or document references.
+            $_.BaseName -notin @(
+                'number_set_inclusions',
+                'parameterized_line_representation',
+                'plane_representation_conversion'
+            )
         } |
         Sort-Object -Property FullName
 )
@@ -279,7 +284,7 @@ foreach ($variant in $variants) {
 $failed = $false
 foreach ($variant in $variants) {
     $jobName = [System.IO.Path]::GetFileNameWithoutExtension($variant.File)
-    $log = Join-Path $buildDirectory "$jobName.build.log"
+    $log = Join-Path $auxDirectory "$jobName.build.log"
 
     Write-Host "Building $($variant.Label)..."
     Set-Location -LiteralPath $projectRoot
@@ -290,19 +295,14 @@ foreach ($variant in $variants) {
     $ErrorActionPreference = $previousErrorActionPreference
 
     if ($exitCode -eq 0) {
-        $builtPdf = Join-Path $auxDirectory "$jobName.pdf"
+        $builtPdf = Join-Path $buildDirectory "$jobName.pdf"
         if (-not (Test-Path -LiteralPath $builtPdf)) {
             throw "Expected PDF was not created: $builtPdf"
         }
-        Copy-Item -LiteralPath $builtPdf -Destination (Join-Path $buildDirectory "$jobName.pdf") -Force
-
-        # LaTeX Workshop needs the SyncTeX sidecar next to the PDF for
-        # inverse search (double-click in the internal PDF viewer).
-        $builtSyncTeX = Join-Path $auxDirectory "$jobName.synctex.gz"
+        $builtSyncTeX = Join-Path $buildDirectory "$jobName.synctex.gz"
         if (-not (Test-Path -LiteralPath $builtSyncTeX)) {
-            throw "Expected SyncTeX data was not created: $builtSyncTeX"
+            throw "Expected SyncTeX source map was not created: $builtSyncTeX"
         }
-        Copy-Item -LiteralPath $builtSyncTeX -Destination (Join-Path $buildDirectory "$jobName.synctex.gz") -Force
         Write-Host "[OK] $($variant.Label)" -ForegroundColor Green
     }
     else {
@@ -319,6 +319,59 @@ if ($failed) {
 exit 0
 }
 finally {
+    $buildDirectory = Join-Path (Split-Path -Parent $PSScriptRoot) 'build'
+    $cachePathFile = Join-Path $buildDirectory 'tikz-cache-path.tex'
+    $resolvedBuildDirectory = [System.IO.Path]::GetFullPath($buildDirectory)
+    $expectedBuildDirectory = [System.IO.Path]::GetFullPath(
+        (Join-Path (Split-Path -Parent $PSScriptRoot) 'build')
+    )
+    if ($resolvedBuildDirectory -ne $expectedBuildDirectory) {
+        throw "Refusing to clean unexpected build directory: $resolvedBuildDirectory"
+    }
+    $buildPrefix = $resolvedBuildDirectory.TrimEnd('\') + '\'
+    Get-ChildItem -LiteralPath $resolvedBuildDirectory -File -Recurse -Force |
+        Where-Object {
+            $_.Extension -ine '.pdf' -and
+            -not $_.Name.EndsWith('.synctex.gz', [System.StringComparison]::OrdinalIgnoreCase)
+        } |
+        ForEach-Object {
+            $resolvedFile = [System.IO.Path]::GetFullPath($_.FullName)
+            if (-not $resolvedFile.StartsWith(
+                $buildPrefix, [System.StringComparison]::OrdinalIgnoreCase
+            )) {
+                throw "Refusing to remove a file outside build directory: $resolvedFile"
+            }
+            Remove-Item -LiteralPath $resolvedFile -Force
+        }
+    Get-ChildItem -LiteralPath $resolvedBuildDirectory -File -Recurse -Filter '*.synctex.gz' -Force |
+        ForEach-Object {
+            $resolvedFile = [System.IO.Path]::GetFullPath($_.FullName)
+            if (-not $resolvedFile.StartsWith(
+                $buildPrefix, [System.StringComparison]::OrdinalIgnoreCase
+            )) {
+                throw "Refusing to validate a file outside build directory: $resolvedFile"
+            }
+            $pdfPath = $resolvedFile.Substring(0, $resolvedFile.Length - '.synctex.gz'.Length) + '.pdf'
+            if (-not (Test-Path -LiteralPath $pdfPath -PathType Leaf)) {
+                Remove-Item -LiteralPath $resolvedFile -Force
+            }
+        }
+    Get-ChildItem -LiteralPath $resolvedBuildDirectory -Directory -Recurse -Force |
+        Sort-Object { $_.FullName.Length } -Descending |
+        ForEach-Object {
+            $resolvedFolder = [System.IO.Path]::GetFullPath($_.FullName)
+            if (-not $resolvedFolder.StartsWith(
+                $buildPrefix, [System.StringComparison]::OrdinalIgnoreCase
+            )) {
+                throw "Refusing to remove a folder outside build directory: $resolvedFolder"
+            }
+            if (-not (Get-ChildItem -LiteralPath $resolvedFolder -Force | Select-Object -First 1)) {
+                Remove-Item -LiteralPath $resolvedFolder -Force
+            }
+        }
+    if (Test-Path -LiteralPath $cachePathFile -PathType Leaf) {
+        throw "Generated TikZ cache configuration remained in build directory: $cachePathFile"
+    }
     $buildTimer.Stop()
     Write-Host ('Total build time: {0:F2} s' -f $buildTimer.Elapsed.TotalSeconds)
 }

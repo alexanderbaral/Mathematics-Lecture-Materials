@@ -1,0 +1,23 @@
+\begin{tikzpicture}[>=Latex]
+  \path[use as bounding box] (-1.25,-2.55) rectangle (7.35,2.35);
+
+  \node[anchor=base west] (g) at (0,0) {$g:\;$};
+  \node[anchor=base west,text=red!75!black] (x) at (0.72,0) {$\vec x$};
+  \node[anchor=base west] (equals) at (1.32,0) {$=$};
+  \node[anchor=base west,text=olive!80!black] (p) at (1.82,0) {$\overrightarrow{OP}$};
+  \node[anchor=base west] (plus) at (2.93,0) {$+$};
+  \node[anchor=base west] (lambda) at (3.45,0) {$\lambda$};
+  \node[anchor=base west,text=THMBlue] (a) at (4.10,0) {$\vec a$};
+  \node[anchor=base west] (real) at (4.68,0) {$,\quad\lambda\in\R$};
+
+  \node (directionDE) at (1.35,1.65) {Richtungsvektor};
+  \node (directionEN) at (1.35,1.08) {\EnglishTerm{direction vector}};
+  \draw[->,black!65,line width=0.75pt]
+    (directionDE.east) to[out=-8,in=105,looseness=0.9] (4.37,0.43);
+
+  \node (supportDE) at (5.25,-1.36)
+    {Stützvektor $\textcolor{olive!80!black}{\overrightarrow{OP}}$};
+  \node (supportEN) at (5.25,-1.93) {\EnglishTerm{support vector}};
+  \draw[->,black!65,line width=0.75pt]
+    (supportDE.west) to[out=166,in=-90,looseness=0.9] ([yshift=-0.6mm]p.south);
+\end{tikzpicture}

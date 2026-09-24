@@ -1,0 +1,57 @@
+\clearpage
+\subsection{Die natürliche Exponentialfunktion}
+\label{subsec:real_functions_natural_exponential}
+Eine besondere Basis ergibt sich, wenn ein Gesamtzuwachs von $100\,\%$
+in immer mehr gleich große, aufeinander aufbauende Schritte zerlegt wird.
+\begin{center}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{@{}c|rrrr@{}}
+    Anzahl $n$&1&10&100&1000\\
+    $(1+1/n)^n$&$2$&$2{,}5937$&$2{,}7048$&$2{,}7169$
+  \end{tabular}
+\end{center}
+\begin{DefinitionBox}{Eulersche Zahl und natürliche Exponentialfunktion}{real_functions_euler_number}
+  Die \emph{Eulersche Zahl} \EnglishTerm{Euler's number} ist
+  \[
+    e=\lim_{n\to\infty}\left(1+\frac1n\right)^n
+      =2{,}7182818\dots
+  \]
+  Die Funktion $\exp(x)=e^x$ heißt
+  \emph{natürliche Exponentialfunktion}
+  \EnglishTerm{natural exponential function}.
+\end{DefinitionBox}
+Die Tabelle motiviert den Grenzwert; seine Existenz wird hier nicht
+bewiesen. Die besondere Bedeutung der Basis $e$ wird bei der
+Differentialrechnung deutlich.
+
+\begin{ExampleBox}{Abklingen einer Schwingungshülle}{real_functions_exponential_decay}
+  Die Amplitude einer gedämpften Schwingung werde durch
+  $A(t)=8\,\mathrm{mm}\cdot e^{-t/\tau}$ für $t\ge0$ mit
+  $\tau=2\,\mathrm{s}$ beschrieben.
+  Bestimmen Sie den Anfangswert, den Wert nach einer Zeitkonstante
+  und das langfristige Verhalten.
+  \begin{ClozeArea}[34]{7}
+    Der Exponent ist dimensionslos. Aus den Eigenschaften von $e^x$ folgt
+    \[
+      \begin{aligned}
+        A(0)&=8\,\mathrm{mm},\\
+        A(\tau)&=\frac8e\,\mathrm{mm}\approx2{,}94\,\mathrm{mm},\\
+        \lim_{t\to+\infty}A(t)&=0.
+      \end{aligned}
+    \]
+    Die Funktion ist auf $[0,\infty)$ streng monoton fallend und besitzt
+    die \textcolor{green!55!black}{Wertemenge} $(0,8\,\mathrm{mm}]$.
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Exponentielle Modelle lesen}{real_functions_exponential_model}
+  Bei $A(t)=A_0e^{kt}$ mit $A_0>0$ beschreibt $A_0$ den Anfangswert.
+  Das Vorzeichen von $k$ entscheidet:
+  $k>0$ bedeutet Wachstum, $k<0$ Abnahme, $k=0$ einen konstanten Wert.
+
+  Ist $t$ eine Zeit, hat $k$ die Einheit einer inversen Zeit.
+  Der Exponent $kt$ muss dimensionslos sein.
+\end{KeyPointBox}
+Wie lange es dauert, bis ein bestimmter Wert erreicht wird, können wir
+noch nicht allgemein berechnen. Dafür benötigen wir später die
+Umkehrung der Exponentialfunktion: den Logarithmus.

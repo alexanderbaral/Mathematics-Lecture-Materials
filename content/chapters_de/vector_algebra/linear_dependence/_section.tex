@@ -1,67 +1,75 @@
 \section{Lineare Abhängigkeit}
 \label{sec:vector_algebra_linear_dependence}
 
-Vektoren beschreiben Verschiebungen. Daher stellt sich die Frage, ob eine
-Verschiebung durch eine gewichtete Kombination anderer Verschiebungen erzeugt
-werden kann. In technischen Modellen zeigt dies beispielsweise, ob eine
-zusätzliche Kraft- oder Stellgröße eine neue Wirkung ermöglicht oder durch
-bereits vorhandene Größen ersetzt werden kann. Diese Frage führt auf die
-lineare Abhängigkeit und Unabhängigkeit von Vektoren.
+In den vorangegangenen Abschnitten haben wir Vektoren addiert, skaliert und
+als Richtungen und Verschiebungen interpretiert. Nun fragen wir, ob mehrere
+Vektoren tatsächlich neue Richtungen liefern oder ob sich einige von ihnen aus
+anderen zusammensetzen und damit überflüssig sind.
 
-\subsection{Zusammensetzen und kompensieren}
-\label{subsec:vector_algebra_linear_dependence_construction}
+\bigskip
 
-Wir beginnen mit der Frage, ob sich ein Vektor $\vec c$ aus zwei anderen
-Vektoren zusammensetzen lässt:
-\[
-  \text{Gibt es }\alpha,\beta\in\R\text{ mit}
-  \qquad
-  \alpha\vec a+\beta\vec b=\vec c\,?
-\]
-Durch Verschieben von $\vec c$ auf die linke Seite erhalten wir die
-gleichwertige Kompensationsfrage:
-\[
-  \alpha\vec a+\beta\vec b=\vec c
-  \quad\Longleftrightarrow\quad
-  \alpha\vec a+\beta\vec b-\vec c=\vec 0.
-\]
-Die von $\alpha\vec a$ und $\beta\vec b$ erzeugte Verschiebung kann also durch
-$-\vec c$ vollständig kompensiert werden. Beide Sichtweisen beschreiben
-denselben geschlossenen Vektorzug.
+Um diese Fragestellung besser zu verstehen, betrachten wir drei Vektoren
+$\vec a,\vec b,\vec c\in\R^3$. Spannen $\vec a$ und $\vec b$ eine Ebene auf,
+so kann der Vektor $\vec c$ die beiden anderen Vektoren nur kompensieren,
+wenn er ebenfalls in dieser Ebene liegt. Mathematisch beschreiben wir die
+Kompensationsfrage durch
 
-\begin{center}
+\noindent
+\begin{minipage}[c]{0.55\linewidth}
+  \[
+    \alpha\vec a+\beta\vec b+\gamma\vec c=\vec 0.
+  \]
+  Diese Gleichung beschreibt die Kompensation des dargestellten Vektorzuges:
+  Die drei skalierten Vektoren bilden zusammen einen geschlossenen Zug.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.40\linewidth}
+  \centering
   \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/linear_dependence_construction_and_compensation.tex}
-\end{center}
+\end{minipage}
 
-Eine gewichtete Summe
-$\lambda_1\vec v_1+\dots+\lambda_k\vec v_k$ heißt
-\emph{Linearkombination} \EnglishTerm{linear combination} der Vektoren. Die
-Ausgangsfrage lautet somit: Ist $\vec c$ eine Linearkombination von $\vec a$
-und $\vec b$?
-
-Allgemeiner suchen wir Koeffizienten $\alpha,\beta,\gamma$, für die
+Schreiben wir die Vektoren in Koordinaten aus, wird aus der
+Kompensationsgleichung
 \[
-  \alpha\vec a+\beta\vec b+\gamma\vec c=\vec 0
+  \alpha\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix}
+  +\beta\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix}
+  +\gamma\begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}
+  =\begin{pmatrix}0\\0\\0\end{pmatrix}.
 \]
-gilt. In Koordinaten ist dies das homogene lineare Gleichungssystem
+Die Vektorsumme ist genau dann null, wenn jede ihrer Komponenten null ist.
+Damit erkennen wir: Es handelt sich um ein homogenes lineares Gleichungssystem.
+In Koordinaten lautet es:
 \[
   \begin{aligned}
     a_1\alpha+b_1\beta+c_1\gamma&=0,\\
     a_2\alpha+b_2\beta+c_2\gamma&=0,\\
-    &\mathrel{\phantom{=}}\vdots\\
-    a_n\alpha+b_n\beta+c_n\gamma&=0.
+    a_3\alpha+b_3\beta+c_3\gamma&=0.
   \end{aligned}
   \qquad\Longleftrightarrow\qquad
   \left[
     \begin{array}{ccc|c}
       a_1&b_1&c_1&0\\
       a_2&b_2&c_2&0\\
-      \vdots&\vdots&\vdots&\vdots\\
-      a_n&b_n&c_n&0
+      a_3&b_3&c_3&0
     \end{array}
   \right].
 \]
-Die ursprüngliche Baufrage ist darin als Spezialfall $\gamma=-1$ enthalten.
+Da ein homogenes Gleichungssystem immer die triviale Lösung
+$(\alpha,\beta,\gamma)=(0,0,0)$ besitzt und uns deren existenz nichts
+über die beteiligten Vektoren aussagt, schließen wir diese aus und suchen
+ausschließlich nichttriviale Lösungen:
+\[
+  (\alpha,\beta,\gamma)\ne(0,0,0).
+\]
+
+Damit gilt: Besitzt das Gleichungssystem eine ...
+\begin{itemize}[leftmargin=1.6em,itemsep=0.25em]
+  \item eine nichttriviale Lösung, ist eine
+    gegenseitige Kompensation möglich: Die Vektoren sind linear abhängig.
+  \item nur die triviale Lösung, ist keine gegenseitige Kompensation
+    möglich: Die Vektoren sind linear unabhängig.
+\end{itemize}
+
+Jetzt übertragen wir dieses Konzept auf mehr Vektoren und höhere Dimensionen.
 
 \begin{DefinitionBox}{Lineare Abhängigkeit und Unabhängigkeit}{vector_algebra_linear_dependence}
   Die Vektoren $\vec v_1,\dots,\vec v_k\in\R^n$ heißen \emph{linear abhängig}
@@ -81,11 +89,14 @@ Die ursprüngliche Baufrage ist darin als Spezialfall $\gamma=-1$ enthalten.
   \end{center}
 \end{DefinitionBox}
 
+\noindent
+\begin{minipage}{\linewidth}
 Die Frage nach linearer Abhängigkeit oder Unabhängigkeit hängt somit von
 der Lösungsmenge des zugehörigen homogenen LGS ab. Stimmen Anzahl der Vektoren
 und Dimension überein, ist die zugehörige Matrix quadratisch. Genau dann kann
 die Determinante die Entscheidung abkürzen: Statt das homogene LGS vollständig
 mit dem Gauß-Verfahren zu lösen, genügt die Berechnung einer Determinante.
+\end{minipage}
 
 \begin{KeyPointBox}{Determinantenkriterium für Vektoren}{vector_algebra_linear_dependence_determinant_criterion}
   Für
@@ -139,30 +150,121 @@ mit dem Gauß-Verfahren zu lösen, genügt die Berechnung einer Determinante.
   wir das homogene LGS mit dem Gauß-Verfahren.
 \end{KeyPointBox}
 
+\begin{KeyPointBox}{Mehr Vektoren als Dimensionen}{vector_algebra_linear_dependence_more_vectors_than_dimensions}
+  Für $\vec v_1,\dots,\vec v_k\in\R^n$ mit $k>n$ hat das zugehörige
+  homogene LGS $k$ Unbekannte, aber nur $n$ Gleichungen. Seine erweiterte
+  Koeffizientenmatrix kann beispielsweise die Zeilenstufenform
+  \[
+    [A\mid\vec0]\sim
+    \left[
+      \begin{array}{cccc|c}
+        \ast&\ast&\ast&\ast&0\\
+        0&\ast&\ast&\ast&0\\
+        0&0&\ast&\ast&0
+      \end{array}
+    \right]
+    \qquad
+    \begin{gathered}
+      3~\text{Gleichungen, }4~\text{Unbekannte}\\[-0.1em]
+      \text{mindestens eine freie Variable}
+    \end{gathered}
+  \]
+  besitzen. Allgemein gilt
+  \[
+    \operatorname{rang}(A)=\operatorname{rang}([A\mid\vec0])
+    \le n<k=\#\text{ Unbekannte}.
+  \]
+  Das homogene LGS besitzt daher unendlich viele, insbesondere nichttriviale
+  Lösungen. Die Vektoren sind linear abhängig.
+\end{KeyPointBox}
+
+Anhand des folgenden Ablaufdiagramms kann man sich im jeweiligen Fall
+orientieren, wie die lineare Abhängigkeit oder Unabhängigkeit nachzuweisen ist.
 \begin{center}
   \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/linear_dependence_method_choice.tex}
 \end{center}
 
-\begin{ExampleBox}{Unabhängigkeit mit der Determinante prüfen}{vector_algebra_linear_independence_determinant}
-  Für
-  \[
-    \vec a=\begin{pmatrix}2\\1\\1\end{pmatrix},\qquad
-    \vec b=\begin{pmatrix}2\\3\\4\end{pmatrix},\qquad
-    \vec c=\begin{pmatrix}7\\9\\11\end{pmatrix}
-  \]
-  berechnen wir die Determinante mit den Vektoren als Spalten:
-  \begin{ClozeArea}[34]{11}
-    \[
-      \det(\vec a,\vec b,\vec c)
-      =\det\!\begin{pmatrix}
-        2&2&7\\
-        1&3&9\\
-        1&4&11
-      \end{pmatrix}
-      =2(33-36)-2(11-9)+7(4-3)
-      =-3.
-    \]
-  \end{ClozeArea}
-  Da die Determinante $\det(\vec a,\vec b,\vec c) \Cloze{2cm}{\ne 0}$ ist, sind
-  die Vektoren $\vec a$, $\vec b$, $\vec c$ linear \Cloze{4.1cm}{unabhängig}.
+\begin{KeyPointBox}{Geometrische Interpretation}{vector_algebra_linear_dependence_geometric_interpretation}
+  \begin{itemize}[leftmargin=1.6em,itemsep=0.55em,topsep=0.2em]
+    \item Für zwei Vektoren in $\R^2$ gilt:
+      \[
+        \vec a,\vec b\text{ sind linear abhängig}
+        \quad\Longleftrightarrow\quad
+        \vec a\parallel\vec b.
+      \]
+      Sie spannen dann keine Fläche auf.
+    \item Für drei Vektoren in $\R^3$ gilt:
+      \[
+        S=(\vec a\times\vec b)\cdot\vec c
+        =\det(\vec a,\vec b,\vec c),
+        \qquad
+        V=|S|.
+      \]
+      Die Vektoren sind genau dann linear unabhängig, wenn sie ein Volumen
+      aufspannen, also $V>0$ gilt.
+  \end{itemize}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Lineare Abhängigkeit und Unabhängigkeit prüfen}{vector_algebra_linear_independence_determinant}
+  Wir betrachten drei typische Fälle.
+  \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=0.8em]
+    \item \textbf{Drei Vektoren in $\R^3$:}
+      \[
+        \vec a=\begin{pmatrix}2\\1\\1\end{pmatrix},\qquad
+        \vec b=\begin{pmatrix}2\\3\\4\end{pmatrix},\qquad
+        \vec c=\begin{pmatrix}7\\9\\11\end{pmatrix}.
+      \]
+      Die Determinante mit den Vektoren als Spalten ergibt
+      \[
+        \det(\vec a,\vec b,\vec c)
+        =\det\!\begin{pmatrix}
+          2&2&7\\
+          1&3&9\\
+          1&4&11
+        \end{pmatrix}
+        =2(33-36)-2(11-9)+7(4-3)
+        =\Cloze{1.4cm}{-3}.
+      \]
+      Die drei Vektoren sind daher linear \Cloze{3.8cm}{unabhängig}.
+
+    \item \textbf{Drei Vektoren in $\R^2$:}
+      Für
+      \[
+        \vec a=\begin{pmatrix}1\\0\end{pmatrix},\qquad
+        \vec b=\begin{pmatrix}0\\1\end{pmatrix},\qquad
+        \vec c=\begin{pmatrix}1\\1\end{pmatrix}
+      \]
+      gilt $k=3>2=n$. Nach Merke~\ref{key:vector_algebra_linear_dependence_more_vectors_than_dimensions}
+      sind die Vektoren daher linear \Cloze{3.4cm}{abhängig}.
+
+    \item \textbf{Zwei Vektoren in $\R^3$:}
+      Für
+      \[
+        \vec a=\begin{pmatrix}1\\0\\0\end{pmatrix},\qquad
+        \vec b=\begin{pmatrix}0\\1\\0\end{pmatrix}
+      \]
+      verwenden wir das Gauß-Verfahren für das homogene LGS:
+      \[
+        \alpha\vec a+\beta\vec b=\vec0
+        \quad\Longleftrightarrow\quad
+        [A\mid\vec0]
+        =\left[
+          \begin{array}{@{}rr|r@{}}
+            1&0&0\\
+            0&1&0\\
+            0&0&0
+          \end{array}
+        \right].
+      \]
+      Die Matrix liegt bereits in Zeilenstufenform vor. Damit gilt
+      \[
+        \operatorname{rang}(A)
+        =\operatorname{rang}([A\mid\vec0])
+        =\Cloze{1cm}{2}
+        =\#\text{ Unbekannte}.
+      \]
+      Das LGS besitzt nur die triviale Lösung
+      $(\alpha,\beta)=\Cloze{2.5cm}{(0,0)}$; die Vektoren sind daher linear
+      \Cloze{3.8cm}{unabhängig}.
+  \end{enumerate}
 \end{ExampleBox}

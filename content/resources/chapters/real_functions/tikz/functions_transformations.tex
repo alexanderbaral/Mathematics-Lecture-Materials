@@ -1,0 +1,109 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[>=Latex]
+\begin{scope}[xshift=0cm,yshift=0cm,x=1cm,y=0.7cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2,0)--(4.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,5.2) node[above] {$y$};
+  \draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt4) at (3,0) {$3$};
+\draw[black!50] (4,-0.055)--(4,0.055);
+\node[below=4pt,inner sep=1pt] (xt5) at (4,0) {$4$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt6) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[below left=5pt,inner sep=1pt] (yt7) at (0,2) {$2$};
+\draw[black!50] (-0.055,3)--(0.055,3);
+\node[left=4pt,inner sep=1pt] (yt8) at (0,3) {$3$};
+\draw[black!50] (-0.055,4)--(0.055,4);
+\node[left=4pt,inner sep=1pt] (yt9) at (0,4) {$4$};
+\draw[black!50] (-0.055,5)--(0.055,5);
+\node[left=4pt,inner sep=1pt] (yt10) at (0,5) {$5$};
+
+  \begin{scope}
+    \clip (-2,0) rectangle (4,5);
+    \draw[black!60,line width=1pt,domain=-2:2.237,samples=101] plot (\x,{\x*\x});
+\draw[THMBlue,line width=1.15pt,domain=-1.733:1.733,samples=121] plot (\x,{\x*\x+2});
+  \end{scope}
+  
+  \node at (1,6.5) {\Lang{Ausgabe $+2$}{output $+2$}};
+\node at (1,-1.15) {$\textcolor{black!60}{x^2}\quad\longrightarrow\quad\textcolor{THMBlue}{x^2+2}$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2,0) rectangle (4,5)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (xt4.south west) rectangle (xt4.north east)
+        (xt5.south west) rectangle (xt5.north east)
+        (yt6.south west) rectangle (yt6.north east)
+        (yt7.south west) rectangle (yt7.north east)
+        (yt8.south west) rectangle (yt8.north east)
+        (yt9.south west) rectangle (yt9.north east)
+        (yt10.south west) rectangle (yt10.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2,0) grid (4,5);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+
+\begin{scope}[xshift=8.2cm,yshift=0cm,x=1cm,y=0.7cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2,0)--(4.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,5.2) node[above] {$y$};
+  \draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt4) at (3,0) {$3$};
+\draw[black!50] (4,-0.055)--(4,0.055);
+\node[below=4pt,inner sep=1pt] (xt5) at (4,0) {$4$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt6) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt7) at (0,2) {$2$};
+\draw[black!50] (-0.055,3)--(0.055,3);
+\node[left=4pt,inner sep=1pt] (yt8) at (0,3) {$3$};
+\draw[black!50] (-0.055,4)--(0.055,4);
+\node[above right=5pt,inner sep=1pt] (yt9) at (0,4) {$4$};
+\draw[black!50] (-0.055,5)--(0.055,5);
+\node[right=5pt,inner sep=1pt] (yt10) at (0,5) {$5$};
+
+  \begin{scope}
+    \clip (-2,0) rectangle (4,5);
+    \draw[black!60,line width=1pt,domain=-2:2.237,samples=101] plot (\x,{\x*\x});
+\draw[THMBlue,line width=1.15pt,domain=-0.237:4,samples=121] plot (\x,{(\x-2)^2});
+  \end{scope}
+  
+  \node at (1,6.5) {\Lang{Eingabe $x-2$}{input $x-2$}};
+\node at (1,-1.15) {$\textcolor{black!60}{x^2}\quad\longrightarrow\quad\textcolor{THMBlue}{(x-2)^2}$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2,0) rectangle (4,5)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (xt4.south west) rectangle (xt4.north east)
+        (xt5.south west) rectangle (xt5.north east)
+        (yt6.south west) rectangle (yt6.north east)
+        (yt7.south west) rectangle (yt7.north east)
+        (yt8.south west) rectangle (yt8.north east)
+        (yt9.south west) rectangle (yt9.north east)
+        (yt10.south west) rectangle (yt10.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2,0) grid (4,5);
+    \end{scope}
+  \end{pgfonlayer}
+\end{scope}
+\end{tikzpicture}

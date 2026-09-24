@@ -1,0 +1,16 @@
+\begin{tikzpicture}[x=1.15cm,y=1.15cm,>=Latex,line cap=round]
+  \draw[->,black!60] (-2.25,0)--(2.3,0) node[right] {$x$};
+  \draw[->,black!60] (0,-1.95)--(0,2.0) node[above] {$y$};
+  \draw[THMBlue,line width=1.15pt,domain=-2.05:2.05,samples=140]
+    plot (\x,{0.2*\x*\x*\x+0.35*\x+0.55*sin(deg(2.5*\x))});
+  \draw[green!55!black,dashed,line width=0.9pt]
+    (-1,0)--(-1,-0.879) -- (1,0.879) -- (1,0);
+  \fill[green!55!black] (-1,-0.879) circle (1.6pt)
+                         (1,0.879) circle (1.6pt);
+  \node[above=5pt,inner sep=0pt,text=green!55!black] at (-1,0) {$-x_0$};
+  \node[below=5pt,inner sep=0pt,text=green!55!black] at (1,0) {$x_0$};
+  \node[anchor=east,inner sep=2pt,text=green!55!black]
+    at (-1.15,-1.35) {$f(-x_0)$};
+  \node[anchor=west,inner sep=2pt,text=green!55!black]
+    at (0.25,1.55) {$f(x_0)$};
+\end{tikzpicture}
