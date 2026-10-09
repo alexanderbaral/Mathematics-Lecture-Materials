@@ -1,0 +1,30 @@
+\begin{tikzpicture}[x=1.1cm,y=0.9cm,line cap=round,>=Latex]
+  \draw[step=1,black!8,line width=0.3pt] (-3,0) grid (3,2.5);
+  \draw[->,black!55] (-3.1,0)--(3.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,-0.1)--(0,2.65) node[above] {$y$};
+  \foreach \k in {-2,-1,0,1,2} {
+    \draw[black!55] (\k,-0.05)--(\k,0.05);
+    \node[below=3pt,inner sep=0pt] at (\k,0) {$\k$};
+  }
+  \foreach \k in {1,2} {
+    \draw[black!55] (-0.05,\k)--(0.05,\k);
+    \node[left=4pt,inner sep=0pt] at (0,\k) {$\k$};
+  }
+  \draw[black!55,densely dashed,line width=0.9pt,domain=-3:3,samples=121]
+    plot (\x,{exp(-\x*\x)});
+  \fill[black!55] (0,1) circle (1.4pt);
+  \IfClozeTF{}{%
+    \draw[THMBlue,line width=1.2pt,domain=-3:3,samples=121]
+      plot (\x,{2*exp(-\x*\x)});
+    \draw[THMBlue!55!black,densely dashed,line width=1.2pt,domain=-3:3,samples=121]
+      plot (\x,{0.5*exp(-\x*\x)});
+    \fill[THMBlue] (0,2) circle (1.4pt);
+    \fill[THMBlue!55!black] (0,0.5) circle (1.4pt);
+  }
+  \draw[black!55,densely dashed,line width=0.9pt] (1.60,2.35)--(1.95,2.35)
+    node[right=3pt] {$f$};
+  \draw[THMBlue,line width=1.2pt] (1.60,1.85)--(1.95,1.85)
+    node[right=3pt,text=THMBlue] {$g_{2}$};
+  \draw[THMBlue!55!black,densely dashed,line width=1.2pt] (1.60,1.35)--(1.95,1.35)
+    node[right=3pt,text=THMBlue!55!black] {$g_{1/2}$};
+\end{tikzpicture}

@@ -1,62 +1,111 @@
-\par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Polynomfunktion und Grad}{real_functions_polynomial}
-  Eine \emph{Polynomfunktion} \EnglishTerm{polynomial function} besitzt
-  für $x\in\R$ einen Term der Form
-  \[
-    p(x)=a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0,
-    \qquad a_0,\dots,a_n\in\R.
-  \]
-  Für $a_n\ne0$ heißt $n\in\N_0$ der \emph{Grad} \EnglishTerm{degree}
-  und $a_n$ der \emph{Leitkoeffizient} \EnglishTerm{leading coefficient}.
-  Das Nullpolynom $p(x)=0$ erhält hier keinen Grad.
-\end{DefinitionBox}
-\begin{ExampleBox}[before skip=0.3\baselineskip]{Den Term lesen}{real_functions_polynomial_reading}
-  Für $p(x)=2x^4-3x^2+1$ lassen sich Grad, Achsenabschnitt und Symmetrie
-  unmittelbar erkennen:
-  \[
-    \deg p=\Cloze{1cm}{4},\qquad
-    p(0)=\Cloze{1cm}{1},\qquad
-    p(-x)=\Cloze{2cm}{p(x)}.
-  \]
-  Fehlende Potenzen haben den Koeffizienten null. Nur gerade Potenzen
-  einschließlich der Konstanten ergeben eine gerade Funktion.
-\end{ExampleBox}
-\end{minipage}
-
-
-\subsection{Vorgegebene Punkte durch ein Polynom verbinden}
+\subsection{Polynominterpolation}
 \label{subsec:real_functions_interpolation}
-Bei der \emph{Interpolation} \EnglishTerm{interpolation} soll der Graph
-vorgegebene Punkte exakt durchlaufen. Die unbekannten Koeffizienten
-lassen sich mit einem linearen Gleichungssystem bestimmen.
+Bei der \emph{Polynominterpolation} \EnglishTerm{polynomial interpolation}
+suchen wir ein Polynom, dessen Graph durch alle vorgegebenen Punkte verläuft.
+Dafür verallgemeinern wir die Konstruktion einer Geraden durch zwei Punkte:
+\par\medskip
+{\centering
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_interpolation_generalization.tex}\par
+  \nopagebreak\smallskip
+  % Keep the reference outside the cached figure so its number stays current.
+  \makebox[17.2cm][r]{\textcolor{black!65}{%
+    \textsuperscript{*}\,genauer in Satz~\ref{thm:real_functions_interpolation_unique}}}\par}
+\medskip
+\begin{TheoremBox}{Eindeutigkeit der Polynominterpolation}{real_functions_interpolation_unique}
+  Ein Polynom vom Grad $n$, dessen Graph durch $n+1$ Punkte
+  $P_i=(x_i,y_i)$ (paarweise verschiedenen $x_i$) verläuft, ist
+  durch diese Punkte eindeutig bestimmt.
+  \par\medskip
+  {\centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_interpolation_points.tex}\par}
+\end{TheoremBox}
 \begin{ExampleBox}{Parabel durch drei Punkte}{real_functions_interpolation_example}
-  Gesucht ist ein Polynom vom Grad höchstens zwei durch
-  $P=(0,0)$, $Q=(1,1)$ und $R=(2,0)$.
-  \par\smallskip
-  \begin{minipage}[t]{0.52\linewidth}
+  \begin{minipage}[t]{0.61\linewidth}
     \vspace{0pt}
-    Wir wählen den Ansatz $p(x)=ax^2+bx+c$ und setzen die Punkte ein.
-    \begin{ClozeArea}[17]{9}
-      \[
-        \begin{aligned}
-          p(0)=0&\Rightarrow c=0,\\
-          p(1)=1&\Rightarrow a+b=1,\\
-          p(2)=0&\Rightarrow4a+2b=0.
-        \end{aligned}
-      \]
-      Daraus folgen $a=-1$, $b=2$ und somit
-      \[
-        p(x)=-x^2+2x.
-      \]
-    \end{ClozeArea}
+    Gesucht ist ein Polynom vom Grad höchstens zwei durch
+    $P=(0,0)$, $Q=(1,1)$ und $R=(2,0)$. Für die Koeffizienten verwenden wir
+    den Ansatz
+    \[
+      p(x)=Ax^2+Bx+C,\qquad A,B,C\in\R.
+    \]
+    Das Einsetzen der Punkte in $p(x)$ führt zu drei linearen Gleichungen:
+    \[
+      \begin{aligned}
+        Q(1,1):\quad p(1)=1
+          &\Longleftrightarrow A\cdot1^2+B\cdot1+C=1\\[0.25em]
+        R(2,0):\quad p(2)=0
+          &\Longleftrightarrow A\cdot2^2+B\cdot2+C=0\\[0.25em]
+        P(0,0):\quad p(0)=0
+          &\Longleftrightarrow A\cdot0^2+B\cdot0+C=0
+      \end{aligned}
+    \]
   \end{minipage}\hfill
-  \begin{minipage}[t]{0.44\linewidth}
+  \begin{minipage}[t]{0.36\linewidth}
     \vspace{0pt}\centering
     \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_interpolation.tex}
   \end{minipage}
+
+  \par\smallskip\noindent
+  Diese bilden ein $3\times3$-LGS für die Unbekannte $A$, $B$ und $C$. Wir schreiben das LGS als
+  erweiterte Koeffizientenmatrix:
+  \[
+    \begin{aligned}
+      A+B+C&=1,\\
+      4A+2B+C&=0,\\
+      C&=0
+    \end{aligned}
+    \quad\Longleftrightarrow\quad
+    \left[\begin{array}{@{}rrr|r@{}}
+      1&1&1&1\\
+      4&2&1&0\\
+      0&0&1&0
+    \end{array}\right].
+  \]
+  Dieses LGS lösen wir mit dem Gauß-Verfahren.
+  \begin{ClozeArea}[34]{19}
+    \textbf{Vorwärtselimination:} Die Zeilenoperation steht rechts neben der
+    Matrix, auf die sie angewendet wird:
+    \[
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[\begin{array}{@{}rrr|r@{}}
+          1&1&1&1\\
+          4&2&1&0\\
+          0&0&1&0
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{Z_2-4Z_1}}\\
+          {}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          1&1&1&1\\
+          \textcolor{THMBlue}{0}&-2&-3&-4\\
+          \textcolor{THMBlue}{0}&\textcolor{THMBlue}{0}&1&0
+        \end{array}\right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
+    \textbf{Rückwärtseinsetzen:} Wir bestimmen die Unbekannten von unten nach oben:
+    \begin{itemize}[leftmargin=1.4em,itemsep=0.55em,topsep=0.3em]
+      \item Zeile 3: $\qquad$
+        $C=0.$
+      \item Zeile 2: $\qquad$
+        $-2B-3C=-4
+        \quad \overset{C=0}{\Longleftrightarrow} \quad
+        -2B=-4
+        \quad \Longleftrightarrow \quad
+        B=2.$
+      \item Zeile 1: $\qquad$
+        $A+B+C=1
+        \quad \overset{B=2,\,C=0}{\Longleftrightarrow} \quad
+         A+2+0=1
+         \quad \Longleftrightarrow \quad
+         A=-1.$
+    \end{itemize}
+  \end{ClozeArea}
+  Das gesuchte Polynom lautet
+  \[
+    p(x)=\Cloze{5.0cm}{-x^2+2x}.
+  \]
 \end{ExampleBox}
-\begin{TheoremBox}{Eindeutigkeit der Polynominterpolation}{real_functions_interpolation_unique}
-  Zu $n+1$ Punkten $(x_0,y_0),\dots,(x_n,y_n)$ mit paarweise verschiedenen
-  $x$-Werten gibt es genau ein Polynom vom Grad \emph{höchstens} $n$,
-  das alle Punkte durchläuft.
-\end{TheoremBox}

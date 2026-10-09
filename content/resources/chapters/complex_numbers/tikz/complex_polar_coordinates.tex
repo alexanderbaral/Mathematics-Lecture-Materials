@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>=Latex,x=1.4cm,y=1.4cm]
+  \draw[->,black!65] (-0.3,0)--(4,0) node[right] {$\operatorname{Re}$};
+  \draw[->,black!65] (0,-0.3)--(0,3) node[above] {$\operatorname{Im}$};
+  \draw[black!40,dashed] (3,0)--(3,2)--(0,2);
+  \draw[->,THMBlue,line width=1.1pt] (0,0)--(3,2)
+    node[midway,above left=5pt] {$r=|z|$};
+  \fill[THMBlue] (3,2) circle (2pt);
+  \node[above right=5pt] at (3,2) {$z=x+iy$};
+  \node[below=6pt] at (3,0) {$x=r\cos\varphi$};
+  \node[left=6pt] at (0,2) {$y=r\sin\varphi$};
+  \draw[black!60] (1.15,0) arc[start angle=0,end angle=33.69,radius=1.15];
+  \node at (16.85:0.8) {$\varphi$};
+  \draw[black!60] (2.72,0) arc[start angle=180,end angle=90,radius=.28];
+  \fill[black!60] (2.87,.13) circle (1pt);
+\end{tikzpicture}

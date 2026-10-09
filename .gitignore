@@ -24,5 +24,8 @@
 *~
 .DS_Store
 Thumbs.db
-.vscode/
+.vscode/*
+!.vscode/tasks.json
+__pycache__/
+*.pyc
 legacy/

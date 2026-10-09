@@ -1,52 +1,19 @@
-\pgfdeclarelayer{functionsgrid}
-\pgfsetlayers{functionsgrid,main}
-\begin{tikzpicture}[x=2.1cm,y=0.6cm,>=Latex,line cap=round]
-  \draw[->,black!55] (0,0)--(3.2,0) node[right] {$x$};
-  \draw[->,black!55] (0,0)--(0,7.2) node[above] {$y$};
-  \draw[black!50] (1,-0.055)--(1,0.055);
-\node[below=4pt,inner sep=1pt] (xt0) at (1,0) {$1$};
-\draw[black!50] (2,-0.055)--(2,0.055);
-\node[below=4pt,inner sep=1pt] (xt1) at (2,0) {$2$};
-\draw[black!50] (3,-0.055)--(3,0.055);
-\node[below=4pt,inner sep=1pt] (xt2) at (3,0) {$3$};
-\draw[black!50] (-0.055,1)--(0.055,1);
-\node[left=4pt,inner sep=1pt] (yt3) at (0,1) {$1$};
-\draw[black!50] (-0.055,2)--(0.055,2);
-\node[left=4pt,inner sep=1pt] (yt4) at (0,2) {$2$};
-\draw[black!50] (-0.055,3)--(0.055,3);
-\node[left=4pt,inner sep=1pt] (yt5) at (0,3) {$3$};
-\draw[black!50] (-0.055,4)--(0.055,4);
-\node[left=4pt,inner sep=1pt] (yt6) at (0,4) {$4$};
-\draw[black!50] (-0.055,5)--(0.055,5);
-\node[left=4pt,inner sep=1pt] (yt7) at (0,5) {$5$};
-\draw[black!50] (-0.055,6)--(0.055,6);
-\node[left=4pt,inner sep=1pt] (yt8) at (0,6) {$6$};
-\draw[black!50] (-0.055,7)--(0.055,7);
-\node[left=4pt,inner sep=1pt] (yt9) at (0,7) {$7$};
-
-  \begin{scope}
-    \clip (0,0) rectangle (3,7);
-    \draw[black!35,dashed] (2,0)--(2,4)--(0,4);
-\draw[THMBlue,line width=1.15pt,domain=0:2.65,samples=101] plot (\x,{\x*\x});
-\draw[->,THMBlue,line width=1.4pt,domain=1.1:1.7,samples=31] plot (\x,{\x*\x});
-\draw[->,THMBlue,line width=1.4pt,domain=2.6:2.23,samples=31] plot (\x,{\x*\x});
-  \end{scope}
-  \node[anchor=south] at (1.500,8.450) {$x\to2\quad\Longrightarrow\quad x^2\to4$};
-  \node[anchor=north] at (1.5,-1.1) {\Lang{Annäherung von beiden Seiten}{approach from both sides}};
-  \begin{pgfonlayer}{functionsgrid}
-    \begin{scope}[even odd rule]
-      \clip (0,0) rectangle (3,7)
-        (xt0.south west) rectangle (xt0.north east)
-        (xt1.south west) rectangle (xt1.north east)
-        (xt2.south west) rectangle (xt2.north east)
-        (yt3.south west) rectangle (yt3.north east)
-        (yt4.south west) rectangle (yt4.north east)
-        (yt5.south west) rectangle (yt5.north east)
-        (yt6.south west) rectangle (yt6.north east)
-        (yt7.south west) rectangle (yt7.north east)
-        (yt8.south west) rectangle (yt8.north east)
-        (yt9.south west) rectangle (yt9.north east);
-      \draw[step=1,black!8,line width=0.25pt] (0,0) grid (3,7);
-    \end{scope}
-  \end{pgfonlayer}
+\begin{tikzpicture}[>=Latex,line cap=round,x=1cm,y=1cm]
+  \draw[->,black!55] (-0.15,0)--(6,0) node[right] {$x$};
+  \draw[->,black!55] (0,-0.15)--(0,3.9) node[above] {$y$};
+  \draw[dashed,black!35] (0,2.2)--(3,2.2)--(3,0);
+  \node[left=4pt] at (0,2.2) {$L$};
+  \node[below=4pt] at (3,0) {$a$};
+  \draw[THMBlue,line width=1.1pt]
+    (0.45,0.65) .. controls (1,1) and (1.75,2.2) .. (3,2.2)
+    .. controls (4.25,2.2) and (4.6,3.1) .. (5.5,3.4)
+    node[right] {$f$};
+  \draw[->,black!65,line width=0.9pt]
+    (1.05,1.65) .. controls (1.55,2.2) and (2.1,2.55) .. (2.65,2.53);
+  \draw[->,black!65,line width=0.9pt]
+    (5.15,3.55) .. controls (4.65,3.35) and (4.15,2.55) .. (3.4,2.53);
+  \node at (1.8,3.25) {\Lang{von links}{from the left}};
+  \node at (4.45,4.05) {\Lang{von rechts}{from the right}};
+  \filldraw[draw=THMBlue,fill=white,line width=1pt] (3,2.2) circle (3pt);
+  \node[below right=7pt] at (3,2.2) {$A=(a,L)$};
 \end{tikzpicture}

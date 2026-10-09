@@ -11,7 +11,5 @@
     node[midway,below] {$\vec b_{\parallel}$};
   \draw[->,olive!80!black,line width=1.25pt] (P)--(B)
     node[midway,right,text=olive!80!black] {$\vec b_{\perp}$};
-  \draw[black!55,line width=0.7pt]
-    ($(P)+(-0.34,0)$) arc[start angle=180,end angle=90,radius=0.34];
-  \fill[black!55] ($(P)+(-0.17,0.17)$) circle[radius=1pt];
+  \RightAngleMark{(P)}{180}{90}{0.34}
 \end{tikzpicture}

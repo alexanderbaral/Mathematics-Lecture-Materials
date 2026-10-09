@@ -15,11 +15,6 @@
     node[above] {$\vec c$};
 
   % Die räumlichen rechten Winkel erscheinen in der Projektion verschieden groß.
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(6:0.54)$) arc[start angle=6,end angle=84,radius=0.54];
-  \fill[black!55] ($(O)+(45:0.34)$) circle[radius=1pt];
-
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(34:0.34)$) arc[start angle=34,end angle=84,radius=0.34];
-  \fill[black!55] ($(O)+(59:0.20)$) circle[radius=1pt];
+  \RightAngleMark{(O)}{6}{84}{0.54}
+  \RightAngleMark{(O)}{34}{84}{0.34}
 \end{tikzpicture}

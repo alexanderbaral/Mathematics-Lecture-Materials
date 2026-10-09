@@ -1,0 +1,17 @@
+\begin{tikzpicture}[x=1.6cm,y=1.15cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2.3,0)--(2.6,0) node[right] {$x$};
+  \draw[->,black!55] (-2,-0.2)--(-2,3.1) node[above] {$y$};
+  \draw[black!40,dashed] (0,0)--(0,2);
+  \node[below=4pt] at (0,0) {$a$};
+  \node[left=4pt] at (-2,1.6) {$L$};
+  \draw[black!25,dashed] (-2,1.6)--(0,1.6);
+  \draw[green!55!black,line width=1pt,domain=-2:2,samples=100]
+    plot (\x,{1.6+0.16*\x+0.22*\x*\x});
+  \draw[black!65,line width=1pt,domain=-2:2,samples=100]
+    plot (\x,{1.6+0.16*\x-0.22*\x*\x});
+  \draw[THMBlue,line width=1.1pt,domain=-2:2,samples=100]
+    plot (\x,{1.6+0.16*\x+0.18*\x*\x*sin(110*\x)});
+  \node[green!55!black,anchor=west] at (2.1,2.8) {$v(x)$};
+  \node[THMBlue,anchor=west] at (2.1,1.48) {$f(x)$};
+  \node[black!65,anchor=west] at (2.1,0.7) {$u(x)$};
+\end{tikzpicture}

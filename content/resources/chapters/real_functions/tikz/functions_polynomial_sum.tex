@@ -1,0 +1,83 @@
+% All five plots show the same coordinate window: [-3,3] x [-6,6].
+\newcommand{\PolynomialComponentPlot}[3]{%
+  \begin{scope}[xshift=#1cm,yshift=-2.2cm,x=0.46cm,y=0.24cm]
+    \draw[step=1,black!7,line width=0.25pt] (-3,-6) grid (3,6);
+    \draw[->,black!55] (-3.2,0)--(3.3,0) node[right=2pt] {$x$};
+    \draw[->,black!55] (0,-6.25)--(0,6.3) node[above=2pt] {$y$};
+    \foreach \x in {-3,-2,-1,1,2,3} {
+      \draw[black!45] ([yshift=-1pt]\x,0)--([yshift=1pt]\x,0);
+    }
+    \foreach \x in {-3,3} {
+      \node[below=3pt,inner sep=0pt] at (\x,0) {$\x$};
+    }
+    \foreach \y in {-6,-4,-2,2,4,6} {
+      \draw[black!45] ([xshift=-1pt]0,\y)--([xshift=1pt]0,\y);
+    }
+    \foreach \y in {-6,6} {
+      \node[left=3pt,inner sep=0pt] at (0,\y) {$\y$};
+    }
+    \begin{scope}
+      \clip (-3,-6) rectangle (3,6);
+      \draw[#2,line width=1.1pt,domain=-3:3,samples=121]
+        plot (\x,{#3});
+    \end{scope}
+  \end{scope}%
+}
+
+\begin{tikzpicture}[>=Latex,line cap=round]
+  % Each term is centered immediately above its own graph.
+  \node[anchor=west,inner sep=0pt] at (-8.5,0.35) {$p(x)=$};
+  \node[text=green!45!black,inner sep=1pt] at (-6,0.35) {$x^3$};
+  \node[inner sep=1pt] at (-4,0.35) {$+$};
+  \node[text=black!75,inner sep=1pt] at (-2,0.35) {$(-x^2)$};
+  \node[inner sep=1pt] at (0,0.35) {$+$};
+  \node[text=red!75!black,inner sep=1pt] at (2,0.35) {$(-x)$};
+  \node[inner sep=1pt] at (4,0.35) {$+$};
+  \node[text=orange!85!black,inner sep=1pt] at (6,0.35) {$1$};
+
+  % Parenthesize the substituted variable before exponentiation: otherwise
+  % a negative sample such as -2^2 is parsed as -(2^2), not (-2)^2.
+  \PolynomialComponentPlot{-6}{green!45!black}{(\x)^3}
+  \PolynomialComponentPlot{-2}{black!75}{-(\x)^2}
+  \PolynomialComponentPlot{2}{red!75!black}{-(\x)}
+  \PolynomialComponentPlot{6}{orange!85!black}{1}
+
+  % Four additive contributions flow down into the combined graph. The plus
+  % signs sit beside the arrows, with transparent backgrounds and clear space.
+  \draw[->,green!45!black,line width=0.8pt]
+    (-6,-4.05) to[out=-90,in=90]
+    node[pos=0.48,above=6pt,font=\Large,inner sep=0pt] {$+$} (-3,-5.65);
+  \draw[->,black!75,line width=0.8pt]
+    (-2,-4.05) to[out=-90,in=90]
+    node[pos=0.48,left=5pt,font=\Large,inner sep=0pt] {$+$} (-1,-5.65);
+  \draw[->,red!75!black,line width=0.8pt]
+    (2,-4.05) to[out=-90,in=90]
+    node[pos=0.48,right=5pt,font=\Large,inner sep=0pt] {$+$} (1,-5.65);
+  \draw[->,orange!85!black,line width=0.8pt]
+    (6,-4.05) to[out=-90,in=90]
+    node[pos=0.48,above=6pt,font=\Large,inner sep=0pt] {$+$} (3,-5.65);
+
+  \begin{scope}[yshift=-8.4cm,x=1.15cm,y=0.42cm]
+    \draw[step=1,black!7,line width=0.25pt] (-3,-6) grid (3,6);
+    \draw[->,black!55] (-3.2,0)--(3.3,0) node[right=2pt] {$x$};
+    \draw[->,black!55] (0,-6.25)--(0,6.3) node[above=2pt] {$y$};
+    \foreach \x in {-3,-2,-1,1,2,3} {
+      \draw[black!45] ([yshift=-1.5pt]\x,0)--([yshift=1.5pt]\x,0);
+    }
+    \foreach \x in {-3,-2,1,2,3} {
+      \node[below=3pt,inner sep=0pt] at (\x,0) {$\x$};
+    }
+    \node[below right=3pt,inner sep=0pt] at (-1,0) {$-1$};
+    \foreach \y in {-6,-4,-2,2,4,6} {
+      \draw[black!45] ([xshift=-1.5pt]0,\y)--([xshift=1.5pt]0,\y);
+      \node[left=3pt,inner sep=0pt] at (0,\y) {$\y$};
+    }
+    \IfClozeTF{}{
+      \begin{scope}
+        \clip (-3,-6) rectangle (3,6);
+        \draw[THMBlue,line width=1.3pt,domain=-3:3,samples=241]
+          plot (\x,{(\x)^3-(\x)^2-(\x)+1});
+      \end{scope}
+    }
+  \end{scope}
+\end{tikzpicture}

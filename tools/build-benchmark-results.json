@@ -1,0 +1,1585 @@
+{
+  "Date": "2026-10-09",
+  "ExperimentRoot": "C:/Users/alexa/.codex/visualizations/2026/09/22/01a0cb2f-336a-7392-addb-0c5ebb1289d1/tmp/pdfs/build-speed-20261009",
+  "Status": "Vollständiger paralleler Gesamtbau aktiviert; Abschnittsvorschau nicht aktiviert. Frühere Vorschau-Messungen bleiben als historische Versuche erhalten.",
+  "Scope": "Beide deutschen Fassungen; bestehende Schrift- und Grafik-Caches wiederverwendet; Test-Ausgaben und LaTeX-Hilfsdateien isoliert.",
+  "Method": {
+    "WarmEdit": "Vor jeder warmen Messung sichtbare, gleich breite Änderung der Testfußzeile A/B/C/D; kein No-op-Bau. Zusätzlich echte Linienänderung in einer isolierten Grafik und Einfügen eines isolierten Definitionsfelds.",
+    "Timing": "Wall-clock-Zeit innerhalb des Testskripts, einschließlich paralleler Job-Erzeugung, für DE und DE-cloze zusammen. Quellprüfung, Erzeugen der Testfixtures und PDF-Sichtprüfung nicht enthalten.",
+    "Initial": "Initial-Läufe richten getrennte Test-Referenzdateien ein, verwenden aber vorhandene Fonts/Grafiken. Nicht mit einem vollständigen Grafik-Kaltbau gleichsetzen.",
+    "Baseline": "Für die vergleichbaren kleinen warmen Änderungen benötigt latexmk einen Durchlauf je Fassung. Die früher dokumentierten 203,1 Sekunden mit je zwei Durchläufen sind kein identischer Benchmark.",
+    "PartialNumbering": "Startzähler und externe Referenzen stammen aus dem letzten vollständigen deutschen Bau. Innerhalb des Ausschnitts zählen die normalen LaTeX-Zähler weiter; ausgeblendete Inhalte müssen unverändert sein. Nach Umordnung oder Änderungen davor ist ein erneuter Gesamtbau erforderlich."
+  },
+  "WarmSummarySeconds": {
+    "FullSequential": 74.948,
+    "FullParallel": 41.957,
+    "Chapter5Sequential": 32.297,
+    "Chapter5Parallel": 18.491,
+    "Section56Sequential": 21.591,
+    "Section56Parallel": 12.231,
+    "Section56DirectSequential": 17.712,
+    "Section56DirectParallel": 10.265,
+    "Section56CompressionOffAndNoSyncTeX": 21.173,
+    "Section56MicrotypeDraft": 21.298,
+    "Section56ExplicitFonts": [
+      9.34,
+      9.431,
+      9.423
+    ],
+    "Section56ExplicitFontsAndHarfBuzz": [
+      7.271,
+      7.384,
+      7.34
+    ],
+    "UnitExplicitFontsAndHarfBuzz": [
+      6.789,
+      6.76,
+      6.705
+    ],
+    "Section56LiveEditedFigure": 7.488,
+    "Section56ReducedPackages": 8.998,
+    "Section56XeLaTeX": 6.438
+  },
+  "Profiling": {
+    "Scope": "Einzelfassung, zwei Seiten, unveränderte gemeinsame Ausstattung",
+    "FindingsSecondsApprox": {
+      "FiraSansSetup": 2.96,
+      "LibertinusMathSetup": 0.68,
+      "SharedPreamble": 5.3,
+      "Content": 0.7
+    },
+    "Conclusion": "Nicht nur Umfang oder TikZ: Schriftinitialisierung und allgemeine LaTeX-Startkosten dominieren kleine Vorschauen."
+  },
+  "ReferenceTest": {
+    "FirstPassSeconds": 6.68,
+    "SecondPassSeconds": 6.714,
+    "SumSeconds": 13.394,
+    "FirstPass": "Definition selbst 5.7, Vorwärtsverweis noch 5.6; LaTeX meldet geänderte Labels.",
+    "SecondPass": "Definition und Vorwärtsverweis beide 5.7, keine weitere Referenzwarnung.",
+    "Conclusion": "Unter zehn Sekunden für erste Vorschau nach Strukturänderung, aber kein verlässliches Zehn-Sekunden-Versprechen für sofort vollständig konvergierte Referenzen."
+  },
+  "Validation": {
+    "PagesPerVariant": 7,
+    "ExplicitFonts": "14/14 Seiten außerhalb der Testfußzeile pixelgleich zur Standard-LuaLaTeX-Vorschau bei Poppler-Rendering auf 1400 px Seitenhöhe.",
+    "HarfBuzz": "14/14 Seiten mit identischem extrahiertem Text einschließlich Zeilenumbrüchen; Seitenteilung gleich. Kleine Raster-/Schriftverarbeitungsunterschiede, daher nicht pixelgleich. Beide Fassungen visuell geprüft, kein neuer erkennbarer Layoutfehler.",
+    "LiveFigure": "Geänderte Grafik direkt aus separater Test-TikZ-Datei gezeichnet, alle übrigen Abschnittsgrafiken weiterhin aus vorhandenem Cache. Sieben Seiten je Fassung, korrekter Inhalt und Sichtprüfung.",
+    "XeLaTeX": "Schnell, aber größere Unterschiede im Satzbild; kein empfohlener Standardwechsel.",
+    "RawVisualComparison": "C:/Users/alexa/.codex/visualizations/2026/09/22/01a0cb2f-336a-7392-addb-0c5ebb1289d1/tmp/pdfs/build-speed-20261009/qa/verification.json",
+    "ProductionMainUnchanged": true,
+    "ProductionPdfHashes": {
+      "build-de.pdf": "FBC204746ADF2E480E1EC23056874E9CDF932DEA67DE6FC424CD2046194A8EBA",
+      "build-de-cloze.pdf": "E3AF7F7A27F1B303F4616B9A485394EA999EDADC9049CE85BFBB2EDA56F6DB17"
+    },
+    "CachedFigurePdfs": 402,
+    "CachedFigurePdfsWrittenDuringTests": 0,
+    "VisualCorrectionPasses": 0,
+    "TestHarnessRepairs": "Expliziter erfolgreicher Exit-Code; Xe-Testfixture mit überzähligem fi repariert; Makro-Kopie für Live-Grafik mit NewCommandCopy statt let. Fehlgeschlagene/abgebrochene Läufe nicht als erfolgreiche Beschleunigung werten.",
+    "InspectionToFirstEditSeconds": null,
+    "InspectionToFirstEditNote": "Für diesen längeren Versuch nicht verlässlich separat gemessen."
+  },
+  "Recommendation": [
+    "Vollständige PDFs nach Änderungen als Standard bauen; beide aktiven deutschen Fassungen parallel.",
+    "latexmk entscheidet über alle notwendigen Durchläufe; unveränderte persistente Grafik- und Schriftcaches behalten.",
+    "Im Hauptdokument dieselben Fira-/Libertinus-Dateien direkt auswählen, HarfBuzz für Fira; eigenständige Grafiken behalten die bisherige Schriftkonfiguration.",
+    "PDFs und SyncTeX erst nach erfolgreicher Referenzkonvergenz beider Fassungen und unverändertem Quellstand veröffentlichen; konkurrierende Bauten sperren.",
+    "Keine Kapitel ausblenden, keine Referenzdurchläufe überspringen und keine Mikrotypografie oder SyncTeX abschalten. Abschnittsvorschau bleibt nur ausdrücklich gewählte Rückfalloption."
+  ],
+  "Limit": "Die schnellen Zeiten sind für die getesteten warmen minimalen Änderungen bestätigt, nicht garantiert für beliebig viele neue Grafiken, neue Pakete, Vollbau oder Referenzkonvergenz nach jeder strukturellen Änderung.",
+  "FullBuildFollowUp": {
+    "Date": "2026-10-09",
+    "ProductionBeforeFontOptimizationSeconds": 42.49,
+    "ProductionAfterFontOptimizationSeconds": [39.09, 39.57],
+    "ProductionMethod": "Vollständiges Dokument, beide Fassungen parallel, latexmk, SyncTeX eingeschaltet, ein Durchlauf je Fassung. Zweiter optimierter Lauf mit -Force: kein No-op, beide vollständigen PDFs tatsächlich neu gesetzt.",
+    "ExperimentalFullRuns": [
+      {"Case":"full-font-files","Phase":"initial","Seconds":127.325,"Passes":[3,3],"ExitCodes":[0,0]},
+      {"Case":"full-font-files","Phase":"warm-1","Seconds":41.463,"Passes":[1,1],"ExitCodes":[0,0]},
+      {"Case":"full-harfbuzz","Phase":"initial-failed","Seconds":34.351,"Passes":[1,1],"ExitCodes":[12,0],"Note":"Test-Hilfsdatei während noch laufendem anderen Versuch kopiert und dadurch unvollständig; repariert, nicht als Beschleunigung gewertet."},
+      {"Case":"full-harfbuzz","Phase":"repaired","Seconds":34.78,"Passes":[1,0],"ExitCodes":[0,0],"Note":"Eine Fassung No-op; kein gültiger Zweifassungs-Vergleich."},
+      {"Case":"full-harfbuzz","Phase":"warm-1","Seconds":37.527,"Passes":[1,1],"ExitCodes":[0,0]},
+      {"Case":"full-hb-named","Phase":"initial","Seconds":40.306,"Passes":[1,1],"ExitCodes":[0,0]},
+      {"Case":"full-hb-named","Phase":"explicit-features","Seconds":41.27,"Passes":[1,1],"ExitCodes":[0,0]}
+    ],
+    "HistoricalHarnessCorrection": "Die ungekapselte Typumwandlung im Start-Job-Argument wurde als String [bool]False übergeben: ältere parallele Versuchsläufe verwendeten dadurch synctex=0, obwohl das JSON NoSyncTeX=false meldete. In tools/benchmark-build.ps1 repariert. Obige ExperimentalFullRuns gehören noch zu diesen Läufen; produktive Vergleichsbauten 42.49/39.09/39.57 erzeugten ausdrücklich beide aktuellen SyncTeX-Dateien. Historische Vorschauzeiten sind daher kein bestätigtes Sieben-Sekunden-Versprechen inklusive SyncTeX.",
+    "Pages": {"de":221,"de-cloze":232},
+    "UndefinedReferences": false,
+    "CacheMigration": "Einmalig 402 reine Fingerprint-Metadaten aktualisiert, nachdem die gesamte Änderung auf ausschließlich nicht-standalone ausgeführte Schriftzweige begrenzt und jeder vorherige Abhängigkeitshash einschließlich aller übrigen Quellen geprüft wurde. Vorherige Metadaten gesichert; sämtliche Grafik-PDF-Hashes unverändert. Keine pauschale Cache-Ausnahme im produktiven Skript.",
+    "StandaloneProof": "functions_limit_approach unter neuer Präambel eigenständig gebaut; Rendering bei 150 dpi pixelidentisch zum vorhandenen Cache.",
+    "Validation": "Inhalte aller 453 Seiten nach Unicode-/Whitespace-Normalisierung identisch; Seitenaufteilung unverändert. Eine abweichende Zeilenzuordnung des Textextraktors bei einem Bruch auf physischer DE-Seite 28 visuell als unveränderte Rechnung geprüft. Acht repräsentative vollständige/Lückenseiten visuell geprüft, darunter beide Titel, Tabellen, Grenzwertdefinition und spätere Kapitel. Keine visuellen Nachkorrekturen erforderlich.",
+    "BuildLockTest": "Konkurrierender Bau mit Fehler abgewiesen, veröffentlichte PDF per Hash unverändert; Testdauer 0.02 Sekunden ist keine Build-Beschleunigung.",
+    "InspectionToFirstEditSeconds": null,
+    "InspectionToFirstEditNote": "Nicht zuverlässig separat gemessen; Quellprüfung und Sichtprüfung sind nicht Teil der angegebenen Bauzeiten.",
+    "Limit": "Unter zehn Sekunden für das vollständig aktuelle Gesamt-PDF nicht erreicht; Strukturänderungen können weiterhin zusätzliche notwendige Durchläufe verursachen."
+  },
+  "Samples": [
+    {
+      "Case": "full",
+      "Phase": "initial",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 244.458,
+      "Results": [
+        {
+          "Case": "full",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 119.194,
+          "Passes": 3,
+          "Pages": 221,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de.initial.build.log",
+          "UndefinedReferences": true
+        },
+        {
+          "Case": "full",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 125.171,
+          "Passes": 3,
+          "Pages": 232,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de-cloze.initial.build.log",
+          "UndefinedReferences": true
+        }
+      ]
+    },
+    {
+      "Case": "chapter",
+      "Phase": "initial",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 73.11,
+      "Results": [
+        {
+          "Case": "chapter",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 35.82,
+          "Passes": 2,
+          "Pages": 68,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de.initial.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "chapter",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 37.275,
+          "Passes": 2,
+          "Pages": 67,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de-cloze.initial.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section",
+      "Phase": "initial",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 50.012,
+      "Results": [
+        {
+          "Case": "section",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 24.933,
+          "Passes": 2,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de.initial.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 25.06,
+          "Passes": 2,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de-cloze.initial.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-direct",
+      "Phase": "initial",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 18.013,
+      "Results": [
+        {
+          "Case": "section-direct",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial",
+          "Seconds": 8.997,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de.initial.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-direct",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial",
+          "Seconds": 8.995,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de-cloze.initial.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-pdf-fast",
+      "Phase": "initial",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 41.998,
+      "Results": [
+        {
+          "Case": "section-pdf-fast",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 21.773,
+          "Passes": 2,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de.initial.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-pdf-fast",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 20.21,
+          "Passes": 2,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de-cloze.initial.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-type-fast",
+      "Phase": "initial",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 46.446,
+      "Results": [
+        {
+          "Case": "section-type-fast",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 22.934,
+          "Passes": 2,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de.initial.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-type-fast",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "initial",
+          "Seconds": 23.492,
+          "Passes": 2,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de-cloze.initial.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "full",
+      "Phase": "warm1",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 74.948,
+      "Results": [
+        {
+          "Case": "full",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 38.143,
+          "Passes": 1,
+          "Pages": 221,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "full",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 36.731,
+          "Passes": 1,
+          "Pages": 232,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "chapter",
+      "Phase": "warm1",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 32.297,
+      "Results": [
+        {
+          "Case": "chapter",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 16.2,
+          "Passes": 1,
+          "Pages": 68,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "chapter",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 16.079,
+          "Passes": 1,
+          "Pages": 67,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section",
+      "Phase": "warm1",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 21.591,
+      "Results": [
+        {
+          "Case": "section",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 10.833,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 10.741,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-direct",
+      "Phase": "warm1",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 17.712,
+      "Results": [
+        {
+          "Case": "section-direct",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 8.847,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-direct",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 8.849,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-pdf-fast",
+      "Phase": "warm1",
+      "Parallel": false,
+      "NoSyncTeX": true,
+      "TotalSeconds": 21.173,
+      "Results": [
+        {
+          "Case": "section-pdf-fast",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 10.599,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-pdf-fast",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 10.556,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-pdf-fast\\bench-section-pdf-fast-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-type-fast",
+      "Phase": "warm1",
+      "Parallel": false,
+      "NoSyncTeX": false,
+      "TotalSeconds": 21.298,
+      "Results": [
+        {
+          "Case": "section-type-fast",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 10.63,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-type-fast",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm1",
+          "Seconds": 10.649,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-type-fast\\bench-section-type-fast-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "full",
+      "Phase": "warm-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 41.957,
+      "Results": [
+        {
+          "Case": "full",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm-parallel",
+          "Seconds": 41.564,
+          "Passes": 1,
+          "Pages": 221,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de.warm-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "full",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm-parallel",
+          "Seconds": 40.82,
+          "Passes": 1,
+          "Pages": 232,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\full\\bench-full-de-cloze.warm-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "chapter",
+      "Phase": "warm-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 18.491,
+      "Results": [
+        {
+          "Case": "chapter",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm-parallel",
+          "Seconds": 17.706,
+          "Passes": 1,
+          "Pages": 68,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de.warm-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "chapter",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm-parallel",
+          "Seconds": 17.938,
+          "Passes": 1,
+          "Pages": 67,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\chapter\\bench-chapter-de-cloze.warm-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section",
+      "Phase": "warm-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 12.231,
+      "Results": [
+        {
+          "Case": "section",
+          "Variant": "de",
+          "Engine": "latexmk",
+          "Phase": "warm-parallel",
+          "Seconds": 11.721,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de.warm-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section",
+          "Variant": "de-cloze",
+          "Engine": "latexmk",
+          "Phase": "warm-parallel",
+          "Seconds": 11.731,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section\\bench-section-de-cloze.warm-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-direct",
+      "Phase": "warm-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 10.265,
+      "Results": [
+        {
+          "Case": "section-direct",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm-parallel",
+          "Seconds": 9.76,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de.warm-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-direct",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm-parallel",
+          "Seconds": 9.783,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-direct\\bench-section-direct-de-cloze.warm-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-font-files",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 8.854,
+      "Results": [
+        {
+          "Case": "unit-font-files",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 8.349,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-font-files\\bench-unit-font-files-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-font-files\\bench-unit-font-files-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-font-files",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 8.381,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-font-files\\bench-unit-font-files-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-font-files\\bench-unit-font-files-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-minimal",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 8.506,
+      "Results": [
+        {
+          "Case": "unit-minimal",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 7.99,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-minimal",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 8.052,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-xe",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 5.286,
+      "Results": [
+        {
+          "Case": "unit-xe",
+          "Variant": "de",
+          "Engine": "xelatex",
+          "Phase": "initial-parallel",
+          "Seconds": 4.981,
+          "Passes": 1,
+          "Pages": null,
+          "ExitCode": 1,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-xe\\bench-unit-xe-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-xe\\bench-unit-xe-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-xe",
+          "Variant": "de-cloze",
+          "Engine": "xelatex",
+          "Phase": "initial-parallel",
+          "Seconds": 4.825,
+          "Passes": 1,
+          "Pages": null,
+          "ExitCode": 1,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-xe\\bench-unit-xe-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-xe\\bench-unit-xe-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-minimal",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 8.982,
+      "Results": [
+        {
+          "Case": "section-minimal",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 8.548,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-minimal",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 8.511,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-harfbuzz",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 6.898,
+      "Results": [
+        {
+          "Case": "unit-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 6.541,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 6.424,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-harfbuzz",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 7.342,
+      "Results": [
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 6.883,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 6.863,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-hook",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 9.766,
+      "Results": [
+        {
+          "Case": "unit-hook",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 9.424,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-hook",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 9.267,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-hook",
+      "Phase": "initial-parallel",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 10.141,
+      "Results": [
+        {
+          "Case": "section-hook",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 9.734,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de.initial-parallel.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-hook",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "initial-parallel",
+          "Seconds": 9.677,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de-cloze.initial-parallel.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-minimal",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 8.411,
+      "Results": [
+        {
+          "Case": "unit-minimal",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 7.915,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-minimal",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 7.938,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-minimal\\bench-unit-minimal-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-font-files",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 9.34,
+      "Results": [
+        {
+          "Case": "section-font-files",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 8.921,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-font-files",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 8.895,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-minimal",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 8.998,
+      "Results": [
+        {
+          "Case": "section-minimal",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 8.526,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-minimal",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 8.488,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-minimal\\bench-section-minimal-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-harfbuzz",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 6.789,
+      "Results": [
+        {
+          "Case": "unit-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 6.296,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 6.311,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-font-files",
+      "Phase": "warm1",
+      "Parallel": true,
+      "TotalSeconds": 8.728,
+      "Results": []
+    },
+    {
+      "Case": "unit-xe",
+      "Phase": "initial-repaired",
+      "Parallel": true,
+      "TotalSeconds": 6.631,
+      "Results": []
+    },
+    {
+      "Case": "section-xe",
+      "Phase": "initial-repaired",
+      "Parallel": true,
+      "TotalSeconds": 6.574,
+      "Results": []
+    },
+    {
+      "Case": "section-harfbuzz",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 7.271,
+      "Results": [
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 6.854,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 6.809,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-hook",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 9.478,
+      "Results": [
+        {
+          "Case": "unit-hook",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 9.065,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-hook",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 9.009,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-hook\\bench-unit-hook-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-hook",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 10.2,
+      "Results": [
+        {
+          "Case": "section-hook",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 9.687,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-hook",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm1",
+          "Seconds": 9.735,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-hook\\bench-section-hook-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-xe",
+      "Phase": "warm1",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 6.438,
+      "Results": [
+        {
+          "Case": "section-xe",
+          "Variant": "de",
+          "Engine": "xelatex",
+          "Phase": "warm1",
+          "Seconds": 5.957,
+          "Passes": 1,
+          "Pages": null,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-xe\\bench-section-xe-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-xe\\bench-section-xe-de.warm1.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-xe",
+          "Variant": "de-cloze",
+          "Engine": "xelatex",
+          "Phase": "warm1",
+          "Seconds": 5.975,
+          "Passes": 1,
+          "Pages": null,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-xe\\bench-section-xe-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-xe\\bench-section-xe-de-cloze.warm1.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-xe",
+      "Phase": "warm1",
+      "Parallel": true,
+      "TotalSeconds": 5.949,
+      "Results": []
+    },
+    {
+      "Case": "section-harfbuzz",
+      "Phase": "warm2",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 7.384,
+      "Results": [
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm2",
+          "Seconds": 6.919,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.warm2.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm2",
+          "Seconds": 6.907,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.warm2.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-harfbuzz",
+      "Phase": "warm2",
+      "Parallel": true,
+      "TotalSeconds": 6.76,
+      "Results": []
+    },
+    {
+      "Case": "unit-structure",
+      "Phase": "structural-first",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 6.68,
+      "Results": [
+        {
+          "Case": "unit-structure",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "structural-first",
+          "Seconds": 6.171,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de.structural-first.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-structure",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "structural-first",
+          "Seconds": 6.181,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de-cloze.structural-first.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-structure",
+      "Phase": "structural-final",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 6.714,
+      "Results": [
+        {
+          "Case": "unit-structure",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "structural-final",
+          "Seconds": 6.223,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de.structural-final.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-structure",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "structural-final",
+          "Seconds": 6.206,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-structure\\bench-unit-structure-de-cloze.structural-final.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "unit-harfbuzz",
+      "Phase": "warm3",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 6.705,
+      "Results": [
+        {
+          "Case": "unit-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm3",
+          "Seconds": 6.24,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de.warm3.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "unit-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm3",
+          "Seconds": 6.2,
+          "Passes": 1,
+          "Pages": 2,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\unit-harfbuzz\\bench-unit-harfbuzz-de-cloze.warm3.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-harfbuzz",
+      "Phase": "warm3",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 7.34,
+      "Results": [
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm3",
+          "Seconds": 6.958,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de.warm3.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-harfbuzz",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm3",
+          "Seconds": 6.865,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-harfbuzz\\bench-section-harfbuzz-de-cloze.warm3.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-live-figure",
+      "Phase": "live-baseline-repaired",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 7.791,
+      "Results": [
+        {
+          "Case": "section-live-figure",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "live-baseline-repaired",
+          "Seconds": 7.285,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de.live-baseline-repaired.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-live-figure",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "live-baseline-repaired",
+          "Seconds": 7.244,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de-cloze.live-baseline-repaired.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-live-figure",
+      "Phase": "live-edited",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 7.488,
+      "Results": [
+        {
+          "Case": "section-live-figure",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "live-edited",
+          "Seconds": 6.952,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de.live-edited.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-live-figure",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "live-edited",
+          "Seconds": 6.965,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-live-figure\\bench-section-live-figure-de-cloze.live-edited.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-font-files",
+      "Phase": "warm2",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 9.431,
+      "Results": [
+        {
+          "Case": "section-font-files",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm2",
+          "Seconds": 8.914,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de.warm2.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-font-files",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm2",
+          "Seconds": 8.908,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de-cloze.warm2.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    },
+    {
+      "Case": "section-font-files",
+      "Phase": "warm3",
+      "Parallel": true,
+      "NoSyncTeX": false,
+      "TotalSeconds": 9.423,
+      "Results": [
+        {
+          "Case": "section-font-files",
+          "Variant": "de",
+          "Engine": "direct",
+          "Phase": "warm3",
+          "Seconds": 8.891,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de.warm3.build.log",
+          "UndefinedReferences": false
+        },
+        {
+          "Case": "section-font-files",
+          "Variant": "de-cloze",
+          "Engine": "direct",
+          "Phase": "warm3",
+          "Seconds": 8.912,
+          "Passes": 1,
+          "Pages": 7,
+          "ExitCode": 0,
+          "Pdf": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de-cloze.pdf",
+          "Log": "C:\\Users\\alexa\\.codex\\visualizations\\2026\\09\\22\\01a0cb2f-336a-7392-addb-0c5ebb1289d1\\tmp\\pdfs\\build-speed-20261009\\pdf\\section-font-files\\bench-section-font-files-de-cloze.warm3.build.log",
+          "UndefinedReferences": false
+        }
+      ]
+    }
+  ]
+}

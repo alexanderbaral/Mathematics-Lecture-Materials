@@ -1,0 +1,32 @@
+\begin{tikzpicture}[
+  x=2.35cm,y=1.6cm,>=Latex,line cap=round,
+  point label/.style={inner sep=0pt},
+  declare function={interpolationcurve(\x)=0.45*\x^3-0.8*\x;}
+]
+  % The same schematic polynomial as in the preceding "Now" panel.
+  \coordinate (Pfirst) at (-1.7,{interpolationcurve(-1.7)});
+  \coordinate (Psecond) at (-0.6,{interpolationcurve(-0.6)});
+  \coordinate (Pi) at (0.6,{interpolationcurve(0.6)});
+  \coordinate (Plast) at (1.7,{interpolationcurve(1.7)});
+
+  \draw[->,black!55] (-2.05,0)--(2.15,0) node[right=4pt] {$x$};
+  \draw[->,black!55] (0,-1.75)--(0,1.88) node[above=4pt] {$y$};
+  \node[below left=4pt,inner sep=0pt,text=black!55] at (0,0) {$0$};
+
+  \draw[THMBlue,line width=1.2pt,domain=-1.9:1.9,samples=161]
+    plot (\x,{interpolationcurve(\x)});
+  \node[above right=5pt,inner sep=0pt,text=THMBlue]
+    at (1.9,{interpolationcurve(1.9)}) {$y=p(x)$};
+
+  \foreach \point in {Pfirst,Psecond,Pi,Plast} {
+    \fill[black] (\point) circle (2.1pt);
+  }
+  \node[point label,anchor=south east,xshift=-6pt,yshift=4pt] at (Pfirst)
+    {$P_1=(x_1,y_1)$};
+  \node[point label,anchor=south east,xshift=-6pt,yshift=7pt] at (Psecond)
+    {$P_2=(x_2,y_2)$};
+  \node[point label,anchor=north west,xshift=8pt,yshift=-9pt] at (Pi)
+    {$P_i=(x_i,y_i)$};
+  \node[point label,anchor=north west,xshift=8pt,yshift=-3pt] at (Plast)
+    {$P_{n+1}=(x_{n+1},y_{n+1})$};
+\end{tikzpicture}

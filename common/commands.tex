@@ -232,6 +232,18 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
+% Right-angle mark: a circular arc and a small dot inside its sector.
+% The angles describe the visible projection; a spatial right angle need not
+% appear as 90 degrees on the page. Radius and style remain figure-specific.
+% Arguments: [style]{vertex}{start angle}{end angle}{arc radius}
+%            [dot radius][dot distance as a fraction of the arc radius].
+\NewDocumentCommand{\RightAngleMark}{O{black!65} m m m m O{0.85pt} O{0.6667}}{%
+  \pgfmathsetmacro{\RightAngleMidAngle}{(#3+#4)/2}%
+  \pgfmathsetmacro{\RightAngleDotDistance}{#5*(#7)}%
+  \draw[#1,line width=0.75pt] ($#2+(#3:#5)$)
+    arc[start angle=#3,end angle=#4,radius=#5];%
+  \fill[#1] ($#2+(\RightAngleMidAngle:\RightAngleDotDistance)$) circle (#6);%
+}
 \DeclareMathOperator{\grad}{grad}
 \DeclareMathOperator{\arsinh}{arsinh}
 \DeclareMathOperator{\arcosh}{arcosh}

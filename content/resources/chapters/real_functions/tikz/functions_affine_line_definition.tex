@@ -1,0 +1,22 @@
+\begin{tikzpicture}[x=1.18cm,y=1.18cm,>=Latex,line cap=round]
+  \draw[->,black!65] (-1.75,0)--(4.55,0) node[right] {$x$};
+  \draw[->,black!65] (0,-0.42)--(0,3.15) node[above] {$y$};
+  \draw[black,line width=1.05pt] (-1.6,-0.1)--(4.25,2.825);
+  \node[above=8pt,inner sep=0pt,text=black] at (3.85,2.625) {$g(x)$};
+
+  \draw[THMBlue,line width=0.9pt]
+    (1.2,1.3)--(3.2,1.3)--(3.2,2.3);
+  \RightAngleMark[THMBlue]{(3.2,1.3)}{180}{90}{0.34}[0.75pt]
+  \node[below=5pt,inner sep=0pt,text=THMBlue] at (2.2,1.3)
+    {$\Delta x$};
+  \node[right=5pt,inner sep=0pt,text=THMBlue] at (3.2,1.8)
+    {$\Delta y$};
+  \node[anchor=west,inner sep=0pt,align=left,text=THMBlue]
+    at (1.35,2.72) {Steigungs-\\Dreieck};
+
+  \draw[green!55!black,line width=0.8pt,decorate,
+    decoration={brace,amplitude=9pt,mirror}]
+    (0,0)--(0,0.7);
+  \node[anchor=west,inner sep=0pt,text=green!55!black]
+    at (0.40,0.35) {$b=g(0)$};
+\end{tikzpicture}

@@ -1,43 +1,68 @@
-\subsection{Annäherung von links und von rechts}
+\subsection{Definitionslücke und Sprung}
 \label{subsec:real_functions_one_sided_limits}
-Das Verhalten kann davon abhängen, von welcher Seite wir uns nähern.
-Deshalb unterscheiden wir \emph{einseitige Grenzwerte}
-\EnglishTerm{one-sided limits}:
-\[
-  \lim_{x\to a^-}f(x)
-  \quad\text{mit }x<a,
-  \qquad
-  \lim_{x\to a^+}f(x)
-  \quad\text{mit }x>a.
-\]
-\begin{ExampleBox}{Ein Sprung hat zwei verschiedene Annäherungswerte}{real_functions_jump_limit}
-  Eine idealisierte Schaltfunktion sei durch
-  $s(x)=0$ für $x<0$ und $s(x)=1$ für $x\ge0$ gegeben.
+Vergleichen wir eine Definitionslücke mit einem Sprung des Graphen.
+% Handschrift: PDF-Seiten 19–20, Fall b) nach Einführung des Grenzwerts.
+\begin{ExampleBox}{Grenzwert mit Definitionslücke}{real_functions_limit_domain_gap}
+  Wir betrachten eine Funktion mit der Definitionsmenge
+  $D_g=\R\setminus\{0\}$. Welchem Wert nähern sich ihre Werte bei null?
+  \par\smallskip\noindent
+  \begin{minipage}[c]{0.48\linewidth}
+    \[
+      \begin{aligned}
+        g\colon D_g&\longrightarrow\R,\\
+        x&\longmapsto x.
+      \end{aligned}
+    \]
+    Von links und von rechts nähern sich die Werte derselben Zahl:
+    \[
+      \lim_{x\to0}g(x)=\Cloze{1cm}{0}.
+    \]
+    Der Grenzwert existiert, obwohl $g(0)$ nicht definiert ist.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.47\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_limit_domain_gap.tex}
+  \end{minipage}
+\end{ExampleBox}
+\begin{ExampleBox}{Grenzwert bei einer Sprungfunktion}{real_functions_jump_limit}
+  Wir vergleichen die Annäherung an null bei der folgenden idealisierten
+  Schaltfunktion:
   \par\smallskip
   \begin{minipage}[c]{0.47\linewidth}
-    Beide Seiten liefern ein eindeutiges, aber unterschiedliches Ergebnis:
     \[
-      \lim_{x\to0^-}s(x)=\Cloze{1cm}{0},
-      \qquad
-      \lim_{x\to0^+}s(x)=\Cloze{1cm}{1}.
+      s(x)=\begin{cases}0,&x<0,\\1,&x\ge0.\end{cases}
     \]
-    Der zweiseitige Grenzwert bei null existiert nicht.
-    Auch eine Änderung von $s(0)$ würde daran nichts ändern.
+    Die Annäherung an null liefert unterschiedliche Werte:
+    \begin{itemize}
+      \item von links ($x<0$): $\Cloze{1cm}{0}$,
+      \item von rechts ($x>0$): $\Cloze{1cm}{1}$.
+    \end{itemize}
   \end{minipage}\hfill
   \begin{minipage}[c]{0.49\linewidth}
     \centering
     \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_jump.tex}
   \end{minipage}
-\end{ExampleBox}
-\begin{KeyPointBox}{Beide Seiten müssen zusammenpassen}{real_functions_two_sided_criterion}
-  Wenn eine Annäherung von beiden Seiten möglich ist, gilt für $L\in\R$:
+  \par\medskip
+  Die unterschiedlichen Annäherungswerte lassen keinen gemeinsamen
+  Grenzwert zu:
   \[
-    \lim_{x\to a}f(x)=L
-    \quad\Longleftrightarrow\quad
-    \lim_{x\to a^-}f(x)=\lim_{x\to a^+}f(x)=L.
+    \lim_{x\to0}s(x)\qquad
+    \Cloze{3.8cm}{\textcolor{red}{\text{existiert nicht.}}}
   \]
+  Auch eine Änderung von $s(0)$ würde daran nichts ändern.
+\end{ExampleBox}
+% Handschrift: PDF-Seiten 19–20 (Sprung von 1 auf 2).
+Die Sprungfunktion $h(x)=1$ für $x<0$ und $h(x)=2$ für $x\ge0$
+ist um $1$ nach oben verschoben: $h=s+1$. Damit gilt ebenso
+kein Grenzwert bei null: Von links bleiben die Werte bei
+$\Cloze{1cm}{1}$, von rechts bei $\Cloze{1cm}{2}$.
+\begin{KeyPointBox}{Beide Seiten müssen zusammenpassen}{real_functions_two_sided_criterion}
+  Ist eine Annäherung von beiden Seiten möglich, muss sich $f(x)$
+  von links und von rechts demselben Wert $L$ nähern.
+  Unterschiedliche Annäherungswerte bedeuten: kein gemeinsamer Grenzwert.
+  \par\smallskip
   Am Rand der Definitionsmenge betrachten wir nur die zulässige Seite,
-  etwa $x\to0^+$ bei $\sqrt{x}$ auf $[0,\infty)$.
+  etwa bei $\sqrt{x}$ für $x\to0$ nur $x>0$.
 \end{KeyPointBox}
 
 \subsection{Unbegrenzte Eingaben und unbegrenzte Funktionswerte}
@@ -64,27 +89,30 @@ Man muss unterscheiden, \emph{was} unbegrenzt wird.
     \lim_{x\to+\infty}\frac1x=\Cloze{1cm}{0}.
   \]
   Der Wert null wird nie angenommen. Ein Grenzwert muss also kein
-  Funktionswert sein. Auch für $x\to-\infty$ gilt $1/x\to0$.
+  Funktionswert sein. Auch $\lim_{x\to-\infty}1/x=0$.
 \end{ExampleBox}
 \end{minipage}
 
 
 \par\noindent\begin{minipage}{\linewidth}
 \begin{DefinitionBox}{Uneigentliches Grenzverhalten}{real_functions_divergence}
-  Die Schreibweise $f(x)\to+\infty$ bedeutet, dass $f(x)$ schließlich
+  Die Schreibweise $\lim_{x\to a}f(x)=+\infty$ bedeutet, dass $f(x)$
+  bei der Annäherung an $a$ schließlich
   jede feste obere Schranke überschreitet und darüber bleibt.
-  Entsprechend bedeutet $f(x)\to-\infty$ ein dauerhaftes Unterschreiten
+  Entsprechend bedeutet $\lim_{x\to a}f(x)=-\infty$ ein dauerhaftes Unterschreiten
   jeder festen unteren Schranke. Man spricht von einem
   \emph{uneigentlichen Grenzwert} \EnglishTerm{infinite limit}.
 \end{DefinitionBox}
 \begin{ExampleBox}[before skip=0.3\baselineskip]{Eine endliche Stelle -- unbegrenzte Werte}{real_functions_reciprocal_zero}
   Bei $f(x)=1/x$ nähern wir uns nun nicht dem Unendlichen, sondern der
   ausgeschlossenen Stelle null:
-  \[
-    \lim_{x\to0^-}\frac1x=\Cloze{2cm}{-\infty},
-    \qquad
-    \lim_{x\to0^+}\frac1x=\Cloze{2cm}{+\infty}.
-  \]
+  \begin{itemize}
+    \item Von links ($x<0$) werden die Werte
+      \Cloze{5cm}{beliebig stark negativ}.
+    \item Von rechts ($x>0$) werden die Werte
+      \Cloze{5cm}{beliebig groß positiv}.
+  \end{itemize}
+  \par\medskip
   Es gibt bei null weder einen gemeinsamen endlichen noch einen
   gemeinsamen uneigentlichen Grenzwert.
   \begin{center}

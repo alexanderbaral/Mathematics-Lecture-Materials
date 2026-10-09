@@ -1,0 +1,17 @@
+\begin{tikzpicture}[x=1.1cm,y=1.1cm,>=Latex,line cap=round]
+  \draw[black!8,step=1] (-2,-2) grid (3,3);
+  \draw[->,black!55] (-2.2,0)--(3.6,0) node[right] {$x$};
+  \draw[->,black!55] (0,-2.2)--(0,3.6) node[above] {$y$};
+  \foreach \v in {-2,-1,1,2,3} {
+    \node[anchor=north] at (\v,-2.5) {$\v$};
+    \node[anchor=east] at (-2.25,\v) {$\v$};
+  }
+  \draw[black!50,dashed] (-2,-2)--(3.3,3.3);
+  \draw[THMBlue,line width=1.1pt,domain=-1.75:1.75,samples=100] plot (\x,{\x*\x});
+  \draw[green!55!black,line width=1.1pt,domain=-1.75:1.75,samples=100]
+    plot ({\x*\x},\x);
+  \draw[black!45,dashed] (1,-1.6)--(1,1.6);
+  \fill[green!55!black] (1,1) circle (2.3pt) (1,-1) circle (2.3pt);
+  \node[THMBlue] at (0.8,4.35) {$f(x)=x^2$};
+  \node[green!55!black] at (0.8,-3.35) {$y=\sqrt x\ \text{\Lang{oder}{or}}\ y=-\sqrt x$};
+\end{tikzpicture}

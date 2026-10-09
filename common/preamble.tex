@@ -9,9 +9,24 @@
 \usepackage{siunitx}
 \usepackage{stmaryrd}
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
-\setsansfont{Fira Sans}
+% Preserve the established font/render settings of cached standalone figures.
+% The full document avoids family-name lookup and uses the faster text shaper.
+\ifdefined\StandaloneTikzBuild
+  \setsansfont{Fira Sans}
+\else
+  \setsansfont{FiraSans-Regular.otf}[
+    Renderer=HarfBuzz,
+    BoldFont=FiraSans-Bold.otf,
+    ItalicFont=FiraSans-Italic.otf,
+    BoldItalicFont=FiraSans-BoldItalic.otf
+  ]
+\fi
 \renewcommand{\familydefault}{\sfdefault}
-\setmathfont{Libertinus Math}
+\ifdefined\StandaloneTikzBuild
+  \setmathfont{Libertinus Math}
+\else
+  \setmathfont{LibertinusMath-Regular.otf}
+\fi
 
 % `geometry` shifts the page origin and therefore conflicts with the cropped
 % page produced by the standalone TikZ cache builder.
@@ -21,6 +36,7 @@
 \usepackage{microtype}
 \usepackage{booktabs}
 \usepackage{tabularx}
+\usepackage{needspace}
 \usepackage{enumitem}
 \usepackage{graphicx}
 \usepackage{xcolor}

@@ -16,17 +16,13 @@
   \IfClozeTF{}{%
     \draw[->,THMBlue,line width=1.3pt] (1,1)--(2,3);
     \draw[THMBlue!55,densely dashed] (1,1)--(2,1)--(2,3);
-    \draw[THMBlue!75,line width=0.7pt]
-      (1.74,1) arc[start angle=180,end angle=90,radius=0.26];
-    \fill[THMBlue!75] (1.87,1.13) circle[radius=1pt];
+    \RightAngleMark[THMBlue!75]{(2,1)}{180}{90}{0.26}
     \node[THMBlue,left] at (1.48,2.08) {$\vec a$};
     \node[THMBlue,below] at (1.5,1) {$a_1$};
     \node[THMBlue,right] at (2,2) {$a_2$};
     \draw[->,olive!80!black,line width=1.3pt] (5,1)--(3,2);
     \draw[olive!60!black,densely dashed] (5,1)--(3,1)--(3,2);
-    \draw[olive!80!black,line width=0.7pt]
-      (3.26,1) arc[start angle=0,end angle=90,radius=0.26];
-    \fill[olive!80!black] (3.13,1.13) circle[radius=1pt];
+    \RightAngleMark[olive!80!black]{(3,1)}{0}{90}{0.26}
     \node[olive!80!black,above] at (4.07,1.58) {$\vec b$};
     \node[olive!80!black,below] at (4,1) {$b_1$};
     \node[olive!80!black,left] at (3,1.5) {$b_2$};

@@ -6,7 +6,7 @@ beim Quadrieren denselben Wert $4$: Auf ganz $\R$ lässt sich das
 Quadrieren nicht eindeutig umkehren.
 
 \par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Funktionseigenschaft -- Injektivität und Umkehrfunktion}{real_functions_inverse}
+\begin{FunctionPropertyBox}{Injektivität und Umkehrfunktion}{real_functions_inverse}
   Eine Funktion $f:D\to\R$ heißt \emph{injektiv} \EnglishTerm{injective},
   wenn verschiedene Eingaben verschiedene Ausgangswerte liefern:
   \[
@@ -18,7 +18,8 @@ Quadrieren nicht eindeutig umkehren.
   \[
     y=f(x)\quad\Longleftrightarrow\quad x=f^{-1}(y).
   \]
-\end{DefinitionBox}
+  Zu jedem $y\in W$ gehört also genau ein $x\in D$ mit $f(x)=y$.
+\end{FunctionPropertyBox}
 \begin{ExampleBox}[before skip=0.3\baselineskip]{Eine Geradengleichung umkehren}{real_functions_inverse_affine}
   Für $f(x)=2x+1$ soll zu einem Ausgangswert $y$ die Eingabe bestimmt werden.
   \begin{ClozeArea}[34]{6}
@@ -36,6 +37,27 @@ Quadrieren nicht eindeutig umkehren.
 \end{ExampleBox}
 \end{minipage}
 
+% Handschrift: PDF-Seite 48 (beide Verfahren zur Konstruktion).
+\begin{KeyPointBox}{Eine Umkehrfunktion auf zwei Wegen bestimmen}{real_functions_inverse_methods}
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    Rechnerisch:
+    \begin{enumerate}[label=\arabic*)]
+      \item $y=f(x)$ nach $x$ auflösen.
+      \item $x=f^{-1}(y)$ erhalten.
+      \item Variablennamen tauschen: $y=f^{-1}(x)$.
+    \end{enumerate}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.45\linewidth}
+    \raggedright
+    Graphisch:
+    \begin{itemize}
+      \item Koordinaten $(x,y)\mapsto(y,x)$ vertauschen.
+      \item Den Graphen an $y=x$ spiegeln.
+      \item Beide Achsen gleich skalieren.
+    \end{itemize}
+  \end{minipage}
+\end{KeyPointBox}
 
 \begin{KeyPointBox}{Hinweg und Rückweg heben sich auf}{real_functions_inverse_identities}
   Die Definitions- und \textcolor{green!55!black}{Wertemenge} tauschen ihre Rollen:
@@ -52,6 +74,42 @@ Quadrieren nicht eindeutig umkehren.
   Ist sie zusätzlich stetig, ist ihre Umkehrfunktion auf der \textcolor{green!55!black}{Wertemenge}
   ebenfalls stetig und streng monoton in derselben Richtung.
 \end{TheoremBox}
+% Handschrift: PDF-Seite 49 (Originalgerade mit beiden Proben und Spiegelung).
+\begin{ExampleBox}{Eine Gerade umkehren und beide Richtungen prüfen}{real_functions_inverse_affine_source}
+  Bestimmen Sie für $f:\R\to\R$, $f(x)=x/2-1$, die Umkehrfunktion
+  rechnerisch und vergleichen Sie anschließend die Graphen.
+  \begin{ClozeArea}[34]{8}
+    \[
+      y=\frac x2-1\ \Longleftrightarrow\ x=2y+2
+      \quad\Longrightarrow\quad f^{-1}(x)=2x+2.
+    \]
+    Die Probe überprüft Hinweg und Rückweg:
+    \[
+      \begin{aligned}
+        f(f^{-1}(x))&=\frac{2x+2}{2}-1=x,\\[0.5em]
+        f^{-1}(f(x))&=2\left(\frac x2-1\right)+2=x.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_inverse_affine_source.tex}
+  \end{center}
+\end{ExampleBox}
+% Handschrift: PDF-Seite 50 (unbeschränkte Parabel liefert keine Umkehrfunktion).
+\begin{ExampleBox}{Die gespiegelte Parabel ist noch keine Funktion}{real_functions_square_not_invertible}
+  Für $f:\R\to\R$, $f(x)=x^2$, liefert das Auflösen
+  $x=\pm\sqrt y$ für $y>0$ zwei verschiedene Eingaben.
+  Für $y<0$ gibt es keine reelle Eingabe.
+  \[
+    y=x^2\ \Longleftrightarrow\ x=\sqrt y\ \text{oder}\ x=-\sqrt y
+    \qquad(y\ge0).
+  \]
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_inverse_relation.tex}
+  \end{center}
+  Bei $y=1$ würden $1$ und $-1$ zurückgegeben. Ohne Einschränkung
+  der Definitionsmenge existiert daher \Cloze{4cm}{\text{keine Umkehrfunktion}}.
+\end{ExampleBox}
 \begin{ExampleBox}{Den Definitionsbereich passend einschränken}{real_functions_square_inverse}
   Wir beschränken $f(x)=x^2$ auf $[0,\infty)$. Dort ist $f$ streng
   monoton steigend und hat die \textcolor{green!55!black}{Wertemenge} $[0,\infty)$.

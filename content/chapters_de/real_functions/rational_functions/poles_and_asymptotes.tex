@@ -7,7 +7,7 @@ ob eine Lücke hebbar ist oder die Werte unbegrenzt werden.
 \begin{DefinitionBox}{Polstelle}{real_functions_pole}
   Eine ausgeschlossene Stelle $a$ einer gebrochen-rationalen Funktion
   heißt \emph{Polstelle} \EnglishTerm{pole}, wenn
-  $|f(x)|\to\infty$ für $x\to a$ gilt.
+  $\lim_{x\to a}|f(x)|=+\infty$ gilt.
   Die Gerade $x=a$ heißt dann \emph{senkrechte Asymptote}
   \EnglishTerm{vertical asymptote}.
 \end{DefinitionBox}
@@ -31,7 +31,8 @@ ob eine Lücke hebbar ist oder die Werte unbegrenzt werden.
       \end{array}
       \qquad(x\ne1)
     \]
-    Im dritten Fall gilt links $f(x)\to-\infty$, rechts $f(x)\to+\infty$.
+    Im dritten Fall werden die Werte von $h$ bei der Annäherung an $1$
+    von links beliebig stark negativ, von rechts beliebig groß positiv.
   \end{ClozeArea}
 \end{ExampleBox}
 \end{minipage}
@@ -51,6 +52,34 @@ ob eine Lücke hebbar ist oder die Werte unbegrenzt werden.
   \end{itemize}
   Das konkrete Vorzeichen ergibt sich zusätzlich aus $r(a)/s(a)$.
 \end{KeyPointBox}
+% Handschrift: PDF-Seite 24; gemeinsame Nullstellen nach Vielfachheit präzisiert.
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_decision.tex}
+\end{center}
+\begin{ExampleBox}{Eine Nullstelle ohne Definitionslücke und eine Polstelle}{real_functions_rational_zero_and_pole}
+  Vergleichen Sie die Zähler- und Nennernullstellen der beiden Funktionen.
+  Bestimmen Sie anschließend Nullstellen, Definitionsmengen und Polstellen.
+  \begin{enumerate}[label=\alph*)]
+    \item $f(x)=\dfrac{x}{x^2+1}$: Der Nenner ist stets positiv.
+      \[
+        D_f=\Cloze{2cm}{\R},\qquad
+        f(x)\overset{!}{=}0\ \Longleftrightarrow\ x=\Cloze{1cm}{0}.
+      \]
+    \item $g(x)=\dfrac1{x-1}$: Der Zähler wird nie null.
+      \[
+        D_g=\Cloze{3cm}{\R\setminus\{1\}}.
+      \]
+      Bei der Annäherung an $1$ werden die Werte von links
+      \Cloze{5cm}{beliebig stark negativ}, von rechts
+      \Cloze{5cm}{beliebig groß positiv}.
+      Es gibt keine Nullstelle; $x=1$ ist eine Polstelle.
+  \end{enumerate}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_zero_and_pole.tex}
+  \end{center}
+  Die hebbare Lücke von $(x^2-1)/(x+1)$ wurde zuvor in
+  Beispiel~\ref{ex:real_functions_cancelled_hole} untersucht.
+\end{ExampleBox}
 
 \clearpage
 \subsection{Asymptoten im Unendlichen}
@@ -77,7 +106,7 @@ ein bloß ähnlicher Verlauf genügt nicht.
     \[
       f(x)=x+1+\frac2{x-1}.
     \]
-    Weil $2/(x-1)\to0$ für $x\to\pm\infty$, ist $y=x+1$
+    Weil $\lim_{x\to\pm\infty}2/(x-1)=0$, ist $y=x+1$
     auf beiden Seiten eine schiefe Asymptote.
     Zusätzlich ist $x=1$ eine senkrechte Asymptote.
   \end{ClozeArea}
@@ -96,16 +125,72 @@ ein bloß ähnlicher Verlauf genügt nicht.
     \begin{tabular}{@{}ll@{}}
       \toprule
       Gradvergleich & Verhalten für $x\to\pm\infty$\\ \midrule
-      $m<n$ & $f(x)\to0$\\
-      $m=n$ & $f(x)\to a_m/b_n$\\
+      $m<n$ & $\lim_{x\to\pm\infty}f(x)=0$\\
+      $m=n$ & $\lim_{x\to\pm\infty}f(x)=a_m/b_n$\\
       $m=n+1$ & schiefe Asymptote aus Polynomdivision\\
       $m>n+1$ & Annäherung an ein Polynom vom Grad $m-n$\\
       \bottomrule
     \end{tabular}
   \end{center}
   Allgemein liefert die Division $p=hq+r$ mit $\deg r<n$ die Zerlegung
-  $f=h+r/q$. Wegen $r/q\to0$ beschreibt $h$ das Verhalten im Unendlichen.
+  $f=h+r/q$. Wegen $\lim_{x\to\pm\infty}r(x)/q(x)=0$ beschreibt $h$
+  das Verhalten im Unendlichen.
 \end{TheoremBox}
+% Handschrift: PDF-Seiten 27–29 (Herleitung und sämtliche Gradvergleichsfälle).
+Durch Ausklammern der höchsten Potenzen wird der Gradvergleich sichtbar:
+\[
+  \begin{gathered}
+    f(x)=x^{m-n}
+    \frac{a_m+a_{m-1}/x+\dots+a_0/x^m}
+         {b_n+b_{n-1}/x+\dots+b_0/x^n},\\[0.6em]
+    \lim_{x\to\pm\infty}
+      \frac{a_m+a_{m-1}/x+\dots+a_0/x^m}
+           {b_n+b_{n-1}/x+\dots+b_0/x^n}=\frac{a_m}{b_n}.
+  \end{gathered}
+\]
+Für $m>n$ wächst $|f(x)|$ daher gegen $\infty$; das Vorzeichen ergibt
+sich aus $a_m/b_n$ und der Parität von $m-n$.
+
+\begin{ExampleBox}{Zwei waagerechte Asymptoten}{real_functions_horizontal_asymptote_examples}
+  Dividieren Sie Zähler und Nenner durch die höchste Nennerpotenz.
+  Bestimmen Sie so die Asymptote für beide Richtungen im Unendlichen.
+  \begin{ClozeArea}[34]{7}
+    \[
+      \begin{aligned}
+        \lim_{x\to\pm\infty}\frac{x}{x^2+1}
+          &=\lim_{x\to\pm\infty}\frac{1/x}{1+1/x^2}=0,\\[0.8em]
+        \lim_{x\to\pm\infty}\frac{4x^2+2x+1}{x^2+1}
+          &=\lim_{x\to\pm\infty}\frac{4+2/x+1/x^2}{1+1/x^2}=4.
+      \end{aligned}
+    \]
+    Die waagerechten Asymptoten sind $y=0$ beziehungsweise $y=4$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_horizontal_asymptotes.tex}
+  \end{center}
+\end{ExampleBox}
+\begin{ExampleBox}{Annäherung an eine Parabel}{real_functions_polynomial_asymptote}
+  Für $f(x)=(x^4-2x^2+1)/(x^2+1)$ ist der Zählergrad um $2$ größer.
+  Bestimmen Sie durch Polynomdivision das Polynom, dem sich der Graph nähert.
+  \begin{ClozeArea}[34]{9}
+    \[
+      \begin{array}{r@{\;}l}
+        (x^4-2x^2+1):(x^2+1)&=x^2-3+\dfrac4{x^2+1}\\[0.8em]
+        \underline{-(x^4+x^2)}&\\[0.5em]
+        -3x^2+1&\\[0.5em]
+        \underline{-(-3x^2-3)}&\\[0.5em]
+        4&
+      \end{array}
+    \]
+    Mit $A(x)=x^2-3$ gilt
+    $\lim_{x\to\pm\infty}\bigl(f(x)-A(x)\bigr)=
+      \lim_{x\to\pm\infty}4/(x^2+1)=0$.
+    Außerdem ist $\lim_{x\to\pm\infty}f(x)=+\infty$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_polynomial_asymptote.tex}
+  \end{center}
+\end{ExampleBox}
 \begin{RemarkBox}
   Für $m>n+1$ ist der Graph von $h$ eine polynomial beschriebene
   Annäherungskurve, keine schiefe Gerade. Eine Asymptote darf außerdem

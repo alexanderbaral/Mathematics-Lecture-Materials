@@ -13,18 +13,7 @@
 
   % Die drei räumlichen rechten Winkel erscheinen in der Projektion
   % unterschiedlich weit geöffnet.
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(6:0.42)$)
-      arc[start angle=6,end angle=84,radius=0.42];
-  \fill[black!55] ($(O)+(45:0.23)$) circle[radius=1pt];
-
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(96:0.42)$)
-      arc[start angle=96,end angle=212.2,radius=0.42];
-  \fill[black!55] ($(O)+(154.1:0.23)$) circle[radius=1pt];
-
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(224.2:0.42)$)
-      arc[start angle=224.2,end angle=354,radius=0.42];
-  \fill[black!55] ($(O)+(289.1:0.23)$) circle[radius=1pt];
+  \RightAngleMark{(O)}{6}{84}{0.42}
+  \RightAngleMark{(O)}{96}{212.2}{0.42}
+  \RightAngleMark{(O)}{224.2}{354}{0.42}
 \end{tikzpicture}

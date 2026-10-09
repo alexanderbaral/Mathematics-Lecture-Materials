@@ -1,0 +1,74 @@
+\begin{tikzpicture}[>=Latex,x=1.05cm,y=1.05cm]
+\begin{scope}
+  \node[below left=4pt] (tx-2) at (-2,0) {$-2$};
+  \node[below right=4pt] (tx-1) at (-1,0) {$-1$};
+  \node[below right=4pt] (tx1) at (1,0) {$1$};
+  \node[below right=4pt] (tx2) at (2,0) {$2$};
+  \node[below left=4pt] (ty-2) at (0,-2) {$-2$};
+  \node[below right=4pt] (ty-1) at (0,-1) {$-1$};
+  \node[below left=4pt] (ty1) at (0,1) {$1$};
+  \node[above left=4pt] (ty2) at (0,2) {$2$};
+  \node[above left=5pt] (z1) at (-2,0) {$z_1$};
+  \node[right=5pt] (z2) at (0,1) {$z_2=i$};
+  \node[below right=5pt,THMBlue] (res) at (0,-2) {$z_1z_2=-2i$};
+  \node[THMBlue] (arg) at (-.8,-.75) {$+\frac\pi2$};
+  % Grid lines stop before the transparent label boxes.
+  \begin{scope}[even odd rule]
+    \clip (-2.5,-2.5) rectangle (2.5,2.5);
+    \clip (-2.5,-2.5) rectangle (2.5,2.5)
+      foreach \lab in {tx-2,tx-1,tx1,tx2,ty-2,ty-1,ty1,ty2,z1,z2,res,arg} {
+        ([xshift=-2pt,yshift=-2pt]\lab.south west) rectangle
+        ([xshift=2pt,yshift=2pt]\lab.north east)
+      };
+    \draw[step=1,black!10,line width=.2pt] (-2.5,-2.5) grid (2.5,2.5);
+  \end{scope}
+
+    \draw[black!25] (0,0) circle (2);
+    \draw[->,black!65] (-2.5,0)--(2.6,0) node[right] {$\operatorname{Re}$};
+    \draw[->,black!65] (0,-2.5)--(0,2.7) node[above] {$\operatorname{Im}$};
+    \foreach \x in {-2,-1,1,2} {\draw (\x,.05)--(\x,-.05);}
+    \foreach \y in {-2,-1,1,2} {\draw (.05,\y)--(-.05,\y);}
+    \draw[->,line width=1.1pt] (0,0)--(-2,0);
+
+    \draw[->,line width=1.1pt] (0,0)--(0,1);
+    \draw[->,THMBlue,line width=1.2pt] (0,0)--(0,-2);
+    \draw[THMBlue] (-1.45,0) arc[start angle=180,end angle=270,radius=1.45];
+    \node at (0,-3.1) {\Lang{Multiplikation mit $i$}{Multiplication by $i$}};
+\end{scope}
+\begin{scope}[xshift=9cm]
+  \node[below left=4pt] (tx-2) at (-2,0) {$-2$};
+  \node[below right=4pt] (tx-1) at (-1,0) {$-1$};
+  \node[below right=4pt] (tx1) at (1,0) {$1$};
+  \node[below right=4pt] (tx2) at (2,0) {$2$};
+  \node[below left=4pt] (ty-2) at (0,-2) {$-2$};
+  \node[below left=4pt] (ty-1) at (0,-1) {$-1$};
+  \node[below left=4pt] (ty1) at (0,1) {$1$};
+  \node[above left=4pt] (ty2) at (0,2) {$2$};
+  \node[above left=5pt] (z1) at (-2,0) {$z_1$};
+  \node[right=5pt] (z2) at (0,1) {$z_2=i$};
+  \node[above right=5pt,THMBlue] (res) at (0,2) {$z_1/z_2=2i$};
+  \node[THMBlue] (arg) at (-.8,.75) {$-\frac\pi2$};
+  % Grid lines stop before the transparent label boxes.
+  \begin{scope}[even odd rule]
+    \clip (-2.5,-2.5) rectangle (2.5,2.5);
+    \clip (-2.5,-2.5) rectangle (2.5,2.5)
+      foreach \lab in {tx-2,tx-1,tx1,tx2,ty-2,ty-1,ty1,ty2,z1,z2,res,arg} {
+        ([xshift=-2pt,yshift=-2pt]\lab.south west) rectangle
+        ([xshift=2pt,yshift=2pt]\lab.north east)
+      };
+    \draw[step=1,black!10,line width=.2pt] (-2.5,-2.5) grid (2.5,2.5);
+  \end{scope}
+
+    \draw[black!25] (0,0) circle (2);
+    \draw[->,black!65] (-2.5,0)--(2.6,0) node[right] {$\operatorname{Re}$};
+    \draw[->,black!65] (0,-2.5)--(0,2.7) node[above] {$\operatorname{Im}$};
+    \foreach \x in {-2,-1,1,2} {\draw (\x,.05)--(\x,-.05);}
+    \foreach \y in {-2,-1,1,2} {\draw (.05,\y)--(-.05,\y);}
+    \draw[->,line width=1.1pt] (0,0)--(-2,0);
+
+    \draw[->,THMBlue,line width=1.2pt] (0,0)--(0,2);
+    \fill (0,1) circle (1.5pt);
+    \draw[THMBlue] (-1.45,0) arc[start angle=180,end angle=90,radius=1.45];
+    \node at (0,-3.1) {\Lang{Division durch $i$}{Division by $i$}};
+\end{scope}
+\end{tikzpicture}

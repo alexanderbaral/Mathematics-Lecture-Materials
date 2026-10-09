@@ -34,13 +34,23 @@ ab; negative Winkel werden im Uhrzeigersinn gemessen.
 \end{ExampleBox}
 \end{minipage}
 
+% Handschrift: PDF-Seite 37 (negative Winkel und weitere Vierteldrehung).
+Auch negative Winkel und Winkel über einer ganzen Umdrehung folgen
+aus dem Einheitskreis. Ergänzen Sie die drei zusätzlichen Spalten:
+\[
+  \begin{array}{c||c|c|c}
+    x&-\pi&-\pi/2&5\pi/2\\\hline
+    \sin x&\Cloze{1cm}{0}&\Cloze{1cm}{-1}&\Cloze{1cm}{1}\\[0.6em]
+    \cos x&\Cloze{1cm}{-1}&\Cloze{1cm}{0}&\Cloze{1cm}{0}
+  \end{array}
+\]
 
 \clearpage
 \subsection{Periodizität: Derselbe Verlauf wiederholt sich}
 \label{subsec:real_functions_periodicity}
 Anders als eine Exponentialfunktion behalten Sinus und Kosinus ihre
 Richtung nicht dauerhaft bei. Stattdessen wiederholt sich ihr Verlauf.
-\begin{DefinitionBox}{Funktionseigenschaft -- Periodizität}{real_functions_periodic}
+\begin{FunctionPropertyBox}{Periodizität}{real_functions_periodic}
   Eine Funktion $f:D\to\R$ heißt \emph{periodisch}
   \EnglishTerm{periodic}, wenn es eine Zahl $T>0$ mit $D+T=D$ und
   \[
@@ -49,7 +59,7 @@ Richtung nicht dauerhaft bei. Stattdessen wiederholt sich ihr Verlauf.
   gibt. Die Zahl $T$ heißt \emph{Periode} \EnglishTerm{period}.
   Die kleinste positive Periode, falls vorhanden, heißt
   \emph{Grundperiode} \EnglishTerm{fundamental period}.
-\end{DefinitionBox}
+\end{FunctionPropertyBox}
 \begin{center}
   \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_sine_cosine.tex}
 \end{center}
@@ -58,6 +68,8 @@ Richtung nicht dauerhaft bei. Stattdessen wiederholt sich ihr Verlauf.
   \textcolor{green!55!black}{Wertemenge} $[-1,1]$ sowie die Grundperiode $2\pi$.
   \[
     \begin{array}{c@{\qquad}c}
+      \sin(x+2\pi)=\sin x&\cos(x+2\pi)=\cos x\\[0.6em]
+      -1\le\sin x\le1&-1\le\cos x\le1\\[0.6em]
       \sin(-x)=-\sin x&\cos(-x)=\cos x\\
       \text{ungerade}&\text{gerade}
     \end{array}
@@ -76,3 +88,18 @@ Sinus und Kosinus sind auf ganz $\R$ nicht monoton.
 Jedoch steigt $\sin x$ auf $[-\pi/2,\pi/2]$ streng monoton;
 $\cos x$ fällt auf $[0,\pi]$ streng monoton.
 Diese Intervalle werden für die Umkehrfunktionen wichtig.
+
+% Handschrift: PDF-Seite 39 (beide Verschiebungsbeziehungen und Vorzeichenwechsel).
+\begin{KeyPointBox}{Verschiebungen verbinden die Winkelfunktionen}{real_functions_trig_shifts}
+  Eine Vierteldrehung verschiebt Sinus und Kosinus ineinander;
+  eine halbe Drehung kehrt ihr Vorzeichen um:
+  \[
+    \begin{aligned}
+      \cos x&=\sin(x+\pi/2),&\sin x&=\cos(x-\pi/2),\\[0.6em]
+      \sin(x\pm\pi)&=-\sin x,&\cos(x\pm\pi)&=-\cos x.
+    \end{aligned}
+  \]
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_trig_shifts.tex}
+  \end{center}
+\end{KeyPointBox}

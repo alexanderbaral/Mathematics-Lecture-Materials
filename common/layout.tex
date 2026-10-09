@@ -27,13 +27,13 @@
 \RedeclareSectionCommands[beforeskip=1.7\baselineskip,afterskip=.6\baselineskip]{section,subsection}
 
 \setlist[itemize,1]{
-  label=\textcolor{THMBlue}{\bfseries+},
+  label=\textcolor{THMBlue}{\textbullet},
   leftmargin=1.5em,
   itemsep=.2em,
   topsep=.35em
 }
 \setlist[itemize,2]{
-  label=\textcolor{black!55}{\bfseries+},
+  label=\textcolor{black!55}{\small\textbullet},
   leftmargin=1.5em,
   itemsep=.15em,
   topsep=.25em
@@ -161,6 +161,10 @@
 \newtcbtheorem[number within=chapter]{DefinitionBox}{\Lang{Definition}{Definition}}
   {scriptbox,breakable=false}{def}
 
+% Function properties are numbered chronologically across the script.
+\newtcbtheorem{FunctionPropertyBox}{\Lang{Funktionseigenschaft}{Function property}}
+  {scriptbox,breakable=false}{def}
+
 % Merke
 \newtcbtheorem[number within=chapter]{KeyPointBox}{\Lang{Merke}{Key Point}}
   {scriptbox,borderline west={2pt}{0pt}{THMBlue}}{key}
@@ -173,4 +177,12 @@
 \newtcbtheorem[number within=chapter]{TheoremBox}{\Lang{Satz}{Theorem}}
   {scriptbox,borderline west={1.8pt}{0pt}{THMBlue!70!black}}{thm}
 
-\newtcolorbox{RemarkBox}[1][]{scriptbox,borderline west={1.2pt}{0pt}{black!40},title=\Lang{Hinweis}{Remark},#1}
+% Remarks have their own chapter counter, including individually titled remarks.
+\tcbset{
+  remark title/.style={title={\Lang{Hinweis}{Remark}~\thetcbcounter: #1}}
+}
+\newtcolorbox[auto counter,number within=chapter]{RemarkBox}[1][]{
+  scriptbox,
+  borderline west={1.2pt}{0pt}{black!40},
+  title={\Lang{Hinweis}{Remark}~\thetcbcounter},#1
+}

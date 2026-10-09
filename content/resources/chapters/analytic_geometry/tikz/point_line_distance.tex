@@ -40,10 +40,7 @@
   \fill (Q) circle (1.9pt)
     node[above=4pt] {$Q$};
 
-  % The quarter circle and its inner dot explicitly mark the right angle.
-  \draw[black!65,line width=0.75pt]
-    ($(H)+(197:0.42)$) arc[start angle=197,end angle=107,radius=0.42];
-  \fill[black!65] ($(H)+(152:0.28)$) circle (0.85pt);
+  \RightAngleMark{(H)}{197}{107}{0.42}
 
   \node[anchor=west] (lineLabel) at (7.95,2.20)
     {\Lang{Gerade}{Line} $g:\quad\vec x=

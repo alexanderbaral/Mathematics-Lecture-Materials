@@ -6,6 +6,9 @@
   \]
   eine \emph{gebrochen-rationale Funktion} \EnglishTerm{rational function}
   auf ihrer natürlichen Definitionsmenge.
+  Für $p\ne0$ heißen $m=\deg p$ und $n=\deg q$ Zähler- und Nennergrad.
+  Die Funktion heißt \emph{echt gebrochen} \EnglishTerm{proper rational function}
+  für $m<n$, sonst \emph{unecht gebrochen} \EnglishTerm{improper rational function}.
 \end{DefinitionBox}
 \begin{ExampleBox}[before skip=0.3\baselineskip]{Gekürzt -- aber nicht überall definiert}{real_functions_cancelled_hole}
   Untersuchen Sie $f(x)=(x^2-1)/(x+1)$: Welche Eingabe ist
@@ -25,34 +28,66 @@
 \end{ExampleBox}
 \end{minipage}
 
+% Handschrift: PDF-Seite 23 (alle drei Gradvergleichsbeispiele).
+\begin{ExampleBox}{Zählergrad und Nennergrad vergleichen}{real_functions_rational_classification}
+  Ordnen Sie die Funktionen anhand der höchsten vorkommenden Potenzen ein.
+  Die Definitionsmenge wird weiterhin aus dem ursprünglichen Nenner bestimmt.
+  \[
+    \begin{array}{c@{\qquad}c@{\qquad}c}
+      f(x)=\dfrac{x^2+x+1}{x^4-1}&
+      g(x)=\dfrac{x^4-1}{x^3+1}&
+      h(x)=\dfrac{x^4+1}{x^4-1}\\[1em]
+      m=\Cloze{0.8cm}{2},\ n=\Cloze{0.8cm}{4}&
+      m=\Cloze{0.8cm}{4},\ n=\Cloze{0.8cm}{3}&
+      m=\Cloze{0.8cm}{4},\ n=\Cloze{0.8cm}{4}\\[0.6em]
+      \Cloze{4cm}{\text{echt gebrochen}}&
+      \Cloze{4cm}{\text{unecht gebrochen}}&
+      \Cloze{4cm}{\text{unecht gebrochen}}
+    \end{array}
+  \]
+\end{ExampleBox}
 
 \subsection{Stetigkeit: Grenzwert und Funktionswert passen zusammen}
 \label{subsec:real_functions_continuity}
 Beim gekürzten Term $x-1$ stimmen Annäherungswert und eingesetzter Wert
 überein. Diese Übereinstimmung erhält nun einen eigenen Namen.
 \par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Funktionseigenschaft -- Stetigkeit}{real_functions_continuity}
+\begin{FunctionPropertyBox}{Stetigkeit}{real_functions_continuity}
   Eine Funktion $f:D\to\R$ heißt an einer Stelle $a\in D$
   \emph{stetig} \EnglishTerm{continuous}, wenn
   \[
     \lim_{\substack{x\to a\\x\in D}}f(x)=f(a).
   \]
-  Am Rand eines Intervalls ist die Annäherung einseitig.
+  Am Rand eines Intervalls erfolgt die Annäherung nur von der zulässigen Seite.
   Eine Funktion heißt auf einem Intervall stetig, wenn sie an jeder
   Stelle dieses Intervalls stetig ist.
-\end{DefinitionBox}
+\end{FunctionPropertyBox}
 \begin{ExampleBox}[before skip=0.3\baselineskip]{Einen Übergang ohne Sprung gestalten}{real_functions_continuous_join}
   Die Funktion $g(x)=x+1$ für $x<1$ und $g(x)=c$ für $x\ge1$
   soll bei $x=1$ stetig sein. Bestimmen Sie $c$.
+  Von links nähern sich die Werte von $x+1$ der Zahl $\Cloze{1cm}{2}$.
+  Von rechts bleiben sie bei $c=g(1)$. Beide Seiten müssen zusammenpassen:
   \[
-    \lim_{x\to1^-}g(x)=\Cloze{1cm}{2},
-    \qquad
-    \lim_{x\to1^+}g(x)=g(1)=c
-    \quad\Longrightarrow\quad c=\Cloze{1cm}{2}.
+    c=\Cloze{1cm}{2}.
   \]
 \end{ExampleBox}
 \end{minipage}
 
+% Handschrift: PDF-Seiten 63 und 65 (Stetigkeitsvergleich und Heaviside).
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_continuity_comparison.tex}
+\end{center}
+\begin{ExampleBox}{Die Schaltfunktion ist an der Sprungstelle unstetig}{real_functions_heaviside_continuity}
+  Prüfen Sie die bereits bekannte Funktion $s(x)=0$ für $x<0$ und
+  $s(x)=1$ für $x\ge0$ auf Stetigkeit bei $0$.
+  \[
+    s(0)=\Cloze{1cm}{1}.
+  \]
+  Von links bleiben die Werte bei $\Cloze{1cm}{0}$, von rechts bei
+  $\Cloze{1cm}{1}$. Der Grenzwert existiert nicht; somit ist $s$ bei $0$
+  \Cloze{3cm}{\text{unstetig}}. Auf $(-\infty,0)$ und $(0,\infty)$
+  ist sie dagegen konstant und stetig.
+\end{ExampleBox}
 
 \begin{DefinitionBox}{Hebbare Definitionslücke}{real_functions_removable_gap}
   Ist $f$ in der Nähe von $a$, aber nicht bei $a$ definiert und existiert
@@ -70,7 +105,7 @@ $\widetilde f(-1)=\Cloze{1cm}{-2}$ ergänzt werden.
 Ein anderer ergänzter Wert ergäbe keine Stetigkeit.
 
 \begin{TheoremBox}{Stetigkeit bleibt beim Rechnen erhalten}{real_functions_continuity_rules}
-  Summen, Differenzen und Produkte stetiger Funktionen sind stetig;
+  Konstante Vielfache, Summen, Differenzen und Produkte stetiger Funktionen sind stetig;
   Quotienten sind stetig, wo der Nenner nicht null ist.
   Daher sind Polynome auf $\R$ und gebrochen-rationale Funktionen
   auf ihrer natürlichen Definitionsmenge stetig.
@@ -79,6 +114,17 @@ Ein anderer ergänzter Wert ergäbe keine Stetigkeit.
   $(f\circ g)(x)=f(g(x))$ ist bei $a$ stetig, wenn $g$ bei $a$ und
   $f$ bei $g(a)$ stetig sind und die Verkettung in der Nähe definiert ist.
 \end{TheoremBox}
+% Handschrift: PDF-Seite 64 (Nachweis für die Summe).
+Für $h(x)=f(x)+g(x)$ mit bei $a$ stetigen Funktionen $f$ und $g$
+zeigt das Grenzwertgesetz unmittelbar:
+\[
+  \begin{aligned}
+    \lim_{x\to a}h(x)
+      &=\lim_{x\to a}\bigl(f(x)+g(x)\bigr)\\
+      &=\lim_{x\to a}f(x)+\lim_{x\to a}g(x)\\
+      &=f(a)+g(a)=h(a).
+  \end{aligned}
+\]
 \begin{RemarkBox}
   Eine fehlende Stelle gehört nicht zur Definitionsmenge: Dort behaupten
   wir keine Stetigkeit oder Unstetigkeit der ursprünglichen Funktion.

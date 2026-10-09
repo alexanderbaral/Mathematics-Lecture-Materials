@@ -5,6 +5,10 @@ Sinus, Kosinus und Tangens wiederholen ihre Werte.
 Für eindeutige Umkehrfunktionen beschränken wir sie deshalb auf je ein
 Intervall, auf dem sie streng monoton sind. Die Rückwärtsfrage lautet:
 Welcher Winkel gehört zu einem vorgegebenen Funktionswert?
+% Handschrift: PDF-Seiten 57, 59 und 61 (jeweils gewählter Ast).
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_arc_restrictions.tex}
+\end{center}
 \par\noindent\begin{minipage}{\linewidth}
 \begin{DefinitionBox}{Arkussinus, Arkuskosinus und Arkustangens}{real_functions_arc_functions}
   Die \emph{Arkusfunktionen} \EnglishTerm{inverse trigonometric functions}
@@ -39,6 +43,25 @@ Welcher Winkel gehört zu einem vorgegebenen Funktionswert?
 \end{ExampleBox}
 \end{minipage}
 
+% Handschrift: PDF-Seiten 58, 60 und 62 (geometrische Konstruktion aller drei Umkehrungen).
+Die eingeschränkten Graphen werden an $y=x$ gespiegelt.
+Die blauen Ausgangsfunktionen und die grünen Umkehrfunktionen zeigen
+jeweils denselben Zusammenhang mit vertauschten Koordinaten:
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_arc_reflections.tex}
+\end{center}
+\begin{ExampleBox}{Besondere Werte der Arkusfunktionen}{real_functions_arc_special_values}
+  Nutzen Sie bekannte Sinus-, Kosinus- und Tangenswerte im jeweils
+  gewählten Winkelbereich. Ergänzen Sie die Umkehrwerte:
+  \[
+    \begin{array}{c||c|c|c}
+      x&-1&0&1\\\hline
+      \arcsin x&\Cloze{2cm}{-\pi/2}&\Cloze{2cm}{0}&\Cloze{2cm}{\pi/2}\\[0.7em]
+      \arccos x&\Cloze{2cm}{\pi}&\Cloze{2cm}{\pi/2}&\Cloze{2cm}{0}\\[0.7em]
+      \arctan x&\Cloze{2cm}{-\pi/4}&\Cloze{2cm}{0}&\Cloze{2cm}{\pi/4}
+    \end{array}
+  \]
+\end{ExampleBox}
 
 \begin{center}
   \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_arc_graphs.tex}
@@ -47,6 +70,20 @@ Welcher Winkel gehört zu einem vorgegebenen Funktionswert?
   Alle drei Arkusfunktionen sind auf ihrer Definitionsmenge stetig.
   Arkussinus und Arkustangens sind streng monoton steigend und ungerade.
   Arkuskosinus ist streng monoton fallend.
+  Alle drei sind beschränkt. Arkussinus und Arkustangens haben ihre
+  einzige Nullstelle und ihren $y$-Achsenabschnitt bei $0$.
+  Arkuskosinus hat seine einzige Nullstelle bei $x=1$ und den
+  $y$-Achsenabschnitt $\pi/2$.
+  Die Symmetrie- und Schrankenbedingungen lauten explizit:
+  \[
+    \arcsin(-x)=-\arcsin x\quad(x\in[-1,1]),\qquad
+    \arctan(-x)=-\arctan x\quad(x\in\R),
+  \]
+  \[
+    -\frac\pi2\le\arcsin x\le\frac\pi2,\qquad
+    0\le\arccos x\le\pi\quad(x\in[-1,1]),\qquad
+    -\frac\pi2<\arctan x<\frac\pi2\quad(x\in\R).
+  \]
 
   Der Arkustangens ist beschränkt und besitzt zwei waagerechte Asymptoten:
   \[
@@ -63,8 +100,15 @@ Welcher Winkel gehört zu einem vorgegebenen Funktionswert?
       \arcsin(\sin x)&=x&&\text{für }x\in[-\pi/2,\pi/2].
     \end{aligned}
   \]
-  Für Kosinus und Tangens gelten die entsprechenden Beziehungen mit
-  ihren jeweils festgelegten Intervallen.
+  Für Kosinus und Tangens lauten die Beziehungen ausdrücklich:
+  \[
+    \begin{aligned}
+      \cos(\arccos y)&=y&&\text{für }y\in[-1,1],\\
+      \arccos(\cos x)&=x&&\text{für }x\in[0,\pi],\\[0.6em]
+      \tan(\arctan y)&=y&&\text{für }y\in\R,\\
+      \arctan(\tan x)&=x&&\text{für }x\in(-\pi/2,\pi/2).
+    \end{aligned}
+  \]
 \end{KeyPointBox}
 \begin{ExampleBox}{Ein Umkehrwert ist noch nicht die ganze Lösungsmenge}{real_functions_trig_equation}
   Lösen Sie $\sin x=1/2$ für alle $x\in\R$.
@@ -88,3 +132,37 @@ Welcher Winkel gehört zu einem vorgegebenen Funktionswert?
   Ein Ergebnis in Grad und eines im Bogenmaß beschreiben denselben
   Winkel mit unterschiedlichen Zahlen.
 \end{RemarkBox}
+
+% Handschrift: PDF-Seiten 63–65; Rückblick nach Einführung aller Funktionsklassen.
+\subsection{Stetigkeit der bekannten Funktionen}
+\label{subsec:real_functions_elementary_continuity}
+Die meisten bisher behandelten Funktionen sind auf ihrer natürlichen
+Definitionsmenge stetig. Die Rechenregeln aus
+Satz~\ref{thm:real_functions_continuity_rules} übertragen dies auf ihre Kombinationen.
+\begin{center}
+  \renewcommand{\arraystretch}{1.4}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Funktion & Stetig auf\\\midrule
+    Polynome, $e^x$, $\sin x$, $\cos x$ & $\R$\\
+    Gebrochen-rationale Funktionen $p(x)/q(x)$ & $\{x\in\R\mid q(x)\ne0\}$\\
+    $\sqrt[n]{x}$, $n\ge1$ gerade & $[0,\infty)$\\
+    $\sqrt[n]{x}$, $n\ge1$ ungerade & $\R$\\
+    $\log_a x$, $a>0$, $a\ne1$ & $(0,\infty)$\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\begin{ExampleBox}{Stetigkeit zusammengesetzter Funktionen erkennen}{real_functions_continuous_combinations}
+  Benennen Sie jeweils die Rechenregel, die ohne neue Grenzwertrechnung
+  Stetigkeit auf ganz $\R$ liefert:
+  \[
+    \begin{array}{l@{\qquad}l}
+      \sin x\,e^{-x}&\Cloze{5cm}{\text{Produkt stetiger Funktionen}}\\[0.8em]
+      x^2+\cos x&\Cloze{5cm}{\text{Summe stetiger Funktionen}}\\[0.8em]
+      \sin(x^2)&\Cloze{5cm}{\text{Verkettung stetiger Funktionen}}
+    \end{array}
+  \]
+\end{ExampleBox}
+Bei stückweise definierten Funktionen müssen die Übergänge gesondert
+geprüft werden. Die Schaltfunktion aus
+Beispiel~\ref{ex:real_functions_heaviside_continuity} zeigt, wie ein Sprung die Stetigkeit verhindert.

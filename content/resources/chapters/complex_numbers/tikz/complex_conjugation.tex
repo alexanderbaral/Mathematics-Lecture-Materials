@@ -1,0 +1,14 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \draw[->,black!65] (-.3,0)--(4.3,0) node[right] {$\operatorname{Re}$};
+  \draw[->,black!65] (0,-2.1)--(0,2.1) node[above] {$\operatorname{Im}$};
+  \draw[black!45,dashed] (0,1.5)--(2.6,1.5)--(2.6,-1.5)--(0,-1.5);
+  \draw[->,THMBlue,line width=1.1pt] (0,0)--(2.6,1.5);
+  \draw[->,green!45!black,line width=1.1pt] (0,0)--(2.6,-1.5);
+  \fill[THMBlue] (2.6,1.5) circle (2pt);
+  \fill[green!45!black] (2.6,-1.5) circle (2pt);
+  \node[above right=5pt,THMBlue] at (2.6,1.5) {$z=x+iy$};
+  \node[below right=5pt,green!45!black] at (2.6,-1.5) {$z^*=x-iy$};
+  \node[left=5pt] at (0,1.5) {$y$};
+  \node[left=5pt] at (0,-1.5) {$-y$};
+  \node[below right=5pt] at (2.6,0) {$x$};
+\end{tikzpicture}

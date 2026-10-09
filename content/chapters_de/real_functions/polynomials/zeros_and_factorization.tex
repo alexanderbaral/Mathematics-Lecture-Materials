@@ -1,57 +1,127 @@
-\subsection{Nullstellen, Linearfaktoren und Vielfachheit}
+\Needspace{12\baselineskip}
+\subsection{Nullstellen und Linearfaktoren}
 \label{subsec:real_functions_polynomial_zeros}
-Die ausmultiplizierte Form zeigt die Koeffizienten. Eine Produktdarstellung
-macht dagegen die Nullstellen sichtbar und wird später beim Kürzen von
-Brüchen wichtig.
+Um Nullstellen $x_i$ eines Polynoms zu finden, setzen wir seinen Funktionswert
+gleich null:
+\[
+  p(x_i)=\sum_{k=0}^{n}a_kx_i^k\overset{!}{=}0.
+\]
+Wie lösen wir diese Gleichung? Für $n \leq 2$ haben wir die Lösungsmethoden
+schon kennengelernt. Mit steigendem Grad wird der direkte Weg aber zunehmend
+schwieriger:
+\par\medskip
+{\centering
+  \renewcommand{\arraystretch}{1.2}
+  \begin{tabular}{@{}>{\centering\arraybackslash}m{1.45cm}|m{4.4cm}|m{8.2cm}|>{\centering\arraybackslash}m{0.7cm}@{}}
+    \textbf{Grad} & \textbf{Gleichungsart}
+                  & \textbf{Methode zur Nullstellenbestimmung} & \\ \hline
+    $n=1$ & lineare Gleichung & Umstellen
+          & \raisebox{-.25\height}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_root_method_easy.tex}}\\ \hline
+    $n=2$ & quadratische Gleichung & ABC-Formel
+          & \raisebox{-.25\height}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_root_method_easy.tex}}\\ \hline
+    $n=3$ & kubische Gleichung & Formel von Cardano (aufwendig)
+          & \raisebox{-.25\height}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_root_method_hard.tex}}\\ \hline
+    $n=4$ & & Formel von Ferrari (aufwendig)
+          & \raisebox{-.25\height}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_root_method_hard.tex}}\\ \hline
+    $n\ge5$ & & keine allgemeine Wurzelformel
+            & \raisebox{-.25\height}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_root_method_unavailable.tex}}\\ \hline
+  \end{tabular}\par}
+
+\medskip
+Oberhalb von $n=2$ gibt es entweder keine oder nur sehr komplizierte allgemeine Lösungsformeln.
+Daher wählen wir in diesem Fällen eine andere Strategie:
+
 \begin{TheoremBox}{Nullstelle und Linearfaktor}{real_functions_factor_theorem}
-  Für ein Polynom $p$ ist $x_0$ genau dann eine Nullstelle, wenn der
-  \emph{Linearfaktor} \EnglishTerm{linear factor} $(x-x_0)$ abgespalten
-  werden kann:
+  Hat ein Polynom $p$ vom Grad $n$ die Nullstelle $x_i$, lässt sich der Linearfaktor
+  $(x-x_i)$ abspalten.
   \[
-    p(x_0)=0
+    p(x_i)=0
     \quad\Longleftrightarrow\quad
-    p(x)=(x-x_0)q(x)
+    p(x) = (x-x_i) \cdot q(x)
   \]
-  mit einem Polynom $q$. Ist $p$ nicht das Nullpolynom und vom Grad $n$,
-  so hat es höchstens $n$ verschiedene reelle Nullstellen.
+  Für das Polynom $q(x)$ gilt:
+  \begin{itemize}[nosep,leftmargin=*]
+    \item $q$ hat den Grad $n-1$.
+    \item Jede Nullstelle von $p(x)$ außer der abgespaltenen Nullstelle $x_i$ ist auch Nullstelle von $q$
+  \end{itemize}
 \end{TheoremBox}
 
+Um den verbleibenden Faktor zu finden, stellen wir die Gleichung aus
+Satz~\ref{thm:real_functions_factor_theorem} nach $q(x)$ um:
+\[
+  q(x)=\frac{p(x)}{x-x_i}.
+\]
+Wir bestimmen dieses Polynom $q(x)$ in dem wir den Bruchs mittels \emph{Polynomdivision}
+\EnglishTerm{polynomial division} auswerten.
+
 \begin{ExampleBox}{Eine bekannte Nullstelle nutzen}{real_functions_polynomial_division}
-  Für $p(x)=x^3-x^2-x+1$ erkennt man $p(1)=0$.
-  Die \emph{Polynomdivision} \EnglishTerm{polynomial division}
-  durch $x-1$ verringert den Grad.
+  Für $p(x)=x^3-x^2-4x+4$ erkennt man $p(1)=0$.
+  Die Polynomdivision durch $x-1$ verringert den Grad.
   \begin{ClozeArea}[34]{11}
     Nacheinander wird jeweils der höchste Term durch $x$ geteilt und das
     zugehörige Vielfache von $x-1$ abgezogen:
     \[
       \begin{array}{r@{\;}r@{\;}r@{\;}r@{\qquad}l}
-        x^3&-x^2&-x&+1&:(x-1)=x^2-1\\
+        x^3&-x^2&-4x&+4&:(x-1)=x^2-4\\
         -(x^3&-x^2)&&&\\ \cline{1-2}
-        &&-x&+1&\\
-        &&-(-x&+1)&\\ \cline{3-4}
+        &&-4x&+4&\\
+        &&-(-4x&+4)&\\ \cline{3-4}
         &&&0&\text{Rest}
       \end{array}
     \]
-    Die binomische Formel liefert anschließend die vollständige Zerlegung:
+  \end{ClozeArea}
+  Der verbleibende Faktor $q(x)=\Cloze{3cm}{x^2-4}$ ist quadratisch.
+  Seine Nullstellen bestimmen wir mit der ABC-Formel:
+  \begin{ClozeArea}[34]{4}
     \[
-      p(x)=(x-1)(x^2-1)=(x-1)^2(x+1).
+      \begin{aligned}
+        q(x)=x^2-4&\overset{!}{=}0,\qquad a=1,\ b=0,\ c=-4,\\
+        x_{1,2}&=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+        =\frac{0\pm\sqrt{0^2-4\cdot1\cdot(-4)}}{2\cdot1}
+        =\pm2.
+      \end{aligned}
     \]
   \end{ClozeArea}
-  Die Nullstellen sind $\Cloze{4cm}{x=-1\ \text{und}\ x=1}$.
+  $q$ hat damit alle Nullstellen von $p$ außer der abgespaltenen bei $x=1$.
+  Zusammen mit dieser ergeben sich die Nullstellen und die Zerlegung von $p$:
+  \[
+    \mathcal{N}_p=\{-2,1,2\},\qquad
+    p(x)=(x-1)(x-2)(x+2).
+  \]
 \end{ExampleBox}
 
+\par\Needspace{28\baselineskip}
+Dieses Prinzip verallgemeinern wir im folgenden Ablaufdiagramm: Bei Polynomen
+höheren Grades spalten wir Linearfaktoren ab, bis ein quadratischer Faktor übrig bleibt.
+\par\smallskip
+{\centering
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_polynomial_zero_workflow.tex}\par}
+\smallskip
+
 \par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Vielfachheit einer Nullstelle}{real_functions_multiplicity}
-  Eine Nullstelle $x_0$ eines Polynoms $p\ne0$ heißt
-  \emph{$k$-fach} \EnglishTerm{of multiplicity $k$}, wenn
+\begin{DefinitionBox}{Vollständige Linearfaktorzerlegung}{real_functions_multiplicity}
+  Eine Darstellung eines Polynoms $p$ vom Grad $n\ge1$ in der Form
   \[
-    p(x)=(x-x_0)^kq(x),\qquad q(x_0)\ne0.
+    p(x)=a_n\prod_{i=1}^{r}(x-x_i)^{k_i},
+    \qquad \sum_{i=1}^{r}k_i=n,
   \]
-  Der Faktor $(x-x_0)$ tritt also genau $k$-mal auf.
+  heißt \emph{vollständige Linearfaktorzerlegung}
+  \EnglishTerm{complete factorization into linear factors}. Dabei gilt:
+  \begin{itemize}[nosep,leftmargin=*]
+    \item $a_n\ne0$ ist der Koeffizient von $x^n$.
+    \item $x_1,\ldots,x_r\in\R$ sind paarweise verschiedene Nullstellen von $p$.
+    \item Die positiven ganzzahligen Exponenten $k_i$ heißen
+      \emph{Vielfachheiten} \EnglishTerm{multiplicities}:
+      Der Faktor $(x-x_i)$ tritt genau $k_i$-mal auf;
+      $x_i$ ist eine \emph{$k_i$-fache Nullstelle}.
+  \end{itemize}
 \end{DefinitionBox}
+In Beispiel~\ref{ex:real_functions_polynomial_division} sind die drei Nullstellen
+$-2$, $1$ und $2$ jeweils einfach: $k_1=k_2=k_3=1$.
+\par\smallskip
 \begin{ExampleBox}[before skip=0.3\baselineskip]{Schneiden oder Berühren?}{real_functions_multiplicity_graph}
-  Bei $p(x)=(x+1)(x-1)^2$ haben die beiden Nullstellen unterschiedliche
-  Vielfachheiten.
+  Bei $p(x)=(x+1)(x-1)^2$ ist $x=-1$ eine einfache Nullstelle ($k=1$),
+  $x=1$ eine doppelte Nullstelle ($k=2$).
   \par\smallskip
   \begin{minipage}[c]{0.46\linewidth}
     Bei $x=-1$ wechselt $x+1$ sein Vorzeichen: Der Graph
@@ -75,6 +145,6 @@ Brüchen wichtig.
       k\text{ gerade}&\text{kein Vorzeichenwechsel: Achse wird berührt}.
     \end{array}
   \]
-  Ein Polynom muss nicht so viele reelle Nullstellen wie sein Grad besitzen:
+  Eine vollständige Linearfaktorzerlegung über $\R$ ist nicht immer möglich:
   $x^2+1$ hat beispielsweise keine reelle Nullstelle.
 \end{KeyPointBox}

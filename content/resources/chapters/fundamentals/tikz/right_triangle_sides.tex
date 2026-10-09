@@ -4,8 +4,7 @@
   \coordinate (C) at (5,0);
 
   \draw[very thick] (A) -- (C) -- (B) -- cycle;
-  \draw[thick] (5,0.42) arc[start angle=90,end angle=180,radius=0.42];
-  \fill (4.79,0.21) circle (1.4pt);
+  \RightAngleMark{(C)}{90}{180}{0.42}
 
   \node[below left] at (A) {$A$};
   \node[above right] at (B) {$B$};

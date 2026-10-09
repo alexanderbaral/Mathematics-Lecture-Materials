@@ -11,18 +11,7 @@
     node[below left] {$x_3$};
 
   % The three spatial right angles appear with different openings in projection.
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(6:0.42)$)
-      arc[start angle=6,end angle=84,radius=0.42];
-  \fill[black!55] ($(O)+(45:0.23)$) circle[radius=1pt];
-
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(96:0.42)$)
-      arc[start angle=96,end angle=212.4,radius=0.42];
-  \fill[black!55] ($(O)+(154.2:0.23)$) circle[radius=1pt];
-
-  \draw[black!55,line width=0.8pt]
-    ($(O)+(224.4:0.42)$)
-      arc[start angle=224.4,end angle=354,radius=0.42];
-  \fill[black!55] ($(O)+(289.2:0.23)$) circle[radius=1pt];
+  \RightAngleMark{(O)}{6}{84}{0.42}
+  \RightAngleMark{(O)}{96}{212.4}{0.42}
+  \RightAngleMark{(O)}{224.4}{354}{0.42}
 \end{tikzpicture}

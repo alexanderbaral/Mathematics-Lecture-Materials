@@ -1,0 +1,32 @@
+\begin{tikzpicture}[>=Latex,x=1.1cm,y=1.1cm]
+  \node[below=4pt] (tx1) at (1,0) {$1$};
+  \node[below=4pt] (tx2) at (2,0) {$2$};
+  \node[below=4pt] (tx3) at (3,0) {$3$};
+  \node[below=4pt] (tx4) at (4,0) {$4$};
+  \node[left=4pt] (ty1) at (0,1) {$1$};
+  \node[left=4pt] (ty2) at (0,2) {$2$};
+  \node[left=4pt] (ty3) at (0,3) {$3$};
+  \node[below left=3pt] (zero) at (0,0) {$0$};
+  \node[THMBlue] (mod) at (1.25,1.25) {$|z|$};
+  \node[above right=5pt] (z) at (3,2) {$z=3+2i$};
+  % Leave transparent gaps in the background grid around all labels.
+  \begin{scope}[even odd rule]
+    \clip (-0.5,-0.5) rectangle (4.4,3.3);
+    \clip (-0.5,-0.5) rectangle (4.4,3.3)
+      foreach \lab in {tx1,tx2,tx3,tx4,ty1,ty2,ty3,zero,mod,z} {
+        ([xshift=-2pt,yshift=-2pt]\lab.south west) rectangle
+        ([xshift=2pt,yshift=2pt]\lab.north east)
+      };
+    \draw[step=1,black!10,line width=.2pt] (-0.5,-0.5) grid (4.4,3.3);
+  \end{scope}
+
+  \draw[->,black!65] (-.5,0)--(4.6,0) node[right] {$\operatorname{Re}$};
+  \draw[->,black!65] (0,-.5)--(0,3.5) node[above] {$\operatorname{Im}$};
+  \foreach \x in {1,2,3,4} {\draw (\x,.06)--(\x,-.06);}
+  \foreach \y in {1,2,3} {\draw (.06,\y)--(-.06,\y);}
+  \draw[black!45,dashed] (3,0)--(3,2)--(0,2);
+  \draw[THMBlue,->,line width=1.1pt] (0,0)--(3,2);
+  \fill[THMBlue] (3,2) circle (2pt);
+  \draw[black!60] (2.65,0) arc[start angle=180,end angle=90,radius=.35];
+  \fill[black!60] (2.84,.16) circle (1pt);
+\end{tikzpicture}

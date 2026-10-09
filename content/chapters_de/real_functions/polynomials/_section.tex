@@ -3,5 +3,36 @@
 Geraden und die Beispiele $x^2$ und $x^3$ gehören zu einer gemeinsamen
 Familie. Polynome lassen sich leicht auswerten und eignen sich dazu,
 vorgegebene Punkte durch einen Funktionsterm zu verbinden.
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Polynomfunktion und Grad}{real_functions_polynomial}
+  Eine \emph{Polynomfunktion} \EnglishTerm{polynomial function} vom \emph{Grad}
+  \EnglishTerm{degree} $n$ hat die Form
+  \[
+    p(x)= \sum_{i=0}^{n}a_ix^i = a_nx^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0,
+    \qquad \text{mit} \quad a_n\ne0.
+  \]
+  wobei $a_0,\dots,a_n\in\R$ die \emph{Koeffizienten} \EnglishTerm{coefficients}
+  und $a_n$ der \emph{Leitkoeffizient} \EnglishTerm{leading coefficient} ist.
+\end{DefinitionBox}
+
+
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Ein Polynom aus seinen Summanden aufbauen}{real_functions_polynomial_sum}
+  Gegeben sei das Polynom 
+  \[
+    p(x)=x^3-x^2-x+1.
+  \]
+  Der höchste Exponent ist \Cloze{0.8cm}{$3$}; also hat das Polynom den Grad
+  $\deg p=\Cloze{0.8cm}{3}$.
+
+  Der Graph ergibt sich als Überlagerung der vier Summanden: 
+  \IfClozeTF
+    {Ergänze im unteren Koordinatensystem den Gesamtgraphen.}
+    {}
+  \par\medskip\noindent\centering
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_polynomial_sum.tex}
+\end{ExampleBox}
+\end{minipage}
+
 \input{content/chapters_de/real_functions/polynomials/degree_and_interpolation.tex}
 \input{content/chapters_de/real_functions/polynomials/zeros_and_factorization.tex}

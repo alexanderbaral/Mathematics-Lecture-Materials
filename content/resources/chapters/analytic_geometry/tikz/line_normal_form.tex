@@ -16,11 +16,7 @@
   \draw[->,THMBlue,line width=1.5pt] (X)--(2.70,4.20)
     node[pos=0.78,right=6pt] {$\vec n$};
 
-  % Quarter circle between the normal and the line, with an interior dot.
-  \draw[black!65,line width=0.7pt]
-    ($(X)+(-18.435:0.40)$)
-    arc[start angle=-18.435,end angle=71.565,radius=0.40];
-  \fill[black!65] ($(X)+(26.565:0.25)$) circle (0.8pt);
+  \RightAngleMark{(X)}{-18.435}{71.565}{0.40}
   \fill (O) circle (1.7pt) node[below=4pt] {$O$};
   \fill (P) circle (1.7pt) node[above right=4pt] {$P$};
   \fill (X) circle (1.7pt);

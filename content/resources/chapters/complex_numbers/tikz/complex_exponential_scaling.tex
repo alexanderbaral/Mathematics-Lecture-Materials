@@ -1,0 +1,24 @@
+\begin{tikzpicture}[>=Latex,x=1.65cm,y=1.65cm]
+  \begin{scope}
+    \draw[black!35] (0,0) circle (1);
+    \draw[->,black!65] (-1.2,0)--(1.6,0) node[right] {$\operatorname{Re}$};
+    \draw[->,black!65] (0,-1.15)--(0,1.5) node[above] {$\operatorname{Im}$};
+    \draw[->,THMBlue,line width=1.1pt] (0,0)--(50:1);
+    \node[above right=5pt,THMBlue] at (50:1) {$e^{i\varphi}$};
+    \node[below right=5pt] at (1,0) {$1$};
+    \draw[black!60] (.6,0) arc[start angle=0,end angle=50,radius=.6];
+    \node at (25:.38) {$\varphi$};
+    \node at (0,-1.5) {\Lang{Einheitskreis}{Unit circle}};
+  \end{scope}
+  \begin{scope}[xshift=8cm]
+    \draw[black!35] (0,0) circle (1.45);
+    \draw[->,black!65] (-1.6,0)--(1.95,0) node[right] {$\operatorname{Re}$};
+    \draw[->,black!65] (0,-1.6)--(0,1.75) node[above] {$\operatorname{Im}$};
+    \draw[->,THMBlue,line width=1.1pt] (0,0)--(50:1.45);
+    \node[above right=5pt,THMBlue] at (50:1.45) {$z=re^{i\varphi}$};
+    \node[below right=5pt] at (1.45,0) {$r$};
+    \draw[black!60] (.65,0) arc[start angle=0,end angle=50,radius=.65];
+    \node at (25:.39) {$\varphi$};
+    \node at (0,-1.95) {\Lang{Kreis mit Radius $r$}{Circle of radius $r$}};
+  \end{scope}
+\end{tikzpicture}

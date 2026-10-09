@@ -14,6 +14,61 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
   as clarity permits, and clarify complex relationships through deliberate
   spatial arrangement of formulas, labels, and graphics.
 
+### Local task workflow
+- Treat current, unchanged project rules already present in the task context as
+  read; do not reopen the full `AGENTS.md` or unchanged build infrastructure.
+- Resume from the relevant `TODO.md` entry, using its stable semantic label and
+  exact source paths. Read the smallest relevant source excerpts first.
+- Broaden searches only when a dependency is unknown, a shared command or
+  resource is involved, or the user asks for a project-wide audit. Batch
+  independent searches and keep their output focused on the requested files.
+- Before editing a file that may be shared with another agent, check that
+  specific file for intervening changes and preserve them.
+- For visual changes, inspect the standalone figure first and the affected
+  complete and cloze pages after the final edit. Build the variants currently
+  enabled for the project; a local preview complements, but does not replace,
+  those final checks.
+- Reuse the persistent cache under the real user profile's
+  `AppData/Local/Temp/Mathematik1-Skript`, including after long pauses. Never
+  silently switch to a redirected sandbox cache or discard the entire cache
+  for body-only layout changes. If no usable cache exists or relevant shared
+  dependencies genuinely require a complete rebuild, warn the author before
+  starting that longer build. Do not clear caches unless explicitly requested.
+- After every completed build, report its measured elapsed time in the chat
+  as `Baudauer: ... Sekunden`, including failed builds. Keep build time
+  separate from source editing and visual verification time when discussing
+  performance; do not present estimates as measurements.
+- After edits use `tools/build-update.ps1`: first update both stable preview
+  PDFs in `build/`, then let the full build finish in the background. The preview
+  collects affected sections since the last successfully published full source
+  snapshot, in document order. Global layout, chapter-order or front-matter
+  changes require a full-document preview and may take longer. Preview numbering
+  and external references are provisional; it never replaces final full checks.
+- Exactly one full worker may run, with only the latest follow-up request kept.
+  Never abort a cold build for a new edit. The worker freezes sources/resources,
+  reuses persistent caches, converges with `latexmk` and publishes both variants.
+  Use `tools/build-all.ps1` for a blocking full build through the same queue;
+  never call the internal `tools/build-engine.ps1` directly. No implicit watcher:
+  submit another update after the next batch of edits.
+- The Codex process sandbox may stop ordinary detached children. Use the approved
+  independent process execution for `python tools/build_coordinator.py update`
+  (or `full`/`resume`) when needed; the Windows worker uses a hidden breakaway
+  process. Confirm status, not merely a returned process ID. The minute-based
+  thread follow-up "Mathematikskript: PDF-Bau nachprüfen" was disabled at the
+  author's request on 2026-10-09 to avoid idle AI usage. Do not reactivate it
+  without explicit approval. Check completion/errors at the next user-requested
+  work session and acknowledge reported results with the `ack` command.
+- After handing over a preview, report that the complete PDFs may still represent
+  an older successful snapshot. Status/revisions/timings are available through
+  `tools/build-update.ps1 -Status`. Never claim the full PDFs are current while a
+  newer request is pending. Keep the open preview when a full build finishes.
+- For the next five substantive change requests, report the approximate time
+  from first targeted inspection to first edit, the files inspected, build
+  time, and visual correction passes. Mark unavailable measurements as such;
+  compare only tasks with reasonably similar scope.
+- This focused workflow never relaxes the mathematical, pedagogical,
+  typography, figure, cloze, translation, or verification requirements below.
+
 ### 1.1 Evolving chapter design principles
 The completed and author-revised chapters define the target style for new
 content. Treat the following principles as a provisional, binding design
@@ -42,9 +97,18 @@ so that future drafts increasingly match the style of the revised material.
   explanation whenever they express the relationship more directly.
 - Avoid extended prose when a precise visual or mathematical representation
   makes the same relationship easier to scan.
+- Prefer the shortest wording that preserves the mathematical reasoning.
+  State assumptions beside the formula or step where they become necessary;
+  avoid separate explanatory sentences when compact notation makes the point
+  clear. The script should read as concise teaching notes, not as a textbook.
 - Do not emphasize equations with black frames such as `\boxed`. Use the
   surrounding semantic box, spatial arrangement, or restrained typography to
   communicate their role instead.
+- Keep a list visually grouped: the vertical gap from its final item to a
+  following independent paragraph must be at least as large as the gaps
+  between its items. Reduce internal spacing where appropriate and provide
+  sufficient space after the list. Check the rendered result, including lists
+  containing displayed equations and lists inside minipages.
 
 #### Semantic roles
 - Give each semantic box one clear purpose; do not mix several roles in one
@@ -173,15 +237,8 @@ When asked to synchronize English:
 - compile relevant English variants.
 
 ### Translation glossary
-Use author-established terminology consistently.
-
-Add a translation parenthetical exactly once per language version: at the first
-explicit introduction of a technical term, whether in a formal definition or
-as a named technical or procedural concept outside a definition box. Do not
-repeat translation notes at ordinary later uses of the same term. Render the
-entire parenthetical in italic gray using the central commands: German uses
-`Dreieck \EnglishTerm{triangle}` and English uses
-`triangle \GermanTerm{Dreieck}`.
+Use author-established terminology consistently. Follow the first-use and
+formatting rules in §1.1; record only explicitly established preferences here.
 
 | German | English | Notes |
 |---|---|---|
@@ -229,9 +286,12 @@ They only select language/cloze mode and load `main.tex`; never duplicate the do
 
 Direct compilation of `main.tex` uses the safe default: German, complete (`cloze=false`).
 
-Also maintain `tools/build-all.ps1`. It builds all four variants with `latexmk`, clearly reports success/failure per variant, and returns a non-zero exit status if any build fails. Use the locally installed TeX Live distribution. Generated outputs should live under `build/` where practical.
-
-After shared-infrastructure changes, run `tools/build-all.ps1` and require all four variants to compile.
+Also maintain `tools/build-all.ps1`. It builds the currently enabled variants
+with `latexmk`, clearly reports success or failure per variant, and returns a
+non-zero exit status if any build fails. Until English translation begins,
+enable only the German complete and German cloze variants. When translation
+begins, enable both English variants as well. Use the locally installed TeX
+Live distribution; generated outputs should live under `build/` where practical.
 
 ## 6. Language, shared resources, labels
 Provide one central helper for shared language-dependent text, e.g. `\Lang{deutscher Text}{English text}`. Use it for TikZ labels, title-page interface text, box titles, header/footer text, shared tables, and the bilingual files under `content/front_matter/`. Long chapter prose stays in separate DE/EN content trees.
@@ -311,6 +371,8 @@ Draw angle arcs in figures and diagrams without arrowheads. Place the angle
 symbol or angle measure inside the corresponding angle sector; enlarge the arc
 when necessary so the label remains legible and is clearly assigned to that
 angle.
+Mark every right angle with a quarter-circle arc and a dot inside its angle
+sector, never with a square corner.
 
 Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
 
@@ -333,6 +395,13 @@ Values come from central configuration/language logic. Institution/faculty belon
 
 ## 9. Mathematics conventions
 Use modern mathematical LaTeX, a clean package set, and no duplicate package loads. Use suitable tools such as `amsmath`/`mathtools`, TikZ, `tcolorbox`, `microtype`, `booktabs`, `tabularx`, `hyperref` only as needed. Avoid obsolete `\rm`, `\bf`, `\it` definitions.
+
+- When a quantity or expression is deliberately set equal to zero as a
+  condition to solve (for example, finding a zero of a function), mark the
+  target equality with `\overset{!}{=}`. Do not use this notation for ordinary
+  identities or for results that merely happen to equal zero.
+- Write function limits as `\lim_{x\to a}f(x)=L`, including the analogous
+  notation at infinity. Do not introduce the alternative `f(x)\to L`.
 
 ### Analytic-geometry notation
 - Name distinct points with distinct uppercase letters such as $P$, $Q$, and
@@ -374,6 +443,9 @@ Provide calm semantic styling at least for Definition, Merke/Key Point, Beispiel
 
 Number `KeyPointBox` and `TheoremBox` independently within each chapter, so
 their numbering starts with 1.1, 1.2, and so on in the first chapter.
+Number `RemarkBox` independently within each chapter as well. For an
+individual hint heading, use the `remark title` option so the automatic
+number remains visible.
 
 Prefer chapter/section/subsection numbering. Do not introduce `1.1.1.1`-style visible numbering without a concrete need.
 
@@ -397,7 +469,7 @@ For shared infrastructure changes (`common/*.tex`, language/cloze logic, page st
 ```powershell
 .\tools\build-all.ps1
 ```
-and require all four builds to succeed.
+and require all currently enabled builds to succeed.
 
 If only German prose changes, compile at least affected German variant(s); do not synchronize English unless requested. After English sync, compile relevant English variants.
 
@@ -419,12 +491,9 @@ repository.
 ## 12. Legacy, README, and scope discipline
 Except for the temporary inbox under `legacy/notes/handwritten/`, files under `legacy/` are historical references only. Do not include them in normal builds or copy their package setup wholesale. They may inform fonts, colors, and prior author conventions.
 
-Keep `README.md` concise and human-facing. Explain project structure, four build variants plus `tools/build-all.ps1`, German-master/English-sync workflow, `common/config.tex`, branding, cloze usage, handwritten-note workflow, and mandatory filename consultation.
-
-When initializing/extending the repository:
-- create only needed infrastructure;
-- do not invent a future syllabus;
-- do not pre-create chapter trees or speculative content files;
-- ask before author-facing content path/name decisions.
+Keep `README.md` concise and human-facing. Explain project structure, the four
+supported build variants and which are currently enabled, `tools/build-all.ps1`,
+German-master/English-sync workflow, `common/config.tex`, branding, cloze usage,
+handwritten-note workflow, and mandatory filename consultation.
 
 When multiple technical solutions are valid, prefer the simpler, more maintainable one. If a decision materially affects author-facing filenames, folder names, or long-term content structure, ask before implementing it.

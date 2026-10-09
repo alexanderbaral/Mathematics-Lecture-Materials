@@ -27,9 +27,7 @@
   \node[text=teal!80!black] at (1.95,2.73) {$\overrightarrow{PQ}_{\parallel}$};
   \node[text=red!75!black,anchor=east] at (0.72,2.82)
     {$\overrightarrow{PQ}_{\perp}$};
-  \draw[black!65,line width=0.75pt]
-    ($(H)+(225:0.32)$) arc[start angle=225,end angle=315,radius=0.32];
-  \fill[black!65] ($(H)+(270:0.21)$) circle (0.85pt);
+  \RightAngleMark{(H)}{225}{315}{0.32}
   \fill (O) circle (1.8pt) node[below left=3pt] {$O$};
   \fill (P) circle (1.8pt) node[right=7pt] {$P$};
   \fill (Q) circle (1.8pt) node[above left=5pt] {$Q$};

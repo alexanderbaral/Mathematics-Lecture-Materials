@@ -19,18 +19,16 @@
     \clip (-2.12,-1.25) rectangle (2.12,4.35);
     \draw[THMBlue,line width=1.15pt,domain=-2.1:2.1,samples=93]
       plot (\x,{\x*\x});
-    \foreach \x in {-2,-1,0,1,2}
-      \fill[THMBlue] (\x,{\x*\x}) circle (1.7pt);
   \end{scope}
   \node[anchor=west,inner sep=0pt,text=THMBlue] (graphlabel)
-    at (0.32,3.45) {$f(x)=x^2$};
+    at (0.16,4.13) {$f(x)=x^2$};
 
   \draw[green!55!black,line width=1.2pt,decorate,
     decoration={brace,amplitude=6pt}] (3.15,4.25)--(3.15,0);
   \draw[red!75!black,line width=1.2pt,decorate,
     decoration={brace,amplitude=6pt}] (3.15,0)--(3.15,-1.25);
   \node[anchor=west,text=green!55!black] at (3.48,2.18)
-    {\Lang{Wertemenge}{range} $W_f$};
+    {\Lang{Wertemenge}{range} $W_f=\Cloze{2.5cm}{[0,\infty)}$};
   \node[anchor=west,text=red!75!black] at (3.48,-0.65)
     {\Lang{nicht angenommen}{not attained}};
 

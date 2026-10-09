@@ -1,0 +1,156 @@
+% Handschrift: Teil 7 - Komplexe Zahlen, Seiten 1--8.
+\section{Von den reellen Zahlen zur komplexen Zahlenebene}
+\label{sec:complex_numbers_cartesian_form}
+
+Komplexe Zahlen vereinfachen viele Rechnungen und treten in der Beschreibung
+physikalischer Zusammenhänge auf. Zunächst motiviert uns eine Gleichung,
+deren Koeffizienten reell sind, die aber keine reelle Lösung besitzt:
+\[
+  z^2-6z+25\overset{!}{=}0
+  \quad\Longleftrightarrow\quad (z-3)^2=-16.
+\]
+Auch die $pq$-Formel führt auf $3\pm\sqrt{9-25}$ und damit auf eine negative
+Zahl unter der Wurzel. Können wir den Zahlbereich so erweitern, dass diese
+und schließlich alle nichtkonstanten Polynomgleichungen lösbar werden?
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Imaginäre Einheit und komplexe Zahlen}{complex_numbers_cartesian}
+  Die \emph{imaginäre Einheit} \EnglishTerm{imaginary unit} $i$ erfüllt
+  $i^2=-1$. Da keine reelle Zahl diese Eigenschaft hat, gilt $i\notin\R$.
+
+  Eine \emph{komplexe Zahl} \EnglishTerm{complex number} besitzt die
+  \emph{kartesische Darstellung} \EnglishTerm{Cartesian form}
+  \[
+    z=x+iy,\qquad x,y\in\R,\qquad
+    \C=\{x+iy\mid x,y\in\R\}.
+  \]
+  Dabei heißen $\operatorname{Re}(z)=x$ der \emph{Realteil}
+  \EnglishTerm{real part} und $\operatorname{Im}(z)=y$ der
+  \emph{Imaginärteil} \EnglishTerm{imaginary part}.
+\end{DefinitionBox}
+\vspace{-0.5\baselineskip}
+\begin{ExampleBox}{Realteil und Imaginärteil ablesen}{complex_numbers_components}
+  Bestimmen Sie die beiden reellen Komponenten der folgenden Zahlen.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.3}
+    \begin{tabular}{@{}c@{\qquad}c@{\qquad}c@{}}
+      $z$ & $\operatorname{Re}(z)$ & $\operatorname{Im}(z)$\\\midrule
+      $2+3i$ & $\Cloze{2cm}{2}$ & $\Cloze{2cm}{3}$\\
+      $i$ & $\Cloze{2cm}{0}$ & $\Cloze{2cm}{1}$\\
+      $3$ & $\Cloze{2cm}{3}$ & $\Cloze{2cm}{0}$
+    \end{tabular}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}\par
+
+
+\begin{ExampleBox}{Die Ausgangsgleichung lösen}{complex_numbers_initial_equation}
+  Bestimmen Sie mithilfe von $i^2=-1$ die beiden Lösungen der Ausgangsgleichung.
+  \[
+    (z-3)^2=(4i)^2
+      \quad\Longleftrightarrow\quad z=\Cloze{3cm}{3\pm4i}.
+  \]
+  Die Probe bestätigt $(\pm4i)^2=16i^2=-16$.
+\end{ExampleBox}
+
+\clearpage
+\begin{RemarkBox}
+  Realteil und Imaginärteil sind beide \emph{reell}; der Imaginärteil von
+  $2+3i$ ist $3$, nicht $3i$.
+  Zahlen mit Imaginärteil $0$ sind reell, Zahlen mit Realteil $0$ heißen
+  \emph{rein imaginär} \EnglishTerm{purely imaginary}. Damit gilt
+  \[
+    z\in\R\ \Longleftrightarrow\ \operatorname{Im}(z)=0,
+    \qquad \N\subsetneq\Z\subsetneq\Q\subsetneq\R\subsetneq\C.
+  \]
+\end{RemarkBox}
+
+\subsection{Zahlenebene und Betrag}
+Die \emph{Gaußsche Zahlenebene} \EnglishTerm{complex plane} ordnet
+$z=x+iy$ dem Punkt $(x,y)$ zu. Die waagerechte \emph{reelle Achse}
+\EnglishTerm{real axis} trägt den Realteil, die senkrechte
+\emph{imaginäre Achse} \EnglishTerm{imaginary axis} den Imaginärteil.
+Jede reelle Zahl liegt auf der reellen Achse, jede rein imaginäre Zahl
+auf der imaginären Achse.
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_plane_cartesian.tex}
+\end{center}
+Der Pfeil vom Ursprung zum Punkt veranschaulicht den Abstand vom Ursprung.
+Aus dem rechtwinkligen Dreieck folgt mit dem Satz des Pythagoras die Betragsformel.
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Betrag einer komplexen Zahl}{complex_numbers_modulus}
+  Der \emph{Betrag} \EnglishTerm{modulus} einer komplexen Zahl $z=x+iy$
+  ist ihr Abstand vom Ursprung:
+  \[
+    |z|=\sqrt{x^2+y^2}
+       =\sqrt{\bigl(\operatorname{Re}(z)\bigr)^2+
+                    \bigl(\operatorname{Im}(z)\bigr)^2}\in\R_{\ge0}.
+  \]
+\end{DefinitionBox}
+\vspace{-0.5\baselineskip}
+\begin{ExampleBox}{Eine Zahl als Punkt und als Pfeil}{complex_numbers_plane_example}
+  Bestimmen Sie den Betrag von $z=3+2i$ anhand der eingezeichneten Komponenten.
+  \par\smallskip
+  \begin{minipage}[c]{0.50\linewidth}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_plane_modulus.tex}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.45\linewidth}
+    Die Katheten haben die Längen $3$ und $2$. Der Abstand beträgt daher
+    \[
+      |3+2i|=\Cloze{3cm}{\sqrt{3^2+2^2}=\sqrt{13}}.
+    \]
+  \end{minipage}
+\end{ExampleBox}
+\end{minipage}\par
+
+\clearpage
+\subsection{Komplexe Konjugation}
+Zur Konjugation betrachten wir die Spiegelung eines Punktes an der reellen Achse.
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Konjugiert komplexe Zahl}{complex_numbers_conjugate}
+  Zu $z=x+iy$ heißt $z^*=x-iy$ die \emph{konjugiert komplexe Zahl}
+  \EnglishTerm{complex conjugate}. Sie entsteht durch
+  \emph{Spiegelung an der reellen Achse}.
+  \par\medskip
+  \begin{minipage}[c]{0.51\linewidth}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_conjugation.tex}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.44\linewidth}
+    \textbf{Einfach jedes $i$ durch $-i$ ersetzen.}
+
+    Der Realteil bleibt unverändert; der Imaginärteil wechselt sein Vorzeichen:
+    \[
+      \begin{aligned}
+        \operatorname{Re}(z^*)&=\operatorname{Re}(z),\\[4pt]
+        \operatorname{Im}(z^*)&=-\operatorname{Im}(z).
+      \end{aligned}
+    \]
+    Diese Regel gilt auch in der später eingeführten Exponentialdarstellung.
+  \end{minipage}
+\end{DefinitionBox}
+\vspace{-0.5\baselineskip}
+\begin{ExampleBox}{Konjugation und Betrag}{complex_numbers_conjugation_example}
+  Bestimmen Sie zu $z=3+2i$ die konjugierte Zahl und vergleichen Sie die Beträge.
+  \[
+    z^*=\Cloze{3cm}{3-2i},\qquad
+    |z|=\sqrt{3^2+2^2}=\sqrt{13},\qquad
+    |z^*|=\Cloze{3cm}{\sqrt{3^2+(-2)^2}=\sqrt{13}}.
+  \]
+\end{ExampleBox}
+\end{minipage}\par
+
+\begin{KeyPointBox}{Eigenschaften der Konjugation}{complex_numbers_conjugation_properties}
+  Zweimaliges Spiegeln führt zurück zur Ausgangszahl; Punkte auf der
+  Spiegelachse bleiben fest. Daher gilt
+  \[
+    (z^*)^*=z,\qquad
+    z=z^*\ \Longleftrightarrow\ \operatorname{Im}(z)=0
+          \ \Longleftrightarrow\ z\in\R.
+  \]
+  Die Spiegelung ändert den Abstand vom Ursprung nicht:
+  \[
+    |z^*|=\sqrt{x^2+(-y)^2}=\sqrt{x^2+y^2}=|z|.
+  \]
+\end{KeyPointBox}

@@ -1,0 +1,65 @@
+% Handschrift: Seiten 34--36.
+\section{Polynomgleichungen über den komplexen Zahlen}
+\label{sec:complex_numbers_polynomial_equations}
+Die Ausgangsfrage reicht über quadratische Gleichungen hinaus: Reicht die
+Erweiterung auf $\C$ aus, um jede nichtkonstante Polynomgleichung zu lösen?
+Der Fundamentalsatz der Algebra beantwortet diese Frage.
+
+\begin{TheoremBox}{Fundamentalsatz der Algebra}{complex_numbers_fundamental_theorem}
+  Jedes Polynom $p(z)=a_nz^n+\dots+a_1z+a_0$ mit komplexen Koeffizienten,
+  $a_n\ne0$ und $n\ge1$, besitzt über $\C$ genau $n$ Nullstellen,
+  \emph{mit ihren Vielfachheiten gezählt}. Es lässt sich vollständig zerlegen:
+  \[
+    p(z)=a_n(z-z_1)\cdots(z-z_n).
+  \]
+\end{TheoremBox}
+Über $\R$ besitzt ein Polynom vom Grad $n$ höchstens $n$ Nullstellen.
+Über $\C$ dürfen verschiedene Faktoren dieselbe Nullstelle besitzen. Die Anzahl
+\emph{verschiedener} Nullstellen kann daher kleiner als $n$ sein.
+
+\begin{ExampleBox}{Ein Polynom vollständig in Linearfaktoren zerlegen}{complex_numbers_polynomial_example}
+  Bestimmen Sie alle Nullstellen von $p(z)=z^3-3z^2+4z-2$.
+  Durch Einsetzen erkennen wir $p(1)=0$. Die Polynomdivision durch $z-1$
+  wird daher ohne Rest aufgehen:
+  \[
+    \begin{array}{@{}r@{\,}r@{\,}r@{\,}r@{\quad}l@{}}
+      (z^3&-3z^2&+4z&-2)&:(z-1)=z^2-2z+2\\[5pt]
+      \underline{-(z^3}&\underline{-z^2)}&&&\\[5pt]
+      &-2z^2&+4z&-2&\\[5pt]
+      &\underline{-(-2z^2}&\underline{+2z)}&&\\[5pt]
+      &&2z&-2&\\[5pt]
+      &&\underline{-(2z}&\underline{-2)}&\\[5pt]
+      &&&0&\text{Rest}
+    \end{array}
+  \]
+  Somit gilt $p(z)=(z-1)(z^2-2z+2)$.
+  Lösen Sie die verbleibende quadratische Gleichung und geben Sie die
+  vollständige Linearfaktorzerlegung an.
+  \begin{ClozeArea}{8}
+    \[
+      z^2-2z+2\overset{!}{=}0
+      \quad\Longleftrightarrow\quad (z-1)^2=-1
+      \quad\Longleftrightarrow\quad z=1\pm i.
+    \]
+    Somit sind $1$, $1+i$ und $1-i$ die drei Nullstellen und
+    \[
+      p(z)=(z-1)\bigl(z-(1+i)\bigr)\bigl(z-(1-i)\bigr).
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{KeyPointBox}{Konjugierte Nullstellen bei reellen Koeffizienten}{complex_numbers_conjugate_roots}
+  Hat $p$ nur reelle Koeffizienten, so gilt $p(z^*)=p(z)^*$.
+  Mit jeder nichtreellen Nullstelle $z$ tritt deshalb auch $z^*$ als
+  Nullstelle auf, jeweils mit derselben Vielfachheit.
+\end{KeyPointBox}
+Im Beispiel bilden $1+i$ und $1-i$ ein konjugiertes Paar. Ihr gemeinsamer
+Faktor ist das reelle quadratische Polynom $z^2-2z+2$.
+
+\begin{RemarkBox}
+  Der Fundamentalsatz gilt für Polynomgleichungen. Er besagt nicht,
+  dass jede beliebige Gleichung in $\C$ lösbar ist: Die Gleichung
+  $zz^*=-1$ hat keine Lösung, weil $zz^*=|z|^2\ge0$ gilt.
+\end{RemarkBox}
+\end{minipage}\par

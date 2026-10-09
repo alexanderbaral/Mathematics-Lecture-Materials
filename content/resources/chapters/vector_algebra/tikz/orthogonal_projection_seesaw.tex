@@ -42,11 +42,7 @@
     (ParallelEnd)--(ForceEnd);
 
   % Right angle between the two component directions.
-  \draw[black!55,line width=0.7pt]
-    ($(P)+(190:0.43)$)
-      arc[start angle=190,end angle=280,radius=0.43];
-  \fill[black!55]
-    ($(P)+(235:0.24)$) circle[radius=1pt];
+  \RightAngleMark{(P)}{190}{280}{0.43}
 
   \node[align=center,text=black!65] at (0,-1.82)
     {Gelenklager};

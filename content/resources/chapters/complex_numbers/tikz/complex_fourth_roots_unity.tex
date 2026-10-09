@@ -1,0 +1,27 @@
+\begin{tikzpicture}[>=Latex,x=1.9cm,y=1.9cm]
+  \node[below left=5pt] (tx-1) at (-1,0) {$-1$};
+  \node[below right=5pt] (tx1) at (1,0) {$1$};
+  \node[below left=5pt] (ty-1) at (0,-1) {$-1$};
+  \node[above left=5pt] (ty1) at (0,1) {$1$};
+  \node[above right=5pt,THMBlue] (z0) at (1,0) {$z_0$};
+  \node[above right=5pt,THMBlue] (z1) at (0,1) {$z_1$};
+  \node[above left=5pt,THMBlue] (z2) at (-1,0) {$z_2$};
+  \node[below right=5pt,THMBlue] (z3) at (0,-1) {$z_3$};
+  \node[] (arg) at (45:.43) {$\frac\pi2$};
+  % Leave transparent gaps in the background grid around all labels.
+  \begin{scope}[even odd rule]
+    \clip (-1.2,-1.2) rectangle (1.2,1.2);
+    \clip (-1.2,-1.2) rectangle (1.2,1.2)
+      foreach \lab in {tx-1,tx1,ty-1,ty1,z0,z1,z2,z3,arg} {
+        ([xshift=-2pt,yshift=-2pt]\lab.south west) rectangle
+        ([xshift=2pt,yshift=2pt]\lab.north east)
+      };
+    \draw[step=1,black!10,line width=.2pt] (-1.2,-1.2) grid (1.2,1.2);
+  \end{scope}
+
+  \draw[black!35] (0,0) circle (1);
+  \draw[->,black!65] (-1.4,0)--(1.6,0) node[right] {$\operatorname{Re}$};
+  \draw[->,black!65] (0,-1.4)--(0,1.6) node[above] {$\operatorname{Im}$};
+  \foreach \a in {0,90,180,270} {\draw[->,THMBlue,line width=1.1pt] (0,0)--(\a:1);}
+  \draw[black!60] (.7,0) arc[start angle=0,end angle=90,radius=.7];
+\end{tikzpicture}

@@ -33,7 +33,7 @@ $2^x$ wächst stets, $(1/2)^x$ fällt stets. Dieses Verhalten lässt
 sich ohne Kenntnis einer Ableitung durch den Vergleich zweier Stellen
 beschreiben.
 \par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Funktionseigenschaft -- Monotonie}{real_functions_monotonicity}
+\begin{FunctionPropertyBox}{Monotonie}{real_functions_monotonicity}
   Eine Funktion $f$ heißt auf einem Intervall $I$
   \emph{monoton steigend} \EnglishTerm{monotonically increasing},
   wenn für alle $x_1,x_2\in I$ gilt:
@@ -45,7 +45,9 @@ beschreiben.
   Ersetzt man $\le$ durch $\ge$ beziehungsweise $<$ durch $>$,
   erhält man \emph{monoton fallend} \EnglishTerm{monotonically decreasing}
   beziehungsweise \emph{streng monoton fallend} \EnglishTerm{strictly decreasing}.
-\end{DefinitionBox}
+  Sie heißt \emph{konstant} \EnglishTerm{constant}, wenn
+  $f(x_1)=f(x_2)$ für alle $x_1,x_2\in I$ gilt.
+\end{FunctionPropertyBox}
 \begin{ExampleBox}[before skip=0.3\baselineskip]{Das Intervall gehört zur Aussage}{real_functions_monotonicity_intervals}
   Betrachten Sie erneut $f(x)=x^2$. Auf welchem Intervall ist die
   Funktion streng monoton fallend, auf welchem streng monoton steigend?
@@ -60,6 +62,12 @@ beschreiben.
 \end{ExampleBox}
 \end{minipage}
 
+% Handschrift: PDF-Seite 31 (steigend, konstant und fallend nebeneinander).
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_monotonicity_comparison.tex}
+\end{center}
+Eine konstante Funktion ist sowohl monoton steigend als auch monoton
+fallend, aber auf einem Intervall mit mehr als einer Stelle niemals streng monoton.
 
 \begin{TheoremBox}{Eigenschaften der Exponentialfunktion}{real_functions_exponential_properties}
   Für $a>0$, $a\ne1$ ist $a^x$ auf $\R$ stetig, stets positiv und
@@ -77,6 +85,7 @@ beschreiben.
   \end{center}
   Die Gerade $y=0$ ist in der jeweiligen Richtung eine waagerechte
   Asymptote. Die Funktion ist nach unten, aber nicht nach oben beschränkt.
+  Es gibt keine Nullstelle; der $y$-Achsenabschnitt ist $f(0)=a^0=1$.
   Für $a=1$ ist $f(x)=1$ konstant mit \textcolor{green!55!black}{Wertemenge} $\{1\}$.
 \end{TheoremBox}
 Für $x_2>x_1$ gilt $a^{x_2}/a^{x_1}=a^{x_2-x_1}$.

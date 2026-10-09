@@ -1,65 +1,113 @@
+\begin{itemize}[leftmargin=*,itemsep=0.9\baselineskip,topsep=0.5\baselineskip]
+  \item \textbf{Konstante zum Funktionswert addieren:}
+    \par\smallskip
+    \begin{minipage}[c]{0.40\linewidth}
+      \raggedright
+      \[
+        g_C(x)=f(x)+C
+      \]
+      Bei $C=1$ wandert der Gipfel von $(0,1)$ nach $(0,2)$;
+      alle Höhen steigen um $1$.
+      \par\smallskip
+      \emph{Folgerung:} $C$ verschiebt den Graphen vertikal um $C$.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.55\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_gaussian_output_shift.tex}
+    \end{minipage}
+
+  \item \textbf{Konstante zum Argument addieren:}
+    \par\smallskip
+    \begin{minipage}[c]{0.40\linewidth}
+      \raggedright
+      \[
+        g_C(x)=f(x+C)
+      \]
+      Bei $C=1$ liegt der Gipfel bei $(-1,1)$, bei $C=-1$ bei $(1,1)$.
+      \par\smallskip
+      \emph{Folgerung:} Alle $x$-Koordinaten ändern sich um $-C$.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.55\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_gaussian_input_shift.tex}
+    \end{minipage}
+
+  \item \textbf{Funktionswert mit einer Konstanten multiplizieren:}
+    \par\smallskip
+    \begin{minipage}[c]{0.40\linewidth}
+      \raggedright
+      \[
+        g_C(x)=C\,f(x)
+      \]
+      $C=2$ verdoppelt, $C=\tfrac12$ halbiert jede Höhe.
+      \par\smallskip
+      \emph{Folgerung:} Vertikaler Faktor $|C|$;
+      bei $C<0$ zusätzlich Spiegelung an der $x$-Achse.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.55\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_gaussian_output_scale.tex}
+    \end{minipage}
+
+  \item \textbf{Argument mit einer Konstanten multiplizieren:}
+    \par\smallskip
+    \begin{minipage}[c]{0.40\linewidth}
+      \raggedright
+      \[
+        g_C(x)=f(Cx),\qquad C\ne0
+      \]
+      Bei $C=2$ wandert $(1,e^{-1})$ nach $(\tfrac12,e^{-1})$.
+      \par\smallskip
+      \emph{Folgerung:} Horizontaler Faktor $1/|C|$;
+      bei $C<0$ zusätzlich Spiegelung an der $y$-Achse.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.55\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_gaussian_input_scale.tex}
+    \end{minipage}
+\end{itemize}
+
+\par\medskip
 \begin{TheoremBox}{Verschieben, Strecken und Spiegeln}{real_functions_transformations}
-  Für reelle Parameter entsteht aus einem Punkt $(u,f(u))$ des
-  ursprünglichen Graphen bei der jeweiligen
-  \emph{Transformation} \EnglishTerm{transformation}:
+  Die vier zuvor untersuchten \emph{Transformationen}
+  \EnglishTerm{transformations} wirken für reelle Konstanten $C$ wie folgt:
   \begin{center}
     \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{@{}lll@{}}
+    \begin{tabular}{@{}lp{10.3cm}@{}}
       \toprule
-      Neuer Term & Neuer Punkt & Wirkung\\ \midrule
-      $f(x)+d$ & $(u,f(u)+d)$ & um $d$ nach oben\\
-      $f(x-c)$ & $(u+c,f(u))$ & um $c$ nach rechts\\
-      $a f(x)$ & $(u,a f(u))$ & vertikaler Faktor $a$\\
-      $f(bx)$, $b\ne0$ & $(u/b,f(u))$ & horizontaler Faktor $1/b$\\
+      Transformation & Wirkung\\ \midrule
+      $f(x)+C$ & vertikale Verschiebung um $C$\\
+      $f(x+C)$ & horizontale Verschiebung um $-C$\\
+      $C\,f(x)$ & vertikaler Faktor $|C|$;
+        bei $C<0$ zusätzlich Spiegelung an der $x$-Achse\\
+      $f(Cx)$, $C\ne0$ & horizontaler Faktor $1/|C|$;
+        bei $C<0$ zusätzlich Spiegelung an der $y$-Achse\\
       \bottomrule
     \end{tabular}
   \end{center}
-  Negative Verschiebungen wirken in die Gegenrichtung.
-  Für $|a|>1$ wird vertikal gestreckt, für $0<|a|<1$ gestaucht.
-  Für $|b|>1$ wird horizontal gestaucht, für $0<|b|<1$ gestreckt.
-  Ein negativer Faktor bewirkt zusätzlich eine Spiegelung:
-  $a<0$ an der $x$-Achse, $b<0$ an der $y$-Achse.
+  Ein Faktor größer als $1$ streckt, ein Faktor zwischen $0$ und $1$ staucht
+  in der jeweiligen Richtung. Bei $C=0$ ist $C\,f(x)$ die Nullfunktion.
 \end{TheoremBox}
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_transformations.tex}
-\end{center}
-\begin{KeyPointBox}{Außen direkt -- innen über die Eingabe}{real_functions_inside_outside}
-  Bei $f(x)+d$ wird zum Funktionswert $d$ addiert.
-  Bei $f(x-c)$ muss dagegen $x=u+c$ eingesetzt werden, damit im Inneren
-  wieder die alte Eingabe $u$ steht.
-
-  Daher verschiebt $f(x-2)$ den Graphen nach \emph{rechts}, nicht nach links.
-\end{KeyPointBox}
-
-\subsection{Mehrere Transformationen kombinieren}
-\label{subsec:real_functions_combined_transformations}
-Für $g(x)=a\,f(b(x-c))+d$ mit $b\ne0$ bleibt die Zuordnung der Punkte
-auch bei mehreren Änderungen eindeutig:
-\[
-  (u,f(u))\quad\longmapsto\quad
-  \left(c+\frac{u}{b},\,d+a f(u)\right),
-  \qquad
-  D_g=\left\{c+\frac{u}{b}\,\middle|\,u\in D_f\right\}.
-\]
-\begin{ExampleBox}{Eine Parabel aus bekannten Punkten konstruieren}{real_functions_transformed_parabola}
-  Aus $f(x)=x^2$ soll $g(x)=-2(x-1)^2+3$ entstehen.
-  Bestimmen Sie die Bilder der drei Punkte $(-1,1)$, $(0,0)$ und $(1,1)$.
-  \begin{ClozeArea}[34]{7}
-    Wir verschieben um $1$ nach rechts, multiplizieren die Höhen mit $-2$
-    und verschieben um $3$ nach oben:
-    \[
-      \begin{array}{c@{\quad\longmapsto\quad}c}
-        (-1,1)&(0,1)\\[0.4em]
-        (0,0)&(1,3)\\[0.4em]
-        (1,1)&(2,1).
-      \end{array}
-    \]
-    Die neue Parabel ist nach unten geöffnet und zur Geraden $x=1$
-    symmetrisch. Ihr höchster Punkt ist $(1,3)$.
-  \end{ClozeArea}
+\begin{ExampleBox}{Eine Parabel schrittweise transformieren}{real_functions_transformed_parabola}
+  Aus der bekannten Parabel $f_0(x)=x^2$ konstruieren wir
+  $g(x)=-2(x-1)^2+3$ in drei Schritten:
+  \begin{enumerate}[label=\arabic*.,leftmargin=*,itemsep=0.3\baselineskip,topsep=0.4\baselineskip]
+    \item $f_1(x)=f_0(x-1)=(x-1)^2$: um $1$ nach rechts verschieben.
+    \item $f_2(x)=-2f_1(x)=-2(x-1)^2$: an der $x$-Achse spiegeln
+      und vertikal mit Faktor $2$ strecken.
+    \item $g(x)=f_2(x)+3=-2(x-1)^2+3$: um $3$ nach oben verschieben.
+  \end{enumerate}
+  \par\medskip
+  \IfClozeTF{Zeichnen Sie die drei Zwischen- und Ergebnisgraphen in die freien
+    Koordinatensysteme.}{Blau zeigt den aktuellen Graphen, grau gestrichelt
+    jeweils den Graphen vor dem letzten Schritt.}
+  \par\smallskip
+  {\centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_transformed_parabola_steps.tex}\par}
+  \par\medskip
 \end{ExampleBox}
-\begin{RemarkBox}
-  Vor dem Ablesen einer horizontalen Verschiebung muss der innere Term
-  passend ausgeklammert werden:
-  $f(2x-4)=f(2(x-2))$ hat die Verschiebung $c=2$, nicht $c=4$.
-\end{RemarkBox}
+
+\par\medskip
+Vor dem Ablesen einer horizontalen Verschiebung muss der innere Term
+passend ausgeklammert werden:
+$f(2x-4)=f(2(x-2))$ verschiebt den Graphen um $2$ nach rechts, nicht um $4$.

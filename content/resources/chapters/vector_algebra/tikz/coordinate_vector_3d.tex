@@ -24,21 +24,9 @@
   \IfClozeTF{}{%
     \draw[THMBlue!55,densely dashed]
       (O)--(Pone)--(Ptwo)--(C);
-    \draw[THMBlue!75,line width=0.7pt]
-      ($(Pone)+(-0.27,0)$)
-      arc[start angle=180,end angle=90,radius=0.27];
-    \fill[THMBlue!75]
-      ($(Pone)+(-0.135,0.135)$) circle[radius=1pt];
-    \draw[THMBlue!75,line width=0.7pt]
-      ($(Ptwo)+(0,-0.28)$)
-      arc[start angle=270,end angle=225,radius=0.28];
-    \fill[THMBlue!75]
-      ($(Ptwo)+(-0.054,-0.129)$) circle[radius=1pt];
-    \draw[THMBlue!75,line width=0.7pt]
-      ($(ConeCthree)+(0.28,0)$)
-      arc[start angle=0,end angle=45,radius=0.28];
-    \fill[THMBlue!75]
-      ($(ConeCthree)+(0.129,0.054)$) circle[radius=1pt];
+    \RightAngleMark[THMBlue!75]{(Pone)}{180}{90}{0.27}
+    \RightAngleMark[THMBlue!75]{(Ptwo)}{270}{225}{0.28}
+    \RightAngleMark[THMBlue!75]{(ConeCthree)}{0}{45}{0.28}
     \node[THMBlue,below=6pt] at ($(O)!0.5!(Pone)$) {$c_1$};
     \node[THMBlue,right] at ($(Pone)!0.5!(Ptwo)$) {$c_2$};
     \node[THMBlue,above left] at ($(Ptwo)!0.5!(C)$) {$c_3$};

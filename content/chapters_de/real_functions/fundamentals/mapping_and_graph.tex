@@ -75,8 +75,8 @@ Um den Verlauf einer Funktion sichtbar zu machen, zeichnen wir ihren
 \emph{Funktionsgraphen} \EnglishTerm{graph of a function}. Er besteht aus
 allen Punkten $(x,f(x))$ mit $x\in D$.
 \begin{ExampleBox}{Einen Funktionsgraphen zeichnen}{graph_of_square_function}
-  Der Graph der folgenden Funktion heißt \emph{Parabel} \EnglishTerm{parabola}.
-  Wir zeichnen ihn mithilfe einer Wertetabelle:
+  Die Funktion $f(x)=x^2$ heißt \emph{Parabelfunktion}.
+  Ihren Graphen zeichnen wir mithilfe einer Wertetabelle:
   \[
       \begin{aligned}
         f:\R &\longrightarrow\R,\\
@@ -112,8 +112,8 @@ Die folgenden beiden Graphen zeigen, warum die eindeutige Zuordnung in der
 Funktionsdefinition entscheidend ist.
 \par\smallskip
 \begin{KeyPointBox}{Eindeutige Zuordnung}{real_functions_unique_assignment}
-  Eine Funktion ordnet jedem $x\in D$ genau einen $y$-Wert zu. Daher
-  schneidet jede senkrechte Gerade ihren Graphen höchstens einmal.
+  Eine Funktion ordnet jedem $x\in D$ genau einen $y$-Wert zu.
+  Das lässt sich am Funktionsgraphen besonders gut veranschaulichen.
   \par\smallskip
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -121,7 +121,7 @@ Funktionsdefinition entscheidend ist.
     \par\smallskip
     \raisebox{-0.2ex}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_assignment_check.tex}}\enspace \textcolor{THMBlue}{Funktion}
     \par
-    Jedem $x$ gehört genau ein $y$.
+    zu jedem $x$ gehört genau ein $y$.
   \end{minipage}\hfill
   \begin{minipage}[t]{0.48\linewidth}
     \centering
@@ -129,74 +129,80 @@ Funktionsdefinition entscheidend ist.
     \par\smallskip
     \raisebox{-0.2ex}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_assignment_cross.tex}}\enspace \textcolor{red!75!black}{Keine Funktion}
     \par
-    Einem $x$ entsprechen mehrere $y$-Werte.
+    zu einem $x$ gehören mehrere $y$-Werte.
   \end{minipage}
 \end{KeyPointBox}
 \end{minipage}
 
 \par\noindent\begin{minipage}{\linewidth}
-Die Parabel im vorigen Beispiel erreicht keine negativen $y$-Werte, obwohl
-ihre Zielmenge $Z=\R$ ist. Deshalb betrachten wir die Menge der tatsächlich
+Die Parabelfunktion im vorigen Beispiel erreicht keine negativen $y$-Werte,
+obwohl ihre Zielmenge $Z=\R$ ist. Deshalb betrachten wir die Menge der tatsächlich
 angenommenen Werte gesondert.
 \begin{DefinitionBox}{\textcolor{green!55!black}{Wertemenge}}{real_functions_range}
   Die \emph{\textcolor{green!55!black}{Wertemenge}} \EnglishTerm{range} $W_f$ einer
   Funktion $f:D\to Z$ enthält genau die Werte, die $f$ tatsächlich annimmt:
   \[
-    {\color{green!55!black}W_f}=f(D)=\{f(x)\mid x\in D\}\subseteq Z.
+    {\color{green!55!black}W_f}=f(D)=\{f(x)\mid x\in D\}.
   \]
-  \par\noindent\centering
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_range.tex}
-  \par
-\end{DefinitionBox}
-\begin{ExampleBox}[before skip=0.3\baselineskip]{\textcolor{green!55!black}{Wertemenge} der Quadratfunktion}{real_functions_square_range}
-  In Beispiel 5.2 gilt $f:\R\to\R$ mit $f(x)=x^2$.
-  Für jedes $x\in\R$ ist $x^2\ge0$; negative Werte treten also nicht auf.
-  Umgekehrt wird jedes $y\ge0$ angenommen, denn $f(\sqrt y)=y$.
-  Somit enthält die \textcolor{green!55!black}{Wertemenge} genau die nichtnegativen
-  reellen Zahlen, während die Zielmenge alle reellen Zahlen umfasst:
+  \par\noindent
+  {\centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_range.tex}\par}
+  \par\smallskip\noindent
+  Die Wertemenge ist immer eine Teilmenge der Zielmenge:
   \[
-    Z=\R,\qquad
-    {\color{green!55!black}W_f=\Cloze{2.5cm}{[0,\infty)}}\subsetneq Z.
+    {\color{green!55!black}W_f}\subseteq Z.
   \]
-  \par\smallskip\noindent\centering
-  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_range.tex}
-  \par
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{\textcolor{green!55!black}{Wertemenge} der Parabelfunktion}{real_functions_square_range}
+  Wir betrachten erneut die Parabelfunktion aus Beispiel 5.2:
+  \[
+    \begin{aligned}
+      f:\R &\longrightarrow\R,\\
+      x &\longmapsto x^2
+    \end{aligned}
+    \qquad\text{oder}\qquad f(x)=x^2.
+  \]
+  \par\smallskip
+  {\centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_range.tex}\par}
+  \par\smallskip\noindent
+  Die Wertemenge besteht aus allen nichtnegativen reellen Zahlen.
 \end{ExampleBox}
 \end{minipage}
 
 \par\noindent\begin{minipage}{\linewidth}
-Im Folgenden führen wir weitere Eigenschaften von Funktionen ein und
-untersuchen an passenden Funktionsfamilien, was sie aussagen.
-\begin{DefinitionBox}{Funktionseigenschaft -- Nullstellen}{real_functions_zeros}
+Im Laufe dieses Kapitels diskutieren wir nach und nach Eigenschaften, die
+für Funktionen charakteristisch sein können.
+\begin{FunctionPropertyBox}{Nullstellen}{real_functions_zeros}
   \begin{minipage}[c]{0.55\linewidth}
     \raggedright
     \emph{Nullstellen} \EnglishTerm{zeros} sind die $x$-Werte aller Schnitt-
-    und Berührpunkte des Graphen mit der $x$-Achse. Man berechnet sie aus
+    und Berührpunkte des Graphen mit der $x$-Achse:
     \[
-      f(x_i)=0\qquad(x_i\in D).
+      f(x_i)\overset{!}{=}0\qquad(x_i\in D).
     \]
-    Die zugehörigen Punkte $(x_i,0)$ heißen \emph{$x$-Achsenabschnitte}
-    \EnglishTerm{x-intercepts}.
   \end{minipage}\hfill
   \begin{minipage}[c]{0.43\linewidth}
     \centering
     \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_zeros.tex}
   \end{minipage}
-\end{DefinitionBox}
+  Die zugehörigen Punkte $(x_i,0)$ heißen \emph{$x$-Achsenabschnitte} \EnglishTerm{x-intercepts}.
+\end{FunctionPropertyBox}
 \end{minipage}
-\begin{DefinitionBox}{Funktionseigenschaft -- $y$-Achsenabschnitt}{real_functions_y_intercept}
+
+\begin{FunctionPropertyBox}{$y$-Achsenabschnitt}{real_functions_y_intercept}
   \begin{minipage}[c]{0.55\linewidth}
     \raggedright
-    Ist $0\in D$, heißt der Funktionswert bei $x=0$
-    \emph{$y$-Achsenabschnitt} \EnglishTerm{y-intercept}:
+    Der Funktionswert bei $x=0$ heißt \emph{$y$-Achsenabschnitt} \EnglishTerm{y-intercept}:
     \[
       y_0=f(0).
     \]
-    Der zugehörige Punkt ist $(0,y_0)$. Es gibt höchstens einen
-    $y$-Achsenabschnitt.
   \end{minipage}\hfill
   \begin{minipage}[c]{0.43\linewidth}
     \centering
     \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_y_intercept.tex}
   \end{minipage}
-\end{DefinitionBox}
+\end{FunctionPropertyBox}
+Während eine Funktion mehrere Nullstellen haben kann, ist ihr
+$y$-Achsenabschnitt eindeutig: Er ist der Funktionswert $f(0)$, sofern
+$0\in D$.

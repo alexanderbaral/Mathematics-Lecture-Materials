@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Latex,
+  box/.style={draw=black!35,rounded corners=2pt,align=center,inner sep=6pt}]
+  \node[box] (start) at (0,0) {$f(x)=p(x)/q(x)$\quad\Lang{bei $x=a$}{at $x=a$}};
+  \node[box] (defined) at (-4,-1.5) {$q(a)\ne0$};
+  \node[box] (gap) at (4,-1.5) {$q(a)=0$\\\Lang{Definitionslücke}{excluded input}};
+  \draw[->,black!60] (start)--(defined);
+  \draw[->,black!60] (start)--(gap);
+  \node[box] (zero) at (-6,-3.3) {$p(a)=0$\\\textcolor{THMBlue}{\Lang{Nullstelle}{zero}}};
+  \node[box] (regular) at (-2.2,-3.3) {$p(a)\ne0$\\\Lang{keine Nullstelle}{not a zero}};
+  \node[box] (pole) at (2,-3.3) {$p(a)\ne0$\\\textcolor{THMBlue}{\Lang{Polstelle}{pole}}};
+  \node[box] (common) at (6,-3.3) {$p(a)=0$\\\Lang{Vielfachheiten}{multiplicities} $m,n$};
+  \draw[->,black!60] (defined)--(zero);
+  \draw[->,black!60] (defined)--(regular);
+  \draw[->,black!60] (gap)--(pole);
+  \draw[->,black!60] (gap)--(common);
+  \node[box] (compare) at (4.8,-5.3) {$m\ge n$: \Lang{hebbare Lücke}{removable gap}\\
+    $m<n$: \Lang{Polstelle}{pole}};
+  \draw[->,black!60] (common)--(compare);
+\end{tikzpicture}

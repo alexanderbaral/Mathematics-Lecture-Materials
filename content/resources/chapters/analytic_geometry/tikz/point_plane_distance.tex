@@ -27,11 +27,9 @@
   \node[text=THMBlue] at (2.50,2.72) {$\vec n$};
   \node[text=black!75] at (2.48,4.03) {$\overrightarrow{PQ}_{\parallel}$};
 
-  % The quarter circle touches the offset normal vector without covering it.
-  \draw[black!65,line width=0.75pt]
-    ($(P)+(-0.22,0)+(0.42,0)$)
-    arc[start angle=0,end angle=90,radius=0.42];
-  \fill[black!65] ($(P)+(-0.22,0)+(45:0.27)$) circle (0.85pt);
+  % The mark touches the offset normal vector without covering it.
+  \coordinate (normalFoot) at ($(P)+(-0.22,0)$);
+  \RightAngleMark{(normalFoot)}{0}{90}{0.42}
 
   \fill (O) circle (1.9pt) node[below left=3pt] {$O$};
   \fill (P) circle (1.9pt) node[below left=5pt] {$P$};

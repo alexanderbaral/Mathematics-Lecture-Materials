@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+  >=Latex,line cap=round,
+  flow box/.style={draw=black!45,fill=black!2,rounded corners=1pt,
+                   align=center,inner sep=5pt},
+  flow arrow/.style={->,black!70,line width=0.9pt},
+  branch text/.style={text=THMBlue,inner sep=0pt}
+]
+  \path[use as bounding box] (-5.55,-3.95) rectangle (7.55,4.7);
+  \node[flow box,text width=4.8cm] (current) at (0,4)
+    {\Lang{Aktuelles Polynom}{Current polynomial} $p(x)$\\
+     \Lang{vom Grad}{of degree} $n\ge2$};
+  \coordinate (branch) at (0,2.7);
+  \draw[flow arrow] (current.south)--(branch);
+  \fill[black!70] (branch) circle (1.8pt);
+
+  \node[flow box,text width=2.6cm] (quadratic) at (5.1,2.7)
+    {\Lang{ABC-Formel}{Quadratic formula}};
+  \draw[flow arrow] (branch)--node[branch text,above=6pt] {$n=2$}
+    (quadratic.west);
+  \draw[green!55!black,line width=2.3pt,line join=round]
+    (6.77,2.68)--(6.94,2.51)--(7.31,2.94);
+
+  \node[flow box,text width=4.8cm] (root) at (0,0.9)
+    {\Lang{Nullstelle $x_i$ erraten}{Guess a root $x_i$}\\
+     $p(x_i)\overset{!}{=}0$};
+  \draw[flow arrow] (branch)--node[branch text,right=6pt] {$n>2$}
+    (root.north);
+
+  \node[flow box,text width=5.2cm] (division) at (0,-1.25)
+    {\Lang{Polynomdivision}{Polynomial division}:\\[-0.1em]
+     $q(x)=\dfrac{p(x)}{x-x_i}$};
+  \draw[flow arrow] (root.south)--
+    node[branch text,right=6pt] {\Lang{bestätigt}{confirmed}}
+    (division.north);
+
+  \node[flow box,text width=4.8cm] (lower) at (0,-3.15)
+    {\Lang{Neues Polynom}{New polynomial} $q(x)$\\
+     \Lang{vom Grad}{of degree} $n-1$};
+  \draw[flow arrow] (division.south)--(lower.north);
+  \draw[flow arrow,rounded corners=2pt]
+    (lower.west)--(-5.3,-3.15)--(-5.3,4)--(current.west);
+  \node[anchor=west,align=left,inner sep=0pt] at (-5.05,-0.9)
+    {$p\gets q$\\$n\gets n-1$};
+\end{tikzpicture}

@@ -1,0 +1,125 @@
+% Handschrift: Seiten 14--18; Argument geometrisch statt Falltabelle (Autorwunsch).
+\section{Polardarstellung und Darstellungswechsel}
+\label{sec:complex_numbers_polar_form}
+Statt durch zwei Koordinaten lässt sich eine komplexe Zahl durch ihren
+Abstand vom Ursprung und ihre Richtung beschreiben. Diese Sicht bereitet
+die geometrische Deutung von Produkten und Potenzen vor.
+
+\begin{DefinitionBox}{Trigonometrische Polardarstellung}{complex_numbers_polar}
+  Für $z\ne0$ heißen $r=|z|>0$ und ein Winkel $\varphi$ zur positiven
+  reellen Achse \emph{Polarkoordinaten} \EnglishTerm{polar coordinates}.
+  Der Winkel heißt \emph{Argument} \EnglishTerm{argument} oder Phasenwinkel.
+  Die \emph{Polardarstellung} \EnglishTerm{polar form} lautet
+  \[
+    z=r(\cos\varphi+i\sin\varphi).
+  \]
+  Für $z=0$ ist kein Argument festgelegt.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_polar_coordinates.tex}
+  \end{center}
+\end{DefinitionBox}
+Die rechtwinklige Zerlegung verbindet Polarkoordinaten und kartesische Koordinaten:
+\[
+  \cos\varphi=\frac{x}{r},\quad \sin\varphi=\frac{y}{r}
+  \quad\Longrightarrow\quad
+  x=r\cos\varphi,\quad y=r\sin\varphi.
+\]
+\begin{ExampleBox}{Betrag und Winkel in der Zahlenebene}{complex_numbers_polar_examples}
+  Zeichnen Sie die Zahlen $z_1=3(\cos45^\circ+i\sin45^\circ)$ und
+  $z_2=4(\cos150^\circ+i\sin150^\circ)$ ausgehend von Betrag und Winkel.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_polar_examples.tex}
+  \end{center}
+  Die Pfeillängen betragen $3$ beziehungsweise $4$; die Winkel werden
+  von der positiven reellen Achse aus gemessen.
+\end{ExampleBox}
+
+\clearpage
+\subsection{Volle Umdrehungen und besondere Winkel}
+Eine volle Umdrehung verändert die Zahl nicht. Deshalb beschreiben
+$\varphi$ und $\varphi+2k\pi$ mit $k\in\Z$ dieselbe Richtung:
+\[
+  \cos40^\circ+i\sin40^\circ
+  =\cos400^\circ+i\sin400^\circ.
+\]
+Häufig wählt man einen Winkel in $[0,2\pi)$ beziehungsweise $[0^\circ,360^\circ)$.
+Auch negative Winkel sind möglich; sie werden im Uhrzeigersinn gemessen.
+\begin{ExampleBox}{Die vier Achsenrichtungen}{complex_numbers_trigonometric_axes}
+  Lesen Sie die Werte aus der Lage auf dem Einheitskreis ab.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{@{}c@{\qquad}c@{\qquad}c@{}}
+      $\varphi$ & $\cos\varphi+i\sin\varphi$ & Lage\\\midrule
+      $0^\circ$ & $\Cloze{2cm}{1}$ & positive reelle Achse\\
+      $90^\circ$ & $\Cloze{2cm}{i}$ & positive imaginäre Achse\\
+      $180^\circ$ & $\Cloze{2cm}{-1}$ & negative reelle Achse\\
+      $270^\circ$ & $\Cloze{2cm}{-i}$ & negative imaginäre Achse\\
+      $360^\circ$ & $\Cloze{2cm}{1}$ & wieder die Ausgangsrichtung
+    \end{tabular}
+  \end{center}
+\end{ExampleBox}
+
+\subsection{Von der Polarform zur kartesischen Form}
+Zur Umrechnung berechnen wir die beiden Komponenten $x=r\cos\varphi$
+und $y=r\sin\varphi$ getrennt.
+\begin{ExampleBox}{Komponenten aus Betrag und Winkel bestimmen}{complex_numbers_polar_to_cartesian}
+  Bestimmen Sie Real- und Imaginärteil der Zahl
+  $z=3(\cos45^\circ+i\sin45^\circ)$ aus dem vorigen Beispiel.
+  \begin{ClozeArea}{5}
+    \[
+      x=3\cos45^\circ=\frac3{\sqrt2},\qquad
+      y=3\sin45^\circ=\frac3{\sqrt2},\qquad
+      z=\frac3{\sqrt2}(1+i).
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\clearpage
+\subsection{Von der kartesischen Form zum Argument}
+Der Betrag ist unmittelbar $r=\sqrt{x^2+y^2}$. Für den Winkel nutzen wir
+bei $x\ne0$ die Beziehung
+\[
+  \tan\varphi=\frac{\sin\varphi}{\cos\varphi}
+    =\frac{y/r}{x/r}=\frac{y}{x}.
+\]
+\begin{KeyPointBox}{Der Arkustangens kennt den Quadranten nicht}{complex_numbers_argument_geometry}
+  $\arctan(y/x)$ liefert nur einen Winkel zwischen $-\pi/2$ und $\pi/2$.
+  Gegenüberliegende Pfeile haben denselben Quotienten $y/x$ und werden
+  dadurch nicht unterschieden.
+
+  \textbf{Stellen Sie sich $z$ in der Zahlenebene vor oder zeichnen Sie es ein.}
+  Prüfen Sie, ob der berechnete Winkel in die richtige Richtung zeigt.
+  Zeigt er genau entgegengesetzt, addieren oder subtrahieren Sie
+  $\pi$ beziehungsweise $180^\circ$ passend zur Skizze.
+
+  Bei $x=0$ ist $y/x$ nicht definiert. Lesen Sie den Winkel direkt an der
+  imaginären Achse ab: nach oben $\pi/2$, nach unten $-\pi/2$
+  (gleichwertig $3\pi/2$). Für $z=0$ gibt es kein Argument.
+\end{KeyPointBox}
+\begin{ExampleBox}{Ein Punkt im dritten Quadranten}{complex_numbers_argument_example}
+  Bestimmen Sie Betrag und einen passenden Winkel von $z=-1-i$.
+  Vergleichen Sie die tatsächliche Richtung mit dem Ergebnis des Arkustangens.
+  \par\smallskip
+  \begin{minipage}[c]{0.47\linewidth}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_argument_quadrant.tex}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.48\linewidth}
+    Der Punkt liegt links unten. Dagegen zeigt
+    $\arctan((-1)/(-1))=\pi/4$ nach rechts oben.
+    Wir drehen diesen Pfeil um eine halbe Umdrehung.
+    \begin{ClozeArea}[15]{6}
+      \[
+        r=\sqrt2,\qquad
+        \varphi=\frac\pi4-\pi=-\frac{3\pi}{4}.
+      \]
+      Mit $+\pi$ ergibt sich gleichwertig $5\pi/4$.
+    \end{ClozeArea}
+  \end{minipage}
+  \par\medskip
+  Die trigonometrische Darstellung lautet damit
+  \[
+    z=\sqrt2\left(\cos\left(-\frac{3\pi}{4}\right)
+                +i\sin\left(-\frac{3\pi}{4}\right)\right)
+     =\sqrt2\left(\cos\frac{3\pi}{4}-i\sin\frac{3\pi}{4}\right).
+  \]
+\end{ExampleBox}

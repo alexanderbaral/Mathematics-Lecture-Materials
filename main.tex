@@ -11,8 +11,12 @@
 \input{common/preamble.tex}
 \input{common/commands.tex}
 \input{common/layout.tex}
+\ifdefined\BuildContextFile\input{\BuildContextFile}\fi
 
 \begin{document}
+\ifdefined\ScriptPreviewBody
+  \input{\ScriptPreviewBody}
+\else
 \UseUnnumberedFrontMatter
 \MakeScriptTitle
 \input{content/front_matter/usage_notes.tex}
@@ -37,4 +41,5 @@
   \input{content/chapters_de/complex_numbers/_chapter.tex}
 }
 
+\fi
 \end{document}
