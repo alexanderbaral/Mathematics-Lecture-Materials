@@ -3,107 +3,140 @@
 Grenzwerte müssen nicht jedes Mal durch eine neue Annäherungsbetrachtung
 bestimmt werden. Wir zerlegen einen Term in bekannte Bausteine und
 verknüpfen deren Grenzwerte.
-\begin{TheoremBox}{Rechnen mit endlichen Grenzwerten}{real_functions_limit_laws}
-  Für dieselbe Annäherung seien $\lim_{x\to a}f(x)=A$ und
-  $\lim_{x\to a}g(x)=B$ mit $A,B\in\R$. Für $c\in\R$ gelten dann:
+\begin{TheoremBox}{Grenzwertgesetze}{real_functions_limit_laws}
+  Existieren die Grenzwerte $\lim_{x\to a}f(x)=A$ und
+  $\lim_{x\to a}g(x)=B$ mit $A,B\in\R$, so gelten:
   \[
-    \begin{aligned}
-      \lim_{x\to a}\bigl(f(x)+g(x)\bigr)&=A+B,&
-      \lim_{x\to a}\bigl(f(x)-g(x)\bigr)&=A-B,\\[0.6em]
-      \lim_{x\to a}c f(x)&=cA,&
-      \lim_{x\to a}f(x)g(x)&=AB,\\[0.6em]
-      \lim_{x\to a}\frac{f(x)}{g(x)}&=\frac AB
-        &&\text{falls }B\ne0.
-    \end{aligned}
-  \]
-  Die Regeln gelten auch am Rand der Definitionsmenge und bei
-  $x\to\pm\infty$, sofern die genannten endlichen Grenzwerte existieren.
-\end{TheoremBox}
-\begin{KeyPointBox}{Bei Polynomen darf eingesetzt werden}{real_functions_polynomial_limit}
-  Aus $\lim_{x\to a}x=a$ und den Summen- und Produktregeln folgt für
-  jedes Polynom $p$:
-  \[
-    \lim_{x\to a}p(x)=p(a).
-  \]
-  Für einen Quotienten von Polynomen darf ebenfalls eingesetzt werden,
-  sofern der Nenner an der betreffenden Stelle nicht null ist.
-\end{KeyPointBox}
-\begin{TheoremBox}{Im Unendlichen entscheidet die höchste Potenz}{real_functions_leading_power}
-  Für ein Polynom $p(x)=a_nx^n+\dots+a_0$ mit $n\ge1$ und $a_n\ne0$
-  klammern wir die höchste Potenz aus:
-  \[
-    p(x)=x^n\left(a_n+\frac{a_{n-1}}x+\dots+\frac{a_0}{x^n}\right).
-  \]
-  Die Klammer geht für $x\to\pm\infty$ gegen $a_n$.
-  Für $a_n>0$ ergibt sich deshalb:
-  \[
-    \begin{array}{c|cc}
-       &\lim_{x\to-\infty}p(x)&\lim_{x\to+\infty}p(x)\\ \hline
-      n\text{ gerade}&+\infty&+\infty\\[0.4em]
-      n\text{ ungerade}&-\infty&+\infty
+    \begin{array}{l@{\qquad}l}
+      \text{Summe/Differenz:}&
+        \displaystyle\vphantom{\lim_{x\to a}\frac{f(x)}{g(x)}=\frac AB}
+        \lim_{x\to a}\bigl(f(x)\pm g(x)\bigr)=A\pm B,\\[1em]
+      \text{Produkt:}&
+        \displaystyle\vphantom{\lim_{x\to a}\frac{f(x)}{g(x)}=\frac AB}
+        \lim_{x\to a}f(x)g(x)=AB,\\[1em]
+      \text{Quotient:}&
+        \displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}=\frac AB
+        \qquad\text{falls }B\ne0.
     \end{array}
   \]
-  Für $a_n<0$ kehren sich sämtliche Vorzeichen der uneigentlichen
-  Grenzwerte um. Die niedrigeren Potenzen ändern das Endverhalten nicht.
 \end{TheoremBox}
-% Handschrift: PDF-Seiten 21–22 (Monome und inverse Potenzen).
-\begin{ExampleBox}{Potenzen und ihre Kehrwerte im Unendlichen}{real_functions_power_limits}
-  Für $n\in\N$, $n\ge1$, vergleichen wir $x^n$ und $1/x^n$.
-  Die Potenz wächst betragsmäßig, ihr Kehrwert wird beliebig klein:
+\begin{ExampleBox}{Grenzverhalten von Potenzen}{real_functions_monomial_limit_laws}
+  Mit den Grenzwertgesetzen bestimmen wir beispielhaft das asymptotische
+  Verhalten der folgenden vier Funktionen für $x\to\pm\infty$.
+  \par\smallskip\noindent
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),leftmargin=*,topsep=0pt]
+      \item Quadratfunktion
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+      \[
+        \begin{aligned}
+          \lim_{x\to\pm\infty}x^2&=\lim_{x\to\pm\infty}(x\cdot x)\\[1em]
+          &=\underbrace{\lim_{x\to\pm\infty}x}_{\pm\infty}
+            \cdot\underbrace{\lim_{x\to\pm\infty}x}_{\pm\infty}
+          =\Cloze{1.6cm}{+\infty}.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),start=2,leftmargin=*,topsep=0pt]
+      \item Kubikfunktion
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_cubic_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+      \[
+        \begin{aligned}
+          \lim_{x\to\pm\infty}x^3&=\lim_{x\to\pm\infty}(x^2\cdot x)\\[1em]
+          &=\underbrace{\lim_{x\to\pm\infty}x^2}_{+\infty}
+            \cdot\underbrace{\lim_{x\to\pm\infty}x}_{\pm\infty}
+          =\Cloze{1.6cm}{\pm\infty}.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}
+  \par\vspace{1.5\baselineskip}\noindent
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),start=3,leftmargin=*,topsep=0pt]
+      \item Hyperbel
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_reciprocal_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+    \[
+      \lim_{x\to\pm\infty}\frac1x
+      =\frac{\overbrace{\displaystyle\lim_{x\to\pm\infty}1}^{1}}
+        {\underbrace{\displaystyle\lim_{x\to\pm\infty}x}_{\pm\infty}}
+      =\Cloze{1cm}{0}.
+    \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),start=4,leftmargin=*,topsep=0pt]
+      \item Kehrwert der Quadratfunktion
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_inverse_square_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+    \[
+      \begin{aligned}
+        \lim_{x\to\pm\infty}\frac1{x^2}
+        &=\lim_{x\to\pm\infty}\left(\frac1x\cdot\frac1x\right)\\[1em]
+        &=\underbrace{\lim_{x\to\pm\infty}\frac1x}_{0}
+          \cdot\underbrace{\lim_{x\to\pm\infty}\frac1x}_{0}
+          =\Cloze{1cm}{0}.
+      \end{aligned}
+    \]
+    \end{ClozeArea}
+  \end{minipage}
+\end{ExampleBox}
+\Needspace{15\baselineskip}
+Diese Beobachtungen verallgemeinern wir nun.
+\begin{KeyPointBox}{Potenzen und ihre Kehrwerte im Unendlichen}{real_functions_power_limits}
+  Für Potenzen $x^n$ mit ganzzahligem Exponenten $n$ gilt:
   \[
-    \lim_{x\to+\infty}x^n=\Cloze{1.5cm}{+\infty},\qquad
-    \lim_{x\to-\infty}x^n=
+    \lim_{x\to\pm\infty}x^n=
     \begin{cases}
-      \Cloze{1.5cm}{+\infty},&n\text{ gerade},\\[0.4em]
-      \Cloze{1.5cm}{-\infty},&n\text{ ungerade}.
+      \Cloze{1.2cm}{+\infty},&n>0,\ n\text{ gerade},\\[0.5em]
+      \Cloze{1.2cm}{\pm\infty},&n>0,\ n\text{ ungerade},\\[0.5em]
+      \Cloze{1.2cm}{1},&n=0,\\[0.5em]
+      \Cloze{1.2cm}{0},&n<0.
     \end{cases}
   \]
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_power_limits.tex}
-  \end{center}
-  Mit $\lim_{x\to\pm\infty}1/x=0$ und den Produktregeln folgt
-  \[
-    \lim_{x\to\pm\infty}\frac1{x^n}
-    =\lim_{x\to\pm\infty}\left(\frac1x\right)^n=0^n=0.
-  \]
-  Insbesondere gilt $\lim_{x\to+\infty}x=+\infty$ und
-  $\lim_{x\to-\infty}x=-\infty$.
-\end{ExampleBox}
+\end{KeyPointBox}
+Nachdem wir die Grenzwerte von Monomen bestimmt haben, können wir mit den
+Grenzwertgesetzen auch die Grenzwerte von Polynomen bestimmen.
 \begin{ExampleBox}{Höchste Potenz ausklammern}{real_functions_factored_polynomial_limit}
-  Bestimmen Sie den Grenzwert von $p(x)=-3x^3+x^2$ für $x\to-\infty$.
-  Die einzelnen Summanden divergieren in unterschiedliche Richtungen;
-  deshalb formen wir zuerst um.
+  Bestimmen Sie den Grenzwert von $p(x)=-3x^3+x^2$ für $x\to+\infty$.
+  Wir klammern die höchste Potenz aus und betrachten das Grenzverhalten
+  der beiden Faktoren.
   \begin{ClozeArea}[34]{8}
     \[
-      p(x)=x^3\left(-3+\frac1x\right).
-    \]
-    \[
-      \lim_{x\to-\infty}x^3=-\infty,\qquad
-      \lim_{x\to-\infty}\left(-3+\frac1x\right)=-3.
-    \]
-    Für genügend negative $x$ sind beide Faktoren negativ. Ihr Produkt
-    wird positiv und beliebig groß:
-    \[
-      \lim_{x\to-\infty}(-3x^3+x^2)=+\infty.
+      \begin{aligned}
+        \lim_{x\to+\infty}p(x)
+          &=\lim_{x\to+\infty}\left(-3x^3+x^2\right)\\[1em]
+          &=\lim_{x\to+\infty}\left[x^3\left(-3+\frac1x\right)\right] = -\infty.
+      \end{aligned}
     \]
   \end{ClozeArea}
 \end{ExampleBox}
-\begin{ExampleBox}{Den dominierenden Term erkennen}{real_functions_polynomial_infinity}
-  Für $p(x)=-2x^3+5x^2+7$ ist der höchste Term $-2x^3$.
-  Ergänzen Sie das Verhalten in beiden Richtungen:
-  \[
-    \lim_{x\to-\infty}p(x)=\Cloze{2cm}{+\infty},
-    \qquad
-    \lim_{x\to+\infty}p(x)=\Cloze{2cm}{-\infty}.
-  \]
-  Der ungerade Grad liefert entgegengesetzte Richtungen; der negative
-  Leitkoeffizient legt ihre Orientierung fest.
-\end{ExampleBox}
 
-\begin{KeyPointBox}{Unbestimmte Formen sind ein Arbeitsauftrag}{real_functions_indeterminate_forms}
-  Führen Zähler und Nenner beide gegen null oder beide betragsmäßig
-  gegen unendlich, ist der Grenzwert noch nicht bestimmt.
-  Die Kurzformen $0/0$ und $\infty/\infty$ bezeichnen solche
-  \emph{unbestimmten Formen} \EnglishTerm{indeterminate forms},
-  keine Ergebnisse. Zuerst muss der Term geeignet umgeformt werden.
-\end{KeyPointBox}

@@ -7,6 +7,7 @@ The LaTeX engine remains build-engine.ps1, with main.tex as the sole body.
 from __future__ import annotations
 
 import argparse
+import csv
 from concurrent.futures import ThreadPoolExecutor
 from contextlib import contextmanager, ExitStack
 from datetime import datetime
@@ -61,6 +62,21 @@ def atomic(path, data):
 
 def save_json(path, value):
     atomic(path, (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
+
+
+def record_timing(phase, revision, seconds, ok, sequence):
+    """Local measurements only; never require an AI monitoring turn."""
+    try:
+        with lock(UPDATE_CACHE / 'timings.lock'):
+            path = UPDATE_CACHE / 'timings.csv'
+            needs_header = not path.exists() or path.stat().st_size == 0
+            with path.open('a', encoding='utf-8', newline='') as stream:
+                writer = csv.writer(stream, delimiter=';')
+                if needs_header:
+                    writer.writerow(('finished', 'phase', 'revision', 'seconds', 'ok', 'sequence'))
+                writer.writerow((now(), phase, revision, seconds, ok, sequence))
+    except OSError as error:
+        print(f'Zeitprotokoll nicht geschrieben: {error}', file=sys.stderr, flush=True)
 
 
 @contextmanager
@@ -373,6 +389,7 @@ def worker():
                 result = run_full(manifest(request['revision']), request)
             except Exception as error:
                 result = {'ok': False, 'error': str(error), 'seconds': round(time.monotonic() - started, 2)}
+            record_timing('full', request['revision'], result['seconds'], result['ok'], request['sequence'])
             with state_transaction() as state:
                 record = dict(request, **result, finished=now())
                 state['completed' if result['ok'] else 'failed'] = record
@@ -483,6 +500,7 @@ def preview(snapshot, selection, baseline_record, sequence=0, whole_document=Fal
         with ThreadPoolExecutor(max_workers=2) as pool:
             results = list(pool.map(run, VARIANTS))
         seconds = round(time.monotonic() - started, 2)
+        record_timing('preview', snapshot['revision'], seconds, not any(code for code, _ in results), sequence)
         if any(code for code, _ in results):
             raise RuntimeError(f'Vorschau fehlgeschlagen. Baudauer: {seconds} Sekunden. Logs: ' + ', '.join(str(log) for _, log in results))
         with state_transaction() as state:

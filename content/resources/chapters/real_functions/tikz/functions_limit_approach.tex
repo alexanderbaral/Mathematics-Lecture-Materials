@@ -8,12 +8,16 @@
     (0.45,0.65) .. controls (1,1) and (1.75,2.2) .. (3,2.2)
     .. controls (4.25,2.2) and (4.6,3.1) .. (5.5,3.4)
     node[right] {$f$};
+  % Parallelkurven mit ca. 0,32 cm Normalenabstand zum Funktionsgraphen.
+  % Explizite Endtangente fuer eine korrekt ausgerichtete Pfeilspitze.
   \draw[->,black!65,line width=0.9pt]
-    (1.05,1.65) .. controls (1.55,2.2) and (2.1,2.55) .. (2.65,2.53);
-  \draw[->,black!65,line width=0.9pt]
-    (5.15,3.55) .. controls (4.65,3.35) and (4.15,2.55) .. (3.4,2.53);
+    (0.663,1.251) .. controls (1.101,1.674) and (1.731,2.352)
+    .. (2.661,2.494);
+  \draw[->,black!65,line width=0.9pt] plot[smooth] coordinates {
+    (5.046,3.551) (4.721,3.347) (4.436,3.133) (4.171,2.930)
+    (3.908,2.757) (3.627,2.625) (3.301,2.542)
+  };
   \node at (1.8,3.25) {\Lang{von links}{from the left}};
   \node at (4.45,4.05) {\Lang{von rechts}{from the right}};
   \filldraw[draw=THMBlue,fill=white,line width=1pt] (3,2.2) circle (3pt);
-  \node[below right=7pt] at (3,2.2) {$A=(a,L)$};
 \end{tikzpicture}

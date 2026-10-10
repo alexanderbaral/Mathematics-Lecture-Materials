@@ -17,8 +17,12 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
 ### Local task workflow
 - Treat current, unchanged project rules already present in the task context as
   read; do not reopen the full `AGENTS.md` or unchanged build infrastructure.
-- Resume from the relevant `TODO.md` entry, using its stable semantic label and
-  exact source paths. Read the smallest relevant source excerpts first.
+- Work directly from the current chat request and the relevant semantic labels
+  and source paths. Read the smallest relevant source excerpts first.
+- Do not maintain or recreate a TODO file in the repository. If a temporary
+  checklist is genuinely needed for a complex task, keep it only under
+  `AppData/Local/Temp/Mathematik1-Skript/updates/`, remove obsolete entries,
+  and never treat an old checklist as fresh authorization for unrelated work.
 - Broaden searches only when a dependency is unknown, a shared command or
   resource is involved, or the user asks for a project-wide audit. Batch
   independent searches and keep their output focused on the requested files.
@@ -34,10 +38,14 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
   for body-only layout changes. If no usable cache exists or relevant shared
   dependencies genuinely require a complete rebuild, warn the author before
   starting that longer build. Do not clear caches unless explicitly requested.
-- After every completed build, report its measured elapsed time in the chat
-  as `Baudauer: ... Sekunden`, including failed builds. Keep build time
-  separate from source editing and visual verification time when discussing
-  performance; do not present estimates as measurements.
+- The coordinator automatically records preview/full build durations in
+  `AppData/Local/Temp/Mathematik1-Skript/updates/timings.csv`, outside the
+  repository. Keep terminal duration reports, but do not repeat every timing
+  in chat. Summarize on request or after approximately five substantive edits;
+  alert promptly to failures, cold builds or unexpectedly slow builds.
+  Editing time is not measured by the build script: report it separately only
+  when actually measured, excluding build/visual verification time. Never
+  equate time between builds with editing time or invent missing measurements.
 - After edits use `tools/build-update.ps1`: first update both stable preview
   PDFs in `build/`, then let the full build finish in the background. The preview
   collects affected sections since the last successfully published full source
@@ -62,10 +70,9 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
   an older successful snapshot. Status/revisions/timings are available through
   `tools/build-update.ps1 -Status`. Never claim the full PDFs are current while a
   newer request is pending. Keep the open preview when a full build finishes.
-- For the next five substantive change requests, report the approximate time
-  from first targeted inspection to first edit, the files inspected, build
-  time, and visual correction passes. Mark unavailable measurements as such;
-  compare only tasks with reasonably similar scope.
+- Compare timings only for reasonably similar tasks; distinguish editing,
+  preview, full build and visual correction passes. No periodic AI monitor
+  is needed for the timing log.
 - This focused workflow never relaxes the mathematical, pedagogical,
   typography, figure, cloze, translation, or verification requirements below.
 
@@ -443,9 +450,9 @@ Provide calm semantic styling at least for Definition, Merke/Key Point, Beispiel
 
 Number `KeyPointBox` and `TheoremBox` independently within each chapter, so
 their numbering starts with 1.1, 1.2, and so on in the first chapter.
-Number `RemarkBox` independently within each chapter as well. For an
-individual hint heading, use the `remark title` option so the automatic
-number remains visible.
+Number `RemarkBox` independently within each chapter as well. Every remark
+box also receives a concise descriptive heading through the `remark title`
+option, so the automatic number remains visible. Preserve existing titles.
 
 Prefer chapter/section/subsection numbering. Do not introduce `1.1.1.1`-style visible numbering without a concrete need.
 
