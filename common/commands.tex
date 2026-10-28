@@ -66,10 +66,12 @@
   \IfBooleanTF{#1}{\par\medskip}{\par\smallskip}%
 }
 
+% Restrained CD background for short answers, kept light for pencil writing.
+\definecolor{ScriptClozeBackground}{HTML}{E5E4D8}
 \NewDocumentCommand{\Cloze}{m m}{%
   \IfClozeTF
     {{\setlength{\fboxsep}{0pt}%
-      \colorbox{black!12}{\makebox[#1][c]{\strut}}}}
+      \colorbox{ScriptClozeBackground}{\makebox[#1][c]{\strut}}}}
     {#2}%
 }
 

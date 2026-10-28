@@ -9,6 +9,8 @@
 
 \input{common/config.tex}
 \input{common/preamble.tex}
+% Cancellation marks are document-only; standalone figure caches stay unchanged.
+\usepackage{cancel}
 \input{common/commands.tex}
 \input{common/layout.tex}
 \ifdefined\BuildContextFile\input{\BuildContextFile}\fi
@@ -20,8 +22,11 @@
 \UseUnnumberedFrontMatter
 \MakeScriptTitle
 \input{content/front_matter/usage_notes.tex}
-\tableofcontents
-\clearpage
+\begingroup
+  \pagestyle{plain.scrheadings}
+  \tableofcontents
+  \clearpage
+\endgroup
 
 \input{content/front_matter/greek_alphabet.tex}
 \input{content/front_matter/recommended_reading.tex}

@@ -9,18 +9,14 @@
 \usepackage{siunitx}
 \usepackage{stmaryrd}
 \usepackage[warnings-off={mathtools-colon,mathtools-overbracket}]{unicode-math}
-% Preserve the established font/render settings of cached standalone figures.
-% The full document avoids family-name lookup and uses the faster text shaper.
-\ifdefined\StandaloneTikzBuild
-  \setsansfont{Fira Sans}
-\else
-  \setsansfont{FiraSans-Regular.otf}[
-    Renderer=HarfBuzz,
-    BoldFont=FiraSans-Bold.otf,
-    ItalicFont=FiraSans-Italic.otf,
-    BoldItalicFont=FiraSans-BoldItalic.otf
-  ]
-\fi
+% Bundled CD text font: identical in the document and standalone figures.
+\setsansfont{PlusJakartaSans-Regular.ttf}[
+  Path=content/resources/shared/fonts/plus_jakarta_sans/,
+  Renderer=HarfBuzz,
+  BoldFont=PlusJakartaSans-Bold.ttf,
+  ItalicFont=PlusJakartaSans-Italic.ttf,
+  BoldItalicFont=PlusJakartaSans-BoldItalic.ttf
+]
 \renewcommand{\familydefault}{\sfdefault}
 \ifdefined\StandaloneTikzBuild
   \setmathfont{Libertinus Math}

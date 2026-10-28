@@ -196,7 +196,7 @@ so that future drafts increasingly match the style of the revised material.
 - Preserve the complete reasoning context in the cloze version: prompts,
   assumptions, diagrams, and the surrounding mathematical structure remain
   visible. Hide specifically the learning steps students should reproduce.
-- Use a gray `\Cloze` field for a short result, symbol, or single-line response,
+- Use a light CD-greige `\Cloze` field for a short result, symbol, or single-line response,
   and a `ClozeArea` grid for multi-line calculations, derivations, drawings, or
   constructions. Size every response area for the handwriting realistically
   required.
@@ -323,7 +323,7 @@ Semantics:
 - `cloze=false` → complete lecture script
 - `cloze=true` → cloze/student version
 
-Provide a simple short-gap interface such as `\Cloze{<width>}{<content>}`: complete mode shows content; cloze mode shows a writing line.
+Provide a simple short-gap interface such as `\Cloze{<width>}{<content>}`: complete mode shows content; cloze mode shows a subtle writing field.
 
 Also provide a robust long-calculation interface: complete mode shows the
 solution; cloze mode shows an exact 5 mm grid. Specify every `ClozeArea` by an
@@ -334,12 +334,14 @@ space actually needed, so width and height always contain complete squares.
 Support multi-line/`align`-style mathematics robustly. Do not use local ad-hoc
 solution switches in chapter files.
 
-Use the gray `\Cloze` box for every short, single-line inline answer. Use the
-5 mm grid (`ClozeArea`) whenever a larger response area or multiple handwritten
+Use the light CD-greige `\Cloze` box (`#E5E4D8`) for every short, single-line
+inline answer. Keep these backgrounds unobtrusive but recognizable as writing
+areas, with pencil legibility taking priority over stronger brand colors.
+Use the 5 mm grid (`ClozeArea`) whenever a larger response area or multiple handwritten
 lines are needed, especially for longer calculations and derivations.
 When adapting an existing grid, preserve its approximate physical area while
 rounding both dimensions to whole 5 mm squares.
-The width argument of `\Cloze` controls only the gray field in cloze mode. In
+The width argument of `\Cloze` controls only the writing field in cloze mode. In
 the complete version, render the solution at its natural width without
 reserving the width of the cloze field.
 
@@ -365,7 +367,11 @@ includeheadfoot
 ```
 Do not enlarge these margins for conventional print-layout reasons. The script is primarily for digital tablet use and handwritten annotation.
 
-Use Fira Sans as primary text typeface. Choose a high-quality readable mathematics font compatible with Fira Sans; do not force sans-serif mathematics if readability suffers. The exact mathematics font may be refined after visual testing.
+Use Plus Jakarta Sans as the primary text typeface, consistently in the document
+and diagram labels. The text font files are bundled under
+`content/resources/shared/fonts/plus_jakarta_sans/`, including their SIL Open
+Font License. Retain Libertinus Math for formulas; do not force sans-serif
+mathematics.
 
 All text inside figures and diagrams must use the same font size as the
 surrounding body text. This applies equally to prose, mathematical expressions
@@ -383,7 +389,18 @@ sector, never with a square corner.
 
 Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
 
+This mathematics lecture script belongs to the Fakultät für Maschinenbau.
+Use exclusively the official TH Mannheim/Maschinenbau logo and retain the
+faculty metadata. Do not use ZLL or any other faculty/unit subidentity.
+The title page uses a white background and the official blue point pattern.
+The header uses the official Mannheimer Punkt as an RGB-blue vector PDF.
+
 Shared visual resources live under `content/resources/`. Global files used across chapters, such as branding assets, live in `content/resources/shared/`; its `images/` and `tikz/` subfolders hold other shared visual resources. Chapter-specific resources mirror the approved chapter name and use `content/resources/chapters/<chapter>/images/` for raster or vector illustrations and `content/resources/chapters/<chapter>/tikz/` for TikZ sources. Do not create resource folders for future chapters. The author will provide the official TH Mannheim/faculty logo and Mannheimer Punkt. Prefer PDF vector assets; PNG is acceptable; support EPS only if actually needed. If assets are missing, compilation must still succeed with unobtrusive placeholders and README guidance.
+
+Every TikZ graphic used in more than one chapter belongs in
+`content/resources/shared/tikz/`; move chapter-specific sources there when
+they become shared and update all include paths. General-purpose symbols
+such as smileys also belong there, even before their first cross-chapter use.
 
 Always place every new TikZ graphic immediately in its own semantically named
 file in the appropriate `content/resources/**/tikz/` folder. Do not leave new

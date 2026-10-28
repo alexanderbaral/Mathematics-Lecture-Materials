@@ -77,4 +77,12 @@ remote publication are part of building.
 
 Before any content path is created or renamed under `content/chapters_de/` or `content/chapters_en/`, its English `snake_case` technical name must be proposed and explicitly approved. German content is authoritative. Handwritten notes are removed only after approved transfer and successful verification.
 
+Text and diagram labels use Plus Jakarta Sans; formulas retain Libertinus Math. The four required text font files and their SIL Open Font License are bundled in `content/resources/shared/fonts/plus_jakarta_sans/`; no separate installation of Plus Jakarta Sans is needed.
+
+Short `\Cloze` answer fields use the subtle CD-greige background `#E5E4D8`, chosen to remain unobtrusive and suitable for pencil writing.
+
 Author-facing metadata is edited in `common/config.tex`. Global branding files live in `content/resources/shared/` (PDF preferred, PNG supported); set `\BrandLogoPath` and `\BrandDotPath` there. Each chapter may keep its own visual material in `content/resources/chapters/<chapter>/images/` and `content/resources/chapters/<chapter>/tikz/`, mirroring the approved chapter name under `content/chapters_de/` and `content/chapters_en/`. Missing branding files automatically produce restrained placeholders.
+
+This mathematics lecture script uses exclusively the official TH Mannheim/Maschinenbau logo and the corresponding faculty metadata. The vector PDF is derived from the accompanying original RGB SVG from the TH Mannheim brand portal, preserving its shapes and colour.
+The title page uses the official point pattern in RGB blue on a white background.
+The header uses the official Mannheimer Punkt as a vector PDF in RGB blue.

@@ -14,6 +14,7 @@
 \setlength{\parskip}{0.45em}
 \setcounter{secnumdepth}{2}
 \setcounter{tocdepth}{1}
+\DeclareTOCStyleEntries[pagenumberwidth=2.2em,rightindent=3.2em]{tocline}{chapter,section}
 \KOMAoptions{headsepline=false,footsepline=false}
 
 % Restrained TH Mannheim typography and hierarchy.
@@ -79,10 +80,12 @@
 \renewcommand*{\sectionmark}[1]{%
   \markright{\protect\hyperlink{section.\thesection}{#1}}%
 }
-\ihead[]{\footnotesize\normalfont\color{black!45}\leftmark:\enspace\rightmark}
+\definecolor{THMBlack}{HTML}{040404}
+\ihead[]{\footnotesize\normalfont\color{THMBlack}\leftmark:\enspace\rightmark}
 \ohead*{}
-\ifoot*{\footnotesize\color{black!70}\Lang{Mathematik}{Mathematics}\enspace\textperiodcentered\enspace\Lang{Semester}{Semester} \Semester}
-\newcommand{\ScriptPageMark}{\footnotesize\color{black!70}\Lang{Seite}{Page} \pagemark}
+\addtokomafont{pagenumber}{\color{THMBlack}}
+\ifoot*{\footnotesize\color{THMBlack}\Lang{Mathematik}{Mathematics}\enspace\textperiodcentered\enspace\Lang{Semester}{Semester} \Semester}
+\newcommand{\ScriptPageMark}{\footnotesize\color{THMBlack}\Lang{Seite}{Page} \pagemark}
 \newcommand{\UseUnnumberedFrontMatter}{%
   \hypersetup{pageanchor=false}%
   \pagenumbering{gobble}%
@@ -105,9 +108,6 @@
   \begin{titlepage}
     \thispagestyle{empty}
     \begin{tikzpicture}[remember picture,overlay]
-      \fill[THMBlue]
-        ([xshift=-3.8cm]current page.north east) rectangle
-        (current page.south east);
       \node[anchor=south,inner sep=0pt]
         at ([xshift=-1.9cm,yshift=1.8cm]current page.south east)
         {\BrandTitleVisual};
@@ -119,7 +119,7 @@
 
       {\color{THMBlue}\rule{\linewidth}{1.2pt}}\par
       \vspace{1.0cm}
-      {\Huge\bfseries \ScriptTitle\par}
+      {\Huge\bfseries\color{THMBlue} \ScriptTitle\par}
       \vspace{0.5cm}
       {\Large \Lang{Vorlesungsskript}{Lecture Notes}%
         \IfClozeTF{\space(\Lang{Lückenskript}{Fill-in-the-Blank Version})}{}\par}
@@ -135,13 +135,15 @@
   \global\BrandPageDotVisibletrue
 }
 
+% Official TH Mannheim light greige, approved for semantic box backgrounds.
+\definecolor{ScriptBoxBackground}{HTML}{F7F7F4}
 \tcbset{
   scriptbox/.style={
     enhanced,
     breakable=false,
-    colback=black!2,
-    colbacktitle=black!2,
-    colframe=black!2,
+    colback=ScriptBoxBackground,
+    colbacktitle=ScriptBoxBackground,
+    colframe=ScriptBoxBackground,
     boxrule=0pt,
     borderline west={1.2pt}{0pt}{THMBlue},
     sharp corners,
@@ -171,11 +173,11 @@
 
 % Beispiel
 \newtcbtheorem[number within=chapter]{ExampleBox}{\Lang{Beispiel}{Example}}
-  {scriptbox,breakable=false,borderline west={1.2pt}{0pt}{black!40}}{ex}
+  {scriptbox,breakable=false,borderline west={1.2pt}{0pt}{THMBlack}}{ex}
 
 % Theorem
 \newtcbtheorem[number within=chapter]{TheoremBox}{\Lang{Satz}{Theorem}}
-  {scriptbox,borderline west={1.8pt}{0pt}{THMBlue!70!black}}{thm}
+  {scriptbox,borderline west={1.8pt}{0pt}{THMBlue}}{thm}
 
 % Remarks have their own chapter counter, including individually titled remarks.
 \tcbset{
@@ -183,6 +185,6 @@
 }
 \newtcolorbox[auto counter,number within=chapter]{RemarkBox}[1][]{
   scriptbox,
-  borderline west={1.2pt}{0pt}{black!40},
+  borderline west={1.2pt}{0pt}{THMBlack},
   title={\Lang{Hinweis}{Remark}~\thetcbcounter},#1
 }

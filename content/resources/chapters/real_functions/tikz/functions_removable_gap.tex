@@ -27,11 +27,17 @@
   \begin{scope}
     \clip (-2.5,-3.5) rectangle (3,2);
     \draw[THMBlue,line width=1.15pt] (-2.5,-3.5)--(-1.05,-2.05);
-\draw[THMBlue,line width=1.15pt] (-0.95,-1.95)--(3,2);
-\draw[THMBlue,line width=1pt] (-1,-2) circle (2.2pt);
+    \draw[THMBlue,line width=1.15pt] (-0.95,-1.95)--(3,2);
+    \draw[green!55!black,densely dashed,line width=1.15pt,xshift=1pt,yshift=-2pt] (-2.5,-3.5)--(3,2);
   \end{scope}
-  \node[anchor=south] at (0.250,3.082) {$\displaystyle f(x)=\frac{x^2-1}{x+1}\quad(x\ne-1)$};
-  \node[anchor=north] at (0.25,-4.35) {\Lang{Fehlender Punkt: $(-1,-2)$}{Missing point: $(-1,-2)$}};
+  \draw[THMBlue,line width=1pt,fill=white] (-1,-2) circle (3.4pt);
+  \fill[green!55!black] (-1,-2) circle (1.8pt);
+  \draw[THMBlue,line width=1.15pt] (-1.6,2.9)--(-1.1,2.9);
+  \node[anchor=west] at (-1.0,2.9) {$f$};
+  \draw[green!55!black,densely dashed,line width=1.15pt] (0.6,2.9)--(1.1,2.9);
+  \node[anchor=west] at (1.2,2.9) {$\widetilde f$};
+  \node[anchor=north] at (0.25,-4.1)
+    {\Lang{Bei $x=-1$ ist nur $\widetilde f$ definiert.}{At $x=-1$, only $\widetilde f$ is defined.}};
   \begin{pgfonlayer}{functionsgrid}
     \begin{scope}[even odd rule]
       \clip (-2.5,-3.5) rectangle (3,2)

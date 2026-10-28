@@ -1,143 +1,65 @@
+\subsection{Definition und Gradvergleich}
+\label{subsec:real_functions_rational_fundamentals}
 \par\noindent\begin{minipage}{\linewidth}
 \begin{DefinitionBox}{Gebrochen-rationale Funktion}{real_functions_rational}
-  Sind $p$ und $q$ Polynome mit $q$ nicht identisch null, heißt
+  Eine Funktion $f$ heißt \emph{gebrochen-rationale Funktion}
+  \EnglishTerm{rational function}, wenn sie sich als Quotient zweier Polynome
+  schreiben lässt:
   \[
-    f(x)=\frac{p(x)}{q(x)},\qquad D_f=\{x\in\R\mid q(x)\ne0\},
+    f(x)=\frac{Z(x)}{N(x)}
+      =\frac{a_mx^m+a_{m-1}x^{m-1}+\dots+a_0}
+            {b_nx^n+b_{n-1}x^{n-1}+\dots+b_0},
+    \qquad
+    \begin{aligned}
+      \deg(Z)&=m,\\
+      \deg(N)&=n.
+    \end{aligned}
   \]
-  eine \emph{gebrochen-rationale Funktion} \EnglishTerm{rational function}
-  auf ihrer natürlichen Definitionsmenge.
-  Für $p\ne0$ heißen $m=\deg p$ und $n=\deg q$ Zähler- und Nennergrad.
-  Die Funktion heißt \emph{echt gebrochen} \EnglishTerm{proper rational function}
-  für $m<n$, sonst \emph{unecht gebrochen} \EnglishTerm{improper rational function}.
-\end{DefinitionBox}
-\begin{ExampleBox}[before skip=0.3\baselineskip]{Gekürzt -- aber nicht überall definiert}{real_functions_cancelled_hole}
-  Untersuchen Sie $f(x)=(x^2-1)/(x+1)$: Welche Eingabe ist
-  ausgeschlossen, und was geschieht in ihrer Nähe?
-  \begin{ClozeArea}[34]{7}
-    Der Nenner schließt $x=-1$ aus. Für alle anderen Eingaben gilt
-    \[
-      f(x)=\frac{(x-1)(x+1)}{x+1}=x-1
-      \qquad(x\ne-1).
-    \]
-    Deshalb ist $\lim_{x\to-1}f(x)=-2$, obwohl $f(-1)$ nicht definiert ist.
-    Die einzige Nullstelle ist $x=1$; $x=-1$ gehört nicht zur Definitionsmenge.
-  \end{ClozeArea}
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_removable_gap.tex}
-  \end{center}
-\end{ExampleBox}
-\end{minipage}
 
-\begin{RemarkBox}[remark title=Unbestimmte Formen]
-  Im Beispiel werden Zähler und Nenner für $x\to-1$ beide null.
-  Die folgenden Ausdrücke liefern jedoch kein festes Grenzwertergebnis:
+  \medskip
+  Die Nullstellen des Nenners müssen aus dem Definitionsbereich ausgeschlossen werden:
   \[
-    \frac00,\qquad\frac\infty\infty,\qquad\infty-\infty.
+    D_f=\{x\in\R\mid N(x)\ne0\}.
   \]
-  Man spricht von \emph{unbestimmten Formen}. Der Grenzwert muss weiter
-  untersucht werden, etwa durch Kürzen wie im Beispiel.
-\end{RemarkBox}
+\end{DefinitionBox}
+
+\begin{DefinitionBox}{Echt und unecht gebrochene Funktionen}{real_functions_proper_improper_rational}
+  Eine gebrochen-rationale Funktion $f(x)=Z(x)/N(x)$ mit $Z\not\equiv0$ heißt
+  \begin{itemize}
+    \item \emph{echt gebrochen} \EnglishTerm{proper rational function}, wenn $\deg(Z)<\deg(N)$;
+    \item \emph{unecht gebrochen} \EnglishTerm{improper rational function}, wenn $\deg(Z)\ge\deg(N)$.
+  \end{itemize}
+\end{DefinitionBox}
 
 % Handschrift: PDF-Seite 23 (alle drei Gradvergleichsbeispiele).
 \begin{ExampleBox}{Zählergrad und Nennergrad vergleichen}{real_functions_rational_classification}
   Ordnen Sie die Funktionen anhand der höchsten vorkommenden Potenzen ein.
   Die Definitionsmenge wird weiterhin aus dem ursprünglichen Nenner bestimmt.
-  \[
-    \begin{array}{c@{\qquad}c@{\qquad}c}
-      f(x)=\dfrac{x^2+x+1}{x^4-1}&
-      g(x)=\dfrac{x^4-1}{x^3+1}&
-      h(x)=\dfrac{x^4+1}{x^4-1}\\[1em]
-      m=\Cloze{0.8cm}{2},\ n=\Cloze{0.8cm}{4}&
-      m=\Cloze{0.8cm}{4},\ n=\Cloze{0.8cm}{3}&
-      m=\Cloze{0.8cm}{4},\ n=\Cloze{0.8cm}{4}\\[0.6em]
-      \Cloze{4cm}{\text{echt gebrochen}}&
-      \Cloze{4cm}{\text{unecht gebrochen}}&
-      \Cloze{4cm}{\text{unecht gebrochen}}
-    \end{array}
-  \]
-\end{ExampleBox}
-
-\subsection{Stetigkeit: Grenzwert und Funktionswert passen zusammen}
-\label{subsec:real_functions_continuity}
-Beim gekürzten Term $x-1$ stimmen Annäherungswert und eingesetzter Wert
-überein. Diese Übereinstimmung erhält nun einen eigenen Namen.
-\par\noindent\begin{minipage}{\linewidth}
-\begin{FunctionPropertyBox}{Stetigkeit}{real_functions_continuity}
-  Eine Funktion $f:D\to\R$ heißt an einer Stelle $a\in D$
-  \emph{stetig} \EnglishTerm{continuous}, wenn
-  \[
-    \lim_{\substack{x\to a\\x\in D}}f(x)=f(a).
-  \]
-  Am Rand eines Intervalls erfolgt die Annäherung nur von der zulässigen Seite.
-  Eine Funktion heißt auf einem Intervall stetig, wenn sie an jeder
-  Stelle dieses Intervalls stetig ist.
-\end{FunctionPropertyBox}
-\begin{ExampleBox}[before skip=0.3\baselineskip]{Einen Übergang ohne Sprung gestalten}{real_functions_continuous_join}
-  Die Funktion $g(x)=x+1$ für $x<1$ und $g(x)=c$ für $x\ge1$
-  soll bei $x=1$ stetig sein. Bestimmen Sie $c$.
-  Von links nähern sich die Werte von $x+1$ der Zahl $\Cloze{1cm}{2}$.
-  Von rechts bleiben sie bei $c=g(1)$. Beide Seiten müssen zusammenpassen:
-  \[
-    c=\Cloze{1cm}{2}.
-  \]
+  \begin{enumerate}[label=\alph*),itemsep=0.8\baselineskip]
+    \item \(\displaystyle
+        \mathmakebox[3.2cm][r]{f(x)=\frac{x^2+x+1}{x^4-1}}\quad\Longrightarrow\quad
+        \begin{aligned}
+          \deg(Z)&=\Cloze{0.8cm}{2}\\
+          \deg(N)&=\Cloze{0.8cm}{4}
+        \end{aligned}\quad\Longrightarrow\quad
+        \text{\Cloze{4cm}{echt gebrochen}}
+      \)
+    \item \(\displaystyle
+        \mathmakebox[3.2cm][r]{g(x)=\frac{x^4-1}{x^3+1}}\quad\Longrightarrow\quad
+        \begin{aligned}
+          \deg(Z)&=\Cloze{0.8cm}{4}\\
+          \deg(N)&=\Cloze{0.8cm}{3}
+        \end{aligned}\quad\Longrightarrow\quad
+        \text{\Cloze{4cm}{unecht gebrochen}}
+      \)
+    \item \(\displaystyle
+        \mathmakebox[3.2cm][r]{h(x)=\frac{x^4+1}{x^4-1}}\quad\Longrightarrow\quad
+        \begin{aligned}
+          \deg(Z)&=\Cloze{0.8cm}{4}\\
+          \deg(N)&=\Cloze{0.8cm}{4}
+        \end{aligned}\quad\Longrightarrow\quad
+        \text{\Cloze{4cm}{unecht gebrochen}}
+      \)
+  \end{enumerate}
 \end{ExampleBox}
 \end{minipage}
-
-% Handschrift: PDF-Seiten 63 und 65 (Stetigkeitsvergleich und Heaviside).
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_continuity_comparison.tex}
-\end{center}
-\begin{ExampleBox}{Die Schaltfunktion ist an der Sprungstelle unstetig}{real_functions_heaviside_continuity}
-  Prüfen Sie die bereits bekannte Funktion $s(x)=0$ für $x<0$ und
-  $s(x)=1$ für $x\ge0$ auf Stetigkeit bei $0$.
-  \[
-    s(0)=\Cloze{1cm}{1}.
-  \]
-  Von links bleiben die Werte bei $\Cloze{1cm}{0}$, von rechts bei
-  $\Cloze{1cm}{1}$. Der Grenzwert existiert nicht; somit ist $s$ bei $0$
-  \Cloze{3cm}{\text{unstetig}}. Auf $(-\infty,0)$ und $(0,\infty)$
-  ist sie dagegen konstant und stetig.
-\end{ExampleBox}
-
-\begin{DefinitionBox}{Hebbare Definitionslücke}{real_functions_removable_gap}
-  Ist $f$ in der Nähe von $a$, aber nicht bei $a$ definiert und existiert
-  ein endlicher Grenzwert $L=\lim_{x\to a}f(x)$, so heißt $a$ eine
-  \emph{hebbare Definitionslücke} \EnglishTerm{removable singularity}.
-  Durch die \emph{stetige Fortsetzung} \EnglishTerm{continuous extension}
-  \[
-    \widetilde f(x)=
-      \begin{cases}f(x),&x\ne a,\\L,&x=a,\end{cases}
-  \]
-  wird die Lücke geschlossen.
-\end{DefinitionBox}
-Für das Beispiel $f(x)=(x^2-1)/(x+1)$ muss genau der Wert
-$\widetilde f(-1)=\Cloze{1cm}{-2}$ ergänzt werden.
-Ein anderer ergänzter Wert ergäbe keine Stetigkeit.
-
-\begin{TheoremBox}{Stetigkeit bleibt beim Rechnen erhalten}{real_functions_continuity_rules}
-  Konstante Vielfache, Summen, Differenzen und Produkte stetiger Funktionen sind stetig;
-  Quotienten sind stetig, wo der Nenner nicht null ist.
-  Daher sind Polynome auf $\R$ und gebrochen-rationale Funktionen
-  auf ihrer natürlichen Definitionsmenge stetig.
-
-  Auch eine \emph{Verkettung} \EnglishTerm{composition}
-  $(f\circ g)(x)=f(g(x))$ ist bei $a$ stetig, wenn $g$ bei $a$ und
-  $f$ bei $g(a)$ stetig sind und die Verkettung in der Nähe definiert ist.
-\end{TheoremBox}
-% Handschrift: PDF-Seite 64 (Nachweis für die Summe).
-Für $h(x)=f(x)+g(x)$ mit bei $a$ stetigen Funktionen $f$ und $g$
-zeigt das Grenzwertgesetz unmittelbar:
-\[
-  \begin{aligned}
-    \lim_{x\to a}h(x)
-      &=\lim_{x\to a}\bigl(f(x)+g(x)\bigr)\\
-      &=\lim_{x\to a}f(x)+\lim_{x\to a}g(x)\\
-      &=f(a)+g(a)=h(a).
-  \end{aligned}
-\]
-\begin{RemarkBox}[remark title=Stetigkeit und Definitionsmenge]
-  Eine fehlende Stelle gehört nicht zur Definitionsmenge: Dort behaupten
-  wir keine Stetigkeit oder Unstetigkeit der ursprünglichen Funktion.
-  Insbesondere ist $1/x$ auf $\R\setminus\{0\}$ stetig, obwohl sein
-  Graph aus zwei getrennten Ästen besteht.
-\end{RemarkBox}

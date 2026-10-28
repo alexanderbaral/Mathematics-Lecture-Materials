@@ -1,0 +1,68 @@
+\section{Stetigkeit}
+\label{sec:real_functions_continuity}
+Ein Grenzwert beschreibt die Annäherung an eine Stelle. Stimmen dort
+Grenzwert und Funktionswert überein, sprechen wir von Stetigkeit.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{FunctionPropertyBox}{Stetigkeit}{real_functions_continuity}
+  Eine Funktion $f:D\to\R$ heißt an einer Stelle $a\in D$
+  \emph{stetig} \EnglishTerm{continuous}, wenn
+  \[
+    \lim_{\substack{x\to a\\x\in D}}f(x)=f(a).
+  \]
+  Am Rand eines Intervalls erfolgt die Annäherung nur von der zulässigen Seite.
+  Eine Funktion heißt auf einem Intervall stetig, wenn sie an jeder
+  Stelle dieses Intervalls stetig ist.
+\end{FunctionPropertyBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Einen Übergang ohne Sprung gestalten}{real_functions_continuous_join}
+  Die Funktion $g(x)=x+1$ für $x<1$ und $g(x)=c$ für $x\ge1$
+  soll bei $x=1$ stetig sein. Bestimmen Sie $c$.
+  Von links nähern sich die Werte von $x+1$ der Zahl $\Cloze{1cm}{2}$.
+  Von rechts bleiben sie bei $c=g(1)$. Beide Seiten müssen zusammenpassen:
+  \[
+    c=\Cloze{1cm}{2}.
+  \]
+\end{ExampleBox}
+\end{minipage}
+
+% Handschrift: PDF-Seiten 63 und 65 (Stetigkeitsvergleich und Heaviside).
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_continuity_comparison.tex}
+\end{center}
+\begin{ExampleBox}{Die Schaltfunktion ist an der Sprungstelle unstetig}{real_functions_heaviside_continuity}
+  Prüfen Sie die bereits bekannte Funktion $s(x)=0$ für $x<0$ und
+  $s(x)=1$ für $x\ge0$ auf Stetigkeit bei $0$.
+  \[
+    s(0)=\Cloze{1cm}{1}.
+  \]
+  Von links bleiben die Werte bei $\Cloze{1cm}{0}$, von rechts bei
+  $\Cloze{1cm}{1}$. Der Grenzwert existiert nicht; somit ist $s$ bei $0$
+  \Cloze{3cm}{\text{unstetig}}. Auf $(-\infty,0)$ und $(0,\infty)$
+  ist sie dagegen konstant und stetig.
+\end{ExampleBox}
+
+\begin{TheoremBox}{Stetigkeit bleibt beim Rechnen erhalten}{real_functions_continuity_rules}
+  Konstante Vielfache, Summen, Differenzen und Produkte stetiger Funktionen sind stetig;
+  Quotienten sind stetig, wo der Nenner nicht null ist.
+  Insbesondere sind Polynome auf $\R$ stetig.
+
+  Auch eine \emph{Verkettung} \EnglishTerm{composition}
+  $(f\circ g)(x)=f(g(x))$ ist bei $a$ stetig, wenn $g$ bei $a$ und
+  $f$ bei $g(a)$ stetig sind und die Verkettung in der Nähe definiert ist.
+\end{TheoremBox}
+% Handschrift: PDF-Seite 64 (Nachweis für die Summe).
+Für $h(x)=f(x)+g(x)$ mit bei $a$ stetigen Funktionen $f$ und $g$
+zeigt das Grenzwertgesetz unmittelbar:
+\[
+  \begin{aligned}
+    \lim_{x\to a}h(x)
+      &=\lim_{x\to a}\bigl(f(x)+g(x)\bigr)\\
+      &=\lim_{x\to a}f(x)+\lim_{x\to a}g(x)\\
+      &=f(a)+g(a)=h(a).
+  \end{aligned}
+\]
+\begin{RemarkBox}[remark title=Stetigkeit und Definitionsmenge]
+  Eine fehlende Stelle gehört nicht zur Definitionsmenge: Dort behaupten
+  wir keine Stetigkeit oder Unstetigkeit der ursprünglichen Funktion.
+  Insbesondere ist $1/x$ auf $\R\setminus\{0\}$ stetig, obwohl sein
+  Graph aus zwei getrennten Ästen besteht.
+\end{RemarkBox}

@@ -1,19 +1,29 @@
 \begin{tikzpicture}[>=Latex,
-  box/.style={draw=black!35,rounded corners=2pt,align=center,inner sep=6pt}]
-  \node[box] (start) at (0,0) {$f(x)=p(x)/q(x)$\quad\Lang{bei $x=a$}{at $x=a$}};
-  \node[box] (defined) at (-4,-1.5) {$q(a)\ne0$};
-  \node[box] (gap) at (4,-1.5) {$q(a)=0$\\\Lang{Definitionslücke}{excluded input}};
-  \draw[->,black!60] (start)--(defined);
-  \draw[->,black!60] (start)--(gap);
-  \node[box] (zero) at (-6,-3.3) {$p(a)=0$\\\textcolor{THMBlue}{\Lang{Nullstelle}{zero}}};
-  \node[box] (regular) at (-2.2,-3.3) {$p(a)\ne0$\\\Lang{keine Nullstelle}{not a zero}};
-  \node[box] (pole) at (2,-3.3) {$p(a)\ne0$\\\textcolor{THMBlue}{\Lang{Polstelle}{pole}}};
-  \node[box] (common) at (6,-3.3) {$p(a)=0$\\\Lang{Vielfachheiten}{multiplicities} $m,n$};
-  \draw[->,black!60] (defined)--(zero);
-  \draw[->,black!60] (defined)--(regular);
-  \draw[->,black!60] (gap)--(pole);
-  \draw[->,black!60] (gap)--(common);
-  \node[box] (compare) at (4.8,-5.3) {$m\ge n$: \Lang{hebbare Lücke}{removable gap}\\
-    $m<n$: \Lang{Polstelle}{pole}};
-  \draw[->,black!60] (common)--(compare);
+  box/.style={draw=black!35,rounded corners=2pt,align=center,
+    inner xsep=7pt,inner ysep=9pt},
+  branch/.style={->,draw=black!60,line width=0.6pt}]
+  \node[box] (start) at (0,0)
+    {$f(x)=\dfrac{Z(x)}{N(x)}$\quad\Lang{an der Stelle $x=a$}{at $x=a$}};
+  \node[box,text width=5.8cm,minimum height=2cm] (gap) at (-3.5,-3.4)
+    {\textcolor{THMBlue}{\emph{\Lang{Definitionslücke}{Gap in the domain}}}\enspace $a\notin D_f$\\
+     \Lang{\EnglishTerm{gap in the domain}}{\GermanTerm{Definitionslücke}}};
+  \node[box,text width=5.8cm,minimum height=2cm] (zero) at (3.5,-3.4)
+    {\textcolor{THMBlue}{\emph{\Lang{Nullstelle}{Zero}}}\enspace $f(a)=0$\\
+     \Lang{\EnglishTerm{zero}}{\GermanTerm{Nullstelle}}};
+  \draw[branch] (start.south)--node[midway,above left,xshift=-4pt,yshift=-8pt]{$N(a)=0$}(gap.north);
+  \draw[branch] (start.south)--node[midway,right,xshift=35pt,align=left]
+    {$Z(a)=0$\\$N(a)\ne0$}(zero.north);
+  \node[box,text width=5.8cm] (check) at (3.5,-7.0)
+    {\Lang{Linearfaktorzerlegung:\\$(x-a)$ vollständig kürzen}{Linear factorization:\\cancel $(x-a)$ completely}};
+  \node[box,text width=5.8cm,minimum height=2cm] (pole) at (-3.5,-10.8)
+    {\textcolor{THMBlue}{\emph{\Lang{Polstelle}{Pole}}}\\
+     \Lang{\EnglishTerm{pole}}{\GermanTerm{Polstelle}}\\
+     \textcolor{green!55!black}{\Lang{vertikale Asymptote}{vertical asymptote}}};
+  \node[box,text width=5.8cm,minimum height=2cm] (hole) at (3.5,-10.8)
+    {\textcolor{THMBlue}{\emph{\Lang{Hebbare Definitionslücke}{Removable singularity}}}\\
+     \Lang{\EnglishTerm{removable singularity}}{\GermanTerm{hebbare Definitionslücke}}};
+  \draw[branch] (gap.south)--node[pos=.33,below,yshift=-2pt]{$Z(a)=0$}(check.north);
+  \draw[branch] (gap.south)--node[midway,left,xshift=-5pt]{$Z(a)\ne0$}(pole.north);
+  \draw[branch] (check.south)--node[pos=.82,above,yshift=12pt]{$N(a)=0$}(pole.north east);
+  \draw[branch] (check.south)--node[midway,right,xshift=9pt]{$N(a)\ne0$}(hole.north);
 \end{tikzpicture}

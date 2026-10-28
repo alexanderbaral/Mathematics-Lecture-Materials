@@ -1,198 +1,144 @@
-\subsection{Polstellen: Was nach dem Kürzen übrig bleibt}
+\subsection{Nullstellen und Definitionslücken}
 \label{subsec:real_functions_poles}
-Nicht jede ausgeschlossene Eingabe lässt sich ergänzen.
-Die Vielfachheiten der gemeinsamen Faktoren entscheiden darüber,
-ob eine Lücke hebbar ist oder die Werte unbegrenzt werden.
-\par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Polstelle}{real_functions_pole}
-  Eine ausgeschlossene Stelle $a$ einer gebrochen-rationalen Funktion
-  heißt \emph{Polstelle} \EnglishTerm{pole}, wenn
-  $\lim_{x\to a}|f(x)|=+\infty$ gilt.
-  Die Gerade $x=a$ heißt dann \emph{senkrechte Asymptote}
-  \EnglishTerm{vertical asymptote}.
-\end{DefinitionBox}
-\begin{ExampleBox}[before skip=0.3\baselineskip]{Gemeinsame Nullstellen reichen nicht aus}{real_functions_common_zeros}
-  Bei allen drei Termen werden Zähler und Nenner für $x\to1$ null.
-  Kürzen Sie und entscheiden Sie, welches Verhalten bleibt.
-  \[
-    f(x)=\frac{x-1}{x-1},\qquad
-    g(x)=\frac{(x-1)^2}{x-1},\qquad
-    h(x)=\frac{x-1}{(x-1)^2}.
-  \]
-  \begin{ClozeArea}[34]{10}
-    \[
-      \begin{array}{l@{\quad}l}
-        \dfrac{x-1}{x-1}=1
-          &\text{hebbare Lücke, Grenzwert }1,\\[1.1em]
-        \dfrac{(x-1)^2}{x-1}=x-1
-          &\text{hebbare Lücke, Grenzwert }0,\\[1.1em]
-        \dfrac{x-1}{(x-1)^2}=\dfrac1{x-1}
-          &\text{Polstelle}.
-      \end{array}
-      \qquad(x\ne1)
-    \]
-    Im dritten Fall werden die Werte von $h$ bei der Annäherung an $1$
-    von links beliebig stark negativ, von rechts beliebig groß positiv.
-  \end{ClozeArea}
-\end{ExampleBox}
-\end{minipage}
-
-
-\begin{KeyPointBox}{Vielfachheiten vergleichen}{real_functions_pole_order}
-  An einer Nennernullstelle $a$ schreiben wir mit $r(a),s(a)\ne0$
-  \[
-    f(x)=\frac{(x-a)^m r(x)}{(x-a)^n s(x)}
-        =(x-a)^{m-n}\frac{r(x)}{s(x)},\qquad n\ge1,\ m\ge0.
-  \]
-  Für $m\ge n$ ist die Lücke hebbar. Für $m<n$ bleibt eine Polstelle
-  der Ordnung $n-m$:
-  \begin{itemize}
-    \item ungerade Ordnung: entgegengesetzte Vorzeichen auf beiden Seiten;
-    \item gerade Ordnung: dasselbe Vorzeichen auf beiden Seiten.
-  \end{itemize}
-  Das konkrete Vorzeichen ergibt sich zusätzlich aus $r(a)/s(a)$.
-\end{KeyPointBox}
-% Handschrift: PDF-Seite 24; gemeinsame Nullstellen nach Vielfachheit präzisiert.
-\begin{center}
-  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_decision.tex}
-\end{center}
-\begin{ExampleBox}{Eine Nullstelle ohne Definitionslücke und eine Polstelle}{real_functions_rational_zero_and_pole}
-  Vergleichen Sie die Zähler- und Nennernullstellen der beiden Funktionen.
-  Bestimmen Sie anschließend Nullstellen, Definitionsmengen und Polstellen.
-  \begin{enumerate}[label=\alph*)]
-    \item $f(x)=\dfrac{x}{x^2+1}$: Der Nenner ist stets positiv.
-      \[
-        D_f=\Cloze{2cm}{\R},\qquad
-        f(x)\overset{!}{=}0\ \Longleftrightarrow\ x=\Cloze{1cm}{0}.
-      \]
-    \item $g(x)=\dfrac1{x-1}$: Der Zähler wird nie null.
-      \[
-        D_g=\Cloze{3cm}{\R\setminus\{1\}}.
-      \]
-      Bei der Annäherung an $1$ werden die Werte von links
-      \Cloze{5cm}{beliebig stark negativ}, von rechts
-      \Cloze{5cm}{beliebig groß positiv}.
-      Es gibt keine Nullstelle; $x=1$ ist eine Polstelle.
-  \end{enumerate}
+\begin{DefinitionBox}{Nullstellen und Definitionslücken}{real_functions_rational_zeros_and_gaps}
+  \label{def:real_functions_removable_gap}
+  \label{def:real_functions_pole}
+  Die Nullstellen von Zähler $Z$ und Nenner $N$ erlauben folgende Einteilung:
   \begin{center}
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_zero_and_pole.tex}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_case_hierarchy.tex}
   \end{center}
-  Die hebbare Lücke von $(x^2-1)/(x+1)$ wurde zuvor in
-  Beispiel~\ref{ex:real_functions_cancelled_hole} untersucht.
+  Das folgende Ablaufdiagramm zeigt die Unterscheidung im Einzelnen.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_decision.tex}
+  \end{center}
+  Polstellen und hebbare Definitionslücken sind beides Definitionslücken.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Gebrochen-rationale Funktion mit Nullstelle}{real_functions_rational_zero_example}
+  Wir untersuchen die Funktion $f(x)$ auf Nullstellen und Definitionslücken.
+  \[
+    f(x)=\frac{x}{x^2+1}.
+  \]
+  Aus der Linearfaktorzerlegung von Zähler und Nenner lesen wir deren Nullstellen ab:
+  \begin{ClozeArea}[32]{6}
+    \[
+      \begin{alignedat}{3}
+        Z(x)&=x
+          &\quad\Longleftrightarrow\quad& Z(x)=(x-0)
+          &\quad\Longrightarrow\quad& \text{Nullstelle bei }x_1=0,\\[0.8em]
+        N(x)&=x^2+1
+          &\quad\Longleftrightarrow\quad& N(x)=x^2+1\ge1
+          &\quad\Longrightarrow\quad& \textcolor{red}{\text{keine Nullstelle}}.
+      \end{alignedat}
+    \]
+  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[c]{0.45\linewidth}
+    Da der Nenner keine Nullstellen hat, liegt keine Definitionslücke vor:
+    \[
+      D_f=\Cloze{2cm}{\R}.
+    \]
+    Die Zählernullstelle $x_1=0$ liegt im Definitionsbereich $D_f$ und ist damit
+    eine Nullstelle von $f$:
+    \[
+      f(0)=\Cloze{0.8cm}{0}.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.52\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_zero.tex}
+  \end{minipage}
 \end{ExampleBox}
 
-\clearpage
-\subsection{Asymptoten im Unendlichen}
-\label{subsec:real_functions_asymptotes}
-Ein Graph kann sich für große Eingaben einer Geraden annähern.
-Dabei muss der Unterschied der Funktionswerte gegen null gehen --
-ein bloß ähnlicher Verlauf genügt nicht.
-\par\noindent\begin{minipage}{\linewidth}
-\begin{DefinitionBox}{Waagerechte und schiefe Asymptote}{real_functions_asymptote}
-  Die Gerade $y=mx+b$ ist eine \emph{Asymptote} \EnglishTerm{asymptote}
-  für $x\to+\infty$ beziehungsweise $x\to-\infty$, wenn
+\begin{ExampleBox}{Gebrochen-rationale Funktion mit Polstelle}{real_functions_rational_pole_example}
+  Wir untersuchen die Funktion $g(x)$ auf Nullstellen und Definitionslücken.
   \[
-    \lim_{x\to\pm\infty}\bigl(f(x)-(mx+b)\bigr)=0
+    g(x)=\frac{1}{x-1}.
   \]
-  für die betreffende Richtung gilt.
-  Für $m=0$ heißt sie \emph{waagerecht}
-  \EnglishTerm{horizontal}, für $m\ne0$ \emph{schief}
-  \EnglishTerm{oblique}.
-\end{DefinitionBox}
-\begin{ExampleBox}[before skip=0.3\baselineskip]{Die Polynomdivision zeigt die Asymptote}{real_functions_slant_asymptote}
-  Wir untersuchen $f(x)=(x^2+1)/(x-1)$ für große positive und negative $x$.
+  Aus der Linearfaktorzerlegung von Zähler und Nenner lesen wir deren Nullstellen ab:
+  \begin{ClozeArea}[32]{6}
+    \[
+      \begin{alignedat}{3}
+        Z(x)&=1
+          &\quad\Longleftrightarrow\quad& Z(x)=1
+          &\quad\Longrightarrow\quad& \textcolor{red}{\text{keine Nullstelle}},\\[0.8em]
+        N(x)&=x-1
+          &\quad\Longleftrightarrow\quad& N(x)=(x-1)
+          &\quad\Longrightarrow\quad& \text{Nullstelle bei }x_1=1.
+      \end{alignedat}
+    \]
+  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[c]{0.45\linewidth}
+    Die Nennernullstelle $x_1=1$ ist eine Definitionslücke:
+    \[
+      D_g=\Cloze{3cm}{\R\setminus\{1\}}.
+    \]
+    Da aber $Z(1)=1 \neq 0$, liegt bei $x=1$ eine Polstelle vor.
+    Zu jeder Polstelle gehört eine \textcolor{green!55!black}{\emph{vertikale Asymptote}}
+    \EnglishTerm{vertical asymptote} an dieser Stelle.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.52\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_pole.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+\begin{ExampleBox}{Gebrochen-rationale Funktion mit hebbarer Definitionslücke}{real_functions_cancelled_hole}
+  Wir untersuchen die Funktion $f(x)$ auf Nullstellen und Definitionslücken.
+  \[
+    f(x)=\frac{x^2-1}{x+1}.
+  \]
+  Aus der Linearfaktorzerlegung von Zähler und Nenner lesen wir deren Nullstellen ab:
+  \begin{ClozeArea}[34]{5}
+    \[
+      \begin{alignedat}{3}
+        Z(x)&=x^2-1
+          &\quad\Longleftrightarrow\quad& Z(x)=(x-1)(x+1)
+          &\quad\Longrightarrow\quad& \text{Nullstellen bei }x_1=-1,\;x_2=1,\\[0.8em]
+        N(x)&=x+1
+          &\quad\Longleftrightarrow\quad& N(x)=(x+1)
+          &\quad\Longrightarrow\quad& \text{Nullstelle bei }x_1=-1.
+      \end{alignedat}
+    \]
+  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[c]{0.45\linewidth}
+    Die Nennernullstelle $x_1=-1$ ist eine Definitionslücke:
+    \[
+      D_f=\Cloze{3cm}{\R\setminus\{-1\}}.
+    \]
+    Die Zählernullstelle $x_2=1$ liegt im Definitionsbereich $D_f$ und ist damit
+    eine Nullstelle von $f$:
+    \[
+      f(x_2)=f(1)=\Cloze{0.8cm}{0}.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.52\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_removable_gap.tex}
+  \end{minipage}
+  \par\medskip
+  Bei $x_1=-1$ können wir $f$ nicht auswerten.
+  Der Graph zeigt jedoch, welchem Wert sich die Funktion dort nähert.
+  Diesen Grenzwert bestimmen wir, indem wir in der Linearfaktorzerlegung von
+  Zähler und Nenner den gemeinsamen Faktor $(x+1)$ kürzen:
   \begin{ClozeArea}[34]{6}
-    Die Polynomdivision zerlegt den Term in eine Gerade und einen Rest:
     \[
-      f(x)=x+1+\frac2{x-1}.
+      f(x)=\frac{(x-1)\cancel{(x+1)}}{\cancel{(x+1)}}=x-1\qquad(x\ne-1).
     \]
-    Weil $\lim_{x\to\pm\infty}2/(x-1)=0$, ist $y=x+1$
-    auf beiden Seiten eine schiefe Asymptote.
-    Zusätzlich ist $x=1$ eine senkrechte Asymptote.
   \end{ClozeArea}
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_slant_asymptote.tex}
-  \end{center}
-\end{ExampleBox}
-\end{minipage}
+  In den Term $x-1$ lässt sich auch $x=-1$ einsetzen.
+  Deshalb definieren wir mit demselben Term die Funktion $\widetilde f$ auf ganz $\R$:
+  \[
+    \widetilde f(x)=x-1 \qquad(x\in\R).
+  \]
+  Die Funktion $\widetilde f$ ist eine \emph{stetige Fortsetzung}
+  \EnglishTerm{continuous extension} von $f$.
+  Sie unterscheidet sich von $f$ nur dadurch, dass sie auch bei $x=-1$ definiert ist.
 
-
-\begin{TheoremBox}{Gradvergleich für gebrochen-rationale Funktionen}{real_functions_degree_comparison}
-  Seien $m=\deg p$, $n=\deg q$ und $a_m,b_n$ die Leitkoeffizienten.
-  Für $f=p/q$ mit $p\ne0$ gilt:
-  \begin{center}
-    \renewcommand{\arraystretch}{1.5}
-    \begin{tabular}{@{}ll@{}}
-      \toprule
-      Gradvergleich & Verhalten für $x\to\pm\infty$\\ \midrule
-      $m<n$ & $\lim_{x\to\pm\infty}f(x)=0$\\
-      $m=n$ & $\lim_{x\to\pm\infty}f(x)=a_m/b_n$\\
-      $m=n+1$ & schiefe Asymptote aus Polynomdivision\\
-      $m>n+1$ & Annäherung an ein Polynom vom Grad $m-n$\\
-      \bottomrule
-    \end{tabular}
-  \end{center}
-  Allgemein liefert die Division $p=hq+r$ mit $\deg r<n$ die Zerlegung
-  $f=h+r/q$. Wegen $\lim_{x\to\pm\infty}r(x)/q(x)=0$ beschreibt $h$
-  das Verhalten im Unendlichen.
-\end{TheoremBox}
-% Handschrift: PDF-Seiten 27–29 (Herleitung und sämtliche Gradvergleichsfälle).
-Durch Ausklammern der höchsten Potenzen wird der Gradvergleich sichtbar:
-\[
-  \begin{gathered}
-    f(x)=x^{m-n}
-    \frac{a_m+a_{m-1}/x+\dots+a_0/x^m}
-         {b_n+b_{n-1}/x+\dots+b_0/x^n},\\[0.6em]
-    \lim_{x\to\pm\infty}
-      \frac{a_m+a_{m-1}/x+\dots+a_0/x^m}
-           {b_n+b_{n-1}/x+\dots+b_0/x^n}=\frac{a_m}{b_n}.
-  \end{gathered}
-\]
-Für $m>n$ wächst $|f(x)|$ daher gegen $\infty$; das Vorzeichen ergibt
-sich aus $a_m/b_n$ und der Parität von $m-n$.
-
-\begin{ExampleBox}{Zwei waagerechte Asymptoten}{real_functions_horizontal_asymptote_examples}
-  Dividieren Sie Zähler und Nenner durch die höchste Nennerpotenz.
-  Bestimmen Sie so die Asymptote für beide Richtungen im Unendlichen.
-  \begin{ClozeArea}[34]{7}
-    \[
-      \begin{aligned}
-        \lim_{x\to\pm\infty}\frac{x}{x^2+1}
-          &=\lim_{x\to\pm\infty}\frac{1/x}{1+1/x^2}=0,\\[0.8em]
-        \lim_{x\to\pm\infty}\frac{4x^2+2x+1}{x^2+1}
-          &=\lim_{x\to\pm\infty}\frac{4+2/x+1/x^2}{1+1/x^2}=4.
-      \end{aligned}
-    \]
-    Die waagerechten Asymptoten sind $y=0$ beziehungsweise $y=4$.
-  \end{ClozeArea}
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_horizontal_asymptotes.tex}
-  \end{center}
+  Den gesuchten Grenzwert können wir daher direkt mit der stetigen Fortsetzung bestimmen:
+  \[
+    \lim_{x\to-1}f(x)=\widetilde f(-1)=-2.
+  \]
 \end{ExampleBox}
-\begin{ExampleBox}{Annäherung an eine Parabel}{real_functions_polynomial_asymptote}
-  Für $f(x)=(x^4-2x^2+1)/(x^2+1)$ ist der Zählergrad um $2$ größer.
-  Bestimmen Sie durch Polynomdivision das Polynom, dem sich der Graph nähert.
-  \begin{ClozeArea}[34]{9}
-    \[
-      \begin{array}{r@{\;}l}
-        (x^4-2x^2+1):(x^2+1)&=x^2-3+\dfrac4{x^2+1}\\[0.8em]
-        \underline{-(x^4+x^2)}&\\[0.5em]
-        -3x^2+1&\\[0.5em]
-        \underline{-(-3x^2-3)}&\\[0.5em]
-        4&
-      \end{array}
-    \]
-    Mit $A(x)=x^2-3$ gilt
-    $\lim_{x\to\pm\infty}\bigl(f(x)-A(x)\bigr)=
-      \lim_{x\to\pm\infty}4/(x^2+1)=0$.
-    Außerdem ist $\lim_{x\to\pm\infty}f(x)=+\infty$.
-  \end{ClozeArea}
-  \begin{center}
-    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_polynomial_asymptote.tex}
-  \end{center}
-\end{ExampleBox}
-\begin{RemarkBox}[remark title=Form und Schnittpunkte von Asymptoten]
-  Für $m>n+1$ ist der Graph von $h$ eine polynomial beschriebene
-  Annäherungskurve, keine schiefe Gerade. Eine Asymptote darf außerdem
-  vom Funktionsgraphen geschnitten werden.
-\end{RemarkBox}

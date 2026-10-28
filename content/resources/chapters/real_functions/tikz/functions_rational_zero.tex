@@ -1,0 +1,18 @@
+\begin{tikzpicture}[>=Latex,line cap=round,x=0.9cm,y=3.2cm]
+  \draw[black!8] (-4,-0.5) grid[xstep=1,ystep=0.25] (4,0.5);
+  \draw[->,black!55] (-4.2,0)--(4.35,0) node[right] {$x$};
+  \draw[->,black!55] (0,-0.65)--(0,0.7) node[above] {$y$};
+  \foreach \xx in {-4,-3,-2,-1,1,2,3,4} {
+    \draw[black!55] (\xx,-0.025)--(\xx,0.025);
+    \node[below=4pt] at (\xx,0) {$\xx$};
+  }
+  \foreach \yy in {-0.5,0.5} {
+    \draw[black!55] (-0.035,\yy)--(0.035,\yy);
+  }
+  \node[left=4pt] at (0,0.5) {$\frac12$};
+  \node[right=4pt] at (0,-0.5) {$-\frac12$};
+  \draw[THMBlue,line width=1.1pt,domain=-4:4,samples=160]
+    plot (\x,{\x/(1+\x*\x)});
+  \fill[THMBlue] (0,0) circle (2.3pt);
+  \node[THMBlue,anchor=south] at (3.4,0.38) {$f$};
+\end{tikzpicture}

@@ -1,0 +1,27 @@
+\begin{tikzpicture}[x=1.1cm,y=0.5cm,>=Latex,line cap=round]
+  \draw[black!8,step=1] (-4,-5) grid (6,6);
+  \draw[->,black!55] (-4.2,0)--(6.35,0) node[right] {$x$};
+  \draw[->,black!55] (0,-5.25)--(0,6.35) node[above] {$y$};
+  \foreach \xx in {-4,-3,-2,-1,1,2,3,4,5,6} {
+    \draw[black!50] (\xx,-0.08)--(\xx,0.08);
+    \node[below=4pt,inner sep=1pt] at (\xx,0) {$\xx$};
+  }
+  \foreach \yy in {-4,-2,2,4,6} {
+    \draw[black!50] (-0.05,\yy)--(0.05,\yy);
+    \node[left=4pt,inner sep=1pt] at (0,\yy) {$\yy$};
+  }
+  \node[below left=3pt,inner sep=1pt] at (0,0) {$0$};
+  \begin{scope}
+    \clip (-4,-5) rectangle (6,6);
+    % Draw the original quotient and leave x=1 open.
+    \draw[THMBlue,line width=1.15pt,domain=-4:0.94,samples=100]
+      plot (\x,{(\x*\x-1)/(\x*\x-3*\x+2)});
+    \draw[THMBlue,line width=1.15pt,domain=1.06:1.93,samples=100]
+      plot (\x,{(\x*\x-1)/(\x*\x-3*\x+2)});
+    \draw[THMBlue,line width=1.15pt,domain=2.07:6,samples=120]
+      plot (\x,{(\x*\x-1)/(\x*\x-3*\x+2)});
+  \end{scope}
+  \fill[THMBlue] (-1,0) circle (2.2pt);
+  \draw[THMBlue,line width=1pt] (1,-2) circle (2.5pt);
+  \node[THMBlue,anchor=west] at (3.6,5.3) {$f$};
+\end{tikzpicture}
