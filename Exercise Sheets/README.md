@@ -71,17 +71,38 @@ Voraussetzungen: TeX Live mit LuaLaTeX und latexmk; Fira Sans und Libertinus Mat
 
 Bei lokal gesperrten PowerShell-Skripten ist ein einzelner Aufruf mit `powershell -NoProfile -ExecutionPolicy Bypass -File tools/build-all.ps1 -Language de -Solutions both` möglich; keine globale Ausführungsrichtlinie wird geändert.
 
-Jede Variante erhält einen eigenen Buildstatus und Hilfsdateien unter `%LOCALAPPDATA%/_tmp_LatexCache/mathematics_exercise_sheets/latex_runs/<variante>/<blatt>/<lauf>/`. Getrennte Läufe vermeiden das Überschreiben von Hilfsdateien, die ein Synchronisierungsdienst vorübergehend sperrt. Fehlende Inhalte oder Fehler liefern Exitcode 1; am betroffenen Ausgabepfad verbleibt keine alte PDF. Andere Varianten werden weiter bearbeitet. Der letzte Aufruf schreibt `build_status.json` im lokalen Cache. Ein Build führt keine Übersetzung durch. `-Force` erzwingt einen Neubuild. `-Warm` verwendet das jüngste vorhandene Arbeitsverzeichnis je Blatt/Variante mit PDF und latexmk-Zustand; latexmk prüft dort die Abhängigkeiten und baut bei Änderungen neu. Ohne passenden Cache erfolgt ein normaler Build. Die Optionen `-Warm` und `-Force` sind nicht kombinierbar. Ohne `-Warm` bleiben die bisherigen isolierten Neubuilds bestehen.
+Beide Dokumenttypen verwenden die gemeinsame Steuerung in ../_Shared/tools/build_runtime.py.
+Jeder Auftrag erhält einen eingefrorenen Quellstand. Es läuft höchstens ein Blattbau;
+weitere Anforderungen werden zusammengefasst und der neueste Stand folgt nach dem laufenden Auftrag.
+Die getrennte Warteschlange des Skripts blockiert die Blätter nicht.
 
-Bei vollständiger Blattauswahl erzeugt derselbe Aufruf automatisch `_Übungsblatt Alle.pdf` bzw. `_Übungsblatt Alle (mit Lösungen).pdf` je gewählter Sprache/Lösungsvariante. Nur erfolgreiche Einzel-PDFs aus diesem Lauf werden zusammengefügt; die Gesamt-PDF hat einen eigenen Buildstatus. Ein Teilbuild entfernt die betroffene alte Gesamt-PDF, damit sie nicht einen veralteten Entwicklungsstand zeigt. Für eine neue Gesamtübersicht den Befehl ohne `-Sheet` ausführen. Gedruckte Seitenzahlen bleiben blattweise; Lesezeichen erleichtern die Navigation.
+Zuerst werden die betroffenen Aufgaben- und Lösungsblätter geprüft und veröffentlicht.
+Anschließend entstehen die Sammel-PDFs im Hintergrund. Unveränderte Einzelblätter bleiben
+einschließlich ihrer Dateizeit erhalten. Bei einem Fehler bleiben die letzten erfolgreichen
+Einzel- und Sammel-PDFs verfügbar. Der Status nennt den fehlgeschlagenen Stand und das Log.
+Ein identischer Fehler wird nicht automatisch erneut ausgeführt.
 
-Die Editor-Buildaktion ruft ebenfalls `tools/build-all.ps1` für alle deutschen Blätter und beide Lösungsmodi auf. Es gibt keinen separaten Direct-Build. `main.tex` bleibt der gemeinsame Dokumentkörper. Laufzeiten pro Blatt/Variante, PDF-Zusammenführung und Gesamtbuild stehen im lokalen Cache in `build_timing.json`; `build_status.json` enthält zusätzlich die Dauer jeder Ausgabe.
+tools/build-all.ps1 bleibt als kompatibler Einstieg erhalten. Vorhandene Arbeitsverzeichnisse
+unter %USERPROFILE%/AppData/Local/_tmp_LatexCache/mathematics_exercise_sheets/latex_runs/
+werden standardmäßig wiederverwendet. -Warm und -Incremental bleiben als Kompatibilitätsoptionen
+verfügbar; -Force erzwingt den Neubau. -Wait wartet zusätzlich auf die Sammel-PDFs.
+Ein Teilauftrag aktualisiert eine Sammlung nur, wenn alle übrigen Blätter zum angeforderten
+Quellstand passen; andernfalls bleibt die letzte erfolgreiche Sammlung erhalten.
+
+tools/build-update.ps1 -Status zeigt veröffentlichten Stand, laufenden Auftrag und Warteschlange.
+tools/build-update.ps1 -Wait aktualisiert beide deutschen Varianten und wartet bis zum Abschluss.
+Die gemeinsame Sprachhierarchie bleibt unverändert: Deutsch ist Master, Englisch wird nur auf Auftrag nachgeführt.
+
+build_timing.json und build_status.json bleiben im bestehenden lokalen Cache erhalten.
+Das fortlaufende updates/timings.csv protokolliert zusätzlich Blattphase, Zusammenführung und Gesamtlauf.
+Die Abhängigkeitserkennung berücksichtigt ../_Shared. Die gemeinsame TikZ-Cache-Prüfung steht
+über tools/build-cache.ps1 bereit; zurzeit enthalten die Blätter keine eigenständigen TikZ-Inhaltsgrafiken.
 
 ## Dokumentation
 
 Die ausführlichen Unterlagen liegen in `docs/`: [Arbeitsregeln](docs/AGENTS.md), [Gestaltungsregeln](docs/DESIGN_GUIDE.md), [Projektstruktur](docs/PROJECT_STRUCTURE.md), [didaktischer Abgleich](docs/didactic_review.md) und [Migrationsstatus](docs/migration_status.md). Die kurze `AGENTS.md` im Hauptordner verweist auf die verbindlichen Regeln.
 
-Einzige Skriptreferenz ist `references/build-de.pdf`. Neue Fassungen dort ablegen; es gibt keinen automatischen Zugriff auf das externe Skriptprojekt.
+Einzige Skriptreferenz ist `../_Shared/legacy/Exercise Sheets/build-de.pdf`. Neue Fassungen dort ablegen; es gibt keinen automatischen Zugriff auf das externe Skriptprojekt.
 
 ## Bearbeiten
 
@@ -90,7 +111,7 @@ Einzige Skriptreferenz ist `references/build-de.pdf`. Neue Fassungen dort ablege
 - `main.tex`: einziger Dokumentkörper; vier Einstiege unter `tools/` wählen Sprache und Lösungsmodus.
 - `content/chapters_de/<chapter>/_chapter.tex`: geordnete Aufgabendateien. Pro Sprache wird jede Aufgabe einmal gepflegt. Keine leeren EN-Kapitel angelegt.
 - `content/resources/chapters/`: Lösungen, Bilder, bearbeitbare Grafikquellen und Codebeispiele; bytegleich aus dem früheren Archiv übernommen.
-- `references/build-de.pdf`: aktuelle verfügbare Skript-PDF als reine Strukturreferenz. Skriptquellen gehören nicht zu diesem Projekt.
+- `../_Shared/legacy/Exercise Sheets/build-de.pdf`: aktuelle verfügbare Skript-PDF als reine Strukturreferenz. Skriptquellen gehören nicht zu diesem Projekt.
 - [Migrationsstatus](docs/migration_status.md): Quellen, Teilpunkte, Lösungsstand, Korrekturen, offene Fragen und Prüfung.
 - [Didaktischer Abgleich](docs/didactic_review.md): erhaltene Zuordnung; spätere Skriptsynchronisierung offen.
 

@@ -9,6 +9,11 @@ import tempfile
 from pathlib import Path
 from pypdf import PdfReader, PdfWriter
 from cache_paths import CACHE_ROOT
+import importlib.util
+_runtime = Path(__file__).resolve().parents[2] / '_Shared/tools/build_runtime.py'
+_spec = importlib.util.spec_from_file_location('lecture_build_runtime', _runtime)
+_common = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_common)
 
 
 def combine(manifest_path, output):
@@ -20,7 +25,9 @@ def combine(manifest_path, output):
     # Key includes ordered source bytes, bookmark titles and merger implementation.
     fingerprint = hashlib.sha256(Path(__file__).read_bytes())
     for entry in entries:
-        fingerprint.update(json.dumps(entry, sort_keys=True, ensure_ascii=False).encode())
+        key = {k: v for k, v in entry.items() if k != "cache_path"}
+        key["path"] = entry.get("cache_path", entry["path"])
+        fingerprint.update(json.dumps(key, sort_keys=True, ensure_ascii=False).encode())
         fingerprint.update(Path(entry['path']).read_bytes())
     combined_cache = CACHE_ROOT / 'combined'
     combined_cache.mkdir(exist_ok=True)
@@ -28,12 +35,11 @@ def combine(manifest_path, output):
     checksum = cached.with_suffix('.sha256')
     if cached.exists() and checksum.exists():
         if hashlib.sha256(cached.read_bytes()).hexdigest() == checksum.read_text():
-            shutil.copyfile(cached, output)
+            _common.publish({output: cached.read_bytes()})
             print(f'{output}: unchanged inputs, combined PDF reused')
             return
     with tempfile.NamedTemporaryFile(suffix='.pdf', dir=CACHE_ROOT, delete=False) as handle:
         temporary = Path(handle.name)
-    output.unlink(missing_ok=True)
     writer = PdfWriter()
     expected_pages = 0
     try:
@@ -46,7 +52,7 @@ def combine(manifest_path, output):
         result = PdfReader(temporary)
         if len(result.pages) != expected_pages or len(result.outline) != len(entries):
             raise ValueError('Combined PDF page or bookmark count differs.')
-        shutil.copyfile(temporary, output)
+        _common.publish({output: temporary.read_bytes()})
         shutil.copyfile(temporary, cached)
         checksum.write_text(hashlib.sha256(cached.read_bytes()).hexdigest())
         print(f'{output}: {expected_pages} pages, {len(entries)} sheet bookmarks')

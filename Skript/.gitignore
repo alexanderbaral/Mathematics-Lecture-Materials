@@ -26,6 +26,7 @@
 Thumbs.db
 .vscode/*
 !.vscode/tasks.json
+!.vscode/settings.json
 __pycache__/
 *.pyc
 legacy/

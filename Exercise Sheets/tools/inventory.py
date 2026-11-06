@@ -1,4 +1,5 @@
 """Read-only source inventory; writes audit data in the external local cache."""
+import os
 import sys
 sys.dont_write_bytecode = True
 from pathlib import Path
@@ -9,6 +10,13 @@ from pypdf import PdfReader
 from cache_paths import CACHE_ROOT
 
 ROOT = Path(__file__).resolve().parents[1]
+LEGACY = ROOT.parent / "_Shared/legacy/Exercise Sheets"
+def resolve_reference(relative):
+    relative = str(relative).replace(chr(92), "/")
+    return LEGACY / relative[len("references/"):] if relative.startswith("references/") else ROOT / relative
+def relative_name(path):
+    return Path(os.path.relpath(path, ROOT)).as_posix()
+
 
 
 def read_tex(path):
@@ -27,12 +35,12 @@ def uncomment(text):
 
 def inventory():
     files, documents = [], []
-    paths = [p for folder in ('references','content/resources') for p in (ROOT/folder).rglob('*')]
+    paths = [p for folder in (LEGACY, ROOT/'content/resources') for p in folder.rglob('*')]
     for path in sorted(paths):
         if not path.is_file():
             continue
         raw = path.read_bytes()
-        files.append(dict(path=path.relative_to(ROOT).as_posix(), bytes=len(raw),
+        files.append(dict(path=relative_name(path), bytes=len(raw),
                           sha256=hashlib.sha256(raw).hexdigest()))
         if path.suffix != '.tex':
             continue
@@ -50,13 +58,13 @@ def inventory():
                 candidates = [resolved] if resolved.suffix else [resolved.with_suffix(x) for x in ('.tex', '.pdf', '.png', '.PNG', '.jpg')]
                 found = next((p for p in candidates if p.is_file()), None)
                 dep = dict(kind=kind, options=options or '', target=target,
-                           resolved=found.relative_to(ROOT).as_posix() if found else None)
+                           resolved=relative_name(found) if found else None)
                 if found and found.suffix.lower() == '.pdf':
                     dep['pages'] = len(PdfReader(found).pages)
                 dependencies.append(dep)
             exercises.append(dict(title=heading.group(1), line=text[:heading.start()].count('\n')+1,
                                   item_count=len(re.findall(r'\\item\b', body)), dependencies=dependencies))
-        documents.append(dict(path=path.relative_to(ROOT).as_posix(), exercises=exercises,
+        documents.append(dict(path=relative_name(path), exercises=exercises,
                               supplementary='_fremdFiles' in path.parts))
     result = dict(files=files, documents=documents)
     destination = CACHE_ROOT / 'source_inventory.json'

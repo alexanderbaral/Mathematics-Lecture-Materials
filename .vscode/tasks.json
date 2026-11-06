@@ -10,7 +10,7 @@
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "${workspaceFolder}/tools/build.ps1",
+        "${workspaceFolder}/_Shared/tools/build.ps1",
         "-Target",
         "${input:buildTarget}"
       ],

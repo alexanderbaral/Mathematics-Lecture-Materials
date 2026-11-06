@@ -9,7 +9,7 @@ import re
 import logging
 from pypdf import PdfReader
 from pypdf.generic import ContentStream
-from inventory import ROOT, read_tex, uncomment
+from inventory import ROOT, read_tex, uncomment, resolve_reference
 from cache_paths import CACHE_ROOT
 logging.getLogger('pypdf').setLevel(logging.ERROR)
 
@@ -100,7 +100,7 @@ def verify():
     assert not list((ROOT/'tools').rglob('__pycache__')), 'Python cache in project'
     assert not (ROOT/'script_reference').exists(), 'Removed script source archive has returned'
     assert not (ROOT/'build/direct').exists(), 'Removed direct build has returned'
-    reference = PdfReader(ROOT/'references/build-de.pdf')
+    reference = PdfReader(resolve_reference('references/build-de.pdf'))
     assert len(reference.pages) > 0, 'Empty script reference PDF'
     migration = json.loads((ROOT/'tools/migration_manifest.json').read_text(encoding='utf-8'))
     registry = (ROOT/'common/config.tex').read_text(encoding='utf-8')
@@ -113,7 +113,7 @@ def verify():
     }
     inventory = {'files':migration['relocated_assets']}
     for entry in migration['relocated_assets']:
-        assert sha(ROOT/entry['path']).lower() == entry['sha256'].lower(), entry['path']
+        assert sha(resolve_reference(entry['path'])).lower() == entry['sha256'].lower(), entry['path']
     records = [record for record in migration['exercises'] if record.get('active', True)]
     chapters = dict.fromkeys(r['chapter'] for r in records)
     summaries = []
@@ -135,7 +135,7 @@ def verify():
             for dep in r['dependencies']:
                 if dep['kind']=='includepdf':
                     assert dep['options']=='pages=-', dep
-                    original_pdf = PdfReader(ROOT/dep['source'])
+                    original_pdf = PdfReader(resolve_reference(dep['source']))
                     expected_solution_pages += len(original_pdf.pages)
                     expected_streams.extend(re.sub(rb'\s+', b' ', p.get_contents().get_data()).strip() for p in original_pdf.pages)
         for variant in ('de','de_solutions'):

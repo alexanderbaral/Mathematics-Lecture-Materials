@@ -17,6 +17,11 @@ In this workspace, **Ctrl+Shift+B** runs the default VS Code task
 Save your edits first. Both previews are published before the full build is
 queued in the background; the terminal task can finish while that worker is
 still running. Repeating the shortcut uses the same single-worker queue.
+Queueing, immutable snapshots, safe publication and timing history are provided by
+the shared `../_Shared/tools/build_runtime.py`. The exercise sheets use the same control
+protocol with their own independent queue. Existing TikZ and LaTeX caches keep
+their established locations. Snapshot workspaces include the actual inputs from
+`../_Shared`; unrelated teaching content remains in its own product folder.
 
 This creates the active PDF variants under `build/`. Until English translation begins, these are the German complete and German cloze PDFs; the two English entry points remain available for later. The folder contains the final PDFs and their `.synctex.gz` source maps, which let the PDF viewer jump from a PDF position to the corresponding TeX source. All other auxiliary files, logs, and cached TikZ figures use the persistent `%USERPROFILE%\AppData\Local\Temp\Mathematik1-Skript\` folder, not a redirected sandbox folder. Existing figures are checked against their actual source dependencies and reused across sessions; body-only layout changes do not discard them. The build reports how many figures are reused and warns before a complete rebuild. Normal builds preserve caches; the coordinator deliberately refuses broad `-CleanCache` deletion while this workflow is in use. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
 

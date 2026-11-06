@@ -84,9 +84,16 @@ class Planner:
                         path = path.resolve()
                         if path.is_relative_to(self.stage.resolve()):
                             paths.add(path)
+        shared = self.stage.parent / "_Shared"
+        if shared.is_dir():
+            entries = [p for p in shared.iterdir() if p.name.lower() not in {"legacy", "tools"}]
+            paths.update(p for entry in entries for p in ([entry] if entry.is_file() else entry.rglob("*")) if p.is_file())
         values = []
         for path in sorted(paths):
-            values.append((path.relative_to(self.stage).as_posix(), self.file_digest(path)))
+            relative = ("__shared__/" + path.relative_to(shared).as_posix()
+                        if shared.is_dir() and path.is_relative_to(shared)
+                        else path.relative_to(self.stage).as_posix())
+            values.append((relative, self.file_digest(path)))
         return hashlib.sha256(json.dumps([sheet, values], ensure_ascii=False).encode()).hexdigest()
 
     def plan(self):

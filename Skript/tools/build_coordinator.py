@@ -23,6 +23,19 @@ import sys
 import time
 import uuid
 
+
+import importlib.util
+_RUNTIME_PATH = Path(__file__).resolve().parents[2] / "_Shared/tools/build_runtime.py"
+_runtime_spec = importlib.util.spec_from_file_location("lecture_build_runtime", _RUNTIME_PATH)
+common = importlib.util.module_from_spec(_runtime_spec)
+_runtime_spec.loader.exec_module(common)
+
+def control():
+    return common.BuildControl(ROOT, UPDATE_CACHE, ROOT / "tools/build_coordinator.py", "script")
+
+def snapshots():
+    return common.Snapshots(UPDATE_CACHE)
+
 ROOT = Path(__file__).resolve().parents[1]
 CACHE = Path(os.environ.get('USERPROFILE', str(Path.home()))) / 'AppData/Local/Temp/Mathematik1-Skript'
 UPDATE_CACHE = CACHE / 'updates'
@@ -31,11 +44,11 @@ INPUT = re.compile(r'\\(?:input|include|CachedTikzFigure)\{([^{}]+)\}')
 
 
 def now():
-    return datetime.now().astimezone().isoformat(timespec='seconds')
+    return common.now()
 
 
 def digest(data):
-    return hashlib.sha256(data).hexdigest()
+    return common.digest(data)
 
 
 def current_project_record(record):
@@ -44,87 +57,27 @@ def current_project_record(record):
 
 
 def read_json(path, default=None):
-    return json.loads(path.read_text(encoding='utf-8')) if path.exists() else default
+    return common.read_json(path, default)
 
 
 def atomic(path, data):
-    """Same-volume replacement: viewers never see a partially written PDF."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
-    temporary.write_bytes(data)
-    try:
-        for attempt in range(20):
-            try:
-                os.replace(temporary, path)
-                return
-            except PermissionError:
-                if attempt == 19:
-                    raise
-                time.sleep(.1)
-    finally:
-        temporary.unlink(missing_ok=True)
+    return common.atomic(path, data)
 
 
 def save_json(path, value):
-    atomic(path, (json.dumps(value, ensure_ascii=False, indent=2) + '\n').encode('utf-8'))
+    return common.save_json(path, value)
 
 
 def record_timing(phase, revision, seconds, ok, sequence):
-    """Local measurements only; never require an AI monitoring turn."""
-    try:
-        with lock(UPDATE_CACHE / 'timings.lock'):
-            path = UPDATE_CACHE / 'timings.csv'
-            needs_header = not path.exists() or path.stat().st_size == 0
-            with path.open('a', encoding='utf-8', newline='') as stream:
-                writer = csv.writer(stream, delimiter=';')
-                if needs_header:
-                    writer.writerow(('finished', 'phase', 'revision', 'seconds', 'ok', 'sequence'))
-                writer.writerow((now(), phase, revision, seconds, ok, sequence))
-    except OSError as error:
-        print(f'Zeitprotokoll nicht geschrieben: {error}', file=sys.stderr, flush=True)
+    return control().timing(phase, revision, seconds, ok, sequence)
 
 
-@contextmanager
 def lock(path, blocking=True):
-    """Process-lifetime OS lock; automatically released after a crash."""
-    path.parent.mkdir(parents=True, exist_ok=True)
-    stream = path.open('a+b')
-    acquired = False
-    try:
-        while True:
-            try:
-                stream.seek(0)
-                if os.name == 'nt':
-                    import msvcrt
-                    msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
-                else:
-                    import fcntl
-                    fcntl.flock(stream, fcntl.LOCK_EX | fcntl.LOCK_NB)
-                acquired = True
-                break
-            except OSError:
-                if not blocking:
-                    break
-                time.sleep(.1)
-        yield acquired
-    finally:
-        if acquired:
-            stream.seek(0)
-            if os.name == 'nt':
-                import msvcrt
-                msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
-            else:
-                import fcntl
-                fcntl.flock(stream, fcntl.LOCK_UN)
-        stream.close()
+    return common.lock(path, blocking)
 
 
-@contextmanager
 def state_transaction():
-    with lock(UPDATE_CACHE / 'state.lock'):
-        state = read_json(UPDATE_CACHE / 'state.json', {})
-        yield state
-        save_json(UPDATE_CACHE / 'state.json', state)
+    return control().transaction()
 
 
 def source_paths(root):
@@ -134,53 +87,21 @@ def source_paths(root):
     return sorted(paths)
 
 
-def capture(root=ROOT):
-    """Read, store, then recheck the entire input set before accepting a snapshot."""
-    for attempt in range(4):
-        files = {}
-        for path in source_paths(root):
-            data = path.read_bytes()
-            sha = digest(data)
-            files[path.relative_to(root).as_posix()] = sha
-            blob = UPDATE_CACHE / 'objects' / sha
-            if not blob.exists():
-                atomic(blob, data)
-        verified = {p.relative_to(root).as_posix(): digest(p.read_bytes()) for p in source_paths(root)}
-        if files == verified:
-            revision = digest(json.dumps(files, sort_keys=True).encode())
-            manifest = {'revision': revision, 'created': now(), 'files': files}
-            location = UPDATE_CACHE / 'manifests' / (revision + '.json')
-            if location.exists():
-                return read_json(location)
-            save_json(location, manifest)
-            return manifest
-        time.sleep(.2)
-    raise RuntimeError('Quellen ändern sich während der Aufnahme. Bitte nach dem Speichern erneut aufrufen.')
+def capture(root=None):
+    root = Path(root or ROOT)
+    return snapshots().capture(lambda: common.source_mapping(root, source_paths(root)))
 
 
 def manifest(revision):
-    return read_json(UPDATE_CACHE / 'manifests' / (revision + '.json'))
+    return snapshots().get(revision)
 
 
 def content(snapshot, path):
-    sha = snapshot['files'].get(path)
-    return (UPDATE_CACHE / 'objects' / sha).read_text(encoding='utf-8-sig') if sha else ''
+    return snapshots().content(snapshot, path)
 
 
 def materialize(snapshot, destination):
-    """Stable paths and unchanged mtimes preserve the existing latexmk cache."""
-    destination.mkdir(parents=True, exist_ok=True)
-    previous = read_json(destination / '.snapshot.json', {'files': {}})
-    for relative in previous['files'].keys() - snapshot['files'].keys():
-        target = (destination / relative).resolve()
-        if not target.is_relative_to(destination.resolve()):
-            raise ValueError(relative)
-        target.unlink(missing_ok=True)  # Only generated snapshot files, never user sources.
-    for relative, sha in snapshot['files'].items():
-        target = destination / relative
-        if not target.exists() or digest(target.read_bytes()) != sha:
-            atomic(target, (UPDATE_CACHE / 'objects' / sha).read_bytes())
-    save_json(destination / '.snapshot.json', snapshot)
+    return snapshots().materialize(snapshot, destination)
 
 
 def sections(snapshot):
@@ -240,8 +161,8 @@ def affected(snapshot, baseline):
     changed = {p for p in snapshot['files'].keys() | baseline['files'].keys()
                if snapshot['files'].get(p) != baseline['files'].get(p)}
     # Technical orchestration changes do not alter mathematical section contents.
-    changed = {p for p in changed if not (p.startswith('tools/') and not p.endswith('.tex'))}
-    global_change = any(p.startswith(('common/', 'content/front_matter/')) or p in ('main.tex', 'latexmkrc')
+    changed = {p for p in changed if not ((p.startswith('tools/') or p.startswith('__build__/')) and not p.endswith('.tex'))}
+    global_change = any(p.startswith(('common/', 'content/front_matter/', '__shared__/')) or p in ('main.tex', 'latexmkrc')
                         or p.endswith('/_chapter.tex') for p in changed)
     owned = set().union(*(set(s['dependencies']) for s in order)) if order else set()
     # Unknown shared input: do not silently omit an affected part of the document.
@@ -302,6 +223,8 @@ def subprocess_flags(background=False):
 def rebase_synctex(data, source):
     text = gzip.decompress(data).decode('utf-8')
     text = text.replace(source.as_posix(), ROOT.as_posix()).replace(str(source), str(ROOT))
+    text = text.replace((source.parent / '_Shared').as_posix(), (ROOT.parent / '_Shared').as_posix())
+    text = text.replace(str(source.parent / '_Shared'), str(ROOT.parent / '_Shared'))
     return gzip.compress(text.encode('utf-8'), mtime=0)
 
 
@@ -316,24 +239,13 @@ def publish_pair(source_directory, source_root, preview_mode=False):
             raise RuntimeError('Unvollständige PDF: ' + str(source))
         prepared[ROOT / 'build' / (name + '.synctex.gz')] = rebase_synctex(source.with_suffix('.synctex.gz').read_bytes(), source_root)
         prepared[ROOT / 'build' / (name + '.pdf')] = pdf
-    old = {path: path.read_bytes() if path.exists() else None for path in prepared}
-    written = []
-    try:
-        for path, data in prepared.items():
-            atomic(path, data)
-            written.append(path)
-    except Exception:
-        for path in reversed(written):
-            if old[path] is None:
-                path.unlink(missing_ok=True)
-            else:
-                atomic(path, old[path])
-        raise
+    common.publish(prepared, replace=atomic)
+
 
 
 def run_full(snapshot, request):
     started = time.monotonic()
-    source = UPDATE_CACHE / 'full-source'
+    source = UPDATE_CACHE / 'full-workspace' / 'Skript'
     materialize(snapshot, source)
     atomic(source / 'build-context.tex', context_text(snapshot).encode('utf-8'))
     logfile = UPDATE_CACHE / 'logs' / (request['id'] + '-full.log')
@@ -366,70 +278,38 @@ def run_full(snapshot, request):
         if not pdf.startswith(b'%PDF-') or b'%%EOF' not in pdf[-1024:]:
             raise RuntimeError('Ungültige vollständige PDF: ' + variant)
     publish_pair(source / 'build', source)
-    return {'ok': True, 'seconds': seconds, 'log': str(logfile), 'published': str(published)}
+    artifacts = {('build/' + variant + extension): digest((ROOT / 'build' / (variant + extension)).read_bytes())
+                 for variant in VARIANTS for extension in ('.pdf', '.synctex.gz')}
+    return {'ok': True, 'seconds': seconds, 'log': str(logfile), 'published': str(published),
+            'artifacts': artifacts}
 
 
 def should_build(state):
-    desired = state.get('desired')
-    return desired and desired['id'] not in ((state.get('completed') or {}).get('id'), (state.get('failed') or {}).get('id'))
+    return common.should_build(state)
 
 
 def worker():
-    # Keep the idle/exit decision under the same lock as new requests. A request
-    # arriving during worker shutdown cannot be lost between check and unlock.
-    with ExitStack() as locks:
-        acquired = locks.enter_context(lock(UPDATE_CACHE / 'worker.lock', blocking=False))
-        if not acquired:
-            return
-        while True:
-            with state_transaction() as state:
-                if not should_build(state):
-                    state['running'] = None
-                    locks.close()
-                    return
-                request = state['desired'].copy()
-                request['project_root'] = str(ROOT)
-                state['desired'] = request.copy()
-                state['running'] = dict(request, pid=os.getpid(), started=now())
-            started = time.monotonic()
-            try:
-                result = run_full(manifest(request['revision']), request)
-            except Exception as error:
-                result = {'ok': False, 'error': str(error), 'seconds': round(time.monotonic() - started, 2)}
-            record_timing('full', request['revision'], result['seconds'], result['ok'], request['sequence'])
-            with state_transaction() as state:
-                record = dict(request, **result, finished=now())
-                state['completed' if result['ok'] else 'failed'] = record
-                state['running'] = None
-                state.setdefault('history', []).append(record)
-                state['history'] = state['history'][-20:]
+    return control().worker(manifest, run_full)
 
 
 def start_worker():
-    # Short-lived competing starters exit at the OS lock, never launch engines.
-    with lock(UPDATE_CACHE / 'worker.lock', blocking=False) as available:
-        if not available:
-            return
-    command = [sys.executable, str(ROOT / 'tools/build_coordinator.py'), 'worker']
-    logfile = UPDATE_CACHE / 'worker.log'
-    with logfile.open('ab') as log:
-        options = subprocess_flags(True)
-        if os.name == 'nt':
-            options['creationflags'] |= (subprocess.DETACHED_PROCESS | subprocess.CREATE_NEW_PROCESS_GROUP
-                                         | subprocess.CREATE_BREAKAWAY_FROM_JOB)
-        else:
-            options['start_new_session'] = True
-        try:
-            subprocess.Popen(command, cwd=ROOT, stdin=subprocess.DEVNULL, stdout=log, stderr=log, **options)
-        except PermissionError as error:
-            raise RuntimeError('Auftrag gespeichert, aber unabhängiger Hintergrundstart durch die Prozessisolation blockiert. '
-                               'In Codex den Aufruf mit freigegebener unabhängiger Prozessausführung wiederholen; '
-                               'alternativ tools/build-update.ps1 im normalen VS-Code-Terminal starten.') from error
+    return control().start()
 
 
 def dependency_relative_path(path, snapshot):
     """Resolve relative metadata and verified inputs from an older checkout path."""
     normalized = path.replace('\\', '/')
+    shared_name = None
+    if normalized.startswith('__shared__/'):
+        shared_name = normalized[11:]
+    elif normalized.startswith('../_Shared/'):
+        shared_name = normalized[11:]
+    elif '/_Shared/' in normalized:
+        shared_name = normalized.split('/_Shared/', 1)[1]
+    if shared_name and '..' not in shared_name.split('/'):
+        candidate = '__shared__/' + shared_name
+        if candidate in snapshot['files']:
+            return candidate
     if '..' in normalized.split('/'):
         return None
     while normalized.startswith('./'):
@@ -470,7 +350,7 @@ def cached_figure_valid(snapshot, directory, figure):
 def preview(snapshot, selection, baseline_record, sequence=0, whole_document=False):
     started = time.monotonic()
     with lock(UPDATE_CACHE / 'preview.lock'):
-        source = UPDATE_CACHE / 'preview-source'
+        source = UPDATE_CACHE / 'preview-workspace' / 'Skript'
         materialize(snapshot, source)
         atomic(source / 'build-context.tex', context_text(snapshot, True).encode('utf-8'))
         source.joinpath('build').mkdir(exist_ok=True)
@@ -564,20 +444,7 @@ def request_build(args):
             preview(snapshot, selection, baseline_record, sequence, global_change)
         else:
             print('Keine neuen Abschnittsänderungen seit dem erfolgreichen Gesamtbau; offene Vorschau bleibt erhalten.', flush=True)
-    with state_transaction() as state:
-        request = {'id': str(sequence) + '-' + snapshot['revision'][:12], 'revision': snapshot['revision'],
-                   'sequence': sequence, 'requested': now(), 'force': args.force, 'serial': args.serial,
-                   'project_root': str(ROOT)}
-        # Do not retry a failed identical revision on every poll or repeat call.
-        known = next((state.get(key) for key in ('completed', 'failed', 'desired')
-                      if (state.get(key) or {}).get('revision') == snapshot['revision']
-                      and current_project_record(state.get(key))), None)
-        if known and not args.force:
-            request = known
-        if sequence >= state.get('desired_sequence', 0):
-            state['desired'] = request
-            state['desired_sequence'] = sequence
-        needed = should_build(state)
+    request, needed = control().enqueue(snapshot, sequence, force=args.force, serial=args.serial)
     if needed:
         for variant in VARIANTS:
             if not any((CACHE / 'tikz' / variant).glob('*.pdf')):

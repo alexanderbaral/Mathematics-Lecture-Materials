@@ -1,10 +1,10 @@
-param($projectRoot, $cacheRoot, $workingCopy, $latexmk, $lang, $sheetEntry, $mode, $runId, $Warm, $Force)
+param($projectRoot, $cacheRoot, $workingCopy, $latexmk, $lang, $sheetEntry, $mode, $runId, $Warm, $Force, $outputRoot)
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $projectRoot
         $sheetTimer = [Diagnostics.Stopwatch]::StartNew()
         $id = $sheetEntry.Id
         $variant = if ($mode -eq 'on') { "${lang}_solutions" } else { $lang }
-        $outDir = "build/$variant"
+        $outDir = Join-Path $outputRoot "build/$variant"
         # Isolated runs avoid locked recorder/auxiliary files in synced folders.
         $auxDir = (Join-Path $cacheRoot "latex_runs/$variant/$id/$runId").Replace('\','/')
         $cacheReused = $false
@@ -29,9 +29,9 @@ Set-Location -LiteralPath $projectRoot
             else { $fileStem += ' (with Solutions)' }
         }
         $fileName = "$fileStem.pdf"
-        $output = "$outDir/$fileName"
+        $output = Join-Path $outDir $fileName
         New-Item -ItemType Directory -Force -Path $outDir,$auxDir | Out-Null
-        # A failed or missing build must never leave an old PDF at the delivery path.
+        # Only request-local staging is replaced; published PDFs remain intact.
         if (Test-Path -LiteralPath $output) { Remove-Item -LiteralPath $output }
         $entry = "content/chapters_$lang/$($sheetEntry.Entry)"
         $status = 'failed'
@@ -60,7 +60,7 @@ Set-Location -LiteralPath $projectRoot
             if ($buildExit -eq 0 -and (Test-Path -LiteralPath "$auxDir/$id.pdf")) {
                 Copy-Item -LiteralPath "$auxDir/$id.pdf" -Destination $output
                 $status = 'ok'
-                $detail = $output
+                $detail = "build/$variant/$fileName"
             } else { $detail = "See $buildLog" }
         }
         Write-Host "[$status] $variant/$id : $detail"
