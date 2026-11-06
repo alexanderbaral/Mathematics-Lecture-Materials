@@ -392,7 +392,8 @@ Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body 
 This mathematics lecture script belongs to the Fakultät für Maschinenbau.
 Use exclusively the official TH Mannheim/Maschinenbau logo and retain the
 faculty metadata. Do not use ZLL or any other faculty/unit subidentity.
-The title page uses a white background and the official blue point pattern.
+The title page uses a white background and the official blue point pattern,
+65 mm wide and anchored 5 mm from the bottom and right page edges.
 The header uses the official Mannheimer Punkt as an RGB-blue vector PDF.
 
 Shared visual resources live under `content/resources/`. Global files used across chapters, such as branding assets, live in `content/resources/shared/`; its `images/` and `tikz/` subfolders hold other shared visual resources. Chapter-specific resources mirror the approved chapter name and use `content/resources/chapters/<chapter>/images/` for raster or vector illustrations and `content/resources/chapters/<chapter>/tikz/` for TikZ sources. Do not create resource folders for future chapters. The author will provide the official TH Mannheim/faculty logo and Mannheimer Punkt. Prefer PDF vector assets; PNG is acceptable; support EPS only if actually needed. If assets are missing, compilation must still succeed with unobtrusive placeholders and README guidance.

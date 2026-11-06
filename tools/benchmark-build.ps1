@@ -6,7 +6,7 @@ param(
     [string]$Phase = 'warm',
     [switch]$Parallel,
     [switch]$NoSyncTeX,
-    [string]$ExperimentRoot = 'C:\Users\alexa\.codex\visualizations\2026\09\22\01a0cb2f-336a-7392-addb-0c5ebb1289d1\tmp\pdfs\build-speed-20261009'
+    [Parameter(Mandatory=$true)][string]$ExperimentRoot
 )
 
 # Experimental only: isolated wrappers and outputs; never replaces final PDFs.

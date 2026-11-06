@@ -7,9 +7,11 @@ $interaction = 'nonstopmode';
 $halt_on_error = 1;
 $file_line_error = 1;
 $out_dir = $ENV{'LATEXMK_OUT_DIR'} || 'build';
-my $local_app_data = $ENV{'LOCALAPPDATA'} || $ENV{'TEMP'} || '.';
+my $user_profile = $ENV{'USERPROFILE'} || $ENV{'HOME'};
+die "Cannot determine the user profile for the persistent LaTeX cache.\n"
+    unless $user_profile;
 my $default_aux_dir = File::Spec->catdir(
-    $local_app_data, 'Temp', 'Mathematik1-Skript', 'latex-aux'
+    $user_profile, 'AppData', 'Local', 'Temp', 'Mathematik1-Skript', 'latex-aux'
 );
 $aux_dir = $ENV{'LATEXMK_AUX_DIR'} || $default_aux_dir;
 make_path($aux_dir) unless -d $aux_dir;

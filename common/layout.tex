@@ -68,7 +68,7 @@
 }
 \newcommand{\BrandTitleVisual}{%
   \IfFileExists{\BrandTitleVisualPath}
-    {\includegraphics[width=2.9cm,keepaspectratio]{\BrandTitleVisualPath}}
+    {\includegraphics[width=6.5cm,keepaspectratio]{\BrandTitleVisualPath}}
     {}%
 }
 
@@ -108,8 +108,8 @@
   \begin{titlepage}
     \thispagestyle{empty}
     \begin{tikzpicture}[remember picture,overlay]
-      \node[anchor=south,inner sep=0pt]
-        at ([xshift=-1.9cm,yshift=1.8cm]current page.south east)
+      \node[anchor=south east,inner sep=0pt]
+        at ([xshift=-5mm,yshift=5mm]current page.south east)
         {\BrandTitleVisual};
     \end{tikzpicture}
 

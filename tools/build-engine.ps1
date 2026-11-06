@@ -16,65 +16,8 @@ $projectRoot = if ($SourceRoot) { $SourceRoot } else { Split-Path -Parent $PSScr
 if (-not $CanonicalRoot) { $CanonicalRoot = $projectRoot }
 $fileHashes = @{}
 
-# In-memory only: every build still checks file contents, not timestamps.
-function Get-BuildFileHash([string]$Path) {
-    if (-not $fileHashes.ContainsKey($Path)) {
-        $fileHashes[$Path] = if ([System.IO.File]::Exists($Path)) {
-            (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash
-        }
-        else { $null }
-    }
-    return $fileHashes[$Path]
-}
-
-# Recorder inputs include nested TeX files and images. Track project sources,
-# not TeX Live packages or generated build/cache files. Missing recorder data
-# deliberately causes one rebuild of figures created by older script versions.
-function Get-TikzDependencyFingerprint([string]$RecorderFile, [switch]$Refresh) {
-    $dependencyFile = [System.IO.Path]::ChangeExtension($RecorderFile, '.deps')
-    if (-not $Refresh -and [System.IO.File]::Exists($dependencyFile)) {
-        $inputs = [System.IO.File]::ReadAllLines($dependencyFile)
-    }
-    else {
-        if (-not [System.IO.File]::Exists($RecorderFile)) { return $null }
-        $rootPrefix = $projectRoot.TrimEnd('\') + '\'
-        $buildPrefix = Join-Path $rootPrefix 'build\'
-        $inputs = @([System.IO.File]::ReadAllLines($RecorderFile) | ForEach-Object {
-            if ($_.StartsWith('INPUT ')) {
-                $inputPath = $_.Substring(6).Replace('/', '\')
-                if (-not [System.IO.Path]::IsPathRooted($inputPath)) {
-                    $inputPath = Join-Path $projectRoot $inputPath
-                }
-                $inputPath = [System.IO.Path]::GetFullPath($inputPath)
-                if ($inputPath.StartsWith($rootPrefix, [System.StringComparison]::OrdinalIgnoreCase) -and
-                    -not $inputPath.StartsWith($buildPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
-                    $CanonicalRoot.TrimEnd('\') + '\' + $inputPath.Substring($rootPrefix.Length)
-                }
-            }
-        } | Sort-Object -Unique)
-        # Existing recorder files migrate without recompiling the figures.
-        [System.IO.File]::WriteAllLines($dependencyFile, [string[]]$inputs)
-    }
-    if ($inputs.Count -eq 0) { return $null }
-    $lines = [System.Collections.Generic.List[string]]::new()
-    $dependencyRootPrefix = $CanonicalRoot.TrimEnd('\') + '\'
-    foreach ($inputPath in $inputs) {
-        if (-not $inputPath.StartsWith($dependencyRootPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
-            return $null
-        }
-        $actualPath = Join-Path $projectRoot $inputPath.Substring($dependencyRootPrefix.Length)
-        $inputHash = Get-BuildFileHash $actualPath
-        if (-not $inputHash) { return $null }
-        $lines.Add(('{0}:{1}' -f $inputPath, $inputHash))
-    }
-    $hash = [System.Security.Cryptography.SHA256]::Create()
-    try {
-        [System.BitConverter]::ToString(
-            $hash.ComputeHash([System.Text.Encoding]::UTF8.GetBytes(($lines -join "`n")))
-        ).Replace('-', '').ToLowerInvariant()
-    }
-    finally { $hash.Dispose() }
-}
+# In-memory hashes and portable dependency checks; no figure is trusted without its source hashes.
+. (Join-Path $PSScriptRoot 'build-cache.ps1')
 
 $variants = @(
     @{ File = 'tools/build-de.tex';       Label = 'German complete'; Language = 'de'; Cloze = 'false' },

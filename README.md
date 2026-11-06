@@ -20,6 +20,13 @@ still running. Repeating the shortcut uses the same single-worker queue.
 
 This creates the active PDF variants under `build/`. Until English translation begins, these are the German complete and German cloze PDFs; the two English entry points remain available for later. The folder contains the final PDFs and their `.synctex.gz` source maps, which let the PDF viewer jump from a PDF position to the corresponding TeX source. All other auxiliary files, logs, and cached TikZ figures use the persistent `%USERPROFILE%\AppData\Local\Temp\Mathematik1-Skript\` folder, not a redirected sandbox folder. Existing figures are checked against their actual source dependencies and reused across sessions; body-only layout changes do not discard them. The build reports how many figures are reused and warns before a complete rebuild. Normal builds preserve caches; the coordinator deliberately refuses broad `-CleanCache` deletion while this workflow is in use. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
 
+All entry points resolve the checkout from their own location, so the project
+folder can be moved or renamed. Keep the existing local cache at the path above.
+New figure dependency records are checkout-relative; older absolute records
+remain usable when every recorded source hash still matches. After a move,
+the coordinator refreshes both PDF pairs and their SyncTeX maps for the new
+source location, even when the mathematical content has not changed.
+
 Open `build/build-de-preview.pdf` and `build/build-de-cloze-preview.pdf` in
 VS Code once: their fixed filenames are replaced after each successful preview.
 They contain all affected sections since the **last successful full snapshot**,
@@ -62,6 +69,10 @@ Regression checks: `python tools/test_build_coordinator.py` (isolated temporary
 fixtures; no teaching-source edits). English remains disabled. No commits or
 remote publication are part of building.
 
+The optional `tools/benchmark-build.ps1` uses explicitly supplied benchmark
+fixtures: pass `-ExperimentRoot <folder>` containing `bench-<case>-<variant>.tex`.
+It does not depend on a private Codex workspace path.
+
 ## Structure and configuration
 
 - `common/config.tex`: titles, shared semester, author, institutions, branding paths, and build defaults
@@ -84,5 +95,6 @@ Short `\Cloze` answer fields use the subtle CD-greige background `#E5E4D8`, chos
 Author-facing metadata is edited in `common/config.tex`. Global branding files live in `content/resources/shared/` (PDF preferred, PNG supported); set `\BrandLogoPath` and `\BrandDotPath` there. Each chapter may keep its own visual material in `content/resources/chapters/<chapter>/images/` and `content/resources/chapters/<chapter>/tikz/`, mirroring the approved chapter name under `content/chapters_de/` and `content/chapters_en/`. Missing branding files automatically produce restrained placeholders.
 
 This mathematics lecture script uses exclusively the official TH Mannheim/Maschinenbau logo and the corresponding faculty metadata. The vector PDF is derived from the accompanying original RGB SVG from the TH Mannheim brand portal, preserving its shapes and colour.
-The title page uses the official point pattern in RGB blue on a white background.
+The title page uses the official point pattern in RGB blue on a white background,
+65 mm wide with a 5 mm margin to the bottom and right page edges.
 The header uses the official Mannheimer Punkt as a vector PDF in RGB blue.

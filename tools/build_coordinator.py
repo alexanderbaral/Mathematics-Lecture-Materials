@@ -38,6 +38,11 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
+def current_project_record(record):
+    """A matching source revision alone does not update relocated SyncTeX paths."""
+    return bool(record and record.get('project_root') == str(ROOT))
+
+
 def read_json(path, default=None):
     return json.loads(path.read_text(encoding='utf-8')) if path.exists() else default
 
@@ -366,7 +371,7 @@ def run_full(snapshot, request):
 
 def should_build(state):
     desired = state.get('desired')
-    return desired and desired['id'] not in (state.get('completed', {}).get('id'), state.get('failed', {}).get('id'))
+    return desired and desired['id'] not in ((state.get('completed') or {}).get('id'), (state.get('failed') or {}).get('id'))
 
 
 def worker():
@@ -383,6 +388,8 @@ def worker():
                     locks.close()
                     return
                 request = state['desired'].copy()
+                request['project_root'] = str(ROOT)
+                state['desired'] = request.copy()
                 state['running'] = dict(request, pid=os.getpid(), started=now())
             started = time.monotonic()
             try:
@@ -420,13 +427,33 @@ def start_worker():
                                'alternativ tools/build-update.ps1 im normalen VS-Code-Terminal starten.') from error
 
 
+def dependency_relative_path(path, snapshot):
+    """Resolve relative metadata and verified inputs from an older checkout path."""
+    normalized = path.replace('\\', '/')
+    if '..' in normalized.split('/'):
+        return None
+    while normalized.startswith('./'):
+        normalized = normalized[2:]
+    if normalized in snapshot['files']:
+        return normalized
+    if not re.match(r'^(?:[A-Za-z]:|/)', normalized):
+        return None
+    candidates = [normalized[m.start(1):] for m in
+                  re.finditer(r'(?:^|(?<=/))(common|content|tools)/', normalized, re.IGNORECASE)]
+    name = normalized.rsplit('/', 1)[-1]
+    if name in ('main.tex', 'latexmkrc'):
+        candidates.append(name)
+    matches = {candidate for candidate in candidates if candidate in snapshot['files']}
+    return matches.pop() if len(matches) == 1 else None
+
+
 def cached_figure_valid(snapshot, directory, figure):
     name = Path(figure).stem
     try:
         dependencies = (directory / (name + '.deps')).read_text(encoding='utf-8-sig').splitlines()
         records = []
         for path in dependencies:
-            relative = Path(path).relative_to(ROOT).as_posix()
+            relative = dependency_relative_path(path, snapshot)
             sha = snapshot['files'].get(relative)
             if not sha:
                 return False
@@ -508,6 +535,7 @@ def preview(snapshot, selection, baseline_record, sequence=0, whole_document=Fal
                 publish_pair(output, source, preview_mode=True)
                 state['preview'] = {'revision': snapshot['revision'], 'sections': [s['path'] for s in selection],
                                     'seconds': seconds, 'finished': now(), 'sequence': sequence,
+                                    'project_root': str(ROOT),
                                     'whole_document': whole_document,
                                     'baseline': baseline_record['revision'] if baseline_record else None}
         print(f'Vorschau: {len(selection)} Abschnitte. Baudauer: {seconds} Sekunden.', flush=True)
@@ -519,11 +547,18 @@ def request_build(args):
         baseline_record = state.get('completed')
         sequence = state.get('sequence', 0) + 1
         state['sequence'] = sequence
+        preview_record = state.get('preview')
+    preview_missing = not current_project_record(preview_record) or any(
+        not (ROOT / 'build' / (variant + '-preview' + extension)).is_file()
+        for variant in VARIANTS for extension in ('.pdf', '.synctex.gz'))
     if args.command == 'update':
         selection, global_change = affected(snapshot, manifest(baseline_record['revision']) if baseline_record else None)
         if not baseline_record:
             print('Noch kein überprüfter Vollstand mit Abschnittszählern. Einmaliger Abgleich im Gesamtbau; vorhandene Grafik-Caches bleiben erhalten.', flush=True)
-        elif selection:
+        elif selection or preview_missing:
+            if not selection:
+                selection, global_change = sections(snapshot), True
+                print('Vorschau fehlt oder gehört zu einem anderen Projektpfad; einmaliger Neuaufbau aus dem aktuellen Vollstand.', flush=True)
             if global_change:
                 print('Übergreifende Änderung: ausnahmsweise vollständige Vorschau einschließlich Kapitelanfängen/Vorspann; längere Laufzeit.', flush=True)
             preview(snapshot, selection, baseline_record, sequence, global_change)
@@ -531,10 +566,12 @@ def request_build(args):
             print('Keine neuen Abschnittsänderungen seit dem erfolgreichen Gesamtbau; offene Vorschau bleibt erhalten.', flush=True)
     with state_transaction() as state:
         request = {'id': str(sequence) + '-' + snapshot['revision'][:12], 'revision': snapshot['revision'],
-                   'sequence': sequence, 'requested': now(), 'force': args.force, 'serial': args.serial}
+                   'sequence': sequence, 'requested': now(), 'force': args.force, 'serial': args.serial,
+                   'project_root': str(ROOT)}
         # Do not retry a failed identical revision on every poll or repeat call.
         known = next((state.get(key) for key in ('completed', 'failed', 'desired')
-                      if state.get(key, {}).get('revision') == snapshot['revision']), None)
+                      if (state.get(key) or {}).get('revision') == snapshot['revision']
+                      and current_project_record(state.get(key))), None)
         if known and not args.force:
             request = known
         if sequence >= state.get('desired_sequence', 0):
@@ -579,7 +616,9 @@ def main():
     elif args.command == 'status':
         with state_transaction() as state:
             report = dict(state)
-        report['source_matches_full'] = bool(report.get('completed') and capture()['revision'] == report['completed']['revision'])
+        report['project_root'] = str(ROOT)
+        report['source_matches_full'] = bool(current_project_record(report.get('completed'))
+                                             and capture()['revision'] == report['completed']['revision'])
         report['cache'] = str(CACHE)
         with lock(UPDATE_CACHE / 'worker.lock', blocking=False) as available:
             report['worker_active'] = not available

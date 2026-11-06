@@ -5,6 +5,9 @@
       "label": "LaTeX: Vorschau und Gesamt-PDFs aktualisieren",
       "type": "shell",
       "command": "powershell",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
