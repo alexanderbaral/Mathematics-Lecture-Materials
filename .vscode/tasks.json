@@ -1,0 +1,45 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Lecture Materials: PDFs aktualisieren",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/tools/build.ps1",
+        "-Target",
+        "${input:buildTarget}"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "buildTarget",
+      "type": "pickString",
+      "description": "Welche PDFs sollen aktualisiert werden?",
+      "options": [
+        {"label": "Skript", "value": "script"},
+        {"label": "Übungsblätter", "value": "sheets"},
+        {"label": "Beides", "value": "all"}
+      ],
+      "default": "script"
+    }
+  ]
+}
+
