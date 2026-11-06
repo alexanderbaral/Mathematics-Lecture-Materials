@@ -1,0 +1,202 @@
+\subsection{Kreuzprodukt in Koordinatendarstellung}
+\label{subsec:vector_algebra_cross_product_coordinates}
+
+Wir stellen $\vec a,\vec b\in\R^3$ mithilfe der kanonischen Einheitsvektoren
+dar:
+\begin{align*}
+    \vec a&=a_1\vec e_1+a_2\vec e_2+a_3\vec e_3 \\
+    \vec b&=b_1\vec e_1+b_2\vec e_2+b_3\vec e_3.
+\end{align*}
+%
+Mit den Kreuzprodukten der kanonischen Einheitsvektoren folgt durch
+Ausmultiplizieren
+\begin{ClozeArea}[34]{16}
+  \[
+    \begin{aligned}
+      \vec a\times\vec b
+      &=(a_1\vec e_1+a_2\vec e_2+a_3\vec e_3)
+        \times(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)\\[1.5em]
+      &=a_1b_1\overbrace{(\vec e_1\times\vec e_1)}^{=\,\vec 0}
+        +a_1b_2\overbrace{(\vec e_1\times\vec e_2)}^{=\,\vec e_3}
+        +a_1b_3\overbrace{(\vec e_1\times\vec e_3)}^{=\,-\vec e_2}
+        \\[0.9em]
+      &\quad
+        +a_2b_1\overbrace{(\vec e_2\times\vec e_1)}^{=\,-\vec e_3}
+        +a_2b_2\overbrace{(\vec e_2\times\vec e_2)}^{=\,\vec 0}
+        +a_2b_3\overbrace{(\vec e_2\times\vec e_3)}^{=\,\vec e_1}
+        \\[0.9em]
+      &\quad
+        +a_3b_1\overbrace{(\vec e_3\times\vec e_1)}^{=\,\vec e_2}
+        +a_3b_2\overbrace{(\vec e_3\times\vec e_2)}^{=\,-\vec e_1}
+        +a_3b_3\overbrace{(\vec e_3\times\vec e_3)}^{=\,\vec 0}
+        \\[1.3em]
+      &=(a_2b_3-a_3b_2)\vec e_1
+        +(a_3b_1-a_1b_3)\vec e_2
+        +(a_1b_2-a_2b_1)\vec e_3\\[1em]
+      &=\begin{pmatrix}
+          a_2b_3-a_3b_2\\
+          a_3b_1-a_1b_3\\
+          a_1b_2-a_2b_1
+        \end{pmatrix}.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{TheoremBox}{Koordinatenformel}{vector_algebra_cross_product_coordinate_formula}
+  Für das Kreuzprodukt der Vektoren $\vec a,\vec b\in\R^3$ in Koordinatenform gilt
+  \[
+    \vec a\times\vec b
+    =\begin{ClozeContinuation}[22]{3}
+      \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix}
+      \times \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}
+      =
+      \begin{pmatrix} a_2b_3-a_3b_2 \\ a_3b_1-a_1b_3 \\ a_1b_2-a_2b_1 \end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+\end{TheoremBox}
+
+\begin{ExampleBox}{Kreuzprodukt aus Koordinaten}{vector_algebra_cross_product_coordinates_example}
+  Für die folgenden Vektoren
+  \[
+    \vec a=\begin{pmatrix}2\\1\\-2\end{pmatrix},
+    \qquad
+    \vec b=\begin{pmatrix}-1\\2\\-1\end{pmatrix}
+  \]
+  ergibt sich das Kreuzprodukt zu
+  \[
+    \vec c=\vec a\times\vec b
+    =\begin{ClozeContinuation}[26]{3}
+      \begin{pmatrix}2\\1\\-2\end{pmatrix}
+      \times\begin{pmatrix}-1\\2\\-1\end{pmatrix}
+      =
+      \begin{pmatrix}
+        1\cdot(-1)-(-2)\cdot2\\
+        (-2)\cdot(-1)-2\cdot(-1)\\
+        2\cdot2-1\cdot(-1)
+      \end{pmatrix}
+      =\begin{pmatrix}3\\4\\5\end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+  Eine sinnvolle Kontrolle des berechneten Kreuzprodukts ist die Prüfung
+  seiner Orthogonalität zu beiden Ausgangsvektoren:
+  \[
+    \begin{aligned}
+      \vec c\cdot\vec a
+      &=\begin{ClozeContinuation}[24]{3}
+        \begin{pmatrix}3\\4\\5\end{pmatrix}
+        \cdot\begin{pmatrix}2\\1\\-2\end{pmatrix}
+        =3\cdot2+4\cdot1+5\cdot(-2)=0
+      \end{ClozeContinuation}
+      \IfClozeTF{}{,\quad\raisebox{-0.15ex}{%
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/verified_checkmark.tex}}}\\[1em]
+      \vec c\cdot\vec b
+      &=\begin{ClozeContinuation}[24]{3}
+        \begin{pmatrix}3\\4\\5\end{pmatrix}
+        \cdot\begin{pmatrix}-1\\2\\-1\end{pmatrix}
+        =3\cdot(-1)+4\cdot2+5\cdot(-1)=0
+      \end{ClozeContinuation}
+      \IfClozeTF{}{.\quad\raisebox{-0.15ex}{%
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/verified_checkmark.tex}}}
+    \end{aligned}
+  \]
+  Der aufgespannte Flächeninhalt beträgt
+  \[
+    A=|\vec a\times\vec b|
+    =\Cloze{7cm}{\sqrt{3^2+4^2+5^2}=\sqrt{50}}.
+  \]
+\end{ExampleBox}
+
+Aus der Koordinatenformel in
+Satz~\ref{thm:vector_algebra_cross_product_coordinate_formula} gewinnen wir
+die Determinantenschreibweise schrittweise. Zunächst zerlegen wir den
+Koordinatenvektor in die kanonischen Einheitsvektoren:
+\begin{ClozeArea}[34]{12}
+  \[
+    \begin{aligned}
+      \vec a\times\vec b
+      &=\begin{pmatrix}
+          a_2b_3-a_3b_2\\
+          a_3b_1-a_1b_3\\
+          a_1b_2-a_2b_1
+        \end{pmatrix}
+        =(a_2b_3-a_3b_2)\vec e_1
+        +(a_3b_1-a_1b_3)\vec e_2
+        +(a_1b_2-a_2b_1)\vec e_3
+        \\[1.4em]
+      &=\det\!\begin{pmatrix}
+          a_2&b_2\\
+          a_3&b_3
+        \end{pmatrix}\vec e_1
+        -\det\!\begin{pmatrix}
+          a_1&b_1\\
+          a_3&b_3
+        \end{pmatrix}\vec e_2
+        +\det\!\begin{pmatrix}
+          a_1&b_1\\
+          a_2&b_2
+        \end{pmatrix}\vec e_3
+        \\[1.4em]
+      &=\det\!\begin{pmatrix}
+          \MathHighlight{\vec e_1}&a_1&b_1\\
+          \MathHighlight{\vec e_2}&a_2&b_2\\
+          \MathHighlight{\vec e_3}&a_3&b_3
+        \end{pmatrix}.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+Die letzte Gleichheit liest die Entwicklung nach der gelb markierten ersten
+Spalte rückwärts. Diese Schreibweise dient nur als formale Merkhilfe;
+definiert wurde das Kreuzprodukt geometrisch.
+
+\begin{KeyPointBox}{Determinantenschreibweise}{vector_algebra_cross_product_determinant_notation}
+  Das Kreuzprodukt lässt sich formal schreiben als
+  \[
+    \vec a\times\vec b
+    =\begin{ClozeContinuation}[29]{4}
+      \det\!\begin{pmatrix}
+        \MathHighlight{\vec e_1}&a_1&b_1 \\
+        \MathHighlight{\vec e_2}&a_2&b_2 \\
+        \MathHighlight{\vec e_3}&a_3&b_3
+      \end{pmatrix}
+      =\vec e_1\det\!\begin{pmatrix}a_2&b_2\\a_3&b_3\end{pmatrix}
+      -\vec e_2\det\!\begin{pmatrix}a_1&b_1\\a_3&b_3\end{pmatrix}
+      +\vec e_3\det\!\begin{pmatrix}a_1&b_1\\a_2&b_2\end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+\end{KeyPointBox}
+
+Für die Berechnung ist daher keine neue Regel erforderlich: Wir entwickeln die
+Determinante mit der bereits bekannten Laplace-Entwicklung und berechnen die
+entstehenden $2\times2$-Determinanten.
+
+\begin{ExampleBox}{Kreuzprodukt in Determinantenschreibweise}{vector_algebra_cross_product_determinant_example}
+  Wir berechnen das Kreuzprodukt aus
+  Beispiel~\ref{ex:vector_algebra_cross_product_coordinates_example} erneut
+  für
+  \[
+    \vec a=\begin{pmatrix}2\\1\\-2\end{pmatrix},
+    \qquad
+    \vec b=\begin{pmatrix}-1\\2\\-1\end{pmatrix},
+  \]
+  nun jedoch mithilfe der Determinantenschreibweise:
+  \begin{ClozeArea}[32]{11}
+    \[
+      \begin{aligned}
+        \vec a\times\vec b
+        &=\det\!\begin{pmatrix}
+            \MathHighlight{\vec e_1}&2&-1\\
+            \MathHighlight{\vec e_2}&1& 2\\
+            \MathHighlight{\vec e_3}&-2&-1
+          \end{pmatrix}\\[1em]
+        &=\vec e_1\det\!\begin{pmatrix}1&2\\-2&-1\end{pmatrix}
+          -\vec e_2\det\!\begin{pmatrix}2&-1\\-2&-1\end{pmatrix}
+          +\vec e_3\det\!\begin{pmatrix}2&-1\\1&2\end{pmatrix}\\[1em]
+        &=\vec e_1\bigl(1\cdot(-1)-2\cdot(-2)\bigr)
+          -\vec e_2\bigl(2\cdot(-1)-(-1)\cdot(-2)\bigr)
+          +\vec e_3\bigl(2\cdot2-(-1)\cdot1\bigr)  \\[1em]
+        &=3\vec e_1+4\vec e_2+5\vec e_3
+          =\begin{pmatrix}3\\4\\5\end{pmatrix}.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}

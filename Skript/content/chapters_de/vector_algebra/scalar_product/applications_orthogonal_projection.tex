@@ -1,0 +1,179 @@
+\subsubsection{Orthogonale Projektion}
+\label{subsubsec:vector_algebra_orthogonal_projection}
+
+Mit dem Skalarprodukt lässt sich die orthogonale Projektion
+\EnglishTerm{orthogonal projection} eines Vektors auf einen anderen
+berechnen. Die unterschiedliche Wirkung der Komponenten wird an einer
+gelenkig gelagerten Wippe unmittelbar sichtbar: Die parallele Komponente
+\EnglishTerm{parallel component} belastet das Brett in Längsrichtung, die
+senkrechte Komponente \EnglishTerm{orthogonal component} erzeugt ein
+Drehmoment um das Gelenk.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_projection_seesaw.tex}
+\end{center}
+
+Um diese Wirkungen getrennt untersuchen zu können, zerlegen wir einen Vektor
+$\vec b$ relativ zu einer Richtung $\vec a$ in zwei Komponenten. Für diese Zerlegung gilt:
+\par\medskip
+\noindent
+\begin{minipage}[c]{0.45\linewidth}
+  \begin{itemize}[leftmargin=1.4em,itemsep=0.8em]
+    \item Parallel zur Richtung:\quad
+      $\vec b_{\parallel}\parallel\vec a$
+    \item Senkrecht zur Richtung:\quad
+      $\vec b_{\perp}\perp\vec a$
+    \item Vollständige Zerlegung:\quad
+      $\vec b=\vec b_{\parallel}+\vec b_{\perp}$
+  \end{itemize}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.52\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_projection.tex}
+\end{minipage}
+\par\medskip
+
+Da $\vec b_{\parallel}$ parallel zu $\vec a$ verläuft, unterscheiden sich beide Vektoren nur
+um einen zunächst unbekannten Faktor $\lambda\in\R$:
+\[
+  \vec b_{\parallel}=\lambda\vec a.
+\]
+Der Faktor darf negativ sein; so wird auch eine zu
+$\vec a$ entgegengesetzte Projektionsrichtung erfasst.
+Damit lautet die Zerlegung
+\[
+  \vec b=\lambda\vec a+\vec b_{\perp}.
+\]
+Um $\lambda$ zu bestimmen, bilden wir auf beiden Seiten das Skalarprodukt mit
+$\vec a$.
+\begin{ClozeArea}[34]{8}
+  \[
+    \begin{array}{r@{\quad}l@{\qquad}l}
+      \phantom{\Longleftrightarrow}
+      & \textcolor{THMBlue}{\vec a}\cdot\vec b
+        =\textcolor{THMBlue}{\vec a}\cdot
+          \bigl(\lambda\vec a+\vec b_{\perp}\bigr)
+      & \\[1.4em]
+      \phantom{\Longleftrightarrow}
+      & \phantom{\vec a\cdot\vec b}
+        =\lambda\,\vec a\cdot\vec a
+          +\underbrace{
+            \vec a\cdot\vec b_{\perp}
+          }_{=\,0}
+        =\lambda\,\lvert\vec a\rvert^2
+      & \\[1.4em]
+      \Longleftrightarrow
+      & \lambda
+        =\dfrac{\vec a\cdot\vec b}{\vec a\cdot\vec a}
+        =\dfrac{\vec a\cdot\vec b}{\lvert\vec a\rvert^2}
+      &
+    \end{array}
+  \]
+\end{ClozeArea}
+Eingesetzt in $\vec b_{\parallel}=\lambda\vec a$ ergibt sich die parallele Komponente.
+\begin{ClozeArea}[34]{4}
+  \[
+    \vec b_{\parallel}
+      =\lambda\vec a
+      =\frac{\vec a\cdot\vec b}{\lvert\vec a\rvert^2}\,\vec a
+      =\bigl(\vec b\cdot\vec e_a\bigr)\vec e_a.
+  \]
+\end{ClozeArea}
+
+Die senkrechte Komponente erhalten wir durch Umstellen der ursprünglichen
+Zerlegung und anschließendes Einsetzen von $\vec b_{\parallel}$:
+\begin{ClozeArea}[34]{4}
+  \[
+    \vec b=\vec b_{\parallel}+\vec b_{\perp}
+      \quad\Longleftrightarrow\quad
+    \vec b_{\perp}
+      =\vec b-\vec b_{\parallel}
+  \]
+\end{ClozeArea}
+
+\begin{TheoremBox}{Orthogonale Projektion}{vector_algebra_projection_components}
+  Projiziert man $\vec b\in\R^n$ orthogonal auf die durch
+  $\vec a\in\R^n$ vorgegebene Richtung, so erhält man die
+  Zerlegung
+  $\textcolor{red!75!black}{\vec b}=\textcolor{black}{\vec b_{\parallel}}+\textcolor{olive!80!black}{\vec b_{\perp}}$
+  für die
+  \par\medskip
+  \noindent
+  \begin{minipage}[c]{0.54\linewidth}
+    \begin{itemize}[leftmargin=1.5em,itemsep=0.8em]
+      \item \emph{parallele Komponente}
+        $\vec b_{\parallel}$ mit $\vec b_{\parallel}\parallel\vec a$:
+        \[
+          \textcolor{black}{\vec b_{\parallel}}
+          =\bigl(\textcolor{red!75!black}{\vec b}\cdot
+            \textcolor{THMBlue}{\vec e_a}\bigr)
+            \textcolor{THMBlue}{\vec e_a}.
+        \]
+
+      \item \emph{senkrechte Komponente}
+        $\vec b_{\perp}$ mit $\vec b_{\perp}\perp\vec a$:
+        \[
+          \textcolor{olive!80!black}{\vec b_{\perp}}
+            =\textcolor{red!75!black}{\vec b}
+            -\textcolor{black}{\vec b_{\parallel}}.
+        \]
+    \end{itemize}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.43\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_projection.tex}
+  \end{minipage}
+\end{TheoremBox}
+
+\begin{ExampleBox}{Einen Vektor orthogonal zerlegen}{vector_algebra_projection_example}
+  \noindent
+  \begin{minipage}[c]{0.60\linewidth}
+    Gegeben seien
+    \[
+      \vec a=\begin{pmatrix}4\\2\end{pmatrix},
+      \qquad
+      \vec b=\begin{pmatrix}1\\3\end{pmatrix}.
+    \]
+    Zunächst bestimmen wir den Einheitsvektor der Projektionsrichtung:
+    \[
+      \vec e_a
+        =\frac{\vec a}{\lvert\vec a\rvert}
+        =\frac{1}{\sqrt{20}}\begin{pmatrix}4\\2\end{pmatrix}
+        =\frac{1}{\sqrt{5}}\begin{pmatrix}2\\1\end{pmatrix}.
+    \]
+    Anschließend berechnen wir $\vec b_{\parallel}$ und $\vec b_{\perp}$:
+    \[
+      \begin{aligned}
+        \vec b_{\parallel}
+          &=(\vec b\cdot\vec e_a)\vec e_a
+            =\frac{5}{\sqrt{5}}\,
+            \frac{1}{\sqrt{5}}\begin{pmatrix}2\\1\end{pmatrix}
+            =\Cloze{2.1cm}{\begin{pmatrix}2\\1\end{pmatrix}}, \\[0.8em]
+        \vec b_{\perp}
+          &=\vec b-\vec b_{\parallel}
+            =\begin{pmatrix}1\\3\end{pmatrix}
+            -\begin{pmatrix}2\\1\end{pmatrix}
+            =\Cloze{2.1cm}{\begin{pmatrix}-1\\2\end{pmatrix}}.
+      \end{aligned}
+    \]
+    Zur Kontrolle eignen sich zwei kurze Rechnungen:
+    \[
+      \begin{array}{@{}r@{\qquad}l@{}}
+        \text{Orthogonalität:}
+          &\displaystyle \vec a\cdot\vec b_{\perp}
+            =\begin{pmatrix}4\\2\end{pmatrix}\cdot
+            \begin{pmatrix}-1\\2\end{pmatrix}
+            =\Cloze{3cm}{4\cdot(-1)+2\cdot2=0}, \\[0.8em]
+        \text{Vollständigkeit:}
+          &\displaystyle \vec b_{\parallel}+\vec b_{\perp}
+            =\begin{pmatrix}2\\1\end{pmatrix}
+            +\begin{pmatrix}-1\\2\end{pmatrix}
+            =\Cloze{3cm}{\begin{pmatrix}1\\3\end{pmatrix}=\vec b}.
+      \end{array}
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.38\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_projection_example.tex}
+  \end{minipage}
+\end{ExampleBox}

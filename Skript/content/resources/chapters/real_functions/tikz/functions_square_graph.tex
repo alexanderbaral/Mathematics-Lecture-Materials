@@ -1,0 +1,50 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.25cm,y=0.95cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2.3,0)--(2.5,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,4.6) node[above] {$y$};
+  \draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (2,0) {$2$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt4) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt5) at (0,2) {$2$};
+\draw[black!50] (-0.055,3)--(0.055,3);
+\node[left=4pt,inner sep=1pt] (yt6) at (0,3) {$3$};
+\draw[black!50] (-0.055,4)--(0.055,4);
+\node[left=4pt,inner sep=1pt] (yt7) at (0,4) {$4$};
+
+  \IfClozeTF{}{%
+    \begin{scope}
+      \clip (-2.3,0) rectangle (2.3,4.4);
+      \draw[THMBlue,line width=1.15pt,domain=-2.3:2.3,samples=93]
+        plot (\x,{\x*\x});
+      \foreach \x in {-2,-1,0,1,2}
+        \fill[THMBlue] (\x,{\x*\x}) circle (1.7pt);
+    \end{scope}
+  }
+  \node[anchor=west,inner sep=0pt,text=THMBlue] (flabel) at (0.16,4.13)
+    {\IfClozeTF{}{$f(x)=x^2$}};
+  
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2.3,0) rectangle (2.3,4.4)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (yt4.south west) rectangle (yt4.north east)
+        (yt5.south west) rectangle (yt5.north east)
+        (yt6.south west) rectangle (yt6.north east)
+        (yt7.south west) rectangle (yt7.north east)
+        (flabel.south west) rectangle (flabel.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2.3,0) grid (2.3,4.4);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

@@ -1,0 +1,54 @@
+\begin{tikzpicture}[
+  coefficient/.style={
+    fill=yellow!55,rounded corners=1pt,
+    inner xsep=2.5pt,inner ysep=1.5pt
+  },
+  unknown/.style={
+    fill=THMBlue!16,rounded corners=1pt,
+    inner xsep=2.5pt,inner ysep=1.5pt
+  },
+  constant/.style={
+    fill=brown!25,rounded corners=1pt,
+    inner xsep=2.5pt,inner ysep=1.5pt
+  },
+  legend-square/.style={
+    minimum size=1.25em,inner sep=0pt,rounded corners=0.7pt
+  }
+]
+  \matrix (system) [
+    matrix of math nodes,
+    anchor=west,
+    nodes={font=\large,minimum height=0.72cm,anchor=center},
+    column sep=1.5pt,row sep=3pt
+  ] {
+    |[coefficient]| {(+1)} & \cdot & |[unknown]| F_1
+      & + & |[coefficient]| {(+1)} & \cdot & |[unknown]| F_2
+      & = & |[constant]| \qty{100}{\newton} \\
+    |[coefficient]| {(+1)} & \cdot & |[unknown]| F_1
+      & + & |[coefficient]| {(-1)} & \cdot & |[unknown]| F_2
+      & = & |[constant]| \qty{20}{\newton} \\
+  };
+
+  \draw[
+    decorate,
+    decoration={brace,amplitude=4pt}
+  ]
+    ($(system.north east)+(0.18,0)$)
+    -- ($(system.south east)+(0.18,0)$)
+    node[midway,right=0.35cm,font=\small] {2 lineare Gleichungen};
+
+  \node[coefficient,legend-square] (legend-coeff)
+    at ($(system.south west)+(0.2,-0.55)$) {};
+  \node[font=\small,anchor=west]
+    at ($(legend-coeff.east)+(0.15,0)$) {Koeffizienten};
+
+  \node[unknown,legend-square] (legend-unknown)
+    at ($(legend-coeff)+(0,-0.55)$) {};
+  \node[font=\small,anchor=west]
+    at ($(legend-unknown.east)+(0.15,0)$) {2 Unbekannte};
+
+  \node[constant,legend-square] (legend-constant)
+    at ($(legend-unknown)+(0,-0.55)$) {};
+  \node[font=\small,anchor=west]
+    at ($(legend-constant.east)+(0.15,0)$) {2 Absolutglieder};
+\end{tikzpicture}

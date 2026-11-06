@@ -1,0 +1,83 @@
+\section{Darstellung von Zahlen}
+\label{sec:fundamentals_number_representation}
+
+Im Alltag ist die \emph{Dezimaldarstellung} die Standardschreibweise für
+Zahlen. In dieser Darstellung besitzt jede Position einer Ziffer einen festen
+Stellenwert: Tausender, Hunderter, Zehner und Einer sowie nach dem Komma Zehntel,
+Hundertstel, Tausendstel, usw...
+
+{\centering
+  \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/decimal_to_floating_point.tex}
+  \par}
+
+Bei sehr großen und sehr kleinen Zahlen ist diese Darstellung jedoch umständlich
+und unübersichtlich, da um die Größenordnung einzuschätzen alle Stellen abgezählt
+werden müssen. Abhilfe schafft die dezimale Gleitkommadarstellung.
+
+\begin{DefinitionBox}{Dezimale Gleitkommadarstellung}{fundamentals_decimal_floating_point}
+  \noindent
+  \begin{minipage}[c]{0.67\linewidth}
+    In Gleitkommadarstellung setzt sich eine Zahl aus
+    \begin{itemize}
+      \item einer Mantisse $m$, mit $1 \leq |m| \leq 10$
+      \item einem Exponent $e\in\Z$
+    \end{itemize}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.3\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/floating_point_anatomy.tex}
+  \end{minipage}
+  Der Exponent $e$ bestimmt die Größenordnung der Zahl.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Umrechnung von der Dezimal- in die Gleitkommadarstellung}{fundamentals_decimal_to_floating_point_conversion}
+  Wir überführen die Zahl $1153{,}537$ von der Dezimal in die Gleitkommadarstellung.
+  \begin{ClozeArea}[34]{4}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/floating_point_conversion_annotation.tex}
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{ExampleBox}{Darstellungen im Vergleich}{fundamentals_floating_point_comparison}
+  \renewcommand{\arraystretch}{1.15}
+  \begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash\bfseries}p{3.9cm}
+      >{\raggedright\arraybackslash}X
+      >{\raggedright\arraybackslash}p{4.4cm}@{}}
+    \toprule
+    Größe & \textbf{Dezimaldarstellung}
+          & \textbf{\shortstack[l]{Gleitkomma-\\darstellung}}\\
+    \midrule
+    {}
+      & $1153{,}537$
+      & $\Cloze{4cm}{1{,}153537\cdot10^3}$\\[0.35em]
+    Masse der Erde
+      & $5\,972\,200\,000\,000\,000\,000\,000\,000\,\mathrm{kg}$
+      & $\Cloze{4cm}{5{,}9722\cdot10^{24}\,\mathrm{kg}}$\\[0.35em]
+    Elastizitätsmodul von Stahl
+      & $210\,000\,000\,000\,\mathrm{Pa}$
+      & $\Cloze{4cm}{2{,}1\cdot10^{11}\,\mathrm{Pa}}$\\[0.35em]
+    Leiterbahnbreite
+      & $0{,}000\,000\,003\,\mathrm m$
+      & $\Cloze{4cm}{3\cdot10^{-9}\,\mathrm m}$\\
+    \bottomrule
+  \end{tabularx}
+  \renewcommand{\arraystretch}{1}
+\end{ExampleBox}
+
+\begin{KeyPointBox}[breakable=false]{Vorteile der Gleitkommadarstellung}{fundamentals_floating_point_advantages}
+  \begin{itemize}
+    \item Sehr große und sehr kleine Zahlen werden kompakt dargestellt.
+    \item Der Exponent zeigt die Größenordnung und erleichtert Vergleiche.
+    \item Potenzgesetze vereinfachen Multiplikationen unterschiedlicher
+      Größenordnungen, z.B.
+      \[
+        (2\cdot10^3)\cdot(4\cdot10^{-5})=(2\cdot4)\cdot10^{(3-5)}=8\cdot10^{-2}.
+      \]
+    \item Durch Runden der Mantisse auf die benötigte Genauigkeit entfallen
+      nicht-aussagekräftige Ziffern, z.B.
+      \[
+        6\,724\,891\,356\,000\,000\,000\,000\,000 \approx 6{,}72\cdot10^{24}.
+      \]
+  \end{itemize}
+\end{KeyPointBox}
+Die Gleitkommadarstellung ist in Naturwissenschaft und Technik sehr verbreitet.

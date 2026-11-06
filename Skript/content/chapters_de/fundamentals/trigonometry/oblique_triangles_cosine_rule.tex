@@ -1,0 +1,48 @@
+\subsubsection{Kosinussatz}
+\label{subsubsec:fundamentals_oblique_triangles_cosine_rule}
+
+Der Kosinussatz verallgemeinert den Satz des Pythagoras auf schiefwinklige
+Dreiecke.
+
+\begin{TheoremBox}{Kosinussatz}{fundamentals_cosine_rule}
+  In einem beliebigen schiefwinkligen Dreieck gilt
+  \begin{ClozeArea}[20]{5}
+    \[
+      c^2=a^2+b^2-2ab\cos(\gamma).
+    \]
+  \end{ClozeArea}
+  Dabei liegt der Winkel $\gamma$ gegenüber der Seite $c$.
+\end{TheoremBox}
+In Abschnitt~\ref{subsubsec:vector_algebra_magnitude_sums_differences} leiten wir
+den Kosinussatz mithilfe des Skalarprodukts her.
+
+
+\begin{ExampleBox}{Kosinussatz}{fundamentals_cosine_rule_example}
+  Gegeben ist ein schiefwinkliges Dreieck mit $a=8\,\mathrm{cm}$,
+  $b=5\,\mathrm{cm}$ und $\gamma=60^\circ$. Wir berechnen die Länge der
+  Seite $c$.
+  \par\smallskip
+  \noindent
+  \begin{minipage}[c]{0.60\linewidth}
+    \begin{ClozeArea}[18]{7}
+      \[
+        \begin{aligned}
+          c &=\sqrt{a^2+b^2-2ab\cos(\gamma)}\\
+            &=\sqrt{8^2+5^2-2\cdot8\cdot5\cdot\cos(60^\circ)}\,\mathrm{cm}\\
+            &=\sqrt{49}\,\mathrm{cm}=7\,\mathrm{cm}.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.36\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/oblique_triangle_cosine_rule_example.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+\begin{RemarkBox}[remark title=Pythagoras als Spezialfall des Kosinussatzes]
+  Für $\gamma=90^\circ$ geht der Kosinussatz in den Satz des Pythagoras über:
+  \[
+    c^2=a^2+b^2-2ab\underbrace{\cos(90^\circ)}_{=0}=a^2+b^2.
+  \]
+\end{RemarkBox}

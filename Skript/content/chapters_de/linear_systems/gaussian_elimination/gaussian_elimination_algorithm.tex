@@ -1,0 +1,136 @@
+\subsection{Gauß-Verfahren und Zeilenstufenform}
+\label{subsec:linear_systems_gaussian_algorithm}
+
+Die Grundidee des \emph{Gauß-Verfahrens} \EnglishTerm{Gaussian elimination}
+besteht darin, die erweiterte Matrix durch elementare Zeilenumformungen in
+Zeilenstufenform zu bringen. Aus dieser Form lassen sich die Unbekannten leicht
+bestimmen.
+
+\begin{DefinitionBox}{Zeilenstufenform}{linear_systems_row_echelon_form}
+  Eine Matrix besitzt \emph{Zeilenstufenform} \EnglishTerm{row echelon form}
+  genau dann, wenn
+  \begin{enumerate}[label=\arabic*.,itemsep=0.25em]
+    \item alle \emph{Nullzeilen} \EnglishTerm{zero rows} unterhalb der
+      \emph{Nichtnullzeilen} \EnglishTerm{nonzero rows} stehen,
+    \item der erste von null verschiedene Eintrag jeder tieferen Zeile weiter
+      rechts steht als derjenige der vorherigen Zeile und
+    \item unter diesen Einträgen nur Nullen stehen.
+  \end{enumerate}
+
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/row_echelon_staircase.tex}
+  \end{center}
+  Dabei kennzeichnet $\bullet$ den ersten von null verschiedenen Eintrag einer
+  Nichtnullzeile; $\ast$ steht für einen beliebigen Eintrag, der auch null sein
+  darf.
+\end{DefinitionBox}
+
+
+\begin{TheoremBox}{Gauß-Verfahren}{linear_systems_gaussian_algorithm}
+  Das Gauß-Verfahren dient dazu, ein LGS systematisch in eine Form zu
+  überführen, aus der sich seine Lösung leicht ablesen lässt. Es besteht aus
+  zwei Schritten:
+  \begin{enumerate}[label=\arabic*.,itemsep=0.3em]
+    \item Bei der \emph{Vorwärtselimination} \EnglishTerm{forward elimination}
+      wird die erweiterte Koeffizientenmatrix $[A\mid b]$ mithilfe elementarer
+      Zeilenumformungen in Zeilenstufenform überführt.
+    \item Beim \emph{Rückwärtseinsetzen} \EnglishTerm{back substitution}
+      werden die Unbekannten ausgehend von der letzten Gleichung schrittweise
+      bestimmt.
+  \end{enumerate}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/gaussian_elimination_flow.tex}
+  \end{center}
+\end{TheoremBox}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{ExampleBox}{Gauß-Verfahren}{linear_systems_gaussian_example}
+  Wir lösen das folgende LGS mit dem Gauß-Verfahren und überführen es zunächst
+  in die erweiterte Koeffizientenmatrix:
+    \[
+      \begin{aligned}
+        2x_1+x_2-x_3&=3,\\
+        3x_1+5x_2-4x_3&=1,\\
+        4x_1-3x_2+2x_3&=2
+      \end{aligned}
+      \qquad\Longleftrightarrow\qquad
+      \left[
+        \begin{array}{@{}rrr|r@{}}
+          \Cloze{0.7cm}{2}&\Cloze{0.7cm}{1}&\Cloze{0.7cm}{-1}&\Cloze{0.7cm}{3}\\[0.35em]
+          \Cloze{0.7cm}{3}&\Cloze{0.7cm}{5}&\Cloze{0.7cm}{-4}&\Cloze{0.7cm}{1}\\[0.35em]
+          \Cloze{0.7cm}{4}&\Cloze{0.7cm}{-3}&\Cloze{0.7cm}{2}&\Cloze{0.7cm}{2}
+        \end{array}
+      \right].
+    \]
+  \begin{ClozeArea}[34]{36}
+    \textbf{Vorwärtselimination:} Die Operationen stehen jeweils rechts neben
+    der Matrix, auf die sie angewendet werden:
+    \[
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[\begin{array}{@{}rrr|r@{}}
+          2& 1&-1& 3\\
+          3& 5&-4& 1\\
+          4&-3& 2& 2
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{2Z_2-3Z_1}}\\
+          \smash{\TransformOp{Z_3-2Z_1}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          2&1&-1& 3\\
+          \textcolor{THMBlue}{0}&7&-5&-7\\
+          \textcolor{THMBlue}{0}&-5&4&-4
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          {}\\
+          \smash{\TransformOp{7Z_3+5Z_2}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rrr|r@{}}
+          2&1&-1&3\\
+          \textcolor{THMBlue}{0}&7&-5&-7\\
+          \textcolor{THMBlue}{0}&\textcolor{THMBlue}{0}&3&-63
+        \end{array}\right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
+    \textbf{Rückwärtseinsetzen:} Die Unbekannten werden von der letzten
+    Gleichung aus nach oben bestimmt:
+    \begin{itemize}[leftmargin=1.4em,itemsep=0.55em,topsep=0.3em]
+      \item in Zeile 3 einsetzen:\qquad
+        \(
+          3x_3=-63
+          \;\Longleftrightarrow\;
+          x_3=\frac{-63}{3}
+          \;\Longleftrightarrow\;
+          x_3=-21
+        \)
+      \item in Zeile 2 einsetzen: \qquad
+        \(
+          7x_2-5x_3=-7
+          \;\overset{x_3=-21}{\Longleftrightarrow}\;
+          7x_2-5(-21)=-7
+          \;\Longleftrightarrow\;
+          x_2=-16
+        \)
+      \item in Zeile 1 einsetzen: \qquad
+        \(
+          2x_1+x_2-x_3=3
+          \;\overset{\substack{x_2=-16\\x_3=-21}}{\Longleftrightarrow}\;
+          2x_1+(-16)-(-21)=3
+          \;\Longleftrightarrow\;
+          x_1=-1
+        \)
+    \end{itemize}
+    Somit lautet die eindeutige Lösung
+    \[
+      \mathcal{L}=\{(-1,-16,-21)\}.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+In diesem Beispiel hatte das LGS eine Lösung. Muss das immer der Fall sein?
+\end{minipage}

@@ -1,0 +1,40 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \tikzset{
+    solution type/.style={
+      draw=black,
+      line width=0.4pt,
+      text width=4.0cm,
+      minimum height=0.9cm,
+      align=center,
+      inner sep=0.15cm
+    },
+    dependence type/.style={
+      draw=THMBlue,
+      line width=0.9pt,
+      fill=THMBlue!4,
+      text width=4.0cm,
+      minimum height=0.9cm,
+      align=center,
+      inner sep=0.15cm,
+      font=\bfseries
+    }
+  }
+
+  \node[solution type] (unique) at (0,2.25) {genau eine Lösung};
+  \node[solution type] (none) at (5.25,2.25) {keine Lösung};
+  \node[solution type] (infinite) at (10.50,2.25) {$\infty$-viele Lösungen};
+
+  \draw[red!75!black,line width=1.6pt,shorten <=-5pt,shorten >=-5pt]
+    (none.south west)--(none.north east);
+  \draw[red!75!black,line width=1.6pt,shorten <=-5pt,shorten >=-5pt]
+    (none.north west)--(none.south east);
+
+  \node[dependence type] (independent) at (0,0) {linear unabhängig};
+  \node[dependence type] (dependent) at (10.50,0) {linear abhängig};
+
+  \draw[->,THMBlue,line width=1.1pt] (unique)--(independent);
+  \draw[->,THMBlue,line width=1.1pt] (infinite)--(dependent);
+
+  \node[black!55,align=center] at (5.25,0)
+    {bei einem homogenen LGS\\nicht möglich};
+\end{tikzpicture}

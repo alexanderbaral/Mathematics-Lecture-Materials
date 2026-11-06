@@ -1,0 +1,15 @@
+\begin{tikzpicture}[x=0.75cm,y=0.7cm,>=Latex,line cap=round]
+  \draw[step=1,black!8,line width=0.25pt] (-4,-3) grid (4,3);
+  \draw[->,black!55] (-4.25,0)--(4.45,0) node[right] {$x$};
+  \draw[->,black!55] (0,-3.2)--(0,3.35) node[above] {$y$};
+  \foreach \x in {-4,-3,-2,-1,1,2,3,4}{
+    \draw[black!50] (\x,-0.06)--(\x,0.06);
+    \node[below=4pt,inner sep=1pt] at (\x,0) {$\x$};
+  }
+  \foreach \y in {-3,-2,-1,1,2,3}{
+    \draw[black!50] (-0.055,\y)--(0.055,\y);
+    \node[left=4pt,inner sep=1pt] at (0,\y) {$\y$};
+  }
+  \draw[THMBlue,line width=1.1pt] (-3,-3)--(3,3);
+  \node[THMBlue,anchor=west] at (1.35,-1.5) {$f(x)=x$};
+\end{tikzpicture}

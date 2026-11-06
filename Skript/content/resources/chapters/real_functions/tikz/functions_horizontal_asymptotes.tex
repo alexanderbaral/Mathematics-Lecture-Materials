@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,line cap=round]
+  \begin{scope}[x=0.38cm,y=2.8cm]
+    \draw[black!8] (-8,-0.5) grid[xstep=2,ystep=0.5] (8,0.5);
+    \draw[->,black!55] (-8.3,0)--(8.7,0) node[right] {$x$};
+    \draw[->,black!55] (0,-0.7)--(0,0.75) node[above] {$y$};
+    \foreach \xx in {-8,-4,4,8} {
+      \ifnum\xx<0 \node[above=4pt] at (\xx,0) {$\xx$};
+      \else \node[below=4pt] at (\xx,0) {$\xx$};\fi
+    }
+    \node[anchor=east] at (-8.4,0.5) {$\frac12$};
+    \node[anchor=east] at (-8.4,-0.5) {$-\frac12$};
+    \draw[green!55!black,dashed,line width=1pt] (-8,0)--(8,0);
+    \draw[THMBlue,line width=1.1pt,domain=-8:8,samples=150] plot (\x,{\x/(1+\x*\x)});
+    \node[THMBlue] at (0,1.78) {$\dfrac{x}{x^2+1}$};
+    \node[green!55!black] at (0,-1) {$y=0$};
+  \end{scope}
+  \begin{scope}[xshift=9cm,x=0.62cm,y=0.65cm]
+    \draw[black!8,step=1] (-5,0) grid (5,5);
+    \draw[->,black!55] (-5.2,0)--(5.6,0) node[right] {$x$};
+    \draw[->,black!55] (0,0)--(0,5.5) node[above] {$y$};
+    \foreach \xx in {-4,-2,2,4} \node[below=4pt] at (\xx,0) {$\xx$};
+    \foreach \yy in {1,2,3,4,5} \node[anchor=east] at (-5.2,\yy) {$\yy$};
+    \draw[green!55!black,dashed,line width=1pt] (-5,4)--(5,4);
+    \draw[THMBlue,line width=1.1pt,domain=-5:5,samples=150]
+      plot (\x,{(4*\x*\x+2*\x+1)/(\x*\x+1)});
+    \node[THMBlue] at (0,7.65) {$\dfrac{4x^2+2x+1}{x^2+1}$};
+    \node[green!55!black] at (0,-4.3) {$y=4$};
+  \end{scope}
+\end{tikzpicture}

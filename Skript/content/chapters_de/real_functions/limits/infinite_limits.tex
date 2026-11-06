@@ -1,0 +1,39 @@
+\par\noindent\begin{minipage}{\linewidth}
+\subsection{Grenzwerte im Unendlichen}
+\label{subsec:real_functions_infinite_limits}
+Häufig interessiert uns das asymptotische Verhalten einer Funktion,
+also wie sie sich für betragsmäßig große $x$ verhält.
+Dieses Verhalten beschreiben wir mit Grenzwerten für $x\to\pm\infty$.
+\begin{DefinitionBox}{Grenzverhalten im Unendlichen}{real_functions_limit_at_infinity}
+  Wächst $x$ unbegrenzt ins Positive (oder fällt unbegrenzt ins Negative),
+  also $x\to+\infty$ (bzw. $x\to-\infty$), und nähern sich dabei die
+  Funktionswerte $f(x)$ einem Wert $L\in\R$, so heißt $L$ der
+  \emph{Grenzwert von $f$ im Unendlichen}. Wir schreiben:
+  \[
+    \lim_{x\to+\infty}f(x)=L
+    \qquad\left(\text{bzw. }\lim_{x\to-\infty}f(x)=L\right).
+  \]
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Grenzverhalten einer Geraden}{real_functions_identity_infinity}
+  Am Graphen der Geraden betrachten wir das Verhalten für $x\to\pm\infty$.
+  \[
+    \lim_{x\to\pm\infty}f(x).
+  \]
+  \par\smallskip\noindent
+  \begin{minipage}[c]{0.47\linewidth}
+    Für $x\to+\infty$ wachsen die Funktionswerte unbegrenzt ins Positive;
+    für $x\to-\infty$ fallen sie unbegrenzt ins Negative.
+    \[
+      \begin{aligned}
+        \lim_{x\to+\infty}x&=\Cloze{1.6cm}{+\infty},\\[0.5em]
+        \lim_{x\to-\infty}x&=\Cloze{1.6cm}{-\infty}.
+      \end{aligned}
+    \]
+    Beide Grenzwerte sind uneigentlich.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.47\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_identity_infinity.tex}
+  \end{minipage}
+\end{ExampleBox}
+\end{minipage}

@@ -1,0 +1,12 @@
+\begin{tikzpicture}[>=Latex,baseline=(meaning.base)]
+  \node[inner sep=1pt] (vector) at (0,0) {$\vec a$};
+  \coordinate (vector-arrow) at ([yshift=-0.5pt]vector.north);
+
+  \node[anchor=east,text=black!60] (label) at (-0.65,0.72)
+    {Vektorpfeil};
+  \draw[->,black!55,line width=0.85pt]
+    (label.east) to[out=0,in=135] (vector-arrow);
+
+  \node[anchor=west,inner sep=0pt] (meaning) at (0.85,0)
+    {$\widehat{=}\quad\text{Länge und Richtung}$};
+\end{tikzpicture}

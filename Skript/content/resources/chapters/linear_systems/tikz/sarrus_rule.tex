@@ -1,0 +1,54 @@
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+\begin{tikzpicture}[
+  every node/.style={font=\normalsize},
+  entry/.style={inner sep=2pt,fill=white},
+  positive/.style={THMBlue,line width=1.4pt,opacity=0.65,line cap=round},
+  negative/.style={red!80!black,line width=1.4pt,opacity=0.65,line cap=round}
+]
+  \def\dx{1.25}
+  \def\dy{0.72}
+
+  % Original matrix and the first two columns repeated on the right.
+  \foreach \row in {1,2,3}{
+    \foreach \col in {1,2,3}{
+      \node[entry] (a\row\col) at ({(\col-1)*\dx},{-(\row-1)*\dy})
+        {$a_{\row\col}$};
+    }
+  }
+  \foreach \row in {1,2,3}{
+    \foreach \col in {1,2}{
+      \node[entry,text=green!45!black] (r\row\col)
+        at ({(\col+2.35)*\dx},{-(\row-1)*\dy}) {$a_{\row\col}$};
+    }
+  }
+
+  \begin{pgfonlayer}{background}
+    % Products which are added.
+    \draw[positive] (a11.center) -- (a33.center);
+    \draw[positive] (a12.center) -- (r31.center);
+    \draw[positive] (a13.center) -- (r32.center);
+    % Products which are subtracted.
+    \draw[negative] (a31.center) -- (a13.center);
+    \draw[negative] (a32.center) -- (r11.center);
+    \draw[negative] (a33.center) -- (r12.center);
+  \end{pgfonlayer}
+
+  \draw[line width=0.8pt]
+    ($(a11.north west)+(-0.18,0.18)$) -- ($(a31.south west)+(-0.18,-0.18)$);
+  \draw[line width=0.8pt]
+    ($(a13.north east)+(0.18,0.18)$) -- ($(a33.south east)+(0.18,-0.18)$);
+  \draw[black!45,line width=0.6pt]
+    ($(a13.north east)+(0.45,0.18)$) -- ($(a33.south east)+(0.45,-0.18)$);
+
+  \node[align=center,text=green!45!black] (continue)
+    at ({3.85*\dx},0.95)
+    {erste zwei Spalten\\gedanklich fortsetzen};
+  \draw[-{Stealth[length=2.2mm]},green!45!black,line width=0.8pt]
+    (continue.south) to[bend right=18] ($(r11.north)+(0,0.12)$);
+
+  \node[anchor=west] at ({5.45*\dx},-0.28)
+    {\textcolor{THMBlue}{\rule{0.45cm}{0.22cm}}\quad Produkte addieren};
+  \node[anchor=west] at ({5.45*\dx},-0.96)
+    {\textcolor{red!80!black}{\rule{0.45cm}{0.22cm}}\quad Produkte subtrahieren};
+\end{tikzpicture}

@@ -1,0 +1,29 @@
+\begin{tikzpicture}[
+  every node/.style={font=\normalsize},
+  strike/.style={red!85!black,opacity=0.45,line width=2.5pt,line cap=round}
+]
+  \node (A) at (0,0) {$
+    \begin{pmatrix}
+      \ast&\ast&\textcolor{black!28}{\ast}&\cdots&\ast\\
+      \ast&\ast&\textcolor{black!28}{\ast}&\cdots&\ast\\
+      \textcolor{black!28}{\ast}&\textcolor{black!28}{\ast}&
+        \textcolor{THMBlue}{\boldsymbol{a_{ij}}}&
+        \textcolor{black!28}{\cdots}&\textcolor{black!28}{\ast}\\
+      \vdots&\vdots&\textcolor{black!28}{\vdots}&\ddots&\vdots\\
+      \ast&\ast&\textcolor{black!28}{\ast}&\cdots&\ast
+    \end{pmatrix}$};
+
+  \draw[strike]
+    ($(A.west)+(0.32,0)$)--($(A.center)+(-0.38,0)$);
+  \draw[strike]
+    ($(A.center)+(0.38,0)$)--($(A.east)+(-0.32,0)$);
+  \draw[strike]
+    ($(A.north)+(0,-0.08)$)--($(A.center)+(0,0.32)$);
+  \draw[strike]
+    ($(A.center)+(0,-0.32)$)--($(A.south)+(0,0.08)$);
+
+  \node[anchor=east] at ($(A.west)+(-0.18,0)$) {Zeile $i$};
+  \node[anchor=south] at ($(A.north)+(0,0.12)$) {Spalte $j$};
+  \node[anchor=west] at ($(A.east)+(0.65,0)$)
+    {Dimension von $A_{ij}$: $(n-1)\times(n-1)$};
+\end{tikzpicture}

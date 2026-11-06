@@ -1,0 +1,123 @@
+Die Vektoren $\vec a$ und $\vec b$ spannen ein Parallelogramm auf. Wird dieses
+entlang von $\vec c$ verschoben, entsteht ein Spat. Wir möchten nun das Volumen
+dieses Spats berechnen.
+
+\noindent
+\begin{minipage}[c]{0.57\linewidth}
+  \[
+    \begin{aligned}
+      V
+      &=A h \\
+      &=|\vec a\times\vec b|\,h\\
+      &=|\vec a\times\vec b|\,|\vec c|\,|\cos(\varphi)|\\
+      &=\bigl|(\vec a\times\vec b)\cdot\vec c\bigr|.
+    \end{aligned}
+  \]
+\end{minipage}\hfill
+\begin{minipage}[c]{0.39\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_volume.tex}
+\end{minipage}
+
+Motiviert durch diese Überlegung, definieren wir das Spatprodukt.
+\begin{DefinitionBox}{Spatprodukt}{vector_algebra_scalar_triple_product}
+  Das \emph{Spatprodukt} \EnglishTerm{scalar triple product} der Vektoren
+  $\vec a,\vec b,\vec c\in\R^3$ ist der Skalar
+  \[
+    S=(\vec a\times\vec b)\cdot\vec c.
+  \]
+  Der Betrag des Spatprodukts, $|S|$, entspricht dem Volumen des aufgespannten
+  Spats.
+  \[
+    V = |S| = |(\vec a\times\vec b)\cdot\vec c|.
+  \]
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Volumen eines Spats}{vector_algebra_scalar_triple_product_volume_example}
+  Die Vektoren $\vec a, \vec b, \vec c \in \R^3$ spannen einen Spat auf.
+  \[
+    \vec a=\begin{pmatrix}3\\-1\\2\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}4\\2\\1\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}0\\2\\-5\end{pmatrix}
+  \]
+  Das Spatprodukt $S$ ergibt sich zu
+  \[
+    S=(\vec a\times\vec b)\cdot\vec c
+    =\begin{ClozeContinuation}[29]{3}
+      \left(
+        \begin{pmatrix}3\\-1\\2\end{pmatrix}
+        \times
+        \begin{pmatrix}4\\2\\1\end{pmatrix}
+      \right)
+      \cdot\begin{pmatrix}0\\2\\-5\end{pmatrix}
+      =\begin{pmatrix}-5\\5\\10\end{pmatrix}
+       \cdot\begin{pmatrix}0\\2\\-5\end{pmatrix}
+      =-40
+    \end{ClozeContinuation}.
+  \]
+  Damit beträgt das Volumen
+  \[
+    V=\Cloze{9cm}{|S|=|-40|=40}.
+  \]
+\end{ExampleBox}
+
+\clearpage
+Analog zu Kreuzprodukt lässt sich auch das Spatprodukt in Determinantenschreibweise
+darstellen. Wir werden im Folgenden zeigen, dass
+Mit der Determinantenschreibweise des Kreuzprodukts aus
+Merke~\ref{key:vector_algebra_cross_product_determinant_notation} rechnen wir
+die Determinantendarstellung des Spatprodukts explizit nach. Wegen
+$\vec a\cdot\vec e_i=a_i$ folgt durch Entwicklung nach der ersten Spalte
+\begin{ClozeArea}[34]{13}
+  \[
+    \begin{aligned}
+      (\vec a\times\vec b)\cdot\vec c
+      &=\vec a\cdot(\vec b\times\vec c)\\[1.2em]
+      &=a_1\det\!\begin{pmatrix}b_2&c_2\\b_3&c_3\end{pmatrix}
+        -a_2\det\!\begin{pmatrix}b_1&c_1\\b_3&c_3\end{pmatrix}
+        +a_3\det\!\begin{pmatrix}b_1&c_1\\b_2&c_2\end{pmatrix}
+        \\[1.2em]
+      &=a_1(b_2c_3-b_3c_2)
+        -a_2(b_1c_3-b_3c_1)
+        +a_3(b_1c_2-b_2c_1)
+        \\[1.2em]
+      &=\det\!\begin{pmatrix}
+          a_1&b_1&c_1\\
+          a_2&b_2&c_2\\
+          a_3&b_3&c_3
+        \end{pmatrix}
+        =\det(\vec a,\vec b,\vec c).
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Spatprodukt als Determinante}{vector_algebra_scalar_triple_product_determinant}
+  Für
+  \[
+    \vec a=\begin{pmatrix}a_1\\a_2\\a_3\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}b_1\\b_2\\b_3\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}c_1\\c_2\\c_3\end{pmatrix}
+  \]
+  gilt
+  \[
+    (\vec a\times\vec b)\cdot\vec c
+    =\begin{ClozeContinuation}[20]{3}
+      \det(\vec a,\vec b,\vec c)
+      =
+      \det\!\begin{pmatrix}
+        a_1&b_1&c_1\\
+        a_2&b_2&c_2\\
+        a_3&b_3&c_3
+      \end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+  Die Vektoren $\vec a$, $\vec b$ und $\vec c$ bilden dabei die Spalten der
+  Matrix. Der Betrag der Determinante beschreibt das Volumen des aufgespannten
+  Spats:
+  \[
+    V=\Cloze{12cm}{
+      \bigl|(\vec a\times\vec b)\cdot\vec c\bigr|
+      =\bigl|\det(\vec a,\vec b,\vec c)\bigr|
+    }.
+  \]
+\end{KeyPointBox}

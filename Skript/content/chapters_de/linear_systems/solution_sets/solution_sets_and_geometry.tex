@@ -1,0 +1,133 @@
+\subsection{Drei geometrische Lösungstypen}
+\label{subsec:linear_systems_solution_sets_and_geometry}
+
+Die Lösungsmenge eines LGS kann sehr unterschiedlich aussehen. Wir
+untersuchen die möglichen Fälle zunächst an $2\times2$-LGS.
+
+In zwei Dimensionen beschreibt jede lineare Gleichung eine Gerade in der
+$x_1$-$x_2$-Ebene. Ein Lösungstupel $(x_1,x_2)$ entspricht einem gemeinsamen
+Punkt der Geraden.
+\begin{itemize}[leftmargin=1.6em,itemsep=1.2em]
+  \item
+    \begin{minipage}[t]{\linewidth}
+    \textbf{LGS hat eine eindeutige Lösung}\par\smallskip
+    \noindent
+    \begin{minipage}[c]{0.64\linewidth}
+      Wir betrachten das LGS
+      \[
+        \begin{aligned}
+          \textcolor{THMBlue}{x_1+x_2}&\textcolor{THMBlue}{=2},\\
+          \textcolor{black!60}{x_1-x_2}&\textcolor{black!60}{=0}.
+        \end{aligned}
+        \quad\Longleftrightarrow\quad
+        \left[
+          \begin{array}{@{}rr|r@{}}
+            \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+            \textcolor{black!60}{1}&\textcolor{black!60}{-1}&\textcolor{black!60}{0}
+          \end{array}
+        \right]
+      \]
+      Durch Addition beider Gleichungen folgt $2x_1=2$ und damit $x_1=1$.
+      Einsetzen in eine der Gleichungen ergibt $x_2=1$.
+
+      \smallskip
+      Geometrische Betrachtung: Die Geraden besitzen genau einen
+      Schnittpunkt $S=(1,1)$. Somit ist
+      \[
+        \mathcal{L}=\Cloze{5cm}{\{(1,1)\}}.
+      \]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.32\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/unique_solution_lines.tex}
+    \end{minipage}
+    \end{minipage}
+
+  \item
+    \begin{minipage}[t]{\linewidth}
+    \textbf{LGS hat keine Lösung}\par\smallskip
+    \noindent
+    \begin{minipage}[c]{0.64\linewidth}
+      Wir betrachten das LGS
+      \[
+        \begin{aligned}
+          \textcolor{THMBlue}{x_1+x_2}&\textcolor{THMBlue}{=2},\\
+          \textcolor{black!60}{x_1+x_2}&\textcolor{black!60}{=1}.
+        \end{aligned}
+        \quad\Longleftrightarrow\quad
+        \left[
+          \begin{array}{@{}rr|r@{}}
+            \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+            \textcolor{black!60}{1}&\textcolor{black!60}{1}&\textcolor{black!60}{1}
+          \end{array}
+        \right]
+      \]
+      Die Gleichungen widersprechen sich gegenseitig und können daher
+      nicht gleichzeitig erfüllt sein.
+
+      \smallskip
+      Geometrische Betrachtung: Die Geraden sind parallel und besitzen
+      keinen Schnittpunkt. Daher gilt
+      \[
+        \mathcal{L}=\Cloze{5cm}{\emptyset}.
+      \]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.32\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/no_solution_lines.tex}
+    \end{minipage}
+    \end{minipage}
+
+  \item
+    \begin{minipage}[t]{\linewidth}
+    \textbf{LGS hat $\infty$-viele Lösungen}\par\smallskip
+    \noindent
+    \begin{minipage}[c]{0.64\linewidth}
+      Wir betrachten das LGS
+      \[
+        \begin{aligned}
+          \textcolor{THMBlue}{x_1+x_2}&\textcolor{THMBlue}{=2},\\
+          \textcolor{olive!80!black}{2x_1+2x_2}&\textcolor{olive!80!black}{=4}.
+        \end{aligned}
+        \quad\Longleftrightarrow\quad
+        \left[
+          \begin{array}{@{}rr|r@{}}
+            \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+            \textcolor{olive!80!black}{2}&\textcolor{olive!80!black}{2}&\textcolor{olive!80!black}{4}
+          \end{array}
+        \right]
+      \]
+      Die zweite Gleichung ist das Doppelte der ersten und stellt daher
+      keine zusätzliche Bedingung dar. Jedes Tupel,
+      das die erste Gleichung erfüllt, erfüllt auch die zweite.
+
+      \smallskip
+      Geometrische Betrachtung: Die Geraden sind identisch und besitzen
+      unendlich viele Schnittpunkte. Das bedeutet nicht, dass jedes Tupel aus
+      $\R^2$ eine Lösung ist: Lösungen sind genau die Punkte auf der gemeinsamen
+      Geraden. Daher gilt
+      \[
+        \mathcal{L}=\Cloze{7.5cm}{\{(x_1,x_2)\in\R^2\mid x_1+x_2=2\}}.
+      \]
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.32\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/infinitely_many_solutions_lines.tex}
+    \end{minipage}
+    \end{minipage}
+\end{itemize}
+
+\vspace{\baselineskip}
+
+Die geometrische Betrachtung macht anschaulich, dass lediglich diese drei Fälle
+auftreten können: Zwei Geraden schneiden sich, verlaufen parallel oder liegen
+aufeinander.
+
+Die in $2\mathrm{D}$ gewonnenen Erkenntnisse lassen sich auf beliebige
+$m\times n$-LGS verallgemeinern.
+\begin{TheoremBox}{Anzahl der Lösungen eines LGS}{linear_systems_three_solution_types}
+  Jedes $m\times n$-LGS über $\R$ besitzt genau einen der drei Lösungstypen:
+  \SolutionTypeCases
+  Insbesondere kann ein LGS weder genau zwei noch allgemein endlich viele
+  Lösungen größer als eins besitzen.
+\end{TheoremBox}

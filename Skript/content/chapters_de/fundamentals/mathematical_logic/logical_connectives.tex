@@ -1,0 +1,50 @@
+\subsection{Logische Verknüpfungen}
+\label{subsec:fundamentals_logical_connectives}
+
+Durch die Verknüpfung zweier Aussagen $A$ und $B$ lassen sich neue Aussagen bilden:
+
+\begin{DefinitionBox}{UND-Verknüpfung $\land$}{fundamentals_and_connective}
+  Die \emph{UND-Verknüpfung}, fachsprachlich \emph{Konjunktion}
+  \EnglishTerm{conjunction},
+  \[
+    A\land B,
+  \]
+  ist nur dann wahr, wenn sowohl $A$ als auch $B$ wahr sind.
+\end{DefinitionBox}
+
+\begin{DefinitionBox}{ODER-Verknüpfung}{fundamentals_or_connective}
+  Die \emph{ODER-Verknüpfung}, fachsprachlich \emph{Disjunktion}
+  \EnglishTerm{disjunction},
+  \[
+    A\lor B,
+  \]
+  ist wahr, wenn mindestens eine der beiden Aussagen $A$ und $B$ wahr ist.
+\end{DefinitionBox}
+
+\begin{samepage}
+Eine Wahrheitstabelle erfasst alle möglichen Wahrheitswerte von $A$ und $B$;
+durch das Ausfüllen erkennen wir systematisch, wann die UND- und die
+ODER-Verknüpfung wahr oder falsch sind.
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.55}
+  \setlength{\tabcolsep}{12pt}
+  \begin{tabular}{cccc}
+    \toprule
+    $A$ & $B$ & $A\land B$ & $A\lor B$\\
+    \midrule
+    T & T & \Cloze{1.8cm}{T} & \Cloze{1.8cm}{T}\\
+    T & F & \Cloze{1.8cm}{F} & \Cloze{1.8cm}{T}\\
+    F & T & \Cloze{1.8cm}{F} & \Cloze{1.8cm}{T}\\
+    F & F & \Cloze{1.8cm}{F} & \Cloze{1.8cm}{F}\\
+    \bottomrule
+  \end{tabular}
+\end{center}
+\end{samepage}
+
+\begin{RemarkBox}[remark title=Inklusives und exklusives ODER]
+  Das mathematische ODER ist grundsätzlich inklusiv, d.\,h. $A\lor B$ ist auch
+  dann wahr, wenn sowohl $A$ als auch $B$ wahr sind. Im Gegensatz dazu gibt es
+  in der Informatik auch das exklusive ODER, das nur dann wahr ist, wenn genau
+  eine (aber nicht beide) der Aussagen wahr sind.
+\end{RemarkBox}

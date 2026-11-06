@@ -1,0 +1,28 @@
+% Author-facing metadata
+\newcommand{\ScriptTitle}{\Lang{Mathematik}{Mathematics}}
+\newcommand{\Semester}{WS 26/27}
+\newcommand{\ScriptAuthor}{Prof. Dr. Alexander Baral}
+\newcommand{\Institution}{\Lang{Technische Hochschule Mannheim}{Mannheim University of Applied Sciences}}
+\newcommand{\Faculty}{\Lang{Fakultät für Maschinenbau}{Department of Mechanical Engineering}}
+
+% Branding files (PDF preferred; PNG is also supported).
+\newcommand{\BrandLogoPath}{content/resources/shared/THM_Logo_Fak_M_hochkant_RGB_blau.pdf}
+\newcommand{\BrandDotPath}{content/resources/shared/TH_Mannheim_Favicon.pdf}
+\newcommand{\BrandTitleVisualPath}{content/resources/shared/TH_Mannheim_TitleVisual.pdf}
+
+
+% Build-mode validation and booleans. Entrypoints may define both values first.
+\ExplSyntaxOn
+\str_case:VnF \ScriptLanguage
+  { {de}{} {en}{} }
+  { \PackageError{config}{Unknown ScriptLanguage '\ScriptLanguage'}{Use de or en.} }
+\str_case:VnF \ClozeMode
+  { {true}{} {false}{} }
+  { \PackageError{config}{Unknown ClozeMode '\ClozeMode'}{Use true or false.} }
+\bool_new:N \g_script_english_bool
+\bool_new:N \g_script_cloze_bool
+\str_if_eq:VnT \ScriptLanguage {en} { \bool_gset_true:N \g_script_english_bool }
+\str_if_eq:VnT \ClozeMode {true} { \bool_gset_true:N \g_script_cloze_bool }
+\ExplSyntaxOff
+
+\newcommand{\THMBlueRGB}{0,0,255}

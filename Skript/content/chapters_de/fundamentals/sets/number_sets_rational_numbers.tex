@@ -1,0 +1,50 @@
+\subsubsection{Rationale Zahlen}
+\label{subsubsec:fundamentals_rational_numbers}
+
+Damit auch Quotienten ganzer Zahlen erfasst werden, erweitert man $\Z$ zu den
+\emph{rationalen Zahlen}:
+\[
+  \Q=\left\{\frac pq\,\middle|\,p\in\Z,\ q\in\N\right\}
+  \qquad \text{„Menge aller Brüche aus ganzen Zahlen“}.
+\]
+\begin{center}
+  \begingroup
+    \def\NumberSetStage{3}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/number_set_inclusions.tex}
+  \endgroup
+\end{center}
+Jede rationale Zahl lässt sich als Bruch ganzer Zahlen darstellen. Endliche
+und periodische Dezimalzahlen sind daher rational, zum Beispiel
+\[
+  -\frac12=\Cloze{1.8cm}{-0{,}5}\in\Q,
+  \qquad
+  \frac19=\Cloze{2.0cm}{0{,}\overline{1}}\in\Q.
+\]
+Die rationalen Zahlen sind bezüglich $+$, $-$, $\cdot$ und der Division durch
+eine von null verschiedene Zahl abgeschlossen.
+
+\[
+  \begin{aligned}
+    \frac12+\left(-\frac14\right)
+      &=\Cloze{3.0cm}{\frac14}\in\Q,
+    &\qquad
+    \frac12-\left(-\frac14\right)
+      &=\Cloze{3.0cm}{\frac34}\in\Q,\\[0.5em]
+    \frac12\cdot\left(-\frac14\right)
+      &=\Cloze{3.0cm}{-\frac18}\in\Q,
+    &\qquad
+    \frac12:\left(-\frac14\right)
+      &=\Cloze{3.0cm}{-2}\in\Q
+  \end{aligned}
+  \qquad
+  \text{mit } \frac12\in\Q,\ -\frac14\in\Q.
+\]
+
+Bezüglich des Wurzelziehens sind die rationalen Zahlen allerdings nicht
+abgeschlossen. So gibt es keine rationale Zahl, deren Quadrat gleich $2$ ist:
+\[
+  x^2=2
+  \quad\Longrightarrow\quad
+  x=\pm\Cloze{1.2cm}{\sqrt2}\notin\Q.
+\]
+

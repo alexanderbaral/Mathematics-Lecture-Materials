@@ -1,0 +1,25 @@
+\begin{tikzpicture}[>=Latex]
+  \path[use as bounding box] (-0.15,-2.00) rectangle (8.95,2.20);
+
+  \node[anchor=base west] (E) at (0,0) {$E:\;$};
+  \node[anchor=base west,text=red!75!black] (x) at (0.72,0) {$\vec x$};
+  \node[anchor=base west] (equals) at (1.32,0) {$=$};
+  \node[anchor=base west,text=olive!80!black] (p) at (1.82,0) {$\overrightarrow{OP}$};
+  \node[anchor=base west] (plusA) at (2.93,0) {$+$};
+  \node[anchor=base west] (lambda) at (3.45,0) {$\lambda$};
+  \node[anchor=base west,text=THMBlue] (a) at (4.10,0) {$\vec a$};
+  \node[anchor=base west] (plusB) at (4.68,0) {$+$};
+  \node[anchor=base west] (mu) at (5.18,0) {$\mu$};
+  \node[anchor=base west,text=THMBlue] (b) at (5.78,0) {$\vec b$};
+  \node[anchor=base west] (real) at (6.36,0) {$,\quad\lambda,\mu\in\R$};
+
+  \node (direction) at (5.05,1.48) {Richtungsvektoren};
+  \draw[->,black!65,line width=0.75pt]
+    ([xshift=-6mm]direction.south) .. controls (4.20,0.95) and (4.30,0.80) .. ([yshift=1.5mm]a.north);
+  \draw[->,black!65,line width=0.75pt]
+    ([xshift=6mm]direction.south) .. controls (6.00,0.95) and (6.00,0.80) .. ([yshift=1.5mm]b.north);
+
+  \node (support) at (5.05,-1.36) {Stützvektor};
+  \draw[->,black!65,line width=0.75pt]
+    (support.west) .. controls (2.75,-1.36) and (2.20,-0.85) .. ([yshift=-1.5mm]p.south);
+\end{tikzpicture}

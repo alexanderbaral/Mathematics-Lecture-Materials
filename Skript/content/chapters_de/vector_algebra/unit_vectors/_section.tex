@@ -1,0 +1,90 @@
+\section{Einheitsvektoren}
+\label{sec:vector_algebra_unit_vectors}
+
+\begin{DefinitionBox}{Einheitsvektor}{vector_algebra_unit_vector}
+  Ein \emph{Einheitsvektor} $\vec e$ \EnglishTerm{unit vector} ist ein Vektor der Länge $1$. 
+  \[
+    |\vec e|=1.
+  \]
+\end{DefinitionBox}
+
+Häufig möchten wir zu einem Vektor den zugehörigen Einheitsvektor konstruieren, d.h.
+ein Vektor der die gleiche Richtung hat, aber nur noch die Länge 1.
+\begin{TheoremBox}{Normierung eines Vektors}{vector_algebra_vector_normalization}
+  Durch Multiplikation mit dem Skalar $1/|\vec a|$ normieren wir einen Vektor
+  so, dass seine Länge $1$ beträgt:
+  \[
+    \vec e_a
+    =\frac1{|\vec a|}\,\vec a
+    =\frac{\vec a}{|\vec a|}
+    \qquad (\vec a\ne\vec 0).
+  \]
+  Der resultierende Einheitsvektor $\vec e_a$ hat die Richtung von $\vec a$
+  und die Länge $|\vec e_a|=1$.
+\end{TheoremBox}
+
+Mit den Rechenregeln für den Betrag überprüfen wir, dass die
+vorgegebene Rechenvorschrift tatsächlich einen Einheitsvektor liefert:
+\begin{ClozeArea}[26]{3}
+  \[
+    |\vec e_a|
+    =\left|\frac1{|\vec a|}\,\vec a\right|
+    =\left|\frac1{|\vec a|}\right|\,|\vec a|
+    =\frac1{|\vec a|}\,|\vec a|
+    =1.
+  \]
+\end{ClozeArea}
+
+\begin{ExampleBox}{Normierung eines Vektors}{vector_algebra_normalize_vector}
+  Wir normieren die folgenden Vektoren:
+  \begin{enumerate}[label=\alph*),leftmargin=1.7em,itemsep=0.2em]
+    \item
+      \begin{minipage}[t]{0.66\linewidth}
+        Für $\vec a=\begin{pmatrix}1\\1\end{pmatrix}$ gilt
+        \[
+          {\color{THMBlue}\vec e_a=}
+          \begin{ClozeContinuation}[20]{3}
+            {\color{THMBlue}
+              \frac{\vec a}{|\vec a|}
+              =\frac1{\sqrt{1^2+1^2}}\begin{pmatrix}1\\1\end{pmatrix}
+              =\frac1{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix}}
+          \end{ClozeContinuation}.
+        \]
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.32\linewidth}
+        \vspace{0pt}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_normalization_example_2d.tex}
+      \end{minipage}\par
+
+    \item Für $\vec b=\begin{pmatrix}1\\2\\2\end{pmatrix}\in\R^3$ gilt
+      \[
+        \vec e_b
+        =\begin{ClozeContinuation}[24]{3}
+          \frac{\vec b}{|\vec b|}
+          =\frac1{\sqrt{1^2+2^2+2^2}}\begin{pmatrix}1\\2\\2\end{pmatrix}
+          =\frac13\begin{pmatrix}1\\2\\2\end{pmatrix}
+        \end{ClozeContinuation}.
+      \]
+  \end{enumerate}
+\end{ExampleBox}
+
+Durch Normieren gewinnen wir aus einem Vektor seinen Einheitsvektor.
+Umgekehrt lässt sich der ursprüngliche Vektor aus seinem Betrag und diesem
+Einheitsvektor zusammensetzen.
+
+\begin{TheoremBox}{Zerlegung in Länge und Richtung}{vector_algebra_magnitude_direction_decomposition}
+  Jeder Vektor $\vec a\ne\vec 0$ lässt sich als Produkt aus seinem Betrag und
+  dem zugehörigen Einheitsvektor darstellen:
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_magnitude_direction_decomposition.tex}
+  \end{center}
+  Damit werden die beiden Eigenschaften eines Vektors sichtbar aufgetrennt:
+  \begin{itemize}[leftmargin=1.7em,topsep=0.7em,itemsep=0.35em]
+    \item Die \Cloze{2.2cm}{Länge} wird durch den Betrag $|\vec a|$ des Vektors beschrieben.
+    \item Die \Cloze{2.4cm}{Richtung} wird durch den Einheitsvektor $\vec e_a$ beschrieben.
+  \end{itemize}
+\end{TheoremBox}
+
+\clearpage
+\input{content/chapters_de/vector_algebra/unit_vectors/canonical_unit_vectors.tex}

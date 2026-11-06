@@ -1,0 +1,144 @@
+\subsection{Nullstellen und Definitionslücken}
+\label{subsec:real_functions_poles}
+\begin{DefinitionBox}{Nullstellen und Definitionslücken}{real_functions_rational_zeros_and_gaps}
+  \label{def:real_functions_removable_gap}
+  \label{def:real_functions_pole}
+  Die Nullstellen von Zähler $Z$ und Nenner $N$ erlauben folgende Einteilung:
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_case_hierarchy.tex}
+  \end{center}
+  Das folgende Ablaufdiagramm zeigt die Unterscheidung im Einzelnen.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_decision.tex}
+  \end{center}
+  Polstellen und hebbare Definitionslücken sind beides Definitionslücken.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Gebrochen-rationale Funktion mit Nullstelle}{real_functions_rational_zero_example}
+  Wir untersuchen die Funktion $f(x)$ auf Nullstellen und Definitionslücken.
+  \[
+    f(x)=\frac{x}{x^2+1}.
+  \]
+  Aus der Linearfaktorzerlegung von Zähler und Nenner lesen wir deren Nullstellen ab:
+  \begin{ClozeArea}[32]{6}
+    \[
+      \begin{alignedat}{3}
+        Z(x)&=x
+          &\quad\Longleftrightarrow\quad& Z(x)=(x-0)
+          &\quad\Longrightarrow\quad& \text{Nullstelle bei }x_1=0,\\[0.8em]
+        N(x)&=x^2+1
+          &\quad\Longleftrightarrow\quad& N(x)=x^2+1\ge1
+          &\quad\Longrightarrow\quad& \textcolor{red}{\text{keine Nullstelle}}.
+      \end{alignedat}
+    \]
+  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[c]{0.45\linewidth}
+    Da der Nenner keine Nullstellen hat, liegt keine Definitionslücke vor:
+    \[
+      D_f=\Cloze{2cm}{\R}.
+    \]
+    Die Zählernullstelle $x_1=0$ liegt im Definitionsbereich $D_f$ und ist damit
+    eine Nullstelle von $f$:
+    \[
+      f(0)=\Cloze{0.8cm}{0}.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.52\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_zero.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+\begin{ExampleBox}{Gebrochen-rationale Funktion mit Polstelle}{real_functions_rational_pole_example}
+  Wir untersuchen die Funktion $g(x)$ auf Nullstellen und Definitionslücken.
+  \[
+    g(x)=\frac{1}{x-1}.
+  \]
+  Aus der Linearfaktorzerlegung von Zähler und Nenner lesen wir deren Nullstellen ab:
+  \begin{ClozeArea}[32]{6}
+    \[
+      \begin{alignedat}{3}
+        Z(x)&=1
+          &\quad\Longleftrightarrow\quad& Z(x)=1
+          &\quad\Longrightarrow\quad& \textcolor{red}{\text{keine Nullstelle}},\\[0.8em]
+        N(x)&=x-1
+          &\quad\Longleftrightarrow\quad& N(x)=(x-1)
+          &\quad\Longrightarrow\quad& \text{Nullstelle bei }x_1=1.
+      \end{alignedat}
+    \]
+  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[c]{0.45\linewidth}
+    Die Nennernullstelle $x_1=1$ ist eine Definitionslücke:
+    \[
+      D_g=\Cloze{3cm}{\R\setminus\{1\}}.
+    \]
+    Da aber $Z(1)=1 \neq 0$, liegt bei $x=1$ eine Polstelle vor.
+    Zu jeder Polstelle gehört eine \textcolor{green!55!black}{\emph{vertikale Asymptote}}
+    \EnglishTerm{vertical asymptote} an dieser Stelle.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.52\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_rational_pole.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+\begin{ExampleBox}{Gebrochen-rationale Funktion mit hebbarer Definitionslücke}{real_functions_cancelled_hole}
+  Wir untersuchen die Funktion $f(x)$ auf Nullstellen und Definitionslücken.
+  \[
+    f(x)=\frac{x^2-1}{x+1}.
+  \]
+  Aus der Linearfaktorzerlegung von Zähler und Nenner lesen wir deren Nullstellen ab:
+  \begin{ClozeArea}[34]{5}
+    \[
+      \begin{alignedat}{3}
+        Z(x)&=x^2-1
+          &\quad\Longleftrightarrow\quad& Z(x)=(x-1)(x+1)
+          &\quad\Longrightarrow\quad& \text{Nullstellen bei }x_1=-1,\;x_2=1,\\[0.8em]
+        N(x)&=x+1
+          &\quad\Longleftrightarrow\quad& N(x)=(x+1)
+          &\quad\Longrightarrow\quad& \text{Nullstelle bei }x_1=-1.
+      \end{alignedat}
+    \]
+  \end{ClozeArea}
+  \noindent
+  \begin{minipage}[c]{0.45\linewidth}
+    Die Nennernullstelle $x_1=-1$ ist eine Definitionslücke:
+    \[
+      D_f=\Cloze{3cm}{\R\setminus\{-1\}}.
+    \]
+    Die Zählernullstelle $x_2=1$ liegt im Definitionsbereich $D_f$ und ist damit
+    eine Nullstelle von $f$:
+    \[
+      f(x_2)=f(1)=\Cloze{0.8cm}{0}.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.52\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_removable_gap.tex}
+  \end{minipage}
+  \par\medskip
+  Bei $x_1=-1$ können wir $f$ nicht auswerten.
+  Der Graph zeigt jedoch, welchem Wert sich die Funktion dort nähert.
+  Diesen Grenzwert bestimmen wir, indem wir in der Linearfaktorzerlegung von
+  Zähler und Nenner den gemeinsamen Faktor $(x+1)$ kürzen:
+  \begin{ClozeArea}[34]{6}
+    \[
+      f(x)=\frac{(x-1)\cancel{(x+1)}}{\cancel{(x+1)}}=x-1\qquad(x\ne-1).
+    \]
+  \end{ClozeArea}
+  In den Term $x-1$ lässt sich auch $x=-1$ einsetzen.
+  Deshalb definieren wir mit demselben Term die Funktion $\widetilde f$ auf ganz $\R$:
+  \[
+    \widetilde f(x)=x-1 \qquad(x\in\R).
+  \]
+  Die Funktion $\widetilde f$ ist eine \emph{stetige Fortsetzung}
+  \EnglishTerm{continuous extension} von $f$.
+  Sie unterscheidet sich von $f$ nur dadurch, dass sie auch bei $x=-1$ definiert ist.
+
+  Den gesuchten Grenzwert können wir daher direkt mit der stetigen Fortsetzung bestimmen:
+  \[
+    \lim_{x\to-1}f(x)=\widetilde f(-1)=-2.
+  \]
+\end{ExampleBox}

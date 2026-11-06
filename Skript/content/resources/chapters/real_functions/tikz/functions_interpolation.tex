@@ -1,0 +1,32 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.15cm,y=1.15cm,>=Latex,line cap=round]
+  \begin{pgfonlayer}{functionsgrid}
+    \draw[step=1,black!8,line width=0.25pt] (-1,-4) grid (3,1);
+  \end{pgfonlayer}
+
+  \draw[->,black!55] (-1.4,0)--(3.35,0) node[right] {$x$};
+  \draw[->,black!55] (0,-4.25)--(0,1.55) node[above] {$y$};
+
+  \foreach \x in {-1,1,2,3} {
+    \draw[black!50] (\x,-0.055)--(\x,0.055);
+    \node[below=4pt,inner sep=1pt,fill=white] at (\x,0) {$\x$};
+  }
+  \foreach \y in {-1,-2,-3} {
+    \draw[black!50] (-0.055,\y)--(0.055,\y);
+    \node[left=4pt,inner sep=1pt,fill=white] at (0,\y) {$\y$};
+  }
+
+  \IfClozeTF{}{%
+    \begin{scope}
+      \clip (-1.35,-4.2) rectangle (3.3,1.5);
+      \draw[THMBlue,line width=1.15pt,domain=-1.25:3.25,samples=121]
+        plot (\x,{2*\x-\x*\x});
+    \end{scope}
+    \node[above right=5pt,inner sep=1pt,fill=white,text=THMBlue]
+      at (2,0) {$p(x)$};
+  }
+  \fill[black] (0,0) circle (2.1pt);
+  \fill[black] (1,1) circle (2.1pt);
+  \fill[black] (2,0) circle (2.1pt);
+\end{tikzpicture}

@@ -1,0 +1,21 @@
+\begin{tikzpicture}[
+    font=\normalsize,
+    formula/.style={font=\LARGE},
+    callout/.style={font=\normalsize,text=violet!80!black},
+    pointer/.style={-{Latex[length=2.4mm]},teal!85!black,line width=0.9pt,
+      shorten <=1.5pt,shorten >=1.5pt}
+  ]
+  \node[formula,anchor=base] (mantissa) at (-0.72,0) {$m$};
+  \node[formula,anchor=base] (times) at (-0.08,0) {$\cdot$};
+  \node[formula,anchor=base] (base) at (0.62,0) {$10$};
+  \node[font=\Large,anchor=south west]
+    (exponent) at ([xshift=-0.32cm,yshift=-0.16cm]base.north east) {$e$};
+
+  \node[callout] (mantissa-label) at (-1.75,1.5)
+    {\Lang{Mantisse}{Mantissa}};
+  \node[callout] (exponent-label) at (1.12,1.95)
+    {\Lang{Exponent}{Exponent}};
+
+  \draw[pointer] (mantissa-label.south) -- (mantissa.north west);
+  \draw[pointer,shorten <=0pt] (exponent-label.south) -- (exponent.north);
+\end{tikzpicture}

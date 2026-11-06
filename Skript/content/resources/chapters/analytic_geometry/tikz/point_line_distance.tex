@@ -1,0 +1,52 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (0.15,-1.60) rectangle (15.65,6.00);
+
+  \coordinate (O) at (2.00,-0.65);
+  \coordinate (P) at (2.00,1.57);
+  \coordinate (H) at (6.50,2.94);
+  \coordinate (Q) at (5.90,4.91);
+
+  \draw[black!65,line width=1.0pt] ($(P)!-0.29!(H)$)--($(P)!1.81!(H)$);
+  % Offset the dimension parallel to the line, preserving the perpendicular length.
+  \coordinate (braceH) at ($(H)+(1.20,0.36533)$);
+  \coordinate (braceQ) at ($(Q)+(1.20,0.36533)$);
+  \draw[red!75!black,densely dashed,line width=0.75pt]
+    (Q)--(braceQ);
+  \draw[black!60,densely dashed,line width=0.75pt]
+    (H)--(braceH);
+  \draw[decorate,decoration={brace,amplitude=5pt,raise=3pt},black!75]
+    (braceQ)--(braceH);
+  \node[anchor=west,text=black!75] (distanceFormula) at (8.00,4.38)
+    {$d=\lvert\overrightarrow{PQ}_{\perp}\rvert$};
+  \node[anchor=south west,text=black!75] at (8.00,4.73)
+    {\Lang{Abstand}{Distance}};
+  \draw[->,olive!80!black,line width=1.25pt] (O)--(P)
+    node[pos=0.40,right=6pt] {$\overrightarrow{OP}$};
+  \draw[->,violet!80!black,line width=1.15pt] (P)--(Q)
+    node[pos=0.48,left=6pt] {$\overrightarrow{PQ}$};
+  \draw[->,teal!80!black,line width=1.25pt] (P)--(H)
+    node[pos=0.79,below=6pt]
+      {$\overrightarrow{PQ}_{\parallel}$};
+  \draw[->,THMBlue,line width=1.6pt] (P)--($(P)!0.32!(H)$);
+  \node[text=THMBlue] at (3.10,1.42) {$\vec a$};
+  \draw[->,red!75!black,line width=1.25pt] (H)--(Q)
+    node[pos=0.54,right=6pt]
+      {$\overrightarrow{PQ}_{\perp}$};
+
+  \fill (O) circle (1.9pt) node[below=4pt] {$O$};
+  \fill (P) circle (1.9pt)
+    node[below right=5pt] {$P$};
+  \fill (H) circle (1.9pt);
+  \fill (Q) circle (1.9pt)
+    node[above=4pt] {$Q$};
+
+  \RightAngleMark{(H)}{197}{107}{0.42}
+
+  \node[anchor=west] (lineLabel) at (7.95,2.20)
+    {\Lang{Gerade}{Line} $g:\quad\vec x=
+      \textcolor{olive!80!black}{\overrightarrow{OP}}
+      +\lambda\textcolor{THMBlue}{\vec a},\quad\lambda\in\R$};
+  \draw[->,black!65,line width=0.75pt]
+    (lineLabel.west) .. controls (7.90,2.60) and (8.05,3.08)
+      .. ($(P)!1.40!(H)$);
+\end{tikzpicture}

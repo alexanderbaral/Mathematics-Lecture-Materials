@@ -1,0 +1,25 @@
+\begin{tikzpicture}[x=0.45cm,y=0.45cm,font=\normalsize]
+  \def\aside{3.6}
+  \def\bside{2}
+  \pgfmathsetmacro{\totalside}{\aside+\bside}
+
+  \fill[yellow!70] (0,\bside) rectangle (\aside,\totalside);
+  \fill[green!55!black] (\aside,\bside) rectangle (\totalside,\totalside);
+  \fill[green!55!black] (0,0) rectangle (\aside,\bside);
+  \fill[black!18] (\aside,0) rectangle (\totalside,\bside);
+
+  \draw[thick] (0,0) rectangle (\totalside,\totalside);
+  \draw[thick] (\aside,0) -- (\aside,\totalside);
+  \draw[thick] (0,\bside) -- (\totalside,\bside);
+
+  \node at ({0.5*\aside},{\bside+0.5*\aside}) {$a^2$};
+  \node[text=white] at ({\aside+0.5*\bside},{\bside+0.5*\aside}) {$ab$};
+  \node[text=white] at ({0.5*\aside},{0.5*\bside}) {$ab$};
+  \node at ({\aside+0.5*\bside},{0.5*\bside}) {$b^2$};
+
+  \node[above=2pt] at ({0.5*\aside},\totalside) {$a$};
+  \node[above=2pt] at ({\aside+0.5*\bside},\totalside) {$b$};
+
+  \node[left=2pt] at (0,{\bside+0.5*\aside}) {$a$};
+  \node[left=2pt] at (0,{0.5*\bside}) {$b$};
+\end{tikzpicture}

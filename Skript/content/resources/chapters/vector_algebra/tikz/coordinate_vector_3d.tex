@@ -1,0 +1,36 @@
+\begin{tikzpicture}[>=Latex,x=1.05cm,y=1.05cm]
+  \coordinate (O) at (2.15,1.20);
+  \coordinate (Pone) at ($(O)+(3.30,0)$);
+  \coordinate (Ptwo) at ($(Pone)+(0,1.60)$);
+  \coordinate (C) at ($(Ptwo)+(-2.33,-2.33)$);
+  \coordinate (ConeCthree) at (3.85,1.20);
+
+  \draw[->,black!60,line width=0.6pt]
+    (O)--++(4.15,0) node[right] {$x_1$};
+  \draw[->,black!60,line width=0.6pt]
+    (O)--++(0,3.15) node[above] {$x_2$};
+  \draw[->,black!60,line width=0.6pt]
+    (O)--++(-2.15,-2.15) node[below left] {$x_3$};
+
+  \node[anchor=east,text=black!60] (origin-label) at (1.45,1.85)
+    {Ursprung};
+  \draw[->,black!55,line width=0.7pt]
+    (origin-label.east) -- ([xshift=-1pt,yshift=1pt]O);
+
+  \node[draw=black!40,circle,inner sep=3pt,text=black!38,
+      font=\bfseries\fontsize{20}{22}\selectfont]
+    at (5.85,4.00) {$\R^3$};
+
+  \IfClozeTF{}{%
+    \draw[THMBlue!55,densely dashed]
+      (O)--(Pone)--(Ptwo)--(C);
+    \RightAngleMark[THMBlue!75]{(Pone)}{180}{90}{0.27}
+    \RightAngleMark[THMBlue!75]{(Ptwo)}{270}{225}{0.28}
+    \RightAngleMark[THMBlue!75]{(ConeCthree)}{0}{45}{0.28}
+    \node[THMBlue,below=6pt] at ($(O)!0.5!(Pone)$) {$c_1$};
+    \node[THMBlue,right] at ($(Pone)!0.5!(Ptwo)$) {$c_2$};
+    \node[THMBlue,above left] at ($(Ptwo)!0.5!(C)$) {$c_3$};
+    \draw[->,THMBlue,line width=1.35pt] (O)--(C);
+    \node[THMBlue,below right=5pt] at ($(O)!0.55!(C)$) {$\vec c$};
+  }
+\end{tikzpicture}

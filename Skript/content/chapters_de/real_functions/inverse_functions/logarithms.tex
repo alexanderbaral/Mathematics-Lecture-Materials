@@ -1,0 +1,159 @@
+\clearpage
+\subsection{Logarithmen als Umkehrung des Exponenzierens}
+\label{subsec:real_functions_logarithms}
+Für $a>0$, $a\ne1$ ist $a^x$ streng monoton und nimmt jeden positiven
+Wert genau einmal an. Deshalb lässt sich aus einem positiven
+Funktionswert der zugehörige Exponent eindeutig zurückgewinnen.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Logarithmus}{real_functions_logarithm}
+  Für $a>0$, $a\ne1$ und $y>0$ ist der \emph{Logarithmus}
+  \EnglishTerm{logarithm} $\log_a y$ der Exponent, mit dem die Basis $a$
+  potenziert werden muss, um $y$ zu erhalten:
+  \[
+    a^x=y\quad\Longleftrightarrow\quad x=\log_a y.
+  \]
+  Die Logarithmusfunktion $\log_a:(0,\infty)\to\R$ ist die
+  Umkehrfunktion von $x\mapsto a^x$.
+  Entsprechend gelten beide Umkehridentitäten
+  \[
+    \log_a(a^x)=x\quad(x\in\R),\qquad
+    a^{\log_a y}=y\quad(y>0).
+  \]
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Gesucht ist der Exponent}{real_functions_logarithm_values}
+  Übersetzen Sie jede Logarithmusfrage in eine Potenzgleichung.
+  \[
+    \begin{array}{c@{\qquad}c@{\qquad}c}
+      2^{\,?}=8&10^{\,?}=0{,}01&(1/2)^{\,?}=4\\[0.5em]
+      \log_2 8=\Cloze{1cm}{3}&
+      \log_{10}0{,}01=\Cloze{1cm}{-2}&
+      \log_{1/2}4=\Cloze{1cm}{-2}
+    \end{array}
+  \]
+\end{ExampleBox}
+\end{minipage}
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_logarithms.tex}
+\end{center}
+
+% Handschrift: PDF-Seiten 52–53 (Definitions-/Wertemengentausch und Spiegelung).
+Die Exponentialfunktion nimmt nur positive Werte an. Bei ihrer
+Umkehrung werden Definitions- und Wertemenge vertauscht:
+\[
+  \begin{array}{c@{\qquad\Longleftrightarrow\qquad}c}
+    f:\R\to(0,\infty)&f^{-1}:(0,\infty)\to\R\\
+    x\mapsto a^x&x\mapsto\log_a x
+  \end{array}
+\]
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_logarithm_reflection.tex}
+\end{center}
+Die waagerechte Asymptote $y=0$ der Exponentialfunktion wird bei der
+Spiegelung zur \textcolor{green!55!black}{vertikalen Asymptote} $x=0$ des Logarithmus.
+
+\begin{TheoremBox}{Eigenschaften der Logarithmusfunktion}{real_functions_log_properties}
+  Die Funktion $\log_a x$ ist auf $(0,\infty)$ stetig und hat die
+  \textcolor{green!55!black}{Wertemenge} $\R$. Es gilt $\log_a1=0$ und $\log_a a=1$.
+  Außerdem ist $\log_a(1/a)=\log_a(a^{-1})=-1$.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.4}
+    \begin{tabular}{@{}lcc@{}}
+      \toprule
+       & $a>1$ & $0<a<1$\\ \midrule
+      Monotonie & streng steigend & streng fallend\\
+      $x\to0$ & $\lim_{x\to0}\log_a x=-\infty$ & $\lim_{x\to0}\log_a x=+\infty$\\
+      $x\to+\infty$ & $\lim_{x\to+\infty}\log_a x=+\infty$ & $\lim_{x\to+\infty}\log_a x=-\infty$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Die Gerade $x=0$ ist eine \textcolor{green!55!black}{vertikale Asymptote}. Es gibt keinen
+  $y$-Achsenabschnitt.
+  Die einzige Nullstelle ist $x=1$; die Funktion ist weder nach oben
+  noch nach unten beschränkt.
+\end{TheoremBox}
+Die besonderen Bezeichnungen
+\emph{natürlicher Logarithmus} \EnglishTerm{natural logarithm}
+$\ln x=\log_e x$ und \emph{dekadischer Logarithmus}
+\EnglishTerm{common logarithm} $\lg x=\log_{10}x$ verwenden wir im Folgenden.
+
+\begin{TheoremBox}{Logarithmengesetze}{real_functions_log_laws}
+  Für $u,v>0$, $r\in\R$ sowie $a,b>0$ mit $a,b\ne1$ gelten:
+  \[
+    \begin{aligned}
+      \log_a(uv)&=\log_a u+\log_a v,\\[0.6em]
+      \log_a(u/v)&=\log_a u-\log_a v,\\[0.6em]
+      \log_a(u^r)&=r\log_a u,\\[0.6em]
+      \log_a u&=\frac{\log_b u}{\log_b a}
+               =\frac{\ln u}{\ln a}.
+    \end{aligned}
+  \]
+  Insbesondere gelten $\ln(e^x)=x$ für $x\in\R$ und
+  $e^{\ln x}=x$ für $x>0$.
+  Jede Exponentialfunktion lässt sich damit zur Basis $e$ schreiben:
+  $a^x=e^{x\ln a}$ für $a>0$. Bei $0<a<1$ ist $\ln a<0$,
+  entsprechend einer exponentiellen Abnahme.
+\end{TheoremBox}
+Die Produktregel folgt aus den Potenzgesetzen:
+Mit $s=\log_a u$ und $t=\log_a v$ ist
+$uv=a^s a^t=a^{s+t}$; der gesuchte Exponent ist also $s+t$.
+% Handschrift: PDF-Seite 56 (Potenzregel und beide Basiswechsel nachrechnen).
+Ebenso folgt für $u=a^s>0$ die Potenzregel aus dem Potenzgesetz:
+\[
+  \log_a(u^r)=\log_a((a^s)^r)=\log_a(a^{sr})=sr=r\log_a u.
+\]
+Zum Basiswechsel schreiben wir für $a,b>0$, $a,b\ne1$ und $u>0$
+\[
+  \begin{aligned}
+    a^x&=\left(b^{\log_b a}\right)^x=b^{x\log_b a},\\[0.6em]
+    \log_a u&=\log_a\left(b^{\log_b u}\right)
+      =\log_b u\,\log_a b
+      \quad\Longrightarrow\quad
+      \log_b u=\frac{\log_a u}{\log_a b}.
+  \end{aligned}
+\]
+\begin{ExampleBox}{Logarithmengesetze ohne große Zahlen anwenden}{real_functions_log_law_examples}
+  Vereinfachen Sie die Terme mit den passenden Rechenregeln,
+  ohne zuerst das Produkt oder die große Potenz auszurechnen.
+  \begin{ClozeArea}[34]{6}
+    \[
+      \begin{aligned}
+        \ln(y e^x)&=\ln y+\ln(e^x)=\ln y+x\qquad(y>0),\\[0.7em]
+        \log_a(0{,}5)&=\log_a(1/2)=-\log_a2,\\[0.7em]
+        \lg(10^{1000})&=1000\lg10=1000.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+\begin{RemarkBox}[remark title=Grenzen der Logarithmengesetze]
+  Für Summen gibt es keine entsprechende Zerlegung:
+  $\ln(u+v)$ ist im Allgemeinen nicht $\ln u+\ln v$.
+  Ein Logarithmus darf im Reellen nur auf ein positives Argument
+  angewendet werden.
+\end{RemarkBox}
+
+\begin{ExampleBox}{Wann ist die Amplitude halbiert?}{real_functions_half_life}
+  Für $A(t)=A_0e^{-t/\tau}$ mit $A_0>0$ und $\tau>0$ suchen wir die
+  \emph{Halbwertszeit} \EnglishTerm{half-life} $t_{1/2}$.
+  Berechnen Sie sie zunächst allgemein und anschließend für $\tau=2\,\mathrm{s}$.
+  \begin{ClozeArea}[34]{11}
+    Die Bedingung $A(t_{1/2})=A_0/2$ führt auf eine Gleichung für den Exponenten:
+    \[
+      \begin{array}{r@{\quad}l@{\qquad}l}
+        &A_0e^{-t_{1/2}/\tau}=A_0/2&\TransformOp{:A_0}\\[0.9em]
+        \Longleftrightarrow&e^{-t_{1/2}/\tau}=1/2&\TransformOp{\ln}\\[0.9em]
+        \Longleftrightarrow&-t_{1/2}/\tau=\ln(1/2)&\TransformOp{\cdot(-\tau)}\\[0.9em]
+        \Longleftrightarrow&t_{1/2}=\tau\ln2.&
+      \end{array}
+    \]
+    Für $\tau=2\,\mathrm{s}$ ergibt sich $t_{1/2}\approx1{,}386\,\mathrm{s}$.
+    Der Anfangswert $A_0$ beeinflusst die Halbwertszeit nicht.
+  \end{ClozeArea}
+\end{ExampleBox}
+% Handschrift: PDF-Seiten 54–55 (Zerfallsraten und Halbwertszeit).
+Der gleiche Zerfall wird oft als $Y(t)=Y_0e^{-\gamma t}$ geschrieben,
+mit \emph{Zerfallskonstante} \EnglishTerm{decay constant} $\gamma=1/\tau>0$. Dann ist
+$t_{1/2}=\ln2/\gamma$: Eine größere Zerfallskonstante bedeutet eine kürzere Halbwertszeit.
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_decay_rates.tex}
+\end{center}

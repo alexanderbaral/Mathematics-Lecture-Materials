@@ -1,0 +1,50 @@
+\providecommand{\ScriptLanguage}{de}
+\providecommand{\ClozeMode}{false}
+\providecommand{\TikzCacheVariant}{main}
+\providecommand{\TikzCacheRoot}{build/tikz/\TikzCacheVariant}
+
+\documentclass[a4paper,12pt,headinclude=true,footinclude=true]{scrreprt}
+
+\InputIfFileExists{build/tikz-cache-path.tex}{}{}
+
+\input{common/config.tex}
+\input{common/preamble.tex}
+% Cancellation marks are document-only; standalone figure caches stay unchanged.
+\usepackage{cancel}
+\input{common/commands.tex}
+\input{common/layout.tex}
+\ifdefined\BuildContextFile\input{\BuildContextFile}\fi
+
+\begin{document}
+\ifdefined\ScriptPreviewBody
+  \input{\ScriptPreviewBody}
+\else
+\UseUnnumberedFrontMatter
+\MakeScriptTitle
+\input{content/front_matter/usage_notes.tex}
+\begingroup
+  \pagestyle{plain.scrheadings}
+  \tableofcontents
+  \clearpage
+\endgroup
+
+\input{content/front_matter/greek_alphabet.tex}
+\input{content/front_matter/recommended_reading.tex}
+
+\StartMainMatter
+\input{content/chapters_\ScriptLanguage/fundamentals/_chapter.tex}
+\IfEnglishTF{}{
+  \clearpage
+  \input{content/chapters_de/linear_systems/_chapter.tex}
+  \clearpage
+  \input{content/chapters_de/vector_algebra/_chapter.tex}
+  \clearpage
+  \input{content/chapters_de/analytic_geometry/_chapter.tex}
+  \clearpage
+  \input{content/chapters_de/real_functions/_chapter.tex}
+  \clearpage
+  \input{content/chapters_de/complex_numbers/_chapter.tex}
+}
+
+\fi
+\end{document}

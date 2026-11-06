@@ -1,0 +1,35 @@
+\begin{tikzpicture}[every node/.style={font=\normalsize}]
+  \node (pattern) at (0,0) {$
+    \begin{pmatrix}
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast\\
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast\\
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast\\
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast\\
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{-}}}\!\ast&
+      {}^{\textcolor{olive!80!black}{\pmb{+}}}\!\ast
+    \end{pmatrix}$};
+
+  \node[anchor=east] (hint) at (-3.0,0.10) {Hier immer mit $+$ beginnen.};
+  \coordinate (first) at ($(pattern.north west)+(0.42,-0.30)$);
+  \draw[->,>=Stealth,line width=0.8pt,shorten >=6pt]
+    (hint.east) to[out=20,in=160] (first);
+\end{tikzpicture}

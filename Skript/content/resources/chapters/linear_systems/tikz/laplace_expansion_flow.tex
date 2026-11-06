@@ -1,0 +1,70 @@
+\begin{tikzpicture}[
+    every node/.style={font=\normalsize},
+    flow arrow/.style={->,>=Stealth,line width=0.8pt},
+    determinant/.style={
+      draw=THMBlue,
+      fill=THMBlue!6,
+      rounded corners=2pt,
+      minimum width=4.2cm,
+      minimum height=1.0cm,
+      align=center
+    },
+    method/.style={
+      draw=olive!80!black,
+      fill=olive!12,
+      rounded corners=2pt,
+      minimum width=4.2cm,
+      minimum height=1.0cm,
+      align=center
+    },
+    terminal/.style={
+      draw=green!55!black,
+      fill=green!8,
+      rounded corners=2pt,
+      minimum width=5.4cm,
+      minimum height=1.8cm,
+      align=center
+    }
+  ]
+  \node[determinant] (start) at (-1.8,3.1)
+    {$n\times n$-Determinante};
+
+  \coordinate (decision-center) at (-1.8,1.35);
+  \coordinate (decision-top) at (-1.8,2.1);
+  \coordinate (decision-right) at (-0.25,1.35);
+  \coordinate (decision-bottom) at (-1.8,0.6);
+  \coordinate (decision-left) at (-3.35,1.35);
+  \path[draw=gray!75,line width=0.8pt,fill=white]
+    (decision-top)--(decision-right)--(decision-bottom)--(decision-left)--cycle;
+  \node at (decision-center) {Dimension?};
+
+  \node[terminal] (two-by-two) at (3.8,1.35)
+    {\begin{tabular}{c}
+       $2\times2$-Determinante\\[0.25em]
+       $\displaystyle\det\!\begin{pmatrix}a&b\\c&d\end{pmatrix}=ad-bc$
+     \end{tabular}};
+  \draw[
+    green!65!black,
+    line width=2.5pt,
+    line cap=round,
+    line join=round
+  ]
+    ($(two-by-two.east)+(0.35,-0.05)$) -- ++(0.28,-0.35) -- ++(0.55,0.85);
+
+  \node[method] (laplace) at (-1.8,-1.0) {Laplace-Entwicklung};
+  \node[determinant] (smaller) at (-1.8,-2.8)
+    {$(n-1)\times(n-1)$-Determinanten};
+
+  \draw[flow arrow] (start.south) -- (decision-top);
+  \draw[flow arrow] (decision-right) --
+    node[above,pos=0.48] {$n=2$} (two-by-two.west);
+  \draw[flow arrow] (decision-bottom) --
+    node[right,pos=0.5] {$n>2$} (laplace.north);
+  \draw[flow arrow] (laplace.south) -- (smaller.north);
+
+  \draw[flow arrow,rounded corners=7pt]
+    (smaller.west) -- (-5.2,-2.8) --
+    node[fill=white,inner sep=2pt,rotate=90,pos=0.55] {wiederholen}
+    (-5.2,1.35) --
+    (decision-left);
+\end{tikzpicture}

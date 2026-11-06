@@ -1,0 +1,17 @@
+\begin{tikzpicture}[>=Latex]
+  \node (decimal) at (0,0) {$1153{,}537$};
+  \node at (1.55,0) {$=$};
+  \node at (3.65,0) {$1{,}153537\cdot1000$};
+  \node at (5.85,0) {$=$};
+  \node (floating) at (8.05,0) {$1{,}153537\cdot10^3$};
+
+  \node[black!60] (decimal-label) at (-0.55,1.05)
+    {\Lang{Dezimaldarstellung}{decimal representation}};
+  \draw[->,black!55,line width=0.7pt]
+    (decimal-label.south east) to[out=-35,in=115] (decimal.north);
+
+  \node[black!60] (floating-label) at (8.55,1.05)
+    {\Lang{Gleitkommadarstellung}{floating-point representation}};
+  \draw[->,black!55,line width=0.7pt]
+    (floating-label.south west) to[out=-145,in=65] (floating.north);
+\end{tikzpicture}

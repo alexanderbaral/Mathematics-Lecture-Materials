@@ -1,0 +1,55 @@
+\subsection{Wurzeln}
+\label{subsec:fundamentals_roots}
+
+\begin{samepage}
+  \begin{DefinitionBox}{$n$-te Wurzel}{fundamentals_nth_root}
+    Wurzelziehen kehrt das Potenzieren um: Bei der $n$-ten Wurzel aus $a$ wird
+    der Wert $b$ gesucht, dessen $n$-te Potenz wieder $a$ ergibt.\par\smallskip
+    \noindent
+    \begin{minipage}[c]{0.54\linewidth}
+      \[
+        \sqrt[n]{a}=b
+        \quad \Longleftrightarrow \quad
+        b^n=a,
+        \qquad n\in\N.
+      \]
+      Für $n=2$ schreiben wir kurz: $\sqrt a := \sqrt[2]{a}$.
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.4\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/root_anatomy.tex}
+    \end{minipage}\par
+  \end{DefinitionBox}
+
+  Damit gilt insbesondere \[ \sqrt[n]{a^n}=a \qquad n\in\N. \]
+
+  \vspace{-0.5\baselineskip}
+  \begin{ExampleBox}{Wurzeln bestimmen}{fundamentals_even_odd_roots}
+    \begin{enumerate}[label=\alph*),itemsep=0.55em]
+      \item $\sqrt{9}\Cloze{2cm}{=3}$,
+        denn \Cloze{6cm}{$3^2=9$}.
+      \item $\sqrt[3]{-8}\Cloze{2cm}{=-2}$,
+        denn \Cloze{6cm}{$(-2)^3=-8$}.
+      \item $\sqrt{-9}\Cloze{2.0cm}{\notin\R}$,
+        denn \Cloze{6cm}{$b^2\geq0$ für alle $b\in\R$}.
+    \end{enumerate}
+  \end{ExampleBox}
+\end{samepage}
+
+\begin{KeyPointBox}{Reelle Wurzeln}{fundamentals_real_roots}
+  Bei negativen Radikanden $a<0$ entscheidet der Wurzelexponent:
+  \[
+    \begin{array}{c@{\qquad}l}
+      n\text{ ungerade}: &
+        \Cloze{9cm}{\sqrt[n]{a} \in \R \quad \text{und} \quad \sqrt[n]{a} < 0.}\\[0.35em]
+      n\text{ gerade}:   &
+        \Cloze{9cm}{\sqrt[n]{a} \notin \R .}
+    \end{array}
+  \]
+  Bei geradem Wurzelexponenten bezeichnet das Wurzelzeichen stets den
+  nichtnegativen Wert, zum Beispiel
+  \[
+    \Cloze{8cm}{\sqrt{9}=3
+      \qquad \text{aber } \sqrt{9} \neq \pm3.}
+  \]
+\end{KeyPointBox}

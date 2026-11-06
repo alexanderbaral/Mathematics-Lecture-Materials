@@ -1,0 +1,157 @@
+\subsection{Summenzeichen}
+\label{subsec:fundamentals_summation_notation}
+
+\begin{DefinitionBox}{Summenschreibweise}{fundamentals_summation_notation}
+  Die \emph{Summenschreibweise} \EnglishTerm{summation notation}
+  \[
+    \sum_{k=m}^{n}a_k
+      =a_m+a_{m+1}+\dots+a_n
+  \]
+  fasst die Folgenglieder vom Index $m$ bis zum Index $n$ zu einer Summe
+  zusammen. Dabei ist $k$ der \emph{Laufindex}, $m$ die untere und $n$ die
+  obere Summationsgrenze.
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Summen auswerten}{fundamentals_evaluating_sums}
+  \begin{enumerate}[label=\alph*),leftmargin=2em,itemsep=0.8em]
+    \item\leavevmode
+      \[
+        \sum_{k=1}^{3}\frac1k
+          =\Cloze{12cm}{1+\frac12+\frac13=\frac{11}{6}}
+      \]
+    \item\leavevmode
+      \[
+        \sum_{k=0}^{2}(k+1)^2
+          =\Cloze{12cm}{(0+1)^2+(1+1)^2+(2+1)^2=14}
+      \]
+    \item\leavevmode
+      \[
+        \sum_{k=-2}^{3}k
+          =\Cloze{12cm}{(-2)+(-1)+0+1+2+3=3}
+      \]
+  \end{enumerate}
+\end{ExampleBox}
+
+
+
+\subsubsection{Geschlossene Formen}
+\label{subsubsec:fundamentals_closed_forms}
+
+Eine \emph{geschlossene Form} gibt den Wert einer Summe durch einen endlichen
+Term ohne Summenzeichen an. Eine solche Darstellung existiert nicht für jede
+Summe. Eine \emph{Summenformel} ist eine Identität für eine bestimmte Art von
+Summen. Kommt ihre rechte Seite ohne Summenzeichen aus, liefert sie eine
+geschlossene Form. Drei wichtige geschlossene Formen sind:
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.3em,itemsep=1.2em]
+  \item \textbf{Konstante Summe.}
+    Für $n\in\N$ gilt
+    \[
+      \sum_{k=1}^{n}1
+        =\Cloze{12cm}{\underbrace{1+1+\dots+1}_{n\text{-mal}}=n}.
+    \]
+
+  \item
+    \begin{minipage}[t]{\linewidth}
+      \textbf{Gaußsche Summenformel.}
+      Für $n\in\N$ bezeichnen wir die Summe bis zum Index $n$ mit
+      \[
+        S_n:=\sum_{k=1}^{n}k=\Cloze{8cm}{1+2+\dots+n}.
+      \]
+      Schreibt man dieselbe Summe einmal vorwärts und einmal rückwärts, werden
+      jeweils der erste und letzte, der zweite und vorletzte Summand usw.
+      addiert:
+      \begin{ClozeArea}[33]{12}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/gaussian_sum_pairing.tex}
+      \end{ClozeArea}
+    \end{minipage}
+
+    Jedes dieser Summandenpaare ergibt $n+1$. Damit ergibt sich
+    \begin{ClozeArea}[33]{6}
+      \[
+        2S_n = n(n+1)
+        \qquad \Longleftrightarrow \qquad
+        S_n = \frac{n(n+1)}{2}.
+      \]
+    \end{ClozeArea}
+    
+
+    \begin{TheoremBox}{Gaußsche Summenformel}{fundamentals_gaussian_sum_formula}
+      Für $n\in\N$ gilt
+      \[
+        \sum_{k=1}^{n}k=1+2+\dots+n=\frac{n(n+1)}{2}.
+      \]
+    \end{TheoremBox}
+
+  \item
+    \begin{minipage}[t]{\linewidth}
+      \textbf{Endliche geometrische Summe.}
+      Für $n\in\N_0$ bezeichnen wir die Summe der Potenzen von $q$ bis zum
+      Index $n$ mit
+      \[
+        S_n:=\sum_{k=0}^{n}q^k=\Cloze{8cm}{1+q+q^2+\dots+q^n}.
+      \]
+    \end{minipage}
+
+    \begin{minipage}{\linewidth}
+      Bei der Herleitung sind zwei Fälle zu unterscheiden. \\
+
+      \textbf{Fall 1:\enspace $q\neq1$.}\quad
+      Durch Multiplikation mit $q$ und Subtraktion heben sich die mittleren
+      Summanden auf:
+      \begin{ClozeArea}[33]{20}
+        \[
+          \begin{array}{c@{\qquad}r@{}l@{\quad}l}
+            \phantom{\Longleftrightarrow}
+              & \displaystyle S_n
+              & \displaystyle =1+q+q^2+\dots+q^n,
+              & \\[0.8em]
+            \Longleftrightarrow
+              & \displaystyle qS_n
+              & \displaystyle =\phantom{1+{}}q+q^2+\dots+q^n+q^{n+1},
+              & \\[0.8em]
+            \Longleftrightarrow
+              & \displaystyle S_n-qS_n
+              & \displaystyle =1-q^{n+1},
+              & \\[0.8em]
+            \Longleftrightarrow
+              & \displaystyle (1-q)S_n
+              & \displaystyle =1-q^{n+1}
+              & \displaystyle \TransformOp{:(1-q)}, \\[0.8em]
+            \Longleftrightarrow
+              & \displaystyle S_n
+              & \displaystyle =\frac{1-q^{n+1}}{1-q}.
+              &
+          \end{array}
+        \]
+      \end{ClozeArea}
+      Da $q\neq1$ gilt, ist $1-q\neq0$; die Division durch $1-q$ ist daher
+      zulässig.
+    \end{minipage}
+
+    \medskip
+    \begin{minipage}{\linewidth}
+      \textbf{Fall 2:\enspace $q=1$.}\quad
+      Dann besteht die Summe aus $n+1$ Einsen:
+      \begin{ClozeArea}[33]{4}
+        \[
+          S_n=\sum_{k=0}^{n}1^k
+            =\underbrace{1+1+\dots+1}_{n+1\text{ Summanden}}
+            =n+1.
+        \]
+      \end{ClozeArea}
+    \end{minipage}
+
+    \begin{TheoremBox}{Endliche geometrische Summenformel}{fundamentals_finite_geometric_sum_formula}
+      Für $q\in\R$ und $n\in\N_0$ gilt
+      \[
+        \sum_{k=0}^{n}q^k
+        =
+        \begin{cases}
+          \dfrac{1-q^{n+1}}{1-q}, & q\neq1,\\[0.8em]
+          n+1, & q=1.
+        \end{cases}
+      \]
+    \end{TheoremBox}
+\end{enumerate}

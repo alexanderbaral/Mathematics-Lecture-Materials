@@ -1,0 +1,174 @@
+\subsection{Grenzwertgesetze}
+\label{subsec:real_functions_limit_laws}
+Grenzwerte müssen nicht jedes Mal durch eine neue Annäherungsbetrachtung
+bestimmt werden. Wir zerlegen einen Term in bekannte Bausteine und
+verknüpfen deren Grenzwerte.
+\begin{TheoremBox}{Grenzwertgesetze}{real_functions_limit_laws}
+  Existieren die Grenzwerte $\lim_{x\to a}f(x)=A$ und
+  $\lim_{x\to a}g(x)=B$ mit $A,B\in\R$, so gelten:
+  \[
+    \begin{array}{l@{\qquad}l}
+      \text{Summe/Differenz:}&
+        \displaystyle\vphantom{\lim_{x\to a}\frac{f(x)}{g(x)}=\frac AB}
+        \lim_{x\to a}\bigl(f(x)\pm g(x)\bigr)=A\pm B,\\[1em]
+      \text{Produkt:}&
+        \displaystyle\vphantom{\lim_{x\to a}\frac{f(x)}{g(x)}=\frac AB}
+        \lim_{x\to a}f(x)g(x)=AB,\\[1em]
+      \text{Quotient:}&
+        \displaystyle\lim_{x\to a}\frac{f(x)}{g(x)}=\frac AB
+        \qquad\text{falls }B\ne0.
+    \end{array}
+  \]
+\end{TheoremBox}
+\begin{ExampleBox}{Grenzverhalten von Potenzen}{real_functions_monomial_limit_laws}
+  Mit den Grenzwertgesetzen bestimmen wir beispielhaft das asymptotische
+  Verhalten der folgenden vier Funktionen für $x\to\pm\infty$.
+  \par\smallskip\noindent
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),leftmargin=*,topsep=0pt]
+      \item Quadratfunktion
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+      \[
+        \begin{aligned}
+          \lim_{x\to\pm\infty}x^2&=\lim_{x\to\pm\infty}(x\cdot x)\\[1em]
+          &=\underbrace{\lim_{x\to\pm\infty}x}_{\pm\infty}
+            \cdot\underbrace{\lim_{x\to\pm\infty}x}_{\pm\infty}
+          =\Cloze{1.6cm}{+\infty}.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),start=2,leftmargin=*,topsep=0pt]
+      \item Kubikfunktion
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_cubic_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+      \[
+        \begin{aligned}
+          \lim_{x\to\pm\infty}x^3&=\lim_{x\to\pm\infty}(x^2\cdot x)\\[1em]
+          &=\underbrace{\lim_{x\to\pm\infty}x^2}_{+\infty}
+            \cdot\underbrace{\lim_{x\to\pm\infty}x}_{\pm\infty}
+          =\Cloze{1.6cm}{\pm\infty}.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}
+  \par\vspace{1.5\baselineskip}\noindent
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),start=3,leftmargin=*,topsep=0pt]
+      \item Hyperbel
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_reciprocal_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+    \[
+      \lim_{x\to\pm\infty}\frac1x
+      =\frac{\overbrace{\displaystyle\lim_{x\to\pm\infty}1}^{1}}
+        {\underbrace{\displaystyle\lim_{x\to\pm\infty}x}_{\pm\infty}}
+      =\Cloze{1cm}{0}.
+    \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \begin{enumerate}[label=\alph*),start=4,leftmargin=*,topsep=0pt]
+      \item Kehrwert der Quadratfunktion
+    \end{enumerate}
+    \vspace{0.4\baselineskip}
+    \begin{minipage}[c][5.2cm][c]{\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_inverse_square_infinity.tex}
+    \end{minipage}
+    \par\vspace{0.6\baselineskip}
+    \begin{ClozeArea}[16]{7}
+    \[
+      \begin{aligned}
+        \lim_{x\to\pm\infty}\frac1{x^2}
+        &=\lim_{x\to\pm\infty}\left(\frac1x\cdot\frac1x\right)\\[1em]
+        &=\underbrace{\lim_{x\to\pm\infty}\frac1x}_{0}
+          \cdot\underbrace{\lim_{x\to\pm\infty}\frac1x}_{0}
+          =\Cloze{1cm}{0}.
+      \end{aligned}
+    \]
+    \end{ClozeArea}
+  \end{minipage}
+\end{ExampleBox}
+\Needspace{15\baselineskip}
+Diese Beobachtungen verallgemeinern wir nun.
+\begin{KeyPointBox}{Potenzen und ihre Kehrwerte im Unendlichen}{real_functions_power_limits}
+  Für Potenzen $x^n$ mit ganzzahligem Exponenten $n$ gilt:
+  \[
+    \lim_{x\to\pm\infty}x^n=
+    \begin{cases}
+      \Cloze{1.2cm}{+\infty},&n>0,\ n\text{ gerade},\\[0.5em]
+      \Cloze{1.2cm}{\pm\infty},&n>0,\ n\text{ ungerade},\\[0.5em]
+      \Cloze{1.2cm}{1},&n=0,\\[0.5em]
+      \Cloze{1.2cm}{0},&n<0.
+    \end{cases}
+  \]
+\end{KeyPointBox}
+Nachdem wir die Grenzwerte von Monomen bestimmt haben, können wir mit den
+Grenzwertgesetzen auch die Grenzwerte von Polynomen bestimmen.
+\begin{ExampleBox}{Höchste Potenz ausklammern}{real_functions_factored_polynomial_limit}
+  Bestimmen Sie den Grenzwert von $p(x)=-3x^3+x^2$ für $x\to+\infty$.
+  Zunächst versuchen wir, die Grenzwerte der einzelnen Summanden
+  direkt zu verknüpfen:
+  \begin{ClozeArea}[34]{3}
+    \[
+      \begin{aligned}
+        \lim_{x\to+\infty}p(x)
+          &\overset{?}{=} \lim_{x\to+\infty}(-3x^3) + \lim_{x\to+\infty}x^2
+          \overset{?}{=}-\infty+\infty\quad
+            \text{\raisebox{-.25\height}{\CachedTikzFigure{content/resources/shared/tikz/smiley_sad.tex}}}
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  Dabei handelt es sich um eine sogenannte \emph{unbestimmte Form},
+  aus der sich der Grenzwert nicht
+  bestimmen lässt.
+
+  Stattdessen klammern wir zunächst die höchste Potenz
+  aus und wenden dann Produkt- und Summenregel der Grenzwertgesetze an.
+  \begin{ClozeArea}[34]{8}
+    \[
+      \begin{aligned}
+        \lim_{x\to+\infty}p(x)
+          &=\lim_{x\to+\infty}\left(-3x^3+x^2\right)\\[1em]
+          &=\lim_{x\to+\infty}\left[x^3\left(-3+\frac1x\right)\right]
+          =\left(\lim_{x\to+\infty}x^3\right) \cdot \lim_{x\to+\infty}\left(-3+\frac1x\right)\\[1em]
+          &=\underbrace{\lim_{x\to+\infty}x^3}_{+\infty}
+            \cdot\left(
+              \underbrace{\lim_{x\to+\infty}(-3)}_{-3}
+              +\underbrace{\lim_{x\to+\infty}\frac1x}_{0}
+            \right)=-\infty.\quad
+            \text{\raisebox{-.25\height}{\CachedTikzFigure{content/resources/shared/tikz/smiley_happy.tex}}}
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Unbestimmte Formen}{real_functions_indeterminate_forms}
+  Unbestimmte Formen \EnglishTerm{indeterminate forms} sind als Rechenergebnisse zu vermeiden:
+  Aus ihnen allein lässt sich kein Grenzwert bestimmen.
+  \[
+    \frac00,\qquad\frac\infty\infty,\qquad\infty-\infty,
+    \qquad0\cdot\infty,\qquad1^\infty,\qquad0^0,\qquad\infty^0.
+  \]
+\end{KeyPointBox}
+

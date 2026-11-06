@@ -1,0 +1,67 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=0.92cm,y=0.48cm,>=Latex,line cap=round]
+  \foreach \x/\s in {1/10,2/20,3/30,4/40,5/50} {
+    \node[below=4pt,inner sep=1pt] (xtick\x) at (\x,0) {$\s$};
+  }
+  \foreach \y/\tickname in {-2/ytmTwo,2/ytTwo,4/ytFour,6/ytSix,8/ytEight,10/ytTen} {
+    \node[left=4pt,inner sep=1pt] (\tickname) at (0,\y) {$\y$};
+  }
+  \node[above=9pt,inner sep=1pt] (sensorPA) at (1,1)
+    {\IfClozeTF{}{$P_A$}};
+  \node[above=9pt,inner sep=1pt] (sensorPB) at (5,9)
+    {\IfClozeTF{}{$P_B$}};
+  \node[above=5pt,inner sep=2pt,text=THMBlue] (sensorDeltaS) at (3.3,1)
+    {\IfClozeTF{}{$\Delta s=40\,\mathrm{mm}$}};
+  \node[right=5pt,inner sep=1pt,text=THMBlue] at (5,5)
+    {\IfClozeTF{}{$\Delta U=8\,\mathrm{V}$}};
+  \node[anchor=east,inner sep=2pt,text=green!55!black] (sensorIntercept)
+    at (-0.38,-0.48) {\IfClozeTF{}{$b=-1\,\mathrm{V}$}};
+
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (0,-2) rectangle (5,10)
+        (xtick1.south west) rectangle (xtick1.north east)
+        (xtick2.south west) rectangle (xtick2.north east)
+        (xtick3.south west) rectangle (xtick3.north east)
+        (xtick4.south west) rectangle (xtick4.north east)
+        (xtick5.south west) rectangle (xtick5.north east)
+        (ytmTwo.south west) rectangle (ytmTwo.north east)
+        (ytTwo.south west) rectangle (ytTwo.north east)
+        (ytFour.south west) rectangle (ytFour.north east)
+        (ytSix.south west) rectangle (ytSix.north east)
+        (ytEight.south west) rectangle (ytEight.north east)
+        (ytTen.south west) rectangle (ytTen.north east)
+        (sensorPA.south west) rectangle (sensorPA.north east)
+        (sensorPB.south west) rectangle (sensorPB.north east)
+        (sensorDeltaS.south west) rectangle (sensorDeltaS.north east)
+        (sensorIntercept.south west) rectangle (sensorIntercept.north east);
+      \foreach \x in {1,...,5}
+        \draw[black!8,line width=0.25pt] (\x,-2)--(\x,10);
+      \foreach \y in {-2,2,4,6,8,10}
+        \draw[black!8,line width=0.25pt] (0,\y)--(5,\y);
+    \end{scope}
+  \end{pgfonlayer}
+
+  \draw[->,black!60] (-2.15,0)--(5.5,0) node[right] {$s/\mathrm{mm}$};
+  \draw[->,black!60] (0,-3.1)--(0,10.65) node[above] {$U/\mathrm{V}$};
+  \foreach \x in {1,...,5}
+    \draw[black!50] ([yshift=-2pt]\x,0)--([yshift=2pt]\x,0);
+  \foreach \y in {-2,2,4,6,8,10}
+    \draw[black!50] ([xshift=-2pt]0,\y)--([xshift=2pt]0,\y);
+
+  \IfClozeTF{}{%
+    \draw[black,line width=1.05pt] (0,-1)--(5,9);
+    \fill[black] (1,1) circle (1.8pt) (5,9) circle (1.8pt);
+    \draw[THMBlue,line width=0.9pt] (1,1)--(5,1)--(5,9);
+    % Use physical, equal drawing units for a circular angle mark, regardless
+    % of the different horizontal and vertical data scales.
+    \coordinate (sensorCorner) at (5,1);
+    \begin{scope}[x=1cm,y=1cm]
+      \RightAngleMark[THMBlue]{(sensorCorner)}{180}{90}{0.24}[0.75pt]
+    \end{scope}
+    \draw[green!55!black,line width=0.9pt,decorate,
+      decoration={brace,amplitude=8pt,mirror}] (0,0)--(0,-1);
+    \fill[green!55!black] (0,-1) circle (1.7pt);
+  }
+\end{tikzpicture}

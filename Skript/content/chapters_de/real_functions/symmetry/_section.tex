@@ -1,0 +1,246 @@
+\section{Symmetrie von Funktionsgraphen}
+\label{sec:real_functions_symmetry}
+Die Kenntnis der Symmetrie eines Funktionsgraphen kann Rechnungen vereinfachen
+und hilft, Ergebnisse auf Plausibilität zu prüfen.
+
+Die Graphen von $x^2$ und $x^3$ weisen unterschiedliche Symmetrien auf.
+\begin{center}
+  \begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    \centering
+    \textcolor{THMBlue}{$f(x)=x^2$}
+    \par\vspace{0.65em}
+    \makebox[\linewidth][l]{Wertetabelle:}\par\vspace{0.2em}
+    \renewcommand{\arraystretch}{1.3}
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabular}{>{\centering\arraybackslash}m{1.1cm}||*{5}{>{\centering\arraybackslash}m{1.1cm}|}}
+      $x$ & $-2$ & $-1$ & $0$ & $1$ & $2$\\\hline
+      $f(x)$ & \Cloze{0.65cm}{4} & \Cloze{0.65cm}{1} &
+      \Cloze{0.65cm}{0} & \Cloze{0.65cm}{1} & \Cloze{0.65cm}{4}
+    \end{tabular}
+    \par\vspace{1.15em}
+    \makebox[\linewidth][l]{Plot:}\par\vspace{0.2em}
+    \vspace{-0.6em}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_even_parity_plot.tex}
+    \par\vspace{0.55em}
+    \makebox[\linewidth][c]{$\Cloze{2.3cm}{f(-x)=f(x)}\quad\Longleftrightarrow\quad\Cloze{2.6cm}{\text{gerade Symmetrie}}$}
+    \par\vspace{0.35em}
+    \textcolor{black!55}{\emph{d.\,h. achsensymmetrisch zur $y$-Achse}}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.012\linewidth}
+    \vspace{0pt}
+    \centering
+    \vspace{0.65cm}
+    \vbox{\offinterlineskip
+      \leaders\vbox{\hbox{\rule{0.4pt}{1.2mm}}\vskip1.2mm}\vskip11.6cm}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.47\linewidth}
+    \vspace{0pt}
+    \centering
+    \textcolor{THMBlue}{$f(x)=x^3$}
+    \par\vspace{0.65em}
+    \makebox[\linewidth][l]{Wertetabelle:}\par\vspace{0.2em}
+    \renewcommand{\arraystretch}{1.3}
+    \setlength{\tabcolsep}{2pt}
+    \begin{tabular}{>{\centering\arraybackslash}m{1.1cm}||*{5}{>{\centering\arraybackslash}m{1.1cm}|}}
+      $x$ & $-2$ & $-1$ & $0$ & $1$ & $2$\\\hline
+      $f(x)$ & \Cloze{0.75cm}{-8} & \Cloze{0.75cm}{-1} &
+      \Cloze{0.75cm}{0} & \Cloze{0.75cm}{1} & \Cloze{0.75cm}{8}
+    \end{tabular}
+    \par\vspace{1.15em}
+    \makebox[\linewidth][l]{Plot:}\par\vspace{0.2em}
+    \vspace{-0.6em}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_odd_parity_plot.tex}
+    \par\vspace{0.55em}
+    \makebox[\linewidth][c]{$\Cloze{2.6cm}{f(-x)=-f(x)}\quad\Longleftrightarrow\quad\Cloze{2.8cm}{\text{ungerade Symmetrie}}$}
+    \par\vspace{0.35em}
+    \textcolor{black!55}{\emph{d.\,h. punktsymmetrisch zum Ursprung}}
+  \end{minipage}
+\end{center}
+
+\par\medskip\noindent
+Da sich dieses Symmetrieverhalten bei vielen Funktionen zeigt, fassen wir es
+als allgemeine Funktionseigenschaft auf.
+\begin{FunctionPropertyBox}{Symmetrie}{real_functions_parity}
+  Eine Funktion $f:D\to\R$ heißt:\par\smallskip\noindent
+  \begin{minipage}[t]{0.46\linewidth}
+    \vspace{0pt}
+    \begin{itemize}[leftmargin=*]
+      \item \emph{gerade} \EnglishTerm{even}, wenn der Graph
+        achsensymmetrisch zur $y$-Achse ist.
+    \end{itemize}
+    \[
+      \forall x\in D:\quad f(-x)=f(x).
+    \]\par\noindent
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_even_symmetry_schematic.tex}
+  \end{minipage}\hspace{0.08\linewidth}%
+  \begin{minipage}[t]{0.46\linewidth}
+    \vspace{0pt}
+    \begin{itemize}[leftmargin=*]
+      \item \emph{ungerade} \EnglishTerm{odd}, wenn der Graph
+        punktsymmetrisch zum Ursprung ist.
+    \end{itemize}
+    \[
+      \forall x\in D:\quad f(-x)=-f(x).
+    \]\par\noindent
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_odd_symmetry_schematic.tex}
+  \end{minipage}
+\end{FunctionPropertyBox}
+\begin{KeyPointBox}{Symmetrie rechnerisch prüfen}{real_functions_parity_test}
+  Wir werten die Funktion mit dem Argument $-x$ und vergleichen das Ergebnis mit $f(x)$ und $-f(x)$:
+  \[
+    f(-x)=\dots=\begin{cases}
+      \phantom{+} f(x) &\quad \Longleftrightarrow \quad \text{ gerade},\\
+      - f(x)&\quad \Longleftrightarrow \quad \text{ ungerade},\\
+      \text{sonst}&\quad \Longleftrightarrow \quad \text{ weder noch}.
+    \end{cases}
+  \]
+\end{KeyPointBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Symmetrie von $x^n$}{real_functions_power_symmetry}
+  Für $n\in\N$ betrachten wir das Monom \EnglishTerm{monomial}
+  $p_n(x)=x^n$:
+  \begin{itemize}[leftmargin=*,itemsep=0.3em,topsep=0.3em]
+    \item Ist $n$ gerade, so gilt
+      \[
+        p_n(-x)=(-x)^n=x^n=p_n(x)
+        \quad\Longrightarrow\quad p_n\text{ ist gerade.}
+      \]
+    \item Ist $n$ ungerade, so gilt
+      \[
+        p_n(-x)=(-x)^n=-x^n=-p_n(x)
+        \quad\Longrightarrow\quad p_n\text{ ist ungerade.}
+      \]
+  \end{itemize}
+  Gerade Exponenten führen zu geraden, ungerade Exponenten zu ungeraden Funktionen.
+\end{ExampleBox}
+
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Symmetrie von Polynomen prüfen}{real_functions_parity_check}
+  Aufbauend auf dem Beispiel zu $x^n$ prüfen wir Polynome auf $\R$:
+  \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=0.35em,topsep=0.3em]
+    \item $f(x)=x^4-2x^2$
+      \begin{ClozeArea}[34]{2}
+        \[
+          f(-x)=(-x)^4-2(-x)^2=x^4-2x^2=f(x)
+          \qquad \Longrightarrow \qquad f\text{ ist gerade.}
+        \]
+      \end{ClozeArea}
+    \item $g(x)=x^3-x$
+      \begin{ClozeArea}[34]{2}
+        \[
+          g(-x)=(-x)^3-(-x)=-x^3+x=-g(x)
+          \qquad \Longrightarrow \qquad g\text{ ist ungerade.}
+        \]
+      \end{ClozeArea}
+    \item $h(x)=x^2+x$
+      \begin{ClozeArea}[34]{2}
+        \[
+          h(-x)=(-x)^2+(-x)=x^2-x\ne\pm h(x)
+          \qquad \Longrightarrow \qquad h\text{ ist weder gerade noch ungerade.}
+        \]
+      \end{ClozeArea}
+  \end{enumerate}
+  Polynome mit ausschließlich geraden bzw. ausschließlich ungeraden Exponenten
+  sind gerade bzw. ungerade. Sind beide Exponentenarten vertreten, ist das
+  Polynom weder gerade noch ungerade.
+\end{ExampleBox}
+
+Das Einsetzen von $-x$ lässt sich auch auf Verknüpfungen gerader und
+ungerader Funktionen übertragen.
+\begin{TheoremBox}{Symmetrie zusammengesetzter Funktionen}{real_functions_parity_rules}
+  Die folgende Übersicht zeigt, wie sich gerade und ungerade Funktionen
+  beim Rechnen verhalten:
+  \begin{center}
+    \setlength{\tabcolsep}{5pt}
+    \newcommand{\SymmetryHead}[1]{\parbox[c][3em][c]{\hsize}{\centering #1}}
+    \newcommand{\SymmetryCell}[1]{\parbox[c][2.1em][c]{\hsize}{\centering #1}}
+    \begin{tabularx}{\linewidth}{||>{\centering\arraybackslash}X||*{3}{>{\centering\arraybackslash}X|}>{\centering\arraybackslash}X||}
+      \hline\hline
+      \SymmetryHead{}
+      & \SymmetryHead{\shortstack{\textcolor{THMBlue}{$f,g$}\\
+        \textcolor{THMBlue}{gerade}}}
+      & \SymmetryHead{\shortstack{\textcolor{THMBlue}{$f$ gerade,}\\
+        \textcolor{green!55!black}{$g$ ungerade}}}
+      & \SymmetryHead{\shortstack{\textcolor{green!55!black}{$f$ ungerade,}\\
+        \textcolor{THMBlue}{$g$ gerade}}}
+      & \SymmetryHead{\shortstack{\textcolor{green!55!black}{$f,g$}\\
+        \textcolor{green!55!black}{ungerade}}}\\ \hline\hline
+      \SymmetryCell{$f(x)\pm g(x)$}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}
+      & \SymmetryCell{I.A. keine}
+      & \SymmetryCell{I.A. keine}
+      & \SymmetryCell{\textcolor{green!55!black}{ungerade}}\\ \hline\hline
+      \SymmetryCell{$f(x)g(x)$}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}
+      & \SymmetryCell{\textcolor{green!55!black}{ungerade}}
+      & \SymmetryCell{\textcolor{green!55!black}{ungerade}}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}\\ \hline
+      \SymmetryCell{$f(x)/g(x)$}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}
+      & \SymmetryCell{\textcolor{green!55!black}{ungerade}}
+      & \SymmetryCell{\textcolor{green!55!black}{ungerade}}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}\\ \hline
+      \SymmetryCell{$f(g(x))$}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}
+      & \SymmetryCell{\textcolor{THMBlue}{gerade}}
+      & \SymmetryCell{\textcolor{green!55!black}{ungerade}}\\ \hline
+    \end{tabularx}
+  \end{center}
+  Die Aussagen gelten auf geeigneten, zu null symmetrischen
+  Definitionsmengen; beim Quotienten muss $g(x)\ne0$ gelten und bei
+  $f(g(x))$ muss $g(x)$ im Definitionsbereich von $f$ liegen.
+\end{TheoremBox}
+\begin{ExampleBox}{Symmetrie zusammengesetzter Funktionen nachrechnen}{real_functions_composite_symmetry_example}
+  Wir prüfen die Symmetrie der folgenden zusammengesetzten Funktionen.
+  \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=0.25em,topsep=0.3em]
+    \item Produkt zweier gerader Funktionen: $h(x)=f_{\mathrm G}(x)g_{\mathrm G}(x)$
+      \[
+        \begin{aligned}
+          h(-x)&=f_{\mathrm G}(-x)g_{\mathrm G}(-x)
+          =f_{\mathrm G}(x)g_{\mathrm G}(x)=h(x)
+          \quad\Longrightarrow\quad h\text{ ist gerade.}
+        \end{aligned}
+      \]
+    \item Quotient einer geraden durch eine ungerade Funktion:
+      $h(x)=\dfrac{f_{\mathrm G}(x)}{g_{\mathrm U}(x)}$ für $g_{\mathrm U}(x)\ne0$
+      \[
+        \begin{aligned}
+          h(-x)&=\frac{f_{\mathrm G}(-x)}{g_{\mathrm U}(-x)}
+          =\frac{f_{\mathrm G}(x)}{-g_{\mathrm U}(x)}
+          =-\frac{f_{\mathrm G}(x)}{g_{\mathrm U}(x)}=-h(x)
+          \quad\Longrightarrow\quad h\text{ ist ungerade.}
+        \end{aligned}
+      \]
+    \item Komposition zweier ungerader Funktionen:
+      $h(x)=f_{\mathrm U}(g_{\mathrm U}(x))$
+      \[
+        \begin{aligned}
+          h(-x)&=f_{\mathrm U}(g_{\mathrm U}(-x))
+          =f_{\mathrm U}(-g_{\mathrm U}(x))
+          =-f_{\mathrm U}(g_{\mathrm U}(x))=-h(x)
+          \quad\Longrightarrow\quad h\text{ ist ungerade.}
+        \end{aligned}
+      \]
+    \item Komposition einer ungeraden äußeren und einer geraden inneren Funktion:
+      $h(x)=f_{\mathrm U}(g_{\mathrm G}(x))$
+      \[
+        \begin{aligned}
+          h(-x)&=f_{\mathrm U}(g_{\mathrm G}(-x))
+          =f_{\mathrm U}(g_{\mathrm G}(x))=h(x)
+          \quad\Longrightarrow\quad h\text{ ist gerade.}
+        \end{aligned}
+      \]
+  \end{enumerate}
+  Die gerade innere Funktion lässt das Minuszeichen beim Einsetzen verschwinden.
+\end{ExampleBox}
+\begin{KeyPointBox}{Symmetrie spart Arbeit}{real_functions_parity_use}
+  Bei geraden und ungeraden Funktionen genügt es, eine Hälfte des Graphen
+  zu untersuchen. Die andere Hälfte folgt durch Spiegelung beziehungsweise
+  Drehung um $180^\circ$.
+
+  Ist eine ungerade Funktion bei $x=0$ definiert, gilt notwendig
+  $f(0)=0$. Die Umkehrung gilt nicht: Eine Nullstelle bei null allein
+  beweist keine Symmetrie.
+\end{KeyPointBox}

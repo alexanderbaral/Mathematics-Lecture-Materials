@@ -1,0 +1,148 @@
+\subsection{Geometrische Definition}
+\label{subsec:vector_algebra_cross_product_geometric_definition}
+
+\begin{DefinitionBox}{Kreuzprodukt}{vector_algebra_cross_product}
+  Das \emph{Kreuzprodukt} \EnglishTerm{cross product} zweier Vektoren
+  $\vec a,\vec b\in\R^3$ ist der Vektor
+  \[
+    \vec c=\vec a\times\vec b
+  \]
+  mit den folgenden Eigenschaften:
+  \begin{enumerate}[label=(\roman*),leftmargin=2.1em,itemsep=0.65em]
+    \item
+      \begin{minipage}[t]{0.49\linewidth}
+        Der Betrag von $\vec c$ entspricht dem Flächeninhalt des von
+        $\vec a$ und $\vec b$ aufgespannten Parallelogramms:
+        \[
+          A=|\vec c|=|\vec a \times \vec b|=|\vec a|\,|\vec b_{\perp}|=|\vec a|\,|\vec b|\sin(\varphi).
+        \]
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.46\linewidth}
+        \vspace{0pt}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_magnitude_area.tex}
+      \end{minipage}
+
+    \item
+      \begin{minipage}[t]{0.49\linewidth}
+        Der Vektor $\vec c$ steht senkrecht auf beiden Ausgangsvektoren:
+        \[
+          \vec c\perp\vec a,
+          \qquad
+          \vec c\perp\vec b.
+        \]
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.46\linewidth}
+        \vspace{0pt}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_orthogonality.tex}
+      \end{minipage}
+
+    \item
+      \begin{minipage}[t]{0.49\linewidth}
+        Die Vektoren $\vec a,\vec b,\vec c$ bilden in dieser Reihenfolge ein
+        Rechtssystem. Die \emph{Rechte-Hand-Regel}
+        \EnglishTerm{right-hand rule} bestimmt die Orientierung.
+      \end{minipage}\hfill
+      \begin{minipage}[t]{0.46\linewidth}
+        \vspace{0pt}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_orientation.tex}
+      \end{minipage}
+  \end{enumerate}
+\end{DefinitionBox}
+
+\noindent
+\begin{minipage}{\linewidth}
+  Das Ergebnis des Kreuzprodukts ist somit wieder ein Vektor. Das Kreuzprodukt
+  ist in diesem Skript ausschließlich für Vektoren im $\R^3$ definiert.
+\end{minipage}
+
+\begin{KeyPointBox}{Kreuzprodukt senkrechter Vektoren}{vector_algebra_cross_product_orthogonal_vectors}
+  \begin{minipage}[c]{0.68\linewidth}
+    Für senkrechte Vektoren ist der Zwischenwinkel $\varphi=90^\circ$.
+    Da $\sin(90^\circ)=1$ folgt für den Betrag des Kreuzprodukts
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\perp\vec b
+        \quad\Longleftrightarrow\quad
+        |\vec a\times\vec b|=|\vec a|\,|\vec b|.}
+    \]
+    Der Betrag entspricht dem Flächeninhalt des aufgespannten Rechtecks, also
+    dem Produkt seiner Seitenlängen.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.27\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_orthogonal_rectangle.tex}
+  \end{minipage}
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Kreuzprodukt paralleler Vektoren}{vector_algebra_cross_product_parallel_vectors}
+  \begin{minipage}[c]{0.68\linewidth}
+    Für parallele Vektoren ist $\varphi=0^\circ$ (oder
+    $\varphi=180^\circ$). Die von ihnen aufgespannte Fläche und damit der
+    Betrag ihres Kreuzprodukts verschwinden. Da nur der Nullvektor $\vec 0$
+    den Betrag $0$ besitzt, gilt
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.27\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/parallel_vectors_dot_product.tex}
+  \end{minipage}
+  \[
+    \Cloze{14cm}{%
+      \vec a\parallel\vec b
+      \quad\Longleftrightarrow\quad
+      |\vec a\times\vec b|=0
+      \quad\Longleftrightarrow\quad
+      \vec a\times\vec b=\vec 0.}
+  \]
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Kreuzprodukte kanonischer Einheitsvektoren}{vector_algebra_cross_product_unit_vectors}
+  \noindent
+  \begin{minipage}[c]{0.57\linewidth}
+    In $\R^3$ haben die kanonischen Einheitsvektoren
+    $\vec e_1,\vec e_2,\vec e_3$ jeweils den Betrag $1$. Ihre Orientierung ist
+    durch das dargestellte Rechtssystem festgelegt. Die Richtung jedes
+    Kreuzprodukts bestimmen wir mit der Rechte-Hand-Regel.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.39\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/cross_product_unit_vectors.tex}
+  \end{minipage}
+
+  \begin{enumerate}[label=\alph*), leftmargin=*,itemsep=0.8em]
+    \item \textbf{Gleiche Einheitsvektoren $(i=j)$:}
+      Gleiche Vektoren sind parallel, weshalb deren Kreuzprodukt den Nullvektor ergibt.
+      \[
+        \vec e_i\times\vec e_i
+        =\Cloze{1.8cm}{\vec 0}.
+      \]
+
+    \item \textbf{Unterschiedliche Einheitsvektoren $(i\ne j)$:}
+      Diese Einheitsvektoren stehen senkrecht aufeinander. Das Kreuzprodukt hat daher
+      ebenso den Betrag $1$ und ist daher ebenso ein Einheitsvektor.
+      \[
+        |\vec e_i\times\vec e_j|
+        =|\vec e_i|\,|\vec e_j|\sin(90^\circ)
+        =1\cdot1\cdot1
+        =\Cloze{1cm}{1}.
+      \]
+      Die Rechte-Hand-Regel bestimmt die Richtung des Kreuzprodukts und sein
+      Vorzeichen.
+      \[
+        \begin{array}{c@{\qquad}c@{\qquad}c}
+          \vec e_1\times\vec e_2=\Cloze{1.6cm}{\vec e_3},
+          &\vec e_2\times\vec e_3=\Cloze{1.6cm}{\vec e_1},
+          &\vec e_3\times\vec e_1=\Cloze{1.6cm}{\vec e_2},\\[0.8em]
+          \vec e_2\times\vec e_1=\Cloze{1.6cm}{-\vec e_3},
+          &\vec e_3\times\vec e_2=\Cloze{1.6cm}{-\vec e_1},
+          &\vec e_1\times\vec e_3=\Cloze{1.6cm}{-\vec e_2}.
+        \end{array}
+      \]
+  \end{enumerate}
+\end{ExampleBox}
+
+Beim Vertauschen der beiden Faktoren entsteht ein Minuszeichen, z.\,B.
+$\vec e_1\times\vec e_2=-\vec e_2\times\vec e_1$.
+Das Kreuzprodukt ist daher nicht kommutativ.

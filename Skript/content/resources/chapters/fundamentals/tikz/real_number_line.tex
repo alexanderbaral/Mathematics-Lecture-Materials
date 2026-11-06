@@ -1,0 +1,17 @@
+\begin{tikzpicture}[x=2cm,y=1cm,font=\normalsize]
+  \draw[->,line width=0.9pt] (-3.6,0) -- (3.55,0);
+
+  \foreach \x in {-3,-2,-1,0,1,2,3} {
+    \draw[line width=0.9pt] (\x,-0.12) -- (\x,0.12);
+    \node[below=4pt] at (\x,0) {$\x$};
+  }
+
+  \foreach \x in {1.414,1.732,2.718,3.142} {
+    \draw[THMBlue,line width=1.5pt] (\x,-0.14) -- (\x,0.3);
+  }
+
+  \node[THMBlue,anchor=south east] at (1.43,0.34) {$\sqrt2$};
+  \node[THMBlue,anchor=south west] at (1.71,0.34) {$\sqrt3$};
+  \node[THMBlue,above=4pt] at (2.718,0.3) {$\mathrm e$};
+  \node[THMBlue,above=4pt] at (3.142,0.3) {$\pi$};
+\end{tikzpicture}

@@ -1,0 +1,19 @@
+\begin{tikzpicture}[>=Latex]
+  \node at (-2.15,0) {$\displaystyle\vec e_a=\frac{\vec a}{|\vec a|}$};
+  \node at (-0.35,0) {$\Longleftrightarrow$};
+  \node (vector) at (0.80,0) {$\vec a$};
+  \node at (1.45,0) {$=$};
+  \node (magnitude) at (2.25,0) {$|\vec a|$};
+  \node at (2.95,0) {$\cdot$};
+  \node (direction) at (3.65,0) {$\vec e_a$};
+
+  \node[black!60] (magnitude-label) at (0.70,1.20)
+    {\Cloze{2.2cm}{\Lang{Länge}{magnitude}}};
+  \draw[->,black!55,line width=0.7pt]
+    (magnitude-label.south east) to[out=-20,in=145] (magnitude.north);
+
+  \node[black!60] (direction-label) at (5.15,1.20)
+    {\Cloze{2.4cm}{\Lang{Richtung}{direction}}};
+  \draw[->,black!55,line width=0.7pt]
+    (direction-label.south west) to[out=-160,in=35] (direction.north);
+\end{tikzpicture}

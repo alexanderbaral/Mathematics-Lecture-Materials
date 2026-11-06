@@ -1,0 +1,14 @@
+\begin{tikzpicture}[x=0.85cm,y=0.65cm,>=Latex,line cap=round]
+  \draw[black!8,step=1] (-6,0) grid (6,5);
+  \draw[->,black!55] (-6.2,0)--(6.5,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,5.8) node[above] {$y$};
+  \foreach \xx in {-6,-4,-2,2,4,6} \node[below=4pt] at (\xx,0) {$\xx$};
+  \foreach \yy in {1,2,3,4,5} \node[anchor=east] at (-6.2,\yy) {$\yy$};
+  \draw[green!55!black,dashed] (-6,1)--(6,1);
+  \draw[green!55!black,dashed] (-6,5)--(6,5);
+  \draw[THMBlue,line width=1.1pt,domain=-6:6,samples=150]
+    plot (\x,{1+4/(1+\x*\x)});
+  \node[green!55!black,anchor=west] at (6.3,1) {$m=1$};
+  \node[green!55!black,anchor=west] at (6.3,5) {$M=5$};
+  \node[THMBlue] at (0,8) {$g(x)=1+\dfrac4{1+x^2}$};
+\end{tikzpicture}

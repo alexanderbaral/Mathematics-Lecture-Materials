@@ -1,0 +1,61 @@
+\subsection{Tauschoperationen im Spatprodukt}
+\label{subsec:vector_algebra_scalar_triple_product_properties}
+
+Das Spatprodukt bleibt bei bestimmten Änderungen der Reihenfolge unverändert,
+während andere lediglich sein Vorzeichen ändern. Um beide Fälle sicher zu
+unterscheiden, betrachten wir zunächst zyklische und paarweise Vertauschungen.
+
+\begin{DefinitionBox}{Zyklische vs. Paarweise Vertauschung}{vector_algebra_cyclic_permutation}
+  In einer geordneten Folge unterscheiden wir im Folgenden zwei Arten von
+  Vertauschungen:
+  \begin{itemize}[leftmargin=1.6em,itemsep=0.5em,topsep=0.3em]
+    \item Bei einer \emph{zyklischen Vertauschung}
+      \EnglishTerm{cyclic permutation} werden alle Glieder um eine Position
+      verschoben. Das erste Glied rückt dabei an das Ende. Für drei Glieder gilt:
+      \[
+        (a,b,c)
+        \longmapsto\Cloze{2.7cm}{(b,c,a)}
+        \longmapsto\Cloze{2.7cm}{(c,a,b)}
+        \longmapsto\Cloze{2.7cm}{(a,b,c)}.
+      \]
+    \item Eine \emph{paarweise Vertauschung}, kurz \emph{Paartausch}
+      \EnglishTerm{transposition}, vertauscht genau zwei Glieder. Alle übrigen
+      Glieder behalten ihre Position:
+      \[
+        (a,b,c)\longmapsto\Cloze{2.7cm}{(b,a,c)}.
+      \]
+  \end{itemize}
+  Ein Paartausch ist daher im Allgemeinen keine zyklische Vertauschung.
+\end{DefinitionBox}
+
+
+Für das Spatprodukt zeigt der folgende Satz, wie sich beide Arten der
+Vertauschung auf den Wert auswirken.
+\begin{TheoremBox}{Vertauschungen im Spatprodukt}{vector_algebra_scalar_triple_product_cyclic_permutation}
+  Das Spatprodukt $S=(\vec a\times\vec b)\cdot\vec c$
+  \smallskip
+  \begin{itemize}[leftmargin=1.6em,itemsep=0.2em,topsep=0pt]
+    \item bleibt bei \textcolor{THMBlue}{zyklischer Vertauschung} der Vektoren
+      unverändert,
+    \item wechselt bei \textcolor{olive!80!black}{paarweiser Vertauschung} der
+      Vektoren sein Vorzeichen.
+  \end{itemize}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_permutations.tex}
+  \end{center}
+  Beide Vertauschungen lassen das Volumen unverändert, da $V=|S|$ gilt.
+\end{TheoremBox}
+
+\begin{ExampleBox}{Vertauschungen im Spatprodukt}{vector_algebra_scalar_triple_product_permutation_example}
+  Für die Vektoren
+  \[
+    \vec a=\begin{pmatrix}3\\-1\\2\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}4\\2\\1\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}0\\2\\-5\end{pmatrix}
+  \]
+  berechnen und vergleichen wir drei Spatprodukte, die sich jeweils nur durch
+  eine Vertauschung der Vektoren unterscheiden.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/scalar_triple_product_permutation_example.tex}
+  \end{center}
+\end{ExampleBox}

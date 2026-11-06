@@ -1,0 +1,60 @@
+\begin{minipage}{\linewidth}
+\subsubsection{Spezialfall: Regel von Sarrus}
+\label{subsubsec:linear_systems_sarrus_rule}
+
+Für $3\times3$-Determinanten existiert neben der Laplace-Entwicklung ein
+spezielles Rechenschema. Dieses ist häufig schneller anzuwenden, lässt sich
+jedoch nicht auf Determinanten höherer Ordnung übertragen.
+
+\begin{KeyPointBox}{Regel von Sarrus}{linear_systems_sarrus_rule}
+  Im Spezialfall einer $3\times3$-Matrix lässt sich die Determinante auch mit
+  der \emph{Regel von Sarrus} \EnglishTerm{Sarrus' rule} berechnen:
+
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/sarrus_rule.tex}
+  \end{center}
+  \vspace{-0.3\baselineskip}
+  \begin{align*}
+    \det(A)
+    ={}&\textcolor{THMBlue}{a_{11}a_{22}a_{33}
+       +a_{12}a_{23}a_{31}
+       +a_{13}a_{21}a_{32}}\\
+     &\textcolor{red!80!black}{-a_{13}a_{22}a_{31}
+       -a_{11}a_{23}a_{32}
+       -a_{12}a_{21}a_{33}}.
+  \end{align*}
+  \textbf{Achtung:} Die Regel von Sarrus gilt ausschließlich für
+  $3\times3$-Matrizen.
+\end{KeyPointBox}
+\end{minipage}
+
+\IfClozeTF{\clearpage}{}
+\begin{ExampleBox}{Determinante mit der Regel von Sarrus}{linear_systems_sarrus_example}
+  Wir berechnen die Determinante aus
+  Beispiel~\ref{ex:linear_systems_three_by_three_determinant} erneut:
+  \[
+    D=\det\!\begin{pmatrix}
+      1&2&3\\
+      4&5&6\\
+      7&8&0
+    \end{pmatrix}.
+  \]
+  \noindent\textbf{Sarrus-Schema (Nebenrechnung):}
+  \[
+    \begin{array}{|ccc|cc}
+      1&2&3&\textcolor{green!50!black}{1}&\textcolor{green!50!black}{2}\\
+      4&5&6&\textcolor{green!50!black}{4}&\textcolor{green!50!black}{5}\\
+      7&8&0&\textcolor{green!50!black}{7}&\textcolor{green!50!black}{8}
+    \end{array}
+  \]
+  \begin{ClozeArea}[32]{7}
+    \[
+      \begin{aligned}
+        D
+        &=\textcolor{THMBlue}{1\cdot5\cdot0+2\cdot6\cdot7+3\cdot4\cdot8}\\
+        &\phantom{={}}\textcolor{red!80!black}{-3\cdot5\cdot7-1\cdot6\cdot8-2\cdot4\cdot0}\\[0.6em]
+        &=0+84+96-105-48-0=27.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}

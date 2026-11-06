@@ -1,0 +1,21 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (3.5,0);
+  \coordinate (B) at (1.15,1.05);
+  \coordinate (P) at (4.65,1.05);
+  \coordinate (C) at (0,2.55);
+
+  \fill[black!7] (O)--(A)--(P)--(B)--cycle;
+  \draw[black!35,dashed] (A)--(P)--(B);
+  \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+    node[midway,below] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt] (O)--(B)
+    node[midway,above left] {$\vec b$};
+  \draw[->,red!70!black,line width=1.35pt] (O)--(C)
+    node[above] {$\vec c=\vec a\times\vec b$};
+
+  \draw[black!60,line width=0.75pt]
+    (0.72,0) arc[start angle=0,end angle=42.4,radius=0.72];
+  \node at ({0.46*cos(21.2)},{0.46*sin(21.2)}) {$\varphi$};
+  \node[black!65] at (2.45,0.64) {$A=|\vec a\times\vec b|$};
+\end{tikzpicture}

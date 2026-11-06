@@ -1,0 +1,96 @@
+\subsection{Ebene durch drei Punkte}
+\label{subsec:analytic_geometry_plane_through_three_points}
+
+Drei nicht auf einer Geraden liegende Punkte bestimmen eine Ebene eindeutig.
+Verbindungsvektoren zwischen den Punkten liefern unmittelbar zwei geeignete
+Richtungen.
+
+\begin{KeyPointBox}{Ebene durch drei Punkte}{analytic_geometry_plane_from_three_points}
+  Liegen die Punkte $A$, $B$ und $C$ nicht auf einer gemeinsamen Geraden, so
+  bestimmen sie eindeutig eine Ebene.
+
+  \begin{minipage}[t]{0.51\linewidth}
+    \vspace{0pt}
+    \textbf{Parameterdarstellung in drei Schritten:}
+    \begin{enumerate}[leftmargin=1.6em,itemsep=0.25em]
+      \item Aufpunkt wählen, z.\,B. $A$: $\overrightarrow{OA}$.
+      \item Richtungen wählen:
+        $\vec b\parallel\overrightarrow{AB}$ und
+        $\vec c\parallel\overrightarrow{AC}$.
+      \item Parameterform:
+        $E:\ \vec x=\overrightarrow{OA}+\lambda\vec b+\mu\vec c$,
+        $\lambda,\mu\in\R$.
+    \end{enumerate}
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.46\linewidth}
+    \vspace{0pt}\centering
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_through_three_points.tex}
+  \end{minipage}
+
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Ebene durch drei Punkte bestimmen}{analytic_geometry_plane_from_points_example}
+  Wir suchen die Ebene $E$ in Parameterform, die durch die folgenden drei
+  Punkte verläuft:
+  \[
+    A(6,3,-5),\qquad B(2,-1,3),\qquad C(1,2,4).
+  \]
+  \IfClozeTF{%
+    \begin{ClozeArea}[34]{20}
+    \end{ClozeArea}%
+  }{%
+    Wir wählen $A$ als Aufpunkt und erhalten zunächst den Stützvektor
+    \[
+      \overrightarrow{OA}=\begin{pmatrix}6\\3\\-5\end{pmatrix}.
+    \]
+    Die Richtungsvektoren wählen wir in Richtung der Verbindungsvektoren
+    $\overrightarrow{AB}$ und $\overrightarrow{AC}$:
+    \begin{ClozeArea}[34]{10}
+      \[
+        \begin{alignedat}{3}
+          \overrightarrow{AB} = \overrightarrow{OB} - \overrightarrow{OA}
+            &=\begin{pmatrix}2\\-1\\3\end{pmatrix}
+              -\begin{pmatrix}6\\3\\-5\end{pmatrix}
+              =\begin{pmatrix}-4\\-4\\8\end{pmatrix}
+              =-4\begin{pmatrix}1\\1\\-2\end{pmatrix}
+            &\qquad&\text{wähle}\quad
+            &\vec b&=\begin{pmatrix}1\\1\\-2\end{pmatrix},
+              \quad \text{da } \vec b\parallel\overrightarrow{AB},\\[1em]
+          \overrightarrow{AC} = \overrightarrow{OC} - \overrightarrow{OA}
+            &=\begin{pmatrix}1\\2\\4\end{pmatrix}
+              -\begin{pmatrix}6\\3\\-5\end{pmatrix}
+              =\begin{pmatrix}-5\\-1\\9\end{pmatrix}
+            &\qquad&\text{wähle}\quad
+            &\vec c&=\begin{pmatrix}-5\\-1\\9\end{pmatrix},
+              \quad \text{da } \vec c\parallel\overrightarrow{AC}.
+        \end{alignedat}
+      \]
+    \end{ClozeArea}
+    Damit $\vec b$ und $\vec c$ tatsächlich eine Ebene aufspannen, müssen sie
+    linear unabhängig sein. Für 2 Vektoren ist lineare
+    Abhängigkeit gleichbedeutend mit einer kollinearen Ausrichtung, d.h.  \[
+      \vec c=r\vec b
+      \quad\Longrightarrow\quad
+      \begin{cases}
+        -5=r,\\
+        -1=r
+      \end{cases}
+      \quad
+      \mathrel{\textcolor{red!75!black}{%
+        \raisebox{-0.35em}{\fontsize{27}{27}\selectfont $\lightning$}}}
+      \quad\Longrightarrow\quad
+      \vec b\nparallel\vec c
+      \quad\Longrightarrow\quad
+      \vec b,\vec c\ \text{sind linear unabhängig}.
+    \]
+    Eine Parameterdarstellung der gesuchten Ebene lautet daher
+    \[
+      E:\quad
+      \vec x
+      =\begin{pmatrix}6\\3\\-5\end{pmatrix}
+      +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+      +\mu\begin{pmatrix}-5\\-1\\9\end{pmatrix},
+      \qquad \lambda,\mu\in\R.
+    \]
+  }%
+\end{ExampleBox}

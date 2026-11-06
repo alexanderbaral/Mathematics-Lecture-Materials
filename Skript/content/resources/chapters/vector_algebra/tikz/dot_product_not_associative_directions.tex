@@ -1,0 +1,21 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (origin) at (0,0);
+  \coordinate (originA) at (0.035,-0.07);
+  \coordinate (originC) at (0.028,0.078);
+
+  \draw[->,black,line width=1.0pt]
+    (originA) -- ++(2.15,1.20)
+    node[pos=0.72,below right] {$\vec a$};
+  \draw[->,black,line width=1.0pt]
+    (originC) -- ++(2.25,-0.80)
+    node[pos=0.72,above right] {$\vec c$};
+
+  \draw[->,THMBlue,line width=1.35pt]
+    (origin) -- (3.15,1.75)
+    node[pos=0.68,above=11pt,text=THMBlue]
+      {$\vec a\cdot(\vec b\cdot\vec c)$};
+  \draw[->,olive!80!black,line width=1.35pt]
+    (origin) -- (3.35,-1.20)
+    node[pos=0.68,below=7pt,text=olive!80!black]
+      {$(\vec a\cdot\vec b)\cdot\vec c$};
+\end{tikzpicture}

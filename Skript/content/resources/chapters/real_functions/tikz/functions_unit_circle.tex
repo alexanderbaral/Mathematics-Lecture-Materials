@@ -1,0 +1,16 @@
+\begin{tikzpicture}[>=Latex,x=2.3cm,y=2.3cm]
+  \draw[black!60,line width=0.9pt] (0,0) circle (1);
+  \draw[->,black!55] (-1.18,0)--(1.32,0) node[right] {$u$};
+  \draw[->,black!55] (0,-1.15)--(0,1.3) node[above] {$v$};
+  \draw[THMBlue,line width=1.15pt] (0,0)--({cos(52)},{sin(52)});
+  \draw[black!40,dashed] ({cos(52)},0)--({cos(52)},{sin(52)})
+    --(0,{sin(52)});
+  \draw[black!60] (0.42,0) arc[start angle=0,end angle=52,radius=0.42];
+  \node at ({0.27*cos(26)},{0.27*sin(26)}) {$x$};
+  \fill[THMBlue] ({cos(52)},{sin(52)}) circle (1.8pt);
+  \node[anchor=south west] at (0.69,0.86) {$P$};
+  \node[below=5pt] at (0.64,0) {$\cos x$};
+  \node[left=5pt] at (0,0.79) {$\sin x$};
+  \node[below right] at (1,0) {$1$};
+  \node[above left] at (0,1) {$1$};
+\end{tikzpicture}

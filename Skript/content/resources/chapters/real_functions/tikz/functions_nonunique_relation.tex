@@ -1,0 +1,8 @@
+\begin{tikzpicture}[x=1.1cm,y=1.1cm,>=Latex,line cap=round]
+  \draw[->,black!60] (-2.25,0)--(2.25,0) node[right] {$x$};
+  \draw[->,black!60] (0,-1.4)--(0,1.45) node[above] {$y$};
+  \draw[red!75!black,line width=1.15pt,domain=-1.4:1.4,samples=60,variable=\t]
+    plot ({\t*\t-0.5},{\t});
+  \draw[black!50,densely dashed] (0.5,-1.3)--(0.5,1.3);
+  \fill[red!75!black] (0.5,-1) circle (2pt) (0.5,1) circle (2pt);
+\end{tikzpicture}

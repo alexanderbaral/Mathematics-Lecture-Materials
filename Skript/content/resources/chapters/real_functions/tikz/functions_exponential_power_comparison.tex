@@ -1,0 +1,14 @@
+\begin{tikzpicture}[x=0.85cm,y=0.2cm,>=Latex,line cap=round]
+  % Plot values are internally divided by 1000 to stay within PGF's arithmetic range.
+  \draw[black!8] (0,0) grid[xstep=1,ystep=2.5] (10,22.5);
+  \draw[->,black!55] (0,0)--(10.5,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,23.5) node[above] {$y$};
+  \foreach \xx in {2,4,6,8,10} \node[below=4pt] at (\xx,0) {$\xx$};
+  \foreach \yy/\lab in {5/5000,10/10000,15/15000,20/20000}
+    \node[left=4pt] at (0,\yy) {$\lab$};
+  \draw[green!55!black,line width=1pt,domain=0:10,samples=150] plot (\x,{\x^4/1000});
+  \draw[THMBlue,line width=1.1pt,domain=0:10,samples=150]
+    plot (\x,{exp(\x-6)*(exp(6)/1000)});
+  \node[THMBlue] at (3,21) {$e^x$};
+  \node[green!55!black] at (5,21) {$x^4$};
+\end{tikzpicture}

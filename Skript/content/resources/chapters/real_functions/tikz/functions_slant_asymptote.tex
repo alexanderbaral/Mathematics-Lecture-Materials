@@ -1,0 +1,66 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.1cm,y=0.56cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-4,0)--(5.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,-4)--(0,7.2) node[above] {$y$};
+  \draw[black!50] (-4,-0.055)--(-4,0.055);
+\node[above=4pt,inner sep=1pt] (xt0) at (-4,0) {$-4$};
+\draw[black!50] (-3,-0.055)--(-3,0.055);
+\node[above=4pt,inner sep=1pt] (xt1) at (-3,0) {$-3$};
+\draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[above=4pt,inner sep=1pt] (xt2) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[above left=5pt,inner sep=1pt] (xt3) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt4) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt5) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt6) at (3,0) {$3$};
+\draw[black!50] (4,-0.055)--(4,0.055);
+\node[below=4pt,inner sep=1pt] (xt7) at (4,0) {$4$};
+\draw[black!50] (5,-0.055)--(5,0.055);
+\node[below=4pt,inner sep=1pt] (xt8) at (5,0) {$5$};
+\draw[black!50] (-0.055,-4)--(0.055,-4);
+\node[left=4pt,inner sep=1pt] (yt9) at (0,-4) {$-4$};
+\draw[black!50] (-0.055,-2)--(0.055,-2);
+\node[left=4pt,inner sep=1pt] (yt11) at (0,-2) {$-2$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt14) at (0,2) {$2$};
+\draw[black!50] (-0.055,4)--(0.055,4);
+\node[left=4pt,inner sep=1pt] (yt16) at (0,4) {$4$};
+\draw[black!50] (-0.055,6)--(0.055,6);
+\node[left=4pt,inner sep=1pt] (yt18) at (0,6) {$6$};
+
+  \begin{scope}
+    \clip (-4,-4) rectangle (5,7);
+    \draw[black!50,dashed,line width=0.8pt] (-4,-3)--(5,6);
+\draw[green!55!black,dashed,line width=0.8pt] (1,-4)--(1,-0.9);
+\draw[green!55!black,dashed,line width=0.8pt] (1,0.2)--(1,7);
+\draw[THMBlue,line width=1.15pt,domain=-4:0.65,samples=181] plot (\x,{\x+1+2/(\x-1)});
+\draw[THMBlue,line width=1.15pt,domain=1.43:5,samples=161] plot (\x,{\x+1+2/(\x-1)});
+  \end{scope}
+  \node[anchor=south] at (0.500,8.539) {$\displaystyle f(x)=\frac{x^2+1}{x-1}$};
+  \node[anchor=north] at (0.5,-5.05) {\Lang{Gestrichelt: die beiden Asymptoten}{Dashed: the two asymptotes}};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-4,-4) rectangle (5,7)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (xt4.south west) rectangle (xt4.north east)
+        (xt5.south west) rectangle (xt5.north east)
+        (xt6.south west) rectangle (xt6.north east)
+        (xt7.south west) rectangle (xt7.north east)
+        (xt8.south west) rectangle (xt8.north east)
+        (yt9.south west) rectangle (yt9.north east)
+        (yt11.south west) rectangle (yt11.north east)
+        (yt14.south west) rectangle (yt14.north east)
+        (yt16.south west) rectangle (yt16.north east)
+        (yt18.south west) rectangle (yt18.north east)
+;
+      \draw[step=1,black!8,line width=0.25pt] (-4,-4) grid (5,7);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

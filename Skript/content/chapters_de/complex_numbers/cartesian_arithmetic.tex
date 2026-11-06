@@ -1,0 +1,168 @@
+% Handschrift: Seiten 8--13; Betragsregeln von Seite 6 hier eingeordnet.
+\section{Rechnen in kartesischer Darstellung}
+\label{sec:complex_numbers_cartesian_arithmetic}
+Wir rechnen mit den vertrauten algebraischen Gesetzen und ersetzen dabei
+$i^2$ durch $-1$. Addition und Subtraktion lassen sich unmittelbar in der
+Zahlenebene deuten; die Geometrie der Multiplikation folgt später.
+
+\begin{KeyPointBox}{Addition und Subtraktion}{complex_numbers_addition}
+  Für $z_1=x_1+iy_1$ und $z_2=x_2+iy_2$ werden die beiden Anteile
+  getrennt addiert beziehungsweise subtrahiert:
+  \[
+    z_1\pm z_2=(x_1\pm x_2)+i(y_1\pm y_2).
+  \]
+  Geometrisch entspricht dies der Addition beziehungsweise Subtraktion
+  der zugehörigen Pfeile.
+\end{KeyPointBox}
+\begin{ExampleBox}{Summe und Differenz in der Zahlenebene}{complex_numbers_sum_difference}
+  Bestimmen Sie für $z_1=2+i$ und $z_2=3-2i$ die Summe und die Differenz.
+  \[
+    \begin{aligned}
+      z_1+z_2&=(2+3)+i(1-2)=\Cloze{3cm}{5-i},\\[5pt]
+      z_1-z_2&=(2-3)+i(1+2)=\Cloze{3cm}{-1+3i}.
+    \end{aligned}
+  \]
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_addition_subtraction.tex}
+  \end{center}
+\end{ExampleBox}
+\clearpage
+Für eine Zahl und ihre konjugierte Zahl heben sich beim Addieren die
+Imaginärteile und beim Subtrahieren die Realteile auf:
+\[
+  \begin{aligned}
+    z+z^*&=(x+iy)+(x-iy)=2x
+      &&\Longrightarrow& \operatorname{Re}(z)&=\frac{z+z^*}{2},\\[6pt]
+    z-z^*&=(x+iy)-(x-iy)=2iy
+      &&\Longrightarrow& \operatorname{Im}(z)&=\frac{z-z^*}{2i}.
+  \end{aligned}
+\]
+\begin{ExampleBox}{Komponenten durch Konjugation zurückgewinnen}{complex_numbers_components_conjugation}
+  Prüfen Sie beide Formeln an $z=3+2i$ und $z^*=3-2i$.
+  \[
+    \operatorname{Re}(z)=\frac{(3+2i)+(3-2i)}2=\Cloze{1.5cm}{3},\qquad
+    \operatorname{Im}(z)=\frac{(3+2i)-(3-2i)}{2i}=\Cloze{1.5cm}{2}.
+  \]
+\end{ExampleBox}
+
+\subsection{Multiplikation}
+Ausmultiplizieren und Zusammenfassen nach Real- und Imaginärteil liefert
+\[
+  \begin{aligned}
+    z_1z_2&=(x_1+iy_1)(x_2+iy_2)\\[5pt]
+      &=x_1x_2+ix_1y_2+iy_1x_2+i^2y_1y_2\\[5pt]
+      &=(x_1x_2-y_1y_2)+i(x_1y_2+y_1x_2).
+  \end{aligned}
+\]
+\begin{RemarkBox}[remark title=Gemischte Terme bei der Multiplikation]
+  Real- und Imaginärteil eines Produkts sind im Allgemeinen \emph{nicht}
+  die Produkte der einzelnen Real- und Imaginärteile. Die gemischten
+  Terme und $i^2=-1$ müssen berücksichtigt werden.
+\end{RemarkBox}
+\begin{KeyPointBox}{Produkt mit der konjugierten Zahl}{complex_numbers_conjugate_product}
+  Beim Multiplizieren einer Zahl mit ihrer konjugierten Zahl verschwinden
+  die gemischten Terme:
+  \[
+    zz^*=(x+iy)(x-iy)=x^2-i^2y^2=x^2+y^2=|z|^2\in\R_{\ge0}.
+  \]
+  Damit lässt sich der Betrag auch durch $|z|=\sqrt{zz^*}$ ausdrücken.
+\end{KeyPointBox}
+\begin{ExampleBox}{Den Betrag durch ein Produkt prüfen}{complex_numbers_modulus_product_example}
+  Berechnen Sie für $z=3+2i$ das Produkt $zz^*$ und vergleichen Sie
+  mit der geometrisch bestimmten Länge $\sqrt{13}$.
+  \begin{ClozeArea}{4}
+    \[
+      (3+2i)(3-2i)=9-(2i)^2=9+4=13,
+      \qquad |z|=\sqrt{13}.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\clearpage
+\subsection{Division}
+Um einen Quotienten kartesisch darzustellen, machen wir seinen Nenner
+mithilfe der komplexen Konjugation reell.
+\begin{KeyPointBox}{Erweitern mit dem konjugierten Nenner}{complex_numbers_division}
+  Für $z_2\ne0$ gilt mit $z_2z_2^*=|z_2|^2$ die Umformung
+  \[
+    \begin{aligned}
+      \frac{z_1}{z_2}
+        &=\frac{z_1z_2^*}{|z_2|^2}
+         =\frac{(x_1+iy_1)(x_2-iy_2)}{x_2^2+y_2^2}\\[7pt]
+        &=\frac{x_1x_2+y_1y_2}{x_2^2+y_2^2}
+          +i\,\frac{y_1x_2-x_1y_2}{x_2^2+y_2^2}.
+    \end{aligned}
+  \]
+  Auch beim Dividieren dürfen Real- und Imaginärteile nicht getrennt
+  durcheinander geteilt werden.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Einen Quotienten kartesisch darstellen}{complex_numbers_quotient_example}
+  Bringen Sie $(3+2i)/(1-i)$ auf die Form $x+iy$, indem Sie den Nenner reell machen.
+  \begin{ClozeArea}{6}
+    \[
+      \begin{aligned}
+        \frac{3+2i}{1-i}
+          &=\frac{(3+2i)(1+i)}{(1-i)(1+i)}\\[6pt]
+          &=\frac{3+5i+2i^2}{1-i^2}
+           =\frac{1+5i}{2}=\frac12+\frac52i.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  Realteil und Imaginärteil des Quotienten sind also $1/2$ und $5/2$.
+\end{ExampleBox}
+\begin{KeyPointBox}{Die imaginäre Einheit im Nenner}{complex_numbers_reciprocal_i}
+  Beim Wechsel von $i$ aus dem Nenner in den Zähler entsteht ein Minuszeichen:
+  \[
+    \frac1i=\frac{-i}{i(-i)}=\frac{-i}{1}=-i,
+    \qquad \frac{a}{i}=-ia\quad(a\in\C).
+  \]
+\end{KeyPointBox}
+
+\clearpage
+\subsection{Rechengesetze}
+Die aus dem Reellen bekannten Gesetze gelten auch für komplexe Zahlen:
+\[
+  \begin{array}{@{}ll@{}}
+    z_1+z_2=z_2+z_1,\quad z_1z_2=z_2z_1
+      &\text{Kommutativgesetze},\\[7pt]
+    z_1+(z_2+z_3)=(z_1+z_2)+z_3
+      &\text{Assoziativgesetze},\\[7pt]
+    z_1(z_2z_3)=(z_1z_2)z_3&\\[7pt]
+    z_1(z_2+z_3)=z_1z_2+z_1z_3
+      &\text{Distributivgesetz}.
+  \end{array}
+\]
+Für die Konjugation ergeben sich außerdem die Beziehungen
+\[
+  (z_1+z_2)^*=z_1^*+z_2^*,\quad
+  (z_1z_2)^*=z_1^*z_2^*,\quad
+  \left(\frac{z_1}{z_2}\right)^*=\frac{z_1^*}{z_2^*}\quad(z_2\ne0).
+\]
+\begin{ExampleBox}{Die Reihenfolge des Zusammenfassens wählen}{complex_numbers_associativity}
+  Berechnen Sie $(1+i)(3+2i)(3-2i)$ mit zwei verschiedenen Klammerungen.
+  Nutzen Sie im ersten Weg das konjugierte Paar.
+  \begin{ClozeArea}{7}
+    \[
+      \begin{aligned}
+        (1+i)\bigl((3+2i)(3-2i)\bigr)
+          &=(1+i)\cdot13=13+13i,\\[6pt]
+        \bigl((1+i)(3+2i)\bigr)(3-2i)
+          &=(1+5i)(3-2i)\\[6pt]
+          &=3-2i+15i-10i^2=13+13i.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Rechenregeln für den Betrag}{complex_numbers_modulus_laws}
+  Für komplexe Zahlen gelten die Produkt- und Quotientenregel sowie
+  die \emph{Dreiecksungleichung} \EnglishTerm{triangle inequality}:
+  \[
+    |z|\ge0,\qquad |z_1z_2|=|z_1||z_2|,\qquad
+    \left|\frac{z_1}{z_2}\right|=\frac{|z_1|}{|z_2|}\quad(z_2\ne0),
+  \]
+  \[
+    |z_1+z_2|\le|z_1|+|z_2|.
+  \]
+\end{KeyPointBox}

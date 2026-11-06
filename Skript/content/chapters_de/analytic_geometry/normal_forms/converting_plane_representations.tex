@@ -1,0 +1,119 @@
+\subsection{Ebenendarstellungen umformen}
+\label{subsec:analytic_geometry_converting_plane_representations}
+
+Parameter- und Normalenform beschreiben dieselbe Ebene aus zwei Blickwinkeln.
+Die Umrechnung macht jeweils die für eine Aufgabe günstigere Information
+sichtbar.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/plane_representation_conversion.tex}
+\end{center}
+
+\subsubsection{Parameterform in Normalenform überführen}
+
+\begin{KeyPointBox}{Vorgehen: Parameterform in Normalenform}{analytic_geometry_parameter_to_normal_method}
+    Sei eine Ebene $E$ in Parameterform gegeben:
+    \[
+      E:\quad
+      \vec x=\overrightarrow{OP}+\lambda\vec a+\mu\vec b.
+    \]
+    Um die Normalenform zu erhalten, gehen wir wie folgt vor:
+    \begin{enumerate}[leftmargin=1.6em,itemsep=0.25em]
+      \item Stützvektor $\overrightarrow{OP}$ übernehmen.
+      \item Normalenvektor bestimmen: $\vec n=\vec a\times\vec b$.
+      \item Normalenform aufstellen:
+      \[
+      E:\quad (\vec x-\overrightarrow{OP})\cdot\vec n=0.
+    \]
+    \end{enumerate}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Parameterform in Normalenform überführen}{analytic_geometry_parameter_to_normal_example}
+    Gegeben ist die bereits bekannte Ebene
+    \[
+      E:\quad
+      \vec x=\begin{pmatrix}6\\3\\-5\end{pmatrix}
+        +\lambda\begin{pmatrix}1\\1\\-2\end{pmatrix}
+        +\mu\begin{pmatrix}-1\\3\\1\end{pmatrix}.
+    \]
+    Ein Normalenvektor entsteht aus dem Kreuzprodukt der Richtungsvektoren:
+    \begin{ClozeArea}[34]{12}
+      \[
+        \vec n
+        =\begin{pmatrix}1\\1\\-2\end{pmatrix}
+          \times\begin{pmatrix}-1\\3\\1\end{pmatrix}
+        =\begin{pmatrix}
+            1\cdot1-(-2)\cdot3\\
+            (-2)\cdot(-1)-1\cdot1\\
+            1\cdot3-1\cdot(-1)
+          \end{pmatrix}
+        =\begin{pmatrix}7\\1\\4\end{pmatrix}.
+      \]
+    \end{ClozeArea}
+    Damit lautet die Normalenform
+    \begin{ClozeArea}[34]{5}
+      \[
+        E:\quad
+        \left(\vec x-\begin{pmatrix}6\\3\\-5\end{pmatrix}\right)
+          \cdot\begin{pmatrix}7\\1\\4\end{pmatrix}=0.
+      \]
+    \end{ClozeArea}
+\end{ExampleBox}
+
+\subsubsection{Normalenform in Parameterform überführen}
+
+\begin{KeyPointBox}{Vorgehen: Normalenform in Parameterform}{analytic_geometry_normal_to_parameter_method}
+    Sei eine Ebene gegeben in Normalenform:
+    \[
+      E:\quad (\vec x-\overrightarrow{OP})\cdot\vec n=0.
+    \]
+    Um die Parameterform zu erhalten, gehen wir wie folgt vor:
+    \begin{enumerate}[leftmargin=1.6em,itemsep=0.25em]
+      \item Stützvektor $\overrightarrow{OP}$ aus der Normalenform übernehmen.
+      \item Wähle 2 linear unabhängige Richtungsvektoren $\vec a,\vec b$ mit
+        \[
+          \vec n\cdot\vec a = 0\quad\text{und}\quad \vec n\cdot\vec b=0
+        \]
+        \textit{Tipp:} Eine Möglichkeit, zu
+        $\vec n=(n_1,n_2,n_3)^{\mathsf T}$ senkrechte Richtungsvektoren zu
+        konstruieren, ist für $n_2\neq0$
+        \[
+          \vec a=\begin{pmatrix}-n_2\\n_1\\0\end{pmatrix},
+          \qquad
+          \vec b=\begin{pmatrix}0\\n_3\\-n_2\end{pmatrix}.
+        \]
+      \item Parameterform aufstellen:
+      \[
+        E:\quad \vec x=\overrightarrow{OP}+\lambda\vec a+\mu\vec b,
+        \qquad \lambda,\mu\in\R.
+      \]
+    \end{enumerate}
+  \end{KeyPointBox}
+
+\begin{ExampleBox}{Normalenform in Parameterform überführen}{analytic_geometry_normal_to_parameter_example}
+    Gegeben ist die Ebene
+    \[
+      E:\quad
+      \left(\vec x-\begin{pmatrix}2\\1\\0\end{pmatrix}\right)
+        \cdot\begin{pmatrix}2\\-1\\1\end{pmatrix}=0.
+    \]
+    Den Stützvektor übernehmen wir direkt. Für zwei Richtungsvektoren lösen
+    wir $\vec n\cdot\vec r=0$ und wählen beispielsweise
+    \begin{ClozeArea}[34]{8}
+      \[
+        \vec a=\begin{pmatrix}1\\2\\0\end{pmatrix},
+        \qquad
+        \vec b=\begin{pmatrix}1\\1\\-1\end{pmatrix},
+        \qquad
+        \vec n\cdot\vec a=\vec n\cdot\vec b=0.
+      \]
+    \end{ClozeArea}
+    Somit besitzt die Ebene beispielsweise die Parameterdarstellung
+    \[
+      E:\quad
+      \vec x=\begin{pmatrix}2\\1\\0\end{pmatrix}
+        +\lambda\begin{pmatrix}1\\2\\0\end{pmatrix}
+        +\mu\begin{pmatrix}1\\1\\-1\end{pmatrix},
+      \qquad \lambda,\mu\in\R.
+    \]
+\end{ExampleBox}

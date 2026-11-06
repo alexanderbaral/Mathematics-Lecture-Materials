@@ -1,0 +1,11 @@
+\begin{tikzpicture}[>=Latex,x=2.35cm,y=2.35cm]
+  \draw[black!35] (0,0) circle (1);
+  \draw[->,black!65] (-1.2,0)--(1.35,0) node[right] {$\operatorname{Re}$};
+  \draw[->,black!65] (0,-.25)--(0,1.35) node[above] {$\operatorname{Im}$};
+  \foreach \k/\angle/\anchor in {1/30/south west,2/60/south west,3/90/south west,4/120/south east,5/150/south east} {
+    \draw[->,THMBlue,line width=.9pt] (0,0)--(\angle:1);
+    \node[anchor=\anchor,inner sep=6pt] at (\angle:1) {\ifnum\k=1 $z$\else $z^{\k}$\fi};
+  }
+  \draw[black!60] (.7,0) arc[start angle=0,end angle=30,radius=.7];
+  \node at (15:.5) {$\varphi$};
+\end{tikzpicture}

@@ -1,0 +1,34 @@
+\begin{tikzpicture}[x=0.80cm,y=0.65cm,>=Latex]
+  \path[use as bounding box] (-0.95,-0.85) rectangle (17.8,5.85);
+
+  \draw[step=1,black!10,line width=0.35pt] (0,0) grid (7,4);
+
+  \draw[->,black!60,line width=0.8pt] (-0.2,0)--(8.05,0)
+    node[below] {$x_1$};
+  \draw[->,black!60,line width=0.8pt] (0,-0.2)--(0,4.65)
+    node[left] {$x_2$};
+
+  \foreach \x in {1,2,3,4,5,6,7} {
+    \draw[black!50] (\x,-0.08)--(\x,0.08);
+    \node[below=3pt] at (\x,0) {$\x$};
+  }
+  \foreach \y in {1,2,3,4} {
+    \draw[black!50] (-0.08,\y)--(0.08,\y);
+    \node[left=3pt] at (0,\y) {$\y$};
+  }
+
+  \draw[->,THMBlue,line width=1.35pt] (2,1)--(3,3);
+  \draw[->,THMBlue,line width=1.35pt] (3,2)--(4,4);
+  \draw[->,THMBlue,line width=1.35pt] (5,1)--(6,3);
+  \draw[->,THMBlue,line width=1.35pt] (0.13,-0.05)--(1.13,1.95);
+  \draw[->,olive!80!black,line width=1.35pt] (0,0)--(1,2);
+
+  \fill (0,0) circle (1.5pt)
+    node[below right=3pt,fill=white,inner sep=1pt] {$O$};
+  \draw[->,THMBlue,line width=1.35pt] (10.20,3.55)--(11.05,3.55);
+  \node[anchor=west,text=THMBlue] at (11.30,3.55)
+    {$\vec a$: Verschiebevektor};
+  \draw[->,olive!80!black,line width=1.35pt] (10.20,2.35)--(11.05,2.35);
+  \node[anchor=west,text=olive!80!black] at (11.30,2.35)
+    {$\overrightarrow{OP}$: Ortsvektor};
+\end{tikzpicture}

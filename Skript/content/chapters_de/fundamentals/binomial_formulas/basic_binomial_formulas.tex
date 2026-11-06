@@ -1,0 +1,129 @@
+\subsection{Grundlegende binomische Formeln}
+\label{subsec:fundamentals_basic_binomial_formulas}
+
+Die drei grundlegenden binomischen Formeln werden häufig verwendet, um quadratische Terme
+umzuformen und Rechnungen zu vereinfachen. Sie ergeben sich unmittelbar durch Ausmultiplizieren der
+folgenden Terme:
+
+\phantomsection
+\label{subsubsec:fundamentals_first_binomial_formula}
+\begin{itemize}[leftmargin=*,itemsep=0.8em]
+  \item
+    \begin{minipage}[t]{\linewidth}
+      \textbf{1. binomische Formel}
+      \[
+        (a+b)^2=
+        \Cloze{14cm}{(a+b)(a+b)=a^2+ab+ba+b^2=a^2+2ab+b^2}
+      \]
+    \end{minipage}
+
+  \phantomsection
+  \label{subsubsec:fundamentals_second_binomial_formula}
+  \item
+    \begin{minipage}[t]{\linewidth}
+      \textbf{2. binomische Formel}
+      \[
+        (a-b)^2=
+        \Cloze{14cm}{(a-b)(a-b)=a^2-ab-ba+b^2=a^2-2ab+b^2}
+      \]
+    \end{minipage}
+
+  \phantomsection
+  \label{subsubsec:fundamentals_third_binomial_formula}
+  \item
+    \begin{minipage}[t]{\linewidth}
+      \textbf{3. binomische Formel}
+      \[
+        (a+b)(a-b)=
+        \Cloze{14cm}{a^2-ab+ab-b^2=a^2-b^2}
+      \]
+    \end{minipage}
+\end{itemize}
+
+Damit können wir zusammenfassend die drei binomischen Formeln festhalten:
+\begin{TheoremBox}{Binomische Formeln}{fundamentals_binomial_formulas}
+  Für $a,b\in\R$ gelten die drei binomischen Formeln:
+  \begin{alignat*}{2}
+    (a+b)^2&=a^2+2ab+b^2
+      &\qquad\qquad&\text{1. binomische Formel},\\[0.5em]
+    (a-b)^2&=a^2-2ab+b^2
+      &\qquad\qquad&\text{2. binomische Formel},\\[0.5em]
+    (a+b)(a-b)&=a^2-b^2
+      &\qquad\qquad&\text{3. binomische Formel}.
+  \end{alignat*}
+\end{TheoremBox}
+
+
+Die 3 binomischen Formeln lassen sich auch geometrisch nachvollziehen. Besonders
+anschaulich funtkioniert dies mit der 1. binomischen Formel.
+\begin{RemarkBox}[remark title=Geometrische Deutung der 1. binomischen Formel,breakable=false]
+  \begin{center}
+    \begin{minipage}[c]{0.64\linewidth}
+      \raggedright
+      Die geometrische Deutung gelingt über einen Vergleich der Flächen im darstellten Rechteck.
+      Dabei entspricht die Gesamtfläche der Summe der eingefärbten Einzelflächen:
+      \par\medskip
+      \begingroup
+        \setlength{\fboxsep}{4pt}
+        \begin{ClozeArea}[20]{2}
+          \centering
+          $\displaystyle
+            (a+b)^2
+            =\colorbox{yellow!70}{$\displaystyle a^2$}
+            +\colorbox{green!55!black}{\textcolor{white}{$\displaystyle 2ab$}}
+            +\colorbox{black!18}{$\displaystyle b^2$}.$
+        \end{ClozeArea}
+      \endgroup
+    \end{minipage}\hfill
+    \begin{minipage}[c]{0.32\linewidth}
+      \centering
+      \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/first_binomial_formula_area.tex}
+    \end{minipage}
+  \end{center}
+\end{RemarkBox}
+
+\noindent\begin{minipage}{\linewidth}
+\begin{ExampleBox}{Binomische Formeln}{fundamentals_basic_binomial_formulas_example}
+  \begin{itemize}[leftmargin=*,itemsep=1em]
+    \item \textbf{1. binomische Formel}
+      \begin{enumerate}[
+        label=\alph*),leftmargin=*,itemsep=0.65em,series=binomial_examples]
+        \item $\displaystyle (x+5)^2
+          =\Cloze{8cm}{x^2+10x+25}$
+        \item $\displaystyle (2a+3b)^2
+          =\Cloze{8cm}{4a^2+12ab+9b^2}$
+        \item \emph{Quadratische Ergänzung:}
+          \par\smallskip\noindent
+          $\displaystyle
+            x^2-2x+5=
+            \Cloze{12cm}{%
+              x^2-2x\;
+              \underbrace{{\color{THMBlue}+1-1}}_{=0}\;+5
+              =(x^2-2x{\color{THMBlue}+1})
+              +({\color{THMBlue}-1}+5)
+              =(x-1)^2+4}
+          $
+          \par\smallskip
+          Durch Addition der Null in der Form $+1-1$ entsteht eine äquivalente
+          Darstellung, in der $x^2-2x+1$ ein vollständiges Binom bildet.
+      \end{enumerate}
+
+    \item \textbf{2. binomische Formel}
+      \begin{enumerate}[
+        label=\alph*),leftmargin=*,itemsep=0.65em,resume=binomial_examples]
+        \item $\displaystyle (3y-4)^2
+          =\Cloze{8cm}{9y^2-24y+16}$
+      \end{enumerate}
+
+    \item \textbf{3. binomische Formel}
+      \begin{enumerate}[
+        label=\alph*),leftmargin=*,itemsep=0.65em,resume=binomial_examples]
+        \item $\displaystyle 4002^2-3998^2
+          =\Cloze{11cm}{(4002-3998)(4002+3998)=4\cdot8000=32000}$
+        \item $\displaystyle
+          (\sqrt{x}+\sqrt{y})\cdot(\sqrt{x}-\sqrt{y})
+          =\Cloze{7cm}{x-y}\qquad(x,y\geq0)$
+      \end{enumerate}
+  \end{itemize}
+\end{ExampleBox}
+\end{minipage}

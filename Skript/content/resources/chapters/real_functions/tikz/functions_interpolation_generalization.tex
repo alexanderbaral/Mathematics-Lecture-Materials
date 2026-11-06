@@ -1,0 +1,82 @@
+\begin{tikzpicture}[
+  >=Latex,line cap=round,
+  comparison text/.style={anchor=base west,inner sep=0pt,align=left},
+  comparison arrow/.style={->,black!65,line width=0.9pt}
+]
+  % Wide, equal panels; titles and the curved generalization arrow stay outside.
+  \foreach \left/\right in {-8.6/-1,1/8.6} {
+    \path[fill=black!2,draw=black!30,line width=0.5pt,rounded corners=1pt]
+      (\left,-4.0) rectangle (\right,3.65);
+  }
+  \node[anchor=south] at (-4.8,3.75) {\textbf{\Lang{Zuvor}{Before}}};
+  \node[anchor=south] at (4.8,3.75) {\textbf{\Lang{Jetzt}{Now}}};
+  \draw[comparison arrow,line width=1.1pt]
+    (-2.6,3.85) .. controls (-2.2,5.0) and (2.2,5.0) .. (2.6,3.85);
+  \node[anchor=south,text=black!75] at (0,4.82)
+    {\Lang{Verallgemeinerung}{Generalization}};
+
+  % The line and its two points use exactly the same function.
+  \begin{scope}[xshift=-4.8cm,yshift=2.3cm,x=0.7cm,y=0.6cm]
+    \draw[->,black!55] (-2,0)--(2,0);
+    \draw[->,black!55] (0,-1.35)--(0,1.45);
+    \draw[THMBlue,line width=1.2pt,domain=-1.85:1.85]
+      plot (\x,{0.5*\x+0.15});
+    \foreach \x in {-1.2,1.2} {
+      \fill[black] (\x,{0.5*\x+0.15}) circle (2pt);
+    }
+    \node[above left=3pt,yshift=7pt,inner sep=0pt] at (-1.2,{0.5*(-1.2)+0.15}) {$P_A$};
+    \node[above left=3pt,inner sep=0pt] at (1.2,{0.5*1.2+0.15}) {$P_B$};
+  \end{scope}
+
+  % A cubic illustrates the higher-degree case; labels stay off the curve.
+  \begin{scope}[xshift=4.8cm,yshift=2.3cm,x=0.7cm,y=0.52cm]
+    \draw[->,black!55] (-2,0)--(2,0);
+    \draw[->,black!55] (0,-1.55)--(0,1.65);
+    \draw[THMBlue,line width=1.2pt,domain=-1.9:1.9,samples=101]
+      plot (\x,{0.45*\x^3-0.8*\x});
+    \foreach \x in {-1.7,-0.6,0.6,1.7} {
+      \fill[black] (\x,{0.45*\x^3-0.8*\x}) circle (2pt);
+    }
+    \node[above left=3pt,yshift=-3pt,inner sep=0pt] at (-1.7,{0.45*(-1.7)^3-0.8*(-1.7)}) {$P_1$};
+    \node[above left=4pt,inner sep=0pt] at (1.7,{0.45*1.7^3-0.8*1.7}) {$P_{n+1}$};
+  \end{scope}
+
+  % Four matching rows. The equations belong directly to the function type.
+  \foreach \x in {-8.15,1.45} {
+    \foreach \y in {0.75,-0.6,-1.65,-2.95} {
+      \node[comparison text] at (\x,\y) {\textbullet};
+    }
+  }
+  \foreach \y in {0.84,-0.51,-1.72,-3.02} {
+    \draw[comparison arrow,<->] (-0.78,\y)--(0.78,\y);
+  }
+
+  \node[comparison text] at (-7.75,0.75)
+    {\Lang{Gerade: Polynom 1. Grades}{Line: polynomial of degree 1}};
+  \node[comparison text] at (1.85,0.75)
+    {\Lang{Polynom vom Grad}{Polynomial of degree} $n$};
+  \node[anchor=base,inner sep=0pt,text=THMBlue] at (-4.8,0.13) {$g(x)=mx+b$};
+  \node[anchor=base,inner sep=0pt,text=THMBlue] at (4.8,0.13) {$p(x)=a_nx^n+\dots+a_0$};
+
+  \node[comparison text] at (-7.75,-0.6)
+    {\Lang{2 freie Parameter}{2 free parameters}: \textcolor{THMBlue}{$m,b$}};
+  \node[comparison text] at (1.85,-0.6)
+    {$n+1$ \Lang{freie Parameter}{free parameters}: \textcolor{THMBlue}{$a_0,\dots,a_n$}};
+
+  \node[comparison text] at (-7.75,-1.65)
+    {\Lang{2 Punkte}{2 points} $P_A,P_B$};
+  \node[comparison text] at (1.85,-1.65)
+    {$n+1$ \Lang{Punkte}{points} $P_1,\dots,P_{n+1}$};
+  \node[comparison text] at (-7.75,-2.15)
+    {\Lang{bestimmen die Gerade}{determine the line}};
+  \node[comparison text] at (1.85,-2.15)
+    {\Lang{bestimmen das Polynom}{determine the polynomial}};
+
+  \node[comparison text] at (-7.75,-2.95)
+    {\Lang{Parameter bestimmbar über ein}{Parameters determined by a}};
+  \node[comparison text] at (1.85,-2.95)
+    {\Lang{Parameter bestimmbar über ein}{Parameters determined by a}};
+  \node[comparison text] at (-7.75,-3.5) {$2\times2$-\Lang{LGS}{linear system}};
+  \node[comparison text] at (1.85,-3.5)
+    {$(n+1)\times(n+1)$-\Lang{LGS}{linear system}};
+\end{tikzpicture}

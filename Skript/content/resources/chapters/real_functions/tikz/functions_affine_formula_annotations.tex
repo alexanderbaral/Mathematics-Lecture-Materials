@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,line cap=round,
+    formula/.style={anchor=base west,inner sep=0pt,text=black,
+      text height=1.6ex,text depth=0.3ex},
+    annotation/.style={anchor=west,inner sep=0pt,text=green!55!black,
+      text height=1.6ex,text depth=0.3ex}]
+  \node[formula] (lhs)
+    at (0.4,1.25) {$g(x)={}$};
+  \node[formula] (slope)
+    at (lhs.base east) {\textcolor{THMBlue}{$m$}};
+  \node[formula] (middle)
+    at (slope.base east) {$x+{}$};
+  \node[formula] (intercept)
+    at (middle.base east) {\textcolor{green!55!black}{$b$}};
+
+  % Equal offsets and mirrored control points give both annotations the same
+  % distance from the equation and both arrows the same length and curvature.
+  \node[annotation] (intercept-label)
+    at ($(intercept.center)+(1.15,0.95)$) {$y$-Achsenabschnitt};
+  \node[annotation,text=THMBlue] (slope-label)
+    at ($(slope.center)+(1.15,-0.95)$) {Steigung};
+  \draw[green!55!black,->,line width=0.8pt]
+    ([xshift=3pt,yshift=-3pt]intercept-label.south west)
+    .. controls +(0,-0.27) and +(0.20,0.35)
+    .. ([yshift=2pt]intercept.north);
+  \draw[THMBlue,->,line width=0.8pt]
+    ([xshift=3pt,yshift=3pt]slope-label.north west)
+    .. controls +(0,0.27) and +(0.20,-0.35)
+    .. ([yshift=-2pt]slope.south);
+\end{tikzpicture}

@@ -1,0 +1,93 @@
+\subsection{Abstand eines Punktes von einer Geraden}
+\label{subsec:analytic_geometry_point_to_line_distance}
+
+Die kürzeste Verbindung eines Punktes $Q$ mit einer Geraden $g$ steht
+senkrecht auf der Geraden.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/point_line_distance.tex}
+\end{center}
+
+\begin{TheoremBox}{Punkt--Geraden-Abstand}{analytic_geometry_point_line_distance}
+  Sei $P$ ein Punkt der Geraden $g$ und sei $Q$ ein beliebiger Punkt. Mit
+  einem Einheitsrichtungsvektor $\vec e_a$ von $g$ ist der parallele Anteil
+  des Verbindungsvektors
+  \[
+    \overrightarrow{PQ}_{\parallel}
+    =(\overrightarrow{PQ}\cdot\vec e_a)\vec e_a.
+  \]
+  Daher entspricht der Abstand $d$ dem Betrag der senkrechten Komponente
+  $\overrightarrow{PQ}_{\perp}$ von $\overrightarrow{PQ}$:
+  \[
+    d
+    =\left\lvert\overrightarrow{PQ}_{\perp}\right\rvert
+    =\left\lvert
+      \overrightarrow{PQ}-\overrightarrow{PQ}_{\parallel}
+    \right\rvert
+    =\left\lvert
+      \overrightarrow{PQ}-(\overrightarrow{PQ}\cdot\vec e_a)\vec e_a
+    \right\rvert.
+  \]
+\end{TheoremBox}
+
+\begin{ExampleBox}{Abstand eines Punktes von einer Geraden}{analytic_geometry_point_line_distance_example}
+  Gegeben sind die Gerade $g$ in Parameterform und der Punkt $Q(0,2)$:
+  \[
+    g:\quad\vec x=\overrightarrow{OP}+\lambda\vec a,
+    \qquad
+    \overrightarrow{OP}=\begin{pmatrix}2\\2\end{pmatrix},
+    \quad
+    \vec a=\begin{pmatrix}1\\-1\end{pmatrix}.
+  \]
+  Zunächst bestimmen wir den Verbindungsvektor und den Einheitsrichtungsvektor:
+  \begin{ClozeArea}[34]{3}
+    \[
+      \overrightarrow{PQ}=\overrightarrow{OQ}-\overrightarrow{OP}
+        =\begin{pmatrix}0\\2\end{pmatrix}-\begin{pmatrix}2\\2\end{pmatrix}
+        =\begin{pmatrix}-2\\0\end{pmatrix},
+      \qquad
+      \vec e_a=\frac{\vec a}{\lvert\vec a\rvert}
+        =\frac1{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix}.
+    \]
+  \end{ClozeArea}
+  Dann bestimmen wir die parallele und die senkrechte Komponente von $\overrightarrow{PQ}$:
+  \begin{itemize}
+    \item Paralleler Anteil:
+      \begin{ClozeArea}[32]{3}
+        \[
+          \overrightarrow{PQ}_{\parallel}
+            =(\overrightarrow{PQ}\cdot\vec e_a)\vec e_a
+            =-\sqrt2\,\vec e_a
+            =\begin{pmatrix}-1\\1\end{pmatrix}.
+        \]
+      \end{ClozeArea}
+    \item Senkrechter Anteil:
+      \begin{ClozeArea}[32]{3}
+        \[
+          \overrightarrow{PQ}_{\perp}
+            =\overrightarrow{PQ}-\overrightarrow{PQ}_{\parallel}
+            =\begin{pmatrix}-2\\0\end{pmatrix}-\begin{pmatrix}-1\\1\end{pmatrix}
+            =\begin{pmatrix}-1\\-1\end{pmatrix}.
+        \]
+      \end{ClozeArea}
+  \end{itemize}
+  \noindent
+  \begin{minipage}[c]{0.44\linewidth}
+    Den Abstand $d$ erhalten wir gemäß
+    Satz~\ref{thm:analytic_geometry_point_line_distance} als Betrag der
+    senkrechten Komponente von $\overrightarrow{PQ}$:
+    \begin{ClozeArea}[15]{4}
+      \[
+        \begin{aligned}
+          d&=\left\lvert\overrightarrow{PQ}_{\perp}\right\rvert
+            =\left\lvert\begin{pmatrix}-1\\-1\end{pmatrix}\right\rvert\\[0.6em]
+           &=\sqrt{(-1)^2+(-1)^2}=\sqrt2.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.54\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/point_line_distance_example.tex}
+  \end{minipage}
+\end{ExampleBox}

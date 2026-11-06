@@ -1,0 +1,161 @@
+% Handschrift: Seiten 19--26.
+\section{Euler-Formel und Exponentialdarstellung}
+\label{sec:complex_numbers_exponential_form}
+Die Euler-Formel verbindet Trigonometrie und Exponentialfunktion.
+Mit ihr werden aus Winkeladditionen einfache Potenzgesetze.
+
+\begin{TheoremBox}{Euler-Formel}{complex_numbers_euler}
+  Für jeden reellen Winkel $\varphi$ im Bogenmaß gilt die
+  \emph{Euler-Formel} \EnglishTerm{Euler's formula}
+  \[
+    e^{i\varphi}=\cos\varphi+i\sin\varphi.
+  \]
+\end{TheoremBox}
+Der Beweis mithilfe von Potenzreihen folgt in Mathematik~2.
+Konjugieren bedeutet auch hier, jedes $i$ durch $-i$ zu ersetzen:
+\[
+  (e^{i\varphi})^*=e^{-i\varphi}
+    =\cos\varphi-i\sin\varphi.
+\]
+Über die Formeln für Real- und Imaginärteil erhalten wir daraus
+\[
+  \cos\varphi=\operatorname{Re}(e^{i\varphi})
+    =\frac{e^{i\varphi}+e^{-i\varphi}}2,\qquad
+  \sin\varphi=\operatorname{Im}(e^{i\varphi})
+    =\frac{e^{i\varphi}-e^{-i\varphi}}{2i}.
+\]
+\begin{RemarkBox}[remark title=Vergleich mit Hyperbelfunktionen]
+  Diese Darstellungen ähneln den Definitionen der
+  \emph{Hyperbelfunktionen} \EnglishTerm{hyperbolic functions}:
+  \[
+    \begin{array}{@{}cc@{}}
+      \text{Trigonometrisch}&\text{Hyperbolisch}\\[5pt]
+      \displaystyle\sin x=\frac{e^{ix}-e^{-ix}}{2i}
+        &\displaystyle\sinh x=\frac{e^x-e^{-x}}2\\[12pt]
+      \displaystyle\cos x=\frac{e^{ix}+e^{-ix}}2
+        &\displaystyle\cosh x=\frac{e^x+e^{-x}}2
+    \end{array}
+  \]
+  Man spricht von Sinus hyperbolicus und Kosinus hyperbolicus.
+\end{RemarkBox}
+\begin{ExampleBox}{Eine trigonometrische Identität nachweisen}{complex_numbers_double_angle}
+  Zeigen Sie mit der Exponentialdarstellung die Doppelwinkelformel
+  $2\sin\varphi\cos\varphi=\sin(2\varphi)$.
+  \begin{ClozeArea}{7}
+    \[
+      \begin{aligned}
+        2\sin\varphi\cos\varphi
+          &=\frac{(e^{i\varphi}-e^{-i\varphi})(e^{i\varphi}+e^{-i\varphi})}{2i}\\[7pt]
+          &=\frac{e^{2i\varphi}-e^{-2i\varphi}}{2i}
+           =\sin(2\varphi).
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\clearpage
+\subsection{Vom Einheitskreis zur Exponentialdarstellung}
+Die Zahl $e^{i\varphi}$ besitzt den Betrag $1$. Dies lässt sich auf zwei
+Wegen nachrechnen:
+\[
+  |e^{i\varphi}|=\sqrt{\cos^2\varphi+\sin^2\varphi}=1,
+  \qquad
+  |e^{i\varphi}|=\sqrt{e^{i\varphi}e^{-i\varphi}}=\sqrt{e^0}=1.
+\]
+Multiplikation mit $r>0$ streckt den Pfeil vom Einheitskreis auf die Länge $r$.
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_exponential_scaling.tex}
+\end{center}
+\begin{DefinitionBox}{Exponentialdarstellung}{complex_numbers_exponential}
+  Mit der Euler-Formel wird aus der trigonometrischen Polardarstellung die
+  \emph{Exponentialdarstellung} \EnglishTerm{exponential form}:
+  \[
+    z=r(\cos\varphi+i\sin\varphi)=re^{i\varphi},\qquad r=|z|>0.
+  \]
+  Der Winkel $\varphi$ im Exponenten wird immer im \emph{Bogenmaß} angegeben.
+  Für die Konjugation gilt $z^*=re^{-i\varphi}$.
+\end{DefinitionBox}
+\begin{ExampleBox}{Besondere Winkel}{complex_numbers_special_angles}
+  Ordnen Sie die Winkel den Achsenrichtungen zu und ergänzen Sie die Werte.
+  \[
+    e^{i0}=\Cloze{1cm}{1},\quad
+    e^{i\pi/2}=\Cloze{1cm}{i},\quad
+    e^{i\pi}=\Cloze{1cm}{-1},\quad
+    e^{3i\pi/2}=\Cloze{1cm}{-i},\quad
+    e^{2\pi i}=\Cloze{1cm}{1}.
+  \]
+\end{ExampleBox}
+Volle Umdrehungen lassen die Zahl auch in Exponentialdarstellung unverändert:
+\[
+  re^{i(\varphi+2k\pi)}
+    =re^{i\varphi}(e^{2\pi i})^k=re^{i\varphi},\qquad k\in\Z.
+\]
+So beschreiben $2e^{-i\pi/4}$ und $2e^{7i\pi/4}$ dieselbe Zahl:
+$-45^\circ$ und $315^\circ$ zeigen in dieselbe Richtung.
+
+\clearpage
+\subsection{Addition: zuerst die Darstellung wechseln}
+Bei Summen und Differenzen rechnen wir zweckmäßig in kartesischer Form.
+Beträge und Winkel dürfen dabei nicht getrennt addiert oder subtrahiert werden.
+\begin{ExampleBox}{Eine Summe wieder in Exponentialform angeben}{complex_numbers_exponential_sum}
+  Bestimmen Sie $z_1+z_2$ für $z_1=2e^{i\pi}$ und $z_2=e^{i\pi/2}$.
+  Wechseln Sie zunächst in die kartesische Form und bestimmen Sie danach
+  Betrag und Richtung des Ergebnisses.
+  \[
+    z_1=-2,\qquad z_2=i,\qquad z_1+z_2=-2+i.
+  \]
+  \par\smallskip
+  \begin{minipage}[c]{0.46\linewidth}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_sum_argument.tex}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.49\linewidth}
+    Die Summe liegt links oben. $\arctan(-1/2)$ zeigt dagegen nach rechts
+    unten. Eine halbe Umdrehung gegen den Uhrzeigersinn liefert den
+    gesuchten Winkel.
+    \begin{ClozeArea}[16]{7}
+      \[
+        \begin{aligned}
+          r&=\sqrt{(-2)^2+1^2}=\sqrt5,\\[5pt]
+          \varphi&=\arctan(-1/2)+\pi\\[5pt]
+                 &\approx2{,}678\approx153{,}4^\circ.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}
+  \par\medskip
+  Somit ist $z_1+z_2=\sqrt5\,e^{i(\pi-\arctan(1/2))}$.
+\end{ExampleBox}
+
+\subsection{Multiplikation und Division}
+Für $z_1=r_1e^{i\varphi_1}$ und $z_2=r_2e^{i\varphi_2}$ folgen aus den
+Potenzgesetzen die beiden Rechenregeln
+\[
+  z_1z_2=r_1r_2e^{i(\varphi_1+\varphi_2)},\qquad
+  \frac{z_1}{z_2}=\frac{r_1}{r_2}e^{i(\varphi_1-\varphi_2)}\quad(z_2\ne0).
+\]
+\begin{KeyPointBox}{Geometrische Bedeutung}{complex_numbers_rotation}
+  Beim Multiplizieren werden die Beträge multipliziert und die Winkel addiert.
+  Beim Dividieren werden die Beträge dividiert und die Winkel subtrahiert.
+  Multiplikation mit $i=e^{i\pi/2}$ dreht um $90^\circ$ gegen den Uhrzeigersinn;
+  Division durch $i$ dreht um $90^\circ$ im Uhrzeigersinn.
+\end{KeyPointBox}
+
+\clearpage
+\begin{ExampleBox}{Produkt und Quotient geometrisch verstehen}{complex_numbers_product_example}
+  Für dieselben Zahlen $z_1=2e^{i\pi}=-2$ und $z_2=e^{i\pi/2}=i$
+  bestimmen wir nun Produkt und Quotient. Die Länge bleibt jeweils $2$.
+  \begin{ClozeArea}{6}
+    \[
+      \begin{aligned}
+        z_1z_2&=2e^{i\pi}e^{i\pi/2}
+                =2e^{3i\pi/2}=-2i,\\[8pt]
+        \frac{z_1}{z_2}&=\frac{2e^{i\pi}}{e^{i\pi/2}}
+                =2e^{i(\pi-\pi/2)}=2e^{i\pi/2}=2i.
+      \end{aligned}
+    \]
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_multiplication_rotation.tex}
+  \end{center}
+  Links dreht sich der Pfeil von $z_1$ um $+\pi/2$, rechts um $-\pi/2$.
+\end{ExampleBox}

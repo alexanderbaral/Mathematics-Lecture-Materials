@@ -1,0 +1,109 @@
+\section{Betrag eines Vektors}
+\label{sec:vector_algebra_magnitude}
+
+Jede durch einen Vektor beschriebene Verschiebung besitzt eine Länge. Im
+Folgenden leiten wir diese Größe zunächst geometrisch her und verallgemeinern
+sie anschließend auf Vektoren im $\R^n$.
+
+\vspace{\baselineskip}
+\noindent
+\begin{minipage}[c]{0.56\linewidth}
+  Für den 2D-Vektor in Koordinatendarstellung
+  \[
+    \vec a=\begin{pmatrix}a_1\\a_2\end{pmatrix}
+  \]
+  bilden die Komponenten $a_1$ und $a_2$ die Katheten eines rechtwinkligen
+  Dreiecks, wobei die Länge des Vektors $|\vec a|$ der Hypotenuse entspricht.
+  Der Satz des Pythagoras ergibt damit 
+  \begin{ClozeArea}[16]{3}
+    \[
+      |\vec a|^2=a_1^2+a_2^2
+      \quad\Longleftrightarrow\quad
+      |\vec a|=\sqrt{a_1^2+a_2^2}.
+    \]
+  \end{ClozeArea}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.38\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_magnitude.tex}
+\end{minipage}\par
+\vspace{0.6em}
+\noindent
+Diese geometrisch motivierte Formel lässt sich auf Vektoren im $\R^n$
+verallgemeinern.
+
+\begin{DefinitionBox}{Betrag eines Vektors}{vector_algebra_vector_magnitude}
+  Der \emph{Betrag} \EnglishTerm{magnitude} eines Vektors
+  $\vec a=\begin{pmatrix}a_1\\\vdots\\a_n\end{pmatrix}\in\R^n$ ist gegeben durch
+  \[
+    |\vec a| = \Cloze{8cm}{\sqrt{a_1^2+a_2^2+\dots+a_n^2}}
+  \]
+  und entspricht der Länge des Vektors. \\
+  Für den Betrag schreiben wir alternativ auch Buchstabe ohne Vektorpfeil, d.h. $$a:=|\vec a|.$$
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Den Betrag von Vektoren bestimmen}{vector_algebra_calculate_magnitude}
+  Wir bestimmen den Betrag der folgenden Vektoren:\par\smallskip
+  \noindent
+  \begin{minipage}[c]{0.54\linewidth}
+    \begin{enumerate}[label=\alph*),leftmargin=1.7em,itemsep=1em]
+      \item Für $\textcolor{THMBlue}{\vec a}=\begin{pmatrix}3\\4\end{pmatrix}$ gilt
+        \[
+          |\textcolor{THMBlue}{\vec a}|
+          =\Cloze{5cm}{\sqrt{3^2+4^2}=\sqrt{25}=5}.
+        \]
+
+      \item Für $\textcolor{olive!80!black}{\vec b}=\begin{pmatrix}1\\1\end{pmatrix}$ gilt
+        \[
+          |\textcolor{olive!80!black}{\vec b}|
+          =\Cloze{5cm}{\sqrt{1^2+1^2}=\sqrt2}.
+        \]
+
+      \item Für $\vec c=\begin{pmatrix}1\\1\\1\end{pmatrix}\in\R^3$ gilt
+        \[
+          |\vec c|
+          =\Cloze{5cm}{\sqrt{1^2+1^2+1^2}=\sqrt3}.
+        \]
+
+      \item Für $\vec 0=\begin{pmatrix}0\\\vdots\\0\end{pmatrix}\in\R^n$ gilt
+        \[
+          |\vec 0|
+          =\Cloze{5cm}{\sqrt{0^2+\dots+0^2}=0}.
+        \]
+    \end{enumerate}
+    Der Nullvektor ist der einzige Vektor mit Betrag~$0$.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.42\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_magnitude_examples_2d.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+\begin{TheoremBox}{Rechenregeln für den Betrag}{vector_algebra_magnitude_laws}
+  Für $\lambda\in\R$ und $\vec a,\vec b\in\R^n$ gilt
+  \begin{enumerate}[label=\arabic*.,leftmargin=1.8em,itemsep=0.9em]
+    \item \textbf{Nichtnegativität:}
+      $|\vec a|\ge0$.
+
+    \item \textbf{Verhalten bei Skalierung:}
+      $|\lambda\vec a|=|\lambda|\,|\vec a|$.
+
+    \item \textbf{Dreiecksungleichung}
+      \EnglishTerm{triangle inequality}:
+      \par\smallskip
+      \noindent
+      \begin{minipage}[c]{0.62\linewidth}
+        \[
+          |\vec a+\vec b|\le|\vec a|+|\vec b|.
+        \]
+        Die Summe der Längen zweier Dreiecksseiten ist mindestens so groß
+        wie die Länge der dritten Seite.
+      \end{minipage}\hfill
+      \begin{minipage}[c]{0.32\linewidth}
+        \centering
+        \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/triangle_inequality.tex}
+      \end{minipage}
+  \end{enumerate}
+\end{TheoremBox}
+
+\clearpage

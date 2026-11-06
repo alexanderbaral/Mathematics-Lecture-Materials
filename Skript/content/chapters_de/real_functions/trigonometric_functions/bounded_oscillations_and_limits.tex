@@ -1,0 +1,131 @@
+\clearpage
+\subsection{Grenzwerte trotz Schwingung}
+\label{subsec:real_functions_squeeze}
+Der Sinus besitzt für $x\to+\infty$ keinen Grenzwert:
+Bei $x=\pi/2+2k\pi$ ist sein Wert $1$, bei $x=3\pi/2+2k\pi$ ist er $-1$.
+Beide Arten von Eingaben werden beliebig groß. Beschränktheit allein
+reicht also nicht aus.
+
+Eine immer kleiner werdende Hülle kann die Schwingung dennoch
+auf einen Grenzwert festlegen.
+\begin{TheoremBox}{Einschließungsprinzip}{real_functions_squeeze}
+  Gilt für die betrachtete Annäherung schließlich
+  $u(x)\le f(x)\le v(x)$ und haben beide äußeren Funktionen denselben
+  endlichen Grenzwert $L$, dann gilt auch
+  \[
+    \lim_{x\to a}u(x)=\lim_{x\to a}v(x)=L
+    \quad\Longrightarrow\quad
+    \lim_{x\to a}f(x)=L.
+  \]
+  Diese Aussage heißt \emph{Einschließungsprinzip}
+  \EnglishTerm{squeeze theorem}.
+\end{TheoremBox}
+% Handschrift: PDF-Seite 43 (grafische Einschließung an einer endlichen Stelle).
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_squeeze_at_point.tex}
+\end{center}
+Die äußeren Funktionen drücken $f(x)$ auf denselben Grenzwert zusammen.
+Stetigkeit der drei Funktionen ist dafür nicht nötig; die Einschließung
+und die beiden äußeren Grenzwerte genügen.
+
+% Handschrift: PDF-Seiten 43–46 (beide ausgelassenen Quotienten bei null).
+\begin{ExampleBox}{Ein Exponentialquotient mit einer Lücke bei null}{real_functions_exponential_quotient_zero}
+  Bestimmen Sie $\lim_{x\to0}(e^x-1)/x$. Direktes Einsetzen liefert
+  die unbestimmte Form $0/0$; wir verwenden für $|x|\le1$ die Abschätzung
+  \[
+    x\le e^x-1\le x+x^2.
+  \]
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_exponential_squeeze.tex}
+  \end{center}
+  \begin{ClozeArea}[34]{9}
+    Beim Teilen durch $x$ muss das Vorzeichen berücksichtigt werden:
+    \[
+      \begin{array}{c@{\qquad}c}
+        0<x\le1&-1\le x<0\\[0.6em]
+        1\le\dfrac{e^x-1}{x}\le1+x&
+        1+x\le\dfrac{e^x-1}{x}\le1.
+      \end{array}
+    \]
+    Alle äußeren Ausdrücke gehen für $x\to0$ gegen $1$. Folglich
+    \[
+      \lim_{x\to0}\frac{e^x-1}{x}=1.
+    \]
+    Mit dem ergänzten Wert $f(0)=1$ wird die Lücke stetig geschlossen.
+  \end{ClozeArea}
+\end{ExampleBox}
+\begin{ExampleBox}{Ein Kosinusquotient mit einer Lücke bei null}{real_functions_cosine_quotient_zero}
+  Bestimmen Sie $\lim_{x\to0}(\cos x-1)/x$ mit der Zählerabschätzung
+  $-x^2\le\cos x-1\le x^2$. Auch hier ist der ursprüngliche Term bei $0$ nicht definiert.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_cosine_squeeze.tex}
+  \end{center}
+  \begin{ClozeArea}[34]{7}
+    Für beide Vorzeichen von $x\ne0$ können wir gemeinsam schreiben:
+    \[
+      \left|\frac{\cos x-1}{x}\right|\le |x|
+      \quad\Longrightarrow\quad
+      -|x|\le\frac{\cos x-1}{x}\le |x|.
+    \]
+    Wegen $\lim_{x\to0}(-|x|)=\lim_{x\to0}|x|=0$ folgt
+    \[
+      \lim_{x\to0}\frac{\cos x-1}{x}=0.
+    \]
+    Der passende Wert für eine stetige Fortsetzung ist $f(0)=0$.
+  \end{ClozeArea}
+\end{ExampleBox}
+Die Zählerabschätzungen werden hier als Hilfsaussagen verwendet;
+die Zeichnungen veranschaulichen sie, ersetzen aber keinen Nachweis.
+\begin{ExampleBox}{Eine abklingende Schwingung}{real_functions_sinc_infinity}
+  Bestimmen Sie das Verhalten von $f(x)=\sin x/x$ für $x\to\pm\infty$.
+  \begin{ClozeArea}[34]{6}
+    Aus der Beschränktheit des Sinus folgt für $x\ne0$
+    \[
+      \left|\frac{\sin x}{x}\right|\le\frac1{|x|}
+      \quad\Longrightarrow\quad
+      -\frac1{|x|}\le\frac{\sin x}{x}\le\frac1{|x|}.
+    \]
+    Beide Schranken gehen gegen null. Also gilt
+    $\lim_{x\to\pm\infty}\sin x/x=0$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_squeeze.tex}
+  \end{center}
+\end{ExampleBox}
+\begin{RemarkBox}[remark title=Große Eingaben statt Annäherung an null]
+  Hier wurde das Verhalten für große $|x|$ untersucht, nicht für $x\to0$.
+  An der Stelle null hilft die Schranke $1/|x|$ nicht.
+  Den dortigen Grenzwert behandeln wir bei der Differentialrechnung.
+\end{RemarkBox}
+
+% Handschrift: PDF-Seite 47 (Exponentialfunktion gegenüber beliebigen Potenzen).
+\begin{ExampleBox}{Exponentielles Wachstum setzt sich gegen jede Potenz durch}{real_functions_exponential_dominance}
+  Untersuchen Sie $e^x/x^n$ für $x\to+\infty$ mit festem $n\in\N$.
+  Wir verwenden, dass für genügend große positive $x$ die Abschätzung
+  $e^x\ge x^{n+1}$ gilt.
+  \begin{ClozeArea}[34]{5}
+    Durch Division durch $x^n>0$ folgt die untere Schranke
+    \[
+      \frac{e^x}{x^n}\ge x
+      \quad\Longrightarrow\quad
+      \lim_{x\to+\infty}\frac{e^x}{x^n}=+\infty.
+    \]
+    Entsprechend gilt $\lim_{x\to+\infty}x^n/e^x=0$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_exponential_power_comparison.tex}
+  \end{center}
+\end{ExampleBox}
+\begin{KeyPointBox}{Exponentialfunktion und Potenz im Grenzvergleich}{real_functions_exponential_power_limits}
+  Für jedes feste $n\in\N$ gelten
+  \[
+    \lim_{x\to+\infty}\frac{e^x}{x^n}=+\infty,\qquad
+    \lim_{x\to+\infty}x^n e^{-x}=0,\qquad
+    \lim_{x\to-\infty}|x|^n e^x=0.
+  \]
+  Die letzte Aussage folgt für $t=-x$ aus
+  $\lim_{t\to+\infty}t^n e^{-t}=0$.
+\end{KeyPointBox}
+Später liefert die \emph{Regel von de l'Hospital}
+\EnglishTerm{L'Hopital's rule} einen weiteren Zugang zu unbestimmten
+Formen wie $0/0$ und $\infty/\infty$.

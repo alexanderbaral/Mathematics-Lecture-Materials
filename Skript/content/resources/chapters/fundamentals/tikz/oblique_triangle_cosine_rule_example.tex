@@ -1,0 +1,18 @@
+\begin{tikzpicture}[font=\normalsize,line cap=round,line join=round]
+  \coordinate (C) at (0,0);
+  \coordinate (B) at (4,0);
+  \coordinate (A) at (1.25,2.17);
+
+  \draw[very thick] (A) -- (B) -- (C) -- cycle;
+
+  \node[above] at (A) {$A$};
+  \node[below right] at (B) {$B$};
+  \node[below left] at (C) {$C$};
+
+  \node[below] at ($(C)!0.5!(B)$) {$a=8\,\mathrm{cm}$};
+  \node[above left] at ($(C)!0.5!(A)$) {$b=5\,\mathrm{cm}$};
+  \node[right,yshift=0.28cm] at ($(A)!0.5!(B)$) {$c=?$};
+
+  \draw[thick] (0.62,0) arc[start angle=0,end angle=60,radius=0.62];
+  \node at (0.35,0.19) {$\gamma$};
+\end{tikzpicture}

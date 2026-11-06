@@ -1,0 +1,42 @@
+\section{Grundlegende Rechenoperationen}
+\label{sec:vector_algebra_operations}
+
+Ähnlich wie für Zahlen sind auch für Vektoren verschiedene Rechenoperationen definiert. Sie
+unterscheiden sich darin, ob sie Vektoren oder Skalare verknüpfen und ob ihr Ergebnis ein
+Vektor oder ein Skalar ist. Wir beginnen mit einem Überblick über alle Rechenoperationen:
+
+\begin{center}
+  \renewcommand{\arraystretch}{1.35}
+  \begin{tabularx}{0.96\linewidth}{@{}
+      >{\raggedright\arraybackslash}X
+      >{\centering\arraybackslash}p{3.2cm}
+      >{\centering\arraybackslash}p{5.6cm}@{}}
+    \toprule
+    \textbf{Operation} & \textbf{Notation} & \textbf{Abbildung} \\
+    \midrule
+    Addition
+      & $\vec a+\vec b$
+      & Vektor $\times$ Vektor $\to$ Vektor \\
+    Subtraktion
+      & $\vec a-\vec b$
+      & Vektor $\times$ Vektor $\to$ Vektor \\
+    Multiplikation mit einem Skalar
+      & $\lambda\vec a$
+      & Skalar $\times$ Vektor $\to$ Vektor \\
+    Skalarprodukt
+      & $\vec a\cdot\vec b$
+      & Vektor $\times$ Vektor $\to$ Skalar \\
+    Kreuzprodukt
+      & $\vec a\times\vec b$
+      & Vektor $\times$ Vektor $\to$ Vektor \\
+    \bottomrule
+  \end{tabularx}
+\end{center}
+
+In diesem Abschnitt werden zunächst Addition, Subtraktion und Multiplikation
+mit einem Skalar rechnerisch eingeführt und geometrisch interpretiert. Das
+Skalarprodukt folgt in Abschnitt~\ref{sec:vector_algebra_scalar_product}; das
+Kreuzprodukt in Abschnitt~\ref{sec:vector_algebra_cross_product}.
+
+\input{content/chapters_de/vector_algebra/vector_operations/addition_and_subtraction.tex}
+\input{content/chapters_de/vector_algebra/vector_operations/scalar_multiplication.tex}

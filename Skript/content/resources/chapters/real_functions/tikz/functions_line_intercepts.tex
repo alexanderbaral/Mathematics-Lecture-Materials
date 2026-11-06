@@ -1,0 +1,37 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.10cm,y=1.10cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-3.25,0)--(2.35,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.15)--(0,2.40) node[above] {$y$};
+
+  \foreach \x/\name in {-3/xtmthree,-2/xtmtwo,-1/xtmone,1/xtone,2/xttwo}{
+    \draw[black!50] (\x,-0.055)--(\x,0.055);
+    \node[below=4pt,inner sep=1pt] (\name) at (\x,0) {$\x$};
+  }
+  \foreach \y/\name in {-1/ytmone,1/ytone,2/yttwo}{
+    \draw[black!50] (-0.055,\y)--(0.055,\y);
+    \node[left=4pt,inner sep=1pt] (\name) at (0,\y) {$\y$};
+  }
+
+  \IfClozeTF{}{%
+    \draw[THMBlue,line width=1.15pt] (-3.15,-0.575)--(2.10,2.05);
+    \fill[black] (-2,0) circle (2.8pt);
+  }
+  \node[anchor=south west,inner sep=0pt,text=THMBlue] (graphlabel)
+    at (-3.0,1.12) {\IfClozeTF{}{$g(x)=\frac12x+1$}};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-3,-1) rectangle (2,2)
+        (xtmthree.south west) rectangle (xtmthree.north east)
+        (xtmtwo.south west) rectangle (xtmtwo.north east)
+        (xtmone.south west) rectangle (xtmone.north east)
+        (xtone.south west) rectangle (xtone.north east)
+        (xttwo.south west) rectangle (xttwo.north east)
+        (ytmone.south west) rectangle (ytmone.north east)
+        (ytone.south west) rectangle (ytone.north east)
+        (yttwo.south west) rectangle (yttwo.north east)
+        (graphlabel.south west) rectangle (graphlabel.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-3,-1) grid (2,2);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

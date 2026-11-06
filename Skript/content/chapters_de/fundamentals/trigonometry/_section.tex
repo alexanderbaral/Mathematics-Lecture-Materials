@@ -1,0 +1,44 @@
+\section{Trigonometrie}
+\label{sec:fundamentals_trigonometry}
+
+Die geometrische Trigonometrie beschreibt Zusammenhänge zwischen Seitenlängen
+und Winkeln von Dreiecken. Ausgangspunkt sind die grundlegenden Bezeichnungen
+am allgemeinen Dreieck.
+
+\begin{DefinitionBox}{Dreieck}{fundamentals_triangle}
+  Ein \emph{Dreieck} \EnglishTerm{triangle} ist ein Vieleck mit drei Ecken,
+  drei Seiten und drei Innenwinkeln.
+
+  \medskip
+  \noindent
+  \begin{minipage}[c]{0.50\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/general_triangle.tex}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.47\linewidth}
+    \centering
+    \renewcommand{\arraystretch}{1.35}
+    \begin{tabular}{@{}c|c|c@{}}
+      \toprule
+      \textbf{Ecke}
+        & \shortstack{\textbf{gegenüberliegende}\\\textbf{Seite}}
+        & \textbf{Innenwinkel}\\
+      \midrule
+      $A$ & \Cloze{2.7cm}{$a$} & \Cloze{1.9cm}{$\alpha$}\\
+      $B$ & \Cloze{2.7cm}{$b$} & \Cloze{1.9cm}{$\beta$}\\
+      $C$ & \Cloze{2.7cm}{$c$} & \Cloze{1.9cm}{$\gamma$}\\
+      \bottomrule
+    \end{tabular}
+  \end{minipage}
+
+  Die Seite, die einer Ecke gegenüberliegt, wird mit dem entsprechenden
+  Kleinbuchstaben bezeichnet. Der Innenwinkel an einer Ecke trägt den
+  entsprechenden griechischen Buchstaben.
+\end{DefinitionBox}
+%
+\begin{KeyPointBox}{Winkelsumme im Dreieck}{fundamentals_triangle_angle_sum}
+  In jedem Dreieck beträgt die Winkelsumme $180^\circ$: $\quad \Cloze{7cm}{\alpha+\beta+\gamma=180^\circ.}$
+\end{KeyPointBox}
+
+\input{content/chapters_de/fundamentals/trigonometry/right_triangles.tex}
+\input{content/chapters_de/fundamentals/trigonometry/oblique_triangles.tex}

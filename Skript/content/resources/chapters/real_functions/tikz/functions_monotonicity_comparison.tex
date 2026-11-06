@@ -1,0 +1,35 @@
+\begin{tikzpicture}[>=Latex,line cap=round]
+  \foreach \panel/\shift in {1/0,2/5.8,3/11.6} {
+    \begin{scope}[xshift=\shift cm,x=0.85cm,y=0.85cm]
+      \draw[->,black!55] (-2.5,0)--(2.5,0) node[right] {$x$};
+      \draw[->,black!55] (0,-1.8)--(0,2.1) node[above] {$y$};
+      \ifnum\panel=1
+        \node[above=4pt,green!55!black] at (-1.7,0) {$x_1$};
+        \node[above=4pt,green!55!black] at (-0.6,0) {$x_2$};
+      \else
+        \node[below=4pt,green!55!black] at (-1.7,0) {$x_1$};
+        \node[below=4pt,green!55!black] at (-0.6,0) {$x_2$};
+      \fi
+      \ifnum\panel=1
+        \draw[THMBlue,line width=1.1pt,domain=-2.2:2.2,samples=70]
+          plot (\x,{0.5*\x+0.07*\x^3});
+        \draw[green!55!black,dashed] (-1.7,0)--(-1.7,-1.194)
+          (-0.6,0)--(-0.6,-0.315);
+        \node at (0,3) {\Lang{streng steigend}{strictly increasing}};
+        \node at (0,-2.4) {$f(x_1)<f(x_2)$};
+      \else\ifnum\panel=2
+        \draw[THMBlue,line width=1.1pt] (-2.2,1)--(2.2,1);
+        \draw[green!55!black,dashed] (-1.7,0)--(-1.7,1) (-0.6,0)--(-0.6,1);
+        \node at (0,3) {\Lang{konstant}{constant}};
+        \node at (0,-2.4) {$f(x_1)=f(x_2)$};
+      \else
+        \draw[THMBlue,line width=1.1pt,domain=-2.2:2.2,samples=70]
+          plot (\x,{-0.5*\x-0.07*\x^3});
+        \draw[green!55!black,dashed] (-1.7,0)--(-1.7,1.194)
+          (-0.6,0)--(-0.6,0.315);
+        \node at (0,3) {\Lang{streng fallend}{strictly decreasing}};
+        \node at (0,-2.4) {$f(x_1)>f(x_2)$};
+      \fi\fi
+    \end{scope}
+  }
+\end{tikzpicture}

@@ -1,0 +1,42 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.2cm,y=1.2cm,>=Latex,line cap=round]
+  \draw[->,black!55] (0,0)--(4.8,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,3.8) node[above] {$y$};
+  \draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt0) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt1) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (3,0) {$3$};
+\draw[black!50] (4,-0.055)--(4,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (4,0) {$4$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt4) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt5) at (0,2) {$2$};
+\draw[black!50] (-0.055,3)--(0.055,3);
+\node[left=4pt,inner sep=1pt] (yt6) at (0,3) {$3$};
+
+  \begin{scope}
+    \clip (0,0) rectangle (4.6,3.6);
+    \draw[THMBlue,line width=1.15pt,domain=0:4.6] plot (\x,{0.5*\x+1});
+\draw[black!55,dashed] (0,1)--(4,1)--(4,3);
+\fill[THMBlue] (0,1) circle (2pt) (4,3) circle (2pt);
+  \end{scope}
+  \node[anchor=south] at (2.300,4.425) {$f(x)=\frac12x+1$};
+  \node[anchor=north] at (2,-0.65) {$\Delta x=4,\quad \Delta y=2$};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (0,0) rectangle (4.6,3.6)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (yt4.south west) rectangle (yt4.north east)
+        (yt5.south west) rectangle (yt5.north east)
+        (yt6.south west) rectangle (yt6.north east);
+      \draw[step=1,black!8,line width=0.25pt] (0,0) grid (4.6,3.6);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

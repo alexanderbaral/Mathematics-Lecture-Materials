@@ -1,0 +1,13 @@
+\begin{tikzpicture}[x=3.4cm,y=1.5cm,>=Latex,line cap=round]
+  \draw[black!8] (-1,-1) grid[xstep=0.5,ystep=1] (1,1);
+  \draw[->,black!55] (-1.05,0)--(1.15,0) node[right] {$x$};
+  \draw[->,black!55] (0,-1.2)--(0,1.25) node[above] {$y$};
+  \foreach \xx in {-1,1} \node[below=4pt] at (\xx,0) {$\xx$};
+  \foreach \yy in {-1,1} \node[left=4pt] at (0,\yy) {$\yy$};
+  \draw[green!55!black,line width=1pt,domain=-1:1,samples=100] plot (\x,{\x*\x});
+  \draw[black!65,line width=1pt,domain=-1:1,samples=100] plot (\x,{-\x*\x});
+  \draw[THMBlue,line width=1.1pt,domain=-1:1,samples=100] plot (\x,{cos(\x r)-1});
+  \node[green!55!black,anchor=west] at (1.35,0.8) {$x^2$};
+  \node[THMBlue,anchor=west] at (1.35,-0.35) {$\cos x-1$};
+  \node[black!65,anchor=west] at (1.35,-0.95) {$-x^2$};
+\end{tikzpicture}

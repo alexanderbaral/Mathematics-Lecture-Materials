@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,x=0.95cm,y=0.95cm]
+  \coordinate (O) at (0,0);
+  \coordinate (TwoV) at (4,2);
+  \coordinate (MinusV) at (-2,-1);
+  % Slight parallel offset keeps v visible beside the collinear vector 2v.
+  \coordinate (VOffsetStart) at (-0.07,0.14);
+  \coordinate (VOffsetEnd) at (1.93,1.14);
+
+  \draw[step=1cm,black!8,very thin] (-2.45,-1.45) grid (4.45,2.45);
+  \draw[->,black!60,line width=0.6pt]
+    (-2.55,0)--(4.65,0) node[right] {$x_1$};
+  \draw[->,black!60,line width=0.6pt]
+    (0,-1.55)--(0,2.65) node[above] {$x_2$};
+  \foreach \x in {-2,-1,1,2,3,4}{
+    \draw[black!50] (\x,0.06)--(\x,-0.06) node[below] {$\x$};
+  }
+  \foreach \y in {-1,1,2}{
+    \draw[black!50] (0.06,\y)--(-0.06,\y) node[left] {$\y$};
+  }
+
+  \IfClozeTF{}{%
+    \draw[->,olive!80!black,line width=1.35pt]
+      (O)--(TwoV) node[at end,anchor=south west] {$2\vec v$};
+    \draw[->,THMBlue,line width=1.35pt]
+      (O)--(MinusV) node[at end,anchor=north east] {$(-1)\vec v$};
+    \draw[->,black,line width=1.35pt]
+      (VOffsetStart)--(VOffsetEnd) node[midway,above left] {$\vec v$};
+  }
+\end{tikzpicture}

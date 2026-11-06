@@ -1,0 +1,132 @@
+\subsection{Asymptotisches Verhalten}
+\label{subsec:real_functions_asymptotes}
+Nachdem wir einzelne Stellen untersucht haben, betrachten wir nun
+$x\to\pm\infty$. Ein endlicher Grenzwert beschreibt bereits eine Gerade,
+der sich der Graph annähert.
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Waagerechte Asymptote}{real_functions_asymptote}
+  Existiert für $f$ der endliche Grenzwert
+  \[
+    \lim_{x\to\pm\infty}f(x)=L,\qquad L\in\R,
+  \]
+  heißt die Gerade $y=L$ eine \emph{waagerechte Asymptote}
+  \EnglishTerm{horizontal asymptote} für die betreffende Richtung.
+\end{DefinitionBox}
+\begin{ExampleBox}{Zwei waagerechte Asymptoten}{real_functions_horizontal_asymptote_examples}
+  Dividieren Sie Zähler und Nenner durch die höchste Nennerpotenz.
+  Bestimmen Sie so die Asymptote für beide Richtungen im Unendlichen.
+  \begin{ClozeArea}[34]{7}
+    \[
+      \begin{aligned}
+        \lim_{x\to\pm\infty}\frac{x}{x^2+1}
+          &=\lim_{x\to\pm\infty}\frac{1/x}{1+1/x^2}=0,\\[0.8em]
+        \lim_{x\to\pm\infty}\frac{4x^2+2x+1}{x^2+1}
+          &=\lim_{x\to\pm\infty}\frac{4+2/x+1/x^2}{1+1/x^2}=4.
+      \end{aligned}
+    \]
+    Die waagerechten Asymptoten sind $y=0$ beziehungsweise $y=4$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_horizontal_asymptotes.tex}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
+
+Ein unendlicher Grenzwert beschreibt nur das unbegrenzte Wachstum.
+Eine Gerade kann den Verlauf genauer beschreiben: Wir suchen sie so,
+dass der Unterschied zum Funktionsgraphen gegen null geht.
+
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Schiefe Asymptote}{real_functions_slant_asymptote_definition}
+  Die Gerade $y=mx+b$ mit $m\ne0$ heißt \emph{schiefe Asymptote}
+  \EnglishTerm{oblique asymptote}, wenn
+  \[
+    \lim_{x\to\pm\infty}\bigl(f(x)-(mx+b)\bigr)=0
+  \]
+  für die betreffende Richtung gilt.
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Die Polynomdivision zeigt die Asymptote}{real_functions_slant_asymptote}
+  Wir untersuchen $f(x)=(x^2+1)/(x-1)$ für große positive und negative $x$.
+  \begin{ClozeArea}[34]{6}
+    Die Polynomdivision zerlegt den Term in eine Gerade und einen Rest:
+    \[
+      f(x)=x+1+\frac2{x-1}.
+    \]
+    Weil $\lim_{x\to\pm\infty}2/(x-1)=0$, ist $y=x+1$
+    auf beiden Seiten eine schiefe Asymptote.
+    Zusätzlich ist $x=1$ eine \textcolor{green!55!black}{vertikale Asymptote}.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_slant_asymptote.tex}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
+
+Bei einem größeren Gradunterschied kann sich der Graph statt einer Geraden
+einem höhergradigen Polynom annähern. Die Polynomdivision liefert auch hier
+den gesuchten Verlauf und einen Rest, der gegen null geht.
+
+\begin{ExampleBox}{Annäherung an eine Parabel}{real_functions_polynomial_asymptote}
+  Für $f(x)=(x^4-2x^2+1)/(x^2+1)$ ist der Zählergrad um $2$ größer.
+  Bestimmen Sie durch Polynomdivision das Polynom, dem sich der Graph nähert.
+  \begin{ClozeArea}[34]{9}
+    \[
+      \begin{array}{r@{\;}l}
+        (x^4-2x^2+1):(x^2+1)&=x^2-3+\dfrac4{x^2+1}\\[0.8em]
+        \underline{-(x^4+x^2)}&\\[0.5em]
+        -3x^2+1&\\[0.5em]
+        \underline{-(-3x^2-3)}&\\[0.5em]
+        4&
+      \end{array}
+    \]
+    Mit $A(x)=x^2-3$ gilt
+    $\lim_{x\to\pm\infty}\bigl(f(x)-A(x)\bigr)=
+      \lim_{x\to\pm\infty}4/(x^2+1)=0$.
+    Außerdem ist $\lim_{x\to\pm\infty}f(x)=+\infty$.
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_polynomial_asymptote.tex}
+  \end{center}
+\end{ExampleBox}
+
+Die Beispiele lassen sich anhand der Zähler- und Nennergrade zusammenfassen.
+\begin{TheoremBox}{Gradvergleich für gebrochen-rationale Funktionen}{real_functions_degree_comparison}
+  Seien $m=\deg(Z)$, $n=\deg(N)$ und $a_m,b_n$ die Leitkoeffizienten.
+  Für $f(x)=Z(x)/N(x)$ mit $Z\not\equiv0$ gilt:
+  \begin{center}
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{@{}ll@{}}
+      \toprule
+      Gradvergleich & Verhalten für $x\to\pm\infty$\\ \midrule
+      $m<n$ & $\lim_{x\to\pm\infty}f(x)=0$\\
+      $m=n$ & $\lim_{x\to\pm\infty}f(x)=a_m/b_n$\\
+      $m=n+1$ & schiefe Asymptote aus Polynomdivision\\
+      $m>n+1$ & Annäherung an ein Polynom vom Grad $m-n$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+  Allgemein liefert die Division $Z(x)=h(x)N(x)+r(x)$ mit $\deg(r)<n$
+  die Zerlegung $f(x)=h(x)+r(x)/N(x)$. Wegen $\lim_{x\to\pm\infty}r(x)/N(x)=0$ beschreibt $h$
+  das Verhalten im Unendlichen.
+\end{TheoremBox}
+% Handschrift: PDF-Seiten 27–29 (Herleitung und sämtliche Gradvergleichsfälle).
+Durch Ausklammern der höchsten Potenzen wird der Gradvergleich sichtbar:
+\[
+  \begin{gathered}
+    f(x)=x^{m-n}
+    \frac{a_m+a_{m-1}/x+\dots+a_0/x^m}
+         {b_n+b_{n-1}/x+\dots+b_0/x^n},\\[0.6em]
+    \lim_{x\to\pm\infty}
+      \frac{a_m+a_{m-1}/x+\dots+a_0/x^m}
+           {b_n+b_{n-1}/x+\dots+b_0/x^n}=\frac{a_m}{b_n}.
+  \end{gathered}
+\]
+Für $m>n$ wächst $|f(x)|$ daher gegen $\infty$; das Vorzeichen ergibt
+sich aus $a_m/b_n$ und der Parität von $m-n$.
+
+\begin{RemarkBox}[remark title=Form und Schnittpunkte von Asymptoten]
+  Für $m>n+1$ ist der Graph von $h$ eine polynomial beschriebene
+  Annäherungskurve, keine schiefe Gerade. Eine Asymptote darf außerdem
+  vom Funktionsgraphen geschnitten werden.
+\end{RemarkBox}

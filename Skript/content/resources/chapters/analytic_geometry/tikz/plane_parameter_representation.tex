@@ -1,0 +1,31 @@
+\begin{tikzpicture}[x=0.80cm,y=0.80cm,>=Latex]
+  \path[use as bounding box] (-0.75,-0.95) rectangle (8.05,5.20);
+  \coordinate (O) at (0.40,-0.15);
+  \coordinate (P) at (2.50,2.00);
+  \coordinate (A) at (5.30,1.776);
+  \coordinate (B) at (3.35,3.05);
+  \coordinate (X) at (5.50,2.70);
+
+  % Both direction vectors lie in the plane's projected spanning directions.
+  \filldraw[fill=black!5,draw=black!45,line width=0.8pt]
+    (0.80,1.40)--(5.80,1.00)--(7.50,3.10)--(2.50,3.50)--cycle;
+
+  \draw[->,olive!80!black,line width=1.3pt] (O)--(P);
+  \draw[->,THMBlue,line width=1.35pt] (P)--(A);
+  \draw[->,THMBlue,line width=1.35pt] (P)--(B);
+  \draw[->,red!75!black,densely dashed,line width=1.2pt] (O)--(X);
+
+  % Explicit free label positions; no opaque backgrounds or crossing lines.
+  \node[text=olive!80!black] at (0.65,0.85) {$\overrightarrow{OP}$};
+  \node[text=THMBlue] at (4.15,1.43) {$\vec a$};
+  \node[text=THMBlue] at (2.35,2.78) {$\vec b$};
+  \node[anchor=west,text=red!75!black] at (5.73,2.72) {$\vec x$};
+  \fill (O) circle (1.5pt) node[below left=3pt] {$O$};
+  \fill (P) circle (1.8pt);
+  \fill (X) circle (1.8pt);
+
+  \node (planeLabel) at (5.70,4.65) {\Lang{Ebene}{Plane} $E$};
+  \draw[->,black!65,line width=0.75pt]
+    (planeLabel.south) .. controls ($(planeLabel.south)+(0,-0.60)$)
+      and (6.55,3.45) .. (6.70,2.60);
+\end{tikzpicture}

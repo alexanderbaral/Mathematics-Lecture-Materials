@@ -1,0 +1,32 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \draw[step=1cm,black!10,line width=0.35pt]
+    (-1.35,-0.45) grid (4.45,3.45);
+  \draw[->,black!55,line width=0.75pt]
+    (-1.35,0)--(4.55,0) node[right] {$x_1$};
+  \draw[->,black!55,line width=0.75pt]
+    (0,-0.45)--(0,3.55) node[above] {$x_2$};
+  \foreach \x in {-1,1,2,3,4}
+    \draw[black!55] (\x,0.07)--(\x,-0.07)
+      node[below=2pt] {$\x$};
+  \foreach \y in {1,2,3}
+    \draw[black!55] (0.07,\y)--(-0.07,\y)
+      node[left=2pt] {$\y$};
+
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4,2);
+  \coordinate (P) at (2,1);
+  \coordinate (B) at (1,3);
+  \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+    node[pos=0.82,below right] {$\vec a$};
+  \draw[->,red!75!black,line width=1.35pt] (O)--(B)
+    node[pos=0.72,left,text=red!75!black] {$\vec b$};
+
+  \IfClozeTF{}{%
+    \draw[->,black,line width=1.25pt] (O)--(P)
+      node[pos=0.58,above left=1pt] {$\vec b_{\parallel}$};
+    \draw[->,olive!80!black,line width=1.25pt] (P)--(B)
+      node[midway,right,text=olive!80!black] {$\vec b_{\perp}$};
+    \RightAngleMark{(P)}{116.565}{206.565}{0.42}
+  }%
+  \fill[black] (O) circle[radius=1.2pt];
+\end{tikzpicture}

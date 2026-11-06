@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=0.75cm,y=0.7cm,>=Latex,line cap=round]
+  \draw[step=1,black!8,line width=0.25pt] (-4,-3) grid (4,3);
+  \draw[->,black!55] (-4.25,0)--(4.45,0) node[right] {$x$};
+  \draw[->,black!55] (0,-3.2)--(0,3.35) node[above] {$y$};
+  \foreach \x in {-4,-3,-2,-1,1,2,3,4}{
+    \draw[black!50] (\x,-0.06)--(\x,0.06);
+    \node[below=4pt,inner sep=1pt] at (\x,0) {$\x$};
+  }
+  \foreach \y in {-3,-2,-1,1,2,3}{
+    \draw[black!50] (-0.055,\y)--(0.055,\y);
+    \node[left=4pt,inner sep=1pt] at (0,\y) {$\y$};
+  }
+  \begin{scope}
+    \clip (-4,-3) rectangle (4,3);
+    \draw[THMBlue,line width=1.1pt,domain=-4:-0.55,samples=120]
+      plot (\x,{1/(\x*\x)});
+    \draw[THMBlue,line width=1.1pt,domain=0.55:4,samples=120]
+      plot (\x,{1/(\x*\x)});
+  \end{scope}
+  \node[THMBlue,anchor=west] at (1.35,2.2) {$g(x)=\frac1{x^2}$};
+\end{tikzpicture}

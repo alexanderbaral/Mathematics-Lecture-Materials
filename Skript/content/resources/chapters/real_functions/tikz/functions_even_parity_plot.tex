@@ -1,0 +1,56 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1cm,y=1.1cm,>=Latex,line cap=round]
+  \foreach \x/\name in {-2/xtmTwo,-1/xtmOne,1/xtOne,2/xtTwo} {
+    \node[below=4pt,inner sep=1pt] (\name) at (\x,0) {\IfClozeTF{}{$\x$}};
+  }
+  \node[below right=2pt,inner sep=1pt] (xtZero) at (0,0) {\IfClozeTF{}{$0$}};
+  \foreach \y/\name in {1/ytOne,2/ytTwo,3/ytThree,4/ytFour} {
+    \node[left=4pt,inner sep=1pt] (\name) at (0,\y) {\IfClozeTF{}{$\y$}};
+  }
+  \node[above left=1pt,inner sep=1pt,text=green!55!black] (leftValue)
+    at (-1.15,4.15) {\IfClozeTF{}{$f(-x_0)$}};
+  \node[above right=1pt,inner sep=1pt,text=green!55!black] (rightValue)
+    at (1.15,4.15) {\IfClozeTF{}{$f(x_0)$}};
+
+  \draw[->,black!55] (-2.8,0)--(2.8,0) node[right] {\IfClozeTF{}{$x$}};
+  \draw[->,black!55] (0,-0.75)--(0,4.85) node[above] {\IfClozeTF{}{$y$}};
+  \IfClozeTF{}{%
+    \foreach \x in {-2,-1,1,2}
+      \draw[black!50] ([yshift=-2pt]\x,0)--([yshift=2pt]\x,0);
+    \foreach \y in {1,2,3,4}
+      \draw[black!50] ([xshift=-2pt]0,\y)--([xshift=2pt]0,\y);
+  }
+
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2,-0.5) rectangle (2,4)
+        (xtmTwo.south west) rectangle (xtmTwo.north east)
+        (xtmOne.south west) rectangle (xtmOne.north east)
+        (xtZero.south west) rectangle (xtZero.north east)
+        (xtOne.south west) rectangle (xtOne.north east)
+        (xtTwo.south west) rectangle (xtTwo.north east)
+        (ytOne.south west) rectangle (ytOne.north east)
+        (ytTwo.south west) rectangle (ytTwo.north east)
+        (ytThree.south west) rectangle (ytThree.north east)
+        (ytFour.south west) rectangle (ytFour.north east)
+        (leftValue.south west) rectangle (leftValue.north east)
+        (rightValue.south west) rectangle (rightValue.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2,-0.5) grid (2,4);
+    \end{scope}
+  \end{pgfonlayer}
+
+  \IfClozeTF{}{%
+    \begin{scope}
+      \clip (-2,-0.5) rectangle (2,4.1);
+      \draw[THMBlue,line width=1.15pt,domain=-2:2,samples=121]
+        plot (\x,{\x*\x});
+      \fill[black] (-2,4) circle (1.8pt) (-1,1) circle (1.8pt)
+        (0,0) circle (1.8pt) (1,1) circle (1.8pt) (2,4) circle (1.8pt);
+    \end{scope}
+    \draw[green!55!black,dashed,line width=0.9pt]
+      (-2,0)--(-2,4)--(2,4)--(2,0);
+  }
+  \pgfresetboundingbox
+  \path[use as bounding box] (-3.5,-0.85) rectangle (3.5,5.63);
+\end{tikzpicture}

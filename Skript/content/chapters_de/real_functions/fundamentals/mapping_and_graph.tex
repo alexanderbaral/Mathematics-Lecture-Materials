@@ -1,0 +1,208 @@
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Reelle Funktion}{real_functions_function}
+  Eine \emph{reelle Funktion in einer Variablen}
+  \EnglishTerm{real-valued function of one real variable}
+  ordnet jedem $x$ aus einer \emph{Definitionsmenge} \EnglishTerm{domain} $D\subseteq\R$ 
+  genau einen Wert $y = f(x)$ einer \emph{Zielmenge} \EnglishTerm{codomain} $Z\subseteq\R$ zu.
+  \[
+    \begin{array}{@{}r@{\quad}l@{}}
+      &\begin{aligned}[t]
+        f:\ D &\longrightarrow Z,\\
+        x &\longmapsto y=\dots
+      \end{aligned}\\[1cm]
+      \text{oder kurz:}&f(x)=\dots
+    \end{array}
+    \hspace{1.5cm}
+    % Native LaTeX picture inside the formula; deliberately no TikZ.
+    \vcenter{\hbox{%
+      \setlength{\unitlength}{1cm}%
+      \begin{picture}(6.3,3)
+        \linethickness{0.6pt}
+        \qbezier(1,2.9)(0.15,2.9)(0.15,1.5)
+        \qbezier(0.15,1.5)(0.15,0.1)(1,0.1)
+        \qbezier(1,0.1)(1.85,0.1)(1.85,1.5)
+        \qbezier(1.85,1.5)(1.85,2.9)(1,2.9)
+        \qbezier(4.7,2.75)(3.3,2.75)(3.3,1.5)
+        \qbezier(3.3,1.5)(3.3,0.25)(4.7,0.25)
+        \qbezier(4.7,0.25)(6.1,0.25)(6.1,1.5)
+        \qbezier(6.1,1.5)(6.1,2.75)(4.7,2.75)
+        \put(1,2.55){\makebox(0,0){$D$}}
+        \put(4.7,2.4){\makebox(0,0){$Z$}}
+        \put(1,2.1){\makebox(0,0){$\bullet$}}
+        \put(1,1.4){\makebox(0,0){$\bullet$}}
+        \put(1,0.7){\makebox(0,0){$\bullet$}}
+        \put(4.1,2.1){\makebox(0,0){$\bullet$}}
+        \put(4.1,1.4){\makebox(0,0){$\bullet$}}
+        \put(5.35,1.4){\makebox(0,0){$\bullet$}}
+        {\color{THMBlue}\thicklines
+          \put(1.12,2.1){\vector(1,0){2.8}}
+          \put(1.12,1.42){\vector(1,0){2.8}}
+          \put(1.12,0.75){\vector(4,1){2.8}}}
+      \end{picture}%
+    }}
+  \]
+\end{DefinitionBox}
+
+Zu einer Funktion gehört ihre Definitionsmenge $D$ und Zielmenge $Z$. Wird in der Kurzschreibweise
+nur ein Term $f(x)$ angegeben, geht man von der größtmöglichen reellen Definitionsmenge, 
+auf der er $f(x)$ sinnvoll ausgewertet werden kann, aus.
+
+\begin{ExampleBox}{Bestimmung der größtmöglichen Definitionsmenge}{real_functions_domains}
+  Für die folgenden drei Terme bestimmen wir jeweils die Bedingungen an $x$
+  und daraus die größtmögliche reelle Definitionsmenge.
+  \begin{center}
+    \renewcommand{\arraystretch}{1.9}
+    \setlength{\tabcolsep}{15pt}
+    \begin{tabular}{@{}lll@{}}
+      \toprule
+      Term & Bedingung & Definitionsmenge\\
+      \midrule
+      $\displaystyle\frac1{x-2}$ & $\Cloze{3cm}{x\ne2}$ &
+        $\Cloze{4cm}{\R\setminus\{2\}}$\\
+      $\sqrt{x-2}$ & $\Cloze{3cm}{x-2\ge0}$ &
+        $\Cloze{4cm}{[2,\infty)}$\\
+      $\displaystyle\frac{\sqrt{x-2}}{x-3}$ &
+        $\Cloze{3cm}{x\ge2,\ x\ne3}$ &
+        $\Cloze{4cm}{[2,3)\cup(3,\infty)}$\\
+      \bottomrule
+    \end{tabular}
+  \end{center}
+\end{ExampleBox}
+\end{minipage}
+
+\par\noindent\begin{minipage}{\linewidth}
+Um den Verlauf einer Funktion sichtbar zu machen, zeichnen wir ihren
+\emph{Funktionsgraphen} \EnglishTerm{graph of a function}. Er besteht aus
+allen Punkten $(x,f(x))$ mit $x\in D$.
+\begin{ExampleBox}{Einen Funktionsgraphen zeichnen}{graph_of_square_function}
+  Die Funktion $f(x)=x^2$ heißt \emph{Parabelfunktion}.
+  Ihren Graphen zeichnen wir mithilfe einer Wertetabelle:
+  \[
+      \begin{aligned}
+        f:\R &\longrightarrow\R,\\
+        x &\longmapsto x^2
+      \end{aligned}
+      \qquad \text{oder} \qquad
+      f(x)=x^2
+  \]
+  \par\smallskip
+  \begin{minipage}[c]{0.5\linewidth}
+    Wir berechnen einige Funktionswerte und tragen die zugehörigen Punkte
+    $(x,f(x))$ in das Koordinatensystem ein:
+    \[
+      \begin{array}{c||*{4}{w{c}{1.05cm}|}w{c}{1.05cm}}
+        x&-2&-1&0&1&2\\ \hline
+        f(x)&\Cloze{0.9cm}{4}&\Cloze{0.9cm}{1}&\Cloze{0.9cm}{0}&
+          \Cloze{0.9cm}{1}&\Cloze{0.9cm}{4}
+      \end{array}
+    \]
+    Wir tragen die Punkte in das Koordinatensystem ein und vervollstädigen den Graphen.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.46\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_graph.tex}
+  \end{minipage}
+  \par\smallskip
+  Gezeigt ist nur ein Ausschnitt: Wegen $D=\R$ setzt sich der Graph beidseitig fort.
+\end{ExampleBox}
+\end{minipage}
+
+\par\medskip\noindent\begin{minipage}{\linewidth}
+Die folgenden beiden Graphen zeigen, warum die eindeutige Zuordnung in der
+Funktionsdefinition entscheidend ist.
+\par\smallskip
+\begin{KeyPointBox}{Eindeutige Zuordnung}{real_functions_unique_assignment}
+  Eine Funktion ordnet jedem $x\in D$ genau einen $y$-Wert zu.
+  Das lässt sich am Funktionsgraphen besonders gut veranschaulichen.
+  \par\smallskip
+  \begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_unique_graph.tex}
+    \par\smallskip
+    \raisebox{-0.2ex}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_assignment_check.tex}}\enspace \textcolor{THMBlue}{Funktion}
+    \par
+    zu jedem $x$ gehört genau ein $y$.
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.48\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_nonunique_relation.tex}
+    \par\smallskip
+    \raisebox{-0.2ex}{\CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_assignment_cross.tex}}\enspace \textcolor{red!75!black}{Keine Funktion}
+    \par
+    zu einem $x$ gehören mehrere $y$-Werte.
+  \end{minipage}
+\end{KeyPointBox}
+\end{minipage}
+
+\par\noindent\begin{minipage}{\linewidth}
+Die Parabelfunktion im vorigen Beispiel erreicht keine negativen $y$-Werte,
+obwohl ihre Zielmenge $Z=\R$ ist. Deshalb betrachten wir die Menge der tatsächlich
+angenommenen Werte gesondert.
+\begin{DefinitionBox}{\textcolor{green!55!black}{Wertemenge}}{real_functions_range}
+  Die \emph{\textcolor{green!55!black}{Wertemenge}} \EnglishTerm{range} $W_f$ einer
+  Funktion $f:D\to Z$ enthält genau die Werte, die $f$ tatsächlich annimmt:
+  \[
+    {\color{green!55!black}W_f}=f(D)=\{f(x)\mid x\in D\}.
+  \]
+  \par\noindent
+  {\centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_range.tex}\par}
+  \par\smallskip\noindent
+  Die Wertemenge ist immer eine Teilmenge der Zielmenge:
+  \[
+    {\color{green!55!black}W_f}\subseteq Z.
+  \]
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{\textcolor{green!55!black}{Wertemenge} der Parabelfunktion}{real_functions_square_range}
+  Wir betrachten erneut die Parabelfunktion aus Beispiel 5.2:
+  \[
+    \begin{aligned}
+      f:\R &\longrightarrow\R,\\
+      x &\longmapsto x^2
+    \end{aligned}
+    \qquad\text{oder}\qquad f(x)=x^2.
+  \]
+  \par\smallskip
+  {\centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_square_range.tex}\par}
+  \par\smallskip\noindent
+  Die Wertemenge besteht aus allen nichtnegativen reellen Zahlen.
+\end{ExampleBox}
+\end{minipage}
+
+\par\noindent\begin{minipage}{\linewidth}
+Im Laufe dieses Kapitels diskutieren wir nach und nach Eigenschaften, die
+für Funktionen charakteristisch sein können.
+\begin{FunctionPropertyBox}{Nullstellen}{real_functions_zeros}
+  \begin{minipage}[c]{0.55\linewidth}
+    \raggedright
+    \emph{Nullstellen} \EnglishTerm{zeros} sind die $x$-Werte aller Schnitt-
+    und Berührpunkte des Graphen mit der $x$-Achse:
+    \[
+      f(x_i)\overset{!}{=}0\qquad(x_i\in D).
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.43\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_zeros.tex}
+  \end{minipage}
+  Die zugehörigen Punkte $(x_i,0)$ heißen \emph{$x$-Achsenabschnitte} \EnglishTerm{x-intercepts}.
+\end{FunctionPropertyBox}
+\end{minipage}
+
+\begin{FunctionPropertyBox}{$y$-Achsenabschnitt}{real_functions_y_intercept}
+  \begin{minipage}[c]{0.55\linewidth}
+    \raggedright
+    Der Funktionswert bei $x=0$ heißt \emph{$y$-Achsenabschnitt} \EnglishTerm{y-intercept}:
+    \[
+      y_0=f(0).
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.43\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_y_intercept.tex}
+  \end{minipage}
+\end{FunctionPropertyBox}
+Während eine Funktion mehrere Nullstellen haben kann, ist ihr
+$y$-Achsenabschnitt eindeutig: Er ist der Funktionswert $f(0)$, sofern
+$0\in D$.

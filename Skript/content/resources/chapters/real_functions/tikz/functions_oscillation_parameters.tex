@@ -1,0 +1,35 @@
+\begin{tikzpicture}[>=Latex,line cap=round]
+  \foreach \panel/\shift in {1/0,2/-4.8,3/-9.6} {
+    \begin{scope}[yshift=\shift cm,x=10cm,y=0.65cm]
+      \draw[black!8] (0,-2) grid[xstep=0.25,ystep=1] (1,2);
+      \draw[->,black!55] (0,0)--(1.05,0) node[right] {$t/T_0$};
+      \draw[->,black!55] (0,-2.2)--(0,2.35) node[above] {$y$};
+      \foreach \xx/\lab in {0.25/{1/4},0.5/{1/2},0.75/{3/4},1/{1}} {
+        \draw[black!45] (\xx,-0.1)--(\xx,0.1);
+        \node[anchor=north] at (\xx,-2.45) {$\lab$};
+      }
+      \foreach \yy in {-2,-1,1,2} \node[left=4pt] at (0,\yy) {$\yy$};
+      \draw[black!60,line width=1.1pt,domain=0:1,samples=120]
+        plot (\x,{sin(360*\x)});
+      \ifnum\panel=1
+        \draw[THMBlue,line width=1.1pt,domain=0:1,samples=120]
+          plot (\x,{2*sin(360*\x)});
+        \node at (0.5,3.5) {\Lang{Amplitude}{amplitude}:
+          $\textcolor{black!60}{A=1}$, $\textcolor{THMBlue}{A=2}$};
+      \else\ifnum\panel=2
+        \draw[THMBlue,line width=1.1pt,domain=0:1,samples=160]
+          plot (\x,{sin(720*\x)});
+        \node at (0.5,3.5) {\Lang{Kreisfrequenz}{angular frequency}:
+          $\textcolor{black!60}{\omega=\omega_0}$,
+          $\textcolor{THMBlue}{\omega=2\omega_0}$};
+      \else
+        \draw[THMBlue,line width=1.1pt,domain=0:1,samples=120]
+          plot (\x,{sin(360*\x+90)});
+        \node at (0.5,3.5) {\Lang{Phase}{phase}:
+          $\textcolor{black!60}{\varphi=0}$,
+          $\textcolor{THMBlue}{\varphi=\pi/2}$};
+      \fi\fi
+    \end{scope}
+  }
+  \node at (5,-12.1) {$T_0=2\pi/\omega_0$};
+\end{tikzpicture}

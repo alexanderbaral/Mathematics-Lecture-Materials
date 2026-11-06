@@ -1,0 +1,44 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \path[use as bounding box] (-0.65,-0.30) rectangle (6.20,4.20);
+
+  \coordinate (O) at (0.45,0.35);
+  \coordinate (A) at (3.70,0.35);
+  \coordinate (B) at (1.65,1.25);
+  \coordinate (AB) at (4.90,1.25);
+  \coordinate (H) at (0.45,2.70);
+  \coordinate (N) at (0.45,3.45);
+  \coordinate (C) at (1.40,2.70);
+  \coordinate (AC) at (4.65,2.70);
+  \coordinate (BC) at (2.60,3.60);
+  \coordinate (ABC) at (5.85,3.60);
+
+  \fill[yellow!22] (O)--(A)--(AB)--(B)--cycle;
+  \draw[black!48,line width=0.65pt] (O)--(A)--(AB)--(B)--cycle;
+  \draw[black!38,dashed,line width=0.6pt]
+    (C)--(AC)--(ABC)--(BC)--cycle;
+  \draw[black!32,dashed,line width=0.6pt]
+    (O)--(C) (A)--(AC) (B)--(BC) (AB)--(ABC);
+  \draw[black!40,dashed,line width=0.6pt] (H)--(C);
+
+  \draw[->,THMBlue,line width=1.3pt] (O)--(A)
+    node[pos=0.55,below=5pt] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.3pt] (O)--(B)
+    node[pos=0.90,above right=4pt] {$\vec b$};
+  \draw[->,red!70!black,line width=1.3pt] (O)--(C)
+    node[pos=0.72,right=4pt] {$\vec c$};
+  % The normal arrow shows direction schematically; h is the geometric height.
+  \draw[->,black!65,line width=1.1pt] (O)--(N)
+    node[above=4pt] {$\vec a\times\vec b$};
+  \draw[black!65,line width=0.75pt,decorate,
+    decoration={brace,amplitude=4pt}]
+    ($(O)+(-0.20,0)$)--($(H)+(-0.20,0)$)
+    node[midway,left=8pt] {$h$};
+
+  \draw[black!55,line width=0.75pt]
+    ($(O)+(90:1.65)$)
+    arc[start angle=90,end angle=68.0,radius=1.65];
+  \node at ($(O)+(79:1.20)$) {$\varphi$};
+
+  \node[black!65,fill=yellow!22,inner sep=2pt]
+    at ($(O)!0.5!(AB)$) {$A=|\vec a\times\vec b|$};
+\end{tikzpicture}

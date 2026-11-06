@@ -1,0 +1,151 @@
+% Handschrift: Seiten 27--33.
+\section{Potenzen und komplexe Wurzeln}
+\label{sec:complex_numbers_powers_and_roots}
+Wiederholtes Multiplizieren potenziert den Betrag und vervielfacht den
+Winkel. Beim umgekehrten Problem müssen wir berücksichtigen, dass Winkel
+nur bis auf volle Umdrehungen festgelegt sind.
+
+\begin{KeyPointBox}{Ganzzahlige Potenzen}{complex_numbers_powers}
+  Für $z=re^{i\varphi}\ne0$ gilt
+  \[
+    z^n=\underbrace{z\cdots z}_{n\text{ Faktoren}}
+       =r^ne^{in\varphi}\quad(n\ge1),\qquad
+    z^0=1,\qquad z^{-n}=\frac1{z^n}.
+  \]
+  Der Betrag wird potenziert, der Winkel mit $n$ multipliziert.
+  Für $z=0$ sind die positiven ganzzahligen Potenzen ebenfalls definiert.
+\end{KeyPointBox}
+Für $z=e^{i\varphi}$ bleibt der Betrag bei jeder Potenz gleich $1$.
+Die Winkel $\varphi,2\varphi,3\varphi,\ldots$ folgen in gleichen Schritten:
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_unit_circle_powers.tex}
+\end{center}
+\begin{ExampleBox}{Eine hohe Potenz geschickt berechnen}{complex_numbers_eighth_power}
+  Berechnen Sie $(1+i)^8$ in Exponentialform und vergleichen Sie mit
+  wiederholtem Quadrieren. Der Punkt $1+i$ liegt rechts oben auf der
+  Winkelhalbierenden, also ist $\varphi=\pi/4$ ohne weitere Korrektur.
+  \begin{ClozeArea}{7}
+    \[
+      r=\sqrt{1^2+1^2}=\sqrt2,\qquad 1+i=\sqrt2\,e^{i\pi/4}.
+    \]
+    Daher gilt $(1+i)^8=(\sqrt2)^8e^{2\pi i}=16$.
+    In kartesischer Form führt wiederholtes Quadrieren ebenfalls zum Ziel:
+    \[
+      (1+i)^2=2i,\qquad (1+i)^4=-4,\qquad (1+i)^8=16.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\clearpage
+Die Zwischenpotenzen zeigen zugleich die wachsenden Beträge und die Drehung.
+Für $z=1+i$ liegen $z^2$, $z^4$, $z^6$ und $z^8$ auf den Koordinatenachsen:
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_numeric_powers.tex}
+\end{center}
+Eine volle Umdrehung ist bei $z^8$ erreicht; die Länge ist dann $16$.
+
+\clearpage
+\subsection{Komplexe Wurzeln als Lösungen einer Gleichung}
+\begin{DefinitionBox}{Komplexe Wurzeln}{complex_numbers_roots}
+  Für $a\in\C$ und $n\in\N$, $n\ge1$, heißt jede Lösung von $z^n=a$
+  eine \emph{$n$-te Wurzel} \EnglishTerm{$n$th root} von $a$.
+\end{DefinitionBox}
+\vspace{-0.5\baselineskip}
+\begin{ExampleBox}{Zwei Quadratwurzeln von $i$}{complex_numbers_square_roots_i}
+  Finden Sie zwei Zahlen, deren Quadrat $i=e^{i\pi/2}$ ist.
+  Beim Quadrieren wird der Winkel verdoppelt.
+  \begin{ClozeArea}{5}
+    \[
+      z_0=e^{i\pi/4},\qquad z_1=e^{5i\pi/4},\qquad
+      z_0^2=e^{i\pi/2}=i,\qquad z_1^2=e^{5i\pi/2}=i.
+    \]
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_square_roots_i.tex}
+  \end{center}
+  Die Lösungen liegen einander auf dem Einheitskreis gegenüber:
+  Ihr Winkelabstand ist $\Delta\varphi=2\pi/2=\pi=180^\circ$.
+\end{ExampleBox}
+
+\begin{ExampleBox}{Vier vierte Wurzeln von $1$}{complex_numbers_fourth_roots_unity}
+  Bestimmen Sie vier Zahlen mit $z^4=1$ und prüfen Sie durch Potenzieren.
+  \par\smallskip
+  \begin{minipage}[c]{0.48\linewidth}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_fourth_roots_unity.tex}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.47\linewidth}
+    \begin{ClozeArea}[15]{8}
+      \[
+        \begin{aligned}
+          z_0&=1, &z_0^4&=1,\\[6pt]
+          z_1&=e^{i\pi/2}=i, &z_1^4&=e^{2\pi i}=1,\\[6pt]
+          z_2&=e^{i\pi}=-1, &z_2^4&=e^{4\pi i}=1,\\[6pt]
+          z_3&=e^{3i\pi/2}=-i, &z_3^4&=e^{6\pi i}=1.
+        \end{aligned}
+      \]
+    \end{ClozeArea}
+  \end{minipage}
+  \par\medskip
+  Alle Lösungen liegen auf dem Einheitskreis, mit Winkelabstand
+  $\Delta\varphi=2\pi/4=\pi/2=90^\circ$.
+\end{ExampleBox}
+
+\clearpage
+\subsection{Alle Wurzeln systematisch bestimmen}
+Schreiben wir $a=Re^{i\alpha}\ne0$ und $z=\rho e^{i\varphi}$ mit
+$R,\rho>0$, so liefert der Vergleich von Betrag und Winkel
+\[
+  z^n=a
+  \quad\Longleftrightarrow\quad
+  \rho^n=R\ \text{ und }\ n\varphi=\alpha+2k\pi
+  \text{ für ein }k\in\Z.
+\]
+Daraus folgen $\rho=\sqrt[n]{R}$ und $\varphi=(\alpha+2k\pi)/n$.
+Durch Einsetzen prüfen wir die so erhaltenen Zahlen:
+\[
+  \left(\sqrt[n]{R}\,e^{i(\alpha+2k\pi)/n}\right)^n
+    =Re^{i\alpha}e^{2k\pi i}=a.
+\]
+\begin{TheoremBox}{Die $n$ komplexen Wurzeln}{complex_numbers_root_formula}
+  Für $a=Re^{i\alpha}\ne0$ sind die $n$ verschiedenen Lösungen von $z^n=a$
+  \[
+    z_k=\sqrt[n]{R}\,e^{i(\alpha+2k\pi)/n},\qquad k=0,\ldots,n-1.
+  \]
+  Sie liegen gleichmäßig auf dem Kreis mit Radius $\sqrt[n]{R}$;
+  benachbarte Lösungen haben den Winkelabstand
+  $\Delta\varphi=2\pi/n=360^\circ/n$.
+  Für $a=0$ gibt es nur die Lösung $z=0$.
+\end{TheoremBox}
+Weitere ganze Werte von $k$ liefern keine neuen Lösungen, denn
+\[
+  z_{k+n}=\sqrt[n]{R}\,e^{i(\alpha+2k\pi+2n\pi)/n}
+    =z_k e^{2\pi i}=z_k.
+\]
+
+\begin{ExampleBox}{Dritte Wurzeln von $-\sqrt3+i$}{complex_numbers_cube_roots}
+  Bestimmen Sie alle Lösungen von $z^3=a=-\sqrt3+i$ und deuten Sie ihre Lage.
+  Zunächst bringen wir die rechte Seite in Exponentialform.
+
+  Der Punkt $a$ liegt links oben. Der Winkel
+  $\arctan(1/(-\sqrt3))=-\pi/6$ zeigt jedoch nach rechts unten.
+  Daher addieren wir eine halbe Umdrehung, also $\pi$.
+  \begin{ClozeArea}{8}
+    \[
+      R=\sqrt{3+1}=2,\qquad
+      \alpha=-\frac\pi6+\pi=\frac{5\pi}{6},\qquad
+      a=2e^{5\pi i/6}.
+    \]
+    Die drei Wurzelwinkel sind $5\pi/18$, $17\pi/18$ und $29\pi/18$:
+    \[
+      z_0=\sqrt[3]2\,e^{5\pi i/18},\quad
+      z_1=\sqrt[3]2\,e^{17\pi i/18},\quad
+      z_2=\sqrt[3]2\,e^{29\pi i/18}.
+    \]
+  \end{ClozeArea}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/complex_numbers/tikz/complex_cube_roots.tex}
+  \end{center}
+  Die Lösungen liegen auf dem Kreis mit Radius $\sqrt[3]2$ im Winkelabstand
+  $2\pi/3=120^\circ$. Beim Kubieren wird jeder ihrer Winkel auf
+  $5\pi/6$ zuzüglich voller Umdrehungen abgebildet.
+\end{ExampleBox}

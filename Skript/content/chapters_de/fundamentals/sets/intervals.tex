@@ -1,0 +1,65 @@
+\subsection{Intervalle}
+\label{subsec:fundamentals_intervals}
+
+\begin{DefinitionBox}{Intervall}{fundamentals_interval}
+  Ein \emph{Intervall} \EnglishTerm{interval} ist eine zusammenhängende
+  Teilmenge $I\subseteq\R$, die zwischen zwei Randpunkten $a<b$ liegt und alle
+  reellen Zahlen dazwischen enthält.
+
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/interval_definition_number_line.tex}
+  \end{center}
+\end{DefinitionBox}
+
+Reelle Randpunkte können zum Intervall gehören oder ausgeschlossen sein:\par
+
+\renewcommand{\arraystretch}{1.35}
+\begin{tabularx}{\linewidth}{@{}l >{\centering\arraybackslash}X l@{}}
+  \toprule
+  \textbf{Intervalltyp} & \textbf{Mengenschreibweise} & \textbf{Randpunkte} \\
+  \midrule
+  abgeschlossen
+    & $[a,b]=\{x\in\R\mid a\,\Cloze{0.5cm}{\leq}\,x\,\Cloze{0.5cm}{\leq}\,b\}$
+    & $a,b$ enthalten \\
+  offen
+    & $(a,b)=\{x\in\R\mid a\,\Cloze{0.5cm}{<}\,x\,\Cloze{0.5cm}{<}\,b\}$
+    & $a,b$ nicht enthalten \\
+  links abgeschlossen
+    & $[a,b)=\{x\in\R\mid a\,\Cloze{0.5cm}{\leq}\,x\,\Cloze{0.5cm}{<}\,b\}$
+    & nur $a$ enthalten \\
+  rechts abgeschlossen
+    & $(a,b]=\{x\in\R\mid a\,\Cloze{0.5cm}{<}\,x\,\Cloze{0.5cm}{\leq}\,b\}$
+    & nur $b$ enthalten \\
+  \bottomrule
+\end{tabularx}
+\renewcommand{\arraystretch}{1}
+
+\begin{RemarkBox}[remark title=Alternative Intervallschreibweise]
+  Für offene und halboffene Intervalle ist im deutschsprachigen Raum auch
+  folgende Schreibweise üblich:
+  \[
+    (a,b)=]a,b[,
+    \qquad
+    [a,b)=[a,b[,
+    \qquad
+    (a,b]=]a,b].
+  \]
+\end{RemarkBox}
+
+
+\begin{KeyPointBox}{Uneigentliche Randpunkte}{fundamentals_infinite_interval_endpoints}
+  Liegt ein Randpunkt im Unendlichen, spricht man von einem uneigentlichen Randpunkt.
+  Da $\pm \infty$ keine reellen Zahlen sind, gehören sie daher nie zum Intervall.
+  An einem uneigentlichen Randpunkt (im Unendlichen) ist ein Intervall also stets offen.
+
+  \begin{center}
+    \renewcommand{\arraystretch}{1.45}
+    \begin{tabularx}{0.86\linewidth}{@{}>{\centering\arraybackslash}X >{\centering\arraybackslash}X@{}}
+      $(-\infty,b]$\quad\textcolor{green!50!black}{\textbf{richtig}}
+      & $[a,\infty)$\quad\textcolor{green!50!black}{\textbf{richtig}} \\
+      $[-\infty,b]$\quad\textcolor{red!75!black}{\textbf{falsch}}
+      & $(a,\infty]$\quad\textcolor{red!75!black}{\textbf{falsch}}
+    \end{tabularx}
+    \renewcommand{\arraystretch}{1}
+  \end{center}
+\end{KeyPointBox}

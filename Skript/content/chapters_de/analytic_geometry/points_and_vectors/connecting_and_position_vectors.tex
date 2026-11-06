@@ -1,0 +1,101 @@
+\subsection{Verbindungs- und Ortsvektoren}
+\label{subsec:analytic_geometry_connecting_and_position_vectors}
+
+Mit einem Verbindungsvektor beschreiben wir die relative Lage zweier Punkte. 
+
+\begin{DefinitionBox}{Verbindungsvektor}{analytic_geometry_connecting_vector}
+\noindent
+\begin{minipage}[c]{0.54\linewidth}
+  Der \emph{Verbindungsvektor} \EnglishTerm{displacement vector} vom Punkt
+  $P(p_1,p_2,p_3)$ zum Punkt $Q(q_1,q_2,q_3)$ ist
+  \[
+    \textcolor{THMBlue}{\overrightarrow{PQ}}
+    =\begin{pmatrix}
+       q_1-p_1\\ q_2-p_2\\ q_3-p_3
+     \end{pmatrix}.
+  \]
+  Sein Aufpunkt ist $P$, seine Pfeilspitze liegt in $Q$.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/connecting_position_vectors.tex}
+\end{minipage}
+\end{DefinitionBox}
+
+\begin{KeyPointBox}{Abstand zweier Punkte}{analytic_geometry_point_distance}
+  Der Abstand ergibt sich aus der Länge (Betrag) des Verbindungsvektors:
+  \[
+    \left|\textcolor{THMBlue}{\overrightarrow{PQ}}\right|
+    =\left|\begin{pmatrix}
+      q_1-p_1\\ q_2-p_2\\ q_3-p_3
+    \end{pmatrix}\right|
+    =\sqrt{
+      (q_1-p_1)^2+(q_2-p_2)^2+(q_3-p_3)^2}.
+  \]
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Verbindungsvektor und Punktabstand}{analytic_geometry_point_distance_example}
+\noindent
+\begin{minipage}[c]{0.54\linewidth}
+  Gegeben sind $P(1,1)$ und $Q(3,3)$. Der Verbindungsvektor lautet
+  \[
+    \overrightarrow{PQ}
+    =\begin{ClozeContinuation}[11]{2}
+      \begin{pmatrix}3-1\\3-1\end{pmatrix}
+      =\begin{pmatrix}2\\2\end{pmatrix}
+    \end{ClozeContinuation}.
+  \]
+  Bezeichnen wir den Abstand in diesem Beispiel mit $d$. Dann gilt
+  \[
+    d
+    =\left|\overrightarrow{PQ}\right|
+    =\Cloze{7cm}{\sqrt{2^2+2^2}=\sqrt 8=2\sqrt 2}.
+  \]
+  Die Rechnung bestimmt also zugleich Richtung und Länge der Verbindung.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.40\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/point_distance_2d.tex}
+\end{minipage}
+\end{ExampleBox}
+
+Zur Beschreibung der Lage eines Punktes $P$ im Raum betrachten wir den
+Verbindungsvektor vom Ursprung $O(0,0,0)$ zu diesem Punkt $P$, 
+den sogenannten Ortsvektor von $P$.
+\begin{DefinitionBox}{Ortsvektor}{analytic_geometry_position_vector}
+\noindent
+\begin{minipage}[c]{0.54\linewidth}
+  Der \emph{Ortsvektor} \EnglishTerm{position vector} eines Punktes
+  $P(x_1,x_2,x_3)$ ist der Verbindungsvektor vom Ursprung
+  $O(0,0,0)$ zu $P$:
+  \[
+    \overrightarrow{OP}=\begin{pmatrix}x_1\\x_2\\x_3\end{pmatrix}.
+  \]
+  Sein Aufpunkt ist immer der Ursprung.
+\end{minipage}\hfill
+\begin{minipage}[c]{0.42\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/position_vector_coordinates.tex}
+\end{minipage}
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Verschiebevektor und Ortsvektor}{analytic_geometry_displacement_and_position_vector_example}
+  In diesem Beispiel zeichen wir den gleichen Vektor einmal als Verschiebevektor und einmal als Ortsvektor:
+  \begin{itemize}[leftmargin=1.4em,itemsep=0.45em,topsep=0.35em]
+    \item Der Verschiebevektor
+      $\vec a=\begin{pmatrix}1\\2\end{pmatrix}$ kann an jedem Aufpunkt
+      eingezeichnet werden.
+    \item Der Ortsvektor
+      $\overrightarrow{OP}=\begin{pmatrix}1\\2\end{pmatrix}$ beginnt
+      dagegen zwingend im Ursprung.
+  \end{itemize}
+
+  \begin{center}
+    \vspace{-0.45em}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/displacement_and_position_vector.tex}
+    \vspace{-0.55em}
+  \end{center}
+  %
+  Jeder Verschiebevektor kann parallel verschoben werden, wogegen eine Ortsvektor immer vom Ursprung ausgeht.
+\end{ExampleBox}

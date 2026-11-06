@@ -1,0 +1,49 @@
+\subsubsection{Satz des Pythagoras}
+\label{subsubsec:fundamentals_right_triangles_pythagorean_theorem}
+
+Der Satz des Pythagoras verknüpft die drei Seitenlängen eines rechtwinkligen
+Dreiecks. Dabei bezeichnet $c$ die Hypotenuse und $a,b$ die Katheten.
+
+\begin{TheoremBox}{Satz des Pythagoras}{fundamentals_pythagorean_theorem}
+  \noindent
+  \begin{minipage}[t]{0.64\linewidth}
+    Für jedes Dreieck sind die folgenden Aussagen äquivalent:
+    \begin{ClozeArea}[22]{3}
+      \[
+        \begin{gathered}
+          \text{Dreieck ist rechtwinklig}\\[-0.1em]
+          \gamma=90^\circ
+        \end{gathered}
+        \quad \Longleftrightarrow \quad
+        a^2+b^2=c^2.
+      \]
+    \end{ClozeArea}
+    Dabei ist die Seite $c$ die dem Winkel $\gamma$ gegenüberliegende Seite.
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.31\linewidth}
+    \vspace{0pt}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
+  \end{minipage}
+\end{TheoremBox}
+Aufgrund der Äquivalenz beider Aussagen ist der Satz des Pythagoras nicht nur ein Werkzeug
+um Seitenlängen in rechtwinkligen Dreiecken zu berechnen, sondern auch um die
+Rechtwinkligkeit eines Dreiecks zu prüfen.
+
+\begin{ExampleBox}{Satz des Pythagoras}{fundamentals_pythagorean_theorem_example}
+  \begin{minipage}[c]{0.62\linewidth}
+  Gegeben sind die Hypotenuse $c=5\,\mathrm{cm}$ und die Kathete
+  $b=4\,\mathrm{cm}$. Gesucht ist die Kathete $a$.
+    \begin{ClozeArea}[22]{7}
+      \begin{align*}
+        \phantom{\Longrightarrow \quad} c^2&=a^2+b^2,\\
+        \Longrightarrow \quad a&=\sqrt{c^2-b^2}=\sqrt{(5\,\mathrm{cm})^2-(4\,\mathrm{cm})^2}
+         =\sqrt{9\,\mathrm{cm}^2}=3\,\mathrm{cm}.
+      \end{align*}
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.33\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_pythagorean_example.tex}
+  \end{minipage}
+\end{ExampleBox}

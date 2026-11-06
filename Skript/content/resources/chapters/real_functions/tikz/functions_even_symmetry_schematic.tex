@@ -1,0 +1,16 @@
+\begin{tikzpicture}[x=1.15cm,y=1.6cm,>=Latex,line cap=round]
+  \draw[->,black!60] (-2.35,0)--(2.4,0) node[right] {$x$};
+  \draw[->,black!60] (0,-1.4)--(0,1.5) node[above] {$y$};
+  \draw[THMBlue,line width=1.15pt,domain=-2.25:2.25,samples=140]
+    plot (\x,{1.5*exp(-((abs(\x)-1.5)^2)/0.32)-0.5});
+  \draw[green!55!black,dashed,line width=0.9pt]
+    (-1.4,0)--(-1.4,0.954) -- (1.4,0.954) -- (1.4,0);
+  \fill[green!55!black] (-1.4,0.954) circle (1.6pt)
+                         (1.4,0.954) circle (1.6pt);
+  \node[below=5pt,inner sep=0pt,text=green!55!black] at (-1.4,0) {$-x_0$};
+  \node[below=5pt,inner sep=0pt,text=green!55!black] at (1.4,0) {$x_0$};
+  \node[anchor=west,inner sep=2pt,text=green!55!black]
+    at (-1.68,1.28) {$f(-x_0)$};
+  \node[anchor=west,inner sep=2pt,text=green!55!black]
+    at (1.0,1.28) {$f(x_0)$};
+\end{tikzpicture}

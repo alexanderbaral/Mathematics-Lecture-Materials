@@ -1,0 +1,13 @@
+\begin{tikzpicture}[font=\small,>=stealth]
+  \node[inner sep=0pt] (base-symbol) at (0,0) {\Huge $a$};
+  \node[anchor=south west,inner sep=0pt] (exponent-symbol)
+    at ([xshift=-0.5pt,yshift=-1pt]base-symbol.north east) {\Large $n$};
+  \node[anchor=east,text=THMBlue] (base) at (-1.25,-0.9)
+    {\Lang{Basis}{base}};
+  \node[anchor=west,text=THMBlue] (exponent) at (1.25,0.9)
+    {\Lang{Exponent}{exponent}};
+  \draw[->,THMBlue,line width=0.7pt,shorten >=2pt]
+    (base.north east) -- (base-symbol.south west);
+  \draw[->,THMBlue,line width=0.7pt,shorten >=2pt]
+    (exponent.south west) -- (exponent-symbol.north east);
+\end{tikzpicture}

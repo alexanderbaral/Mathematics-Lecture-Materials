@@ -1,0 +1,94 @@
+\subsection{Rechenregeln}
+\label{subsec:vector_algebra_scalar_product_rules}
+
+Nach der Herleitung der Koordinatenformel fassen wir die Rechenregeln des
+Skalarprodukts systematisch zusammen. Sie zeigen insbesondere, inwieweit es
+sich wie die Multiplikation von Zahlen behandeln lässt.
+
+\begin{TheoremBox}{Algebraische Rechenregeln des Skalarprodukts}{vector_algebra_dot_product_laws}
+  Für Vektoren $\vec a,\vec b,\vec c\in\R^n$ und einen Skalar
+  $\lambda\in\R$ gelten die folgenden algebraischen Rechenregeln:
+  \[
+    \begin{aligned}
+      \vec a\cdot\vec b
+        &=\vec b\cdot\vec a
+        &&\text{(Kommutativgesetz)},\\[0.5em]
+      \phantom{\vec a\cdot(\vec b+\vec c)}
+        &\text{--}
+        &&\text{(Assoziativgesetz)},\\[0.5em]
+      \vec a\cdot(\vec b+\vec c)
+        &=\vec a\cdot\vec b+\vec a\cdot\vec c
+        &&\text{(Distributivgesetz)}.
+    \end{aligned}
+  \]
+
+  Zusätzlich ist das Skalarprodukt homogen bezüglich der Multiplikation
+  mit einem Skalar:
+  \[
+    (\lambda\vec a)\cdot\vec b
+      =\lambda(\vec a\cdot\vec b)
+      =\vec a\cdot(\lambda\vec b)
+      \qquad\text{(Homogenität)}.
+  \]
+\end{TheoremBox}
+
+Ein Assoziativgesetz liegt hier nicht vor: Die Multiplikationspunkte stehen
+für unterschiedliche Operationen und die beiden Klammerungen liefern im
+Allgemeinen verschiedene Vektoren.
+
+\noindent
+\begin{minipage}[c]{0.72\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_not_associative.tex}
+\end{minipage}\hfill
+\begin{minipage}[c]{0.25\linewidth}
+  \centering
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_not_associative_directions.tex}
+\end{minipage}
+
+\begin{ExampleBox}{Rechenregeln prüfen}{vector_algebra_dot_product_laws_example}
+  Für die folgenden Vektoren $\vec a,\vec b,\vec c\in\R^3$ überprüfen wir
+  die das Distributivgesetz und das fehlende Assoziativgesetz explizit:
+  \[
+    \vec a=\begin{pmatrix}1\\2\end{pmatrix},\qquad
+    \vec b=\begin{pmatrix}3\\1\end{pmatrix},\qquad
+    \vec c=\begin{pmatrix}1\\1\end{pmatrix}
+  \]
+  \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=1em]
+    \item \textbf{Distributivgesetz:} Wir berechnen beide Seiten getrennt:
+      \[
+        \EquationMerge
+          {}
+          {\vec a\cdot(\vec b+\vec c)
+            =\Cloze{6.3cm}{%
+              \begin{pmatrix}1\\2\end{pmatrix}
+              \cdot\begin{pmatrix}4\\2\end{pmatrix}
+              =1\cdot4+2\cdot2}}
+          {}
+          {\vec a\cdot\vec b+\vec a\cdot\vec c
+            =\Cloze{6.3cm}{%
+              (1\cdot3+2\cdot1)+(1\cdot1+2\cdot1)=5+3}}
+          {\Cloze{1cm}{8}}
+      \]
+
+    \item \textbf{Kein Assoziativgesetz:} Für die beiden Klammerungen gilt
+      \[
+        \begin{aligned}
+          \vec a\cdot(\vec b\cdot\vec c)
+            &=\vec a\cdot4
+             =4\vec a
+             =\begin{pmatrix}
+                \Cloze{0.8cm}{4}\\
+                \Cloze{0.8cm}{8}
+              \end{pmatrix},\\[0.9em]
+          (\vec a\cdot\vec b)\cdot\vec c
+            &=5\cdot\vec c
+             =5\vec c
+             =\begin{pmatrix}
+                \Cloze{0.8cm}{5}\\
+                \Cloze{0.8cm}{5}
+              \end{pmatrix}.
+        \end{aligned}
+      \]
+  \end{enumerate}
+\end{ExampleBox}

@@ -1,0 +1,87 @@
+\subsection{Abstand eines Punktes von einer Ebene}
+\label{subsec:analytic_geometry_point_to_plane_distance}
+
+Bei einer Ebene zeigt der Normalenvektor bereits in Richtung der kürzesten
+Verbindung. Deshalb genügt eine skalare Projektion auf diese Richtung.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/analytic_geometry/tikz/point_plane_distance.tex}
+\end{center}
+
+Der Abstand ist der Betrag der parallelen Komponente $\overrightarrow{PQ}_{\parallel}$,
+also der orthogonale Projektion von $\overrightarrow{PQ}$ auf die
+Normalenrichtung $\vec n$.
+\begin{ClozeArea}[34]{3}
+  \[
+    d=\left\lvert\textcolor{black!75}{\overrightarrow{PQ}_{\parallel}}\right\rvert
+    =\left\lvert
+      \bigl(\textcolor{red!75!black}{\overrightarrow{PQ}}
+      \cdot\textcolor{THMBlue}{\vec e_n}\bigr)\textcolor{THMBlue}{\vec e_n}
+    \right\rvert
+    =\left\lvert
+      \textcolor{red!75!black}{\overrightarrow{PQ}}
+      \cdot\textcolor{THMBlue}{\vec e_n}
+    \right\rvert
+      \overbrace{\left\lvert\textcolor{THMBlue}{\vec e_n}\right\rvert}^{=1}
+    =\left\lvert
+      \textcolor{red!75!black}{\overrightarrow{PQ}}
+      \cdot\textcolor{THMBlue}{\vec e_n}
+    \right\rvert.
+  \]
+\end{ClozeArea}
+
+\begin{TheoremBox}{Punkt--Ebenen-Abstand}{analytic_geometry_point_plane_distance}
+  Sei $P$ ein Punkt der Ebene $E$ und $Q$ ein beliebiger Punkt, 
+  so ist der Abstand $d$ von $Q$ zur Ebene $E$ gegeben durch
+  \[
+    d
+    =\left\lvert\overrightarrow{PQ}_{\parallel}\right\rvert
+    =\left\lvert\overrightarrow{PQ}\cdot\vec e_n\right\rvert.
+  \]
+\end{TheoremBox}
+
+\begin{ExampleBox}{Abstand eines Punktes von einer Ebene}{analytic_geometry_point_plane_distance_example}
+  Gegeben sind die Ebene $E$ in Parameterform und der Punkt $Q(3,2,2)$:
+  \[
+    E:\quad
+    \vec x=\overrightarrow{OP}+\lambda\vec a+\mu\vec b,
+    \qquad
+    \overrightarrow{OP}=\begin{pmatrix}1\\0\\0\end{pmatrix},
+    \quad
+    \vec a=\begin{pmatrix}0\\2\\-1\end{pmatrix},
+    \quad
+    \vec b=\begin{pmatrix}0\\1\\2\end{pmatrix}.
+  \]
+  Aus den Richtungsvektoren bestimmen wir einen
+  Einheitsnormalenvektor:
+  \begin{ClozeArea}[34]{11}
+    \[
+      \vec n
+      =\vec a\times\vec b
+      =\begin{pmatrix}0\\2\\-1\end{pmatrix}
+        \times\begin{pmatrix}0\\1\\2\end{pmatrix}
+      =\begin{pmatrix}5\\0\\0\end{pmatrix}
+      \quad\Longrightarrow\quad
+      \vec e_n=\begin{pmatrix}1\\0\\0\end{pmatrix}.
+    \]
+  \end{ClozeArea}
+  Wir setzen in die Formel aus Satz~\ref{thm:analytic_geometry_point_plane_distance} ein:
+  \begin{ClozeArea}[34]{4}
+    \[
+      d
+      =\left\lvert\overrightarrow{PQ}\cdot\vec e_n\right\rvert
+      =\left\lvert
+        \bigl(\overrightarrow{OQ}-\overrightarrow{OP}\bigr)\cdot\vec e_n
+      \right\rvert
+      =\left\lvert
+        \left(
+          \begin{pmatrix}3\\2\\2\end{pmatrix}
+          -\begin{pmatrix}1\\0\\0\end{pmatrix}
+        \right)\cdot
+        \begin{pmatrix}1\\0\\0\end{pmatrix}
+      \right\rvert
+      =2.
+    \]
+  \end{ClozeArea}
+  Der Punkt $Q$ hat somit den Abstand $\Cloze{3cm}{2}$ von der Ebene.
+\end{ExampleBox}

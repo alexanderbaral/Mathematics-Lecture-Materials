@@ -1,0 +1,26 @@
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex]
+  \path[use as bounding box] (-0.2,-0.25) rectangle (9.8,4.8);
+
+  \fill[black!5]
+    (0.45,0.55)--(7.10,0.55)--(9.10,2.35)--(2.45,2.35)--cycle;
+  \draw[black!45,line width=0.8pt]
+    (0.45,0.55)--(7.10,0.55)--(9.10,2.35)--(2.45,2.35)--cycle;
+  \node at (8.55,1.05) {$E$};
+
+  \coordinate (P) at (3.05,1.35);
+  \coordinate (X) at (6.45,1.35);
+  \coordinate (N) at (3.05,4.40);
+
+  \draw[->,black!75,line width=1.15pt] (P)--(X)
+    node[pos=0.56,below=5pt]
+      {$\vec x-\overrightarrow{OP}$};
+  \draw[->,THMBlue,line width=1.35pt] (P)--(N)
+    node[pos=0.62,left=5pt] {$\vec n$};
+
+  \fill (P) circle (1.9pt)
+    node[below left=4pt] {$P$};
+  \fill (X) circle (1.9pt)
+    node[above right=4pt] {$X$};
+
+  \RightAngleMark{(P)}{0}{90}{0.48}
+\end{tikzpicture}

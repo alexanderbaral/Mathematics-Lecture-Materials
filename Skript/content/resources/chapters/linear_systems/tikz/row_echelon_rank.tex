@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+  every node/.style={font=\normalsize},
+  staircase/.style={draw=olive!80!black,line width=1.4pt,line join=round},
+  bracebelow/.style={decorate,decoration={brace,mirror,amplitude=4pt}},
+  braceright/.style={decorate,decoration={brace,amplitude=4pt}}
+]
+  \matrix (M) [
+    matrix of math nodes,
+    left delimiter={[},right delimiter={]},
+    nodes={minimum width=0.92cm,minimum height=0.62cm,anchor=center,inner sep=1pt},
+    column sep=0pt,row sep=0pt
+  ] {
+    \bullet&\ast&\ast&\ast&\ast&\ast\\
+    \color{THMBlue}0&\bullet&\ast&\ast&\ast&\ast\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\bullet&\ast&\ast\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\bullet&\ast\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\bullet\\
+    \color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0&\color{THMBlue}0\\
+  };
+
+  \draw[staircase]
+    (M-1-1.north west)
+    -- (M-1-1.south west) -- (M-1-1.south east)
+    -- (M-2-2.south west) -- (M-2-2.south east)
+    -- (M-2-3.south east)
+    -- (M-3-4.south west) -- (M-3-4.south east)
+    -- (M-4-5.south west) -- (M-4-5.south east)
+    -- (M-5-6.south west) -- (M-5-6.south east);
+
+  \draw[bracebelow,black!55]
+    ($(M-6-1.south west)+(0,-0.22)$)--($(M-6-6.south east)+(0,-0.22)$)
+    node[midway,below=6pt,text=black!65] {$n$ Variablenspalten};
+
+  \draw[braceright,black!55]
+    ($(M-1-6.north east)+(0.75,0)$)--($(M-5-6.south east)+(0.75,0)$)
+    node[midway,right=7pt,text=black!65,align=left]
+      {$5$ Nichtnullzeilen\\$\operatorname{rang}(A)=5$};
+\end{tikzpicture}

@@ -1,0 +1,26 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (2.0,2.2);
+  \coordinate (A) at (5.0,3.9);
+  \coordinate (B) at (2.6,4.5);
+  \coordinate (MinusB) at ($(O)+(O)-(B)$);
+  \coordinate (D) at ($(A)+(MinusB)-(O)$);
+
+  \path[use as bounding box] (0,-0.4) rectangle (6.8,4.9);
+
+  \draw[->,THMBlue,line width=1.3pt]
+    (O)--(A) node[midway,below=6pt] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.3pt]
+    (O)--(B) node[pos=0.54,left] {$\vec b$};
+  \IfClozeTF{}{%
+    \draw[->,olive!80!black,densely dashed,line width=1.3pt]
+      (O)--(MinusB) node[pos=0.48,left=5pt] {$-\vec b$};
+    \draw[->,olive!80!black,densely dashed,line width=1.3pt]
+      (A)--(D) node[pos=0.54,right] {$-\vec b$};
+    \draw[THMBlue!55,densely dashed] (MinusB)--(D);
+    \draw[->,black,line width=1.3pt]
+      (O)--(D) node[at end,anchor=north west,xshift=0.10cm,yshift=-0.04cm]
+        {$\vec a-\vec b$};
+    \draw[->,black,line width=1.3pt]
+      (B)--(A) node[midway,above=3pt] {$\vec a-\vec b$};
+  }
+\end{tikzpicture}

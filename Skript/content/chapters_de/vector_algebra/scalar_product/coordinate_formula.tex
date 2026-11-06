@@ -1,0 +1,80 @@
+\clearpage
+\subsection{Skalarprodukt in Koordinatendarstellung}
+\label{subsec:vector_algebra_dot_product_coordinates}
+
+Nun suchen wir noch eine Formel, um das Skalarprodukt zweier Vektoren,
+die in ihrer Koordinatenform vorliegen zu berechnen. Diese Formel heißt
+Koordinatenformel des Skalarprodukts.
+Dazu stellen wir zunächst die zwei Vektoren $\vec a,\vec b\in\R^3$ mit
+den kanonischen Einheitsvektoren dar:
+\[
+  \begin{aligned}
+    \vec a
+      &=\Cloze{10cm}{a_1\vec e_1+a_2\vec e_2+a_3\vec e_3},\\[1em]
+    \vec b
+      &=\Cloze{10cm}{b_1\vec e_1+b_2\vec e_2+b_3\vec e_3}.
+  \end{aligned}
+\]
+
+Durch Einsetzen in das Skalarprodukt und anschliendes Ausmultiplizieren erhalten wir
+\begin{ClozeArea}[34]{10}
+  \[
+    \begin{aligned}
+      \vec a\cdot\vec b
+      &=(a_1\vec e_1+a_2\vec e_2+a_3\vec e_3)
+        \cdot(b_1\vec e_1+b_2\vec e_2+b_3\vec e_3)
+        \vphantom{\overbrace{(\vec e_1\cdot\vec e_1)}^{=1}}\\[0.7em]
+      &=a_1b_1\overbrace{(\vec e_1\cdot\vec e_1)}^{=1}
+        +a_1b_2\overbrace{(\vec e_1\cdot\vec e_2)}^{=0}
+        +a_1b_3\overbrace{(\vec e_1\cdot\vec e_3)}^{=0}\\[0.7em]
+      &\quad
+        +a_2b_1\overbrace{(\vec e_2\cdot\vec e_1)}^{=0}
+        +a_2b_2\overbrace{(\vec e_2\cdot\vec e_2)}^{=1}
+        +a_2b_3\overbrace{(\vec e_2\cdot\vec e_3)}^{=0}\\[0.7em]
+      &\quad
+        +a_3b_1\overbrace{(\vec e_3\cdot\vec e_1)}^{=0}
+        +a_3b_2\overbrace{(\vec e_3\cdot\vec e_2)}^{=0}
+        +a_3b_3\overbrace{(\vec e_3\cdot\vec e_3)}^{=1}\\[0.7em]
+      &=a_1b_1+a_2b_2+a_3b_3
+        \vphantom{\overbrace{(\vec e_1\cdot\vec e_1)}^{=1}}.
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{TheoremBox}{Koordinatenformel des Skalarprodukts}{vector_algebra_dot_product_coordinate_formula}
+  Für das Skalarprodukt zweier Vektoren $\vec a,\vec b\in\R^n$ gilt
+  \[
+    \vec a\cdot\vec b
+    =\begin{pmatrix}
+      a_1\\a_2\\\vdots\\a_n
+    \end{pmatrix}
+    \cdot
+    \begin{pmatrix}
+      b_1\\b_2\\\vdots\\b_n
+    \end{pmatrix}
+    =a_1b_1+a_2b_2+\dots+a_nb_n
+    =\sum_{i=1}^{n}a_i b_i.
+  \]
+  Komponenten mit gleichem Index werden multipliziert und anschließend werden
+  die Produkte addiert.
+\end{TheoremBox}
+
+\begin{ExampleBox}{Skalarprodukt aus Koordinaten}{vector_algebra_coordinate_dot_product_example}
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1em]
+    \item
+      \(\displaystyle
+        \begin{pmatrix}1\\2\end{pmatrix}
+        \cdot
+        \begin{pmatrix}3\\4\end{pmatrix}
+        =\Cloze{5cm}{1\cdot3+2\cdot4=11}.
+      \)
+
+    \item
+      \(\displaystyle
+        \begin{pmatrix}1\\2\\3\end{pmatrix}
+        \cdot
+        \begin{pmatrix}4\\5\\6\end{pmatrix}
+        =\Cloze{7cm}{1\cdot4+2\cdot5+3\cdot6=32}.
+      \)
+  \end{enumerate}
+\end{ExampleBox}

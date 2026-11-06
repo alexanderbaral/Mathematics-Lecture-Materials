@@ -1,0 +1,26 @@
+\begin{tikzpicture}[x=0.54cm,y=0.54cm,>=Latex]
+  \path[use as bounding box] (-3.5,-2.8) rectangle (10.0,6.3);
+  \coordinate (O) at (0,0);
+  \coordinate (Pone) at (1.25,1.55);
+  \coordinate (Ptwo) at (4.65,3.35);
+
+  \draw[->,black!55,line width=0.8pt] (-0.25,0)--(5.8,0)
+    node[below] {$x_1$};
+  \draw[->,black!55,line width=0.8pt] (0,-0.25)--(0,4.35)
+    node[left] {$x_2$};
+  \draw[->,black!55,line width=0.8pt] (0,0)--(-1.75,-1.45)
+    node[below left] {$x_3$};
+
+  \draw[->,THMBlue,line width=1.35pt] (Pone)--(Ptwo)
+    node[pos=0.52,above left=4pt,inner sep=2pt]
+      {\textcolor{THMBlue}{$\overrightarrow{PQ}$}};
+
+  \fill (O) circle (1.5pt)
+    node[below right=4pt,fill=white,inner sep=1pt] {$O$};
+  \fill (Pone) circle (2.0pt)
+    node[below right=4pt,inner sep=1pt]
+      {$P(p_1,p_2,p_3)$};
+  \fill (Ptwo) circle (2.0pt)
+    node[above right=6pt,inner sep=2pt]
+      {$Q(q_1,q_2,q_3)$};
+\end{tikzpicture}

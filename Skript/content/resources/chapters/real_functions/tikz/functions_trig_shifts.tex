@@ -1,0 +1,31 @@
+\begin{tikzpicture}[>=Latex,line cap=round]
+  \foreach \panel/\shift in {1/0,2/-5.2} {
+    \begin{scope}[yshift=\shift cm,x=1.4cm,y=1.1cm]
+      \draw[black!8] (-1.6,-1) grid[xstep=1,ystep=1] (6.3,1);
+      \draw[->,black!55] (-1.7,0)--(6.5,0) node[right] {$x$};
+      \draw[->,black!55] (0,-1.2)--(0,1.5) node[above] {$y$};
+      \foreach \xx/\lab in {-1.5708/{-\pi/2},1.5708/{\pi/2},3.1416/{\pi},4.7124/{3\pi/2},6.2832/{2\pi}} {
+        \draw[black!45] (\xx,-0.06)--(\xx,0.06);
+        \node[below=4pt] at (\xx,0) {$\lab$};
+      }
+      \foreach \yy in {-1,1} \node[anchor=east] at (-1.8,\yy) {$\yy$};
+      \draw[THMBlue,line width=1.1pt,domain=-1.57:6.28,samples=130]
+        plot (\x,{sin(\x r)});
+      \ifnum\panel=1
+        \draw[green!55!black,line width=1.1pt,domain=-1.57:6.28,samples=130]
+          plot (\x,{cos(\x r)});
+        \node[THMBlue,anchor=west] at (3.5,1.7) {$\sin x$};
+        \node[green!55!black,anchor=west] at (4.9,1.7) {$\cos x$};
+        \draw[<->,black!60] (0,1.28)--(1.5708,1.28) node[midway,above] {$\pi/2$};
+        \node at (2.4,-1.75) {$\cos x=\sin(x+\pi/2)$};
+      \else
+        \draw[green!55!black,line width=1.1pt,domain=-1.57:6.28,samples=130]
+          plot (\x,{-sin(\x r)});
+        \node[THMBlue,anchor=west] at (3.5,1.7) {$\sin x$};
+        \node[green!55!black,anchor=west] at (4.9,1.7) {$-\sin x$};
+        \draw[<->,black!60] (1.5708,1.28)--(4.7124,1.28) node[midway,above] {$\pi$};
+        \node at (2.4,-1.75) {$\sin(x+\pi)=-\sin x$};
+      \fi
+    \end{scope}
+  }
+\end{tikzpicture}

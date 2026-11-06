@@ -1,0 +1,29 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \node (topa) at (0,2.50)
+    {$(\vec a\times\vec b)\cdot\vec c=S$};
+  \node (topb) at (5.40,2.50)
+    {$(\vec b\times\vec c)\cdot\vec a=S$};
+  \node (topc) at (10.80,2.50)
+    {$(\vec c\times\vec a)\cdot\vec b=S$};
+
+  \node (bottoma) at (0,0)
+    {$(\vec b\times\vec a)\cdot\vec c=-S$};
+  \node (bottomb) at (5.40,0)
+    {$(\vec c\times\vec b)\cdot\vec a=-S$};
+  \node (bottomc) at (10.80,0)
+    {$(\vec a\times\vec c)\cdot\vec b=-S$};
+
+  \foreach \leftnode/\rightnode in {topa/topb,topb/topc,bottoma/bottomb,bottomb/bottomc}{
+    \draw[<->,THMBlue,line width=1pt]
+      (\leftnode.east)--(\rightnode.west)
+      node[midway,above=3pt,fill=white,inner sep=1.5pt,text=THMBlue]
+      {zyklisch};
+  }
+
+  \foreach \top/\bottom in {topa/bottoma,topb/bottomb,topc/bottomc}{
+    \draw[<->,olive!80!black,line width=0.9pt]
+      (\top.south)--(\bottom.north)
+      node[midway,fill=white,inner sep=2pt,align=center,text=olive!80!black]
+      {paarweise};
+  }
+\end{tikzpicture}

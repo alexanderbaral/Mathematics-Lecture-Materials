@@ -1,0 +1,20 @@
+\begin{tikzpicture}[x=1.45cm,y=1.3cm,>=Latex,line cap=round]
+  \fill[green!55!black,opacity=0.06] (0,1.3) rectangle (6,2.7);
+  \fill[black,opacity=0.06] (2,0) rectangle (4,3.3);
+  \draw[->,black!55] (0,0)--(6.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,0)--(0,3.5) node[above] {$y$};
+  \foreach \yy/\lab in {1.3/{L-\varepsilon},2/{L},2.7/{L+\varepsilon}} {
+    \draw[green!55!black,dashed] (0,\yy)--(6,\yy);
+    \node[left=4pt,green!55!black] at (0,\yy) {$\lab$};
+  }
+  \foreach \xx/\lab in {2/{a-\delta},3/{a},4/{a+\delta}} {
+    \draw[black!45,dashed] (\xx,0)--(\xx,2.95);
+    \node[below=5pt] at (\xx,0) {$\lab$};
+  }
+  \draw[THMBlue,line width=1.1pt,domain=0.3:5.7,samples=100]
+    plot (\x,{2-0.6*(\x-3)+0.04*(\x-3)^3});
+  \node[THMBlue,above] at (5.4,1.35) {$f(x)$};
+  \draw[<->,black!60] (2,3.15)--(3,3.15) node[midway,above] {$\delta$};
+  \draw[<->,green!55!black] (6.4,2)--(6.4,2.7)
+    node[midway,right] {$\varepsilon$};
+\end{tikzpicture}

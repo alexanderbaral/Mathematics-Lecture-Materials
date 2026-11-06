@@ -1,0 +1,72 @@
+\begin{tikzpicture}[x=0.9cm,y=0.5cm,line cap=round,>=Latex]
+  % Identical coordinate windows make each successive change comparable.
+  \newcommand{\ParabolaStepAxes}[3]{%
+    \draw[step=1,black!8,line width=0.3pt] (-2,-4) grid (3,4);
+    \draw[->,black!55] (-2.15,0)--(3.25,0) node[right] {$x$};
+    \draw[->,black!55] (0,-4.2)--(0,4.3) node[above] {$y$};
+    \foreach \k in {-2,-1,1,2,3} {
+      \draw[black!55] (\k,-0.1)--(\k,0.1);
+      \node[#1=3pt,inner sep=0pt] at (\k,0) {$\k$};
+    }
+    \foreach \k in {-4,-2,2,4} {
+      \draw[black!55] (-0.055,\k)--(0.055,\k);
+      \ifnum\k<0
+        \node[#2=6pt,inner sep=0pt] at (0,\k) {$\k$};
+      \else
+        \node[#3=6pt,inner sep=0pt] at (0,\k) {$\k$};
+      \fi
+    }
+  }
+
+  \begin{scope}
+    \ParabolaStepAxes{below}{left}{left}
+    \node[text=THMBlue] at (0.5,6) {\textcolor{black}{1.}\quad $f_0(x)=x^2$};
+    \begin{scope}
+      \clip (-2,-4) rectangle (3,4);
+      \draw[THMBlue,line width=1.2pt,domain=-2:2,samples=101]
+        plot (\x,{\x*\x});
+    \end{scope}
+  \end{scope}
+
+  \begin{scope}[xshift=8cm]
+    \ParabolaStepAxes{below}{right}{right}
+    \node[text=THMBlue] at (0.5,6) {\textcolor{black}{2.}\quad $f_1(x)=(x-1)^2$};
+    \IfClozeTF{}{%
+      \begin{scope}
+        \clip (-2,-4) rectangle (3,4);
+        \draw[black!45,densely dashed,line width=0.9pt,domain=-2:2,samples=101]
+          plot (\x,{\x*\x});
+        \draw[THMBlue,line width=1.2pt,domain=-1:3,samples=101]
+          plot (\x,{(\x-1)^2});
+      \end{scope}
+    }
+  \end{scope}
+
+  \begin{scope}[yshift=-7cm]
+    \ParabolaStepAxes{above}{right}{right}
+    \node[text=THMBlue] at (0.5,6) {\textcolor{black}{3.}\quad $f_2(x)=-2(x-1)^2$};
+    \IfClozeTF{}{%
+      \begin{scope}
+        \clip (-2,-4) rectangle (3,4);
+        \draw[black!45,densely dashed,line width=0.9pt,domain=-1:3,samples=101]
+          plot (\x,{(\x-1)^2});
+        \draw[THMBlue,line width=1.2pt,domain=-0.415:2.415,samples=101]
+          plot (\x,{-2*(\x-1)^2});
+      \end{scope}
+    }
+  \end{scope}
+
+  \begin{scope}[xshift=8cm,yshift=-7cm]
+    \ParabolaStepAxes{above left}{right}{left}
+    \node[text=THMBlue] at (0.5,6) {\textcolor{black}{4.}\quad $g(x)=-2(x-1)^2+3$};
+    \IfClozeTF{}{%
+      \begin{scope}
+        \clip (-2,-4) rectangle (3,4);
+        \draw[black!45,densely dashed,line width=0.9pt,domain=-0.415:2.415,samples=101]
+          plot (\x,{-2*(\x-1)^2});
+        \draw[THMBlue,line width=1.2pt,domain=-0.872:2.872,samples=101]
+          plot (\x,{-2*(\x-1)^2+3});
+      \end{scope}
+    }
+  \end{scope}
+\end{tikzpicture}

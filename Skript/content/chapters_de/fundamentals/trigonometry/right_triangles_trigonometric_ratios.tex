@@ -1,0 +1,165 @@
+\subsubsection{Trigonometrische Funktionen}
+\label{subsubsec:fundamentals_right_triangles_trigonometric_ratios}
+
+Bezogen auf einen Winkel $\alpha$ heißen die beiden Katheten Ankathete und
+Gegenkathete. Diese Bezeichnungen hängen davon ab, welcher Winkel betrachtet
+wird.
+
+\begin{DefinitionBox}{Ankathete und Gegenkathete}{fundamentals_adjacent_and_opposite_leg}
+  Die am Winkel $\alpha$ liegende Kathete heißt \emph{Ankathete}
+  \EnglishTerm{adjacent leg}. Die dem Winkel $\alpha$ gegenüberliegende
+  Kathete heißt \emph{Gegenkathete} \EnglishTerm{opposite leg}.
+
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
+  \end{center}
+\end{DefinitionBox}
+
+\IfClozeTF{\clearpage}{}
+Im rechtwinkligen Dreieck bestimmt das Verhältnis zweier Seiten den
+betrachteten spitzen Winkel eindeutig; diesen nichttrivialen Zusammenhang
+beschreiben die trigonometrischen Funktionen Sinus, Kosinus und Tangens.
+
+\begin{DefinitionBox}{Sinus, Kosinus und Tangens}{fundamentals_sine_cosine_tangent}
+  Die drei grundlegenden trigonometrischen Funktionen sind
+  \emph{Sinus} \EnglishTerm{sine}, \emph{Kosinus} \EnglishTerm{cosine} und
+  \emph{Tangens} \EnglishTerm{tangent}. Mit ihnen wird aus einem gegebenen
+  Winkel das jeweilige Seitenverhältnis berechnet:
+  \par\smallskip
+  \noindent
+  \begin{minipage}[c]{0.54\linewidth}
+    \begin{ClozeArea}[18]{8}
+      \begin{align*}
+        \sin(\alpha)
+          &\coloneqq\frac{\text{Gegenkathete}}{\text{Hypotenuse}}
+           =\frac{a}{c},\\
+        \cos(\alpha)
+          &\coloneqq\frac{\text{Ankathete}}{\text{Hypotenuse}}
+           =\frac{b}{c},\\
+        \tan(\alpha)
+          &\coloneqq\frac{\text{Gegenkathete}}{\text{Ankathete}}
+           =\frac{a}{b}.
+      \end{align*}
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.42\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_relative_sides.tex}
+  \end{minipage}
+\end{DefinitionBox}
+
+\begin{KeyPointBox}[breakable=false]{Arkusfunktionen}{fundamentals_inverse_trigonometric_ratios}
+  Sinus, Kosinus und Tangens berechnen aus einem Winkel ein Seitenverhältnis.
+  Die \emph{Arkusfunktionen} kehren diese Zuordnung um: Mit ihnen wird aus
+  einem Seitenverhältnis der zugehörige Winkel berechnet.
+  \[
+    \begin{array}{@{}r@{\qquad}l@{\qquad}c@{\qquad}l@{}}
+      \sin(\alpha)=x
+      & \TransformOp{\arcsin(\ldots)}
+      & \Longleftrightarrow
+      & \alpha=\arcsin(x)\\[0.9em]
+      \cos(\alpha)=x
+      & \TransformOp{\arccos(\ldots)}
+      & \Longleftrightarrow
+      & \alpha=\arccos(x)\\[0.9em]
+      \tan(\alpha)=x
+      & \TransformOp{\arctan(\ldots)}
+      & \Longleftrightarrow
+      & \alpha=\arctan(x)
+    \end{array}
+  \]
+  Auf vielen Taschenrechnern stehen dafür die Tasten
+  $\sin^{-1}$, $\cos^{-1}$ und $\tan^{-1}$.
+\end{KeyPointBox}
+
+\begin{RemarkBox}[remark title=Winkelmodus des Taschenrechners]
+  \noindent
+  \begin{minipage}[c]{0.58\linewidth}
+    Der Taschenrechner muss wissen, in welchem Winkelmaß eine trigonometrische
+    Funktion einen Winkel annimmt bzw. eine Arkusfunktion einen Winkel ausgibt:
+    \texttt{DEG} steht für Gradmaß, \texttt{RAD} für Bogenmaß. Mit der Taste
+    \texttt{DRG} wechselt man zwischen den Modi. \\
+    \begin{equation*}
+      \begin{aligned}
+      \text{\texttt{DEG}}
+        &\;\longleftrightarrow\; \text{Gradmaß }\text{\EnglishTerm{degree measure}},\\
+      \text{\texttt{RAD}}
+        &\;\longleftrightarrow\; \text{Bogenmaß }\text{\EnglishTerm{radian measure}}.
+      \end{aligned}
+    \end{equation*}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.38\linewidth}
+    \centering
+    \includegraphics[width=0.82\linewidth]{content/resources/chapters/fundamentals/images/calculator_angle_mode_rad.png}
+  \end{minipage}
+\end{RemarkBox}
+
+\begin{ExampleBox}{Winkel und Kathete bestimmen}{fundamentals_trigonometric_ratios_example}
+  \noindent
+  \begin{minipage}[t]{0.72\linewidth}
+    \vspace{0pt}
+    Gegeben ist ein rechtwinkliges Dreieck mit der Hypotenuse $c=5\,\mathrm{cm}$ und einer Kathete
+    $b=4\,\mathrm{cm}$. Gesucht sind der Winkel $\alpha$ und die Kathete $a$. \\
+
+    Wir berechnen zunächst den Winkel $\alpha$. Da $c$, die Hypotenuse, und $b$,
+    die Ankathete von $\alpha$, bekannt sind, verwenden wir hierfür die Kosinus-Funktion
+    bzw. die Arkus-Kosinus-Funktion:
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.24\linewidth}
+    \vspace{0pt}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/right_triangle_trigonometric_ratios_example.tex}
+  \end{minipage}
+  %
+  \[
+    \Cloze{3.1cm}{\cos(\alpha)=\frac{b}{c}}
+    \quad\Longrightarrow\quad
+    \EquationBranches[\approx]
+      {\Cloze{5.8cm}{%
+        \alpha=\arccos\!\left(\frac{b}{c}\right)
+          =\arccos\!\left(\frac{4\,\mathrm{cm}}{5\,\mathrm{cm}}\right)}}
+      {\Cloze{1.6cm}{36{,}9^\circ}}
+      {\text{(Gradmaß)}}
+      {\Cloze{1.6cm}{0{,}644}}
+      {\text{(Bogenmaß)}}
+  \]
+
+  Anschließend berechnen wir die Kathete $a$ mit \dots
+  \begingroup
+  \setlength{\abovedisplayskip}{0.45em}
+  \setlength{\abovedisplayshortskip}{0.45em}
+  \setlength{\belowdisplayskip}{0.65em}
+  \setlength{\belowdisplayshortskip}{0.65em}
+  \begin{itemize}[leftmargin=*,topsep=0.35em,itemsep=0pt,parsep=0pt]
+    \item der Sinus-Funktion:
+      \[
+        \Cloze{3.2cm}{\sin(\alpha)=\frac{a}{c}}
+        \quad\Longrightarrow\quad
+        \Cloze{9.7cm}{%
+          a=\sin(\alpha) \cdot c
+            =\sin(36{,}9^\circ)\cdot5\,\mathrm{cm}
+            \approx3\,\mathrm{cm}}
+      \]
+    \item der Tangens-Funktion:
+      \[
+        \Cloze{3.2cm}{\tan(\alpha)=\frac{a}{b}}
+        \quad\Longrightarrow\quad
+        \Cloze{9.7cm}{%
+          a=\tan(\alpha) \cdot b
+            =\tan(36{,}9^\circ)\cdot4\,\mathrm{cm}
+            \approx3\,\mathrm{cm}}
+      \]
+    \item dem Satz des Pythagoras:
+      \[
+        \Cloze{3.2cm}{a^2+b^2=c^2}
+        \quad\Longrightarrow\quad
+        \Cloze{9.7cm}{%
+          a=\sqrt{c^2-b^2}
+            =\sqrt{(5\,\mathrm{cm})^2-(4\,\mathrm{cm})^2}
+            =3\,\mathrm{cm}}
+      \]
+  \end{itemize}
+  \endgroup
+\end{ExampleBox}
+
+\IfClozeTF{}{\clearpage}

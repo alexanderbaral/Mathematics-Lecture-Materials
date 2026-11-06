@@ -1,0 +1,9 @@
+\begin{tikzpicture}[font=\normalsize,>=stealth]
+  \node (root) at (0,0) {\Huge $\sqrt[n]{a}$};
+  \node[anchor=east,text=THMBlue] (index) at (-0.65,0.8)
+    {\Lang{Wurzelexponent}{root index}};
+  \node[anchor=west,text=THMBlue] (radicand) at (0.65,-0.75)
+    {\Lang{Radikand}{radicand}};
+  \draw[->,THMBlue,line width=0.7pt] (index.south east) -- (-0.42,0.28);
+  \draw[->,THMBlue,line width=0.7pt] (radicand.west) -- (0.36,-0.38);
+\end{tikzpicture}

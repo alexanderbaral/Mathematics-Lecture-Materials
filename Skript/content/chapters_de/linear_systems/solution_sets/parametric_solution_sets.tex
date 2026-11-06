@@ -1,0 +1,136 @@
+\clearpage
+\subsection{Unendlich viele Lösungen parametrisieren}
+\label{subsec:linear_systems_parametric_solution_sets}
+
+Besitzt ein lösbares LGS $\infty$-viele Lösungen, wird seine Lösungsmenge
+mithilfe von Parametern beschrieben.
+Das folgende Beispiel zeigt dies anhand eines bereits bekannten LGS.
+
+\begin{ExampleBox}{Eine Lösungsgerade parametrisieren}{linear_systems_parametric_solution}
+  Das folgende $2\times2$-LGS haben wir zuvor bereits geometrisch betrachtet.
+  Nun untersuchen wir es zusätzlich mithilfe des Rangs und lösen es mit dem
+  Gauß-Verfahren:
+  \[
+    \begin{aligned}
+      \textcolor{THMBlue}{x_1+x_2}&\textcolor{THMBlue}{=2},\\
+      \textcolor{olive!80!black}{2x_1+2x_2}&\textcolor{olive!80!black}{=4}.
+    \end{aligned}
+    \quad\Longleftrightarrow\quad
+    \left[
+      \begin{array}{@{}rr|r@{}}
+        \Cloze{0.7cm}{\textcolor{THMBlue}{1}}&
+        \Cloze{0.7cm}{\textcolor{THMBlue}{1}}&
+        \Cloze{0.7cm}{\textcolor{THMBlue}{2}}\\[0.35em]
+        \Cloze{0.7cm}{\textcolor{olive!80!black}{2}}&
+        \Cloze{0.7cm}{\textcolor{olive!80!black}{2}}&
+        \Cloze{0.7cm}{\textcolor{olive!80!black}{4}}
+      \end{array}
+    \right].
+  \]
+  Die Vorwärtselimination liefert die Zeilenstufenform
+  \begin{ClozeArea}[32]{8}
+    \[
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[\begin{array}{@{}rr|r@{}}
+          \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+          \textcolor{olive!80!black}{2}&\textcolor{olive!80!black}{2}&
+          \textcolor{olive!80!black}{4}
+        \end{array}\right]
+        &\begin{array}{@{}l@{}}
+          {}\\
+          \smash{\TransformOp{Z_2-2Z_1}}
+        \end{array}\\[1.0em]
+        \Longleftrightarrow
+        &\left[\begin{array}{@{}rr|r@{}}
+          \textcolor{THMBlue}{1}&\textcolor{THMBlue}{1}&\textcolor{THMBlue}{2}\\
+          \textcolor{olive!80!black}{0}&\textcolor{olive!80!black}{0}&
+          \textcolor{olive!80!black}{0}
+        \end{array}\right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
+  \end{ClozeArea}
+  Es gilt
+  \[
+    \left.
+    \begin{aligned}
+      n&=\Cloze{1cm}{2},\\[0.5em]
+      \operatorname{rang}(A)&=\Cloze{1cm}{1},\\[0.5em]
+      \operatorname{rang}([A\mid b])&=\Cloze{1cm}{1}
+    \end{aligned}
+    \quad\right\}
+    \quad\Longrightarrow\quad
+    \Cloze{4cm}{\infty\text{-viele Lösungen}}.
+  \]
+
+  \noindent
+  \begin{minipage}[c]{0.62\linewidth}
+    Um die Lösungsmenge geschickt anzugeben, führen wir einen Parameter
+    $t\in\R$ ein und setzen $x_2=t$ in Zeile 1 ein.
+    \[
+      \begin{aligned}
+        \Cloze{10cm}{
+        x_1+x_2=2
+        \quad\overset{x_2\,=\,t}{\Longleftrightarrow}\quad x_1+t=2
+        \quad\Longleftrightarrow\quad x_1=2-t.
+        }
+      \end{aligned}
+    \]
+    Damit lautet die Lösungsmenge
+    \[
+      \mathcal{L}
+      =\Cloze{7.8cm}{
+        \left\{
+          \begin{pmatrix}2\\0\end{pmatrix}
+          +t\begin{pmatrix}-1\\1\end{pmatrix}
+          \;\middle|\;t\in\R
+        \right\}
+      }.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.34\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/linear_systems/tikz/infinitely_many_solutions_lines.tex}
+  \end{minipage}
+
+  \smallskip
+  Der Parameter $t$ wirkt wie ein Schieberegler: Für jeden Wert von $t$
+  entsteht eine andere Lösung $(2-t,t)$. Durchläuft $t$ alle reellen Zahlen,
+  durchläuft der zugehörige Punkt die gesamte Lösungsgerade $x_1+x_2=2$.
+\end{ExampleBox}
+
+\begin{KeyPointBox}{Anzahl der freien Variablen}{linear_systems_number_free_variables}
+  Variablen für man einen freien Parameter einführt, nennt man \emph{freie Variablen} 
+  \EnglishTerm{free variables}. Für ein lösbares LGS mit $n$ Unbekannten ist die Anzahl
+  freier Variablen gegeben durch
+  \[
+    \#\{\text{freie Variablen}\}
+    = \#\{\text{benötigte Parameter}\}
+    =n-\operatorname{rang}(A).
+  \]
+  \par\smallskip
+  \hfill
+  {\footnotesize\color{black!55}
+    $\#\{\ldots\}\mathrel{\widehat{=}}\text{Anzahl der Elemente von }\{\ldots\}$.}
+\end{KeyPointBox}
+
+
+Die Anzahl der freien Variablen bestimmt zugleich die Dimension der
+Lösungsmenge:
+\[
+  \begin{aligned}
+    0\ \text{freie Variable}
+    &\quad\Longleftrightarrow\quad
+    \dim(\mathcal L)=0 \quad \text{(eindeutiger Lösungspunkt)} \\[0.5em]
+    1\ \text{freie Variable}
+    &\quad\Longleftrightarrow\quad
+    \dim(\mathcal L)=1 \quad \text{(Lösungsgerade)} \\[0.5em]
+    2\ \text{freie Variablen}
+    &\quad\Longleftrightarrow\quad
+    \dim(\mathcal L)=2 \quad \text{(Lösungsebene)} \\[0.5em]
+    3\ \text{freie Variablen}
+    &\quad\Longleftrightarrow\quad
+    \dim(\mathcal L)=3 \quad \text{(Lösungsvolumen)} \\[0.5em]
+    &\hspace{-2.8em}\vdots &&
+  \end{aligned}
+\]

@@ -1,0 +1,71 @@
+\subsubsection{Betrag von Summen und Differenzen}
+\label{subsubsec:vector_algebra_magnitude_sums_differences}
+
+Nun verwenden wir das Skalarprodukt, um den Betrag einer Summe oder Differenz von
+Vektoren zu berechnen. Dies ist beispielsweise relevant, wenn mehrere nicht parallele
+Kräfte auf einen Körper wirken und die resultierende Kraft bestimmt werden soll.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/vector_sum_difference_magnitudes.tex}
+\end{center}
+
+Dazu schreiben wir das Betragsquadrat eines Vektors als sein Skalarprodukt mit
+sich selbst und multiplizieren aus:
+\begin{ClozeArea}[34]{7}
+  \[
+    \begin{aligned}
+      |\vec a\pm\vec b|^2
+      &=(\vec a\pm\vec b)\cdot(\vec a\pm\vec b)\\[0.5em]
+      &=\vec a\cdot\vec a+\vec b\cdot\vec b
+        \pm2\,\vec a\cdot\vec b\\[0.5em]
+      &=|\vec a|^2+|\vec b|^2
+        \pm2|\vec a|\,|\vec b|\cos(\varphi).
+    \end{aligned}
+  \]
+\end{ClozeArea}
+
+\begin{KeyPointBox}{Beträge von Vektorkombinationen}{vector_algebra_sum_difference_magnitudes}
+  \[
+    |\vec a\pm\vec b|
+    =\sqrt{|\vec a|^2+|\vec b|^2
+      \pm2|\vec a|\,|\vec b|\cos(\varphi)}.
+  \]
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Kosinussatz als Differenzfall}{vector_algebra_cosine_rule_derivation}
+  Der Kosinussatz ergibt sich unmittelbar aus dem oben betrachteten
+  Differenzfall mit $a=|\vec a|$, $b=|\vec b|$ und
+  $c=|\vec a-\vec b|$:
+  \[
+    c^2=a^2+b^2-2ab\cos(\varphi).
+  \]
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Resultierende Kraft}{vector_algebra_resultant_force_example}
+  \noindent
+  \begin{minipage}[c]{0.55\linewidth}
+    Auf eine Masse wirken zwei Kräfte mit
+    \[
+      |\textcolor{THMBlue}{\vec F_1}|=\qty{1}{\newton},\qquad
+      |\textcolor{olive!80!black}{\vec F_2}|=\qty{2}{\newton}
+    \]
+    unter einem Winkel von $60^\circ$. Für die resultierende Kraft
+    $\vec F_{\mathrm R}=\textcolor{THMBlue}{\vec F_1}
+      +\textcolor{olive!80!black}{\vec F_2}$ gilt
+    \[
+      \begin{aligned}
+        |\vec F_{\mathrm R}|
+        &=\sqrt{|\textcolor{THMBlue}{\vec F_1}|^2
+          +|\textcolor{olive!80!black}{\vec F_2}|^2
+          +2|\textcolor{THMBlue}{\vec F_1}|
+          \,|\textcolor{olive!80!black}{\vec F_2}|\cos(60^\circ)}\\
+        &=\Cloze{4.8cm}{\sqrt7\,\unit{\newton}
+          \approx\qty{2.65}{\newton}}.
+      \end{aligned}
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.41\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/resultant_force_example.tex}
+  \end{minipage}
+\end{ExampleBox}

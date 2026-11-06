@@ -1,0 +1,45 @@
+\begin{tikzpicture}[every node/.style={font=\normalsize}]
+  \node[opacity=0] (row-measure) at (-3.2,0) {$
+    \begin{pmatrix}
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast
+    \end{pmatrix}$};
+
+  \fill[yellow!55]
+    ($(row-measure.west)+(0.18,-0.21)$) rectangle
+    ($(row-measure.east)+(-0.18,0.21)$);
+  \node (row) at (-3.2,0) {$
+    \begin{pmatrix}
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast
+    \end{pmatrix}$};
+
+  \node at (0,0) {oder};
+
+  \node[opacity=0] (column-measure) at (3.2,0) {$
+    \begin{pmatrix}
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast
+    \end{pmatrix}$};
+
+  \fill[yellow!55]
+    ($(column-measure.north)+(-0.22,-0.08)$) rectangle
+    ($(column-measure.south)+(0.22,0.08)$);
+  \node (column) at (3.2,0) {$
+    \begin{pmatrix}
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast\\
+      \ast&\ast&\ast&\ast&\ast
+    \end{pmatrix}$};
+\end{tikzpicture}

@@ -1,0 +1,113 @@
+\subsubsection{Orthogonalität und Winkel}
+\label{subsubsec:vector_algebra_orthogonality_angles}
+
+Das Orthogonalitätskriterium aus
+Merke~\ref{key:vector_algebra_dot_product_orthogonal_vectors} verwenden wir,
+um eine orthogonale Richtung zu bestimmen.
+
+\begin{ExampleBox}{Eine orthogonale Richtung bestimmen}{vector_algebra_find_orthogonal_vector}
+  \noindent
+  \begin{minipage}[c]{0.57\linewidth}
+    Für welches $x\in\R$ sind die beiden Vektoren
+    \[
+      \vec a=\begin{pmatrix}1\\2\end{pmatrix},
+      \qquad
+      \vec b=\begin{pmatrix}4\\x\end{pmatrix}
+    \]
+    senkrecht zueinander?
+    \begin{ClozeArea}[20]{9}
+      \[
+        \begin{array}{@{}rcl@{}}
+          \vphantom{\begin{pmatrix}1\\2\end{pmatrix}}\vec a\perp\vec b
+          &\Longleftrightarrow& \vec a\cdot\vec b=0\\[0.5em]
+          \vphantom{\begin{pmatrix}1\\2\end{pmatrix}}
+          &\Longleftrightarrow&
+            \begin{pmatrix}1\\2\end{pmatrix}\!\cdot\!
+            \begin{pmatrix}4\\x\end{pmatrix}=0\\[0.5em]
+          \vphantom{\begin{pmatrix}1\\2\end{pmatrix}}
+          &\Longleftrightarrow& 4+2x=0\\[0.5em]
+          \vphantom{\begin{pmatrix}1\\2\end{pmatrix}}
+          &\Longleftrightarrow& x=-2.
+        \end{array}
+      \]
+    \end{ClozeArea}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.39\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_vectors_example.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+Mit dem Skalarprodukt lässt sich nicht nur die Orthogonalität zweier Vektoren
+prüfen, sondern auch ihr Zwischenwinkel berechnen.
+
+\begin{KeyPointBox}{Winkel zwischen zwei Vektoren}{vector_algebra_angle_between_vectors}
+  
+    Durch Umstellen der geometrischen Definition des Skalarprodukts nach dem
+    Zwischenwinkel $\varphi$ erhalten wir
+    \par\smallskip\noindent
+    \begin{minipage}[c]{0.72\linewidth}
+      \[
+        \vec a\cdot\vec b=|\vec a|\,|\vec b|\cos(\varphi)
+        \quad \Longleftrightarrow \quad
+        \varphi=\arccos\!\left(
+          \frac{\vec a\cdot\vec b}{|\vec a|\,|\vec b|}
+        \right),
+        \quad \vec a,\vec b\ne\vec 0.
+      \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.25\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_geometry.tex}
+  \end{minipage}
+  \par\smallskip
+  Das Skalarprodukt im Zähler kann mithilfe der Koordinatenformel
+  ausgewertet werden.
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Winkel zweier Vektoren}{vector_algebra_angle_example}
+  {\raggedright
+    Für die Vektoren$\vec a=\begin{pmatrix}1\\2\end{pmatrix}$ und
+    $\vec b=\begin{pmatrix}4\\0\end{pmatrix}$ können wir den
+    Zwischenwinkel $\varphi$ bestimmen.\par
+  }
+  \begin{minipage}[c]{0.69\linewidth}
+    \IfClozeTF{%
+      \begin{ClozeArea}[24]{13}
+      \end{ClozeArea}
+    }{%
+    \[
+      \begin{aligned}
+        \varphi
+        &=\arccos\!\left(
+            \frac{\vec a\cdot\vec b}{|\vec a|\,|\vec b|}
+          \right)
+          =\arccos\!\left(
+            \frac{
+              \begin{pmatrix}1\\2\end{pmatrix}\!\cdot\!
+              \begin{pmatrix}4\\0\end{pmatrix}}
+              {\sqrt{1^2+2^2}\,\sqrt{4^2+0^2}}
+          \right)\\[0.8em]
+        &=\arccos\!\left(
+            \frac{1\cdot4+2\cdot0}
+              {\sqrt{1^2+2^2}\,\sqrt{4^2+0^2}}
+          \right)
+          =\arccos\!\left(
+            \frac{4+0}{\sqrt5\,\sqrt{16}}
+          \right)\\[0.8em]
+        &=\arccos\!\left(\frac{4}{\sqrt5\cdot4}\right)
+          =\EquationBranches[\approx]
+            {\arccos\!\left(\frac1{\sqrt5}\right)}
+            {63{,}4^\circ}
+            {\text{(Gradmaß)}}
+            {1{,}107}
+            {\text{(Bogenmaß)}}
+      \end{aligned}
+    \]
+    }
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.29\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/angle_between_vectors_example.tex}
+  \end{minipage}
+\end{ExampleBox}

@@ -1,0 +1,36 @@
+\subsection{Homogene lineare Gleichungssysteme}
+\label{subsec:linear_systems_homogeneous_systems}
+
+Ein wichtiger Spezialfall entsteht, wenn sämtliche Absolutglieder eines LGS
+null sind.
+
+\begin{DefinitionBox}{Homogenes lineares Gleichungssystem}{linear_systems_homogeneous_system}
+  Ein lineares Gleichungssystem heißt \emph{homogen}
+  \EnglishTerm{homogeneous}, wenn alle Absolutglieder gleich $\MathHighlight{\text{null}}$ sind:
+  \[
+    \begin{aligned}
+      a_{11}x_1+a_{12}x_2+\dots+a_{1n}x_n&=\MathHighlight{0},\\
+      a_{21}x_1+a_{22}x_2+\dots+a_{2n}x_n&=\MathHighlight{0},\\
+      &\mathrel{\phantom{=}}\vdots\\
+      a_{m1}x_1+a_{m2}x_2+\dots+a_{mn}x_n&=\MathHighlight{0}.
+    \end{aligned}
+  \]
+  Seine erweiterte Koeffizientenmatrix besitzt die Form $[A\mid 0]$.
+\end{DefinitionBox}
+
+\begin{TheoremBox}{Triviale Lösung homogener LGS}{linear_systems_homogeneous_trivial_solution}
+  Jedes homogene LGS besitzt die \emph{triviale Lösung}
+  \EnglishTerm{trivial solution}
+  \[
+    (x_1,\dots,x_n)=\Cloze{4.5cm}{(0,\dots,0)}.
+  \]
+  Denn beim Einsetzen dieser Werte wird jede Gleichung zu $0=0$.
+\end{TheoremBox}
+
+\begin{KeyPointBox}{Lösungsmengen homogener LGS}{linear_systems_homogeneous_solution_sets}
+  Da die triviale Lösung immer vorhanden ist, kann die Lösungsmenge eines
+  homogenen LGS nicht leer sein:
+  \SolutionTypeCases*
+  Ein homogenes LGS besitzt daher entweder genau eine oder unendlich viele
+  Lösungen.
+\end{KeyPointBox}

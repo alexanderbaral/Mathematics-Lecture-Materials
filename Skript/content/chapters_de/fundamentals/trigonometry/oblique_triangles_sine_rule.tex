@@ -1,0 +1,37 @@
+\subsubsection{Sinussatz}
+\label{subsubsec:fundamentals_oblique_triangles_sine_rule}
+
+Die Höhe $h$ zerlegt das schiefwinklige Dreieck in zwei rechtwinklige
+Dreiecke. Dadurch lässt sich der Sinussatz aus den bereits bekannten
+trigonometrischen Funktionen herleiten.
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/fundamentals/tikz/oblique_triangle_sine_rule_altitude.tex}
+\end{center}
+
+In den beiden rechtwinkligen Teildreiecken gilt
+\begin{ClozeArea}[34]{9}
+  \[
+    \left.
+    \begin{aligned}
+      \text{linkes Dreieck:}\quad &\sin(\alpha)=\frac{h}{b}\\
+      \text{rechtes Dreieck:}\quad &\sin(\beta)=\frac{h}{a}
+    \end{aligned}
+    \quad \right\}
+    \quad\Longrightarrow\quad
+    b\sin(\alpha)=h=a\sin(\beta)
+    \quad\Longrightarrow\quad
+    \frac{\sin(\alpha)}{a}=\frac{\sin(\beta)}{b}.
+  \]
+\end{ClozeArea}
+
+Analog lässt sich dieser Zusammenhang für alle Seiten und Winkel des Dreiecks verallgemeinern.
+\begin{TheoremBox}{Sinussatz}{fundamentals_sine_rule}
+  In jedem Dreieck ist das Verhältnis des Sinus eines Winkels zur Länge der
+  gegenüberliegenden Seite für alle drei Winkel gleich:
+  \begin{ClozeArea}[20]{5}
+    \[
+      \frac{\sin(\alpha)}{a}=\frac{\sin(\beta)}{b}=\frac{\sin(\gamma)}{c}.
+    \]
+  \end{ClozeArea}
+\end{TheoremBox}

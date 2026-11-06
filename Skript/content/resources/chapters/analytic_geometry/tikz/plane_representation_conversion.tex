@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+  >=Latex,
+  form/.style={
+    draw=black!30,
+    fill=black!2,
+    line width=0.6pt,
+    rounded corners=2pt,
+    minimum width=6.2cm,
+    minimum height=2.1cm,
+    align=center
+  }
+]
+  \path[use as bounding box] (-0.05,-1.20) rectangle (15.75,1.20);
+
+  \node[form] (parameter) at (3.2,0) {%
+    \textbf{\Lang{Parameterform}{Parametric form}}\\[0.65em]
+    $\displaystyle
+      E\colon\quad \vec x=\overrightarrow{OP}+\lambda\vec a+\mu\vec b$
+  };
+
+  \node[form] (normal) at (12.5,0) {%
+    \textbf{\Lang{Normalenform}{Normal equation}}\\[0.65em]
+    $\displaystyle
+      E\colon\quad (\vec x-\overrightarrow{OP})\cdot\vec n=0$
+  };
+
+  \draw[->,THMBlue,line width=1.05pt]
+    ([xshift=0.12cm,yshift=0.4cm]parameter.east) --
+    node[above=4pt,inner sep=0pt,text=black!70]
+      {\Lang{Merke}{Key Point}~\ref{key:analytic_geometry_parameter_to_normal_method}}
+    ([xshift=-0.12cm,yshift=0.4cm]normal.west);
+
+  \draw[->,THMBlue,line width=1.05pt]
+    ([xshift=-0.12cm,yshift=-0.4cm]normal.west) --
+    node[below=4pt,inner sep=0pt,text=black!70]
+      {\Lang{Merke}{Key Point}~\ref{key:analytic_geometry_normal_to_parameter_method}}
+    ([xshift=0.12cm,yshift=-0.4cm]parameter.east);
+\end{tikzpicture}

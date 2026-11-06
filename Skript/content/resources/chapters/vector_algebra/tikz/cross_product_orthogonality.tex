@@ -1,0 +1,20 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0.85,0.55);
+  \coordinate (A) at (4.45,0.55);
+  \coordinate (B) at (2.20,1.30);
+  \coordinate (C) at (0.85,3.10);
+  \coordinate (P) at (5.80,1.30);
+
+  \fill[black!5] (O)--(A)--(P)--(B)--cycle;
+  \draw[black!30,dashed] (A)--(P)--(B);
+  \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+    node[right] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt] (O)--(B)
+    node[above right] {$\vec b$};
+  \draw[->,red!70!black,line width=1.35pt] (O)--(C)
+    node[above] {$\vec c$};
+
+  % Die räumlichen rechten Winkel erscheinen in der Projektion verschieden groß.
+  \RightAngleMark{(O)}{6}{84}{0.54}
+  \RightAngleMark{(O)}{34}{84}{0.34}
+\end{tikzpicture}

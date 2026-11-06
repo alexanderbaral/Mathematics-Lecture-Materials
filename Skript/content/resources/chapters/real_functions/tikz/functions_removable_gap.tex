@@ -1,0 +1,57 @@
+\pgfdeclarelayer{functionsgrid}
+\pgfsetlayers{functionsgrid,main}
+\begin{tikzpicture}[x=1.5cm,y=0.85cm,>=Latex,line cap=round]
+  \draw[->,black!55] (-2.5,0)--(3.2,0) node[right] {$x$};
+  \draw[->,black!55] (0,-3.5)--(0,2.2) node[above] {$y$};
+  \draw[black!50] (-2,-0.055)--(-2,0.055);
+\node[above=4pt,inner sep=1pt] (xt0) at (-2,0) {$-2$};
+\draw[black!50] (-1,-0.055)--(-1,0.055);
+\node[above=4pt,inner sep=1pt] (xt1) at (-1,0) {$-1$};
+\draw[black!50] (1,-0.055)--(1,0.055);
+\node[below=4pt,inner sep=1pt] (xt2) at (1,0) {$1$};
+\draw[black!50] (2,-0.055)--(2,0.055);
+\node[below=4pt,inner sep=1pt] (xt3) at (2,0) {$2$};
+\draw[black!50] (3,-0.055)--(3,0.055);
+\node[below=4pt,inner sep=1pt] (xt4) at (3,0) {$3$};
+\draw[black!50] (-0.055,-3)--(0.055,-3);
+\node[left=4pt,inner sep=1pt] (yt5) at (0,-3) {$-3$};
+\draw[black!50] (-0.055,-2)--(0.055,-2);
+\node[left=4pt,inner sep=1pt] (yt6) at (0,-2) {$-2$};
+\draw[black!50] (-0.055,-1)--(0.055,-1);
+\node[above left=5pt,inner sep=1pt] (yt7) at (0,-1) {$-1$};
+\draw[black!50] (-0.055,1)--(0.055,1);
+\node[left=4pt,inner sep=1pt] (yt8) at (0,1) {$1$};
+\draw[black!50] (-0.055,2)--(0.055,2);
+\node[left=4pt,inner sep=1pt] (yt9) at (0,2) {$2$};
+
+  \begin{scope}
+    \clip (-2.5,-3.5) rectangle (3,2);
+    \draw[THMBlue,line width=1.15pt] (-2.5,-3.5)--(-1.05,-2.05);
+    \draw[THMBlue,line width=1.15pt] (-0.95,-1.95)--(3,2);
+    \draw[green!55!black,densely dashed,line width=1.15pt,xshift=1pt,yshift=-2pt] (-2.5,-3.5)--(3,2);
+  \end{scope}
+  \draw[THMBlue,line width=1pt,fill=white] (-1,-2) circle (3.4pt);
+  \fill[green!55!black] (-1,-2) circle (1.8pt);
+  \draw[THMBlue,line width=1.15pt] (-1.6,2.9)--(-1.1,2.9);
+  \node[anchor=west] at (-1.0,2.9) {$f$};
+  \draw[green!55!black,densely dashed,line width=1.15pt] (0.6,2.9)--(1.1,2.9);
+  \node[anchor=west] at (1.2,2.9) {$\widetilde f$};
+  \node[anchor=north] at (0.25,-4.1)
+    {\Lang{Bei $x=-1$ ist nur $\widetilde f$ definiert.}{At $x=-1$, only $\widetilde f$ is defined.}};
+  \begin{pgfonlayer}{functionsgrid}
+    \begin{scope}[even odd rule]
+      \clip (-2.5,-3.5) rectangle (3,2)
+        (xt0.south west) rectangle (xt0.north east)
+        (xt1.south west) rectangle (xt1.north east)
+        (xt2.south west) rectangle (xt2.north east)
+        (xt3.south west) rectangle (xt3.north east)
+        (xt4.south west) rectangle (xt4.north east)
+        (yt5.south west) rectangle (yt5.north east)
+        (yt6.south west) rectangle (yt6.north east)
+        (yt7.south west) rectangle (yt7.north east)
+        (yt8.south west) rectangle (yt8.north east)
+        (yt9.south west) rectangle (yt9.north east);
+      \draw[step=1,black!8,line width=0.25pt] (-2.5,-3.5) grid (3,2);
+    \end{scope}
+  \end{pgfonlayer}
+\end{tikzpicture}

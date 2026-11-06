@@ -1,0 +1,22 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (4.45,0);
+  \coordinate (B) at (1.25,1.55);
+  \coordinate (P) at (5.70,1.55);
+  \coordinate (H) at (1.25,0);
+
+  \fill[yellow!55] (O)--(A)--(P)--(B)--cycle;
+  \draw[black!45,dashed] (A)--(P)--(B);
+  \draw[black!55,dashed] (B)--(H)
+    node[midway,right] {$\vec b_{\perp}$};
+
+  \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+    node[midway,below] {$\vec a$};
+  \draw[->,olive!80!black,line width=1.35pt] (O)--(B)
+    node[midway,above left] {$\vec b$};
+
+  \draw[black!60,line width=0.75pt]
+    (0.66,0) arc[start angle=0,end angle=51.1,radius=0.66];
+  \node at ({0.40*cos(25.55)},{0.40*sin(25.55)}) {$\varphi$};
+  \node at (3.30,1.08) {$A=|\vec c|$};
+\end{tikzpicture}

@@ -1,0 +1,38 @@
+\section{Grundvorstellungen und Koordinaten}
+\label{sec:vector_algebra_fundamentals}
+
+In der Mathematik ist der Vektorbegriff allgemeiner als die geometrische
+Vorstellung eines Pfeils.
+
+\begin{RemarkBox}[remark title=Abstrakter Vektorbegriff]
+  \label{rem:vector_algebra_abstract_vector_concept}
+  Ein \emph{Vektor} \EnglishTerm{vector} ist ein mathematisches Objekt, das zu einem sogenannten
+  \emph{Vektorraum} \EnglishTerm{vector space} gehört. Die zentrale Idee
+  eines Vektorraums ist, dass sich seine Vektoren addieren und mit
+  Skalaren multiplizieren lassen und die Ergebnisse wieder zum selben
+  Vektorraum gehören:
+  \[
+    \begin{aligned}
+      v+w       &\in V,\\
+      \lambda v &\in V
+    \end{aligned}
+    \qquad
+    \text{mit } v,w\in V, \lambda\in\R.
+  \]
+  %
+\end{RemarkBox}
+
+Beispielsweise bilden Verschiebungen, Polynome und Funktionen jeweils einen
+solchen Vektorraum:
+
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/abstract_vector_spaces.tex}
+\end{center}
+
+In diesem Kapitel betrachten wir ausschließlich Verschiebungsvektoren im
+$n$-dimensionalen Raum, also im $\R^n$. Später lernen wir weitere Vektorräume
+kennen und übertragen die hier entwickelten Konzepte auf sie.
+
+\input{content/chapters_de/vector_algebra/vector_fundamentals/vectors_as_displacements.tex}
+\clearpage
+\input{content/chapters_de/vector_algebra/vector_fundamentals/coordinate_representation.tex}

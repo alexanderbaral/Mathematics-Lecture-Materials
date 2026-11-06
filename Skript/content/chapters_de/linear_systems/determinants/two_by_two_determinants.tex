@@ -1,0 +1,159 @@
+\subsection{Determinante von $2\times2$-Matrizen}
+\label{subsec:linear_systems_two_by_two_determinants}
+
+Wir lösen nun das allgemeine $2\times2$-LGS mit dem Gauß-Verfahren, um die
+Struktur seiner Lösung genauer zu untersuchen.
+
+\begin{ExampleBox}{Allgemeines $2\times2$-LGS}{linear_systems_determinant_from_gaussian_elimination}
+  Wir lösen das folgende $2\times2$-LGS mit dem Gauß-Verfahren
+  \[
+    \begin{aligned}
+      a_{11}x_1+a_{12}x_2&=b_1,\\
+      a_{21}x_1+a_{22}x_2&=b_2
+    \end{aligned}
+    \qquad\Longleftrightarrow\qquad
+    \left[
+      \begin{array}{@{}cc|c@{}}
+        \Cloze{0.9cm}{a_{11}}&\Cloze{0.9cm}{a_{12}}&\Cloze{0.9cm}{b_1}\\[0.3em]
+        \Cloze{0.9cm}{a_{21}}&\Cloze{0.9cm}{a_{22}}&\Cloze{0.9cm}{b_2}
+      \end{array}
+    \right]
+  \]
+
+  \begin{ClozeArea}[34]{24}
+    \textbf{Vorwärtselimination:}
+    \[
+      \begin{array}{r@{\;}r@{\qquad}l}
+        &\left[
+          \begin{array}{@{}cc|c@{}}
+            a_{11}&a_{12}&b_1\\
+            a_{21}&a_{22}&b_2
+          \end{array}
+        \right]
+        &\raisebox{-0.65em}{\(\TransformOp{a_{11}Z_2-a_{21}Z_1}\)}\\[1.2em]
+        \Longleftrightarrow
+        &\left[
+          \begin{array}{@{}cc|c@{}}
+            a_{11}&a_{12}&b_1\\
+            0&a_{11}a_{22}-a_{12}a_{21}&a_{11}b_2-a_{21}b_1
+          \end{array}
+        \right]
+        &\text{Zeilenstufenform}
+      \end{array}
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+\clearpage
+\begin{tcolorbox}[
+  scriptbox,
+  breakable=false,
+  borderline west={1.2pt}{0pt}{black!40},
+  title={Beispiel~\ref{ex:linear_systems_determinant_from_gaussian_elimination}: Allgemeines $2\times2$-LGS -- Fortsetzung}
+]
+  \begin{ClozeArea}[34]{22}
+    \textbf{Rückwärtseinsetzen:} Für
+    $a_{11}a_{22}-a_{12}a_{21}\neq0$ folgt
+    \begin{itemize}[leftmargin=2.1em,itemsep=0.7em]
+      \item In Zeile 2 einsetzen:
+        \[
+          (a_{11}a_{22}-a_{12}a_{21})x_2
+          =a_{11}b_2-a_{21}b_1
+          \quad\Longleftrightarrow\quad
+          x_2=\frac{a_{11}b_2-a_{21}b_1}
+          {a_{11}a_{22}-a_{12}a_{21}}.
+        \]
+      \item in Zeile 1 einsetzen:
+        \[
+          \begin{aligned}
+            a_{11}x_1+a_{12}x_2=b_1
+            \quad\Longleftrightarrow\quad&
+            a_{11} x_1 + a_{12} \frac{a_{11}b_2-a_{21}b_1}{a_{11}a_{22}-a_{12}a_{21}} = b_1 ,\\[0.6em]
+            \quad\Longleftrightarrow\quad&
+            x_1=\frac{a_{22}b_1-a_{12}b_2}{a_{11}a_{22}-a_{12}a_{21}}.
+          \end{aligned}
+        \]
+    \end{itemize}
+    Damit ergibt sich die folgende Lösungsmenge:
+    \[
+      \mathcal L=
+      \left\{
+        \left(
+          \frac{a_{22}b_1-a_{12}b_2}{a_{11}a_{22}-a_{12}a_{21}},
+          \frac{a_{11}b_2-a_{21}b_1}{a_{11}a_{22}-a_{12}a_{21}}
+        \right)
+      \right\}.
+    \]
+  \end{ClozeArea}
+\end{tcolorbox}
+
+Die Ergebnisse des LGS lassen sich mit der folgenden Definition einer Determinante
+bedeutend leichter und übersichtlicher schreiben.
+
+\begin{DefinitionBox}{Determinante einer $2\times2$-Matrix}{linear_systems_two_by_two_determinant}
+  Für eine $2\times2$ Koeffizientenmatrix
+  \[
+    A=\begin{pmatrix}
+      \textcolor{THMBlue}{a}&\textcolor{olive!80!black}{b}\\
+      \textcolor{olive!80!black}{c}&\textcolor{THMBlue}{d}
+    \end{pmatrix}
+  \]
+  berechnet sich die \emph{Determinante} \EnglishTerm{determinant} von $A$ durch
+  \[
+    \det(A)
+    =\det\!\begin{pmatrix}
+      \textcolor{THMBlue}{a}&\textcolor{olive!80!black}{b}\\
+      \textcolor{olive!80!black}{c}&\textcolor{THMBlue}{d}
+    \end{pmatrix}
+    =\begin{vmatrix}
+      \textcolor{THMBlue}{a}&\textcolor{olive!80!black}{b}\\
+      \textcolor{olive!80!black}{c}&\textcolor{THMBlue}{d}
+    \end{vmatrix}
+    =\textcolor{THMBlue}{ad}-\textcolor{olive!80!black}{bc}
+  \]
+  \textbf{Merkhilfe:}
+  \enquote{\textcolor{THMBlue}{Hauptdiagonale} minus
+  \textcolor{olive!80!black}{Gegendiagonale}.}
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Determinante einer $2\times2$-Matrix}{linear_systems_two_by_two_determinant_calculation}
+  \begin{enumerate}[label=\alph*),leftmargin=1.8em,itemsep=1.0em]
+    \item
+      \(
+        \det\!\begin{pmatrix}3&2\\1&4\end{pmatrix}
+        =\Cloze{6.5cm}{3\cdot4-2\cdot1=10}.
+      \)
+    \item
+      \(
+        \det\!\begin{pmatrix}2&-1\\5&3\end{pmatrix}
+        =\Cloze{6.5cm}{2\cdot3-(-1)\cdot5=11}.
+      \)
+  \end{enumerate}
+\end{ExampleBox}
+
+\begin{samepage}
+Mit der Definition der $2\times2$ Determinante lassen sich die Lösungen des allgemeinen
+$2\times2$ LGS aus Beispiel~\ref{ex:linear_systems_determinant_from_gaussian_elimination}
+nun sehr übersichtlich schreiben.
+\[
+  x_1=
+  \frac{
+    \det\!\begin{pmatrix}
+      \textcolor{THMBlue}{b_1}&a_{12}\\
+      \textcolor{THMBlue}{b_2}&a_{22}
+    \end{pmatrix}
+  }{
+    \det\!\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
+  },
+  \qquad
+  x_2=
+  \frac{
+    \det\!\begin{pmatrix}
+      a_{11}&\textcolor{THMBlue}{b_1}\\
+      a_{21}&\textcolor{THMBlue}{b_2}
+    \end{pmatrix}
+  }{
+    \det\!\begin{pmatrix}a_{11}&a_{12}\\a_{21}&a_{22}\end{pmatrix}
+  }.
+\]
+\end{samepage}

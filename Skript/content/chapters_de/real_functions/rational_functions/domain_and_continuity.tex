@@ -1,0 +1,65 @@
+\subsection{Definition und Gradvergleich}
+\label{subsec:real_functions_rational_fundamentals}
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Gebrochen-rationale Funktion}{real_functions_rational}
+  Eine Funktion $f$ heißt \emph{gebrochen-rationale Funktion}
+  \EnglishTerm{rational function}, wenn sie sich als Quotient zweier Polynome
+  schreiben lässt:
+  \[
+    f(x)=\frac{Z(x)}{N(x)}
+      =\frac{a_mx^m+a_{m-1}x^{m-1}+\dots+a_0}
+            {b_nx^n+b_{n-1}x^{n-1}+\dots+b_0},
+    \qquad
+    \begin{aligned}
+      \deg(Z)&=m,\\
+      \deg(N)&=n.
+    \end{aligned}
+  \]
+
+  \medskip
+  Die Nullstellen des Nenners müssen aus dem Definitionsbereich ausgeschlossen werden:
+  \[
+    D_f=\{x\in\R\mid N(x)\ne0\}.
+  \]
+\end{DefinitionBox}
+
+\begin{DefinitionBox}{Echt und unecht gebrochene Funktionen}{real_functions_proper_improper_rational}
+  Eine gebrochen-rationale Funktion $f(x)=Z(x)/N(x)$ mit $Z\not\equiv0$ heißt
+  \begin{itemize}
+    \item \emph{echt gebrochen} \EnglishTerm{proper rational function}, wenn $\deg(Z)<\deg(N)$;
+    \item \emph{unecht gebrochen} \EnglishTerm{improper rational function}, wenn $\deg(Z)\ge\deg(N)$.
+  \end{itemize}
+\end{DefinitionBox}
+
+% Handschrift: PDF-Seite 23 (alle drei Gradvergleichsbeispiele).
+\begin{ExampleBox}{Zählergrad und Nennergrad vergleichen}{real_functions_rational_classification}
+  Ordnen Sie die Funktionen anhand der höchsten vorkommenden Potenzen ein.
+  Die Definitionsmenge wird weiterhin aus dem ursprünglichen Nenner bestimmt.
+  \begin{enumerate}[label=\alph*),itemsep=0.8\baselineskip]
+    \item \(\displaystyle
+        \mathmakebox[3.2cm][r]{f(x)=\frac{x^2+x+1}{x^4-1}}\quad\Longrightarrow\quad
+        \begin{aligned}
+          \deg(Z)&=\Cloze{0.8cm}{2}\\
+          \deg(N)&=\Cloze{0.8cm}{4}
+        \end{aligned}\quad\Longrightarrow\quad
+        \text{\Cloze{4cm}{echt gebrochen}}
+      \)
+    \item \(\displaystyle
+        \mathmakebox[3.2cm][r]{g(x)=\frac{x^4-1}{x^3+1}}\quad\Longrightarrow\quad
+        \begin{aligned}
+          \deg(Z)&=\Cloze{0.8cm}{4}\\
+          \deg(N)&=\Cloze{0.8cm}{3}
+        \end{aligned}\quad\Longrightarrow\quad
+        \text{\Cloze{4cm}{unecht gebrochen}}
+      \)
+    \item \(\displaystyle
+        \mathmakebox[3.2cm][r]{h(x)=\frac{x^4+1}{x^4-1}}\quad\Longrightarrow\quad
+        \begin{aligned}
+          \deg(Z)&=\Cloze{0.8cm}{4}\\
+          \deg(N)&=\Cloze{0.8cm}{4}
+        \end{aligned}\quad\Longrightarrow\quad
+        \text{\Cloze{4cm}{unecht gebrochen}}
+      \)
+  \end{enumerate}
+\end{ExampleBox}
+\end{minipage}

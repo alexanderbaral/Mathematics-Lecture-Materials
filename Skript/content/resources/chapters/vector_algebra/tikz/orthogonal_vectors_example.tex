@@ -1,0 +1,21 @@
+\begin{tikzpicture}[>=Latex,x=0.72cm,y=0.72cm]
+  \draw[step=1,black!8,very thin] (-0.45,-2.45) grid (4.45,4.45);
+  \draw[->,black!60,line width=0.6pt]
+    (-0.55,0)--(4.65,0) node[right] {$x_1$};
+  \draw[->,black!60,line width=0.6pt]
+    (0,-2.55)--(0,4.65) node[above] {$x_2$};
+  \foreach \x in {1,...,4}{
+    \draw[black!50] (\x,0.06)--(\x,-0.06) node[below] {$\x$};
+  }
+  \foreach \y in {-2,-1,1,...,4}{
+    \draw[black!50] (0.06,\y)--(-0.06,\y) node[left] {$\y$};
+  }
+
+  \draw[->,THMBlue,line width=1.35pt] (0,0)--(1,2)
+    node[right=3pt] {$\vec a=\begin{pmatrix}1\\2\end{pmatrix}$};
+  \IfClozeTF{}{%
+    \draw[->,olive!80!black,line width=1.35pt] (0,0)--(4,-2)
+      node[below right] {$\vec b=\begin{pmatrix}4\\-2\end{pmatrix}$};
+    \RightAngleMark{(0,0)}{-26.565}{63.435}{0.78}
+  }
+\end{tikzpicture}

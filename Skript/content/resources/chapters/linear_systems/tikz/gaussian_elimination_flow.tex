@@ -1,0 +1,31 @@
+\begin{tikzpicture}[
+  >=Latex,
+  processbox/.style={
+    draw=black!25,fill=black!2,rounded corners=2pt,
+    minimum height=1.35cm,text width=3.9cm,align=center,font=\normalsize
+  },
+  arrow/.style={->,THMBlue,line width=0.9pt},
+  arrowlabel/.style={font=\small,text=black,inner sep=1.5pt}
+]
+  \node[processbox] (system) {LGS\\$[A\mid b]$};
+  \node[processbox,right=0.45cm of system] (forward)
+    {Zeilenstufenform};
+  \node[processbox,right=0.45cm of forward] (solution)
+    {Lösung};
+
+  \coordinate (forward-in) at ($(forward.north)+(-0.35,0)$);
+  \coordinate (forward-out) at ($(forward.north)+(0.35,0)$);
+  \coordinate (forward-top) at ($(system.north)+(0,0.55)$);
+  \draw[arrow]
+    (system.north)--(forward-top)
+    --node[arrowlabel,above] {Vorwärtselimination}
+      (forward-top -| forward-in)
+    --(forward-in);
+
+  \coordinate (solution-top) at ($(forward-out)+(0,0.55)$);
+  \draw[arrow]
+    (forward-out)--(solution-top)
+    --node[arrowlabel,above] {Rückwärtseinsetzen}
+      (solution-top -| solution.north)
+    --(solution.north);
+\end{tikzpicture}

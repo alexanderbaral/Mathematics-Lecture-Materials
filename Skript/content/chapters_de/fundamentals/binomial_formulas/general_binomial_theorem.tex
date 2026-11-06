@@ -1,0 +1,70 @@
+\subsection{Allgemeiner binomischer Lehrsatz}
+\label{subsec:fundamentals_general_binomial_theorem}
+
+Die 1. und 2. binomische Formel aus Abschnitt \ref{subsec:fundamentals_basic_binomial_formulas}
+erleichtern das Quadrieren einer Summe, d.h. $(a \pm b)^2$. Es ist naheligend zu fragen, ob es
+auch eine Formel für höhere Potenzen gibt, d.h. $(a \pm b)^n$ mit $n\in\N$. Hierfür gibt es den
+verallgemeinerten binomischen Lehrsatz.
+
+
+\begin{TheoremBox}{Allgemeiner binomischer Lehrsatz}{fundamentals_general_binomial_theorem}
+  Für $a,b\in\R$ und $n\in\N_0$ gilt
+  \begin{align*}
+    (a+b)^n
+      &=\sum_{k=0}^{n}\binom{n}{k}\;a^{n-k}\;b^k \\
+      &=\binom{n}{0}\;a^n\;b^0
+        +\binom{n}{1}\;a^{n-1}\;b^1
+        +\binom{n}{2}\;a^{n-2}\;b^2
+        +\dots
+        +\binom{n}{n-1}\;a^1\;b^{n-1}
+        +\binom{n}{n}\;a^0\;b^n.
+  \end{align*}
+  wobei $\binom{n}{k}$ der Binomialkoeffizient ist.
+\end{TheoremBox}
+Die Exponenten von \(a\) und \(b\) laufen gegenläufig. Die Summe der Exponenten ist in jedem Summanden gleich \(n\).
+
+Um die Formel anwenden zu können fehlt nun noch die Definition des Binomialkoeffizienten $\binom{n}{k}$.
+\begin{DefinitionBox}{Binomialkoeffizient}{fundamentals_binomial_coefficient}
+  Für $n\in\N_0$ ist der \emph{Binomialkoeffizient} \EnglishTerm{binomial coefficient} gegeben durch
+  \[
+    \binom{n}{k} := \frac{n!}{k! \; (n-k)!}.
+    \qquad (0 \leq k \leq n)
+  \]
+\end{DefinitionBox}
+
+
+
+\begin{ExampleBox}{Binomischer Lehrsatz für $n=3$}{fundamentals_binomial_theorem_n_three}
+  \begin{ClozeArea}[34]{30}
+  Für $n=3$ liefert der Lehrsatz zunächst
+  \begin{align*}
+      (a+b)^3
+      =\sum_{k=0}^{3}\binom{3}{k} \; a^{3-k} \; b^k
+      =\binom{3}{0} \; a^3 \; b^0 + \binom{3}{1} \; a^2 \; b + \binom{3}{2} \; a \; b^2 + \binom{3}{3} \; a^0 \; b^3.
+  \end{align*}
+  Die benötigten Binomialkoeffizienten ergeben sich aus der Definition zu
+    \begin{align*}
+      \binom{3}{0}&=\frac{3!}{0!\,3!}=1, \\
+      \binom{3}{1}&=\frac{3!}{1!\,2!}=3, \\
+      \binom{3}{2}&=\frac{3!}{2!\,1!}=3, \\
+      \binom{3}{3}&=\frac{3!}{3!\,0!}=1.
+    \end{align*}
+    Damit folgt
+    \[
+      (a+b)^3=a^3+3a^2b+3ab^2+b^3.
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+
+Analog ergibt sich für $n=0,1,2,3,4,5,\ldots$ der folgende Überblick:
+\begin{alignat*}{2}
+  n&=0:\qquad &(a+b)^0&=1,\\
+  n&=1:\qquad &(a+b)^1&=a+b,\\
+  n&=2:\qquad &(a+b)^2&=a^2+2ab+b^2,\\
+  n&=3:\qquad &(a+b)^3&=a^3+3a^2b+3ab^2+b^3,\\
+  n&=4:\qquad &(a+b)^4&=a^4+4a^3b+6a^2b^2+4ab^3+b^4,\\
+  n&=5:\qquad &(a+b)^5&=a^5+5a^4b+10a^3b^2+10a^2b^3+5ab^4+b^5 \\
+   &&&\vdots
+\end{alignat*}
+
+\input{content/chapters_de/fundamentals/binomial_formulas/general_binomial_theorem_pascal_triangle.tex}

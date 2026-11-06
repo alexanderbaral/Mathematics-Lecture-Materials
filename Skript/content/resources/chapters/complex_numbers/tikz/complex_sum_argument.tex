@@ -1,0 +1,27 @@
+\begin{tikzpicture}[>=Latex,x=1.35cm,y=1.35cm]
+  \node[below=4pt] (tx-2) at (-2,0) {$-2$};
+  \node[below=4pt] (tx-1) at (-1,0) {$-1$};
+  \node[below=4pt] (tx1) at (1,0) {$1$};
+  \node[right=5pt] (typ) at (0,1) {$1$};
+  \node[left=5pt] (tym) at (0,-1) {$-1$};
+  \node[above left=5pt,THMBlue] (z) at (-2,1) {$-2+i$};
+  \node[THMBlue] (arg) at (-.35,.55) {$\varphi$};
+  % Leave transparent gaps in the background grid around all labels.
+  \begin{scope}[even odd rule]
+    \clip (-2.5,-1.4) rectangle (1.4,1.5);
+    \clip (-2.5,-1.4) rectangle (1.4,1.5)
+      foreach \lab in {tx-2,tx-1,tx1,typ,tym,z,arg} {
+        ([xshift=-2pt,yshift=-2pt]\lab.south west) rectangle
+        ([xshift=2pt,yshift=2pt]\lab.north east)
+      };
+    \draw[step=1,black!10,line width=.2pt] (-2.5,-1.4) grid (1.4,1.5);
+  \end{scope}
+
+  \draw[->,black!65] (-2.7,0)--(1.6,0) node[right] {$\operatorname{Re}$};
+  \draw[->,black!65] (0,-1.5)--(0,1.9) node[above] {$\operatorname{Im}$};
+  \foreach \x in {-2,-1,1} {\draw (\x,.04)--(\x,-.04);}
+  \foreach \y in {-1,1} {\draw (.04,\y)--(-.04,\y);}
+  \draw[->,THMBlue,line width=1.1pt] (0,0)--(-2,1);
+  \draw[black!45,dashed,->] (0,0)--(1,-.5);
+  \draw[THMBlue] (.9,0) arc[start angle=0,end angle=153.435,radius=.9];
+\end{tikzpicture}

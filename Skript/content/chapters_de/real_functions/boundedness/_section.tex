@@ -1,0 +1,51 @@
+\section{Beschränktheit}
+\label{sec:real_functions_boundedness}
+Beschränktheit beschreibt den gesamten Wertebereich einer Funktion:
+Bleiben alle Funktionswerte zwischen festen Grenzen? Als Beispiel
+betrachten wir $f(x)=1/(1+x^2)$ auf $\R$.
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_bounded.tex}
+\end{center}
+\par\noindent\begin{minipage}{\linewidth}
+\begin{FunctionPropertyBox}{Beschränktheit}{real_functions_bounded}
+  Eine Funktion $f:D\to\R$ heißt \emph{nach oben beschränkt}
+  \EnglishTerm{bounded above}, wenn eine Zahl $M\in\R$ mit
+  $f(x)\le M$ für alle $x\in D$ existiert.
+  Sie heißt \emph{nach unten beschränkt} \EnglishTerm{bounded below},
+  wenn entsprechend $m\le f(x)$ gilt.
+
+  Sind beide Bedingungen erfüllt, heißt $f$ \emph{beschränkt}
+  \EnglishTerm{bounded}. Gleichwertig existiert $K\ge0$ mit
+  $|f(x)|\le K$ für alle $x\in D$.
+\end{FunctionPropertyBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Schranke oder angenommener Wert?}{real_functions_bounds_example}
+  Bestimmen Sie die \textcolor{green!55!black}{Wertemenge} von $g(x)=1+4/(1+x^2)$ auf $\R$.
+  \begin{ClozeArea}[34]{7}
+    Aus $x^2\ge0$ und dem positiven Nenner folgt
+    \[
+      0<\frac1{1+x^2}\le1
+      \quad\Longrightarrow\quad
+      1<g(x)\le5.
+    \]
+    Der Wert $5$ wird bei $x=0$ angenommen. Der Wert $1$ wird nur
+    im Grenzfall $x\to\pm\infty$ erreicht; er gehört nicht zur \textcolor{green!55!black}{Wertemenge}.
+    Für jedes $y\in(1,5]$ liefert
+    $x=\sqrt{4/(y-1)-1}$ eine zulässige Eingabe.
+    Also ist $g(\R)=(1,5]$.
+  \end{ClozeArea}
+\end{ExampleBox}
+\end{minipage}
+% Handschrift: PDF-Seite 30 (obere und untere Schranke im Originalbeispiel).
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_bounds_example.tex}
+\end{center}
+Für $g(x)=1+4/(1+x^2)$ sind also $m=1$ eine untere und $M=5$ eine
+obere Schranke: $1<g(x)\le5$ für alle $x\in\R$. Eine Schranke muss
+nicht selbst angenommen werden; die untere Schranke $1$ wird nur angenähert.
+
+\begin{KeyPointBox}{Beschränkt heißt nicht: besitzt einen Grenzwert}{real_functions_bounds_not_limit}
+  Beschränktheit begrenzt die möglichen Werte.
+  Sie sagt noch nicht, ob sich diese Werte bei einer Annäherung auf
+  einen einzigen Wert einstellen. Bei periodischen Funktionen werden
+  wir diesen Unterschied wiedersehen.
+\end{KeyPointBox}

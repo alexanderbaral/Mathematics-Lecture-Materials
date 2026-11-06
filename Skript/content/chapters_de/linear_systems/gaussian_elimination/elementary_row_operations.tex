@@ -1,0 +1,58 @@
+\subsection{Elementare Zeilenumformungen}
+\label{subsec:linear_systems_elementary_row_operations}
+
+Die folgenden Umformungen ändern die Lösungsmenge nicht:
+\[
+  \begin{alignedat}{2}
+    Z_i&\leftrightarrow Z_j
+      &\qquad&\text{zwei Zeilen vertauschen},\\[0.45em]
+    Z_i&\leftarrow \lambda Z_i,\quad \lambda\neq0
+      &&\text{eine Zeile skalieren},\\[0.45em]
+    Z_i&\leftarrow Z_i+\lambda Z_j
+      &&\text{ein Vielfaches einer anderen Zeile addieren}.
+  \end{alignedat}
+\]
+
+Sie heißen \emph{elementare Zeilenumformungen} \EnglishTerm{elementary row
+operations}. Das entstehende LGS ist zum Ausgangssystem äquivalent und besitzt
+dieselbe Lösungsmenge.
+
+\begin{ExampleBox}{Die drei elementaren Zeilenumformungen}{linear_systems_eliminate_variable}
+  Das folgende Beispiel enthält alle drei elementaren Zeilenumformungen. Die
+  jeweils rechts angegebene Operation wird auf die nebenstehende Matrix
+  angewendet. Die Lösungsmenge bleibt dabei unverändert.
+  \[
+    \begin{array}{r@{\qquad}l@{\qquad}l}
+      \left[\begin{array}{@{}rr|r@{}}
+        1&1&2\\
+        0&1&1
+      \end{array}\right]
+      &\TransformOp{\Cloze{2.0cm}{Z_1\leftrightarrow Z_2}}
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}\\[1.2em]
+      \left[\begin{array}{@{}rr|r@{}}
+        \Cloze{0.55cm}{0}&\Cloze{0.55cm}{1}&\Cloze{0.55cm}{1}\\
+        \Cloze{0.55cm}{1}&\Cloze{0.55cm}{1}&\Cloze{0.55cm}{2}
+      \end{array}\right]
+      &\begin{array}{@{}l@{}}
+        \smash{\TransformOp{\Cloze{1.1cm}{2Z_1}}}\\
+        \smash{\TransformOp{\Cloze{1.1cm}{-3Z_2}}}
+      \end{array}
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}\\[1.2em]
+      \left[\begin{array}{@{}rr|r@{}}
+        \Cloze{0.55cm}{0}&\Cloze{0.55cm}{2}&\Cloze{0.55cm}{2}\\
+        \Cloze{0.55cm}{-3}&\Cloze{0.55cm}{-3}&\Cloze{0.55cm}{-6}
+      \end{array}\right]
+      &\begin{array}{@{}l@{}}
+        {}\\
+        \smash{\TransformOp{\Cloze{2.0cm}{Z_2+Z_1}}}
+      \end{array}
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}\\[1.2em]
+      \left[\begin{array}{@{}rr|r@{}}
+        \Cloze{0.55cm}{0}&\Cloze{0.55cm}{2}&\Cloze{0.55cm}{2}\\
+        \Cloze{0.55cm}{-3}&\Cloze{0.55cm}{-1}&\Cloze{0.55cm}{-4}
+      \end{array}\right]
+      &
+      &\mathcal L=\{(x_1,x_2)\in\R^2\mid x_1=1\land x_2=1\}
+    \end{array}
+  \]
+\end{ExampleBox}

@@ -1,0 +1,44 @@
+\begin{tikzpicture}[
+  >=Latex,
+  every node/.style={font=\normalsize},
+  coefficient matrix/.style={
+    matrix of math nodes,
+    left delimiter={(},right delimiter={)},
+    nodes={minimum width=0.95cm,minimum height=0.72cm,inner sep=0pt,anchor=center},
+    column sep=1pt,row sep=1pt
+  },
+  replacement/.style={draw=THMBlue!55,line width=0.8pt,rounded corners=2pt},
+  branch/.style={->,black,line width=0.9pt},
+  branch label/.style={fill=white,inner xsep=3pt,inner ysep=1pt,align=center}
+]
+  \node[anchor=east] at (-1.05,0) {$A={}$};
+  \matrix (A) [coefficient matrix] at (0.25,0) {
+    a_{11}&a_{12}\\
+    a_{21}&a_{22}\\
+  };
+
+  \matrix (Aone) [coefficient matrix] at (8.65,1.55) {
+    |[text=THMBlue]| b_1&a_{12}\\
+    |[text=THMBlue]| b_2&a_{22}\\
+  };
+  \node[replacement,fit=(Aone-1-1)(Aone-2-1),inner sep=2pt] {};
+  \node[anchor=west] at ($(Aone.east)+(0.28,0)$) {$=A_1$};
+
+  \matrix (Atwo) [coefficient matrix] at (8.65,-1.55) {
+    a_{11}&|[text=THMBlue]| b_1\\
+    a_{21}&|[text=THMBlue]| b_2\\
+  };
+  \node[replacement,fit=(Atwo-1-2)(Atwo-2-2),inner sep=2pt] {};
+  \node[anchor=west] at ($(Atwo.east)+(0.28,0)$) {$=A_2$};
+
+  \coordinate (startpoint) at ($(A.east)+(0.45,0)$);
+  \coordinate (branchpoint) at ($(A.east)+(1.45,0)$);
+  \coordinate (uppertarget) at ($(Aone.west)+(-0.58,0)$);
+  \coordinate (lowertarget) at ($(Atwo.west)+(-0.58,0)$);
+  \draw[branch] (startpoint)--(branchpoint)|-(uppertarget);
+  \draw[branch] (branchpoint)|-(lowertarget);
+  \node[branch label,anchor=south east] at ($(uppertarget)+(-0.12,0.20)$)
+    {1. Spalte durch\\$b$ ersetzen};
+  \node[branch label,anchor=north east] at ($(lowertarget)+(-0.12,-0.20)$)
+    {2. Spalte durch\\$b$ ersetzen};
+\end{tikzpicture}

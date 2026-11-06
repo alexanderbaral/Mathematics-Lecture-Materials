@@ -1,0 +1,15 @@
+\begin{tikzpicture}[>=Latex,x=1cm,y=1cm]
+  \coordinate (O) at (0,0);
+  \coordinate (A) at (6.2,0);
+  \coordinate (P) at (3.7,0);
+  \coordinate (B) at (3.7,2.85);
+  \draw[->,THMBlue,line width=1.35pt] (O)--(A)
+    node[right] {$\vec a$};
+  \draw[->,red!75!black,line width=1.4pt] (O)--(B)
+    node[midway,above left,text=red!75!black] {$\vec b$};
+  \draw[->,black,line width=1.25pt] (O)--(P)
+    node[midway,below] {$\vec b_{\parallel}$};
+  \draw[->,olive!80!black,line width=1.25pt] (P)--(B)
+    node[midway,right,text=olive!80!black] {$\vec b_{\perp}$};
+  \RightAngleMark{(P)}{180}{90}{0.34}
+\end{tikzpicture}

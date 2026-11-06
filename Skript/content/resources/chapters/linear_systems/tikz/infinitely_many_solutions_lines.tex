@@ -1,0 +1,20 @@
+\begin{tikzpicture}[
+  >=Latex,
+  x=1.25cm,
+  y=1.25cm,
+  axis/.style={->,black!65,line width=0.6pt},
+  firstline/.style={THMBlue,line width=1.15pt},
+  secondline/.style={olive!80!black,line width=3pt},
+  tick/.style={black!65,line width=0.5pt}
+]
+  \draw[axis] (-0.35,0)--(2.85,0) node[right] {$x_1$};
+  \draw[axis] (0,-0.35)--(0,2.85) node[above] {$x_2$};
+  \foreach \x in {1,2}{
+    \draw[tick] (\x,0.06)--(\x,-0.06) node[below] {$\x$};
+    \draw[tick] (0.06,\x)--(-0.06,\x) node[left] {$\x$};
+  }
+  % Die breite olivfarbene und die schmale blaue Linie liegen exakt aufeinander.
+  % So bleiben beide identischen Geraden gleichzeitig erkennbar.
+  \draw[secondline] (-0.3,2.3)--(2.3,-0.3);
+  \draw[firstline] (-0.3,2.3)--(2.3,-0.3);
+\end{tikzpicture}

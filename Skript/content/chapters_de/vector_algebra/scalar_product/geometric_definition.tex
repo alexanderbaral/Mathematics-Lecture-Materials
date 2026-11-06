@@ -1,0 +1,123 @@
+\subsection{Geometrische Definition}
+\label{subsec:vector_algebra_scalar_product_definition}
+
+\begin{DefinitionBox}{Skalarprodukt}{vector_algebra_scalar_product}
+  \begin{minipage}[c]{0.65\linewidth}
+    Das Skalarprodukt \EnglishTerm{dot product} zweier Vektoren $\vec a,\vec b\in\R^n$
+    mit einem Zwischenwinkel $\varphi$ ist definiert durch
+    \[
+      \vec a\cdot\vec b
+      =|\vec a|\,|\vec b|\cos(\varphi)\in\R,
+    \]
+    Das Ergebnis eines Skalarprodukts ist immer ein Skalar!
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.33\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_geometry.tex}
+  \end{minipage}
+\end{DefinitionBox}
+
+\begin{ExampleBox}{Skalarprodukt aus Längen und Winkel}{vector_algebra_geometric_dot_product_example}
+  \noindent
+  \begin{minipage}[c]{0.65\linewidth}
+    Für zwei Vektoren mit den Längen $|\vec a|=2$ und 
+    $|\vec b|=3$ sowie einem Zwischenwinkel $\varphi=30^\circ$
+    ist das Skalarprodukt
+    \[
+      \vec a\cdot\vec b
+      =\Cloze{8cm}{
+        2\cdot3\cdot\cos(30^\circ) = 2\cdot3\cdot\frac{\sqrt3}{2} = 3\sqrt3
+        }.
+    \]
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.33\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/geometric_dot_product_example.tex}
+  \end{minipage}
+\end{ExampleBox}
+
+Aus Definition~\ref{def:vector_algebra_scalar_product} lassen sich unmittelbar
+sehr wichtige Folgerungen ableiten.
+\begin{KeyPointBox}{Skalarprodukt senkrechter Vektoren}{vector_algebra_dot_product_orthogonal_vectors}
+  \begin{minipage}[c]{0.68\linewidth}
+    Für senkrechte Vektoren ist der Zwischenwinkel $\varphi=90^\circ$.
+    Da $\cos(90^\circ)=0$ folgt für das Skalarprodukt
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\perp\vec b
+        \quad \Longleftrightarrow \quad
+        \vec a\cdot\vec b=0.}
+    \]
+    Zwei Vektoren sind genau dann \emph{orthogonal} \EnglishTerm{orthogonal},
+    wenn ihr Skalarprodukt null ist.
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.27\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/orthogonal_vectors_dot_product.tex}
+  \end{minipage}
+\end{KeyPointBox}
+
+\begin{KeyPointBox}{Skalarprodukt paralleler Vektoren}{vector_algebra_dot_product_parallel_vectors}
+  \begin{minipage}[c]{0.68\linewidth}
+    Für gleichgerichtete parallele Vektoren ist der Zwischenwinkel
+    $\varphi=0^\circ$. Aus
+    Definition~\ref{def:vector_algebra_scalar_product} folgt damit
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\parallel\vec b
+        \quad \Longleftrightarrow \quad
+        \vec a\cdot\vec b=|\vec a|\,|\vec b|.}
+    \]
+    Das Skalarprodukt paralleler Vektoren entspricht dem Produkt der Beträge. \\
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.27\linewidth}
+    \centering
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/parallel_vectors_dot_product.tex}
+  \end{minipage}
+    \textbf{Spezialfall:} Für $\vec b=\vec a$ ergibt sich
+    \[
+      \Cloze{9.5cm}{%
+        \vec a\cdot\vec a=|\vec a|^2
+        \quad\Longleftrightarrow\quad
+        |\vec a|=\sqrt{\vec a\cdot\vec a}.}
+    \]
+\end{KeyPointBox}
+
+Zusammenfassend bestimmt der Zwischenwinkel das Vorzeichen des Skalarprodukts.
+
+\begin{KeyPointBox}{Vorzeichen und eingeschlossener Winkel}{vector_algebra_dot_product_sign}
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/vector_algebra/tikz/dot_product_signs.tex}
+  \end{center}
+\end{KeyPointBox}
+
+\begin{ExampleBox}{Skalarprodukte kanonischer Einheitsvektoren}{vector_algebra_canonical_unit_vectors_dot_products}
+  Wir unterscheiden zwischen Skalarprodukten gleicher und unterschiedlicher kanonischer Einheitsvektoren:
+  \begin{enumerate}[label=\alph*),leftmargin=*,itemsep=0.8em]
+    \item \textbf{Gleiche Einheitsvektoren ($i=j$):}
+      Da $\vec e_i$ zu sich selbst parallel ist und den Betrag
+      $|\vec e_i|=1$ besitzt, folgt
+      \[
+        \vec e_i\cdot\vec e_i
+          =|\vec e_i|\,|\vec e_i|
+          =1\cdot1
+          =\Cloze{1cm}{1}.
+      \]
+    \item \textbf{Unterschiedliche Einheitsvektoren ($i\ne j$):}
+      Die Vektoren stehen senkrecht aufeinander.
+      \[
+        \vec e_i\perp\vec e_j
+          \quad\Longrightarrow\quad
+        \vec e_i\cdot\vec e_j=\Cloze{1cm}{0}.
+      \]
+  \end{enumerate}
+
+  Zusammengefasst gilt
+  \[
+    \vec e_i\cdot\vec e_j
+      =\begin{cases}
+          \Cloze{0.8cm}{1},&i=j,\\
+          \Cloze{0.8cm}{0},&i\ne j.
+        \end{cases}
+  \]
+\end{ExampleBox}

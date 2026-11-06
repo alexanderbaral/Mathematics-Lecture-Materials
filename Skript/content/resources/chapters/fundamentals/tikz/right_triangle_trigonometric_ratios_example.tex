@@ -1,0 +1,14 @@
+\begin{tikzpicture}[scale=0.72,line cap=round,line join=round]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (4,0);
+  \coordinate (C) at (4,3);
+
+  \draw[very thick] (A) -- (B) -- (C) -- cycle;
+  \RightAngleMark{(B)}{90}{180}{0.38}
+  \draw[very thick] (1.05,0) arc[start angle=0,end angle=36.9,radius=1.05];
+
+  \node at (0.67,0.19) {$\alpha$};
+  \node[below] at (2,0) {$b$};
+  \node[right] at (4,1.5) {$a$};
+  \node at (1.78,1.72) {$c$};
+\end{tikzpicture}

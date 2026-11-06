@@ -1,0 +1,107 @@
+\subsection{Tangens: Periodisch, aber nicht beschränkt}
+\label{subsec:real_functions_tangent}
+Der Tangens ist der Quotient aus Sinus und Kosinus. Seine
+Definitionsmenge folgt deshalb aus den Nullstellen des Kosinus.
+\begin{DefinitionBox}{Tangensfunktion}{real_functions_tangent}
+  Die Tangensfunktion ist definiert durch
+  \[
+    \tan x=\frac{\sin x}{\cos x},
+    \qquad D=\R\setminus\left\{\frac\pi2+k\pi\mid k\in\Z\right\}.
+  \]
+  Sie ist ungerade, auf $D$ stetig und hat die Grundperiode $\pi$.
+\end{DefinitionBox}
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_tangent.tex}
+\end{center}
+\begin{KeyPointBox}{Jeder Tangensast durchläuft alle reellen Werte}{real_functions_tangent_branch}
+  Auf jedem Intervall $(-\pi/2+k\pi,\pi/2+k\pi)$ ist der Tangens
+  streng monoton steigend und nimmt jeden reellen Wert genau einmal an.
+  Innerhalb des mittleren Asts werden die Werte bei der Annäherung
+  an $-\pi/2$ beliebig stark negativ, bei der Annäherung an $\pi/2$
+  beliebig groß positiv.
+  Die Stellen $\pi/2+k\pi$ sind Polstellen, nicht Stellen mit einem
+  Funktionswert \glqq unendlich\grqq.
+\end{KeyPointBox}
+% Handschrift: PDF-Seiten 41–42 (Wertetabelle, Nullstellen und Nachweise).
+Die Nullstellen des Tangens sind die Sinusnullstellen $x=k\pi$, $k\in\Z$.
+An diesen Stellen ist der Nenner $\cos(k\pi)=(-1)^k\ne0$.
+Die folgende Tabelle zeigt einen vollständigen Tangensast und seine Nachbarn:
+\[
+  \begin{array}{c||c|c|c|c|c|c|c|c|c}
+    x&-\pi&-3\pi/4&-\pi/2&-\pi/4&0&\pi/4&\pi/2&3\pi/4&\pi\\\hline
+    \tan x&\Cloze{0.7cm}{0}&\Cloze{0.7cm}{1}&\text{n.\,d.}&
+      \Cloze{0.7cm}{-1}&\Cloze{0.7cm}{0}&\Cloze{0.7cm}{1}&\text{n.\,d.}&
+      \Cloze{0.7cm}{-1}&\Cloze{0.7cm}{0}
+  \end{array}
+\]
+Dabei bedeutet \glqq n.\,d.\grqq\ \glqq nicht definiert\grqq.
+Die Vorzeichenwechsel von Sinus und Kosinus erklären beide Tangenseigenschaften:
+\[
+  \begin{aligned}
+    \tan(x+\pi)&=\frac{\sin(x+\pi)}{\cos(x+\pi)}
+      =\frac{-\sin x}{-\cos x}=\tan x,\\[0.7em]
+    \tan(-x)&=\frac{\sin(-x)}{\cos(-x)}
+      =\frac{-\sin x}{\cos x}=-\tan x\qquad(x\in D).
+  \end{aligned}
+\]
+
+\clearpage
+\subsection{Harmonische Schwingungen}
+\label{subsec:real_functions_harmonic_oscillations}
+Mit den bekannten Graphentransformationen passen wir den Sinus an
+eine Schwingung mit vorgegebener Auslenkung und Dauer an.
+\par\noindent\begin{minipage}{\linewidth}
+\begin{DefinitionBox}{Harmonische Schwingung}{real_functions_harmonic}
+  Eine \emph{harmonische Schwingung} \EnglishTerm{harmonic oscillation}
+  lässt sich mit $A>0$ und $\omega>0$ schreiben als
+  \[
+    y(t)=y_0+A\sin\bigl(\omega(t-t_0)\bigr).
+  \]
+  Hier bedeuten $y_0$ die Mittellage, $A$ die \emph{Amplitude}
+  \EnglishTerm{amplitude}, $\omega$ die \emph{Kreisfrequenz}
+  \EnglishTerm{angular frequency} und $t_0$ die zeitliche Verschiebung.
+  Die \emph{Periodendauer} \EnglishTerm{period duration} und die
+  \emph{Frequenz} \EnglishTerm{frequency} sind
+  \[
+    T=\frac{2\pi}{\omega},\qquad \nu=\frac1T.
+  \]
+\end{DefinitionBox}
+\begin{ExampleBox}[before skip=0.3\baselineskip]{Eine Schwingung aus dem Diagramm beschreiben}{real_functions_oscillation_example}
+  Die dargestellte Auslenkung wird in Millimetern, die Zeit in Sekunden
+  gemessen. Bestimmen Sie $A$, $T$, $\omega$ und einen passenden Term.
+  \begin{center}
+    \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_oscillation.tex}
+  \end{center}
+  \begin{ClozeArea}[34]{6}
+    Die Mittellage ist null; bei $t=0$ beginnt die Bewegung mit
+    steigender Auslenkung. Damit gilt
+    \[
+      A=2\,\mathrm{mm},\quad T=4\,\mathrm{s},\quad
+      \omega=\frac{\pi}{2}\,\mathrm{s}^{-1},\qquad
+      y(t)=2\,\mathrm{mm}\,\sin\left(\frac{\pi t}{2\,\mathrm{s}}\right).
+    \]
+  \end{ClozeArea}
+\end{ExampleBox}
+\end{minipage}
+
+In der Schreibweise $A\sin(\omega t+\varphi)$ heißt
+$\varphi=-\omega t_0$ die \emph{Phase}
+\EnglishTerm{phase}; auch dieses Winkelargument ist dimensionslos.
+
+% Handschrift: PDF-Seite 40 (drei getrennte Parametervergleiche).
+\noindent\begin{minipage}{\linewidth}
+Die drei Parameter wirken unterschiedlich. In jedem Vergleich wird
+nur ein Parameter geändert; die übrigen bleiben gleich:
+\begin{itemize}
+  \item Amplitude $A$: verändert die maximale Auslenkung,
+    nicht die Periodendauer.
+  \item Kreisfrequenz $\omega$: größeres $\omega$ bedeutet kürzere
+    Periodendauer $T=2\pi/\omega$.
+  \item Phase $\varphi$: verschiebt den Verlauf um
+    $t_0=-\varphi/\omega$; positives $\varphi$ bedeutet eine Verschiebung nach links.
+\end{itemize}
+\medskip
+\begin{center}
+  \CachedTikzFigure{content/resources/chapters/real_functions/tikz/functions_oscillation_parameters.tex}
+\end{center}
+\end{minipage}\par

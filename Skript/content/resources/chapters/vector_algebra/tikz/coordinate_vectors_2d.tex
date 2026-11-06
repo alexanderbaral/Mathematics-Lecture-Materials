@@ -1,0 +1,30 @@
+\begin{tikzpicture}[>=Latex,x=1.25cm,y=1.25cm]
+  \draw[->,black!65,line width=0.6pt] (-0.3,0)--(5.35,0) node[right] {$x_1$};
+  \draw[->,black!65,line width=0.6pt] (0,-0.3)--(0,3.5) node[above] {$x_2$};
+  \foreach \x in {1,...,5}{\draw[black!55] (\x,0.06)--(\x,-0.06) node[below] {$\x$};}
+  \foreach \y in {1,...,3}{\draw[black!55] (0.06,\y)--(-0.06,\y) node[left] {$\y$};}
+
+  \node[draw=black!40,circle,inner sep=3pt,text=black!38,
+      font=\bfseries\fontsize{20}{22}\selectfont]
+    at (5.00,3.10) {$\R^2$};
+
+  \node[anchor=east,text=black!60] (origin-label) at (-0.38,-0.48)
+    {Ursprung};
+  \draw[->,black!55,line width=0.7pt]
+    (origin-label.east) -- (-0.04,-0.04);
+
+  \IfClozeTF{}{%
+    \draw[->,THMBlue,line width=1.3pt] (1,1)--(2,3);
+    \draw[THMBlue!55,densely dashed] (1,1)--(2,1)--(2,3);
+    \RightAngleMark[THMBlue!75]{(2,1)}{180}{90}{0.26}
+    \node[THMBlue,left] at (1.48,2.08) {$\vec a$};
+    \node[THMBlue,below] at (1.5,1) {$a_1$};
+    \node[THMBlue,right] at (2,2) {$a_2$};
+    \draw[->,olive!80!black,line width=1.3pt] (5,1)--(3,2);
+    \draw[olive!60!black,densely dashed] (5,1)--(3,1)--(3,2);
+    \RightAngleMark[olive!80!black]{(3,1)}{0}{90}{0.26}
+    \node[olive!80!black,above] at (4.07,1.58) {$\vec b$};
+    \node[olive!80!black,below] at (4,1) {$b_1$};
+    \node[olive!80!black,left] at (3,1.5) {$b_2$};
+  }
+\end{tikzpicture}
