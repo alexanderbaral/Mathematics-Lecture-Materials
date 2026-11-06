@@ -106,7 +106,7 @@ Jede Aufgabe mit Überschrift, Teilaufgaben und Bildern steht in `ExerciseBlock`
 
 Die früheren Zusatzvarianten wurden bei der Erstübernahme inventarisiert, aber nicht in die regulären Blätter gemischt. Der alte Übungsaufgabenordner ist auf Autorauftrag nach Sicherung der Ressourcen entfernt; Herkunft und Vergleichsdaten stehen im Migrationsmanifest. Das Skript ist Work in Progress; zusätzliche Kapitel und späterer didaktischer Abgleich bleiben möglich. Aktuelle Autorentscheidungen stehen oben in [Arbeitsregeln](docs/AGENTS.md).
 
-Git-Remote: [alexanderbaral/Mathematics-ExerciseSheets](https://github.com/alexanderbaral/Mathematics-ExerciseSheets). Lokal verknüpft; noch keine Commits und kein Push.
+Git-Remote: [alexanderbaral/Mathematics-Lecture-Materials](https://github.com/alexanderbaral/Mathematics-Lecture-Materials). Die Übungsblätter und das Skript gehören zum gemeinsamen Repository im übergeordneten Ordner `Lecture Materials`; beide ursprünglichen Historien sind erhalten.
 
 ## Lokaler Cache außerhalb von Google Drive
 
