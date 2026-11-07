@@ -121,7 +121,7 @@ def source_mapping(root, product_paths):
                     and path.suffix.lower() not in {".md", ".pyc"}):
                 result["__shared__/" + path.relative_to(shared).as_posix()] = path
     common = root.parent / "_Shared" / "tools"
-    for name in ("build_runtime.py", "build-cache.ps1"):
+    for name in ("build_runtime.py", "build-cache.ps1", "build_variants.json"):
         path = common / name
         if path.is_file():
             result["__build__/" + name] = path

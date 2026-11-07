@@ -19,13 +19,17 @@ $fileHashes = @{}
 # In-memory hashes and portable dependency checks; no figure is trusted without its source hashes.
 . (Join-Path $PSScriptRoot 'build-cache.ps1')
 
-$variants = @(
-    @{ File = 'tools/build-de.tex';       Label = 'German complete'; Language = 'de'; Cloze = 'false' },
-    @{ File = 'tools/build-de-cloze.tex'; Label = 'German cloze';    Language = 'de'; Cloze = 'true' }
-    # Enable the English variants when synchronization from the German master begins.
-    # @{ File = 'tools/build-en.tex';       Label = 'English complete'; Language = 'en'; Cloze = 'false' },
-    # @{ File = 'tools/build-en-cloze.tex'; Label = 'English cloze';    Language = 'en'; Cloze = 'true' }
-)
+$approvalPath = Join-Path (Split-Path -Parent $projectRoot) '_Shared/tools/build_variants.json'
+$approvedLanguages = @('de')
+if (Test-Path -LiteralPath $approvalPath) {
+    $approvedLanguages = @((Get-Content -LiteralPath $approvalPath -Raw | ConvertFrom-Json).script_languages)
+}
+if ('de' -notin $approvedLanguages) { throw 'The German master must remain enabled.' }
+$variants = @(foreach ($lang in $approvedLanguages) {
+    if ($lang -notin @('de','en')) { throw "Unsupported approved language: $lang" }
+    @{ File = "tools/build-$lang.tex"; Label = "$lang complete"; Language = $lang; Cloze = 'false' }
+    @{ File = "tools/build-$lang-cloze.tex"; Label = "$lang cloze"; Language = $lang; Cloze = 'true' }
+})
 
 $buildDirectory = Join-Path $projectRoot 'build'
 New-Item -ItemType Directory -Force -Path $buildDirectory | Out-Null

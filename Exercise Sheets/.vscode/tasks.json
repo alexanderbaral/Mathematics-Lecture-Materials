@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Übungsblätter einmalig aktualisieren",
+      "label": "Lecture Materials: gemeinsame Vorschau und Vollbau",
       "type": "process",
       "command": "powershell",
       "args": [
@@ -10,16 +10,37 @@
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "${workspaceFolder}/tools/develop.ps1",
-        "-Once"
+        "${workspaceFolder}/../_Shared/tools/build.ps1"
       ],
       "options": {
-        "cwd": "${workspaceFolder}"
+        "cwd": "${workspaceFolder}/.."
       },
       "group": {
         "kind": "build",
         "isDefault": true
       },
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Lecture Materials: Vorschau zusätzlich mit Lückenfassung",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/../_Shared/tools/build.ps1",
+        "-Cloze"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/.."
+      },
+      "group": "build",
       "problemMatcher": [],
       "presentation": {
         "reveal": "always",

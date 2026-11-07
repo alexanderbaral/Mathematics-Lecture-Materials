@@ -2,24 +2,50 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "LaTeX: Vorschau und Gesamt-PDFs aktualisieren",
-      "type": "shell",
+      "label": "Lecture Materials: gemeinsame Vorschau und Vollbau",
+      "type": "process",
       "command": "powershell",
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
       "args": [
         "-NoProfile",
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "${workspaceFolder}\\tools\\build-update.ps1"
+        "${workspaceFolder}/../_Shared/tools/build.ps1"
       ],
+      "options": {
+        "cwd": "${workspaceFolder}/.."
+      },
       "group": {
         "kind": "build",
         "isDefault": true
       },
-      "problemMatcher": []
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "Lecture Materials: Vorschau zusätzlich mit Lückenfassung",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/../_Shared/tools/build.ps1",
+        "-Cloze"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/.."
+      },
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
     }
   ]
 }

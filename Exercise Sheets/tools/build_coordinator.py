@@ -41,6 +41,12 @@ def load_module(path, name):
     return module
 
 def run_full(snapshot, request):
+    # Preview and background work share the established engine/Planner caches.
+    # Hold one cross-process lock through publication and Planner updates.
+    with common.lock(UPDATE_CACHE / 'phase.lock'):
+        return _run_full(snapshot, request)
+
+def _run_full(snapshot, request):
     started = time.monotonic()
     source = UPDATE_CACHE / "sources" / snapshot["revision"] / "Exercise Sheets"
     snapshots().materialize(snapshot, source, hardlinks=True)
@@ -48,6 +54,10 @@ def run_full(snapshot, request):
     output.mkdir(parents=True, exist_ok=True)
     options = request.get("options") or {}
     languages = ["de", "en"] if options.get("language") == "all" else [options.get("language", "de")]
+    approval = common.read_json(source.parent / '_Shared/tools/build_variants.json',
+                                {'sheet_languages': {'de': ['*'], 'en': []}})['sheet_languages']
+    if options.get('language') == 'approved':
+        languages = [language for language, ids in approval.items() if ids]
     modes = ["off", "on"] if options.get("solutions") == "both" else [options.get("solutions", "both")]
     if modes == ["both"]:
         modes = ["off", "on"]
@@ -94,6 +104,9 @@ def run_full(snapshot, request):
     planner = planner_module.Planner(ROOT, CACHE)
     planner.finish(rows)
     planner.save_hashes()
+    if options.get('preview_only'):
+        return {'ok': True, 'seconds': sheet_seconds, 'log': str(log), 'output': str(output),
+                'rows': rows, 'pdfs': {p.relative_to(ROOT).as_posix(): data for p, data in prepared.items()}}
     complete = True
     registry = planner.sheets()
     plan = planner.plan()
@@ -101,10 +114,12 @@ def run_full(snapshot, request):
     combined_rows = []
     combine_start = time.monotonic()
     for language in languages:
+        language_registry = [s for s in registry if options.get('language') != 'approved'
+                             or '*' in approval.get(language, []) or s[0] in approval.get(language, [])]
         for mode in modes:
             variant = language + ("_solutions" if mode == "on" else "")
             entries = []
-            for sheet in registry:
+            for sheet in language_registry:
                 relative = f"build/{variant}/" + planner_module.sheet_output_filename(sheet, language, mode)
                 current = output / relative
                 if not current.exists():
@@ -114,7 +129,7 @@ def run_full(snapshot, request):
                     current = ROOT / relative
                 title = ("Blatt" if language == "de" else "Sheet") + " " + sheet[2] + " - " + (sheet[3] if language == "de" else sheet[4]).replace("~", " ")
                 entries.append({"path": str(current), "cache_path": relative, "title": title})
-            if len(entries) != len(registry):
+            if not entries or len(entries) != len(language_registry):
                 continue
             relative = f"build/{variant}/" + planner_module.combined_output_filename(language, mode)
             destination = output / relative
@@ -147,7 +162,7 @@ def main():
     started = time.monotonic()
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("command", choices=["update", "full", "worker", "status", "resume", "ack"])
-    parser.add_argument("--language", choices=["de", "en", "all"], default="de")
+    parser.add_argument("--language", choices=["de", "en", "all", "approved"], default="de")
     parser.add_argument("--solutions", choices=["off", "on", "both"], default="both")
     parser.add_argument("--sheet", action="append")
     parser.add_argument("--jobs", type=int, default=4, choices=range(1, 17))

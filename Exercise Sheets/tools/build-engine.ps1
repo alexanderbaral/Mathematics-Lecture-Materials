@@ -1,5 +1,5 @@
 param(
-    [ValidateSet('de','en','all')][string]$Language = 'de',
+    [ValidateSet('de','en','all','approved')][string]$Language = 'de',
     [string[]]$Sheet = @('all'),
     [ValidateSet('on','off','both')][string]$Solutions = 'off',
     [switch]$Force,
@@ -87,6 +87,18 @@ foreach ($requested in $Sheet) {
 $allSheets = $sheets
 if ('all' -notin $Sheet) { $sheets = @($sheets | Where-Object Id -in $Sheet) }
 $languages = if ($Language -eq 'all') { @('de','en') } else { @($Language) }
+$approvedSheets = $null
+if ($Language -eq 'approved') {
+    $approvalPath = Join-Path (Split-Path -Parent $projectRoot) '_Shared/tools/build_variants.json'
+    $approvedSheets = (Get-Content -LiteralPath $approvalPath -Raw | ConvertFrom-Json).sheet_languages
+    $languages = @($approvedSheets.PSObject.Properties | Where-Object { @($_.Value).Count -gt 0 } | ForEach-Object Name)
+    foreach ($lang in $languages) {
+        if ($lang -notin @('de','en')) { throw "Unsupported language: $lang" }
+        foreach ($id in $approvedSheets.$lang) {
+            if ($id -ne '*' -and $id -notin $allSheets.Id) { throw "Unknown approved sheet: $id" }
+        }
+    }
+}
 $modes = if ($Solutions -eq 'both') { @('off','on') } else { @($Solutions) }
 $latexmk = (Get-Command latexmk -ErrorAction Stop).Source
 function Get-SheetOutputFileName {
@@ -154,6 +166,10 @@ function Receive-BuildJobs {
 }
 try {
     foreach ($lang in $languages) { foreach ($sheetEntry in $sheets) { foreach ($mode in $modes) {
+        if ($approvedSheets -and '*' -notin $approvedSheets.$lang -and $sheetEntry.Id -notin $approvedSheets.$lang) { continue }
+        if (-not (Test-Path -LiteralPath (Join-Path $workingCopy "content/chapters_$lang/$($sheetEntry.Entry)"))) {
+            throw "Approved translation/source missing: $lang/$($sheetEntry.Id)"
+        }
         $variant = if ($mode -eq 'on') { "${lang}_solutions" } else { $lang }
         $id = $sheetEntry.Id
         if ($Incremental -and $plan."$variant/$id".reuse) {

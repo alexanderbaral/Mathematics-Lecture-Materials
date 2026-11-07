@@ -196,6 +196,9 @@ def context_text(snapshot, preview=False):
         for section in sections(snapshot):
             path = section['path']
             text += '\\expandafter\\def\\csname BuildTrack@' + path + '\\endcsname{\\BuildRecordSection{' + path + '}}\n'
+            english = path.replace('content/chapters_de/', 'content/chapters_en/')
+            if english != path:
+                text += '\\expandafter\\def\\csname BuildTrack@' + english + '\\endcsname{\\BuildRecordSection{' + english + '}}\n'
         text += r'''
 \AddToHook{file/before}{%
   \ifcsname BuildTrack@\CurrentFilePath/\CurrentFile\endcsname
@@ -228,10 +231,10 @@ def rebase_synctex(data, source):
     return gzip.compress(text.encode('utf-8'), mtime=0)
 
 
-def publish_pair(source_directory, source_root, preview_mode=False):
+def publish_pair(source_directory, source_root, preview_mode=False, variants=None):
     """Validate the entire pair first and restore old outputs on publication errors."""
     prepared = {}
-    for variant in VARIANTS:
+    for variant in variants or VARIANTS:
         name = variant + ('-preview' if preview_mode else '')
         source = source_directory / name
         pdf = source.with_suffix('.pdf').read_bytes()
@@ -247,6 +250,8 @@ def run_full(snapshot, request):
     started = time.monotonic()
     source = UPDATE_CACHE / 'full-workspace' / 'Skript'
     materialize(snapshot, source)
+    config = common.read_json(source.parent / '_Shared/tools/build_variants.json', {'script_languages': ['de']})
+    variants = tuple('build-' + language + suffix for language in config['script_languages'] for suffix in ('', '-cloze'))
     atomic(source / 'build-context.tex', context_text(snapshot).encode('utf-8'))
     logfile = UPDATE_CACHE / 'logs' / (request['id'] + '-full.log')
     logfile.parent.mkdir(parents=True, exist_ok=True)
@@ -261,7 +266,7 @@ def run_full(snapshot, request):
     # Archive the successful reference state and figure PDFs before publishing.
     # Previews only read this immutable cache, never the full engine's live cache.
     published = UPDATE_CACHE / 'published' / request['id']
-    for variant in VARIANTS:
+    for variant in variants:
         folder = published / variant
         folder.mkdir(parents=True, exist_ok=True)
         for extension in ('.aux', '.sections'):
@@ -277,9 +282,9 @@ def run_full(snapshot, request):
         pdf = (source / 'build' / (variant + '.pdf')).read_bytes()
         if not pdf.startswith(b'%PDF-') or b'%%EOF' not in pdf[-1024:]:
             raise RuntimeError('Ungültige vollständige PDF: ' + variant)
-    publish_pair(source / 'build', source)
+    publish_pair(source / 'build', source, variants=variants)
     artifacts = {('build/' + variant + extension): digest((ROOT / 'build' / (variant + extension)).read_bytes())
-                 for variant in VARIANTS for extension in ('.pdf', '.synctex.gz')}
+                 for variant in variants for extension in ('.pdf', '.synctex.gz')}
     return {'ok': True, 'seconds': seconds, 'log': str(logfile), 'published': str(published),
             'artifacts': artifacts}
 
@@ -347,7 +352,8 @@ def cached_figure_valid(snapshot, directory, figure):
         return False
 
 
-def preview(snapshot, selection, baseline_record, sequence=0, whole_document=False):
+def preview(snapshot, selection, baseline_record, sequence=0, whole_document=False, variants=None, publish=True):
+    variants = variants or VARIANTS
     started = time.monotonic()
     with lock(UPDATE_CACHE / 'preview.lock'):
         source = UPDATE_CACHE / 'preview-workspace' / 'Skript'
@@ -405,20 +411,21 @@ def preview(snapshot, selection, baseline_record, sequence=0, whole_document=Fal
             return result.returncode, log
 
         with ThreadPoolExecutor(max_workers=2) as pool:
-            results = list(pool.map(run, VARIANTS))
+            results = list(pool.map(run, variants))
         seconds = round(time.monotonic() - started, 2)
         record_timing('preview', snapshot['revision'], seconds, not any(code for code, _ in results), sequence)
         if any(code for code, _ in results):
             raise RuntimeError(f'Vorschau fehlgeschlagen. Baudauer: {seconds} Sekunden. Logs: ' + ', '.join(str(log) for _, log in results))
         with state_transaction() as state:
-            if sequence >= state.get('preview', {}).get('sequence', 0):
-                publish_pair(output, source, preview_mode=True)
+            if publish and sequence >= state.get('preview', {}).get('sequence', 0):
+                publish_pair(output, source, preview_mode=True, variants=variants)
                 state['preview'] = {'revision': snapshot['revision'], 'sections': [s['path'] for s in selection],
                                     'seconds': seconds, 'finished': now(), 'sequence': sequence,
                                     'project_root': str(ROOT),
                                     'whole_document': whole_document,
                                     'baseline': baseline_record['revision'] if baseline_record else None}
         print(f'Vorschau: {len(selection)} Abschnitte. Baudauer: {seconds} Sekunden.', flush=True)
+        return {variant: (output / (variant + '-preview.pdf')).read_bytes() for variant in variants}
 
 
 def request_build(args):

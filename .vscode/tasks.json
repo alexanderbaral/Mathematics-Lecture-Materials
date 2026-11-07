@@ -2,7 +2,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Lecture Materials: PDFs aktualisieren",
+      "label": "Lecture Materials: gemeinsame Vorschau und Vollbau",
       "type": "process",
       "command": "powershell",
       "args": [
@@ -10,9 +10,7 @@
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "${workspaceFolder}/_Shared/tools/build.ps1",
-        "-Target",
-        "${input:buildTarget}"
+        "${workspaceFolder}/_Shared/tools/build.ps1"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -26,19 +24,28 @@
         "reveal": "always",
         "panel": "dedicated"
       }
-    }
-  ],
-  "inputs": [
+    },
     {
-      "id": "buildTarget",
-      "type": "pickString",
-      "description": "Welche PDFs sollen aktualisiert werden?",
-      "options": [
-        {"label": "Skript", "value": "script"},
-        {"label": "Übungsblätter", "value": "sheets"},
-        {"label": "Beides", "value": "all"}
+      "label": "Lecture Materials: Vorschau zusätzlich mit Lückenfassung",
+      "type": "process",
+      "command": "powershell",
+      "args": [
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "Bypass",
+        "-File",
+        "${workspaceFolder}/_Shared/tools/build.ps1",
+        "-Cloze"
       ],
-      "default": "script"
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "build",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      }
     }
   ]
 }
