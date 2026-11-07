@@ -1,6 +1,4 @@
 \ExplSyntaxOn
-\NewExpandableDocumentCommand{\Lang}{m m}{\bool_if:NTF \g_script_english_bool {#2}{#1}}
-\NewExpandableDocumentCommand{\IfEnglishTF}{+m +m}{\bool_if:NTF \g_script_english_bool {#1}{#2}}
 \NewExpandableDocumentCommand{\IfSolutionsTF}{+m +m}{\bool_if:NTF \g_sheet_solutions_bool {#1}{#2}}
 \NewDocumentEnvironment{Solution}{+b}{\IfSolutionsTF{#1}{}}{}
 \cs_new_protected:Npn \sheet_solution:nnnn #1#2#3#4 {
@@ -28,27 +26,12 @@
   }{}
 }
 \ExplSyntaxOff
-\newcommand{\R}{\mathbb{R}}
-\newcommand{\N}{\mathbb{N}}
-\newcommand{\Q}{\mathbb{Q}}
-\newcommand{\Z}{\mathbb{Z}}
-\newcommand{\C}{\mathbb{C}}
-% Empty handwriting field, centred on the math axis in formulas.
-\NewDocumentCommand{\Cloze}{O{18mm}}{%
-  \begingroup\setlength{\fboxsep}{0pt}%
-  \ifmmode
-    \mathrel{\vcenter{\hbox{\colorbox{black!10}{\rule{0pt}{5mm}\hspace{#1}}}}}%
-  \else
-    \colorbox{black!10}{\rule[-1mm]{0pt}{5mm}\hspace{#1}}%
-  \fi\endgroup
-}
+
+\input{../_shared/commands/math.tex}
+\input{../_shared/commands/figures.tex}
+
 % Retain the legacy sheets' equation numbering without chapter prefixes.
 \renewcommand{\theequation}{\arabic{equation}}
-\NewDocumentCommand{\TransformOp}{m}{{\color{black!55}\Big|\;#1}}
-\NewDocumentCommand{\EnglishTerm}{m}{{\color{black!55}\itshape(engl.: #1)}}
-\NewDocumentCommand{\GermanTerm}{m}{{\color{black!55}\itshape(German: #1)}}
-% Direct source loading avoids stale figure caches and remains portable.
-\NewDocumentCommand{\CachedTikzFigure}{m}{\input{#1}}
 \newcommand{\CurrentExerciseLabel}{}
 \newcommand{\CurrentExerciseId}{}
 % Measure once: keep each task intact unless it exceeds a full text page.

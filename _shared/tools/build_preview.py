@@ -145,7 +145,7 @@ def merge(entries):
         for offset, page in enumerate(selected):
             writer.set_page_label(start + offset, start + offset,
                                   prefix=entry['title'] + ' · ' + reader.page_labels[page])
-    writer.add_metadata({'/Title': 'Mathematik · Änderungsvorschau',
+    writer.add_metadata({'/Title': 'Änderungsvorschau',
                          '/Subject': 'DE-Vorschau. Abschnittsumbrüche und Verweise können vorläufig sein.'})
     writer.page_mode = '/UseOutlines'
     output = BytesIO()

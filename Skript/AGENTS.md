@@ -1,7 +1,7 @@
 # AGENTS.md — Mathematics Lecture Script
 
 ## 1. Purpose and core rules
-This repository contains a bilingual LaTeX mathematics lecture script maintained in VS Code with Codex. Read this file before making changes.
+The repository-wide rules in `../AGENTS.md` apply. This file covers the lecture script.
 
 - German is the authoritative master for content and structure.
 - English is a Codex-maintained translation, not an independent authoring branch.
@@ -15,66 +15,11 @@ This repository contains a bilingual LaTeX mathematics lecture script maintained
   spatial arrangement of formulas, labels, and graphics.
 
 ### Local task workflow
-- Treat current, unchanged project rules already present in the task context as
-  read; do not reopen the full `AGENTS.md` or unchanged build infrastructure.
-- Work directly from the current chat request and the relevant semantic labels
-  and source paths. Read the smallest relevant source excerpts first.
-- Do not maintain or recreate a TODO file in the repository. If a temporary
-  checklist is genuinely needed for a complex task, keep it only under
-  `AppData/Local/Temp/Mathematik1-Skript/updates/`, remove obsolete entries,
-  and never treat an old checklist as fresh authorization for unrelated work.
-- Broaden searches only when a dependency is unknown, a shared command or
-  resource is involved, or the user asks for a project-wide audit. Batch
-  independent searches and keep their output focused on the requested files.
-- Before editing a file that may be shared with another agent, check that
-  specific file for intervening changes and preserve them.
-- For visual changes, inspect the standalone figure first and the affected
-  complete and cloze pages after the final edit. Build the variants currently
-  enabled for the project; a local preview complements, but does not replace,
-  those final checks.
-- Reuse the persistent cache under the real user profile's
-  `AppData/Local/Temp/Mathematik1-Skript`, including after long pauses. Never
-  silently switch to a redirected sandbox cache or discard the entire cache
-  for body-only layout changes. If no usable cache exists or relevant shared
-  dependencies genuinely require a complete rebuild, warn the author before
-  starting that longer build. Do not clear caches unless explicitly requested.
-- The coordinator automatically records preview/full build durations in
-  `AppData/Local/Temp/Mathematik1-Skript/updates/timings.csv`, outside the
-  repository. Keep terminal duration reports, but do not repeat every timing
-  in chat. Summarize on request or after approximately five substantive edits;
-  alert promptly to failures, cold builds or unexpectedly slow builds.
-  Editing time is not measured by the build script: report it separately only
-  when actually measured, excluding build/visual verification time. Never
-  equate time between builds with editing time or invent missing measurements.
-- After edits use `tools/build-update.ps1`: first update both stable preview
-  PDFs in `build/`, then let the full build finish in the background. The preview
-  collects affected sections since the last successfully published full source
-  snapshot, in document order. Global layout, chapter-order or front-matter
-  changes require a full-document preview and may take longer. Preview numbering
-  and external references are provisional; it never replaces final full checks.
-- Exactly one full worker may run, with only the latest follow-up request kept.
-  Never abort a cold build for a new edit. The worker freezes sources/resources,
-  reuses persistent caches, converges with `latexmk` and publishes both variants.
-  Use `tools/build-all.ps1` for a blocking full build through the same queue;
-  never call the internal `tools/build-engine.ps1` directly. No implicit watcher:
-  submit another update after the next batch of edits.
-- The Codex process sandbox may stop ordinary detached children. Use the approved
-  independent process execution for `python tools/build_coordinator.py update`
-  (or `full`/`resume`) when needed; the Windows worker uses a hidden breakaway
-  process. Confirm status, not merely a returned process ID. The minute-based
-  thread follow-up "Mathematikskript: PDF-Bau nachprüfen" was disabled at the
-  author's request on 2026-10-09 to avoid idle AI usage. Do not reactivate it
-  without explicit approval. Check completion/errors at the next user-requested
-  work session and acknowledge reported results with the `ack` command.
-- After handing over a preview, report that the complete PDFs may still represent
-  an older successful snapshot. Status/revisions/timings are available through
-  `tools/build-update.ps1 -Status`. Never claim the full PDFs are current while a
-  newer request is pending. Keep the open preview when a full build finishes.
-- Compare timings only for reasonably similar tasks; distinguish editing,
-  preview, full build and visual correction passes. No periodic AI monitor
-  is needed for the timing log.
-- This focused workflow never relaxes the mathematical, pedagogical,
-  typography, figure, cloze, translation, or verification requirements below.
+- Follow the shared build and cache rules in the repository AGENTS.md.
+- Use the smallest relevant source excerpts and preserve intervening author edits.
+- For visual changes, inspect a standalone figure where appropriate and the affected complete and cloze pages. The section preview may have provisional numbering, references and pagination. The full build is authoritative.
+- The shared coordinator keeps the persistent script cache, freezes sources and processes one full-build request at a time. Use the shared update command for routine work and tools/build-all.ps1 for a blocking script-only build.
+- Check the revision in build status before describing full PDFs as current. Compare preview and full build times separately, and only report editing time when actually measured.
 
 ### 1.1 Evolving chapter design principles
 The completed and author-revised chapters define the target style for new
@@ -205,14 +150,7 @@ so that future drafts increasingly match the style of the revised material.
   show solutions at their natural size without preserving the cloze field's
   artificial width.
 
-## 2. Content structure and mandatory filename consultation
-The author decides content filenames and folder names interactively.
-
-Before creating or renaming any chapter, section, subsection, or other content file/folder under `content/chapters_de/` or `content/chapters_en/`:
-1. propose a concise English `snake_case` name;
-2. if several names are reasonable, propose 2–4 alternatives briefly;
-3. wait for explicit approval;
-4. only then create the path.
+## 2. Content structure
 
 Do not pre-create future chapters, sections, subsections, or placeholder content files. `content/chapters_de/` and `content/chapters_en/` may start empty and grow incrementally, subsection by subsection.
 
@@ -263,14 +201,14 @@ common/
   commands.tex
 ```
 
-- `config.tex`: author-facing metadata, branding paths, mode definitions/defaults.
+- `config.tex`: mode definitions and defaults.
 - `preamble.tex`: packages and technical LaTeX setup.
 - `layout.tex`: page geometry, typography/layout, title page, header/footer, branding, semantic box styling.
 - `commands.tex`: stable author-facing commands, language helper, cloze interface, mathematical shortcuts.
 
 Do not create a general-purpose `header.tex`. The old header in `legacy/` is reference material only. Avoid splitting infrastructure into many tiny files unless later complexity clearly justifies it.
 
-`config.tex` contains at least one language-dependent script-title variable, exactly one shared semester variable, author, one language-dependent institution variable, one language-dependent faculty variable, branding paths, and mode defaults/definitions.
+Maintain the bilingual lecture title, institution, and faculty together with the semester and author in `../_shared/lecture_metadata.tex`. Both document entry points load it before the layout. Standalone TikZ builds do not need lecture metadata.
 
 The semester exists once, e.g. `\newcommand{\Semester}{WS 27/28}` or `\newcommand{\Semester}{SS 28}`. Never create `SemesterDE`/`SemesterEN`.
 
@@ -362,14 +300,14 @@ Mandatory geometry:
 left=1.5cm
 right=1.5cm
 top=1.0cm
-bottom=1.5cm
+bottom=1.0cm
 includeheadfoot
 ```
-Do not enlarge these margins for conventional print-layout reasons. The script is primarily for digital tablet use and handwritten annotation.
+The shared preamble owns these margins. The script is primarily for digital tablet use and handwritten annotation.
 
 Use Plus Jakarta Sans as the primary text typeface, consistently in the document
 and diagram labels. The text font files are bundled under
-`content/resources/shared/fonts/plus_jakarta_sans/`, including their SIL Open
+`../_shared/resources/fonts/plus_jakarta_sans/`, including their SIL Open
 Font License. Retain Libertinus Math for formulas; do not force sans-serif
 mathematics.
 
@@ -387,7 +325,7 @@ angle.
 Mark every right angle with a quarter-circle arc and a dot inside its angle
 sector, never with a square corner.
 
-Define TH Mannheim blue centrally as RGB `(0,0,255)` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
+Maintain TH Mannheim blue in `../_shared/style/branding_colors.tex` and use it sparingly. Body text remains black; otherwise prefer black/grayscale. Style: modern, technical, minimal, calm, tablet-friendly. Do not reproduce the legacy TH Mannheim layout.
 
 This mathematics lecture script belongs to the Fakultät für Maschinenbau.
 Use exclusively the official TH Mannheim/Maschinenbau logo and retain the
@@ -519,6 +457,6 @@ Except for the temporary inbox under `legacy/notes/handwritten/`, files under `l
 Keep `README.md` concise and human-facing. Explain project structure, the four
 supported build variants and which are currently enabled, `tools/build-all.ps1`,
 German-master/English-sync workflow, `common/config.tex`, branding, cloze usage,
-handwritten-note workflow, and mandatory filename consultation.
+and handwritten-note workflow.
 
-When multiple technical solutions are valid, prefer the simpler, more maintainable one. If a decision materially affects author-facing filenames, folder names, or long-term content structure, ask before implementing it.
+When multiple technical solutions are valid, prefer the simpler, more maintainable one. Choose semantic filenames within the requested scope. Ask when the intended content or scope cannot be inferred.

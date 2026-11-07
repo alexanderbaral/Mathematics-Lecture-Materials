@@ -13,7 +13,8 @@ param(
 $ErrorActionPreference = 'Stop'
 $benchmarkTimer = [System.Diagnostics.Stopwatch]::StartNew()
 $projectDirectory = Split-Path -Parent $PSScriptRoot
-$userCache = Join-Path ([Environment]::GetFolderPath('UserProfile')) 'AppData\Local\Temp\Mathematik1-Skript'
+. (Join-Path $PSScriptRoot 'build-cache.ps1')
+$userCache = Get-LectureCacheRoot 'script'
 $fontCache = Join-Path $userCache 'texmf-cache'
 $variantNames = if ($Variant -eq 'both') { @('de','de-cloze') } else { @($Variant) }
 

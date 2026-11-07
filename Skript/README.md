@@ -18,10 +18,10 @@ Save your edits first. Both previews are published before the full build is
 queued in the background; the terminal task can finish while that worker is
 still running. Repeating the shortcut uses the same single-worker queue.
 Queueing, immutable snapshots, safe publication and timing history are provided by
-the shared `../_Shared/tools/build_runtime.py`. The exercise sheets use the same control
+the shared `../_shared/tools/build_runtime.py`. The exercise sheets use the same control
 protocol with their own independent queue. Existing TikZ and LaTeX caches keep
 their established locations. Snapshot workspaces include the actual inputs from
-`../_Shared`; unrelated teaching content remains in its own product folder.
+`../_shared`; unrelated teaching content remains in its own product folder.
 
 This creates the active PDF variants under `build/`. Until English translation begins, these are the German complete and German cloze PDFs; the two English entry points remain available for later. The folder contains the final PDFs and their `.synctex.gz` source maps, which let the PDF viewer jump from a PDF position to the corresponding TeX source. All other auxiliary files, logs, and cached TikZ figures use the persistent `%USERPROFILE%\AppData\Local\Temp\Mathematik1-Skript\` folder, not a redirected sandbox folder. Existing figures are checked against their actual source dependencies and reused across sessions; body-only layout changes do not discard them. The build reports how many figures are reused and warns before a complete rebuild. Normal builds preserve caches; the coordinator deliberately refuses broad `-CleanCache` deletion while this workflow is in use. The four `tools/build-*.tex` files only select the mode and load `main.tex`.
 
@@ -80,10 +80,12 @@ It does not depend on a private Codex workspace path.
 
 ## Structure and configuration
 
-- `common/config.tex`: titles, shared semester, author, institutions, branding paths, and build defaults
+- `../_shared/lecture_metadata.tex`: shared lecture title, semester, author, institution, and faculty
+- `../_shared/style/branding_colors.tex`: shared university colour
+- `common/config.tex`: branding paths and build defaults
 - `common/preamble.tex`: package and font setup
 - `common/layout.tex`: page layout, title page, page style, and semantic boxes
-- `common/commands.tex`: language helper, cloze interfaces, and mathematics commands
+- `common/commands.tex`: loads the shared mathematics, TikZ and cloze commands and defines script-specific helpers
 - `content/chapters_de/` and `content/chapters_en/`: mirrored German and English content trees
 - `content/front_matter/`: shared bilingual usage notes, Greek alphabet, and recommended reading
 - `content/resources/shared/`: visual files used across multiple chapters
@@ -93,11 +95,29 @@ It does not depend on a private Codex workspace path.
 
 Before any content path is created or renamed under `content/chapters_de/` or `content/chapters_en/`, its English `snake_case` technical name must be proposed and explicitly approved. German content is authoritative. Handwritten notes are removed only after approved transfer and successful verification.
 
-Text and diagram labels use Plus Jakarta Sans; formulas retain Libertinus Math. The four required text font files and their SIL Open Font License are bundled in `content/resources/shared/fonts/plus_jakarta_sans/`; no separate installation of Plus Jakarta Sans is needed.
+Text and diagram labels use Plus Jakarta Sans; formulas retain Libertinus Math. The four required text font files and their SIL Open Font License are bundled in `../_shared/resources/fonts/plus_jakarta_sans/`; no separate installation of Plus Jakarta Sans is needed.
 
 Short `\Cloze` answer fields use the subtle CD-greige background `#E5E4D8`, chosen to remain unobtrusive and suitable for pencil writing.
 
-Author-facing metadata is edited in `common/config.tex`. Global branding files live in `content/resources/shared/` (PDF preferred, PNG supported); set `\BrandLogoPath` and `\BrandDotPath` there. Each chapter may keep its own visual material in `content/resources/chapters/<chapter>/images/` and `content/resources/chapters/<chapter>/tikz/`, mirroring the approved chapter name under `content/chapters_de/` and `content/chapters_en/`. Missing branding files automatically produce restrained placeholders.
+### Python-Code einbinden
+
+```latex
+\PythonCode{content/resources/chapters/vector_algebra/projection.py}
+\PythonCode[Orthogonale Projektion]{content/resources/chapters/vector_algebra/projection.ipynb}
+```
+
+Der Pfad ist relativ zu `Skript/`. Lege die Eingabedateien unter `content/` ab,
+damit Vorschau und Gesamtbau sie übernehmen. Codebeispiele werden je Kapitel
+nummeriert. Ohne eigenen Titel steht der Dateiname im Rahmen. Python-Syntax
+wird farblich hervorgehoben. Bei Notebooks bleiben Code- und Markdownzellen
+in ihrer Reihenfolge. Markdown wird als Text mit Formatierung gesetzt.
+Gespeicherte Ausgaben und eingebettete Bilder werden übersprungen.
+Der PDF-Bau führt den Python-Code nicht aus.
+Über das kleine Label »Python« lässt sich in PDF-Readern mit Anhang-Unterstützung
+der Originalcode mit den ursprünglichen Tabs und Leerzeichen speichern. Der
+Befehl steht auch in den Übungsblättern zur Verfügung.
+
+Edit the shared lecture title, semester, author, institution, and faculty in `../_shared/lecture_metadata.tex`. Both products load branding assets from `../_shared/resources/branding/`. Their paths are set in `../_shared/style/branding.tex`. Each chapter may keep its own visual material in `content/resources/chapters/<chapter>/images/` and `content/resources/chapters/<chapter>/tikz/`, mirroring the approved chapter name under `content/chapters_de/` and `content/chapters_en/`. Missing branding files automatically produce restrained placeholders.
 
 This mathematics lecture script uses exclusively the official TH Mannheim/Maschinenbau logo and the corresponding faculty metadata. The vector PDF is derived from the accompanying original RGB SVG from the TH Mannheim brand portal, preserving its shapes and colour.
 The title page uses the official point pattern in RGB blue on a white background,

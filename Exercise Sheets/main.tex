@@ -2,12 +2,11 @@
 \providecommand{\ScriptLanguage}{de}
 \providecommand{\ShowSolutions}{false}
 \providecommand{\SheetId}{fundamentals}
-\providecommand{\TikzCacheRoot}{build/tikz}
-\documentclass[a4paper,12pt,headinclude=true,footinclude=true]{scrreprt}
-\input{common/config.tex}
-\input{common/preamble.tex}
+\input{../_shared/style/document.tex}
 \input{common/commands.tex}
+\input{../_shared/lecture_metadata.tex}
 \input{common/layout.tex}
+\input{../_shared/commands/python-code.tex}
 \IfFileExists{\SheetEntry}{}{%
   \PackageError{main}{Missing content: \SheetEntry}{No fallback language is allowed.}%
 }

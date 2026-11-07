@@ -10,12 +10,10 @@ import sys
 import time
 
 ROOT = Path(__file__).resolve().parents[1]
-spec = importlib.util.spec_from_file_location("lecture_build_runtime", ROOT.parent / "_Shared/tools/build_runtime.py")
+spec = importlib.util.spec_from_file_location("lecture_build_runtime", ROOT.parent / "_shared/tools/build_runtime.py")
 common = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(common)
-CACHE = Path(os.environ.get("EXERCISE_SHEETS_CACHE") or
-             Path(os.environ.get("USERPROFILE", str(Path.home()))) /
-             "AppData/Local/_tmp_LatexCache/mathematics_exercise_sheets")
+CACHE = common.cache_root('sheets')
 UPDATE_CACHE = CACHE / "updates"
 
 def control():
@@ -54,7 +52,7 @@ def _run_full(snapshot, request):
     output.mkdir(parents=True, exist_ok=True)
     options = request.get("options") or {}
     languages = ["de", "en"] if options.get("language") == "all" else [options.get("language", "de")]
-    approval = common.read_json(source.parent / '_Shared/tools/build_variants.json',
+    approval = common.read_json(source.parent / '_shared/tools/build_variants.json',
                                 {'sheet_languages': {'de': ['*'], 'en': []}})['sheet_languages']
     if options.get('language') == 'approved':
         languages = [language for language, ids in approval.items() if ids]

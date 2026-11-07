@@ -1,36 +1,16 @@
-\AtBeginDocument{\IfEnglishTF{\selectlanguage{english}}{\selectlanguage{ngerman}}}
-\hypersetup{pdftitle={\ScriptTitle: \SheetTitle},pdfauthor={\ScriptAuthor},pdfcreator={LuaLaTeX}}
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0.45em}
-\KOMAoptions{headsepline=false,footsepline=false}
-\setkomafont{subsection}{\normalfont\sffamily\bfseries\large\color{black}}
+\input{../_shared/style/layout.tex}
+\hypersetup{pdftitle={\ScriptTitle: \SheetTitle}}
 \RedeclareSectionCommand[beforeskip=1.2\baselineskip,afterskip=.45\baselineskip]{subsection}
-\setlist[enumerate]{leftmargin=2em,itemsep=.35em,topsep=.35em}
-\setlist[enumerate,1]{label=\alph*),ref=\alph*}
-\setlist[enumerate,2]{label=\arabic*),ref=\arabic*}
-\setlist[enumerate,3]{label=\roman*),ref=\roman*}
-\setlist[enumerate,4]{label=\Alph*),ref=\Alph*}
-\setlist[itemize]{label=\textcolor{THMBlue}{\bfseries+},leftmargin=1.5em,itemsep=.35em,topsep=.35em}
-\newif\ifBrandPageDotVisible
-\BrandPageDotVisibletrue
 \AddToHook{shipout/foreground}{%
-  \ifBrandPageDotVisible
-    \ifnum\value{page}>1
-    \begin{tikzpicture}[remember picture,overlay]
-      \node[anchor=north east,inner sep=0pt]
-        at ([xshift=-7.5mm,yshift=-4.5mm]current page.north east)
-        {\includegraphics[width=9mm,height=9mm,keepaspectratio]{\BrandDotPath}};
-    \end{tikzpicture}%
-    \fi
-  \fi
+  \ifnum\value{page}>1\PlaceBrandPageDot{9mm}{4mm}\fi
 }
 \clearpairofpagestyles
 \ihead*{\footnotesize\normalfont\color{black!45}%
   \Lang{Übungsblatt}{Exercise sheet} \SheetNumber\enspace\textperiodcentered\enspace\SheetTitle%
   \IfSolutionsTF{\enspace\textperiodcentered\enspace\CurrentExerciseLabel\enspace(\Lang{mit Lösungen}{with solutions})}{}}
 \ohead*{}
-\ifoot*{\footnotesize\color{black!70}\ScriptTitle\enspace\textperiodcentered\enspace Semester \Semester}
-\ofoot*{\footnotesize\color{black!70}\Lang{Seite}{Page} \pagemark}
+\ifoot*{\LectureFooter}
+\ofoot*{\LecturePageMark}
 \pagestyle{scrheadings}
 \newcommand{\MakeSheetHeader}{%
   \thispagestyle{plain.scrheadings}%
@@ -50,23 +30,7 @@
   \begin{minipage}[t]{0.28\linewidth}
     \vspace{0pt}\raggedleft
     % Remove only the asset's white padding so its visible edge aligns right.
-    \includegraphics[trim=15.36bp 16.56bp 14.88bp 17.28bp,clip,
-      width=4.1cm,height=3cm,keepaspectratio]{\BrandLogoPath}
+    \BrandLogo[trim=15.36bp 16.56bp 14.88bp 17.28bp,clip]{4.1cm}{3cm}
   \end{minipage}\par\smallskip
   {\color{THMBlue}\hrule height 0.8pt}\par
 }
-\tcbset{scriptbox/.style={enhanced,breakable=false,colback=black!2,
-  colbacktitle=black!2,colframe=black!2,boxrule=0pt,
-  borderline west={1.2pt}{0pt}{THMBlue},sharp corners,
-  left=2.5mm,right=2mm,top=1.5mm,bottom=1.5mm,
-  before skip=1.0\baselineskip,after skip=1.0\baselineskip,
-  fonttitle=\bfseries,coltitle=black}}
-\newtcbtheorem[number within=chapter]{DefinitionBox}{\Lang{Definition}{Definition}}
-  {scriptbox,breakable=false}{def}
-\newtcbtheorem[number within=chapter]{ExampleBox}{\Lang{Beispiel}{Example}}
-  {scriptbox,breakable=false,borderline west={1.2pt}{0pt}{black!40}}{ex}
-\newtcbtheorem[number within=chapter]{KeyPointBox}{\Lang{Merke}{Key Point}}
-  {scriptbox,borderline west={2pt}{0pt}{THMBlue}}{key}
-\newtcbtheorem[number within=chapter]{TheoremBox}{\Lang{Satz}{Theorem}}
-  {scriptbox,borderline west={1.8pt}{0pt}{THMBlue!70!black}}{thm}
-\newtcolorbox{RemarkBox}[1][]{scriptbox,borderline west={1.2pt}{0pt}{black!40},title=\Lang{Hinweis}{Remark},#1}

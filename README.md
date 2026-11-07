@@ -2,15 +2,28 @@
 
 Gemeinsames Repository: [alexanderbaral/Mathematics-Lecture-Materials](https://github.com/alexanderbaral/Mathematics-Lecture-Materials).
 
-Dieser Ordner bündelt Skript, Exercise Sheets und den gemeinsamen Bereich _Shared.
+Dieser Ordner bündelt Skript, Exercise Sheets und den gemeinsamen Bereich _shared.
 
 - Skript: Vorlesungsskript mit deutscher Voll- und Lückenversion.
 - Exercise Sheets: Aufgabenblätter und Musterlösungen.
-- _Shared/style: vorgesehen für gemeinsame Stildefinitionen.
-- _Shared/commands: vorgesehen für gemeinsame mathematische, Sprach- und Codebefehle.
-- _Shared/resources: vorgesehen für gemeinsame Grafiken, Symbole und Schriften.
-- _Shared/tools: gemeinsame Bausteuerung und Tests.
-- _Shared/legacy: gemeinsame Ablage für unverändert erhaltene Altmaterialien.
+- [Vorlesungsdaten](_shared/lecture_metadata.tex): Titel, Hochschule und Fakultät (DE/EN) sowie Semester und Autor für beide Dokumente.
+- [Hochschulfarbe](_shared/style/branding_colors.tex): gemeinsames THM-Blau für beide Dokumente und TikZ.
+- _shared/commands: gemeinsame Befehle, darunter die Python-Codebeispiele für beide Dokumente.
+- `_shared/resources/`: Hochschulgrafiken, TikZ-Symbole und Plus Jakarta Sans mit Lizenz.
+- _shared/tools: gemeinsame Bausteuerung und Tests.
+- _shared/legacy: gemeinsame Ablage für unverändert erhaltene Altmaterialien.
+
+## Voraussetzungen
+
+Windows mit PowerShell, TeX Live mit LuaLaTeX und latexmk sowie Python. Die gemeinsame
+Textschrift Plus Jakarta Sans ist gebündelt, Libertinus Math kommt aus TeX Live.
+Python-Abhängigkeiten bei Bedarf aus dem Hauptordner installieren:
+
+```powershell
+python -m pip install -r _shared/tools/requirements.txt
+```
+
+Poppler dient der visuellen Prüfung. Die Arbeitsregeln stehen in [AGENTS.md](AGENTS.md).
 
 ## VS Code
 
@@ -41,22 +54,24 @@ Beide Projekte gehören zu einem gemeinsamen Git-Repository in diesem Hauptordne
 Die ursprünglichen Historien von Mathematics-LectureNotes und Mathematics-ExerciseSheets
 sind über Import-Merge-Commits vollständig erhalten. Es gibt keine verschachtelten Git-Repositories.
 
-_Shared ist als gemeinsamer Bereich vorbereitet. Die aktiven Makros und Gestaltungsdateien
-liegen derzeit weiterhin in den jeweiligen common-Verzeichnissen. Ihre Auslagerung muss
-mit der Abhängigkeitserkennung der beiden Bauabläufe abgestimmt werden.
+Beide Produkte laden die gemeinsamen LaTeX-Befehle aus `_shared/commands` und
+die gemeinsame Gestaltung aus `_shared/style`. Ihre `common`-Ordner enthalten
+produktspezifische Einstellungen, etwa den Blattkopf, die Skripttitelseite und die Lösungsmodi.
 
-Die bisherigen persistenten Caches außerhalb des Projektordners werden weiterverwendet.
-Beide Produkte verwenden die gemeinsame Steuerung in `_Shared/tools/build_runtime.py`: unveränderliche
+Die gemeinsame Konfiguration `_shared/tools/cache_paths.json` verweist auf die
+bestehenden, getrennten lokalen Caches für Skript und Übungsblätter.
+Beide Produkte verwenden die gemeinsame Steuerung in `_shared/tools/build_runtime.py`: unveränderliche
 Quellstände, unabhängige Warteschlangen, Prozesssperren, sichere PDF-Veröffentlichung und fortlaufende
 Zeitprotokolle. Ein laufender Bau wird beendet; anschließend folgt nur der neueste vorgemerkte Stand.
 Bei Fehlern bleiben die letzten erfolgreichen PDFs erhalten. Ein identischer fehlerhafter Stand
 wird ohne ausdrücklichen neuen Auftrag nicht wiederholt gebaut.
 
-`python _Shared/tools/build.py status --product all` zeigt beide Bauzustände. Mit
-`python _Shared/tools/build.py full --product all` wird bis zum Abschluss beider Produkte gewartet.
-Aktive Änderungen unter `_Shared` werden bei beiden Dokumenttypen berücksichtigt. `_Shared/legacy`
+`python _shared/tools/build.py status --product all` zeigt beide Bauzustände. Mit
+`python _shared/tools/build.py full --product all` wird bis zum Abschluss beider Produkte gewartet.
+Aktive Änderungen unter `_shared` werden bei beiden Dokumenttypen berücksichtigt. `_shared/legacy`
 ist ausgenommen: Dort abgelegte Altmaterialien lösen keine Bauten aus. Die gemeinsame
-Abhängigkeitsprüfung für TikZ liegt in `_Shared/tools/build-cache.ps1`; bestehende Grafik-Caches bleiben gültig.
+Abhängigkeitsprüfung für TikZ liegt in `_shared/tools/build-cache.ps1`. Der Skriptbau
+berücksichtigt auch `_shared/resources/tikz` und verwendet gültige Figurencaches weiter.
 Die lokale Speicherüberwachung der Blätter bleibt als zusätzliche Aufgabe verfügbar.
 
 Zeitprotokolle liegen außerhalb des Projekts: für das Skript unter
@@ -64,7 +79,7 @@ Zeitprotokolle liegen außerhalb des Projekts: für das Skript unter
 `%USERPROFILE%/AppData/Local/_tmp_LatexCache/mathematics_exercise_sheets/updates/timings.csv`.
 Deutsch bleibt die Masterfassung, Englisch folgt auf ausdrücklichen Auftrag.
 
-`_Shared/tools/build_variants.json` hält die freigegebenen Sprachen fest. Für das Skript
+`_shared/tools/build_variants.json` hält die freigegebenen Sprachen fest. Für das Skript
 aktiviert jeder Eintrag in `script_languages` Voll- und Lückenfassung. Für Übungsblätter
 aktiviert `sheet_languages` beide Lösungsmodi pro Blatt-ID; `*` bedeutet alle registrierten
 Blätter. Aktuell ist Deutsch freigegeben, Englisch noch nicht. Eine englische Datei allein
@@ -73,10 +88,10 @@ gilt nicht als Freigabe. Eine freigegebene, aber fehlende Übersetzung meldet ei
 Gemeinsame Bedienung im Terminal:
 
 ```powershell
-python _Shared/tools/build.py update
-python _Shared/tools/build.py update --cloze
-python _Shared/tools/build.py update --wait
-python _Shared/tools/build.py status
+python _shared/tools/build.py update
+python _shared/tools/build.py update --cloze
+python _shared/tools/build.py update --wait
+python _shared/tools/build.py status
 ```
 
 Das zusätzliche Vorschau-Zeitprotokoll liegt unter

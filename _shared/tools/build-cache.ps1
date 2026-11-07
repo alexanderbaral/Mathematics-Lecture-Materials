@@ -1,3 +1,20 @@
+function Get-LectureCacheRoot([ValidateSet('script','sheets')][string]$Product) {
+    if ($Product -eq 'sheets' -and $env:EXERCISE_SHEETS_CACHE) {
+        return [IO.Path]::GetFullPath($env:EXERCISE_SHEETS_CACHE)
+    }
+    # Use the persistent profile, not redirected LocalApplicationData.
+    $profilePath = [Environment]::GetFolderPath('UserProfile')
+    if (-not $profilePath) { throw 'Cannot determine the user profile for the build cache.' }
+    $paths = Get-Content -LiteralPath (Join-Path $PSScriptRoot 'cache_paths.json') -Raw -Encoding utf8 |
+        ConvertFrom-Json
+    $target = [IO.Path]::GetFullPath((Join-Path $profilePath $paths.$Product))
+    $profilePrefix = [IO.Path]::GetFullPath($profilePath).TrimEnd('\', '/') + [IO.Path]::DirectorySeparatorChar
+    if (-not $target.StartsWith($profilePrefix, [StringComparison]::OrdinalIgnoreCase)) {
+        throw "Invalid cache path: $target"
+    }
+    return $target
+}
+
 # Shared dependency checks for the standalone TikZ cache. No build is started here.
 function Get-BuildFileHash([string]$Path) {
     if (-not $fileHashes.ContainsKey($Path)) {
@@ -13,10 +30,9 @@ function Get-TikzRelativeDependency([string]$Path) {
     $normalized = $Path.Replace('\', '/')
     $sharedName = $null
     if ($normalized.StartsWith('__shared__/')) { $sharedName = $normalized.Substring(11) }
-    elseif ($normalized.StartsWith('../_Shared/')) { $sharedName = $normalized.Substring(11) }
-    elseif ($normalized -match '(?i)/_Shared/(.+)$') { $sharedName = $Matches[1] }
+    elseif ($normalized -match '(?i)/_shared/(.+)$') { $sharedName = $Matches[1] }
     if ($sharedName -and $sharedName.Split('/') -notcontains '..') {
-        $sharedFile = Join-Path (Join-Path (Split-Path -Parent $projectRoot) '_Shared') $sharedName
+        $sharedFile = Join-Path (Join-Path (Split-Path -Parent $projectRoot) '_shared') $sharedName
         if ([IO.File]::Exists($sharedFile)) { return '__shared__/' + $sharedName }
     }
     if ($normalized.Split('/') -contains '..') { return $null }
@@ -77,7 +93,7 @@ function Get-TikzDependencyFingerprint([string]$RecorderFile, [switch]$Refresh) 
         $relative = Get-TikzRelativeDependency $inputPath
         if (-not $relative) { return $null }
         $actualInput = if ($relative.StartsWith('__shared__/')) {
-            Join-Path (Join-Path (Split-Path -Parent $projectRoot) '_Shared') $relative.Substring(11)
+            Join-Path (Join-Path (Split-Path -Parent $projectRoot) '_shared') $relative.Substring(11)
         } else { Join-Path $projectRoot $relative }
         $inputHash = Get-BuildFileHash $actualInput
         if (-not $inputHash) { return $null }

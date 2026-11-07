@@ -84,7 +84,7 @@ class Planner:
                         path = path.resolve()
                         if path.is_relative_to(self.stage.resolve()):
                             paths.add(path)
-        shared = self.stage.parent / "_Shared"
+        shared = self.stage.parent / "_shared"
         if shared.is_dir():
             entries = [p for p in shared.iterdir() if p.name.lower() not in {"legacy", "tools"}]
             paths.update(p for entry in entries for p in ([entry] if entry.is_file() else entry.rglob("*")) if p.is_file())

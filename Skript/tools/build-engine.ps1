@@ -19,7 +19,8 @@ $fileHashes = @{}
 # In-memory hashes and portable dependency checks; no figure is trusted without its source hashes.
 . (Join-Path $PSScriptRoot 'build-cache.ps1')
 
-$approvalPath = Join-Path (Split-Path -Parent $projectRoot) '_Shared/tools/build_variants.json'
+$sharedRoot = Join-Path (Split-Path -Parent $projectRoot) '_shared'
+$approvalPath = Join-Path $sharedRoot 'tools/build_variants.json'
 $approvedLanguages = @('de')
 if (Test-Path -LiteralPath $approvalPath) {
     $approvedLanguages = @((Get-Content -LiteralPath $approvalPath -Raw | ConvertFrom-Json).script_languages)
@@ -34,20 +35,8 @@ $variants = @(foreach ($lang in $approvedLanguages) {
 $buildDirectory = Join-Path $projectRoot 'build'
 New-Item -ItemType Directory -Force -Path $buildDirectory | Out-Null
 
-# LocalApplicationData can be redirected into a fresh app-container sandbox.
-# UserProfile keeps the established cache stable across shells and sessions.
-$cacheUserProfile = [Environment]::GetFolderPath('UserProfile')
-if ([string]::IsNullOrWhiteSpace($cacheUserProfile)) {
-    throw 'Cannot determine the user profile; refusing to create a replacement cache.'
-}
-$localCacheDirectory = Join-Path $cacheUserProfile 'AppData\Local\Temp\Mathematik1-Skript'
-$expectedLocalCacheDirectory = [System.IO.Path]::GetFullPath(
-    (Join-Path $cacheUserProfile 'AppData\Local\Temp\Mathematik1-Skript')
-)
-$localCacheDirectory = [System.IO.Path]::GetFullPath($localCacheDirectory)
-if ($localCacheDirectory -ne $expectedLocalCacheDirectory) {
-    throw "Unexpected local cache path: $localCacheDirectory"
-}
+$localCacheDirectory = Get-LectureCacheRoot 'script'
+$expectedLocalCacheDirectory = $localCacheDirectory
 
 if ($CleanCache) {
     if (Test-Path -LiteralPath $localCacheDirectory) {
@@ -87,6 +76,11 @@ function Get-ProjectSourceFingerprint {
         (Join-Path $projectRoot 'main.tex')
         (Join-Path $projectRoot 'latexmkrc')
         (Join-Path $projectRoot 'tools/build-tikz.tex')
+        (Join-Path $sharedRoot 'lecture_metadata.tex')
+        foreach ($folder in 'style','commands','resources') {
+            Get-ChildItem -LiteralPath (Join-Path $sharedRoot $folder) -File -Recurse |
+                Select-Object -ExpandProperty FullName
+        }
         foreach ($variant in $variants) { Join-Path $projectRoot $variant.File }
     ) | Sort-Object -Unique
     $records = foreach ($path in $paths) {
@@ -144,7 +138,7 @@ if ($Force) {
 }
 
 $tikzSources = @(
-    Get-ChildItem -LiteralPath (Join-Path $projectRoot 'content/resources') -Recurse -Filter '*.tex' -File |
+    Get-ChildItem -LiteralPath (Join-Path $projectRoot 'content/resources'), (Join-Path $sharedRoot 'resources') -Recurse -Filter '*.tex' -File |
         Where-Object {
             $_.Directory.Name -eq 'tikz' -and
             # These sources need caller-defined commands or document references.
@@ -214,10 +208,16 @@ foreach ($variant in $variants) {
         $sourceFingerprint = Get-BuildFileHash $source.FullName
         Write-Host "  Rebuilding $figureName"
         $projectRootPrefix = $projectRoot.TrimEnd('\') + '\'
-        if (-not $source.FullName.StartsWith($projectRootPrefix, [System.StringComparison]::OrdinalIgnoreCase)) {
+        $sharedPrefix = $sharedRoot.TrimEnd('\') + '\'
+        if ($source.FullName.StartsWith($projectRootPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+            $relativeSource = $source.FullName.Substring($projectRootPrefix.Length).Replace('\', '/')
+        }
+        elseif ($source.FullName.StartsWith($sharedPrefix, [StringComparison]::OrdinalIgnoreCase)) {
+            $relativeSource = '../_shared/' + $source.FullName.Substring($sharedPrefix.Length).Replace('\', '/')
+        }
+        else {
             throw "Unexpected TikZ source path: $($source.FullName)"
         }
-        $relativeSource = $source.FullName.Substring($projectRootPrefix.Length).Replace('\', '/')
         $texCommand = "\def\ScriptLanguage{$($variant.Language)}\def\ClozeMode{$($variant.Cloze)}\def\TikzCacheVariant{$jobName}\def\TikzSource{$relativeSource}\input{tools/build-tikz.tex}"
         $figureBuildLog = Join-Path $variantTikzCacheDirectory "$figureName.build.log"
         Set-Location -LiteralPath $projectRoot

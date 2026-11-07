@@ -10,7 +10,7 @@ from pypdf import PdfReader
 from cache_paths import CACHE_ROOT
 
 ROOT = Path(__file__).resolve().parents[1]
-LEGACY = ROOT.parent / "_Shared/legacy/Exercise Sheets"
+LEGACY = ROOT.parent / "_shared/legacy/Exercise Sheets"
 def resolve_reference(relative):
     relative = str(relative).replace(chr(92), "/")
     return LEGACY / relative[len("references/"):] if relative.startswith("references/") else ROOT / relative

@@ -25,7 +25,7 @@ import uuid
 
 
 import importlib.util
-_RUNTIME_PATH = Path(__file__).resolve().parents[2] / "_Shared/tools/build_runtime.py"
+_RUNTIME_PATH = Path(__file__).resolve().parents[2] / "_shared/tools/build_runtime.py"
 _runtime_spec = importlib.util.spec_from_file_location("lecture_build_runtime", _RUNTIME_PATH)
 common = importlib.util.module_from_spec(_runtime_spec)
 _runtime_spec.loader.exec_module(common)
@@ -37,10 +37,11 @@ def snapshots():
     return common.Snapshots(UPDATE_CACHE)
 
 ROOT = Path(__file__).resolve().parents[1]
-CACHE = Path(os.environ.get('USERPROFILE', str(Path.home()))) / 'AppData/Local/Temp/Mathematik1-Skript'
+CACHE = common.cache_root('script')
 UPDATE_CACHE = CACHE / 'updates'
 VARIANTS = ('build-de', 'build-de-cloze')
 INPUT = re.compile(r'\\(?:input|include|CachedTikzFigure)\{([^{}]+)\}')
+PYTHON_CODE = re.compile(r'\\PythonCode\s*(?:\[[^\]]*\]\s*)?\{([^{}]+)\}')
 
 
 def now():
@@ -133,8 +134,13 @@ def sections(snapshot):
                     child = match[1].replace('\\ScriptLanguage', 'de')
                     if not Path(child).suffix:
                         child += '.tex'
-                    if child in snapshot['files']:
-                        gather(child)
+                    dependency = dependency_relative_path(child, snapshot)
+                    if dependency:
+                        gather(dependency)
+                for filename in PYTHON_CODE.findall(current):
+                    code_path = Path(filename).as_posix()
+                    if code_path in snapshot['files']:
+                        dependencies.add(code_path)
                 # Raster/PDF assets and caller-provided resources are covered as well.
                 for candidate in snapshot['files']:
                     if candidate.startswith('content/resources/') and candidate in current:
@@ -226,8 +232,9 @@ def subprocess_flags(background=False):
 def rebase_synctex(data, source):
     text = gzip.decompress(data).decode('utf-8')
     text = text.replace(source.as_posix(), ROOT.as_posix()).replace(str(source), str(ROOT))
-    text = text.replace((source.parent / '_Shared').as_posix(), (ROOT.parent / '_Shared').as_posix())
-    text = text.replace(str(source.parent / '_Shared'), str(ROOT.parent / '_Shared'))
+    for legacy_name in ('_shared', '_Shared'):
+        text = text.replace((source.parent / legacy_name).as_posix(), (ROOT.parent / '_shared').as_posix())
+        text = text.replace(str(source.parent / legacy_name), str(ROOT.parent / '_shared'))
     return gzip.compress(text.encode('utf-8'), mtime=0)
 
 
@@ -250,7 +257,7 @@ def run_full(snapshot, request):
     started = time.monotonic()
     source = UPDATE_CACHE / 'full-workspace' / 'Skript'
     materialize(snapshot, source)
-    config = common.read_json(source.parent / '_Shared/tools/build_variants.json', {'script_languages': ['de']})
+    config = common.read_json(source.parent / '_shared/tools/build_variants.json', {'script_languages': ['de']})
     variants = tuple('build-' + language + suffix for language in config['script_languages'] for suffix in ('', '-cloze'))
     atomic(source / 'build-context.tex', context_text(snapshot).encode('utf-8'))
     logfile = UPDATE_CACHE / 'logs' / (request['id'] + '-full.log')
@@ -307,10 +314,8 @@ def dependency_relative_path(path, snapshot):
     shared_name = None
     if normalized.startswith('__shared__/'):
         shared_name = normalized[11:]
-    elif normalized.startswith('../_Shared/'):
-        shared_name = normalized[11:]
-    elif '/_Shared/' in normalized:
-        shared_name = normalized.split('/_Shared/', 1)[1]
+    elif match := re.search(r'(?:^|/)_shared/(.+)$', normalized, re.IGNORECASE):
+        shared_name = match[1]
     if shared_name and '..' not in shared_name.split('/'):
         candidate = '__shared__/' + shared_name
         if candidate in snapshot['files']:
@@ -389,7 +394,8 @@ def preview(snapshot, selection, baseline_record, sequence=0, whole_document=Fal
                 dependencies = snapshot['files'] if whole_document else {p for section in selection for p in section['dependencies']}
                 for figure in sorted(p for p in dependencies if '/tikz/' in p and p.endswith('.tex')):
                     if cached_figure_valid(snapshot, baseline_dir / variant, figure):
-                        reuse.append('\\expandafter\\def\\csname PreviewCached@' + figure + '\\endcsname{' + (baseline_dir / variant / (Path(figure).stem + '.pdf')).as_posix() + '}')
+                        source_path = '../_shared/' + figure[11:] if figure.startswith('__shared__/') else figure
+                        reuse.append('\\expandafter\\def\\csname PreviewCached@' + source_path + '\\endcsname{' + (baseline_dir / variant / (Path(figure).stem + '.pdf')).as_posix() + '}')
             reuse += [r'''\RenewDocumentCommand{\CachedTikzFigure}{m}{%
 \begingroup
 \ifcsname PreviewCached@#1\endcsname
@@ -404,8 +410,8 @@ def preview(snapshot, selection, baseline_record, sequence=0, whole_document=Fal
             atomic(source / (name + '.tex'), wrapper.encode('utf-8'))
             env = dict(os.environ, TEXMFVAR=str(CACHE / 'texmf-cache'), TEXMFCACHE=str(CACHE / 'texmf-cache'))
             log = output / (name + '.build.log')
-            command = [executable('lualatex'), '-halt-on-error', '-interaction=nonstopmode', '-recorder', '-synctex=1',
-                       '-output-directory=' + str(output), name + '.tex']
+            command = [executable('lualatex'), '-no-shell-escape', '-halt-on-error', '-interaction=nonstopmode', '-recorder', '-synctex=1',
+                       '-output-directory=' + output.as_posix(), name + '.tex']
             with log.open('wb') as stream:
                 result = subprocess.run(command, cwd=source, env=env, stdout=stream, stderr=subprocess.STDOUT, **subprocess_flags())
             return result.returncode, log

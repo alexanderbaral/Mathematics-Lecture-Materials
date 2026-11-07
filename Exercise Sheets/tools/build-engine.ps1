@@ -21,10 +21,8 @@ $projectRoot = if ($SourceRoot) { [IO.Path]::GetFullPath($SourceRoot) } else { S
 if (-not $PublishedRoot) { $PublishedRoot = $projectRoot }
 if (-not $OutputRoot) { throw 'The engine requires an isolated OutputRoot. Use build-all.ps1.' }
 Set-Location -LiteralPath $projectRoot
-$cacheRoot = if ($env:EXERCISE_SHEETS_CACHE) { $env:EXERCISE_SHEETS_CACHE } else {
-    Join-Path $env:USERPROFILE 'AppData/Local/_tmp_LatexCache/mathematics_exercise_sheets'
-}
-$cacheRoot = [IO.Path]::GetFullPath($cacheRoot)
+. (Join-Path $PSScriptRoot 'build-cache.ps1')
+$cacheRoot = Get-LectureCacheRoot 'sheets'
 $workingCopy = Join-Path $cacheRoot 'workspace'
 New-Item -ItemType Directory -Force -Path $cacheRoot,$workingCopy | Out-Null
 try { $buildLock = [IO.File]::Open((Join-Path $cacheRoot 'build.lock'), 'OpenOrCreate', 'ReadWrite', 'None') }
@@ -53,8 +51,8 @@ foreach ($cachedFile in Get-ChildItem -LiteralPath $workingCopy -File -Recurse) 
     if (-not $expectedFiles.Contains($resolved)) { Remove-Item -LiteralPath $resolved -Force }
 }
 
-$sourceShared = Join-Path (Split-Path -Parent $projectRoot) '_Shared'
-$cacheShared = [IO.Path]::GetFullPath((Join-Path $cacheRoot '_Shared'))
+$sourceShared = Join-Path (Split-Path -Parent $projectRoot) '_shared'
+$cacheShared = [IO.Path]::GetFullPath((Join-Path $cacheRoot '_shared'))
 if (-not $cacheShared.StartsWith($cacheRoot + [IO.Path]::DirectorySeparatorChar, [StringComparison]::OrdinalIgnoreCase)) { throw 'Invalid Shared cache path.' }
 $sharedExpected = [Collections.Generic.HashSet[string]]::new([StringComparer]::OrdinalIgnoreCase)
 if (Test-Path -LiteralPath $sourceShared) {
@@ -89,7 +87,7 @@ if ('all' -notin $Sheet) { $sheets = @($sheets | Where-Object Id -in $Sheet) }
 $languages = if ($Language -eq 'all') { @('de','en') } else { @($Language) }
 $approvedSheets = $null
 if ($Language -eq 'approved') {
-    $approvalPath = Join-Path (Split-Path -Parent $projectRoot) '_Shared/tools/build_variants.json'
+    $approvalPath = Join-Path (Split-Path -Parent $projectRoot) '_shared/tools/build_variants.json'
     $approvedSheets = (Get-Content -LiteralPath $approvalPath -Raw | ConvertFrom-Json).sheet_languages
     $languages = @($approvedSheets.PSObject.Properties | Where-Object { @($_.Value).Count -gt 0 } | ForEach-Object Name)
     foreach ($lang in $languages) {

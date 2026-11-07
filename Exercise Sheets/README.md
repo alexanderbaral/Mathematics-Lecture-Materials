@@ -46,7 +46,7 @@ Aufgabenänderungen betreffen das zugehörige Blatt in beiden Varianten; gemeins
 
 ## Bauen
 
-Voraussetzungen: TeX Live mit LuaLaTeX und latexmk; Fira Sans und Libertinus Math (hier über TeX Live verfügbar). Für die Gesamt-PDF Python mit `pypdf`; für Renderübersichten zusätzlich Poppler und Pillow. Python-Pakete bei Bedarf mit `python -m pip install -r tools/requirements.txt` installieren. Das Buildskript sucht Python im PATH und alternativ in der vorhandenen Codex-Laufzeit; `-Python <Pfad>` wählt ausdrücklich einen Interpreter. Vom Projektordner in PowerShell:
+Die [gemeinsamen Voraussetzungen](../README.md#voraussetzungen) gelten auch für die Übungsblätter. Das Buildskript sucht Python im PATH und alternativ in der vorhandenen Codex-Laufzeit; `-Python <Pfad>` wählt ausdrücklich einen Interpreter. Vom Projektordner in PowerShell:
 
 ```powershell
 # Standard: alle deutschen Aufgabenblätter ohne Lösungen
@@ -71,7 +71,9 @@ Voraussetzungen: TeX Live mit LuaLaTeX und latexmk; Fira Sans und Libertinus Mat
 
 Bei lokal gesperrten PowerShell-Skripten ist ein einzelner Aufruf mit `powershell -NoProfile -ExecutionPolicy Bypass -File tools/build-all.ps1 -Language de -Solutions both` möglich; keine globale Ausführungsrichtlinie wird geändert.
 
-Beide Dokumenttypen verwenden die gemeinsame Steuerung in ../_Shared/tools/build_runtime.py.
+Beide Dokumenttypen verwenden die gemeinsame Steuerung in ../_shared/tools/build_runtime.py.
+Der gemeinsame Befehl zum Einbinden von Python-Dateien und Notebooks ist im
+[Skript-README](../Skript/README.md#python-code-einbinden) dokumentiert.
 Jeder Auftrag erhält einen eingefrorenen Quellstand. Es läuft höchstens ein Blattbau;
 weitere Anforderungen werden zusammengefasst und der neueste Stand folgt nach dem laufenden Auftrag.
 Die getrennte Warteschlange des Skripts blockiert die Blätter nicht.
@@ -95,23 +97,25 @@ Die gemeinsame Sprachhierarchie bleibt unverändert: Deutsch ist Master, Englisc
 
 build_timing.json und build_status.json bleiben im bestehenden lokalen Cache erhalten.
 Das fortlaufende updates/timings.csv protokolliert zusätzlich Blattphase, Zusammenführung und Gesamtlauf.
-Die Abhängigkeitserkennung berücksichtigt ../_Shared. Die gemeinsame TikZ-Cache-Prüfung steht
+Die Abhängigkeitserkennung berücksichtigt ../_shared. Die gemeinsame TikZ-Cache-Prüfung steht
 über tools/build-cache.ps1 bereit; zurzeit enthalten die Blätter keine eigenständigen TikZ-Inhaltsgrafiken.
 
 ## Dokumentation
 
 Die ausführlichen Unterlagen liegen in `docs/`: [Arbeitsregeln](docs/AGENTS.md), [Gestaltungsregeln](docs/DESIGN_GUIDE.md), [Projektstruktur](docs/PROJECT_STRUCTURE.md), [didaktischer Abgleich](docs/didactic_review.md) und [Migrationsstatus](docs/migration_status.md). Die kurze `AGENTS.md` im Hauptordner verweist auf die verbindlichen Regeln.
 
-Einzige Skriptreferenz ist `../_Shared/legacy/Exercise Sheets/build-de.pdf`. Neue Fassungen dort ablegen; es gibt keinen automatischen Zugriff auf das externe Skriptprojekt.
+Einzige Skriptreferenz ist `../_shared/legacy/Exercise Sheets/build-de.pdf`. Neue Fassungen dort ablegen; es gibt keinen automatischen Zugriff auf das externe Skriptprojekt.
 
 ## Bearbeiten
 
-- `common/config.tex`: Semester, Branding, geordnete Blattliste und aktive Lösung pro Aufgabe. Blatt-ID, Kapitelzuordnung und Einstiegspfad sind getrennt gespeichert; spätere Unterteilungen sind möglich.
+- `../_shared/lecture_metadata.tex`: gemeinsamer Vorlesungstitel, Semester, Autor, Hochschule und Fakultät.
+- `../_shared/style/branding_colors.tex`: gemeinsame Hochschulfarbe.
+- `common/config.tex`: Beschnitt der Lösungs-PDFs, geordnete Blattliste und aktive Lösung pro Aufgabe. Blatt-ID, Kapitelzuordnung und Einstiegspfad sind getrennt gespeichert; spätere Unterteilungen sind möglich.
 - `common/preamble.tex`, `common/commands.tex`, `common/layout.tex`: Pakete, Befehle und Gestaltung. Der untere Rand beträgt wie in der aktuellen Skriptimplementierung 1 cm.
 - `main.tex`: einziger Dokumentkörper; vier Einstiege unter `tools/` wählen Sprache und Lösungsmodus.
 - `content/chapters_de/<chapter>/_chapter.tex`: geordnete Aufgabendateien. Pro Sprache wird jede Aufgabe einmal gepflegt. Keine leeren EN-Kapitel angelegt.
 - `content/resources/chapters/`: Lösungen, Bilder, bearbeitbare Grafikquellen und Codebeispiele; bytegleich aus dem früheren Archiv übernommen.
-- `../_Shared/legacy/Exercise Sheets/build-de.pdf`: aktuelle verfügbare Skript-PDF als reine Strukturreferenz. Skriptquellen gehören nicht zu diesem Projekt.
+- `../_shared/legacy/Exercise Sheets/build-de.pdf`: aktuelle verfügbare Skript-PDF als reine Strukturreferenz. Skriptquellen gehören nicht zu diesem Projekt.
 - [Migrationsstatus](docs/migration_status.md): Quellen, Teilpunkte, Lösungsstand, Korrekturen, offene Fragen und Prüfung.
 - [Didaktischer Abgleich](docs/didactic_review.md): erhaltene Zuordnung; spätere Skriptsynchronisierung offen.
 
@@ -131,7 +135,7 @@ Git-Remote: [alexanderbaral/Mathematics-Lecture-Materials](https://github.com/al
 
 ## Lokaler Cache außerhalb von Google Drive
 
-Der Cache liegt standardmäßig unter `%LOCALAPPDATA%/_tmp_LatexCache/mathematics_exercise_sheets/`. `EXERCISE_SHEETS_CACHE` kann einen anderen absoluten Cachepfad festlegen. Dort liegen `workspace/` (aktuelle Arbeitskopie der benötigten Quellen einschließlich aller Grafiken und Lösungs-PDFs), `latex_runs/`, `texmf/`, `visual_review/` und die technischen JSON-Prüfberichte.
+Die gemeinsame Datei `../_shared/tools/cache_paths.json` legt den Standardpfad unter %USERPROFILE% fest. `EXERCISE_SHEETS_CACHE` kann einen anderen absoluten Cachepfad festlegen. Dort liegen `workspace/` (aktuelle Arbeitskopie der benötigten Quellen einschließlich aller Grafiken und Lösungs-PDFs), `latex_runs/`, `texmf/`, `visual_review/` und die technischen JSON-Prüfberichte.
 
 Das Buildskript aktualisiert die Arbeitskopie vor jedem Lauf und baut aus diesem lokalen Verzeichnis. Die Dateien im Projekt bleiben die maßgeblichen Quellen. Im synchronisierten `build/` liegen ausschließlich Ergebnis-PDFs; Renderings und Hilfsdateien gehören nicht dorthin. Die Gesamt-PDF wird automatisch aus den fertigen Einzelblättern erstellt.
 

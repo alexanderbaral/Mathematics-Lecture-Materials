@@ -14,7 +14,7 @@ Drehmoment um das Gelenk.
 \end{center}
 
 Um diese Wirkungen getrennt untersuchen zu können, zerlegen wir einen Vektor
-$\vec b$ relativ zu einer Richtung $\vec a$ in zwei Komponenten. Für diese Zerlegung gilt:
+$\vec b$ relativ zu einer Richtung $\vec a\ne\vec 0$ in zwei Komponenten. Für diese Zerlegung gilt:
 \par\medskip
 \noindent
 \begin{minipage}[c]{0.45\linewidth}
@@ -33,52 +33,42 @@ $\vec b$ relativ zu einer Richtung $\vec a$ in zwei Komponenten. Für diese Zerl
 \end{minipage}
 \par\medskip
 
-Da $\vec b_{\parallel}$ parallel zu $\vec a$ verläuft, unterscheiden sich beide Vektoren nur
-um einen zunächst unbekannten Faktor $\lambda\in\R$:
-\[
-  \vec b_{\parallel}=\lambda\vec a.
-\]
-Der Faktor darf negativ sein; so wird auch eine zu
-$\vec a$ entgegengesetzte Projektionsrichtung erfasst.
-Damit lautet die Zerlegung
-\[
-  \vec b=\lambda\vec a+\vec b_{\perp}.
-\]
-Um $\lambda$ zu bestimmen, bilden wir auf beiden Seiten das Skalarprodukt mit
-$\vec a$.
+\paragraph{Parallele Komponente}
+Zunächst sei der Zwischenwinkel $\varphi<90^\circ$. Dann zeigen
+$\vec b_{\parallel}$ und $\vec a$ in dieselbe Richtung.
+Für die \emph{Länge} der parallelen Komponente nutzen wir zwei Regeln des
+Skalarprodukts: Bei gleichgerichteten Vektoren ist es das Produkt der
+Beträge, bei senkrechten Vektoren ist es null.
 \begin{ClozeArea}[34]{8}
   \[
-    \begin{array}{r@{\quad}l@{\qquad}l}
-      \phantom{\Longleftrightarrow}
-      & \textcolor{THMBlue}{\vec a}\cdot\vec b
-        =\textcolor{THMBlue}{\vec a}\cdot
-          \bigl(\lambda\vec a+\vec b_{\perp}\bigr)
-      & \\[1.4em]
-      \phantom{\Longleftrightarrow}
-      & \phantom{\vec a\cdot\vec b}
-        =\lambda\,\vec a\cdot\vec a
-          +\underbrace{
-            \vec a\cdot\vec b_{\perp}
-          }_{=\,0}
-        =\lambda\,\lvert\vec a\rvert^2
-      & \\[1.4em]
-      \Longleftrightarrow
-      & \lambda
-        =\dfrac{\vec a\cdot\vec b}{\vec a\cdot\vec a}
-        =\dfrac{\vec a\cdot\vec b}{\lvert\vec a\rvert^2}
-      &
-    \end{array}
+    \begin{aligned}
+      \vec a\cdot\vec b
+        &=\vec a\cdot\bigl(\vec b_{\parallel}+\vec b_{\perp}\bigr)
+         =\underbrace{\vec a\cdot\vec b_{\parallel}}_{
+            \lvert\vec a\rvert\,\lvert\vec b_{\parallel}\rvert}
+          +\underbrace{\vec a\cdot\vec b_{\perp}}_{0}, \\[1em]
+      \Longrightarrow\quad \lvert\vec b_{\parallel}\rvert
+        &=\vec b\cdot\frac{\vec a}{\lvert\vec a\rvert}
+         =\vec b\cdot\vec e_a.
+    \end{aligned}
   \]
 \end{ClozeArea}
-Eingesetzt in $\vec b_{\parallel}=\lambda\vec a$ ergibt sich die parallele Komponente.
+Ihre \emph{Richtung} gibt der Einheitsvektor $\vec e_a$ vor. Länge mal
+Einheitsvektor ergibt damit die parallele Komponente.
 \begin{ClozeArea}[34]{4}
   \[
     \vec b_{\parallel}
-      =\lambda\vec a
-      =\frac{\vec a\cdot\vec b}{\lvert\vec a\rvert^2}\,\vec a
-      =\bigl(\vec b\cdot\vec e_a\bigr)\vec e_a.
+      =\lvert\vec b_{\parallel}\rvert\,\vec e_a
+      =\bigl(\vec b\cdot\vec e_a\bigr)\,\vec e_a.
   \]
 \end{ClozeArea}
+
+Bei $\varphi>90^\circ$ können wir dieselbe Projektionsgerade durch
+$-\vec a$ beschreiben und erhalten einen Zwischenwinkel kleiner als
+$90^\circ$. In der Formel wechseln dadurch $\vec b\cdot\vec e_a$ und
+$\vec e_a$ beide das Vorzeichen, ihr Produkt bleibt gleich. Bei
+$\varphi=90^\circ$ oder $\vec b=\vec 0$ liefert die Formel
+$\vec b_{\parallel}=\vec 0$.
 
 Die senkrechte Komponente erhalten wir durch Umstellen der ursprünglichen
 Zerlegung und anschließendes Einsetzen von $\vec b_{\parallel}$:
@@ -93,7 +83,7 @@ Zerlegung und anschließendes Einsetzen von $\vec b_{\parallel}$:
 
 \begin{TheoremBox}{Orthogonale Projektion}{vector_algebra_projection_components}
   Projiziert man $\vec b\in\R^n$ orthogonal auf die durch
-  $\vec a\in\R^n$ vorgegebene Richtung, so erhält man die
+  $\vec a\in\R^n\setminus\{\vec 0\}$ vorgegebene Richtung, so erhält man die
   Zerlegung
   $\textcolor{red!75!black}{\vec b}=\textcolor{black}{\vec b_{\parallel}}+\textcolor{olive!80!black}{\vec b_{\perp}}$
   für die

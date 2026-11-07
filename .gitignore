@@ -1,8 +1,8 @@
 **/build/
 **/__pycache__/
 **/*.pyc
-_Shared/legacy/**
-!_Shared/legacy/README.md
-!_Shared/legacy/Skript/
-!_Shared/legacy/Skript/.gitkeep
-!_Shared/legacy/Exercise Sheets/
+_shared/legacy/**
+!_shared/legacy/README.md
+!_shared/legacy/Skript/
+!_shared/legacy/Skript/.gitkeep
+!_shared/legacy/Exercise Sheets/

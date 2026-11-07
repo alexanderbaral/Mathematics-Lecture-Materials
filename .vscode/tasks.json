@@ -10,7 +10,7 @@
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "${workspaceFolder}/_Shared/tools/build.ps1"
+        "${workspaceFolder}/_shared/tools/build.ps1"
       ],
       "options": {
         "cwd": "${workspaceFolder}"
@@ -34,7 +34,7 @@
         "-ExecutionPolicy",
         "Bypass",
         "-File",
-        "${workspaceFolder}/_Shared/tools/build.ps1",
+        "${workspaceFolder}/_shared/tools/build.ps1",
         "-Cloze"
       ],
       "options": {

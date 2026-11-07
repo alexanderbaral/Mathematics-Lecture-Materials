@@ -1,20 +1,9 @@
-% Author-facing metadata and independent build switches.
-\newcommand{\ScriptTitle}{\Lang{Mathematik}{Mathematics}}
-\newcommand{\Semester}{WS 26/27}
-\newcommand{\ScriptAuthor}{Prof. Dr. Alexander Baral}
-\newcommand{\BrandLogoPath}{content/resources/shared/THM_Logo_Fak_M_hochkant_RGB_blau.png}
-\newcommand{\BrandDotPath}{content/resources/shared/TH_Mannheim_Favicon.png}
 % Uniform source-page crop: left, bottom, right, top; originals stay untouched.
 \newcommand{\SolutionPdfTrim}{0mm 7mm 0mm 18mm}
-\newcommand{\THMBlueRGB}{0,0,255}
 \ExplSyntaxOn
-\str_case:VnF \ScriptLanguage {{de}{} {en}{}}
-  {\PackageError{config}{Unknown~ScriptLanguage}{Use~de~or~en.}}
 \str_case:VnF \ShowSolutions {{true}{} {false}{}}
   {\PackageError{config}{Unknown~ShowSolutions}{Use~true~or~false.}}
-\bool_new:N \g_script_english_bool
 \bool_new:N \g_sheet_solutions_bool
-\str_if_eq:VnT \ScriptLanguage {en}{\bool_gset_true:N \g_script_english_bool}
 \str_if_eq:VnT \ShowSolutions {true}{\bool_gset_true:N \g_sheet_solutions_bool}
 
 % Ordered sheet registry: id, chapter, number, DE title, EN title.

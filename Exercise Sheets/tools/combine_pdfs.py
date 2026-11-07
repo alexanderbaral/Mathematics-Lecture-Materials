@@ -10,7 +10,7 @@ from pathlib import Path
 from pypdf import PdfReader, PdfWriter
 from cache_paths import CACHE_ROOT
 import importlib.util
-_runtime = Path(__file__).resolve().parents[2] / '_Shared/tools/build_runtime.py'
+_runtime = Path(__file__).resolve().parents[2] / '_shared/tools/build_runtime.py'
 _spec = importlib.util.spec_from_file_location('lecture_build_runtime', _runtime)
 _common = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_common)
@@ -47,7 +47,7 @@ def combine(manifest_path, output):
             reader = PdfReader(entry['path'])
             writer.append(reader, outline_item=entry['title'], import_outline=False)
             expected_pages += len(reader.pages)
-        writer.add_metadata({'/Title': 'Mathematik - Alle ÃœbungsblÃ¤tter', '/Creator': 'Exercise Sheets'})
+        writer.add_metadata({'/Title': output.stem.lstrip('_'), '/Creator': 'Exercise Sheets'})
         writer.write(temporary)
         result = PdfReader(temporary)
         if len(result.pages) != expected_pages or len(result.outline) != len(entries):

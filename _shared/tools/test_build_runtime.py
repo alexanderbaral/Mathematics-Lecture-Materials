@@ -99,7 +99,7 @@ class RuntimeTests(unittest.TestCase):
 
     def test_shared_snapshot_is_frozen_and_removed_inputs_are_pruned(self):
         product=self.root/"course/Skript"
-        shared=product.parent/"_Shared"
+        shared=product.parent/"_shared"
         product.mkdir(parents=True); shared.mkdir()
         source=product/"main.tex"; source.write_text("original",encoding="utf-8")
         dependency=shared/"units.tex"; dependency.write_text("old",encoding="utf-8")
@@ -109,11 +109,11 @@ class RuntimeTests(unittest.TestCase):
         dependency.write_text("new",encoding="utf-8")
         destination=self.root/"work/Skript"
         snapshots.materialize(frozen,destination)
-        self.assertEqual((destination.parent/"_Shared/units.tex").read_text(),"old")
+        self.assertEqual((destination.parent/"_shared/units.tex").read_text(),"old")
         dependency.unlink()
         current=snapshots.capture(mapping)
         snapshots.materialize(current,destination)
-        self.assertFalse((destination.parent/"_Shared/units.tex").exists())
+        self.assertFalse((destination.parent/"_shared/units.tex").exists())
 
     def test_legacy_and_unrelated_shared_tools_do_not_trigger_builds(self):
         product=self.root/'course/Skript'
@@ -123,13 +123,13 @@ class RuntimeTests(unittest.TestCase):
         snapshots=runtime.Snapshots(self.root/'snapshots')
         mapping=lambda:runtime.source_mapping(product,[source])
         baseline=snapshots.capture(mapping)
-        archive=product.parent/'_Shared/legacy/incoming.pdf'
+        archive=product.parent/'_shared/legacy/incoming.pdf'
         archive.parent.mkdir(parents=True)
         archive.write_bytes(PDF)
         self.assertEqual(snapshots.capture(mapping)['revision'],baseline['revision'])
         archive.write_bytes(PDF+b'new archive')
         self.assertEqual(snapshots.capture(mapping)['revision'],baseline['revision'])
-        style=product.parent/'_Shared/style/units.tex'
+        style=product.parent/'_shared/style/units.tex'
         style.parent.mkdir(parents=True)
         style.write_text('active change',encoding='utf-8')
         self.assertNotEqual(snapshots.capture(mapping)['revision'],baseline['revision'])
@@ -162,11 +162,11 @@ class RuntimeTests(unittest.TestCase):
         product=self.root/'course/Exercise Sheets'
         product.mkdir(parents=True)
         before=watcher.snapshot(product)
-        archive=product.parent/'_Shared/legacy/old.pdf'
+        archive=product.parent/'_shared/legacy/old.pdf'
         archive.parent.mkdir(parents=True)
         archive.write_bytes(PDF)
         self.assertEqual(before,watcher.snapshot(product))
-        style=product.parent/'_Shared/style/units.tex'
+        style=product.parent/'_shared/style/units.tex'
         style.parent.mkdir(parents=True)
         style.write_text('new style',encoding='utf-8')
         self.assertNotEqual(before,watcher.snapshot(product))

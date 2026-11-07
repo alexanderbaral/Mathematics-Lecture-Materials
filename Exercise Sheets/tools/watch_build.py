@@ -12,12 +12,12 @@ def snapshot(root):
     for folder in ('common', 'content', 'tools'):
         paths.extend(p for p in (root / folder).rglob('*')
                      if p.is_file() and '__pycache__' not in p.parts)
-    shared = root.parent / '_Shared'
+    shared = root.parent / '_shared'
     if shared.is_dir():
         entries = [p for p in shared.iterdir() if p.name.lower() not in {'legacy', 'tools'}]
         paths.extend(p for entry in entries for p in ([entry] if entry.is_file() else entry.rglob('*'))
                      if p.is_file() and not p.name.startswith('.') and p.suffix not in ('.md', '.pyc'))
-    paths.extend(p for p in (root.parent / '_Shared' / 'tools').glob('build*')
+    paths.extend(p for p in (root.parent / '_shared' / 'tools').glob('build*')
                  if p.is_file() and p.suffix in ('.py', '.ps1'))
     result = {}
     for path in paths:

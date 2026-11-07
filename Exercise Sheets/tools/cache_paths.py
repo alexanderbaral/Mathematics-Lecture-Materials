@@ -1,9 +1,9 @@
-"""Shared location for disposable build and image files outside cloud sync."""
-import os
-import tempfile
+"""Cache directory for sheet builds and review tools."""
+import importlib.util
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-CACHE_ROOT = Path(os.environ.get('EXERCISE_SHEETS_CACHE') or
-                  Path(os.environ.get('USERPROFILE', str(Path.home()))) /
-                  'AppData/Local/_tmp_LatexCache/mathematics_exercise_sheets')
+runtime_path = Path(__file__).resolve().parents[2] / '_shared/tools/build_runtime.py'
+spec = importlib.util.spec_from_file_location('lecture_build_runtime', runtime_path)
+common = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(common)
+CACHE_ROOT = common.cache_root('sheets')

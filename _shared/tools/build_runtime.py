@@ -27,6 +27,13 @@ def read_json(path, default=None):
     path = Path(path)
     return json.loads(path.read_text(encoding="utf-8-sig")) if path.exists() else default
 
+def cache_root(product):
+    if product == 'sheets' and (override := os.environ.get('EXERCISE_SHEETS_CACHE')):
+        return Path(override)
+    paths = read_json(Path(__file__).with_name('cache_paths.json'))
+    return Path(os.environ.get('USERPROFILE', str(Path.home()))) / paths[product]
+
+
 def atomic(path, data):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -111,7 +118,7 @@ def publish(prepared, replace=None):
 def source_mapping(root, product_paths):
     root = Path(root)
     result = {p.relative_to(root).as_posix(): p for p in product_paths}
-    shared = root.parent / "_Shared"
+    shared = root.parent / "_shared"
     if shared.is_dir():
         entries = [p for p in shared.iterdir() if p.name.lower() not in {"legacy", "tools"}]
         candidates = [p for entry in entries for p in ([entry] if entry.is_file() else entry.rglob("*"))]
@@ -120,8 +127,8 @@ def source_mapping(root, product_paths):
                                           for part in path.relative_to(shared).parts)
                     and path.suffix.lower() not in {".md", ".pyc"}):
                 result["__shared__/" + path.relative_to(shared).as_posix()] = path
-    common = root.parent / "_Shared" / "tools"
-    for name in ("build_runtime.py", "build-cache.ps1", "build_variants.json"):
+    common = root.parent / "_shared" / "tools"
+    for name in ("build_runtime.py", "build-cache.ps1", "build_variants.json", "cache_paths.json", "latexmk_common.pl"):
         path = common / name
         if path.is_file():
             result["__build__/" + name] = path
@@ -163,8 +170,8 @@ class Snapshots:
     def materialize(self, snapshot, destination, hardlinks=False):
         destination = Path(destination).resolve()
         destination.mkdir(parents=True, exist_ok=True)
-        roots = {"__shared__": destination.parent / "_Shared",
-                 "__build__": destination.parent / "_Shared" / "tools"}
+        roots = {"__shared__": destination.parent / "_shared",
+                 "__build__": destination.parent / "_shared" / "tools"}
         def target(relative):
             parts = relative.split("/")
             base = roots.get(parts[0], destination)

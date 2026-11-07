@@ -58,6 +58,23 @@ class CoordinatorTests(unittest.TestCase):
         self.assertEqual([s['section'] for s in build.affected(latest, first)[0]], [2])
         self.assertEqual(build.affected(latest, latest)[0], [])
 
+    def test_code_file_change_selects_the_section_that_displays_it(self):
+        fixtures = {
+            'content/chapters_de/test/a/_section.tex':
+                r'\section{A}\PythonCode{content/chapters_de/test/a/vector.py}',
+            'content/chapters_de/test/b/_section.tex':
+                r'\section{B}\PythonCode[Einheitsvektor]{content/chapters_de/test/b/vector.ipynb}',
+            'content/chapters_de/test/a/vector.py': 'print(1)',
+            'content/chapters_de/test/b/vector.ipynb': '{"cells": []}',
+        }
+        baseline = self.snapshot(**fixtures)
+        for section, path in enumerate(list(fixtures)[2:], start=1):
+            with self.subTest(path=path):
+                latest = self.snapshot(**{**fixtures, path: fixtures[path] + '\n'})
+                selected, broad = build.affected(latest, baseline)
+                self.assertFalse(broad)
+                self.assertEqual([item['section'] for item in selected], [section])
+
     def test_snapshot_keeps_original_bytes(self):
         frozen = self.snapshot()
         self.snapshot(**{'content/resources/test/tikz/figure.tex': 'newer'})
