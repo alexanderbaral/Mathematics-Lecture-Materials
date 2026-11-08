@@ -99,11 +99,13 @@ class PreviewTests(unittest.TestCase):
                 preview=script_preview)
             sheets = SimpleNamespace(CACHE=root/'cache', capture=lambda: sheet_snapshot, control=lambda: control,
                                      snapshots=lambda: snapshots, run_full=sheet_preview)
+            target = root / 'cache/joint-preview/Vorschau.pdf'
+
             def schedule(*args):
-                self.assertTrue((root/'build/Vorschau.pdf').exists())
+                self.assertTrue(target.exists())
+                self.assertFalse((root / 'build/Vorschau.pdf').exists())
                 events.append(('background',))
                 return None, None, False
-            target = root/'build/Vorschau.pdf'
             if fail:
                 target.parent.mkdir(parents=True)
                 target.write_bytes(content)

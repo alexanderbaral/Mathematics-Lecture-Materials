@@ -28,9 +28,11 @@ Poppler dient der visuellen Prüfung. Die Arbeitsregeln stehen in [AGENTS.md](AG
 ## VS Code
 
 Strg+Shift+B startet in diesem Hauptordner sowie in `Skript` und `Exercise Sheets` denselben
-gemeinsamen Bau. Die feste Datei `build/Vorschau.pdf` im Hauptordner enthält geänderte
-Abschnitte des deutschen Vollskripts und betroffene Übungsblätter, jeweils ohne und mit
-Lösungen direkt hintereinander. Beim nächsten Auftrag werden die Änderungen seit der letzten
+gemeinsamen Bau. Die Datei `Vorschau.pdf` liegt im lokalen Skript-Cache unter
+`updates/joint-preview/`. Der Bau gibt ihren vollständigen Pfad aus.
+Sie enthält geänderte Abschnitte des deutschen Vollskripts und betroffene
+Übungsblätter, jeweils ohne und mit Lösungen direkt hintereinander.
+Die vollständigen PDFs liegen unter `Skript/build/` und `Exercise Sheets/build/`. Beim nächsten Auftrag werden die Änderungen seit der letzten
 erfolgreichen gemeinsamen Vorschau betrachtet. Ohne Inhaltsänderung bleibt die Vorschau erhalten.
 
 Die zusätzliche VS-Code-Aufgabe „Lecture Materials: Vorschau zusätzlich mit Lückenfassung“

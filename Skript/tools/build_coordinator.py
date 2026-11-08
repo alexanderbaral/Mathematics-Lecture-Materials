@@ -240,6 +240,7 @@ def rebase_synctex(data, source):
 
 def publish_pair(source_directory, source_root, preview_mode=False, variants=None):
     """Validate the entire pair first and restore old outputs on publication errors."""
+    destination = UPDATE_CACHE / 'preview' if preview_mode else ROOT / 'build'
     prepared = {}
     for variant in variants or VARIANTS:
         name = variant + ('-preview' if preview_mode else '')
@@ -247,8 +248,8 @@ def publish_pair(source_directory, source_root, preview_mode=False, variants=Non
         pdf = source.with_suffix('.pdf').read_bytes()
         if not pdf.startswith(b'%PDF-') or b'%%EOF' not in pdf[-1024:]:
             raise RuntimeError('Unvollständige PDF: ' + str(source))
-        prepared[ROOT / 'build' / (name + '.synctex.gz')] = rebase_synctex(source.with_suffix('.synctex.gz').read_bytes(), source_root)
-        prepared[ROOT / 'build' / (name + '.pdf')] = pdf
+        prepared[destination / (name + '.synctex.gz')] = rebase_synctex(source.with_suffix('.synctex.gz').read_bytes(), source_root)
+        prepared[destination / (name + '.pdf')] = pdf
     common.publish(prepared, replace=atomic)
 
 
@@ -441,8 +442,9 @@ def request_build(args):
         sequence = state.get('sequence', 0) + 1
         state['sequence'] = sequence
         preview_record = state.get('preview')
+    preview_directory = UPDATE_CACHE / 'preview'
     preview_missing = not current_project_record(preview_record) or any(
-        not (ROOT / 'build' / (variant + '-preview' + extension)).is_file()
+        not (preview_directory / (variant + '-preview' + extension)).is_file()
         for variant in VARIANTS for extension in ('.pdf', '.synctex.gz'))
     if args.command == 'update':
         selection, global_change = affected(snapshot, manifest(baseline_record['revision']) if baseline_record else None)
@@ -457,6 +459,9 @@ def request_build(args):
             preview(snapshot, selection, baseline_record, sequence, global_change)
         else:
             print('Keine neuen Abschnittsänderungen seit dem erfolgreichen Gesamtbau; offene Vorschau bleibt erhalten.', flush=True)
+        if baseline_record:
+            for variant in VARIANTS:
+                print(preview_directory / (variant + '-preview.pdf'), flush=True)
     request, needed = control().enqueue(snapshot, sequence, force=args.force, serial=args.serial)
     if needed:
         for variant in VARIANTS:

@@ -210,7 +210,7 @@ def update(root=ROOT, cloze=False, wait=False):
     started = time.monotonic()
     script, sheets = adapters(root)
     cache = script.UPDATE_CACHE / 'joint-preview'
-    target = root / 'build/Vorschau.pdf'
+    target = cache / 'Vorschau.pdf'
     timing = common.BuildControl(root, cache, __file__, 'preview')
     # Serialize foreground requests only. Full workers keep their own locks and
     # frozen sources; they never write this PDF or block script preview rendering.

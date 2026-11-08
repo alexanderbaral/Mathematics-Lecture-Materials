@@ -32,8 +32,11 @@ remain usable when every recorded source hash still matches. After a move,
 the coordinator refreshes both PDF pairs and their SyncTeX maps for the new
 source location, even when the mathematical content has not changed.
 
-Open `build/build-de-preview.pdf` and `build/build-de-cloze-preview.pdf` in
-VS Code once: their fixed filenames are replaced after each successful preview.
+For a script-only build, open `build-de-preview.pdf` or
+`build-de-cloze-preview.pdf` in the local cache's `updates/preview/` folder.
+The update command prints the full paths. The stable files and their SyncTeX maps
+are replaced after each successful preview.
+
 They contain all affected sections since the **last successful full snapshot**,
 in script order, not just the last edited section. Unchanged sections are omitted.
 The first setup establishes section counters with a full build. Shared layout,
