@@ -1,0 +1,13 @@
+\begin{tikzpicture}[>=Latex,line join=round]
+  \path[fill=THMBlue!9,draw=THMBlue!65,line width=.6pt]
+    (0,2.3)--(6.5,0)--(0,-2.3)
+    arc[start angle=-90,end angle=-270,x radius=.4,y radius=2.3]--cycle;
+  \draw[THMBlue!65,line width=.6pt] (0,0) ellipse[x radius=.4,y radius=2.3];
+  \draw[green!55!black,line width=2pt] (0,2.3)--(6.5,0);
+  \draw[->] (-.8,0)--(7.6,0) node[right] {$x$};
+  \draw[->] (0,-2.8)--(0,2.95) node[above] {$y$};
+  \draw[line width=.8pt] (-.08,2.3)--(.08,2.3);
+  \node[left=6pt] at (0,2.3) {$R$};
+  \draw[line width=.8pt] (6.5,-.08)--(6.5,.08);
+  \node[below=6pt] at (6.5,0) {$h$};
+\end{tikzpicture}

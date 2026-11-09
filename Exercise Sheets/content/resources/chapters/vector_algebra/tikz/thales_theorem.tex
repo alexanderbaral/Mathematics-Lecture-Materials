@@ -1,0 +1,23 @@
+\begin{tikzpicture}[>=Latex,line cap=round,line join=round]
+  \coordinate (O) at (0,0);
+  \coordinate (P1) at (68:3.8);
+  \coordinate (P2) at (-3.8,0);
+  \coordinate (P3) at (3.8,0);
+  \path[fill=black!4,draw=black!50,line width=.7pt] (P3)
+    arc[start angle=0,end angle=180,radius=3.8]--cycle;
+  \draw[->] (-4.55,0)--(4.65,0) node[right] {$x_1$};
+  \draw[->] (0,-.55)--(0,5.0) node[above] {$x_2$};
+  \draw[densely dashed,black!65] (O)--(P1);
+  \draw[green!55!black,line width=1.3pt,-{Latex[length=3mm]}]
+    (P3)--(P1) node[pos=.55,right=7pt] {$\vec a$};
+  \draw[green!55!black,line width=1.3pt,-{Latex[length=3mm]}]
+    (P1)--(P2) node[pos=.55,above left=3pt] {$\vec b$};
+  \draw (.85,0) arc[start angle=0,end angle=68,radius=.85];
+  \node at (34:.55) {$\alpha$};
+  \RightAngleMark[black]{(P1)}{214}{304}{.43}
+  \node[above right=3pt] at (P1) {$P_1$};
+  \node[below left=2pt] at (P2) {$P_2$};
+  \node[below right=2pt] at (P3) {$P_3$};
+  \draw[decorate,decoration={brace,mirror,amplitude=4pt},black!60]
+    (-3.8,-.42)--(0,-.42) node[midway,below=7pt] {$R$};
+\end{tikzpicture}

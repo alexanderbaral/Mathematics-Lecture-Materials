@@ -1,0 +1,15 @@
+% The historical asset is named semicircle, but highlights a quarter-circle arc.
+\begin{tikzpicture}[>=Latex,line cap=round]
+  \coordinate (O) at (0,0);
+  \coordinate (P) at (43:2.65);
+  \coordinate (H) at ({2.65*cos(43)},0);
+  \draw[cyan!65!black,densely dashed,line width=.7pt] (0,0) circle (2.65);
+  \draw[THMBlue,line width=1.4pt] (2.65,0) arc[start angle=0,end angle=90,radius=2.65];
+  \draw[->] (-.4,0)--(4.1,0) node[right] {$x$};
+  \draw[->] (0,-.4)--(0,3.55) node[above] {$y$};
+  \draw (O)--(P) node[midway,above left=3pt] {$R$};
+  \draw[THMBlue,densely dashed] (P)--(H);
+  \RightAngleMark[black]{(H)}{90}{180}{.3}
+  \draw (2.65,.07)--(2.65,-.07) node[below=4pt] {$R$};
+  \node[THMBlue,anchor=west,inner sep=2pt] at (45:3.05) {$L_{1/4}$};
+\end{tikzpicture}

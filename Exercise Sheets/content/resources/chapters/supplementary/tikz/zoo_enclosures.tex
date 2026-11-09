@@ -1,0 +1,21 @@
+\usetikzlibrary{patterns}
+\begin{tikzpicture}[x={(1.4cm,0cm)},y={(.5cm,.85cm)},z={(0cm,.8cm)},>=Latex,line join=round]
+  \path[fill=black!3] (0,0,0)--(6,0,0)--(6,3,0)--(0,3,0)--cycle;
+  % Six enclosures in a 3-by-2 arrangement; fence mesh is schematic.
+  \foreach \yy in {3,1.5,0}{
+    \path[pattern=crosshatch,pattern color=black!35,draw=black!65,line width=.6pt]
+      (0,\yy,0)--(6,\yy,0)--(6,\yy,.7)--(0,\yy,.7)--cycle;
+  }
+  \foreach \xx in {0,2,4,6}{
+    \path[pattern=crosshatch,pattern color=black!35,draw=black!65,line width=.6pt]
+      (\xx,0,0)--(\xx,3,0)--(\xx,3,.7)--(\xx,0,.7)--cycle;
+  }
+  \draw[black!55] (0,3,.7)--(0,3,1.8);
+  \draw[black!55] (6,3,.7)--(6,3,1.8);
+  \draw[<->] (0,3,1.55)--(6,3,1.55)
+    node[midway,fill=white,inner sep=4pt] {$x$};
+  \draw[black!55] (6,0,0)--(6.8,0,0);
+  \draw[black!55] (6,3,0)--(6.8,3,0);
+  \draw[<->] (6.55,0,0)--(6.55,3,0)
+    node[midway,right=4pt] {$y$};
+\end{tikzpicture}

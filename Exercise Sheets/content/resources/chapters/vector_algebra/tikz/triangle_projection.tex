@@ -1,0 +1,24 @@
+% Schematic projection; labels and colour roles follow the original.
+\begin{tikzpicture}[x=1.15cm,y=1.15cm,>=Latex,line cap=round,line join=round]
+  \coordinate (A) at (0,0);
+  \coordinate (B) at (7.6,0);
+  \coordinate (C) at (5.55,3.25);
+  \coordinate (H) at (5.55,0);
+  \filldraw[fill=black!12,draw=black!55,line width=.65pt] (A)--(B)--(C)--cycle;
+  \draw[THMBlue,dashed,line width=1.1pt,-{Latex[length=3mm]}]
+    (A)--(H) node[midway,below=1pt,inner sep=1pt] {$\vec{AC}_{\parallel}$};
+  \draw[THMBlue,dashed,line width=1.1pt,-{Latex[length=3mm]}]
+    (H)--(C) node[midway,right=1.5pt,inner sep=1pt] {$\vec{AC}_{\perp}$};
+  \draw[THMBlue,line width=1.1pt,-{Latex[length=3mm]}]
+    (A)--(C) node[pos=.55,above left=2pt,inner sep=1pt] {$\vec{AC}$};
+  \draw (A) ++(0:.9) arc[start angle=0,end angle=30.35,radius=.9];
+  \node at (.66,.18) {$\alpha$};
+  \RightAngleMark[black]{(H)}{90}{180}{.48}
+  \node at (3.9,1.25) {$A$};
+  \foreach \p in {A,B,C}{
+    \fill (\p) circle (2pt);
+  }
+  \node[below left=2pt] at (A) {$A$};
+  \node[below right=2pt] at (B) {$B$};
+  \node[above right=2pt] at (C) {$C$};
+\end{tikzpicture}

@@ -1,0 +1,24 @@
+\begin{tikzpicture}[>=Latex,line cap=round,line join=round]
+  \coordinate (A) at (0,3.47);
+  \coordinate (E) at (3.4,1.4);
+  \coordinate (B) at (5.7,0);
+  \draw[line width=1pt] (0,4.8)--(0,0)--(10.1,0);
+  \draw[line width=1pt] (3.4,4.8)--(3.4,1.4)--(10.1,1.4);
+  \draw[densely dashed,black!65] (0,1.4)--(E)--(3.4,0);
+  \draw[THMBlue,line width=1.7pt] (A)--(E)
+    node[midway,above=1.5pt,inner sep=1pt] {$x$};
+  \draw[THMBlue,line width=1.7pt] (E)--(B)
+    node[midway,above=1.5pt,inner sep=1pt] {$y$};
+  \fill (E) circle (2pt);
+  \node[left=4pt] at (A) {$A$};
+  \node[above right=4pt] at (E) {$E$};
+  \node[below=4pt] at (B) {$B$};
+  \draw (E) ++(148.65:1.25) arc[start angle=148.65,end angle=180,radius=1.25];
+  \node[inner sep=0pt] at ($(E)+(164.325:.83)$) {$\alpha$};
+  \draw (B) ++(148.65:1.25) arc[start angle=148.65,end angle=180,radius=1.25];
+  \node[inner sep=0pt] at ($(B)+(164.325:.83)$) {$\alpha$};
+  \draw[decorate,decoration={brace,amplitude=4pt}] (0,5.02)--(3.4,5.02)
+    node[midway,above=7pt] {$a$};
+  \draw[decorate,decoration={brace,amplitude=4pt}] (10.3,1.4)--(10.3,0)
+    node[midway,right=7pt] {$b$};
+\end{tikzpicture}

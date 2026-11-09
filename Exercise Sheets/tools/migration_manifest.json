@@ -4959,19 +4959,9 @@
       "sha256": "249a18c187751c0c8a112e7b5c157c309f6d988cbf8186376b55c2b9efb3e0ae"
     },
     {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Bilder/Dreieck.png",
-      "path": "content/resources/chapters/vector_algebra/images/triangle_projection.png",
-      "sha256": "0cde33643290936df86464f567e81a887d2c4f0aabaacb19da1f595d60d60c58"
-    },
-    {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Loesungen/DreieckProjektion.pdf",
       "path": "content/resources/chapters/vector_algebra/solutions/triangle_projection.pdf",
       "sha256": "4e4698624cb83dc19056634086a757e0251da0e97b4a52722ca52856c5b836e7"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Bilder/SatzVonThales.png",
-      "path": "content/resources/chapters/vector_algebra/images/thales_theorem.png",
-      "sha256": "1467363eec26905d4bbb68d640a3a9e04e7c293e212da6660265253b8cdb8f65"
     },
     {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Loesungen/SatzThales.pdf",
@@ -5042,11 +5032,6 @@
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 4 - Funktionen/Loesungen/Grenzwerte.pdf",
       "path": "content/resources/chapters/functions/solutions/limits.pdf",
       "sha256": "49c4527a837f38f6ff7dd9feb4fc8f2a1e1fcf71f3e23122a4b740442b6e33e9"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 4 - Funktionen/Bilder/Grenzwert Einschliessung - XsinxTanx.png",
-      "path": "content/resources/chapters/functions/images/squeeze_theorem.png",
-      "sha256": "3b17b306c846fb6d816f63f1cddc20f87e38a9ce6a93c5f958c6080d749d5b92"
     },
     {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 4 - Funktionen/Loesungen/GrenzwertEinschliessung.pdf",
@@ -5149,19 +5134,9 @@
       "sha256": "172587575a3229495e573a6bda92f673247c784fd735bc92932a0fd886865550"
     },
     {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Bilder/GasseSpeyer.PNG",
-      "path": "content/resources/chapters/differential_calculus/images/alley_transport.png",
-      "sha256": "b5147705b33f08ef202d9daee34c6265202d113da0380dbea46ccdef04ba57af"
-    },
-    {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Loesungen/Opt_GassenSpeyers.pdf",
       "path": "content/resources/chapters/differential_calculus/solutions/alley_transport.pdf",
       "sha256": "5c964281cbb81682761cd54f52efc24439b37ed6c88135efc2689aa258f9567d"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Bilder/Parabel_Abstand.png",
-      "path": "content/resources/chapters/differential_calculus/images/distance_optimization.png",
-      "sha256": "0d5299ffd7f1a6e028496064533c80a71c7e9e7769dc1a2eea0527211d0e0831"
     },
     {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Loesungen/Opt_AbstFktUrsprung.pdf",
@@ -5202,11 +5177,6 @@
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Loesungen/Mittelwertsatz.pdf",
       "path": "content/resources/chapters/integral_calculus/solutions/mean_value.pdf",
       "sha256": "789425ef384324509affd53b077e723ceb5216743d02024a81cc82c7afd48255"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Flaeche.png",
-      "path": "content/resources/chapters/integral_calculus/images/area_between_functions.png",
-      "sha256": "d197b085285e866ca74840e1552c4bafeb1b9d81e55bac109c79e66256b8afa1"
     },
     {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Loesungen/FlaecheZwGraphen.pdf",
@@ -5299,21 +5269,6 @@
       "sha256": "1a06aa23d76903b6161eedc90a9c96cf793beb26f8cfd7a862aafd08cedaf52f"
     },
     {
-      "original_path": "references/_OLD_Übungsaufgaben/_fremdFiles/Blatt3.PNG",
-      "path": "content/resources/chapters/supplementary/images/vector_geometry.png",
-      "sha256": "0d218ef0b72658f978bf63cdc3cd8ba1899dafb12f513d59725a1e98b4f8d461"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/_fremdFiles/GasseSpeyer.PNG",
-      "path": "content/resources/chapters/differential_calculus/images/alley_transport.png",
-      "sha256": "b5147705b33f08ef202d9daee34c6265202d113da0380dbea46ccdef04ba57af"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/_fremdFiles/Zookaefige.PNG",
-      "path": "content/resources/chapters/supplementary/images/zoo_enclosures.png",
-      "sha256": "a0a3bd57835f32bd87493b1066973bfc704fdfafb111de105185ab2f9aaa9fce"
-    },
-    {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 1 - Grundlagen/CodeSnippet für Aufgabe.py",
       "path": "content/resources/chapters/fundamentals/code/python_trigonometric_identity.py",
       "sha256": "a1858d37577c6256c57d479d13e543b1b7ad7667468e316362c2718d08f203ff"
@@ -5332,11 +5287,6 @@
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 2 - Lineare Gleichungssysteme/CodeSnippet für Aufgabe.py",
       "path": "content/resources/chapters/linear_systems/code/python_determinants.py",
       "sha256": "ccdf1dc3fb9f7b5fad054cb14264449c36206cc371aa711a09ce20ab90d77940"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Bilder/Grafiken.pptx",
-      "path": "content/resources/chapters/vector_algebra/images/figure_sources.pptx",
-      "sha256": "115d172ee7afe37a7255ba6a92bc42307105492d36f3415a581f6c32144b1511"
     },
     {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/CodeSnippet für Aufgabe.py",
@@ -5374,11 +5324,6 @@
       "sha256": "9dc0df45bcd73171284141dc2328afba6463e04c4772a084e97f1c37f9ee564d"
     },
     {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Bilder/Zookaefige.PNG",
-      "path": "content/resources/chapters/supplementary/images/zoo_enclosures.png",
-      "sha256": "a0a3bd57835f32bd87493b1066973bfc704fdfafb111de105185ab2f9aaa9fce"
-    },
-    {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/CodeSnippet für Aufgabe.py",
       "path": "content/resources/chapters/differential_calculus/code/python_numerical_derivative.py",
       "sha256": "f453868db9ce215bacbb45190db9cd1f55c3f540c42f3eb84df477fa7fcf7db6"
@@ -5397,31 +5342,6 @@
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Loesungen/_Lösungen Differenzialrechnung (Paul Erning).pdf",
       "path": "content/resources/chapters/differential_calculus/supplementary/solution_collection_paul_erning.pdf",
       "sha256": "29a347915ce8d3105398c71ffc94ff8c3a6b68d174b1e0b628020cfce0c94694"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Fallgleichung.png",
-      "path": "content/resources/chapters/integral_calculus/images/fall_equation.png",
-      "sha256": "04598d63488bb4d0b95d5bcfc01216f453a3bc25a38633c94f67038867f58984"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Grafiken.pptx",
-      "path": "content/resources/chapters/integral_calculus/images/figure_sources.pptx",
-      "sha256": "d372d13ac27d1d6724822ee51a0634b0d51eebff8a456964a19f437b68072a5b"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Halbkreis.png",
-      "path": "content/resources/chapters/integral_calculus/images/semicircle.png",
-      "sha256": "3c040f63966e5d33ca72577b01a15aa58bcf01dfc1d41b9b5a3d213bfa0d7fa6"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Kegel_Rotation.png",
-      "path": "content/resources/chapters/integral_calculus/images/cone_rotation.png",
-      "sha256": "ddfef31d4b455521ad9f413f3a2e765e93ad553b709285a282d7348f9e162e8b"
-    },
-    {
-      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/SVA_IntVsDiff.png",
-      "path": "content/resources/chapters/integral_calculus/images/integration_differentiation.png",
-      "sha256": "6714455127d46f0666a1ed6573049dc1237b62314919d73a5e2cd9673fe1e785"
     },
     {
       "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Loesungen/_LsgVorlage.pdf",
@@ -5469,5 +5389,136 @@
       "sha256": "e7bb1592a58972acb9c100c90c102adca73741148fc4039a5a6e5602f7f44587"
     }
   ],
-  "legacy_archive_removed_by_author": true
+  "legacy_archive_removed_by_author": true,
+  "superseded_assets": [
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Bilder/Dreieck.png",
+      "path": "content/resources/chapters/vector_algebra/images/triangle_projection.png",
+      "sha256": "0cde33643290936df86464f567e81a887d2c4f0aabaacb19da1f595d60d60c58",
+      "replacement_paths": [
+        "content/resources/chapters/vector_algebra/tikz/triangle_projection.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Bilder/SatzVonThales.png",
+      "path": "content/resources/chapters/vector_algebra/images/thales_theorem.png",
+      "sha256": "1467363eec26905d4bbb68d640a3a9e04e7c293e212da6660265253b8cdb8f65",
+      "replacement_paths": [
+        "content/resources/chapters/vector_algebra/tikz/thales_theorem.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 4 - Funktionen/Bilder/Grenzwert Einschliessung - XsinxTanx.png",
+      "path": "content/resources/chapters/functions/images/squeeze_theorem.png",
+      "sha256": "3b17b306c846fb6d816f63f1cddc20f87e38a9ce6a93c5f958c6080d749d5b92",
+      "replacement_paths": [
+        "content/resources/chapters/functions/tikz/squeeze_theorem.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Bilder/GasseSpeyer.PNG",
+      "path": "content/resources/chapters/differential_calculus/images/alley_transport.png",
+      "sha256": "b5147705b33f08ef202d9daee34c6265202d113da0380dbea46ccdef04ba57af",
+      "replacement_paths": [
+        "content/resources/chapters/differential_calculus/tikz/alley_transport.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Bilder/Parabel_Abstand.png",
+      "path": "content/resources/chapters/differential_calculus/images/distance_optimization.png",
+      "sha256": "0d5299ffd7f1a6e028496064533c80a71c7e9e7769dc1a2eea0527211d0e0831",
+      "replacement_paths": [
+        "content/resources/chapters/differential_calculus/tikz/distance_optimization.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Flaeche.png",
+      "path": "content/resources/chapters/integral_calculus/images/area_between_functions.png",
+      "sha256": "d197b085285e866ca74840e1552c4bafeb1b9d81e55bac109c79e66256b8afa1",
+      "replacement_paths": [
+        "content/resources/chapters/integral_calculus/tikz/area_between_functions.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/_fremdFiles/Blatt3.PNG",
+      "path": "content/resources/chapters/supplementary/images/vector_geometry.png",
+      "sha256": "0d218ef0b72658f978bf63cdc3cd8ba1899dafb12f513d59725a1e98b4f8d461",
+      "replacement_paths": [
+        "content/resources/chapters/supplementary/tikz/vector_geometry.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/_fremdFiles/GasseSpeyer.PNG",
+      "path": "content/resources/chapters/differential_calculus/images/alley_transport.png",
+      "sha256": "b5147705b33f08ef202d9daee34c6265202d113da0380dbea46ccdef04ba57af",
+      "replacement_paths": [
+        "content/resources/chapters/differential_calculus/tikz/alley_transport.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/_fremdFiles/Zookaefige.PNG",
+      "path": "content/resources/chapters/supplementary/images/zoo_enclosures.png",
+      "sha256": "a0a3bd57835f32bd87493b1066973bfc704fdfafb111de105185ab2f9aaa9fce",
+      "replacement_paths": [
+        "content/resources/chapters/supplementary/tikz/zoo_enclosures.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 3 - Vektorechnung/Bilder/Grafiken.pptx",
+      "path": "content/resources/chapters/vector_algebra/images/figure_sources.pptx",
+      "sha256": "115d172ee7afe37a7255ba6a92bc42307105492d36f3415a581f6c32144b1511",
+      "replacement_paths": [
+        "content/resources/chapters/vector_algebra/tikz/thales_theorem.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 5 - Differenzialrechnung/Bilder/Zookaefige.PNG",
+      "path": "content/resources/chapters/supplementary/images/zoo_enclosures.png",
+      "sha256": "a0a3bd57835f32bd87493b1066973bfc704fdfafb111de105185ab2f9aaa9fce",
+      "replacement_paths": [
+        "content/resources/chapters/supplementary/tikz/zoo_enclosures.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Fallgleichung.png",
+      "path": "content/resources/chapters/integral_calculus/images/fall_equation.png",
+      "sha256": "04598d63488bb4d0b95d5bcfc01216f453a3bc25a38633c94f67038867f58984",
+      "replacement_paths": [
+        "content/resources/chapters/integral_calculus/tikz/fall_equation.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Grafiken.pptx",
+      "path": "content/resources/chapters/integral_calculus/images/figure_sources.pptx",
+      "sha256": "d372d13ac27d1d6724822ee51a0634b0d51eebff8a456964a19f437b68072a5b",
+      "replacement_paths": [
+        "content/resources/chapters/integral_calculus/tikz/cone_rotation.tex",
+        "content/resources/chapters/integral_calculus/tikz/fall_equation.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Halbkreis.png",
+      "path": "content/resources/chapters/integral_calculus/images/semicircle.png",
+      "sha256": "3c040f63966e5d33ca72577b01a15aa58bcf01dfc1d41b9b5a3d213bfa0d7fa6",
+      "replacement_paths": [
+        "content/resources/chapters/integral_calculus/tikz/semicircle.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/Kegel_Rotation.png",
+      "path": "content/resources/chapters/integral_calculus/images/cone_rotation.png",
+      "sha256": "ddfef31d4b455521ad9f413f3a2e765e93ad553b709285a282d7348f9e162e8b",
+      "replacement_paths": [
+        "content/resources/chapters/integral_calculus/tikz/cone_rotation.tex"
+      ]
+    },
+    {
+      "original_path": "references/_OLD_Übungsaufgaben/Übungsblatt 6 - Integralrechnung/Bilder/SVA_IntVsDiff.png",
+      "path": "content/resources/chapters/integral_calculus/images/integration_differentiation.png",
+      "sha256": "6714455127d46f0666a1ed6573049dc1237b62314919d73a5e2cd9673fe1e785",
+      "replacement_paths": [
+        "content/resources/chapters/integral_calculus/tikz/integration_differentiation.tex"
+      ]
+    }
+  ]
 }

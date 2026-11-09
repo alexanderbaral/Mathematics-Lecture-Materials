@@ -1,0 +1,22 @@
+\begin{tikzpicture}[x=4.25cm,y=4.25cm,>=Latex]
+  \draw[->,black!65] (-1.23,0)--(1.27,0) node[right,text=black] {$x$};
+  \draw[->,black!65] (0,-.23)--(0,1.18) node[above,text=black] {$y$};
+  \begin{scope}
+    \clip (-1.2,-.23) rectangle (1.2,1.12);
+    \draw[green!55!black,line width=1.3pt]
+      plot[domain=-1.2:1.2,samples=101] (\x,{1-\x*\x});
+  \end{scope}
+  \foreach \x/\lab in {-1/-1,-.8/{-0{,}8},-.6/{-0{,}6},-.4/{-0{,}4},-.2/{-0{,}2},.2/{0{,}2},.4/{0{,}4},.6/{0{,}6},.8/{0{,}8},1/1}
+    \draw[black!65] (\x,.012)--(\x,-.012) node[below=3pt,text=black] {$\lab$};
+  \foreach \y/\lab in {.2/{0{,}2},.4/{0{,}4},.6/{0{,}6},.8/{0{,}8},1/1}
+    \draw[black!65] (.012,\y)--(-.012,\y) node[left=3pt,text=black] {$\lab$};
+  \node[below left=2pt] at (0,0) {$0$};
+  \coordinate (P) at (.47,{1-.47*.47});
+  \draw[THMBlue!45,densely dashed,line width=.5pt] (0,.7791)--(P)--(.47,0);
+  \draw[THMBlue,line width=1.5pt] (0,0)--(P)
+    node[pos=.55,left=4pt,inner sep=1pt] {$A(x)$};
+  \foreach \p in {(-1,0),(0,1),(1,0)}
+    \fill[black!60] \p circle (1.8pt);
+  \fill (P) circle (2.7pt);
+  \node[above right=4pt] at (P) {$(x,f(x))$};
+\end{tikzpicture}

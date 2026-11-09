@@ -1,0 +1,13 @@
+\begin{tikzpicture}[>=Latex]
+  \node[draw=black!65,fill=black!2,minimum width=1.65cm,minimum height=1.8cm] (s) at (0,0) {Strecke};
+  \node[draw=black!65,fill=black!2,minimum width=3.15cm,minimum height=1.8cm] (v) at (4.55,0) {Geschwindigkeit};
+  \node[draw=black!65,fill=black!2,minimum width=3.05cm,minimum height=1.8cm] (a) at (10,0) {Beschleunigung};
+  \draw[->] ([xshift=3pt,yshift=35pt]s.east)--([xshift=-3pt,yshift=35pt]v.west)
+    node[midway,above=4pt] {differenziert};
+  \draw[<-] ([xshift=3pt,yshift=-35pt]s.east)--([xshift=-3pt,yshift=-35pt]v.west)
+    node[midway,below=4pt] {integriert};
+  \draw[->] ([xshift=3pt,yshift=35pt]v.east)--([xshift=-3pt,yshift=35pt]a.west)
+    node[midway,above=4pt] {differenziert};
+  \draw[<-] ([xshift=3pt,yshift=-35pt]v.east)--([xshift=-3pt,yshift=-35pt]a.west)
+    node[midway,below=4pt] {integriert};
+\end{tikzpicture}
